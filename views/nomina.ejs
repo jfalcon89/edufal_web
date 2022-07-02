@@ -1,0 +1,130 @@
+<%- include('template/cabecera'); %>
+
+    <div class="container-fluid ">
+        <h3 style="background-color: #025f6b; color: white;">Nomina de empleados</h3>
+        <h5 class="text-light" style="background-color: #007877;">Datos personales</h5>
+
+
+        <form class="">
+            <div class="container-datos-header d-flex">
+                <div class="container-img-foto-empleado" style="width: 20%;">
+                    <img src="/img/nomina/fotoPerfil.png" style="width: 34%;">
+                </div>
+                <div class="datos-de-busqueda justify-content-between" style="width: 80%;">
+
+                    <div class="d-flex justify-content-between espaciado">
+                        <div class="form-group d-flex   ">
+                            <div class="input-group ">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Codigo</span>
+                                </div>
+                                <input type="text" class="form-control" id="codigo">
+                            </div>
+                        </div>
+
+                        <div class="form-group d-flex justify-content-center  ">
+                            <label for="estatus" class="p-2">Estatus</label>
+                            <select name="select" class="form-control" id="estatus">
+                                <option value="seleccionar" selected>Seleccionar</option>
+                                <option value="Activo">Activo</option>
+                                <option value="Inactivo">Inactivo</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between espaciado">
+                        <div class="form-group d-flex   ">
+                            <div class="input-group d-flex">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Cedula</span>
+                                </div>
+                                <input type="text" class="form-control" id="cedula">
+                            </div>
+                        </div>
+                        <div class="form-group d-flex justify-content-center  ">
+                            <label for="sexo" class="p-2">Sexo</label>
+                            <select name="select" class="form-control" id="sexo">
+                            <option value="seleccionar" selected>Seleccionar</option>
+                            <option value="hombre">Hombre</option>
+                            <option value="mujer">Mujer</option>
+                        </select>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-group d-flex justify-content-center espaciado ">
+                <label for="nombre" class="w-25 p-2">Nombre</label>
+                <input type="text" class="form-control p-2" id="nombre" aria-describedby="emailHelp" placeholder="">
+            </div>
+
+
+            <div class="form-group d-flex justify-content-center espaciado ">
+                <label for="departamento" class=" w-25 p-2">Departamento</label>
+                <input type="text" class="form-control p-2" id="departemento" aria-describedby="emailHelp" placeholder="">
+            </div>
+            <div class="form-group d-flex justify-content-center espaciado ">
+                <label for="nacimiento" class=" w-25 p-2">Fecha de Nacimiento </label>
+                <input type="date" class="form-control p-2" id="nacimiento" aria-describedby="emailHelp" placeholder="">
+            </div>
+            <div class="form-group d-flex justify-content-center espaciado ">
+                <label for="lugarNacimiento" class=" w-25 p-2">Lugar de Nacimiento </label>
+                <input type="text" class="form-control p-2" id="lugarNacimiento" aria-describedby="emailHelp" placeholder="">
+            </div>
+            <div class="form-group d-flex justify-content-center espaciado ">
+                <label for="nacionalidad" class=" w-25 p-2">Nacionalidad</label>
+                <input type="text" class="form-control p-2" id="nacionalidad" aria-describedby="emailHelp" placeholder="">
+            </div>
+
+            <div class="d-flex justify-content-between">
+                <div class="form-group d-flex justify-content-center flex-wrap ">
+                    <label for="sueldoBruto" class=" p-2">Sueldo Bruto</label>
+                    <input type="text" class="form-control p-2 text-center" id="sueldoBruto" aria-describedby="emailHelp" value="">
+                </div>
+                <div class="form-group d-flex justify-content-center flex-wrap ">
+                    <label for="afp" class="p-2">Afp</label>
+                    <input type="text" class="form-control p-2 text-center" id="afp" disabled placeholder="">
+                </div>
+                <div class="form-group d-flex justify-content-center flex-wrap ">
+                    <label for="ars" class="p-2">Ars</label>
+                    <input type="text" class="form-control p-2 text-center" id="ars" disabled aria-describedby="emailHelp" placeholder="">
+                </div>
+                <div class="form-group d-flex justify-content-center flex-wrap ">
+                    <label for="cooperativa" class="p-2">Cooperativa</label>
+                    <input type="text" class="form-control p-2 text-center" id="cooperativa" disabled placeholder="">
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-between">
+                <div class="form-group d-flex justify-content-center flex-wrap ">
+                    <label for="club" class="p-2">Club</label>
+                    <input type="text" class="form-control p-2 text-center" id="club" disabled aria-describedby="emailHelp" placeholder="">
+                </div>
+                <div class="form-group d-flex justify-content-center flex-wrap ">
+                    <label for="prestamos" class="p-2">Prestamos</label>
+                    <input type="text" class="form-control p-2 text-center" id="prestamos" disabled placeholder="">
+                </div>
+                <div class="form-group d-flex justify-content-center flex-wrap ">
+                    <label for="totalDescuentos" class="p-2">Total Descuentos</label>
+                    <input type="text" class="form-control p-2 text-danger font-weight-bold text-center" id="totalDescuentos" disabled aria-describedby="emailHelp" placeholder="">
+                </div>
+                <div class="form-group d-flex justify-content-center flex-wrap ">
+                    <label for="sueldoNeto" class="p-2 ">Sueldo Neto</label>
+                    <input type="text" class="form-control p-2 text-success font-weight-bold text-center " id="sueldoNeto" disabled placeholder="">
+                </div>
+            </div>
+
+
+        </form>
+        <button type="submit" class="btnImprimir  mt-5 mb-4 me-lg-3 btnFormat"><i class="bi bi-printer-fill me-lg-3"></i>Generar Reporte</button>
+        <button type="submit" class="btnParametros mt-5 mb-4 me-lg-3 btnFormat"><i class="bi bi-gear-fill me-lg-3" ></i>Modificar Parametros</button>
+    </div>
+
+    <%- include('template/modalReporteNomina'); %>
+        <%- include('template/modalParametrosNomina'); %>
+
+
+            <%- include('template/footer'); %>

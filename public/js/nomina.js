@@ -86,6 +86,8 @@ btnImprimir.addEventListener("click", () => {
 
     // funtion para llenado de datos del reporte
     (function() {
+        console.log("entraste a llenar campos reporte")
+
         const nombreR = document.getElementById("nombreR").value = nombre.value;
         const cedulaR = document.getElementById("cedulaR").value = cedula.value;
         const codigoR = document.getElementById("codigoR").value = codigo.value;

@@ -1,0 +1,91 @@
+<!-- modal container reporte  -->
+<div class="modal_container  d-flex" id="modal_container">
+    <div class="modal_reporte position-fixed d-flex container mt-4 w-50 mt-5 bg-light flex-wrap" style="left: 25%; ">
+
+        <div class="seccionesReporte d-flex container ">
+            <div class="containerClose d-flex justify-content-end w-100 align-self-start ">
+                <p class="close">X</p>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center w-100 ">
+            <h3 class="d-flex justify-content-center">Reporte de Pagos Empleados</h3>
+        </div>
+        <div class="d-flex justify-content-end w-100 ">
+            <h6 class="d-flex justify-content-end">FECHA</h6>
+            <h6 class="d-flex justify-content-end" id="fechaActual"></h6>
+        </div>
+        <div class="form-group d-flex justify-content-center w-100 espaciado ">
+            <label for="nombre" class="w-25 p-2">Nombre</label>
+            <input type="text" class="form-control p-2 w-100" id="nombreR" aria-describedby="emailHelp" disabled>
+        </div>
+        <div class="d-flex justify-content-between espaciado w-100">
+            <div class="form-group d-flex justify-content-center  ">
+                <label for="cedula" class="p-2">Cedula</label>
+                <input type="number" class="form-control p-2 cedulaReporteMediaQuery" id="cedulaR" aria-describedby="emailHelp" disabled>
+            </div>
+            <div class="form-group d-flex justify-content-center  ">
+                <label for="exampleInputEmail1" class=" p-2">Codigo</label>
+                <input type="number" class="form-control p-2" id="codigoR" aria-describedby="emailHelp" disabled>
+            </div>
+        </div>
+
+        <table class="table table-bordered ">
+            <thead>
+                <tr>
+                    <th scope="col">Descripcion</th>
+                    <th scope="col">Ingresos</th>
+                    <th scope="col">Deducciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Sueldo Bruto</td>
+                    <td id="sueldoBrutoR"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Afp</td>
+                    <td></td>
+                    <td id="afpR"></td>
+                </tr>
+                <tr>
+                    <td>Ars</td>
+                    <td></td>
+                    <td id="arsR"></td>
+                </tr>
+                <tr>
+                    <td>Cooperativa</td>
+                    <td></td>
+                    <td id="cooperativaR"></td>
+                </tr>
+                <tr>
+                    <td>Club</td>
+                    <td></td>
+                    <td id="clubR"></td>
+                </tr>
+                <tr>
+                    <td>Prestamos</td>
+                    <td></td>
+                    <td id="prestamosR"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="d-flex justify-content-between">
+            <div class="form-group d-flex justify-content-center flex-wrap ">
+                <label for="totalDescuentos" class="p-2">Total Descuentos</label>
+                <input type="text" class="form-control p-2 text-danger font-weight-bold text-center" id="totalDescuentosR" disabled>
+            </div>
+            <div class="form-group d-flex justify-content-center flex-wrap ">
+                <label for="sueldoNeto" class="p-2 ">Sueldo Neto</label>
+                <input type="text" class="form-control p-2 text-success font-weight-bold text-center" id="sueldoNetoR" disabled>
+            </div>
+        </div>
+
+        <div class="container">
+            <button type="submit" class="btnImprimirR mt-5 mb-4 me-lg-3 btnFormat">Imprimir Reporte</button>
+        </div>
+    </div>
+
+</div>
