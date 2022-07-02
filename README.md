@@ -1,4 +1,5 @@
 <h1 id="my-app-nomina-v01">my-app-nomina-v01</h1>
+<img src="https://drive.google.com/file/d/14JvyHtPH4cu6So-Q5dXT_d4Vvk1oWvmS/view?usp=sharing">
 <p><strong>Descripcion de funcionalidad:</strong></p>
 <p>my-app-nomina-v01 Es una aplicacion Web que permite registrar los datos de un empleado en una empresa, la misma permite registrar los pagos que la empresa le realiza a sus empleados como tambien calcular los descuentos que la empresa le hace por retenciones de ley u otros descuentos, tambien cuenta con un mantenedor de parametros para modificar los porcentajes de descuentos en cada pago de empleado.</p>
 <p>la aplicacion tambien cuenta con la funcionalidad para generar reportes de pago en diferentes tamaños y formatos.</p>
