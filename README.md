@@ -21,11 +21,9 @@
 <p><strong>Dominio dev:</strong></p>
 <p><a href="https://my-app-nomina-v01.herokuapp.com/nomina">my-app-nomina-v01.herokuapp.com</a></p>
 <p><strong>Proveedor Dominio:</strong></p>
-<p><a href="https://my.freenom.com/">https://my.freenom.com/</a></p>
+<p>Heroku App</p>
 <p><strong>Proveedor Hosting dev:</strong></p>
-<p><a href="https://app.infinityfree.net">InfinityFree</a></p>
-<p><strong>cPanel:</strong></p>
-<p><a href="http://filemanager.ai/new/">Monsta FTP (filemanager.ai)</a></p>
+<p>Heroku App</p>
 <p><strong>Versiones dev:</strong></p>
 <p>v01 junio 2022</p>
 <h2 id="responsive-web-design">Responsive Web Design</h2>
