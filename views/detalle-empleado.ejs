@@ -1,17 +1,17 @@
 <%- include('template/cabecera'); %>
 
     <div class="container-fluid ">
-        <h3 style="background-color: #025f6b; color: white;">Crear nuevo empleado</h3>
+        <h3 style="background-color: #025f6b; color: white;">Editar datos de empleado</h3>
         <div class="d-flex justify-content-between align-items-center" style="background-color: #007877;">
 
             <h5 class="text-light">Datos personales</h5>
-            <spam class="text-light"><b>Fecha</b>
-                <%= now %>
+            <spam class="text-light">
+
             </spam>
         </div>
 
 
-        <form class="" action="" method="POST">
+        <form id="editar" class="" action=" " data-id="<%= empleado.id %>">
             <div class="container-datos-header d-flex">
                 <div class="container-img-foto-empleado" style="width: 20%;">
                     <img src="/img/nomina/fotoPerfil.png" style="width: 34%;">
@@ -24,14 +24,14 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Codigo</span>
                                 </div>
-                                <input type="text" name="codigo" class="form-control" id="codigo">
+                                <input type="text" name="codigo" value="<%= empleado.codigo %>" class="form-control" id="codigo">
                             </div>
                         </div>
 
                         <div class="form-group d-flex justify-content-center  ">
                             <label for="estatus" class="p-2">Estatus</label>
                             <select name="estatus" class="form-control" id="estatus">
-                                <option value="seleccionar" selected>Seleccionar</option>
+                                <option value="<%= empleado.estatus %>"selected><%= empleado.estatus %></option>
                                 <option value="Activo">Activo</option>
                                 <option value="Inactivo">Inactivo</option>
                             </select>
@@ -44,21 +44,13 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Cedula</span>
                                 </div>
-                                <input type="text" name="cedula" class="form-control" id="cedula">
-                            </div>
-                        </div>
-                        <div class="form-group d-flex   visually-hidden ">
-                            <div class="input-group d-flex">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">tiempo Empresa</span>
-                                </div>
-                                <input type="text" name="tiempoEmpresa" class="form-control" id="tiempoEmpresa" value="<%= now %>">
+                                <input type="text" name="cedula" value="<%= empleado.cedula %>" class="form-control" id="cedula">
                             </div>
                         </div>
                         <div class="form-group d-flex justify-content-center  ">
                             <label for="sexo" class="p-2">Sexo</label>
                             <select name="sexo" class="form-control" id="sexo">
-                            <option value="seleccionar" selected>Seleccionar</option>
+                            <option value="<%= empleado.sexo %>" selected><%= empleado.sexo %></option>
                             <option value="hombre">Hombre</option>
                             <option value="mujer">Mujer</option>
                         </select>
@@ -72,81 +64,79 @@
 
             <div class="form-group d-flex justify-content-center espaciado ">
                 <label for="nombre" class="w-25 p-2">Nombre</label>
-                <input type="text" name="nombre" class="form-control p-2" id="nombre" aria-describedby="emailHelp" placeholder="">
+                <input type="text" name="nombre" value="<%= empleado.nombre %>" class="form-control p-2" id="nombre" aria-describedby="emailHelp" placeholder="">
             </div>
 
             <div class="form-group d-flex justify-content-center espaciado ">
                 <label for="apellido" class="w-25 p-2">Apellido</label>
-                <input type="text" name="apellido" class="form-control p-2" id="apellido" aria-describedby="emailHelp" placeholder="">
+                <input type="text" name="apellido" value="<%= empleado.apellido %>" class="form-control p-2" id="apellido" aria-describedby="emailHelp" placeholder="">
             </div>
+
 
             <div class="form-group d-flex justify-content-center espaciado ">
                 <label for="departamento" class=" w-25 p-2">Departamento</label>
-                <input type="text" name="departamento" class="form-control p-2" id="departemento" aria-describedby="emailHelp" placeholder="">
+                <input type="text" name="departamento" value="<%= empleado.departamento %>" class="form-control p-2" id="departemento" aria-describedby="emailHelp" placeholder="">
             </div>
             <div class="form-group d-flex justify-content-center espaciado ">
                 <label for="nacimiento" class=" w-25 p-2">Fecha de Nacimiento </label>
-                <input type="date" name="nacimiento" class="form-control p-2" id="nacimiento" aria-describedby="emailHelp" placeholder="">
+                <input type="date" name="nacimiento" value="<%= empleado.nacimiento %>" class="form-control p-2" id="nacimiento" aria-describedby="emailHelp" placeholder="">
             </div>
             <div class="form-group d-flex justify-content-center espaciado ">
                 <label for="lugarNacimiento" class=" w-25 p-2">Lugar de Nacimiento </label>
-                <input type="text" name="lugarNacimiento" class="form-control p-2" id="lugarNacimiento" aria-describedby="emailHelp" placeholder="">
+                <input type="text" name="lugarNacimiento" value="<%= empleado.lugarNacimiento %>" class="form-control p-2" id="lugarNacimiento" aria-describedby="emailHelp" placeholder="">
             </div>
             <div class="form-group d-flex justify-content-center espaciado ">
                 <label for="nacionalidad" class=" w-25 p-2">Nacionalidad</label>
-                <input type="text" name="nacionalidad" class="form-control p-2" id="nacionalidad" aria-describedby="emailHelp" placeholder="">
+                <input type="text" name="nacionalidad" value="<%= empleado.nacionalidad %>" class="form-control p-2" id="nacionalidad" aria-describedby="emailHelp" placeholder="">
             </div>
 
             <div class="d-flex justify-content-between">
                 <div class="form-group d-flex justify-content-center flex-wrap ">
                     <label for="sueldoBruto" class=" p-2">Sueldo Bruto</label>
-                    <input type="text" name="sueldoBruto" class="form-control p-2 text-center" id="sueldoBruto" aria-describedby="emailHelp" value="">
+                    <input type="text" name="sueldoBruto" value="<%= empleado.sueldoBruto %>" class="form-control p-2 text-center" id="sueldoBruto" aria-describedby="emailHelp" value="">
                 </div>
                 <div class="form-group d-flex justify-content-center flex-wrap ">
                     <label for="afp" class="p-2">Afp</label>
-                    <input type="text" name="afp" class="form-control p-2 text-center" id="afp">
+                    <input type="text" name="afp" value="<%= empleado.afp %>" class="form-control p-2 text-center" id="afp">
                 </div>
                 <div class="form-group d-flex justify-content-center flex-wrap ">
                     <label for="ars" class="p-2">Ars</label>
-                    <input type="text" name="ars" class="form-control p-2 text-center" id="ars">
+                    <input type="text" name="ars" value="<%= empleado.ars %>" class="form-control p-2 text-center" id="ars">
                 </div>
                 <div class="form-group d-flex justify-content-center flex-wrap ">
                     <label for="cooperativa" class="p-2">Cooperativa</label>
-                    <input type="text" name="cooperativa" class="form-control p-2 text-center" id="cooperativa">
+                    <input type="text" name="cooperativa" value="<%= empleado.cooperativa %>" class="form-control p-2 text-center" id="cooperativa">
                 </div>
             </div>
 
             <div class="d-flex justify-content-between">
                 <div class="form-group d-flex justify-content-center flex-wrap ">
                     <label for="club" class="p-2">Club</label>
-                    <input type="text" name="club" class="form-control p-2 text-center" id="club">
+                    <input type="text" name="club" value="<%= empleado.club %>" class="form-control p-2 text-center" id="club">
                 </div>
                 <div class="form-group d-flex justify-content-center flex-wrap ">
                     <label for="prestamos" class="p-2">Prestamos</label>
-                    <input type="text" name="prestamos" class="form-control p-2 text-center" id="prestamos">
+                    <input type="text" name="prestamos" value="<%= empleado.prestamos %>" class="form-control p-2 text-center" id="prestamos">
                 </div>
                 <div class="form-group d-flex justify-content-center flex-wrap ">
                     <label for="totalDescuentos" class="p-2">Total Descuentos</label>
-                    <input type="text" name="totalDescuentos" class="form-control p-2 text-danger font-weight-bold text-center" id="totalDescuentos">
+                    <input type="text" name="totalDescuentos" value="<%= empleado.totalDescuentos %>" class="form-control p-2 text-danger font-weight-bold text-center" id="totalDescuentos">
                 </div>
                 <div class="form-group d-flex justify-content-center flex-wrap ">
                     <label for="sueldoNeto" class="p-2 ">Sueldo Neto</label>
-                    <input type="text" name="sueldoNeto" class="form-control p-2 text-success font-weight-bold text-center " id="sueldoNeto">
+                    <input type="text" name="sueldoNeto" value="<%= empleado.sueldoNeto %>" class="form-control p-2 text-success font-weight-bold text-center " id="sueldoNeto">
                 </div>
             </div>
 
-            <button id="btnGuardarDatos" class="btn btn-success btn-block p-2 mt-4 mb-3" type="submit"><i class="bi bi-check-lg me-lg-3"></i>Guardar datos</button>
+            <!-- <button class="btn btn-success btn-block" type="submit">Guardar</button> -->
+            <button class="btn btn-warning btn-block mt-3 me-lg-3" type="submit"><i class="bi bi-check-lg me-lg-3"></i>Guardar cambios</button>
+            <button id="btnEliminarEmpleado" class="btn btn-danger btn-block mt-3 me-lg-3" data-id="<%= empleado.id %>"><i class="bi bi-x-lg me-lg-3"></i>Eliminar empleado</button>
+            <a href="/empleados" class="btn btn-secondary btn-block mt-3 me-lg-3"><i class="bi bi-arrow-left me-lg-3"></i>Volver a atras</a>
         </form>
-        <!-- <button type="submit" class="btnImprimir  mt-5 mb-4 me-lg-3 btnFormat"><i class="bi bi-printer-fill me-lg-3"></i>Generar Reporte</button>
-        <button type="submit" class="btnParametros mt-5 mb-4 me-lg-3 btnFormat"><i class="bi bi-gear-fill me-lg-3" ></i>Modificar Parametros</button> -->
+        <button type="submit" class="btnImprimir btn p-2 mt-4 mb-4 me-lg-3 btnFormat"><i class="bi bi-printer-fill me-lg-3"></i>Generar Reporte</button>
+        <button type="submit" class="btnParametros btn p-2 mt-4 mb-4 me-lg-3 btnFormat"><i class="bi bi-gear-fill me-lg-3" ></i>Modificar Parametros</button>
     </div>
 
-
-    <script>
-        // let now = moment().calendar();
-
-        // console.log(now);
-    </script>
     <%- include('template/modalReporteNomina'); %>
         <%- include('template/modalParametrosNomina'); %>
 

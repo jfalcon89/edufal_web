@@ -214,3 +214,11 @@
 .btnFormat:hover {
     background-color: #025f6b;
 }
+
+.activo {
+    background-color: green;
+}
+
+.inactivo {
+    background-color: red;
+}

@@ -1,0 +1,191 @@
+<%- include('template/cabecera'); %>
+
+    <div class="container-fluid d-flex flex-column" style="background: rgb(0,120,119);
+    background: linear-gradient(90deg, rgba(0,120,119,1) 22%, rgba(41,162,131,1) 49%, rgba(0,212,255,1) 100%);">
+
+        <div class="header-container mb-3 h-25" style="background-color: rgba(248, 248, 248, 0.453); border-radius: 8px;">
+            <h5>
+                <%= empleado.codigo %>
+                    <%= empleado.nombre %>
+                        <%= empleado.apellido %>
+            </h5>
+            <p>
+                <span><b>Fecha de nacimiento: </b><%= empleado.nacimiento %></span>
+                <span id="campoTiempoEmpresa"><b>Ingreso a la empresa: </b><%= empleado.tiempoEmpresa %></span>
+                <span><b>Cedula: </b><%= empleado.cedula %></span>
+                <span><b>Sexo </b><%= empleado.sexo %></span>
+                <span class="estatusInfEmp  "><b>Estatus </b><%= empleado.estatus %></span>
+
+            </p>
+        </div>
+
+        <div class="body-container d-flex flex-column mb-5" style="background-color: rgba(248, 248, 248, 0.453); border-radius: 20px;">
+            <div class="d-flex ">
+                <div class="card_ausencia " style="width: 25%;">
+                    <div class="card-body d-flex justify-content-center flex-column ">
+                        <h5 class="card-title d-flex justify-content-center ">Ausencias</h5>
+                        <p class="card-text d-flex justify-content-center ">Tiene 2 ausencias</p>
+                        <div class="d-flex justify-content-center">
+                            <div>
+                                <a href="#" class="btn btn-primary" style="background-color: rgba(0, 128, 128, 0.371);"><i class="bi bi-files me-lg-2" ></i>Ver</a>
+                                <a href="#" class="btn btn-secondary"><i class="bi bi-file-earmark-plus me-lg-2"></i>Agregar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card_documento " style="width: 25%;">
+                    <div class="card-body d-flex justify-content-center flex-column ">
+                        <h5 class="card-title d-flex justify-content-center ">Documentos</h5>
+                        <p class="card-text d-flex justify-content-center ">Tiene 2 documento</p>
+                        <div class="d-flex justify-content-center">
+                            <div>
+                                <a href="#" class="btn btn-primary" style="background-color: rgba(0, 128, 128, 0.371);"><i class="bi bi-files me-lg-2" ></i>Ver</a>
+                                <a href="#" class="btn btn-secondary"><i class="bi bi-file-earmark-plus me-lg-2"></i>Agregar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card_poncheEntra" style="width: 25%;">
+                    <div class="card-body d-flex justify-content-center flex-column ">
+                        <h5 class="card-title d-flex justify-content-center ">Ponche Entra</h5>
+                        <p class="card-text d-flex justify-content-center ">Tiene 2 Ponche Entra</p>
+                        <div class="d-flex justify-content-center">
+                            <div>
+                                <a href="#" class="btn btn-primary" style="background-color: rgba(0, 128, 128, 0.371);"><i class="bi bi-files me-lg-2" ></i>Ver</a>
+                                <a href="#" class="btn btn-secondary"><i class="bi bi-file-earmark-plus me-lg-2"></i>Agregar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card_poncheSalida" style="width: 25%;">
+                    <div class="card-body d-flex justify-content-center flex-column ">
+                        <h5 class="card-title d-flex justify-content-center ">Ponche Salida</h5>
+                        <p class="card-text d-flex justify-content-center ">Tiene 2 Ponche Salida</p>
+                        <div class="d-flex justify-content-center">
+                            <div>
+                                <a href="#" class="btn btn-primary" style="background-color: rgba(0, 128, 128, 0.371);"><i class="bi bi-files me-lg-2" ></i>Ver</a>
+                                <a href="#" class="btn btn-secondary"><i class="bi bi-file-earmark-plus me-lg-2"></i>Agregar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex">
+                <div class="card_pago" style="width: 25%;">
+                    <div class="card-body d-flex justify-content-center flex-column ">
+                        <h5 class="card-title d-flex justify-content-center ">Pagos</h5>
+                        <p class="card-text d-flex justify-content-center ">Tiene 2 Pagos</p>
+                        <div class="d-flex justify-content-center">
+                            <div>
+                                <a href="#" class="btn btn-primary" style="background-color: rgba(0, 128, 128, 0.371);"><i class="bi bi-files me-lg-2" ></i>Ver</a>
+                                <a href="#" class="btn btn-secondary"><i class="bi bi-file-earmark-plus me-lg-2"></i>Agregar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card_prestamo " style="width: 25%;">
+                    <div class="card-body d-flex justify-content-center flex-column ">
+                        <h5 class="card-title d-flex justify-content-center ">Prestamos</h5>
+                        <p class="card-text d-flex justify-content-center ">Tiene 2 Prestamos</p>
+                        <div class="d-flex justify-content-center">
+                            <div>
+                                <a href="#" class="btn btn-primary" style="background-color: rgba(0, 128, 128, 0.371);"><i class="bi bi-files me-lg-2" ></i>Ver</a>
+                                <a href="#" class="btn btn-secondary"><i class="bi bi-file-earmark-plus me-lg-2"></i>Agregar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card_coperativa" style="width: 25%;">
+                    <div class="card-body d-flex justify-content-center flex-column ">
+                        <h5 class="card-title d-flex justify-content-center ">Coperativa</h5>
+                        <p class="card-text d-flex justify-content-center ">Tiene 2 Coperativa</p>
+                        <div class="d-flex justify-content-center">
+                            <div>
+                                <a href="#" class="btn btn-primary" style="background-color: rgba(0, 128, 128, 0.371);"><i class="bi bi-files me-lg-2" ></i>Ver</a>
+                                <a href="#" class="btn btn-secondary"><i class="bi bi-file-earmark-plus me-lg-2"></i>Agregar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card_club" style="width: 25%;">
+                    <div class="card-body d-flex justify-content-center flex-column ">
+                        <h5 class="card-title d-flex justify-content-center ">Club</h5>
+                        <p class="card-text d-flex justify-content-center ">Tiene 2 Club</p>
+                        <div class="d-flex justify-content-center">
+                            <div>
+                                <a href="#" class="btn btn-primary" style="background-color: rgba(0, 128, 128, 0.371);"><i class="bi bi-files me-lg-2" ></i>Ver</a>
+                                <a href="#" class="btn btn-secondary"><i class="bi bi-file-earmark-plus me-lg-2"></i>Agregar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <h3 class="mb-5">Detalle Informacion</h3>
+
+        <table class="table table-sm table-hover mb-5">
+            <thead class="thead-ligth">
+                <tr>
+                    <!-- <th scope="col">Id</th> -->
+                    <th scope="col">Codigo</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">apellido</th>
+                    <th scope="col">Cedula</th>
+                    <th scope="col">Estatus</th>
+                    <th scope="col">Sueldo</th>
+                    <th scope="col">T. desc</th>
+                    <th scope="col">Sueldo Neto</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+
+
+
+                <tr>
+
+
+                    <td>
+                        <%= empleado.codigo %>
+                    </td>
+                    <td>
+                        <%= empleado.nombre %>
+                    </td>
+                    <td>
+                        <%= empleado.apellido %>
+                    </td>
+                    <td>
+                        <%= empleado.cedula %>
+                    </td>
+                    <td>
+                        <%= empleado.estatus %>
+                    </td>
+                    <td>
+                        <%= empleado.sueldoBruto %>
+                    </td>
+                    <td>
+                        <%= empleado.totalDescuentos %>
+                    </td>
+                    <td>
+                        <%= empleado.sueldoNeto %>
+                    </td>
+                    <td class="w-0 "><a href="/empleados/detalle-empleado/<%= empleado.id %>" class="btn " title="Editar"><i class="bi bi-pencil-square "></i></a>
+                        <a href="/empleados/informacion-empleado/<%= empleado.id %>" class="btn " title="Ver informacion empleado"><i class="bi bi-folder2-open "></i></a>
+                    </td>
+                </tr>
+
+
+
+            </tbody>
+        </table>
+
+
+
+    </div>
+
+
+
+
+    <%- include('template/footer'); %>

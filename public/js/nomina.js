@@ -11,6 +11,19 @@ const estatus = document.getElementById("estatus");
 const nombre = document.getElementById("nombre");
 const cedula = document.getElementById("cedula");
 let fechaActualReporte = document.getElementById("fechaActual");
+const btnGuardarDatos = document.getElementById("btnGuardarDatos");
+const estatusInfEmp = document.querySelector(".estatusInfEmp")
+    // const eventoAct_Inact = document.getElementById("eventoAct-Inact");
+
+
+
+
+// if (estatusInfEmp.textContent == "Activo") {
+//     estatusInfEmp.classList.add("activo");
+// }
+// if (estatusInfEmp.textContent == "Inactivo") {
+//     estatusInfEmp.classList.add("inactivo");
+// };
 
 
 
