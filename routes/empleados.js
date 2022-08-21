@@ -1,53 +1,39 @@
 const { json } = require("body-parser");
 const express = require("express");
 const router = express.Router();
-const empleado = require("../modelo/empleado");
+// const empleado = require("../modelo/empleado");
 const moment = require("moment");
+const pool = require("../database");
 
 
+// RENDERIZANDO Y MOSTRANDO TODOS LOS EMPLEADOS********************
+router.get('/empleados', async(req, res) => {
+    const arrayEmpleadosDB = await pool.query('SELECT * FROM empleados');
+    res.render("empleados", {
+        arrayEmpleados: arrayEmpleadosDB
 
-
-// CONSULTANDO TODOS LOS EMPLEADOS
-router.get("/", async(req, res) => {
-
-
-    try {
-
-        const arrayEmpleadosDB = await empleado.find();
-        console.log(arrayEmpleadosDB);
-
-        res.render("empleados", {
-            arrayEmpleados: arrayEmpleadosDB
-                // mensaje: "Empleado eleminado correct"
-        });
-
-    } catch (error) {
-        console.log(error)
-    }
+    });
 
 });
 
-// RENDER DE VISTA detalle-empleado
-router.get("/detalle-empleado", (req, res) => {
 
+
+// RENDER DE VISTA DETALLE-EMPLEADO************
+router.get("/empleados/detalle-empleado", (req, res) => {
 
     res.render("detalle-empleado");
 });
 
-// MOSTRAR SOLO UN EMPLEADO EN LA VISTA nomina USANDO SU ID  
-router.get("/detalle-empleado/:id", async(req, res) => {
 
+//EDITAR EMPLEADO POR NUMERO ID EN VISTA DETALLE-EMPLEADO************
+router.get("/empleados/detalle-empleado/:id", async(req, res) => {
     const id = req.params.id
+    console.log(req.params)
 
     try {
-        const empleadoDB = await empleado.findOne({ _id: id });
-        console.log(empleadoDB);
-
-        res.render("detalle-empleado", {
-            empleado: empleadoDB,
-            error: false
-        })
-
+        const empleadoDB = await pool.query("SELECT * FROM empleados WHERE idEmpleado = ?", [id]);
+        console.log(empleadoDB[0]);
+        res.render("detalle-empleado", { empleado: empleadoDB[0] });
 
     } catch (error) {
         console.log(error)
@@ -56,82 +42,73 @@ router.get("/detalle-empleado/:id", async(req, res) => {
             mensaje: "no se encuentra el id seleccionado"
         });
     }
-
 });
 
-//ELIMINAR PERSONA
-router.delete("/detalle-empleado/:id", async(req, res) => {
+//GUARDAR ACTUALIZACION DE EMPLEADO POR NUMERO ID EN VISTA DETALLE-EMPLEADO**************
+router.post('/empleados/detalle-empleado/:id', async(req, res) => {
+    const id = req.params.id;
+    console.log(req.params.id)
+    const { nombre, apellido, cedula, sexo, estatus, departamento, nacimiento, lugarNacimiento, nacionalidad, sueldoBruto, afp, ars, cooperativa, club, prestamos, totalDescuentos, sueldoNeto } = req.body;
+    const nuevoEmpleado = {
+        nombre,
+        apellido,
+        cedula,
+        sexo,
+        estatus,
+        // tiempoEmpresa,
+        departamento,
+        nacimiento,
+        lugarNacimiento,
+        nacionalidad,
+        sueldoBruto,
+        afp,
+        ars,
+        cooperativa,
+        club,
+        prestamos,
+        totalDescuentos,
+        sueldoNeto
+    };
 
-    const id = req.params.id
+    await pool.query("UPDATE empleados set ? WHERE idEmpleado = ?", [nuevoEmpleado, id]);
+    // req.flash('success', 'Link actualizado correctamente');
+    res.redirect('/empleados');
+});
+
+
+//ELIMINAR EMPLEADO 
+router.get("/empleados/:id", async(req, res) => {
+    const { id } = req.params;
+    console.log(id)
 
     try {
 
-        const empleadoDB = await empleado.findByIdAndDelete({ _id: id })
+        await pool.query("DELETE FROM empleados WHERE idEmpleado = ?", [id]);
+        // req.flash('success', 'Link eliminado correctamente');
+        res.redirect("/empleados");
 
-        if (empleadoDB) {
-            res.json({
-                estado: true,
-                mensaje: "eliminado"
-            })
-        } else {
-            res.json({
-                estado: false,
-                mensaje: "fallo eliminar"
-            })
-        }
     } catch (error) {
         console.log(error)
     }
 
 });
 
-//EDITAR EMPLEADO
-router.put("/detalle-empleado/:id", async(req, res) => {
-
-    const id = req.params.id
-    const body = req.body
-
-    try {
-        const empleadoDB = await empleado.findByIdAndUpdate(id, body, { useFindAndModify: false })
-        console.log(empleadoDB)
-
-        res.json({
-            estado: true,
-            mensaje: "empleado editado"
-        })
-
-    } catch (error) {
-        console.log(error)
-        res.json({
-            estado: false,
-            mensaje: "empleado fallida"
-        })
-    }
-
-});
 
 
-// MOSTRAR SOLO UN EMPLEADO EN LA VISTA INFORMACION EMPLEADO USANDO SU ID  
 
-// render de la vista informacion-empleado
-router.get("/informacion-empleado", (req, res) => {
-    res.render("informacion-empleado");
-});
+// RENDERIZANDO VISTA INFORMACION-EMPLEADO no necesario 
+// router.get("/empleados/informacion-empleado", (req, res) => {
+//     res.render("informacion-empleado");
+// });
 
-
-router.get("/informacion-empleado/:id", async(req, res) => {
-
+// RENDERIZANDO Y MOSTRANDO DATOS DE EMPLEADO POR ID EN LA VISTA INFORMACION-EMPLEADO
+router.get("/empleados/informacion-empleado/:id", async(req, res) => {
     const id = req.params.id
 
     try {
-        const empleadoDB = await empleado.findOne({ _id: id });
-        console.log(empleadoDB);
-
-        res.render("informacion-empleado", {
-            empleado: empleadoDB,
-            error: false
-        })
-
+        const empleadoDB = await pool.query("SELECT * FROM empleados WHERE idEmpleado = ?", [id]);
+        console.log(empleadoDB[0]);
+        res.render("informacion-empleado", { empleado: empleadoDB[0] });
 
     } catch (error) {
         console.log(error)
@@ -140,52 +117,276 @@ router.get("/informacion-empleado/:id", async(req, res) => {
             mensaje: "no se encuentra el id seleccionado"
         });
     }
+});
+
+
+// RENDER DE LA VISTA CREAR EMPLEADO 
+router.get('/crear-empleado', (req, res) => {
+    let now = moment();
+    now = now.format("ll")
+    console.log(now);
+
+    res.render("crear-empleado", { now: now });
+})
+
+
+//INSERTAR NUEVO EMPLEADO A MYSQL****************
+router.post("/crear-empleado", async(req, res) => {
+    const { nombre, apellido, cedula, sexo, estatus, tiempoEmpresa, departamento, nacimiento, lugarNacimiento, nacionalidad, sueldoBruto, afp, ars, cooperativa, club, prestamos, totalDescuentos, sueldoNeto } = req.body;
+    const nuevoEmpleado = {
+        nombre,
+        apellido,
+        cedula,
+        sexo,
+        estatus,
+        tiempoEmpresa,
+        departamento,
+        nacimiento,
+        lugarNacimiento,
+        nacionalidad,
+        sueldoBruto,
+        afp,
+        ars,
+        cooperativa,
+        club,
+        prestamos,
+        totalDescuentos,
+        sueldoNeto
+    };
+
+    await pool.query('INSERT INTO empleados set ?', [nuevoEmpleado]);
+    // req.flash('success', 'Link guardado correctamente');
+    res.redirect('/empleados');
 
 });
 
 
-//vista para controlar los informe del empleado COMENTADA POR AHORA 
-// router.get("/informacion-empleado/:id", async(req, res) => {
 
+
+
+
+
+
+// RENDERIZANDO Y MOSTRANDO DATOS DE EMPLEADO X DEPARTAMENTO X ID EN LA VISTA CREAR-EMPLEADO X DEPARTAMENTO
+// router.get("/empleados/informacion-empleado/crear-empleado-x-departamento:id", async(req, res) => {
 //     const id = req.params.id
+//     console.log(id);
 
 //     try {
-//         const informeDB = await informe.findOne({ _id: id });
-//         console.log(informeDB);
-
-//         res.render("informacion-empleado", {
-//             empleado: informeDB,
-//             error: false
-//         })
-
+//         const empleado_x_departamentoDB = await pool.query("SELECT * FROM empleado_x_departamento WHERE idEmpleado = ?", [id]);
+//         console.log(empleado_x_departamentoDB[0]);
+//         res.render("crear-empleado-x-departamento", { empleado_x_departamento: empleado_x_departamentoDB[0] });
 
 //     } catch (error) {
 //         console.log(error)
-//         res.render("informacion-empleado", {
+//         res.render("crear-empleado-x-departamento", {
 //             error: true,
 //             mensaje: "no se encuentra el id seleccionado"
 //         });
 //     }
-
 // });
 
 
-//CREAR EMPLEADO
-// router.post("/empleado", async(req, res) => {
-//     const body = req.body
-//     try {
-//         await empleado.create(body)
+// RENDERIZANDO Y MOSTRANDO DATOS DE EMPLEADO X DEPARTAMENTO X ID EN LA VISTA VER-EMPLEADO X DEPARTAMENTO
+router.get("/empleados/informacion-empleado/ver-empleado-x-departamento/:id", async(req, res) => {
+    const id = req.params.id
+    console.log(id);
 
-//         res.redirect("/empleados");
+
+    try {
+        const empleado_x_departamentoDB = await pool.query(`SELECT * FROM empleado_x_departamento, empleados, departamentos
+                                                            WHERE empleado_x_departamento.idEmpleado  = ${id}
+                                                            AND empleados.idEmpleado = empleado_x_departamento.idEmpleado
+                                                            AND departamentos.idDepartamento = empleado_x_departamento.idDepartamento`);
+        console.log(empleado_x_departamentoDB[0]);
+        res.render("ver-empleado-x-departamento", {
+            empleado_x_departamento: empleado_x_departamentoDB[0],
+            empleado_x_departamentoDB: empleado_x_departamentoDB
+        });
+
+    } catch (error) {
+        console.log(error)
+        res.render("ver-empleado-x-departamento", {
+            error: true,
+            mensaje: "no se encuentra el id seleccionado"
+        });
+    }
+});
+
+
+
+// RENDERIZANDO Y MOSTRANDO EMPLEADO EN VISTA CREAR EMPLEADO X DEPARTAMENTO +++++
+router.get("/empleados/informacion-empleado/crear-empleado-x-departamento/:id", async(req, res) => {
+    const id = req.params.id
+    console.log(id);
+
+    try {
+        const empleado_x_departamentoDB = await pool.query(`SELECT * FROM empleado_x_departamento, empleados, departamentos
+                                                            WHERE empleado_x_departamento.idEmpleado  = ${id}
+                                                            AND empleados.idEmpleado = empleado_x_departamento.idEmpleado
+                                                            AND departamentos.idDepartamento = empleado_x_departamento.idDepartamento`);
+        console.log(empleado_x_departamentoDB[0]);
+        res.render("crear-empleado-x-departamento", { empleado_x_departamento: empleado_x_departamentoDB[0] });
+
+    } catch (error) {
+        console.log(error)
+        res.render("crear-empleado-x-departamento", {
+            error: true,
+            mensaje: "no se encuentra el id seleccionado"
+        });
+    }
+});
+
+// RENDERIZANDO Y MOSTRANDO DATOS DE EMPLEADO POR ID EN LA VISTA INFORMACION-EMPLEADO
+router.get("/empleados/informacion-empleado/crear-empleado-x-departamento/:id", async(req, res) => {
+    const id = req.params.id
+
+    try {
+        const empleadoDB = await pool.query("SELECT * FROM empleados WHERE idEmpleado = ?", [id]);
+        console.log(empleadoDB[0]);
+        res.render("crear-empleado-x-departamento", { empleado: empleadoDB[0] });
+
+    } catch (error) {
+        console.log(error)
+        res.render("crear-empleado-x-departamento", {
+            error: true,
+            mensaje: "no se encuentra el id seleccionado"
+        });
+    }
+});
+
+// RENDERIZANDO Y MOSTRANDO DATOS DE EMPLEADO POR ID EN LA VISTA INFORMACION-EMPLEADO ++++
+// router.get("/empleados/informacion-empleado/ver-empleado-x-departamento/:id", async(req, res) => {
+//     const id = req.params.id
+
+//     try {
+//         const empleadoDB = await pool.query("SELECT * FROM empleados WHERE idEmpleado = ?", [id]);
+//         console.log(empleadoDB[0]);
+//         res.render("ver-empleado-x-departamento", { empleado: empleadoDB[0] });
 
 //     } catch (error) {
 //         console.log(error)
+//         res.render("ver-empleado-x-departamento", {
+//             error: true,
+//             mensaje: "no se encuentra el id seleccionado"
+//         });
 //     }
 // });
 
 
+// RENDERIZANDO Y MOSTRANDO DATOS DE EMPLEADO POR ID EN LA VISTA INFORMACION-EMPLEADO
+router.get("/empleados/informacion-empleado/:id", async(req, res) => {
+    const id = req.params.id
+
+    try {
+        const empleadoDB = await pool.query("SELECT * FROM empleados WHERE idEmpleado = ?", [id]);
+        console.log(empleadoDB[0]);
+        res.render("informacion-empleado", { empleado: empleadoDB[0] });
+
+    } catch (error) {
+        console.log(error)
+        res.render("informacion-empleado", {
+            error: true,
+            mensaje: "no se encuentra el id seleccionado"
+        });
+    }
+});
 
 
+
+// INSERTANDO NUEVO EMPLEADO X DEPARTAMENTO 
+router.post("/empleados/informacion-empleado/crear-empleado-x-departamento/:id", async(req, res) => {
+    const { idEmpleado, idDepartamento, fechaRegistro, estadoDepartamento } = req.body;
+    const nuevoEmpleado_x_departamento = {
+        idEmpleado,
+        idDepartamento,
+        fechaRegistro,
+        estadoDepartamento
+
+    };
+
+    await pool.query('INSERT INTO empleado_x_departamento set ?', [nuevoEmpleado_x_departamento]);
+    // req.flash('success', 'Link guardado correctamente');
+    res.redirect('/empleados');
+
+});
+
+//probar 
+//MOSTRANDO LOS DEPARTAMENTOS CREADOS EN LA VISTA CREAR-EMPLEADO X DEPARTAMENTO 
+// router.get('/empleados/informacion-empleado/crear-empleado-x-departamento/:id', async(req, res) => {
+//     const arrayDepartamentosDB = await pool.query('SELECT * FROM departamentos');
+//     const id = req.params.id
+
+//     const empleadoDB = await pool.query("SELECT * FROM empleados WHERE idEmpleado = ?", [id]);
+//     console.log(empleadoDB[0]);
+//     res.render("crear-empleado-x-departamento", { empleado: empleadoDB[0] });
+
+//     res.render("crear-empleado-x-departamento", {
+//         arrayDepartamentos: arrayDepartamentosDB
+
+//     });
+
+// });
+
+
+
+//ELIMINAR DEPARTAMENTO POR EMPLEADO
+router.get("/empleados/informacion-empleado/editar-empleado-x-departamento/:id", async(req, res) => {
+    const id = req.params.id
+    console.log(id);
+
+    try {
+        const empleado_x_departamentoDB = await pool.query(`DELETE FROM empleado_x_departamento WHERE empleado_x_departamento.idEmpleado = ${id}`);
+        console.log(empleado_x_departamentoDB[0]);
+
+        // res.render("ver-empleado-x-departamento", { empleado_x_departamento: empleado_x_departamentoDB[0] });
+
+        res.redirect(`/empleados/informacion-empleado/${id}`);
+
+    } catch (error) {
+        console.log(error)
+    }
+
+});
+
+
+
+// RENDERIZANDO Y MOSTRANDO EMPLEADO EN VISTA EDITAR EMPLEADO X DEPARTAMENTO +++++
+router.get("/empleados/informacion-empleado/editar-empleado-x-departamento/:id", async(req, res) => {
+    const id = req.params.id
+    console.log(id);
+
+    try {
+        const empleado_x_departamentoDB = await pool.query(`SELECT * FROM empleado_x_departamento, empleados, departamentos WHERE empleados.idEmpleado = ${id} AND empleados.idEmpleado = empleado_x_departamento.idEmpleado AND departamentos.idDepartamento = empleado_x_departamento.idDepartamento;`);
+        console.log(empleado_x_departamentoDB[0]);
+        res.render("editar-empleado-x-departamento", { empleado_x_departamento: empleado_x_departamentoDB[0] });
+
+    } catch (error) {
+        console.log(error)
+        res.render("editar-empleado-x-departamento", {
+            error: true,
+            mensaje: "no se encuentra el id seleccionado"
+        });
+    }
+});
+
+//GUARDAR ACTUALIZACION DE DEPARTAMENTO POR NUMERO ID EN VISTA EDITAR-DEPARTAMENTO
+router.post('/empleados/informacion-empleado/editar-empleado-x-departamento/:id', async(req, res) => {
+    const id = req.params.id;
+    console.log(req.params.id)
+    const { idEmpleado, idDepartamento, fechaRegistro, estadoDepartamento } = req.body;
+    const nuevoEmpleado_x_departamento = {
+        idEmpleado,
+        idDepartamento,
+        fechaRegistro,
+        estadoDepartamento
+
+    };
+
+    await pool.query("UPDATE empleado_x_departamento set ? WHERE idDepartamento = ?", [nuevoEmpleado_x_departamento, id]);
+    // req.flash('success', 'Link actualizado correctamente');
+    res.redirect('/empleados');
+});
 
 
 module.exports = router;

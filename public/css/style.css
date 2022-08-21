@@ -73,6 +73,47 @@
     box-shadow: 0 0 5px #767676;
 }
 
+
+/* modal eliminarEmpleado */
+
+.modal_container_eliminarEmpleado {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.357);
+    position: fixed;
+    display: flex;
+    top: 0;
+    visibility: hidden;
+    right: 0px;
+}
+
+.modal_parametros_eliminarEmpleado {
+    display: flex;
+    position: relative;
+    transition-duration: 2s;
+    /* margin-top: -500px; */
+    transform: translateX(-250%);
+    box-shadow: 0 0 13px #0000003f;
+    left: 0px;
+    right: 0px;
+    background-color: blue;
+    top: 240px;
+}
+
+.efectoEliminarEmpleado {
+    transition-duration: 1s;
+    transform: translateX(0%);
+    /* margin-top: 500px; */
+}
+
+.closeEliminarEmpleado {
+    background-color: red;
+    border: 10px;
+    cursor: pointer;
+    padding: 5px 13px;
+    box-shadow: 0 0 5px #767676;
+}
+
 @media (max-width: 2300px) {
     .cedulaMediaQuery {
         margin-left: 195px;
@@ -221,4 +262,12 @@
 
 .inactivo {
     background-color: red;
+}
+
+.colorEstadoInactivo {
+    color: red;
+}
+
+.colorEstadoActivo {
+    color: red;
 }

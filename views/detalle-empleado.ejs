@@ -11,7 +11,7 @@
         </div>
 
 
-        <form id="editar" class="" action=" " data-id="<%= empleado.id %>">
+        <form id="editar" class="" action="/empleados/detalle-empleado/<%= empleado.idEmpleado %> " method="POST">
             <div class="container-datos-header d-flex">
                 <div class="container-img-foto-empleado" style="width: 20%;">
                     <img src="/img/nomina/fotoPerfil.png" style="width: 34%;">
@@ -24,14 +24,14 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Codigo</span>
                                 </div>
-                                <input type="text" name="codigo" value="<%= empleado.codigo %>" class="form-control" id="codigo">
+                                <input type="text" name="codigo" value="" class="form-control" id="codigo">
                             </div>
                         </div>
 
                         <div class="form-group d-flex justify-content-center  ">
                             <label for="estatus" class="p-2">Estatus</label>
                             <select name="estatus" class="form-control" id="estatus">
-                                <option value="<%= empleado.estatus %>"selected><%= empleado.estatus %></option>
+                                <option value=""selected><%= empleado.estatus %></option>
                                 <option value="Activo">Activo</option>
                                 <option value="Inactivo">Inactivo</option>
                             </select>
@@ -50,7 +50,7 @@
                         <div class="form-group d-flex justify-content-center  ">
                             <label for="sexo" class="p-2">Sexo</label>
                             <select name="sexo" class="form-control" id="sexo">
-                            <option value="<%= empleado.sexo %>" selected><%= empleado.sexo %></option>
+                                <option value="<%= empleado.sexo %>" selected><%= empleado.sexo %></option>
                             <option value="hombre">Hombre</option>
                             <option value="mujer">Mujer</option>
                         </select>
@@ -130,15 +130,16 @@
 
             <!-- <button class="btn btn-success btn-block" type="submit">Guardar</button> -->
             <button class="btn btn-warning btn-block mt-3 me-lg-3" type="submit"><i class="bi bi-check-lg me-lg-3"></i>Guardar cambios</button>
-            <button id="btnEliminarEmpleado" class="btn btn-danger btn-block mt-3 me-lg-3" data-id="<%= empleado.id %>"><i class="bi bi-x-lg me-lg-3"></i>Eliminar empleado</button>
             <a href="/empleados" class="btn btn-secondary btn-block mt-3 me-lg-3"><i class="bi bi-arrow-left me-lg-3"></i>Volver a atras</a>
         </form>
+        <!-- <a type="submit" class="btnEliminarEmpleado btn btn-danger btn-block mt-3 me-lg-3"><i class="bi bi-x-lg me-lg-3"></i>Eliminar empleado</a> -->
         <button type="submit" class="btnImprimir btn p-2 mt-4 mb-4 me-lg-3 btnFormat"><i class="bi bi-printer-fill me-lg-3"></i>Generar Reporte</button>
         <button type="submit" class="btnParametros btn p-2 mt-4 mb-4 me-lg-3 btnFormat"><i class="bi bi-gear-fill me-lg-3" ></i>Modificar Parametros</button>
-    </div>
 
+    </div>
     <%- include('template/modalReporteNomina'); %>
         <%- include('template/modalParametrosNomina'); %>
 
 
+            <script src="/js/nomina.js"></script>
             <%- include('template/footer'); %>

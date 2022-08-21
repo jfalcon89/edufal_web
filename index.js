@@ -6,8 +6,12 @@ const path = require("path");
 const dotenv = require('dotenv').config()
 const moment = require("moment");
 
-//rutas
-const nominaRoutes = require("./routes/nomina");
+// conexcion a la base de datos MySql
+const pool = require("./database");
+const { database } = require('./keys');
+
+//rutas requiere
+const departamentosRoutes = require("./routes/departamentos");
 const inicioRoutes = require("./routes/inicio");
 const empleadosRoutes = require("./routes/empleados");
 const contactosRoutes = require("./routes/contactos");
@@ -24,14 +28,14 @@ app.listen(app.get("port"), () => {
 });
 
 ////---------CONEXION A LA BASE DE DATOS MONGODB----------////
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
 
-const uri = `mongodb+srv://${process.env.USUARIO}:${process.env.PASSWORD}@cluster0.cnkdh.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority`;
+// const uri = `mongodb+srv://${process.env.USUARIO}:${process.env.PASSWORD}@cluster0.cnkdh.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority`;
 
-mongoose.connect(uri, (err) => {
-    if (err) throw err
-    console.log("la conexion a base de datos mongoDB funciona");
-});
+// mongoose.connect(uri, (err) => {
+//     if (err) throw err
+//     console.log("la conexion a base de datos mongoDB funciona");
+// });
 
 
 //CONFIGURACION PARA LEER EL BODY
@@ -46,8 +50,8 @@ app.use(express.static(path.join(__dirname, "public")));
 //----------RUTAS WEB DE LOS HANDLERS----------------//
 
 app.use("/", inicioRoutes);
-app.use("/", nominaRoutes);
-app.use("/empleados", empleadosRoutes);
+app.use("/", departamentosRoutes);
+app.use("/", empleadosRoutes);
 app.use("/", contactosRoutes);
 app.use("/", pagosRoutes);
 app.use("/", reportesRoutes);
@@ -59,10 +63,6 @@ app.use("/", configuracionRoutes);
 // app.use((req, res, next) => {
 //     res.status(404).render("404");
 // });
-
-
-
-
 
 //motor de plantilla 
 app.set("view engine", "ejs");

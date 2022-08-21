@@ -1,11 +1,11 @@
 <%- include('template/cabecera'); %>
-
     <div class="container-fluid ">
+
         <h3 style="background-color: #025f6b; color: white;">Crear nuevo empleado</h3>
         <div class="d-flex justify-content-between align-items-center" style="background-color: #007877;">
 
             <h5 class="text-light">Datos personales</h5>
-            <spam class="text-light"><b>Fecha</b>
+            <spam class="text-light me-lg-3"><b>Fecha</b>
                 <%= now %>
             </spam>
         </div>
@@ -135,7 +135,8 @@
                 </div>
             </div>
 
-            <button id="btnGuardarDatos" class="btn btn-success btn-block p-2 mt-4 mb-3" type="submit"><i class="bi bi-check-lg me-lg-3"></i>Guardar datos</button>
+            <button id="btnGuardarDatos" class="btn btn-success btn-block p-2 mt-4 mb-3" type="submit"><i class="bi bi-check-lg me-lg-2"></i>Guardar datos</button>
+            <a href="/empleados" class="btn btn-danger btn-block p-2 mt-4 mb-3"><i class="bi bi-arrow-left me-lg-2"></i>Cancelar</a>
         </form>
         <!-- <button type="submit" class="btnImprimir  mt-5 mb-4 me-lg-3 btnFormat"><i class="bi bi-printer-fill me-lg-3"></i>Generar Reporte</button>
         <button type="submit" class="btnParametros mt-5 mb-4 me-lg-3 btnFormat"><i class="bi bi-gear-fill me-lg-3" ></i>Modificar Parametros</button> -->
@@ -150,5 +151,5 @@
     <%- include('template/modalReporteNomina'); %>
         <%- include('template/modalParametrosNomina'); %>
 
-
+            <script src="/js/nomina.js"></script>
             <%- include('template/footer'); %>

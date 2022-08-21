@@ -1,0 +1,49 @@
+<%- include('template/cabecera'); %>
+
+    <div class="container-fluid vh-100">
+        <h2 class=" text-secondary">Departamentos</h2>
+
+        <!-- <div class="navbar-departamentos d-flex justify-content-end bg-light">
+            <h5>agregar dpto</h5>
+        </div> -->
+
+        <div class="d-flex align-items-center justify-content-end bg-light">
+
+            <a class="btn btn-success btn-block my-4 me-lg-3" href="/crear-departamento"><i class="bi bi-person-plus me-lg-3"></i>Agregar Departamento</a>
+        </div>
+
+        <div class="container-departamento">
+            <div class="d-flex flex-wrap">
+
+                <% if (arrayDepartamentos.length > 0) { %>
+                    <% arrayDepartamentos.forEach(departamento=> { %>
+
+                        <div class="card w-25 mt-5 ">
+                            <div class="card-header">
+                                <h4 class="d-flex justify-content-center">
+                                    <%= departamento.nombre_dpto %>
+                                </h4>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">
+
+                                </h5>
+                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                <a href="/departamentos/<%= departamento.idDepartamento %>" class="btn btn-danger">Eliminar</a>
+                                <a href="/departamentos/editar-departamento/<%= departamento.idDepartamento %>" class="btn btn-secondary">Editar</a>
+                            </div>
+                        </div>
+
+                        <% }) %>
+                            <% } %>
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+    <%- include('template/footer'); %>

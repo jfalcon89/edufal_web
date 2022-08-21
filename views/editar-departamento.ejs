@@ -1,0 +1,35 @@
+<%- include('template/cabecera'); %>
+
+    <div class="container-fluid vh-100">
+        <h2 class=" text-secondary">Editar Departamento</h2>
+
+        <!-- <div class="navbar-departamentos d-flex justify-content-end bg-light">
+            <h5>agregar dpto</h5>
+        </div> -->
+
+        <div class="d-flex align-items-center justify-content-end bg-light">
+
+            <a class="btn btn-danger btn-block my-4 me-lg-3" href="/departamentos"><i class="bi bi-person-plus me-lg-3"></i>Cancerlar</a>
+        </div>
+
+        <div class="container-departamento">
+
+            <form class="" action="" method="POST">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Nombre Departamento</label>
+                    <input type="text" class="form-control" name="nombre_dpto" aria-describedby="emailHelp" placeholder="Nuevo" value="<%= departamento.nombre_dpto %> ">
+
+                </div>
+
+                <button type="submit" class="btn btn-success mt-5">Guardar Cambios</button>
+            </form>
+
+        </div>
+
+
+    </div>
+
+
+
+
+    <%- include('template/footer'); %>

@@ -1,6 +1,6 @@
 <%- include('template/cabecera'); %>
 
-    <div class="container-fluid  p">
+    <div class="container-fluid vh-100 p">
 
 
 
@@ -9,12 +9,19 @@
             <h2 id="mensaje"></h2>
 
             <!-- trabajando animacion de titulo aqui -->
-            <h1 data-aos="fade-up" class=" text-secondary" id="inimation-dog">Empleados</h1>
+            <h2 class=" text-secondary" id="inimation-dog">Empleados</h2>
             <!-- <div style="height: 100px;"></div> -->
             <!-- hasta aqui -->
-
-            <a class="btn btn-success btn-block my-4" href="/nomina">Crear nuevo empleado</a>
-
+            <div class="d-flex align-items-center justify-content-end">
+                <div class="input-group w-25 me-lg-3">
+                    <input type="text" class="form-control" placeholder="Nombre..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button">Buscar</button>
+                    </div>
+                </div>
+                <!-- <input type="text" name="buscador" id="buscar" placeholder="Buscar..."> -->
+                <a class="btn btn-success btn-block my-4 me-lg-3" href="/crear-empleado"><i class="bi bi-person-plus me-lg-3"></i>Crear nuevo empleado</a>
+            </div>
             <h1 id="prueba"></h1>
 
             <div class="container-table table-responsive">
@@ -41,7 +48,7 @@
                                 <tr>
 
                                     <td>
-                                        <%= empleado.codigo %>
+                                        <%= empleado.idEmpleado %>
                                     </td>
                                     <td>
                                         <%= empleado.nombre %>
@@ -64,8 +71,32 @@
                                     <td>
                                         <%= empleado.sueldoNeto %>
                                     </td>
-                                    <td class="w-0 "><a href="/empleados/detalle-empleado/<%= empleado.id %>" class="btn " title="Editar"><i class="bi bi-pencil-square "></i></a>
-                                        <a id="eventoAct-Inact" href="/empleados/informacion-empleado/<%= empleado.id %>" class="btn " title="Ver informacion empleado"><i class="bi bi-folder2-open "></i></a>
+                                    <td class="w-0 "><a href="/empleados/detalle-empleado/<%= empleado.idEmpleado %>" class="btn " title="Editar"><i class="bi bi-pencil-square "></i></a>
+                                        <a id="eventoAct-Inact" href="/empleados/informacion-empleado/<%= empleado.idEmpleado %>" class="btn " title="Ver informacion empleado"><i class="bi bi-folder2-open "></i></a>
+                                        <a type="submit" class="btnEliminarEmpleado_v_empleado btn  btn-block me-lg-3"><i class="bi bi-x-lg me-lg-3" title="Eliminar empleado"></i></a>
+                                        <!-- <a class=" prueba btn  btn-block me-lg-3"><i class="bi bi-x-lg me-lg-3" title="Eliminar empleado"></i>a</a> -->
+
+                                        <!-- modal container eliminarEmpleado  -->
+                                        <div class="modal_container_eliminarEmpleado">
+                                            <div class="modal_parametros_eliminarEmpleado container w-25 position-fixed mt-4 bg-light flex-xl-column flex-wrap" style=" height: 200px;">
+                                                <div class="seccionesEliminarEmpleado justify-content-center">
+                                                    <div class="containerCloseEliminarEmpleado d-flex justify-content-end w-100 align-self-start ">
+                                                    </div>
+                                                    <div class="d-flex justify-content-center mt-3">
+                                                        <h5>Esta seguro que desea eliminar a </h5>
+                                                    </div>
+                                                    <h5 class="d-flex justify-content-center">
+                                                        <%= empleado.nombre %>
+                                                            <%= empleado.apellido %>
+                                                    </h5>
+                                                    <div class="d-flex justify-content-center mt-5">
+                                                        <a id="eventoAct-Inact" href="/empleados/<%= empleado.idEmpleado %>" class="btn btnFormat w-25 me-lg-3">SI</a>
+                                                        <button type="submit" class="closeEliminarEmpleado btn btnFormat w-25 me-lg-3">No</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
                                     </td>
                                 </tr>
 
@@ -75,10 +106,14 @@
                     </tbody>
                 </table>
             </div>
+
+
         </div>
 
-
+        <!-- script btn -->
+        <script src="/js/btnEliminarEmpleado_v_empleado.js"></script>
     </div>
+
 
 
 

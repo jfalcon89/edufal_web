@@ -1,11 +1,3 @@
-let sueldoBruto = document.getElementById("sueldoBruto");
-let afp = document.getElementById("afp");
-let ars = document.getElementById("ars");
-let cooperativa = document.getElementById("cooperativa");
-let club = document.getElementById("club");
-let prestamos = document.getElementById("prestamos");
-let totalDescuentos = document.getElementById("totalDescuentos");
-let sueldoNeto = document.getElementById("sueldoNeto");
 const codigo = document.getElementById("codigo");
 const estatus = document.getElementById("estatus");
 const nombre = document.getElementById("nombre");
@@ -26,11 +18,20 @@ const estatusInfEmp = document.querySelector(".estatusInfEmp")
 // };
 
 
+let sueldoBruto = document.getElementById("sueldoBruto");
+console.log(sueldoBruto.value)
 
 // funtion para ejecutar las operaciones y capturar cambios en el campo salario bruto
 sueldoBruto.addEventListener("change", () => {
     console.log("hiciste un cambio al sueldo");
 
+    let afp = document.getElementById("afp");
+    let ars = document.getElementById("ars");
+    let cooperativa = document.getElementById("cooperativa");
+    let club = document.getElementById("club");
+    let prestamos = document.getElementById("prestamos");
+    let totalDescuentos = document.getElementById("totalDescuentos");
+    let sueldoNeto = document.getElementById("sueldoNeto");
 
     (function() {
 
@@ -66,6 +67,9 @@ sueldoBruto.addEventListener("change", () => {
 
     })();
 });
+
+
+
 
 
 // modal reporte

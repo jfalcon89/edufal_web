@@ -3,12 +3,19 @@
     <div class="container-fluid">
 
         <h3>Pagina de inicio</h3>
-        <img src="/img/SITIO-EN-CONSTRUCCION.jpg" alt="sitio en contruccion" class="w-75">
+        <!-- <img src="/img/SITIO-EN-CONSTRUCCION.jpg" alt="sitio en contruccion" class="w-75"> -->
 
 
+
+        <% if (arrayEmpleados.length > 0) { %>
+            <% arrayEmpleados.forEach(empleado  => { %>
+
+                <div>
+                    <%= empleado.nombre %>
+                </div>
+
+                <% }) %>
+                    <% } %>
     </div>
-
-
-
 
     <%- include('template/footer'); %>
