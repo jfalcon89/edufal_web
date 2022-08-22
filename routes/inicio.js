@@ -8,7 +8,7 @@ const pool = require("../database");
 // });
 
 // RENDERIZANDO Y MOSTRANDO TODOS LOS EMPLEADOS********************
-router.get('/', async(req, res) => {
+router.get('/inicio', async(req, res) => {
     const arrayEmpleadosDB = await pool.query('SELECT * FROM empleados where estatus="inactivo"');
     res.render("inicio", {
         arrayEmpleados: arrayEmpleadosDB
@@ -16,6 +16,8 @@ router.get('/', async(req, res) => {
     });
 
 });
+
+
 
 
 
