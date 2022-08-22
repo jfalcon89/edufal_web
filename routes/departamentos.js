@@ -7,7 +7,7 @@ const moment = require("moment");
 const pool = require("../database");
 
 
-// RENDERIZANDO Y MOSTRANDO TODOS LOS DEPARTAMENTOS********************
+// RENDERIZANDO Y MOSTRANDO TODOS LOS DEPARTAMENTOS*********************
 router.get('/departamentos', async(req, res) => {
     if (req.session.loggedin) {
         const arrayDepartamentosDB = await pool.query('SELECT * FROM departamentos');
