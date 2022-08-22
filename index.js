@@ -5,6 +5,8 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const dotenv = require('dotenv').config()
 const moment = require("moment");
+//6 -Invocamos a bcrypt
+const bcrypt = require('bcryptjs');
 
 // conexcion a la base de datos MySql
 const pool = require("./database");
@@ -18,6 +20,21 @@ const contactosRoutes = require("./routes/contactos");
 const pagosRoutes = require("./routes/pagos");
 const reportesRoutes = require("./routes/reportes");
 const configuracionRoutes = require("./routes/configuracion");
+const registerRoutes = require("./routes/register");
+const indexRoutes = require("./routes/index");
+const loginRoutes = require("./routes/login");
+
+
+
+//7- variables de session
+const session = require('express-session');
+app.use(session({
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: true
+}));
+
+
 
 
 //--------------CONEXION AL SERVIDOR-----------------//
@@ -26,6 +43,31 @@ app.set("port", process.env.PORT || 3001);
 app.listen(app.get("port"), () => {
     console.log("servidor funcionando en el puerto", app.get("port"))
 });
+
+///nuevo codigo***************************************
+
+
+
+
+
+
+
+//función para limpiar la caché luego del logout
+app.use(function(req, res, next) {
+    if (!req.user)
+        res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
+    next();
+});
+
+//Logout
+//Destruye la sesión.
+app.get('/logout', function(req, res) {
+    req.session.destroy(() => {
+        res.redirect('/login') // siempre se ejecutará después de que se destruya la sesión
+    })
+});
+
+///nuevo codigo*********************************************
 
 ////---------CONEXION A LA BASE DE DATOS MONGODB----------////
 // const mongoose = require("mongoose");
@@ -56,6 +98,9 @@ app.use("/", contactosRoutes);
 app.use("/", pagosRoutes);
 app.use("/", reportesRoutes);
 app.use("/", configuracionRoutes);
+app.use("/", registerRoutes);
+app.use("/", indexRoutes);
+app.use("/", loginRoutes);
 
 
 

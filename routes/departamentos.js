@@ -9,13 +9,37 @@ const pool = require("../database");
 
 // RENDERIZANDO Y MOSTRANDO TODOS LOS DEPARTAMENTOS********************
 router.get('/departamentos', async(req, res) => {
-    const arrayDepartamentosDB = await pool.query('SELECT * FROM departamentos');
-    res.render("departamentos", {
-        arrayDepartamentos: arrayDepartamentosDB
+    if (req.session.loggedin) {
+        const arrayDepartamentosDB = await pool.query('SELECT * FROM departamentos');
+        res.render("departamentos", {
+            arrayDepartamentos: arrayDepartamentosDB,
+            login: true,
+            name: req.session.name
 
-    });
+        });
+    } else {
+        res.render('login', {
+            login: false,
+            name: 'Debe iniciar sesión',
+        });
+    }
 
 });
+
+// router.get('/pagos', (req, res) => {
+//     if (req.session.loggedin) {
+//         res.render('pagos', {
+//             login: true,
+//             name: req.session.name
+//         });
+//     } else {
+//         res.render('pagos', {
+//             login: false,
+//             name: 'Debe iniciar sesión',
+//         });
+//     }
+//     // res.end();
+// });
 
 
 // router.get("/crear-departamento", (req, res) => {
@@ -25,11 +49,21 @@ router.get('/departamentos', async(req, res) => {
 
 // RENDERIZANDO Y MOSTRANDO TODOS LOS DEPARTAMENTOS EN VISTA CREAR-DEPARTAMENTO
 router.get('/crear-departamento', async(req, res) => {
-    const arrayDepartamentosDB = await pool.query('SELECT * FROM departamentos');
-    res.render("crear-departamento", {
-        arrayDepartamentos: arrayDepartamentosDB
+    if (req.session.loggedin) {
 
-    });
+        const arrayDepartamentosDB = await pool.query('SELECT * FROM departamentos');
+        res.render("crear-departamento", {
+            arrayDepartamentos: arrayDepartamentosDB,
+            login: true,
+            name: req.session.name
+
+        });
+    } else {
+        res.render('login', {
+            login: false,
+            name: 'Debe iniciar sesión',
+        });
+    }
 
 });
 
@@ -65,15 +99,6 @@ router.get("/departamentos/:id", async(req, res) => {
 });
 
 
-// RENDERIZANDO Y MOSTRANDO TODOS LOS DEPARTAMENTOS EN VISTA EDITAR-DEPARTAMENTO
-// router.get('/departamentos/editar-departamento/:id', async(req, res) => {
-//     const arrayDepartamentosDB = await pool.query('SELECT * FROM departamentos');
-//     res.render("crear-departamento", {
-//         arrayDepartamentos: arrayDepartamentosDB
-
-//     });
-
-// });
 
 
 //EDITAR DEPARTAMENTO POR NUMERO ID EN VISTA EDITAR-DEPARTAMENTO
