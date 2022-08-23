@@ -103,21 +103,34 @@ router.get("/departamentos/:id", async(req, res) => {
 
 //EDITAR DEPARTAMENTO POR NUMERO ID EN VISTA EDITAR-DEPARTAMENTO
 router.get("/departamentos/editar-departamento/:id", async(req, res) => {
-    const id = req.params.id
+    if (req.session.loggedin) {
 
+        const id = req.params.id
 
-    try {
-        const departamentoDB = await pool.query("SELECT * FROM departamentos WHERE idDepartamento = ?", [id]);
-        // console.log(empleadoDB[0]);
-        res.render("editar-departamento", { departamento: departamentoDB[0] });
+        try {
+            const departamentoDB = await pool.query("SELECT * FROM departamentos WHERE idDepartamento = ?", [id]);
+            // console.log(empleadoDB[0]);
+            res.render("editar-departamento", {
+                departamento: departamentoDB[0],
+                login: true,
+                name: req.session.name
+            });
 
-    } catch (error) {
-        console.log(error)
-        res.render("editar-departamento", {
-            error: true,
-            mensaje: "no se encuentra el id seleccionado"
+        } catch (error) {
+            console.log(error)
+            res.render("editar-departamento", {
+                error: true,
+                mensaje: "no se encuentra el id seleccionado"
+            });
+        }
+
+    } else {
+        res.render('login', {
+            login: false,
+            name: 'Debe iniciar sesión',
         });
     }
+
 });
 
 //GUARDAR ACTUALIZACION DE DEPARTAMENTO POR NUMERO ID EN VISTA EDITAR-DEPARTAMENTO

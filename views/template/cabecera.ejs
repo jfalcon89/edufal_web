@@ -23,13 +23,13 @@
 
 <body>
 
-    <header class="" style="height: 40px; background-color: #007877;">
+    <header class="d-flex justify-content-end align-content-center" style="height: 40px; background-color: #007877;">
         <% if (login) { %>
-            <span>Usuario conectado: <strong><%= name %></strong></span>
-            <a href="logout" class="a-logout">Logout</a>
+            <div class="d-flex align-content-center me-lg-3">Usuario conectado: <strong class="me-lg-3"><%= name %></strong></div>
+            <a href="logout" class="a-logout me-lg-3">Logout</a>
             <%} else { %>
-                <span><strong><%= name %></strong></span>
-                <a href="login" class="a-login">Iniciar sesion</a>
+                <div class="d-flex align-content-center me-lg-3"><strong><%= name %></strong></div>
+                <a href="login" class="a-login ">Iniciar sesion</a>
                 <% } %>
     </header>
 
@@ -39,7 +39,7 @@
                 <div class="navar_items_seccion_izq d-flex w-100 ">
                     <ul class="ul_navar_items d-flex flex-column p-0 w-100">
                         <li class="">
-                            <a href="/"><i class="bi bi-house-fill me-lg-3"></i>INICIO</a>
+                            <a href="/inicio"><i class="bi bi-house-fill me-lg-3"></i>INICIO</a>
                         </li>
                         <li>
                             <a href="/departamentos"><i class="bi bi-journals me-lg-3"></i>DEPARTAMENTOS</a>

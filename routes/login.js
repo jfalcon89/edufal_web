@@ -44,7 +44,7 @@ router.post('/auth', async(req, res) => {
                     alertIcon: 'success',
                     showConfirmButton: false,
                     timer: 1500,
-                    ruta: 'pagos'
+                    ruta: 'inicio'
                 });
             }
             res.end();
