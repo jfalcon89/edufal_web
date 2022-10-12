@@ -7,10 +7,10 @@ const pool = require("../database");
 const bcrypt = require('bcryptjs');
 
 
-//12 - Método para controlar que está auth en todas las páginas
+// //12 - Método para controlar que está auth en todas las páginas
 router.get('/', (req, res) => {
     if (req.session.loggedin) {
-        res.render('index', {
+        res.render('dashboard', {
             login: true,
             name: req.session.name
         });

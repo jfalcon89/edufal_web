@@ -17,7 +17,7 @@ pool.getConnection((err, connection) => {
         }
     }
     if (connection) connection.release();
-    console.log("DB esta conectada a MySQL");
+    console.log("DB nomina esta conectada a MySQL");
     return;
 });
 

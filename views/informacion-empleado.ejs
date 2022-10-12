@@ -1,134 +1,104 @@
-<%- include('template/cabecera'); %>
+<%- include('template/cabecera', { tituloWeb: "Nomina - Informacion Empleado" , bgActive1: "" , bgActive2: "" ,
+    bgActive3: "active" , bgActive4: "" , bgActive5: "" , bgActive6: "" }); %>
 
-    <div class="container-fluid d-flex flex-column" style="background: rgb(0,120,119);
-    background: linear-gradient(90deg, rgba(0,120,119,1) 22%, rgba(41,162,131,1) 49%, rgba(0,212,255,1) 100%);">
+    <div class="container-fluid d-flex flex-column mt-5">
+        <h2 class="text-secondary">Informacion Empleado</h2>
+        <hr>
+        <div class=" mb-2 d-flex justify-content-end">
+            <a href="/empleados" class="btn btn-warning mt-3 "><i class="bi bi-arrow-left me-lg-3"></i>Volver
+                a
+                atras</a>
+        </div>
 
-        <div class="header-container mb-3 h-25" style="background-color: rgba(248, 248, 248, 0.453); border-radius: 8px;">
-            <h5>
+        <div class="header-container mb-3 mt-3 h-25 text-light" style="background-color: rgba(172, 172, 172, 0.113); border-radius: 8px;">
+            <h5 class="mt-3">
                 <%= empleado.idEmpleado %>
                     <%= empleado.nombre %>
                         <%= empleado.apellido %>
             </h5>
             <p>
-                <span><b>Fecha de nacimiento: </b><%= empleado.nacimiento %></span>
-                <span id="campoTiempoEmpresa"><b>Ingreso a la empresa: </b><%= empleado.tiempoEmpresa %></span>
-                <span><b>Cedula: </b><%= empleado.cedula %></span>
-                <span><b>Sexo </b><%= empleado.sexo %></span>
-                <span class="estatusInfEmp  "><b>Estatus </b><%= empleado.estatus %></span>
+                <span><b>Fecha de nacimiento: </b>
+                    <%= empleado.nacimiento %>
+                </span>
+                <span id="campoTiempoEmpresa"><b>Ingreso a la empresa: </b>
+                    <%= empleado.tiempoEmpresa %>
+                </span>
+                <span><b>Cedula: </b>
+                    <%= empleado.cedula %>
+                </span>
+                <span><b>Sexo </b>
+                    <%= empleado.sexo %>
+                </span>
+                <span class="estatusInfEmp  "><b>Estatus </b>
+                    <%= empleado.estatus %>
+                </span>
 
             </p>
         </div>
 
-        <div class=" mb-2 d-flex justify-content-end">
-            <a href="/empleados" class="btn btn-warning btn-block mt-3 me-lg-3"><i class="bi bi-arrow-left me-lg-3"></i>Volver a atras</a>
-        </div>
+        <div class="body-container d-flex flex-column mb-5 text-light" style="background-color: rgba(172, 172, 172, 0.113); border-radius: 15px;">
+            <div class="d-lg-flex ">
 
-        <div class="body-container d-flex flex-column mb-5" style="background-color: rgba(248, 248, 248, 0.453); border-radius: 20px;">
-            <div class="d-flex ">
-                <div class="card_ausencia " style="width: 25%;">
-                    <div class="card-body d-flex justify-content-center flex-column ">
-                        <h5 class="card-title d-flex justify-content-center ">Ausencias</h5>
-                        <p class="card-text d-flex justify-content-center ">Tiene 2 ausencias</p>
-                        <div class="d-flex justify-content-center ">
-                            <div class="d-flex flex-nowrap">
-                                <a href="#" class="btn btn-primary d-flex me-lg-2" style="background-color: rgba(0, 128, 128, 0.371);"><i class="bi bi-files me-lg-2" ></i>Ver</a>
-                                <a href="#" class="btn btn-secondary d-flex me-lg-2"><i class="bi bi-file-earmark-plus me-lg-2"></i>Agregar</a>
-                                <a href="#" class="btn btn-success d-flex me-lg-2"><i class="bi bi-pencil-square me-lg-2"></i>Editar</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="card_documento " style="width: 25%;">
                     <div class="card-body d-flex justify-content-center flex-column ">
-                        <h5 class="card-title d-flex justify-content-center ">Documentos</h5>
+                        <h5 class="d-flex justify-content-center ">Documentos</h5>
                         <p class="card-text d-flex justify-content-center ">Tiene 2 documento</p>
                         <div class="d-flex justify-content-center ">
                             <div class="d-flex flex-nowrap ">
-                                <a href="#" class="btn btn-primary d-flex me-lg-2" style="background-color: rgba(0, 128, 128, 0.371);"><i class="bi bi-files me-lg-2" ></i>Ver</a>
-                                <a href="#" class="btn btn-secondary d-flex me-lg-2"><i class="bi bi-file-earmark-plus me-lg-2"></i>Agregar</a>
-                                <a href="#" class="btn btn-success d-flex me-lg-2"><i class="bi bi-pencil-square me-lg-2"></i>Editar</a>
+                                <a href="#" class="btn btn-primary d-flex me-lg-2" style="background-color: rgba(0, 128, 128, 0.371);"><i
+                                        class="bi bi-files me-lg-2"></i>Ver</a>
+                                <a href="#" class="btn btn-secondary d-flex me-lg-2"><i
+                                        class="bi bi-file-earmark-plus me-lg-2"></i>Agregar</a>
+
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="card_poncheEntra" style="width: 25%;">
                     <div class="card-body d-flex justify-content-center flex-column ">
-                        <h5 class="card-title d-flex justify-content-center ">Descuentos</h5>
+                        <h5 class=" d-flex justify-content-center ">Descuentos</h5>
                         <p class="card-text d-flex justify-content-center ">Tiene 2 Descuentos</p>
                         <div class="d-flex justify-content-center">
                             <div class="d-flex flex-nowrap ">
-                                <a href="#" class="btn btn-primary d-flex me-lg-2" style="background-color: rgba(0, 128, 128, 0.371);"><i class="bi bi-files me-lg-2" ></i>Ver</a>
-                                <a href="#" class="btn btn-secondary d-flex me-lg-2"><i class="bi bi-file-earmark-plus me-lg-2"></i>Agregar</a>
-                                <a href="#" class="btn btn-success d-flex me-lg-2"><i class="bi bi-pencil-square me-lg-2"></i>Editar</a>
+                                <a href="#" class="btn btn-primary d-flex me-lg-2" style="background-color: rgba(0, 128, 128, 0.371);"><i
+                                        class="bi bi-files me-lg-2"></i>Ver</a>
+                                <a href="#" class="btn btn-secondary d-flex me-lg-2"><i
+                                        class="bi bi-file-earmark-plus me-lg-2"></i>Agregar</a>
+
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- <div class="card_poncheSalida" style="width: 25%;">
-                    <div class="card-body d-flex justify-content-center flex-column ">
-                        <h5 class="card-title d-flex justify-content-center ">Ponche Salida</h5>
-                        <p class="card-text d-flex justify-content-center ">Tiene 2 Ponche Salida</p>
-                        <div class="d-flex justify-content-center">
-                            <div class="d-flex flex-nowrap ">
-                                <a href="#" class="btn btn-primary d-flex me-lg-2" style="background-color: rgba(0, 128, 128, 0.371);"><i class="bi bi-files me-lg-2" ></i>Ver</a>
-                                <a href="#" class="btn btn-secondary d-flex"><i class="bi bi-file-earmark-plus me-lg-2"></i>Agregar</a>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
-            </div>
-            <div class="d-flex">
                 <div class="card_pago" style="width: 25%;">
                     <div class="card-body d-flex justify-content-center flex-column ">
-                        <h5 class="card-title d-flex justify-content-center ">Pagos</h5>
+                        <h5 class=" d-flex justify-content-center ">Pagos</h5>
                         <p class="card-text d-flex justify-content-center ">Tiene 2 Pagos</p>
                         <div class="d-flex justify-content-center">
                             <div class="d-flex flex-nowrap ">
-                                <a href="#" class="btn btn-primary d-flex me-lg-2" style="background-color: rgba(0, 128, 128, 0.371);"><i class="bi bi-files me-lg-2" ></i>Ver</a>
-                                <a href="#" class="btn btn-secondary d-flex me-lg-2"><i class="bi bi-file-earmark-plus me-lg-2"></i>Agregar</a>
-                                <a href="#" class="btn btn-success d-flex me-lg-2"><i class="bi bi-pencil-square me-lg-2"></i>Editar</a>
+                                <a href="#" class="btn btn-primary d-flex me-lg-2" style="background-color: rgba(0, 128, 128, 0.371);"><i
+                                        class="bi bi-files me-lg-2"></i>Ver</a>
+                                <a href="#" class="btn btn-secondary d-flex me-lg-2"><i
+                                        class="bi bi-file-earmark-plus me-lg-2"></i>Agregar</a>
+
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="card_prestamo " style="width: 25%;">
-                    <div class="card-body d-flex justify-content-center flex-column ">
-                        <h5 class="card-title d-flex justify-content-center ">Prestamos</h5>
-                        <p class="card-text d-flex justify-content-center ">Tiene 2 Prestamos</p>
-                        <div class="d-flex justify-content-center">
-                            <div class="d-flex flex-nowrap ">
-                                <a href="#" class="btn btn-primary d-flex me-lg-2" style="background-color: rgba(0, 128, 128, 0.371);"><i class="bi bi-files me-lg-2" ></i>Ver</a>
-                                <a href="#" class="btn btn-secondary d-flex me-lg-2"><i class="bi bi-file-earmark-plus me-lg-2"></i>Agregar</a>
-                                <a href="#" class="btn btn-success d-flex me-lg-2"><i class="bi bi-pencil-square me-lg-2"></i>Editar</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
                 <div class="card_coperativa" style="width: 25%;">
                     <div class="card-body d-flex justify-content-center flex-column ">
-                        <h5 class="card-title d-flex justify-content-center ">Departamento</h5>
+                        <h5 class=" d-flex justify-content-center ">Departamento</h5>
                         <p class="card-text d-flex justify-content-center ">Tiene 2 </p>
                         <div class="d-flex justify-content-center">
                             <div class="d-flex flex-nowrap ">
-                                <a href="/empleados/informacion-empleado/ver-empleado-x-departamento/<%= empleado.idEmpleado %> " class="btn btn-primary d-flex me-lg-2" style="background-color: rgba(0, 128, 128, 0.371);"><i class="bi bi-files me-lg-2" ></i>Ver</a>
-                                <a href="/empleados/informacion-empleado/crear-empleado-x-departamento/<%= empleado.idEmpleado %> " class="btn btn-secondary d-flex me-lg-2"><i class="bi bi-file-earmark-plus me-lg-2"></i>Agregar</a>
-                                <!-- <a href="/empleados/informacion-empleado/editar-empleado-x-departamento/<%=  %> " class="btn btn-success d-flex me-lg-2"><i class="bi bi-pencil-square me-lg-2"></i>Editar</a> -->
+                                <a href="/empleados/informacion-empleado/ver-empleado-x-departamento/<%= empleado.idEmpleado %> " class="btn btn-primary d-flex me-lg-2" style="background-color: rgba(0, 128, 128, 0.371);"><i
+                                        class="bi bi-files me-lg-2"></i>Ver</a>
+                                <a href="/empleados/informacion-empleado/crear-empleado-x-departamento/<%= empleado.idEmpleado %> " class="btn btn-secondary d-flex me-lg-2"><i
+                                        class="bi bi-file-earmark-plus me-lg-2"></i>Agregar</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- <div class="card_club" style="width: 25%;">
-                    <div class="card-body d-flex justify-content-center flex-column ">
-                        <h5 class="card-title d-flex justify-content-center ">Club</h5>
-                        <p class="card-text d-flex justify-content-center ">Tiene 2 Club</p>
-                        <div class="d-flex justify-content-center">
-                            <div class="d-flex flex-nowrap ">
-                                <a href="#" class="btn btn-primary d-flex me-lg-2" style="background-color: rgba(0, 128, 128, 0.371);"><i class="bi bi-files me-lg-2" ></i>Ver</a>
-                                <a href="#" class="btn btn-secondary d-flex"><i class="bi bi-file-earmark-plus me-lg-2"></i>Agregar</a>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
             </div>
 
         </div>

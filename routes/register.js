@@ -39,7 +39,7 @@ router.post('/register', async(req, res) => {
                 timer: 1500,
                 ruta: ''
             });
-            res.redirect('index');
+            res.redirect('inicio');
         }
     });
 })

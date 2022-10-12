@@ -1,15 +1,12 @@
-<%- include('template/cabecera'); %>
+<%- include('template/cabecera', { tituloWeb: "Nomina - Crear Departamento" , bgActive1: "" , bgActive2: "active" ,
+    bgActive3: "" , bgActive4: "" , bgActive5: "" , bgActive6: "" }); %>
 
-    <div class="container-fluid vh-100">
+    <div class="container-fluid mt-5">
         <h2 class=" text-secondary">Crear Departamento</h2>
+        <hr>
+        <div class="d-flex align-items-center justify-content-end ">
 
-        <!-- <div class="navbar-departamentos d-flex justify-content-end bg-light">
-            <h5>agregar dpto</h5>
-        </div> -->
-
-        <div class="d-flex align-items-center justify-content-end bg-light">
-
-            <a class="btn btn-danger btn-block my-4 me-lg-3" href="/departamentos"><i class="bi bi-person-plus me-lg-3"></i>Cancerlar</a>
+            <a class="btn btn-danger  my-4" href="/departamentos"><i class="bi bi-person-plus me-lg-3"></i>Cancerlar</a>
         </div>
 
         <div class="container-departamento">
@@ -17,13 +14,15 @@
             <form class="" action="" method="POST">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Nombre Departamento</label>
-                    <input type="text" class="form-control" name="nombre_dpto" aria-describedby="emailHelp" placeholder="Nuevo">
-                    <small id="emailHelp" class="form-text ">Departamentos creados:</small><br>
+                    <input type="text" class="form-control" name="nombre_dpto" aria-describedby="emailHelp" placeholder="">
+                    <small id="emailHelp" class="form-text mt-5">Departamentos creados:</small>
 
-                    <% if (arrayDepartamentos.length > 0) { %>
+                    <% if (arrayDepartamentos.length> 0) { %>
                         <% arrayDepartamentos.forEach(departamento=> { %>
 
-                            <small id="emailHelp" class="form-text text-muted"><%= departamento.nombre_dpto %>,</small>
+                            <small id="emailHelp" class="form-text text-muted mt-0">
+                                <%= departamento.nombre_dpto %>
+                            </small>
 
                             <% }) %>
                                 <% } %>

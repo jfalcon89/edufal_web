@@ -1,24 +1,24 @@
-<%- include('template/cabecera'); %>
+<%- include('template/cabecera', { tituloWeb: "Nomina - Dashboart" , bgActive1: "" , bgActive2: "" , bgActive3: "active"
+    , bgActive4: "" , bgActive5: "" , bgActive6: "" }); %>
 
-    <div class="container-fluid ">
-        <h3 style="background-color: #025f6b; color: white;">Editar datos de empleado</h3>
-        <div class="d-flex justify-content-between align-items-center" style="background-color: #007877;">
+    <div class="container-fluid mt-5">
 
-            <h5 class="text-light">Datos personales</h5>
-            <spam class="text-light">
-
-            </spam>
-        </div>
-
-
+        <h2 class="text-secondary" id="inimation-dog">Editar datos de empleado</h2>
+        <hr>
         <form id="editar" class="" action="/empleados/detalle-empleado/<%= empleado.idEmpleado %> " method="POST">
+            <div class="d-flex justify-content-end ">
+                <button class="btn btn-warning mt-3 me-lg-3" type="submit"><i class="bi bi-check-lg me-lg-3"></i>Guardar
+                    cambios</button>
+                <a href="/empleados" class="btn btn-secondary mt-3 me-lg-3"><i
+                        class="bi bi-arrow-left me-lg-3"></i>Volver a
+                    atras</a>
+            </div>
+
             <div class="container-datos-header d-flex">
-                <div class="container-img-foto-empleado" style="width: 20%;">
-                    <img src="/img/nomina/fotoPerfil.png" style="width: 34%;">
-                </div>
+
                 <div class="datos-de-busqueda justify-content-between" style="width: 80%;">
 
-                    <div class="d-flex justify-content-between espaciado">
+                    <div class="d-lg-flex justify-content-between ">
                         <div class="form-group d-flex   ">
                             <div class="input-group ">
                                 <div class="input-group-prepend">
@@ -28,17 +28,25 @@
                             </div>
                         </div>
 
-                        <div class="form-group d-flex justify-content-center  ">
-                            <label for="estatus" class="p-2">Estatus</label>
-                            <select name="estatus" class="form-control" id="estatus">
-                                <option value="<%= empleado.estatus %>"selected><%= empleado.estatus %></option>
-                                <option value="Activo">Activo</option>
-                                <option value="Inactivo">Inactivo</option>
-                            </select>
+                        <div class="form-group d-flex  ">
+                            <div class="form-group d-flex">
+                                <div class="input-group ">
+                                    <div class="input-group-prepend">
+                                        <span for="estatus" class="input-group-text">Estatus</span>
+                                    </div>
+                                    <select name="estatus" class="form-control" id="estatus">
+                                        <option value="<%= empleado.estatus %>" selected>
+                                            <%= empleado.estatus %>
+                                        </option>
+                                        <option value="Activo">Activo</option>
+                                        <option value="Inactivo">Inactivo</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="d-flex justify-content-between espaciado">
+                    <div class="d-lg-flex justify-content-between ">
                         <div class="form-group d-flex   ">
                             <div class="input-group d-flex">
                                 <div class="input-group-prepend">
@@ -47,16 +55,23 @@
                                 <input type="text" name="cedula" value="<%= empleado.cedula %>" class="form-control" id="cedula">
                             </div>
                         </div>
-                        <div class="form-group d-flex justify-content-center  ">
-                            <label for="sexo" class="p-2">Sexo</label>
-                            <select name="sexo" class="form-control" id="sexo">
-                                <option value="<%= empleado.sexo %>" selected><%= empleado.sexo %></option>
-                            <option value="hombre">Hombre</option>
-                            <option value="mujer">Mujer</option>
-                        </select>
+                        <div class="form-group d-flex   ">
+                            <div class="form-group d-flex">
+                                <div class="input-group ">
+                                    <div class="input-group-prepend">
+                                        <span for="sexo" class="input-group-text">Sexo</span>
+                                    </div>
+                                    <select name="sexo" class="form-control" id="sexo">
+                                        <option value="<%= empleado.sexo %>" selected>
+                                            <%= empleado.sexo %>
+                                        </option>
+                                        <option value="hombre">Hombre</option>
+                                        <option value="mujer">Mujer</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
                 </div>
 
             </div>
@@ -128,13 +143,12 @@
                 </div>
             </div>
 
-            <!-- <button class="btn btn-success btn-block" type="submit">Guardar</button> -->
-            <button class="btn btn-warning btn-block mt-3 me-lg-3" type="submit"><i class="bi bi-check-lg me-lg-3"></i>Guardar cambios</button>
-            <a href="/empleados" class="btn btn-secondary btn-block mt-3 me-lg-3"><i class="bi bi-arrow-left me-lg-3"></i>Volver a atras</a>
+
         </form>
-        <!-- <a type="submit" class="btnEliminarEmpleado btn btn-danger btn-block mt-3 me-lg-3"><i class="bi bi-x-lg me-lg-3"></i>Eliminar empleado</a> -->
-        <button type="submit" class="btnImprimir btn p-2 mt-4 mb-4 me-lg-3 btnFormat"><i class="bi bi-printer-fill me-lg-3"></i>Generar Reporte</button>
-        <button type="submit" class="btnParametros btn p-2 mt-4 mb-4 me-lg-3 btnFormat"><i class="bi bi-gear-fill me-lg-3" ></i>Modificar Parametros</button>
+        <button type="submit" class="btnImprimir btn p-2 mt-4 mb-4 me-lg-3 btnFormat"><i
+                class="bi bi-printer-fill me-lg-3"></i>Generar Reporte</button>
+        <button type="submit" class="btnParametros btn p-2 mt-4 mb-4 me-lg-3 btnFormat"><i
+                class="bi bi-gear-fill me-lg-3"></i>Modificar Parametros</button>
 
     </div>
     <%- include('template/modalReporteNomina'); %>

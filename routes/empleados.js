@@ -10,6 +10,7 @@ const pool = require("../database");
 router.get('/empleados', async(req, res) => {
     if (req.session.loggedin) {
 
+
         const arrayEmpleadosDB = await pool.query('SELECT * FROM empleados');
         res.render("empleados", {
             arrayEmpleados: arrayEmpleadosDB,
@@ -246,12 +247,14 @@ router.get("/empleados/informacion-empleado/ver-empleado-x-departamento/:id", as
 
 
         try {
+            const empleadoDB = await pool.query("SELECT * FROM empleados WHERE idEmpleado = ?", [id]);
             const empleado_x_departamentoDB = await pool.query(`SELECT * FROM empleado_x_departamento, empleados, departamentos
                                                             WHERE empleado_x_departamento.idEmpleado  = ${id}
                                                             AND empleados.idEmpleado = empleado_x_departamento.idEmpleado
                                                             AND departamentos.idDepartamento = empleado_x_departamento.idDepartamento`);
             console.log(empleado_x_departamentoDB[0]);
             res.render("ver-empleado-x-departamento", {
+                empleado: empleadoDB[0],
                 empleado_x_departamento: empleado_x_departamentoDB[0],
                 empleado_x_departamentoDB: empleado_x_departamentoDB,
                 login: true,
@@ -284,12 +287,14 @@ router.get("/empleados/informacion-empleado/crear-empleado-x-departamento/:id", 
         console.log(id);
 
         try {
+            const empleadoDB = await pool.query("SELECT * FROM empleados WHERE idEmpleado = ?", [id]);
             const empleado_x_departamentoDB = await pool.query(`SELECT * FROM empleado_x_departamento, empleados, departamentos
                                                             WHERE empleado_x_departamento.idEmpleado  = ${id}
                                                             AND empleados.idEmpleado = empleado_x_departamento.idEmpleado
                                                             AND departamentos.idDepartamento = empleado_x_departamento.idDepartamento`);
             console.log(empleado_x_departamentoDB[0]);
             res.render("crear-empleado-x-departamento", {
+                empleado: empleadoDB[0],
                 empleado_x_departamento: empleado_x_departamentoDB[0],
                 login: true,
                 name: req.session.name

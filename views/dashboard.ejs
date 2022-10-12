@@ -1,0 +1,95 @@
+<%- include('template/cabecera', { tituloWeb: "Nomina - Dashboart" , bgActive1: "active" , bgActive2: "" , bgActive3: ""
+    , bgActive4: "" , bgActive5: "" , bgActive6: "" }); %>
+
+    <!-- content inicio -->
+
+
+    <div class="container-fluid mt-5">
+        <h2 class="text-secondary">Dashboart</h2>
+        <hr>
+        <%= name %>
+            <div class=" row ">
+                <div class=" col-xl-3 col-lg-6 col-md-6 col-sm-6 ">
+                    <div class=" card card-stats ">
+                        <div class=" card-header card-header-warning card-header-icon ">
+                            <div class=" card-icon ">
+                                <i class=" material-icons ">content_copy</i>
+                            </div>
+                            <h3>Total Empleados</h3>
+                            <h3 class=" card-title ">
+                                <%= arrayEmpleados.length %>
+
+                            </h3>
+                        </div>
+                        <div class=" card-footer ">
+                            <div class=" stats ">
+                                <i class=" material-icons text-warning ">warning</i>
+                                <a href=" /empleados " class=" warning-link ">Ver Empleados</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class=" col-xl-3 col-lg-6 col-md-6 col-sm-6 ">
+                    <div class=" card card-stats ">
+                        <div class=" card-header card-header-success card-header-icon ">
+                            <div class=" card-icon ">
+                                <i class=" material-icons ">store</i>
+                            </div>
+                            <h3>Total departamentos</h3>
+                            <h3 class=" card-title ">
+                                <%= arrayDepartamentos.length %>
+                            </h3>
+                        </div>
+                        <div class=" card-footer ">
+                            <div class=" stats ">
+                                <i class=" material-icons ">date_range</i> Ver Departamentos
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class=" col-xl-3 col-lg-6 col-md-6 col-sm-6 ">
+                    <div class=" card card-stats ">
+                        <div class=" card-header card-header-danger card-header-icon ">
+                            <div class=" card-icon ">
+                                <i class=" material-icons ">info_outline</i>
+                            </div>
+                            <h3>Total Usuarios </h3>
+                            <h3 class=" card-title ">
+                                <%= arrayUser.length %>
+                            </h3>
+                        </div>
+                        <div class=" card-footer ">
+                            <div class=" stats ">
+                                <i class=" material-icons ">local_offer</i> No Disponible
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+                    <div class="card card-stats">
+                        <div class="card-header card-header-info card-header-icon">
+                            <div class="card-icon">
+                                <i class="fa fa-twitter"></i>
+                            </div>
+                            <h3>Pagos Realizados</h3>
+                            <h3 class="card-title">+245</h3>
+                        </div>
+                        <div class="card-footer">
+                            <div class="stats">
+                                <i class="material-icons">update</i> Just Updated
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+    </div>
+
+
+
+    <!-- content fin -->
+
+
+
+    <%- include('template/footer'); %>

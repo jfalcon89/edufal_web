@@ -1,50 +1,66 @@
-<%- include('template/cabecera'); %>
-    <div class="container-fluid ">
+<%- include('template/cabecera', { tituloWeb: "Nomina - Crear Empleado" , bgActive1: "" , bgActive2: "" ,
+    bgActive3: "active" , bgActive4: "" , bgActive5: "" , bgActive6: "" }); %>
 
-        <h3 style="background-color: #025f6b; color: white;">Crear nuevo empleado</h3>
-        <div class="d-flex justify-content-between align-items-center" style="background-color: #007877;">
+    <div class="container-fluid mt-5">
 
-            <h5 class="text-light">Datos personales</h5>
-            <spam class="text-light me-lg-3"><b>Fecha</b>
-                <%= now %>
-            </spam>
+        <h2 class="text-secondary">Crear nuevo empleado</h2>
+        <hr>
+        <div class="d-flex justify-content-end align-items-center">
+
+            <div class="justify-content-center d-flex">
+                <spam class="text-light me-lg-3 "><b>Fecha</b>
+                    <%= now %>
+                </spam>
+            </div>
         </div>
 
 
         <form class="" action="" method="POST">
+
+            <div class="d-flex justify-content-end">
+
+                <button id="btnGuardarDatos" class="btn btn-success mt-3  me-lg-3" type="submit"><i
+                        class="bi bi-check-lg me-lg-3"></i>Guardar datos</button>
+                <a href="/empleados" class="btn btn-danger mt-3 "><i class="bi bi-arrow-left me-lg-3"></i>Cancelar</a>
+            </div>
+
             <div class="container-datos-header d-flex">
-                <div class="container-img-foto-empleado" style="width: 20%;">
-                    <img src="/img/nomina/fotoPerfil.png" style="width: 34%;">
-                </div>
+
                 <div class="datos-de-busqueda justify-content-between" style="width: 80%;">
 
-                    <div class="d-flex justify-content-between espaciado">
+                    <div class="d-lg-flex justify-content-between ">
                         <div class="form-group d-flex   ">
                             <div class="input-group ">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Codigo</span>
                                 </div>
-                                <input type="text" name="codigo" class="form-control" id="codigo">
+                                <input type="text" name="codigo" value="" class="form-control" id="codigo">
                             </div>
                         </div>
 
-                        <div class="form-group d-flex justify-content-center  ">
-                            <label for="estatus" class="p-2">Estatus</label>
-                            <select name="estatus" class="form-control" id="estatus">
-                                <option value="seleccionar" selected>Seleccionar</option>
-                                <option value="Activo">Activo</option>
-                                <option value="Inactivo">Inactivo</option>
-                            </select>
+                        <div class="form-group d-flex   ">
+                            <div class="form-group d-flex">
+                                <div class="input-group ">
+                                    <div class="input-group-prepend">
+                                        <span for="estatus" class="input-group-text">Estatus</span>
+                                    </div>
+                                    <select name="estatus" class="form-control" id="estatus">
+                                        <option value="Seleccionar" selected>Seleccionar</option>
+                                        <option value="Activo">Activo</option>
+                                        <option value="Inactivo">Inactivo</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="d-flex justify-content-between espaciado">
+                    <div class="d-lg-flex justify-content-between ">
                         <div class="form-group d-flex   ">
                             <div class="input-group d-flex">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Cedula</span>
                                 </div>
-                                <input type="text" name="cedula" class="form-control" id="cedula">
+                                <input type="text" name="cedula" value="" class="form-control" id="cedula">
                             </div>
                         </div>
                         <div class="form-group d-flex   visually-hidden ">
@@ -55,13 +71,19 @@
                                 <input type="text" name="tiempoEmpresa" class="form-control" id="tiempoEmpresa" value="<%= now %>">
                             </div>
                         </div>
-                        <div class="form-group d-flex justify-content-center  ">
-                            <label for="sexo" class="p-2">Sexo</label>
-                            <select name="sexo" class="form-control" id="sexo">
-                            <option value="seleccionar" selected>Seleccionar</option>
-                            <option value="hombre">Hombre</option>
-                            <option value="mujer">Mujer</option>
-                        </select>
+                        <div class="form-group d-flex  ">
+                            <div class="form-group d-flex">
+                                <div class="input-group ">
+                                    <div class="input-group-prepend">
+                                        <span for="sexo" class="input-group-text">Sexo</span>
+                                    </div>
+                                    <select name="sexo" class="form-control" id="sexo">
+                                        <option value="Seleccionar" selected>Seleccionar</option>
+                                        <option value="hombre">Hombre</option>
+                                        <option value="mujer">Mujer</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -135,19 +157,14 @@
                 </div>
             </div>
 
-            <button id="btnGuardarDatos" class="btn btn-success btn-block p-2 mt-4 mb-3" type="submit"><i class="bi bi-check-lg me-lg-2"></i>Guardar datos</button>
-            <a href="/empleados" class="btn btn-danger btn-block p-2 mt-4 mb-3"><i class="bi bi-arrow-left me-lg-2"></i>Cancelar</a>
+
         </form>
         <!-- <button type="submit" class="btnImprimir  mt-5 mb-4 me-lg-3 btnFormat"><i class="bi bi-printer-fill me-lg-3"></i>Generar Reporte</button>
         <button type="submit" class="btnParametros mt-5 mb-4 me-lg-3 btnFormat"><i class="bi bi-gear-fill me-lg-3" ></i>Modificar Parametros</button> -->
     </div>
 
 
-    <script>
-        // let now = moment().calendar();
 
-        // console.log(now);
-    </script>
     <%- include('template/modalReporteNomina'); %>
         <%- include('template/modalParametrosNomina'); %>
 

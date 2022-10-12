@@ -1,108 +1,108 @@
-<%- include('template/cabecera'); %>
+<%- include('template/cabecera', { tituloWeb: "Nomina - Informacion Empleado" , bgActive1: "" , bgActive2: "" ,
+    bgActive3: "active" , bgActive4: "" , bgActive5: "" , bgActive6: "" }); %>
 
-    <div class="container-fluid vh-100">
+    <div class="container-fluid d-flex flex-column mt-5">
         <h2 class=" text-secondary">Ver Departamento por Empleado</h2>
+        <hr>
 
-        <!-- <div class="navbar-departamentos d-flex justify-content-end bg-light">
-            <h5>agregar dpto</h5>
-        </div> -->
-        <% if (empleado_x_departamentoDB.length > 0) { %>
+        <div class="d-flex align-items-center justify-content-end ">
 
-            <div class="d-flex align-items-center justify-content-end bg-light">
+            <a class="btn btn-warning  my-4 me-lg-3" href="/empleados/informacion-empleado/<%= empleado.idEmpleado %>"><i
+                    class="bi bi-person-plus me-lg-3"></i>Volver Atras</a>
+        </div>
 
-                <a class="btn btn-warning btn-block my-4 me-lg-3" href="/empleados/informacion-empleado/<%= empleado_x_departamento.idEmpleado %>"><i class="bi bi-person-plus me-lg-3"></i>Volver Atras</a>
-            </div>
+        <div class="header-container mb-3 mt-3 h-25 text-light" style="background-color: rgba(172, 172, 172, 0.113); border-radius: 8px;">
+            <h5 class="mt-3">
+                <%= empleado.idEmpleado %>
+                    <%= empleado.nombre %>
+                        <%= empleado.apellido %>
+            </h5>
+            <p>
+                <span><b>Fecha de nacimiento: </b>
+                    <%= empleado.nacimiento %>
+                </span>
+                <span id="campoTiempoEmpresa"><b>Ingreso a la empresa: </b>
+                    <%= empleado.tiempoEmpresa %>
+                </span>
+                <span><b>Cedula: </b>
+                    <%= empleado.cedula %>
+                </span>
+                <span><b>Sexo </b>
+                    <%= empleado.sexo %>
+                </span>
+                <span class="estatusInfEmp  "><b>Estatus </b>
+                    <%= empleado.estatus %>
+                </span>
 
-            <% }else { %>
-                <div class="d-flex align-items-center justify-content-end bg-light">
+            </p>
+        </div>
 
-                    <a class="btn btn-warning btn-block my-4 me-lg-3" href="/empleados"><i class="bi bi-person-plus me-lg-3"></i>Volver Atras</a>
+
+
+        <% if (empleado_x_departamentoDB.length < 1) { %>
+            <h5 class="bg-danger d-flex justify-content-center text-light">No tiene departamento asignado
+            </h5>
+            <% } %>
+
+                <div class="container-departamento">
+
+                    <div class="container-table table-responsive">
+                        <table class="table table-sm table-hover ">
+                            <thead class="thead-ligth">
+                                <tr>
+                                    <!-- <th scope="col">Id</th> -->
+                                    <th scope="col">Codigo Dpto</th>
+                                    <th scope="col">Nombre Dpto</th>
+                                    <th scope="col">Fecha Registro</th>
+                                    <th scope="col">Estado</th>
+
+                                    <th scope="col">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+
+                                <% if (empleado_x_departamentoDB.length> 0) { %>
+                                    <% empleado_x_departamentoDB.forEach(function(entrada) { %>
+
+                                        <tr>
+
+                                            <td>
+                                                <%= empleado_x_departamento.idDepartamento %>
+                                            </td>
+                                            <td>
+                                                <%= empleado_x_departamento.nombre_dpto %>
+                                            </td>
+                                            <td>
+                                                <%= empleado_x_departamento.fechaRegistro %>
+                                            </td>
+                                            <td>
+                                                <%= empleado_x_departamento.estadoDepartamento %>
+                                            </td>
+                                            <td class="w-0 "><a type="submit" href="/empleados/informacion-empleado/editar-empleado-x-departamento/<%= empleado_x_departamento.idEmpleado %>" class="btn " title="Eliminar Dpto"><i
+                                                        class="bi bi-x-lg me-lg-3"></i></a>
+                                                <!-- <a id="eventoAct-Inact" href="/empleados/informacion-empleado/<%=  %>" class="btn " title="Ver informacion empleado"><i class="bi bi-folder2-open "></i></a> -->
+                                                <!-- <a type="submit" href="/empleados/informacion-empleado/editar-empleado-x-departamento/<%= %>" class="btnEliminarEmpleado_v_empleado btn  btn-block me-lg-3"><i class="bi bi-x-lg me-lg-3" title="Eliminar dpto empleado"></i></a> -->
+
+
+
+                                                <a id="eventoAct-Inact" href="/empleados/informacion-empleado/editar-empleado-x-departamento/<%= empleado_x_departamento.idEmpleado %>" class="btn btnFormat w-25 me-lg-3">Edit dpto</a>
+
+
+                                            </td>
+
+                                        </tr>
+
+                                        <% }) %>
+                                            <% } %>
+
+
+
+                            </tbody>
+                        </table>
+                    </div>
+
                 </div>
-                <% } %>
-
-                    <% if (empleado_x_departamentoDB.length > 0) { %>
-
-
-                        <div class="header-container mb-3 " style="background-color: rgba(248, 248, 248, 0.453); border-radius: 8px;">
-                            <h5>
-                                <%= empleado_x_departamento.idEmpleado %>
-                                    <%= empleado_x_departamento.nombre %>
-                                        <%= empleado_x_departamento.apellido %>
-                            </h5>
-                            <p>
-                                <span><b>Fecha de nacimiento: </b><%= empleado_x_departamento.nacimiento %></span>
-                                <span id="campoTiempoEmpresa"><b>Ingreso a la empresa: </b><%= empleado_x_departamento.tiempoEmpresa %></span>
-                                <span><b>Cedula: </b><%= empleado_x_departamento.cedula %></span>
-                                <span><b>Sexo </b><%= empleado_x_departamento.sexo %></span>
-                                <span class="estatusInfEmp  "><b>Estatus </b><%= empleado_x_departamento.estatus %></span>
-
-                            </p>
-                        </div>
-
-
-                        <% }else { %>
-                            <h5 class="bg-danger d-flex justify-content-center text-light">No tiene departamento asignado</h5>
-                            <% } %>
-
-                                <div class="container-departamento">
-
-                                    <div class="container-table table-responsive">
-                                        <table class="table table-sm table-hover ">
-                                            <thead class="thead-ligth">
-                                                <tr>
-                                                    <!-- <th scope="col">Id</th> -->
-                                                    <th scope="col">Codigo Dpto</th>
-                                                    <th scope="col">Nombre Dpto</th>
-                                                    <th scope="col">Fecha Registro</th>
-                                                    <th scope="col">Estado</th>
-
-                                                    <th scope="col">Acciones</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-
-
-                                                <% if (empleado_x_departamentoDB.length > 0) { %>
-                                                    <% empleado_x_departamentoDB.forEach(function(entrada) { %>
-
-                                                        <tr>
-
-                                                            <td>
-                                                                <%= empleado_x_departamento.idDepartamento %>
-                                                            </td>
-                                                            <td>
-                                                                <%= empleado_x_departamento.nombre_dpto %>
-                                                            </td>
-                                                            <td>
-                                                                <%= empleado_x_departamento.fechaRegistro %>
-                                                            </td>
-                                                            <td>
-                                                                <%= empleado_x_departamento.estadoDepartamento %>
-                                                            </td>
-                                                            <td class="w-0 "><a type="submit" href="/empleados/informacion-empleado/editar-empleado-x-departamento/<%= empleado_x_departamento.idEmpleado %>" class="btn " title="Eliminar Dpto"><i class="bi bi-x-lg me-lg-3"></i></a>
-                                                                <!-- <a id="eventoAct-Inact" href="/empleados/informacion-empleado/<%=  %>" class="btn " title="Ver informacion empleado"><i class="bi bi-folder2-open "></i></a> -->
-                                                                <!-- <a type="submit" href="/empleados/informacion-empleado/editar-empleado-x-departamento/<%= %>" class="btnEliminarEmpleado_v_empleado btn  btn-block me-lg-3"><i class="bi bi-x-lg me-lg-3" title="Eliminar dpto empleado"></i></a> -->
-
-
-
-                                                                <a id="eventoAct-Inact" href="/empleados/informacion-empleado/ver-empleado-x-departamento/<%= empleado_x_departamento.idEmpleado %>" class="btn btnFormat w-25 me-lg-3">Edit dpto</a>
-
-
-                                                            </td>
-
-                                                        </tr>
-
-                                                        <% }) %>
-                                                            <% }else { %>
-                                                                <h6>Sin registro</h6>
-                                                                <% } %>
-
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-
-                                </div>
 
 
     </div>
