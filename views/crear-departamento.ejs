@@ -6,30 +6,42 @@
         <hr>
         <div class="d-flex align-items-center justify-content-end ">
 
-            <button type="submit" class="btn  my-4 me-lg-3" style="background-color: #02aeae;">Guardar
-                Departamento</button>
+
             <a class="btn btn-danger  my-4" href="/departamentos"><i class="bi bi-person-plus me-lg-3"></i>Cancerlar</a>
         </div>
 
         <div class="container-departamento">
 
             <form class="" action="" method="POST">
-                <div class="form-group">
+
+                <div>
                     <label for="exampleInputEmail1">Nombre Departamento</label>
-                    <input type="text" class="form-control" name="nombre_dpto" aria-describedby="emailHelp" placeholder="">
-                    <small id="emailHelp" class="form-text mt-5">Departamentos creados:</small>
-
-                    <% if (arrayDepartamentos.length> 0) { %>
-                        <% arrayDepartamentos.forEach(departamento=> { %>
-
-                            <small id="emailHelp" class="form-text text-muted mt-0">
-                                <%= departamento.nombre_dpto %>
-                            </small>
-
-                            <% }) %>
-                                <% } %>
-
+                    <input type="text" class="form-control " name="nombre_dpto" aria-describedby="emailHelp" placeholder="" required>
                 </div>
+
+                <div class="mt-3">
+                    <label for="exampleInputEmail1">Estado Departamento</label>
+                    <select name="estadoDepartamento" class="form-control text-secondary" required>
+                        <option class="text-dark" value="Seleccionar" selected>Seleccionar</option>
+                        <option class="text-dark" value="Activo">Activo</option>
+                        <option class="text-dark" value="Inactivo">Inactivo</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn  my-4 me-lg-3" style="background-color: #02aeae;">Guardar
+                    Departamento</button>
+                <small id="emailHelp" class="form-text mt-5">Departamentos creados:</small>
+
+                <% if (arrayDepartamentos.length> 0) { %>
+                    <% arrayDepartamentos.forEach(departamento=> { %>
+
+                        <small id="emailHelp" class="form-text text-muted mt-0">
+                            <%= departamento.nombre_dpto %>
+                        </small>
+
+                        <% }) %>
+                            <% } %>
+
+
 
             </form>
 

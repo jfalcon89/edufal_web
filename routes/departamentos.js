@@ -69,9 +69,11 @@ router.get('/crear-departamento', async(req, res) => {
 
 //INSERTAR NUEVO DEPARTAMENTO
 router.post("/crear-departamento", async(req, res) => {
-    const { nombre_dpto } = req.body;
+    const { nombre_dpto, estadoDepartamento } = req.body;
     const nuevoDepartamento = {
-        nombre_dpto
+        nombre_dpto,
+
+        estadoDepartamento
 
     };
 
@@ -137,9 +139,11 @@ router.get("/departamentos/editar-departamento/:id", async(req, res) => {
 router.post('/departamentos/editar-departamento/:id', async(req, res) => {
     const id = req.params.id;
     console.log(req.params.id)
-    const { nombre_dpto } = req.body;
+    const { nombre_dpto, fechaRegistro, estadoDepartamento } = req.body;
     const nuevoDepartamento = {
-        nombre_dpto
+        nombre_dpto,
+        fechaRegistro,
+        estadoDepartamento
     };
 
     await pool.query("UPDATE departamentos set ? WHERE idDepartamento = ?", [nuevoDepartamento, id]);

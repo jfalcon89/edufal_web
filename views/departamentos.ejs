@@ -25,6 +25,8 @@
                         <!-- <th scope="col">Id</th> -->
                         <th scope="col">ID Departamento</th>
                         <th scope="col">Nombre Departamento</th>
+                        <th scope="col">Fecha Creacion</th>
+                        <th scope="col">Estado Departamento</th>
                         <th scope="col">Acciones</th>
                     </tr>
                 </thead>
@@ -38,6 +40,13 @@
                                 </td>
                                 <td>
                                     <%= departamento.nombre_dpto %>
+                                </td>
+                                <td>
+                                    <%= departamento.fechaRegistro.toLocaleString('es-US', {
+                                        timeZone: "America/Santo_Domingo" }).slice(0, 10); %>
+                                </td>
+                                <td>
+                                    <%= departamento.estadoDepartamento %>
                                 </td>
 
                                 <td class="w-0">

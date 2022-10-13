@@ -395,18 +395,19 @@ router.get("/empleados/informacion-empleado/:id", async(req, res) => {
 
 // INSERTANDO NUEVO EMPLEADO X DEPARTAMENTO 
 router.post("/empleados/informacion-empleado/crear-empleado-x-departamento/:id", async(req, res) => {
-    const { idEmpleado, idDepartamento, fechaRegistro, estadoDepartamento } = req.body;
+    const { idEmpleado, idDepartamento, fechaRegistroB, estadoDepartamentoB } = req.body;
+    const id = req.params.id
     const nuevoEmpleado_x_departamento = {
         idEmpleado,
         idDepartamento,
-        fechaRegistro,
-        estadoDepartamento
+        fechaRegistroB,
+        estadoDepartamentoB
 
     };
 
     await pool.query('INSERT INTO empleado_x_departamento set ?', [nuevoEmpleado_x_departamento]);
     // req.flash('success', 'Link guardado correctamente');
-    res.redirect('/empleados');
+    res.redirect(`/empleados/informacion-empleado/ver-empleado-x-departamento/${id}`);
 
 });
 
@@ -481,12 +482,12 @@ router.get("/empleados/informacion-empleado/editar-empleado-x-departamento/:id",
 router.post('/empleados/informacion-empleado/editar-empleado-x-departamento/:id', async(req, res) => {
     const id = req.params.id;
     console.log(req.params.id)
-    const { idEmpleado, idDepartamento, fechaRegistro, estadoDepartamento } = req.body;
+    const { idEmpleado, idDepartamento, fechaRegistroB, estadoDepartamentoB } = req.body;
     const nuevoEmpleado_x_departamento = {
         idEmpleado,
         idDepartamento,
-        fechaRegistro,
-        estadoDepartamento
+        fechaRegistroB,
+        estadoDepartamentoB
 
     };
 
