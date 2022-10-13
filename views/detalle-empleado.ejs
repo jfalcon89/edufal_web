@@ -35,11 +35,11 @@
                                         <label for="estatus" class="input-group-text p-2 me-lg-3">Estatus</label>
                                     </div>
                                     <select name="estatus" class="form-control" id="estatus">
-                                        <option value="<%= empleado.estatus %>" selected>
+                                        <option class="text-dark" value="<%= empleado.estatus %>" selected>
                                             <%= empleado.estatus %>
                                         </option>
-                                        <option value="Activo">Activo</option>
-                                        <option value="Inactivo">Inactivo</option>
+                                        <option class="text-dark" value="Activo">Activo</option>
+                                        <option class="text-dark" value="Inactivo">Inactivo</option>
                                     </select>
                                 </div>
                             </div>
@@ -62,11 +62,11 @@
                                         <label for="sexo" class="input-group-text p-2 me-lg-3">Sexo</label>
                                     </div>
                                     <select name="sexo" class="form-control" id="sexo">
-                                        <option value="<%= empleado.sexo %>" selected>
+                                        <option class="text-dark" value="<%= empleado.sexo %>" selected>
                                             <%= empleado.sexo %>
                                         </option>
-                                        <option value="hombre">Hombre</option>
-                                        <option value="mujer">Mujer</option>
+                                        <option class="text-dark" value="hombre">Hombre</option>
+                                        <option class="text-dark" value="mujer">Mujer</option>
                                     </select>
                                 </div>
                             </div>
@@ -90,7 +90,17 @@
 
             <div class="form-group d-flex justify-content-center espaciado ">
                 <label for="departamento" class=" p-2">Departamento</label>
-                <input type="text" name="departamento" value="<%= empleado.departamento %>" class="form-control p-2 mt-2" id="departemento" aria-describedby="emailHelp" placeholder="">
+                <select name="departamento" class="form-control p-2 mt-2" style="background-color: rgba(255, 0, 0, 0); border: none; ">
+
+
+                    <% if (empleado_x_departamento.length> 0) { %>
+                        <% empleado_x_departamento.forEach(departamentoEmpleado=> { %>
+                            <option class="text-dark" value="<%= departamentoEmpleado.nombre_dpto %>" selected>
+                                <%= departamentoEmpleado.nombre_dpto %>
+                            </option>
+                            <% }) %>
+                                <% } %>
+                </select>
             </div>
             <div class="form-group d-flex justify-content-center espaciado ">
                 <label for="nacimiento" class=" p-2">Fecha de Nacimiento </label>

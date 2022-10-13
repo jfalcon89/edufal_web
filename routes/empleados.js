@@ -10,9 +10,13 @@ const pool = require("../database");
 router.get('/empleados', async(req, res) => {
     if (req.session.loggedin) {
 
-
+        const empleado_x_departamentoDB = await pool.query(`SELECT * FROM empleado_x_departamento, empleados, departamentos
+                                                            
+                                                            WHERE empleados.idEmpleado = empleado_x_departamento.idEmpleado
+                                                            AND departamentos.idDepartamento = empleado_x_departamento.idDepartamento`);
         const arrayEmpleadosDB = await pool.query('SELECT * FROM empleados');
         res.render("empleados", {
+            empleado_x_departamento: empleado_x_departamentoDB,
             arrayEmpleados: arrayEmpleadosDB,
             login: true,
             name: req.session.name
@@ -45,9 +49,14 @@ router.get("/empleados/detalle-empleado/:id", async(req, res) => {
         console.log(req.params)
 
         try {
+            const empleado_x_departamentoDB = await pool.query(`SELECT * FROM empleado_x_departamento, empleados, departamentos
+                                                            WHERE empleado_x_departamento.idEmpleado  = ${id}
+                                                            AND empleados.idEmpleado = empleado_x_departamento.idEmpleado
+                                                            AND departamentos.idDepartamento = empleado_x_departamento.idDepartamento`);
             const empleadoDB = await pool.query("SELECT * FROM empleados WHERE idEmpleado = ?", [id]);
             console.log(empleadoDB[0]);
             res.render("detalle-empleado", {
+                empleado_x_departamento: empleado_x_departamentoDB,
                 empleado: empleadoDB[0],
                 login: true,
                 name: req.session.name
@@ -133,9 +142,14 @@ router.get("/empleados/informacion-empleado/:id", async(req, res) => {
         const id = req.params.id
 
         try {
+            const empleado_x_departamentoDB = await pool.query(`SELECT * FROM empleado_x_departamento, empleados, departamentos
+                                                            WHERE empleado_x_departamento.idEmpleado  = ${id}
+                                                            AND empleados.idEmpleado = empleado_x_departamento.idEmpleado
+                                                            AND departamentos.idDepartamento = empleado_x_departamento.idDepartamento`);
             const empleadoDB = await pool.query("SELECT * FROM empleados WHERE idEmpleado = ?", [id]);
             console.log(empleadoDB[0]);
             res.render("informacion-empleado", {
+                empleado_x_departamento: empleado_x_departamentoDB[0],
                 empleado: empleadoDB[0],
                 login: true,
                 name: req.session.name
@@ -159,14 +173,17 @@ router.get("/empleados/informacion-empleado/:id", async(req, res) => {
 
 
 // RENDER DE LA VISTA CREAR EMPLEADO 
-router.get('/crear-empleado', (req, res) => {
+router.get('/crear-empleado', async(req, res) => {
     if (req.session.loggedin) {
 
         let now = moment();
         now = now.format("ll")
         console.log(now);
 
+        const arrayDepartamentosDB = await pool.query('SELECT * FROM departamentos');
+        console.log(arrayDepartamentosDB)
         res.render("crear-empleado", {
+            arrayDepartamentos: arrayDepartamentosDB,
             now: now,
             login: true,
             name: req.session.name
@@ -288,6 +305,7 @@ router.get("/empleados/informacion-empleado/crear-empleado-x-departamento/:id", 
 
         try {
             const empleadoDB = await pool.query("SELECT * FROM empleados WHERE idEmpleado = ?", [id]);
+            const arrayDepartamentosDB = await pool.query('SELECT * FROM departamentos');
             const empleado_x_departamentoDB = await pool.query(`SELECT * FROM empleado_x_departamento, empleados, departamentos
                                                             WHERE empleado_x_departamento.idEmpleado  = ${id}
                                                             AND empleados.idEmpleado = empleado_x_departamento.idEmpleado
@@ -295,6 +313,7 @@ router.get("/empleados/informacion-empleado/crear-empleado-x-departamento/:id", 
             console.log(empleado_x_departamentoDB[0]);
             res.render("crear-empleado-x-departamento", {
                 empleado: empleadoDB[0],
+                arrayDepartamentos: arrayDepartamentosDB,
                 empleado_x_departamento: empleado_x_departamentoDB[0],
                 login: true,
                 name: req.session.name
@@ -317,23 +336,23 @@ router.get("/empleados/informacion-empleado/crear-empleado-x-departamento/:id", 
     }
 });
 
-// RENDERIZANDO Y MOSTRANDO DATOS DE EMPLEADO POR ID EN LA VISTA INFORMACION-EMPLEADO
-router.get("/empleados/informacion-empleado/crear-empleado-x-departamento/:id", async(req, res) => {
-    const id = req.params.id
+// // RENDERIZANDO Y MOSTRANDO DATOS DE EMPLEADO POR ID EN LA VISTA INFORMACION-EMPLEADO
+// router.get("/empleados/informacion-empleado/crear-empleado-x-departamento/:id", async(req, res) => {
+//     const id = req.params.id
 
-    try {
-        const empleadoDB = await pool.query("SELECT * FROM empleados WHERE idEmpleado = ?", [id]);
-        console.log(empleadoDB[0]);
-        res.render("crear-empleado-x-departamento", { empleado: empleadoDB[0] });
+//     try {
+//         const empleadoDB = await pool.query("SELECT * FROM empleados WHERE idEmpleado = ?", [id]);
+//         console.log(empleadoDB[0]);
+//         res.render("crear-empleado-x-departamento", { empleado: empleadoDB[0] });
 
-    } catch (error) {
-        console.log(error)
-        res.render("crear-empleado-x-departamento", {
-            error: true,
-            mensaje: "no se encuentra el id seleccionado"
-        });
-    }
-});
+//     } catch (error) {
+//         console.log(error)
+//         res.render("crear-empleado-x-departamento", {
+//             error: true,
+//             mensaje: "no se encuentra el id seleccionado"
+//         });
+//     }
+// });
 
 // RENDERIZANDO Y MOSTRANDO DATOS DE EMPLEADO POR ID EN LA VISTA INFORMACION-EMPLEADO ++++
 // router.get("/empleados/informacion-empleado/ver-empleado-x-departamento/:id", async(req, res) => {
@@ -411,23 +430,23 @@ router.post("/empleados/informacion-empleado/crear-empleado-x-departamento/:id",
 
 
 //ELIMINAR DEPARTAMENTO POR EMPLEADO
-router.get("/empleados/informacion-empleado/editar-empleado-x-departamento/:id", async(req, res) => {
-    const id = req.params.id
-    console.log(id);
+// router.get("/empleados/informacion-empleado/editar-empleado-x-departamento/:id", async(req, res) => {
+//     const id = req.params.id
+//     console.log(id);
 
-    try {
-        const empleado_x_departamentoDB = await pool.query(`DELETE FROM empleado_x_departamento WHERE empleado_x_departamento.idEmpleado = ${id}`);
-        console.log(empleado_x_departamentoDB[0]);
+//     try {
+//         const empleado_x_departamentoDB = await pool.query(`DELETE FROM empleado_x_departamento WHERE empleado_x_departamento.idEmpleado = ${id}`);
+//         console.log(empleado_x_departamentoDB[0]);
 
-        // res.render("ver-empleado-x-departamento", { empleado_x_departamento: empleado_x_departamentoDB[0] });
+//         // res.render("ver-empleado-x-departamento", { empleado_x_departamento: empleado_x_departamentoDB[0] });
 
-        res.redirect(`/empleados/informacion-empleado/${id}`);
+//         res.redirect(`/empleados/informacion-empleado/${id}`);
 
-    } catch (error) {
-        console.log(error)
-    }
+//     } catch (error) {
+//         console.log(error)
+//     }
 
-});
+// });
 
 
 
@@ -437,9 +456,17 @@ router.get("/empleados/informacion-empleado/editar-empleado-x-departamento/:id",
     console.log(id);
 
     try {
+        const empleadoDB = await pool.query("SELECT * FROM empleados WHERE idEmpleado = ?", [id]);
+        const arrayDepartamentosDB = await pool.query('SELECT * FROM departamentos');
         const empleado_x_departamentoDB = await pool.query(`SELECT * FROM empleado_x_departamento, empleados, departamentos WHERE empleados.idEmpleado = ${id} AND empleados.idEmpleado = empleado_x_departamento.idEmpleado AND departamentos.idDepartamento = empleado_x_departamento.idDepartamento;`);
         console.log(empleado_x_departamentoDB[0]);
-        res.render("editar-empleado-x-departamento", { empleado_x_departamento: empleado_x_departamentoDB[0] });
+        res.render("editar-empleado-x-departamento", {
+            empleado: empleadoDB[0],
+            arrayDepartamentos: arrayDepartamentosDB,
+            empleado_x_departamento: empleado_x_departamentoDB[0],
+            login: true,
+            name: req.session.name
+        });
 
     } catch (error) {
         console.log(error)
@@ -463,9 +490,9 @@ router.post('/empleados/informacion-empleado/editar-empleado-x-departamento/:id'
 
     };
 
-    await pool.query("UPDATE empleado_x_departamento set ? WHERE idDepartamento = ?", [nuevoEmpleado_x_departamento, id]);
+    await pool.query("UPDATE empleado_x_departamento set ? WHERE idEmpleado = ?", [nuevoEmpleado_x_departamento, id]);
     // req.flash('success', 'Link actualizado correctamente');
-    res.redirect('/empleados');
+    res.redirect(`/empleados/informacion-empleado/ver-empleado-x-departamento/${id}`);
 });
 
 

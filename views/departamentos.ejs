@@ -1,5 +1,5 @@
-<%- include('template/cabecera', { tituloWeb: "Nomina - Dashboart" , bgActive1: "" , bgActive2: "active" , bgActive3: ""
-    , bgActive4: "" , bgActive5: "" , bgActive6: "" }); %>
+<%- include('template/cabecera', { tituloWeb: "Nomina - Departamentos" , bgActive1: "" , bgActive2: "active" ,
+    bgActive3: "" , bgActive4: "" , bgActive5: "" , bgActive6: "" }); %>
 
 
     <!-- content inicio -->
@@ -7,14 +7,14 @@
 
     <div class="container-fluid mt-5">
         <h2 class=" text-secondary">Departamentos</h2>
-
-        <!-- <div class="navbar-departamentos d-flex justify-content-end bg-light">
-                                    <h5>agregar dpto</h5>
-                                </div> -->
-
+        <hr>
         <div class="d-flex align-items-center justify-content-end ">
-            <a class="btn btn-success my-4" href="/crear-departamento"><i class="bi bi-person-plus me-lg-3"></i>Agregar
+            <a class="btn my-4" style="background-color: #02aeae;" href="/crear-departamento"><i
+                    class="bi bi-person-plus me-lg-3"></i>Agregar
                 Departamento</a>
+            <a class="btn my-4 text-light" href="/asignamientos-departamentos"><i
+                    class="bi bi-person-plus me-lg-3"></i>Ver
+                Asignamientos</a>
         </div>
 
         <div class="container-departamento">

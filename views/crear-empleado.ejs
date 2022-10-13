@@ -19,8 +19,7 @@
 
             <div class="d-flex justify-content-end">
 
-                <button id="btnGuardarDatos" class="btn btn-success mt-3  me-lg-3" type="submit"><i
-                        class="bi bi-check-lg me-lg-3"></i>Guardar datos</button>
+                <button id="btnGuardarDatos" class="btn  mt-3  me-lg-3" style="background-color: #02aeae;" type="submit"><i class="bi bi-check-lg me-lg-3"></i>Guardar datos</button>
                 <a href="/empleados" class="btn btn-danger mt-3 "><i class="bi bi-arrow-left me-lg-3"></i>Cancelar</a>
             </div>
 
@@ -45,9 +44,9 @@
                                         <label for="estatus" class="input-group-text p-2 me-lg-3">Estatus</label>
                                     </div>
                                     <select name="estatus" class="form-control" id="estatus">
-                                        <option value="Seleccionar" selected>Seleccionar</option>
-                                        <option value="Activo">Activo</option>
-                                        <option value="Inactivo">Inactivo</option>
+                                        <option class="text-dark" value="Seleccionar" selected>Seleccionar</option>
+                                        <option class="text-dark" value="Activo">Activo</option>
+                                        <option class="text-dark" value="Inactivo">Inactivo</option>
                                     </select>
                                 </div>
                             </div>
@@ -78,9 +77,9 @@
                                         <label for="sexo" class="input-group-text p-2 me-lg-3">Sexo</label>
                                     </div>
                                     <select name="sexo" class="form-control" id="sexo">
-                                        <option value="Seleccionar" selected>Seleccionar</option>
-                                        <option value="hombre">Hombre</option>
-                                        <option value="mujer">Mujer</option>
+                                        <option class="text-dark" value="Seleccionar" selected>Seleccionar</option>
+                                        <option class="text-dark" value="hombre">Hombre</option>
+                                        <option class="text-dark" value="mujer">Mujer</option>
                                     </select>
                                 </div>
                             </div>
@@ -104,7 +103,17 @@
 
             <div class="form-group d-flex justify-content-center espaciado ">
                 <label for="departamento" class=" p-2">Departamento</label>
-                <input type="text" name="departamento" class="form-control p-2 mt-2" id="departemento" aria-describedby="emailHelp" placeholder="">
+                <select name="departamento" class="form-control p-2 mt-2" style="background-color: rgba(255, 0, 0, 0); border: none; ">
+                    <option class="text-dark" value="Seleccionar" selected>Seleccionar</option>
+
+                    <% if (arrayDepartamentos.length> 0) { %>
+                        <% arrayDepartamentos.forEach(departamento=> { %>
+                            <option class="text-dark" value="<%= departamento.nombre_dpto %>">
+                                <%= departamento.nombre_dpto %>
+                            </option>
+                            <% }) %>
+                                <% } %>
+                </select>
             </div>
             <div class="form-group d-flex justify-content-center espaciado ">
                 <label for="nacimiento" class="  p-2">Fecha de Nacimiento </label>

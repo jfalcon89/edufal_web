@@ -148,6 +148,32 @@ router.post('/departamentos/editar-departamento/:id', async(req, res) => {
 });
 
 
+// RENDERIZANDO Y MOSTRANDO TODOS LOS DESIGNAMIENTO EMPLEADOS*********************
+router.get('/asignamientos-departamentos', async(req, res) => {
+    if (req.session.loggedin) {
+
+        const empleado_x_departamentoDB = await pool.query(`SELECT * FROM empleado_x_departamento, empleados, departamentos
+                                                            
+                                                            WHERE empleados.idEmpleado = empleado_x_departamento.idEmpleado
+                                                            AND departamentos.idDepartamento = empleado_x_departamento.idDepartamento`);
+        const arrayDepartamentosDB = await pool.query('SELECT * FROM departamentos');
+        res.render("asignamientos-departamentos", {
+            empleado_x_departamento: empleado_x_departamentoDB,
+            arrayDepartamentos: arrayDepartamentosDB,
+            login: true,
+            name: req.session.name
+
+        });
+    } else {
+        res.render('login', {
+            login: false,
+            name: 'Debe iniciar sesión',
+        });
+    }
+
+});
+
+
 
 
 

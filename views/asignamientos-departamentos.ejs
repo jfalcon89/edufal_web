@@ -1,0 +1,90 @@
+<%- include('template/cabecera', { tituloWeb: "Nomina - Asignamientos Departamentos" , bgActive1: "" ,
+    bgActive2: "active" , bgActive3: "" , bgActive4: "" , bgActive5: "" , bgActive6: "" }); %>
+
+
+    <!-- content inicio -->
+
+
+    <div class="container-fluid mt-5">
+        <h2 class=" text-secondary">Asignamientos Departamentos Empleados</h2>
+        <hr>
+        <!-- <div class="navbar-departamentos d-flex justify-content-end bg-light">
+                                    <h5>agregar dpto</h5>
+                                </div> -->
+
+        <div class="d-flex align-items-center justify-content-end ">
+            <a class="btn my-4" style="background-color: #02aeae;" href="/crear-departamento"><i
+                    class="bi bi-person-plus me-lg-3"></i>Agregar
+                Departamento</a>
+        </div>
+
+        <div class="container-departamento">
+
+            <table class="table table-sm table-hover">
+                <thead class="thead-ligth">
+                    <tr>
+                        <!-- <th scope="col">Id</th> -->
+                        <th scope="col">ID Empleado</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Cedula</th>
+                        <th scope="col">Sexo</th>
+                        <th scope="col">Estatus</th>
+                        <th scope="col">Departamento</th>
+                        <th scope="col">Sueldo</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (empleado_x_departamento.length> 0) { %>
+                        <% empleado_x_departamento.forEach(departamentoEmpleado=> { %>
+
+                            <tr>
+                                <td>
+                                    <%= departamentoEmpleado.idEmpleado %>
+                                </td>
+                                <td>
+                                    <%= departamentoEmpleado.nombre %>
+                                </td>
+                                <td>
+                                    <%= departamentoEmpleado.apellido %>
+                                </td>
+                                <td>
+                                    <%= departamentoEmpleado.cedula %>
+                                </td>
+                                <td>
+                                    <%= departamentoEmpleado.sexo %>
+                                </td>
+                                <td>
+                                    <%= departamentoEmpleado.estatus %>
+                                </td>
+                                <td>
+                                    <%= departamentoEmpleado.nombre_dpto %>
+                                </td>
+                                <td>
+                                    <%= departamentoEmpleado.sueldoBruto %>
+                                </td>
+
+                                <td class="w-0">
+                                    <a href="/empleados/detalle-empleado/<%= departamentoEmpleado.idEmpleado %>" class="btn" title="Editar"><i class="bi bi-pencil-square"></i></a>
+                                    <a id="eventoAct-Inact" href="/empleados/informacion-empleado/<%= departamentoEmpleado.idEmpleado %>" class="btn" title="Ver informacion empleado"><i
+                                            class="bi bi-folder2-open"></i></a>
+
+
+                                </td>
+                            </tr>
+
+                            <% }) %>
+                                <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+    <!-- content fin -->
+
+
+
+    <%- include('template/footer'); %>
