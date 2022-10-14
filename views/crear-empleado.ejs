@@ -1,7 +1,7 @@
 <%- include('template/cabecera', { tituloWeb: "Nomina - Crear Empleado" , bgActive1: "" , bgActive2: "" ,
     bgActive3: "active" , bgActive4: "" , bgActive5: "" , bgActive6: "" }); %>
 
-    <div class="container-fluid mt-5">
+    <div class="container-fluid mt-2">
 
         <h2 class="text-secondary">Crear nuevo empleado</h2>
         <hr>
@@ -62,14 +62,7 @@
                                 <input type="text" name="cedula" value="" class="form-control" id="cedula">
                             </div>
                         </div>
-                        <div class="form-group d-flex   visually-hidden ">
-                            <div class="input-group d-flex">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">tiempo Empresa</span>
-                                </div>
-                                <input type="text" name="tiempoEmpresa" class="form-control" id="tiempoEmpresa" value="<%= now %>">
-                            </div>
-                        </div>
+
                         <div class="form-group d-flex  ">
                             <div class="form-group d-flex">
                                 <div class="input-group ">

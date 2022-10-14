@@ -1,7 +1,7 @@
 <%- include('template/cabecera', { tituloWeb: "Nomina - Dashboart" , bgActive1: "" , bgActive2: "" , bgActive3: "active"
     , bgActive4: "" , bgActive5: "" , bgActive6: "" }); %>
 
-    <div class="container-fluid mt-5">
+    <div class="container-fluid mt-2">
         <h2 id="mensaje"></h2>
 
         <h2 class="text-secondary" id="inimation-dog">Empleados</h2>
@@ -17,7 +17,7 @@
         <h1 id="prueba"></h1>
 
         <div class="container-table table-responsive">
-            <table class="table table-sm table-hover">
+            <table id="datatable" class="display responsive nowrap " style="width:100%">
                 <thead class="thead-ligth">
                     <tr>
                         <!-- <th scope="col">Id</th> -->
@@ -26,7 +26,7 @@
                         <th scope="col">apellido</th>
                         <th scope="col">Cedula</th>
                         <th scope="col">Estatus</th>
-                        <th scope="col">Departamento</th>
+                        <th scope="col">Fecha Contratacion</th>
                         <th scope="col">Sueldo</th>
                         <th scope="col">T. desc</th>
                         <th scope="col">Sueldo Neto</th>
@@ -54,7 +54,8 @@
                                     <%= empleado.estatus %>
                                 </td>
                                 <td>
-                                    <%= empleado_x_departamento.nombre_dpto %>
+                                    <%= empleado.tiempoEmpresa.toLocaleString('es-US', {
+                                        timeZone: "America/Santo_Domingo" }) %>
                                 </td>
                                 <td>
                                     <%= empleado.sueldoBruto %>
@@ -126,11 +127,13 @@
     </div>
 
     <!--   Core JS Files   -->
-    <script src=" /assets/js/core/jquery.min.js "></script>
+
+    <!-- <script src=" /assets/js/core/jquery.min.js "></script> -->
     <script src=" /assets/js/core/popper.min.js "></script>
     <script src=" /assets/js/core/bootstrap-material-design.min.js "></script>
     <script src=" https://unpkg.com/default-passive-events "></script>
     <script src=" /assets/js/plugins/perfect-scrollbar.jquery.min.js "></script>
+
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src=" https://buttons.github.io/buttons.js "></script>
     <!--  Google Maps Plugin    -->
@@ -309,6 +312,39 @@
         $(document).ready(function() {
             // Javascript method's body can be found in assets/js/demos.js
             md.initDashboardPageCharts();
+
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#datatable').DataTable({
+                order: [
+                    [0, 'desc']
+                ],
+
+
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                    "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ Entradas",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                }
+            });
 
         });
     </script>

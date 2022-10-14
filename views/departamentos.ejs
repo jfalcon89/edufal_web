@@ -5,21 +5,21 @@
     <!-- content inicio -->
 
 
-    <div class="container-fluid mt-5">
+    <div class="container-fluid mt-2">
         <h2 class=" text-secondary">Departamentos</h2>
         <hr>
         <div class="d-flex align-items-center justify-content-end ">
-            <a class="btn my-4" style="background-color: #02aeae;" href="/crear-departamento"><i
+            <a class="btn my-4 me-lg-3" style="background-color: #02aeae;" href="/crear-departamento"><i
                     class="bi bi-person-plus me-lg-3"></i>Agregar
                 Departamento</a>
-            <a class="btn my-4 text-light" href="/asignamientos-departamentos"><i
+            <a class="btn my-4 text-light " href="/asignamientos-departamentos"><i
                     class="bi bi-person-plus me-lg-3"></i>Ver
                 Asignamientos</a>
         </div>
 
         <div class="container-departamento">
 
-            <table class="table table-sm table-hover">
+            <table id="datatable" class="display responsive nowrap" style="width:100%">
                 <thead class="thead-ligth">
                     <tr>
                         <!-- <th scope="col">Id</th> -->
@@ -68,5 +68,36 @@
     <!-- content fin -->
 
 
+    <script>
+        $(document).ready(function() {
+            $('#datatable').DataTable({
+                order: [
+                    [0, 'desc']
+                ],
 
+
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                    "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ Entradas",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                }
+            });
+
+        });
+    </script>
     <%- include('template/footer'); %>

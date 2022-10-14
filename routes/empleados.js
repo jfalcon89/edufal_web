@@ -200,14 +200,14 @@ router.get('/crear-empleado', async(req, res) => {
 
 //INSERTAR NUEVO EMPLEADO A MYSQL****************
 router.post("/crear-empleado", async(req, res) => {
-    const { nombre, apellido, cedula, sexo, estatus, tiempoEmpresa, departamento, nacimiento, lugarNacimiento, nacionalidad, sueldoBruto, afp, ars, cooperativa, club, prestamos, totalDescuentos, sueldoNeto } = req.body;
+    const { nombre, apellido, cedula, sexo, estatus, departamento, nacimiento, lugarNacimiento, nacionalidad, sueldoBruto, afp, ars, cooperativa, club, prestamos, totalDescuentos, sueldoNeto } = req.body;
     const nuevoEmpleado = {
         nombre,
         apellido,
         cedula,
         sexo,
         estatus,
-        tiempoEmpresa,
+
         departamento,
         nacimiento,
         lugarNacimiento,
