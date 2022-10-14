@@ -26,26 +26,7 @@ router.get('/departamentos', async(req, res) => {
 
 });
 
-// router.get('/pagos', (req, res) => {
-//     if (req.session.loggedin) {
-//         res.render('pagos', {
-//             login: true,
-//             name: req.session.name
-//         });
-//     } else {
-//         res.render('pagos', {
-//             login: false,
-//             name: 'Debe iniciar sesión',
-//         });
-//     }
-//     // res.end();
-// });
 
-
-// router.get("/crear-departamento", (req, res) => {
-
-//     res.render("crear-departamento");
-// })
 
 // RENDERIZANDO Y MOSTRANDO TODOS LOS DEPARTAMENTOS EN VISTA CREAR-DEPARTAMENTO
 router.get('/crear-departamento', async(req, res) => {
@@ -69,15 +50,19 @@ router.get('/crear-departamento', async(req, res) => {
 
 //INSERTAR NUEVO DEPARTAMENTO
 router.post("/crear-departamento", async(req, res) => {
+
     const { nombre_dpto, estadoDepartamento } = req.body;
     const nuevoDepartamento = {
         nombre_dpto,
-
         estadoDepartamento
-
     };
 
+    const name = req.session.name;
+    const novedad = { name, nombre_dpto };
+    console.log(novedad)
+
     await pool.query('INSERT INTO departamentos set ?', [nuevoDepartamento]);
+    await pool.query('INSERT INTO novedades_add_dpto set ?', [novedad]);
     // req.flash('success', 'Link guardado correctamente');
     res.redirect('/departamentos');
 
@@ -85,13 +70,21 @@ router.post("/crear-departamento", async(req, res) => {
 
 // ELIMINAR DEPARTAMENTO
 router.get("/departamentos/:id", async(req, res) => {
+
     const { id } = req.params;
     console.log(id)
 
+    const nombre_dptoDB = await pool.query(`SELECT nombre_dpto FROM departamentos WHERE idDepartamento = ${id} `);
+    const nombre_dpto = nombre_dptoDB[0].nombre_dpto;
+    const name = req.session.name;
+    const novedad = { name, nombre_dpto };
+    console.log(novedad)
+
     try {
 
+        await pool.query('INSERT INTO novedades_delete_dpto set ?', [novedad]);
         await pool.query("DELETE FROM departamentos WHERE idDepartamento = ?", [id]);
-        // req.flash('success', 'Link eliminado correctamente');
+
         res.redirect("/departamentos");
 
     } catch (error) {
@@ -109,9 +102,18 @@ router.get("/departamentos/editar-departamento/:id", async(req, res) => {
 
         const id = req.params.id
 
+        // novedad
+        // const nombre_dptoDB = await pool.query(`SELECT nombre_dpto FROM departamentos WHERE idDepartamento = ${id} `);
+        // const nombre_dpto = nombre_dptoDB[0].nombre_dpto;
+        // const name = req.session.name;
+        // const novedad = { name, nombre_dpto };
+        // console.log(novedad)
+
         try {
+
+            // await pool.query('INSERT INTO novedades_edit_dpto set ?', [novedad]);
             const departamentoDB = await pool.query("SELECT * FROM departamentos WHERE idDepartamento = ?", [id]);
-            // console.log(empleadoDB[0]);
+
             res.render("editar-departamento", {
                 departamento: departamentoDB[0],
                 login: true,
@@ -146,6 +148,11 @@ router.post('/departamentos/editar-departamento/:id', async(req, res) => {
         estadoDepartamento
     };
 
+    const name = req.session.name;
+    const novedad = { name, nombre_dpto };
+    console.log(novedad)
+
+    await pool.query('INSERT INTO novedades_edit_dpto set ?', [novedad]);
     await pool.query("UPDATE departamentos set ? WHERE idDepartamento = ?", [nuevoDepartamento, id]);
     // req.flash('success', 'Link actualizado correctamente');
     res.redirect('/departamentos');

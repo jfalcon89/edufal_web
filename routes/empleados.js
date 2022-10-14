@@ -336,42 +336,6 @@ router.get("/empleados/informacion-empleado/crear-empleado-x-departamento/:id", 
     }
 });
 
-// // RENDERIZANDO Y MOSTRANDO DATOS DE EMPLEADO POR ID EN LA VISTA INFORMACION-EMPLEADO
-// router.get("/empleados/informacion-empleado/crear-empleado-x-departamento/:id", async(req, res) => {
-//     const id = req.params.id
-
-//     try {
-//         const empleadoDB = await pool.query("SELECT * FROM empleados WHERE idEmpleado = ?", [id]);
-//         console.log(empleadoDB[0]);
-//         res.render("crear-empleado-x-departamento", { empleado: empleadoDB[0] });
-
-//     } catch (error) {
-//         console.log(error)
-//         res.render("crear-empleado-x-departamento", {
-//             error: true,
-//             mensaje: "no se encuentra el id seleccionado"
-//         });
-//     }
-// });
-
-// RENDERIZANDO Y MOSTRANDO DATOS DE EMPLEADO POR ID EN LA VISTA INFORMACION-EMPLEADO ++++
-// router.get("/empleados/informacion-empleado/ver-empleado-x-departamento/:id", async(req, res) => {
-//     const id = req.params.id
-
-//     try {
-//         const empleadoDB = await pool.query("SELECT * FROM empleados WHERE idEmpleado = ?", [id]);
-//         console.log(empleadoDB[0]);
-//         res.render("ver-empleado-x-departamento", { empleado: empleadoDB[0] });
-
-//     } catch (error) {
-//         console.log(error)
-//         res.render("ver-empleado-x-departamento", {
-//             error: true,
-//             mensaje: "no se encuentra el id seleccionado"
-//         });
-//     }
-// });
-
 
 // RENDERIZANDO Y MOSTRANDO DATOS DE EMPLEADO POR ID EN LA VISTA INFORMACION-EMPLEADO
 router.get("/empleados/informacion-empleado/:id", async(req, res) => {
@@ -410,45 +374,6 @@ router.post("/empleados/informacion-empleado/crear-empleado-x-departamento/:id",
     res.redirect(`/empleados/informacion-empleado/ver-empleado-x-departamento/${id}`);
 
 });
-
-//probar 
-//MOSTRANDO LOS DEPARTAMENTOS CREADOS EN LA VISTA CREAR-EMPLEADO X DEPARTAMENTO 
-// router.get('/empleados/informacion-empleado/crear-empleado-x-departamento/:id', async(req, res) => {
-//     const arrayDepartamentosDB = await pool.query('SELECT * FROM departamentos');
-//     const id = req.params.id
-
-//     const empleadoDB = await pool.query("SELECT * FROM empleados WHERE idEmpleado = ?", [id]);
-//     console.log(empleadoDB[0]);
-//     res.render("crear-empleado-x-departamento", { empleado: empleadoDB[0] });
-
-//     res.render("crear-empleado-x-departamento", {
-//         arrayDepartamentos: arrayDepartamentosDB
-
-//     });
-
-// });
-
-
-
-//ELIMINAR DEPARTAMENTO POR EMPLEADO
-// router.get("/empleados/informacion-empleado/editar-empleado-x-departamento/:id", async(req, res) => {
-//     const id = req.params.id
-//     console.log(id);
-
-//     try {
-//         const empleado_x_departamentoDB = await pool.query(`DELETE FROM empleado_x_departamento WHERE empleado_x_departamento.idEmpleado = ${id}`);
-//         console.log(empleado_x_departamentoDB[0]);
-
-//         // res.render("ver-empleado-x-departamento", { empleado_x_departamento: empleado_x_departamentoDB[0] });
-
-//         res.redirect(`/empleados/informacion-empleado/${id}`);
-
-//     } catch (error) {
-//         console.log(error)
-//     }
-
-// });
-
 
 
 // RENDERIZANDO Y MOSTRANDO EMPLEADO EN VISTA EDITAR EMPLEADO X DEPARTAMENTO +++++
@@ -495,6 +420,28 @@ router.post('/empleados/informacion-empleado/editar-empleado-x-departamento/:id'
     // req.flash('success', 'Link actualizado correctamente');
     res.redirect(`/empleados/informacion-empleado/ver-empleado-x-departamento/${id}`);
 });
+
+
+
+//INSERTAR NUEVA NOVEDAD
+// router.post("/crear-departamento", async(req, res) => {
+//     const { name } = req.session.name;
+//     const novedad = { name };
+//     // console.log(req.session.name);
+//     // const { nombre_dpto, estadoDepartamento } = req.body;
+//     // const nuevoDepartamento = {
+//     //     nombre_dpto,
+
+//     //     estadoDepartamento
+
+//     // };
+
+//     // await pool.query('INSERT INTO departamentos set ?', [nuevoDepartamento]);
+//     await pool.query('INSERT INTO novedades set ?', [novedad]);
+//     // req.flash('success', 'Link guardado correctamente');
+//     res.redirect('/departamentos');
+
+// });
 
 
 module.exports = router;

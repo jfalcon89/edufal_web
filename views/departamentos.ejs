@@ -41,6 +41,7 @@
                                 <td>
                                     <%= departamento.nombre_dpto %>
                                 </td>
+                                <input class="visually-hidden" type="text" name="nombre_dpto" value="<%= departamento.nombre_dpto %> ">
                                 <td>
                                     <%= departamento.fechaRegistro.toLocaleString('es-US', {
                                         timeZone: "America/Santo_Domingo" }).slice(0, 10); %>
