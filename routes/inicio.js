@@ -11,12 +11,15 @@ const pool = require("../database");
 router.get('/inicio', async(req, res) => {
     if (req.session.loggedin) {
 
+        // novedades
+        const novedadesDB = await pool.query('SELECT idNovedad, cambio, nombre_dpto, fechaNovedad, name FROM novedades_delete_dpto UNION ALL SELECT idNovedad, cambio, nombre_dpto, fechaNovedad, name FROM novedades_add_dpto UNION ALL SELECT idNovedad, cambio, nombre_dpto, fechaNovedad, name FROM novedades_edit_dpto ;')
 
         const arrayEmpleadosDB = await pool.query('SELECT * FROM empleados');
         const arrayDepartamentosDB = await pool.query('SELECT * FROM departamentos');
         const arrayUserDB = await pool.query('SELECT * FROM users');
-        console.log(arrayEmpleadosDB[0])
+
         res.render("dashboard", {
+            novedades: novedadesDB,
             arrayEmpleados: arrayEmpleadosDB,
             arrayDepartamentos: arrayDepartamentosDB,
             arrayUser: arrayUserDB,

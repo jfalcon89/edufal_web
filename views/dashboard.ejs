@@ -87,9 +87,104 @@
     </div>
 
 
+    <div class="accordion accordion-flush" id="accordionFlushExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header " id="flush-headingOne">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                    HISTORIAL NOVEDADES
+                </button>
+            </h2>
+            <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                <div class="container-fluid mt-2">
+                    <!-- <div class="container"> -->
+                    <!-- <div class="container-novedades"> -->
+                    <table id="datatable" class="display responsive nowrap compact" style="width:100%">
+                        <thead class="thead-ligth">
+                            <tr>
+                                <th scope="col">ID Novedad</th>
+                                <th scope="col">Accion</th>
+                                <th scope="col">Nombre Dpto</th>
+                                <th scope="col">Fecha Novedad</th>
+                                <th scope="col">Usuario</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% if (novedades.length> 0) { %>
+                                <% novedades.forEach(novedad=> { %>
+
+                                    <tr>
+                                        <td>
+                                            <%= novedad.idNovedad %>
+                                        </td>
+                                        <td>
+                                            <%= novedad.cambio %>
+                                        </td>
+                                        <td>
+                                            <%= novedad.nombre_dpto %>
+                                        </td>
+                                        <td>
+                                            <%= novedad.fechaNovedad.toLocaleString('es-US', {
+                                                timeZone: "America/Santo_Domingo" }); %>
+                                        </td>
+                                        <td>
+                                            <%= novedad.name %>
+                                        </td>
+
+
+                                    </tr>
+
+                                    <% }) %>
+                                        <% } %>
+                        </tbody>
+                    </table>
+                    <!-- </div> -->
+
+                    <!-- </div> -->
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
 
     <!-- content fin -->
 
+    <script>
+        $(document).ready(function() {
+            $('#datatable').DataTable({
+                order: [
+                    [3, 'desc']
+
+                ],
+
+
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                    "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ Entradas",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                }
+            });
+
+        });
+    </script>
 
 
     <%- include('template/footer'); %>
