@@ -1,8 +1,8 @@
-<%- include('template/cabecera', { tituloWeb: "Nomina - Informacion Empleado" , bgActive1: "" , bgActive2: "" ,
+<%- include('template/cabecera', { tituloWeb: "Nomina - Descuento por Empleado" , bgActive1: "" , bgActive2: "" ,
     bgActive3: "active" , bgActive4: "" , bgActive5: "" , bgActive6: "" }); %>
 
     <div class="container-fluid d-flex flex-column mt-2">
-        <h2 class=" text-secondary">Ver Departamento por Empleado</h2>
+        <h2 class=" text-secondary">Ver Descuento por Empleado</h2>
         <hr>
 
         <div class="d-flex align-items-center justify-content-end ">
@@ -50,8 +50,8 @@
 
 
 
-        <% if (empleado_x_departamentoDB.length < 1) { %>
-            <h5 class="bg-danger d-flex justify-content-center text-light">No tiene departamento asignado
+        <% if (arrayDescuento_x_empleado.length < 1) { %>
+            <h5 class="bg-danger d-flex justify-content-center text-light">No tiene descuento aplicado
             </h5>
             <% } %>
 
@@ -61,52 +61,59 @@
                         <table class="table table-sm table-hover ">
                             <thead class="thead-ligth">
                                 <tr>
-                                    <!-- <th scope="col">Id</th> -->
-                                    <th scope="col">Codigo Dpto</th>
-                                    <th scope="col">Nombre Dpto</th>
-                                    <th scope="col">Fecha Registro</th>
-                                    <th scope="col">Estado</th>
-
+                                    <th scope="col">Codigo Desc</th>
+                                    <th scope="col">Tipo Desc</th>
+                                    <th scope="col">Nombre Desc</th>
+                                    <th scope="col">Monto Desc</th>
+                                    <th scope="col">Fecha Desc</th>
+                                    <th scope="col">Estado Desc</th>
+                                    <th scope="col">Observacion Desc</th>
                                     <th scope="col">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
 
-
-                                <% if (empleado_x_departamentoDB.length> 0) { %>
-                                    <% empleado_x_departamentoDB.forEach(function(entrada) { %>
+                                <% if (arrayDescuento_x_empleado.length> 0) { %>
+                                    <% arrayDescuento_x_empleado.forEach(descuento_x_empleado=> { %>
 
                                         <tr>
 
-                                            <td>
-                                                <%= empleado_x_departamento.idDepartamento %>
+                                            <td id="codDesc">
+                                                <%= descuento_x_empleado.idDescuento_x_empleado %>
                                             </td>
                                             <td>
-                                                <%= empleado_x_departamento.nombre_dpto %>
+                                                <%= descuento_x_empleado.tipoDescuento %>
                                             </td>
                                             <td>
-                                                <%= empleado_x_departamento.fechaRegistroB %>
+                                                <%= descuento_x_empleado.nombreDescuento %>
                                             </td>
                                             <td>
-                                                <%= empleado_x_departamento.estadoDepartamentoB %>
+                                                <%= descuento_x_empleado.montoDescuento %>
                                             </td>
-                                            <td class="w-0 "><a type="submit" href="/empleados/informacion-empleado/eliminar-departamento-x-empleado/<%= empleado_x_departamento.idEmpleado_x_departamento %>" class="btn " title="Eliminar Dpto"><i
-                                                        class="bi bi-x-lg me-lg-3"></i></a>
-                                                <!-- <a id="eventoAct-Inact" href="/empleados/informacion-empleado/<%=  %>" class="btn " title="Ver informacion empleado"><i class="bi bi-folder2-open "></i></a> -->
-                                                <!-- <a type="submit" href="/empleados/informacion-empleado/editar-empleado-x-departamento/<%= %>" class="btnEliminarEmpleado_v_empleado btn  btn-block me-lg-3"><i class="bi bi-x-lg me-lg-3" title="Eliminar dpto empleado"></i></a> -->
+                                            <td>
+                                                <%= descuento_x_empleado.fechaDescuento.toLocaleString('es-US', {
+                                                    timeZone: "America/Santo_Domingo" }) %>
+                                            </td>
+                                            <td>
+                                                <%= descuento_x_empleado.estadoDescuento %>
+                                            </td>
+                                            <td>
+                                                <%= descuento_x_empleado.observacionDescuento %>
+                                            </td>
+                                            <td class="w-0 "><a type="submit" href="/empleados/informacion-empleado/eliminar-descuento-x-empleado/<%= descuento_x_empleado.idDescuento_x_empleado %>" class="btn " title="Eliminar Dpto">Eliminar Desc</a>
 
 
 
-                                                <a id="eventoAct-Inact" href="/empleados/informacion-empleado/editar-empleado-x-departamento/<%= empleado_x_departamento.idEmpleado %>" class="btn btnFormat w-25 me-lg-3">Edit dpto</a>
+                                                <a id="eventoAct-Inact" href="/empleados/informacion-empleado/editar-descuento-x-empleado/<%= descuento_x_empleado.idDescuento_x_empleado %>" class="btn  ">Edit desc</a>
 
 
                                             </td>
 
                                         </tr>
 
+
                                         <% }) %>
                                             <% } %>
-
 
 
                             </tbody>

@@ -102,16 +102,10 @@ router.get("/departamentos/editar-departamento/:id", async(req, res) => {
 
         const id = req.params.id
 
-        // novedad
-        // const nombre_dptoDB = await pool.query(`SELECT nombre_dpto FROM departamentos WHERE idDepartamento = ${id} `);
-        // const nombre_dpto = nombre_dptoDB[0].nombre_dpto;
-        // const name = req.session.name;
-        // const novedad = { name, nombre_dpto };
-        // console.log(novedad)
+
 
         try {
 
-            // await pool.query('INSERT INTO novedades_edit_dpto set ?', [novedad]);
             const departamentoDB = await pool.query("SELECT * FROM departamentos WHERE idDepartamento = ?", [id]);
 
             res.render("editar-departamento", {

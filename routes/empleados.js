@@ -34,13 +34,6 @@ router.get('/empleados', async(req, res) => {
 
 
 
-// RENDER DE VISTA DETALLE-EMPLEADO************
-// router.get("/empleados/detalle-empleado", (req, res) => {
-
-//     res.render("detalle-empleado");
-// });
-
-
 //EDITAR EMPLEADO POR NUMERO ID EN VISTA DETALLE-EMPLEADO************
 router.get("/empleados/detalle-empleado/:id", async(req, res) => {
     if (req.session.loggedin) {
@@ -127,13 +120,6 @@ router.get("/empleados/:id", async(req, res) => {
 
 });
 
-
-
-
-// RENDERIZANDO VISTA INFORMACION-EMPLEADO no necesario 
-// router.get("/empleados/informacion-empleado", (req, res) => {
-//     res.render("informacion-empleado");
-// });
 
 // RENDERIZANDO Y MOSTRANDO DATOS DE EMPLEADO POR ID EN LA VISTA INFORMACION-EMPLEADO
 router.get("/empleados/informacion-empleado/:id", async(req, res) => {
@@ -229,32 +215,6 @@ router.post("/crear-empleado", async(req, res) => {
 });
 
 
-
-
-
-
-
-
-// RENDERIZANDO Y MOSTRANDO DATOS DE EMPLEADO X DEPARTAMENTO X ID EN LA VISTA CREAR-EMPLEADO X DEPARTAMENTO
-// router.get("/empleados/informacion-empleado/crear-empleado-x-departamento:id", async(req, res) => {
-//     const id = req.params.id
-//     console.log(id);
-
-//     try {
-//         const empleado_x_departamentoDB = await pool.query("SELECT * FROM empleado_x_departamento WHERE idEmpleado = ?", [id]);
-//         console.log(empleado_x_departamentoDB[0]);
-//         res.render("crear-empleado-x-departamento", { empleado_x_departamento: empleado_x_departamentoDB[0] });
-
-//     } catch (error) {
-//         console.log(error)
-//         res.render("crear-empleado-x-departamento", {
-//             error: true,
-//             mensaje: "no se encuentra el id seleccionado"
-//         });
-//     }
-// });
-
-
 // RENDERIZANDO Y MOSTRANDO DATOS DE EMPLEADO X DEPARTAMENTO X ID EN LA VISTA VER-EMPLEADO X DEPARTAMENTO
 router.get("/empleados/informacion-empleado/ver-empleado-x-departamento/:id", async(req, res) => {
     if (req.session.loggedin) {
@@ -264,11 +224,12 @@ router.get("/empleados/informacion-empleado/ver-empleado-x-departamento/:id", as
 
 
         try {
-            const empleadoDB = await pool.query("SELECT * FROM empleados WHERE idEmpleado = ?", [id]);
+
             const empleado_x_departamentoDB = await pool.query(`SELECT * FROM empleado_x_departamento, empleados, departamentos
                                                             WHERE empleado_x_departamento.idEmpleado  = ${id}
                                                             AND empleados.idEmpleado = empleado_x_departamento.idEmpleado
                                                             AND departamentos.idDepartamento = empleado_x_departamento.idDepartamento`);
+            const empleadoDB = await pool.query("SELECT * FROM empleados WHERE idEmpleado = ?", [id]);
             console.log(empleado_x_departamentoDB[0]);
             res.render("ver-empleado-x-departamento", {
                 empleado: empleadoDB[0],
@@ -292,6 +253,30 @@ router.get("/empleados/informacion-empleado/ver-empleado-x-departamento/:id", as
             name: 'Debe iniciar sesión',
         });
     }
+});
+
+// ELIMINANDO DEPARTAMENTO POR EMPLEADO
+router.get("/empleados/informacion-empleado/eliminar-departamento-x-empleado/:id", async(req, res) => {
+    const { id } = req.params;
+    console.log(id)
+
+    try {
+
+
+        const empleado_x_departamentoDB = await pool.query(`SELECT * FROM empleado_x_departamento, empleados, departamentos
+                                                            WHERE empleado_x_departamento.idEmpleado_x_departamento  = ${id}
+                                                            AND empleados.idEmpleado = empleado_x_departamento.idEmpleado
+                                                            AND departamentos.idDepartamento = empleado_x_departamento.idDepartamento`);
+
+        await pool.query("DELETE FROM empleado_x_departamento WHERE idEmpleado_x_departamento = ?", [id]);
+        console.log(empleado_x_departamentoDB[0].idEmpleado)
+        res.redirect(`/empleados/informacion-empleado/ver-empleado-x-departamento/${empleado_x_departamentoDB[0].idEmpleado}`);
+
+
+    } catch (error) {
+        console.log(error)
+    }
+
 });
 
 
@@ -422,26 +407,165 @@ router.post('/empleados/informacion-empleado/editar-empleado-x-departamento/:id'
 });
 
 
+// RENDERIZANDO Y MOSTRANDO VISTA CREAR DESCUENTO X EMPLEADO
+router.get("/empleados/informacion-empleado/crear-descuento-x-empleado/:id", async(req, res) => {
+    if (req.session.loggedin) {
 
-//INSERTAR NUEVA NOVEDAD
-// router.post("/crear-departamento", async(req, res) => {
-//     const { name } = req.session.name;
-//     const novedad = { name };
-//     // console.log(req.session.name);
-//     // const { nombre_dpto, estadoDepartamento } = req.body;
-//     // const nuevoDepartamento = {
-//     //     nombre_dpto,
+        const id = req.params.id
+        console.log(id);
 
-//     //     estadoDepartamento
+        try {
+            const empleadoDB = await pool.query("SELECT * FROM empleados WHERE idEmpleado = ?", [id]);
 
-//     // };
+            res.render("crear-descuento-x-empleado", {
+                empleado: empleadoDB[0],
 
-//     // await pool.query('INSERT INTO departamentos set ?', [nuevoDepartamento]);
-//     await pool.query('INSERT INTO novedades set ?', [novedad]);
-//     // req.flash('success', 'Link guardado correctamente');
-//     res.redirect('/departamentos');
+                login: true,
+                name: req.session.name
+            });
 
-// });
+        } catch (error) {
+            console.log(error)
+            res.render("crear-descuento-x-empleado", {
+                error: true,
+                mensaje: "no se encuentra el id seleccionado"
+            });
+        }
+
+
+    } else {
+        res.render('login', {
+            login: false,
+            name: 'Debe iniciar sesión',
+        });
+    }
+});
+
+// RENDERIZANDO Y MOSTRANDO VISTA CREAR DESCUENTO X EMPLEADO
+router.post("/empleados/informacion-empleado/crear-descuento-x-empleado/:id", async(req, res) => {
+    const { idEmpleado, tipoDescuento, nombreDescuento, montoDescuento, estadoDescuento, observacionDescuento } = req.body;
+    const id = req.params.id
+    const nuevoDescuento_x_empleado = {
+        idEmpleado,
+        tipoDescuento,
+        nombreDescuento,
+        montoDescuento,
+        estadoDescuento,
+        observacionDescuento
+
+    };
+
+    await pool.query('INSERT INTO descuentos_x_empleados set ?', [nuevoDescuento_x_empleado]);
+    // req.flash('success', 'Link guardado correctamente');
+    res.redirect(`/empleados/informacion-empleado/ver-descuento-x-empleado/${id}`);
+
+});
+
+// RENDERIZANDO Y MOSTRANDO VISTA VER DESCUENTO X EMPLEADO
+router.get("/empleados/informacion-empleado/ver-descuento-x-empleado/:id", async(req, res) => {
+    const id = req.params.id
+    console.log(id);
+
+
+    try {
+        const arrayDescuento_x_empleadoDB = await pool.query(`SELECT * FROM descuentos_x_empleados, empleados
+                                                            WHERE descuentos_x_empleados.idEmpleado  = ${id}
+                                                            AND empleados.idEmpleado = descuentos_x_empleados.idEmpleado;`);
+        const empleadoDB = await pool.query("SELECT * FROM empleados WHERE idEmpleado = ?", [id]);
+        console.log(arrayDescuento_x_empleadoDB[0]);
+        res.render("ver-descuento-x-empleado", {
+            empleado: empleadoDB[0],
+            arrayDescuento_x_empleado: arrayDescuento_x_empleadoDB,
+            login: true,
+            name: req.session.name
+        });
+
+    } catch (error) {
+        console.log(error)
+        res.render("pagos", {
+            error: true,
+            mensaje: "no se encuentra el id seleccionado",
+            login: true,
+            name: req.session.name
+        });
+    }
+});
+
+
+// ELIMINANDO DESCUENTO POR EMPLEADO
+router.get("/empleados/informacion-empleado/eliminar-descuento-x-empleado/:id", async(req, res) => {
+    const { id } = req.params;
+    console.log(id)
+
+    try {
+
+
+        const arrayDescuento_x_empleadoDB = await pool.query(`SELECT * FROM descuentos_x_empleados, empleados
+                                                            WHERE descuentos_x_empleados.idDescuento_x_empleado  = ${id}
+                                                            AND empleados.idEmpleado = descuentos_x_empleados.idEmpleado;`);
+        await pool.query("DELETE FROM descuentos_x_empleados WHERE idDescuento_x_empleado = ?", [id]);
+        console.log(arrayDescuento_x_empleadoDB[0].idEmpleado)
+        res.redirect(`/empleados/informacion-empleado/ver-descuento-x-empleado/${arrayDescuento_x_empleadoDB[0].idEmpleado}`);
+
+
+    } catch (error) {
+        console.log(error)
+    }
+
+});
+
+// RENDERIZANDO Y MOSTRANDO VISTA EDITAR DESCUENTO X EMPLEADO
+router.get("/empleados/informacion-empleado/editar-descuento-x-empleado/:id", async(req, res) => {
+    const id = req.params.id
+    console.log(id);
+
+
+    try {
+
+        const arrayDescuento_x_empleadoDB = await pool.query(`SELECT * FROM descuentos_x_empleados, empleados
+                                                            WHERE descuentos_x_empleados.idDescuento_x_empleado  = ${id}
+                                                            AND empleados.idEmpleado = descuentos_x_empleados.idEmpleado;`);
+
+        console.log(arrayDescuento_x_empleadoDB[0]);
+        // const empleadoDB = await pool.query("SELECT * FROM empleados WHERE idEmpleado = ?", [id]);
+        res.render("editar-descuento-x-empleado", {
+            // empleado: empleadoDB[0],
+            arrayDescuento_x_empleado: arrayDescuento_x_empleadoDB[0],
+            login: true,
+            name: req.session.name
+        });
+
+    } catch (error) {
+        console.log(error)
+        res.render("pagos", {
+            error: true,
+            mensaje: "no se encuentra el id seleccionado",
+            login: true,
+            name: req.session.name
+        });
+    }
+});
+
+// INSERTANDO MODIFICACION DESCUENTO X EMPLEADO 
+router.post('/empleados/informacion-empleado/editar-descuento-x-empleado/:id', async(req, res) => {
+    const id = req.params.id
+    console.log(id)
+    const { idEmpleado, tipoDescuento, nombreDescuento, montoDescuento, estadoDescuento, observacionDescuento } = req.body;
+    const nuevoDescuento_x_empleado = {
+        idEmpleado,
+        tipoDescuento,
+        nombreDescuento,
+        montoDescuento,
+        estadoDescuento,
+        observacionDescuento
+
+    };
+
+    await pool.query("UPDATE descuentos_x_empleados set ? WHERE idDescuento_x_empleado = ?", [nuevoDescuento_x_empleado, id]);
+    // req.flash('success', 'Link actualizado correctamente');
+    res.redirect(`/empleados/informacion-empleado/ver-descuento-x-empleado/${idEmpleado}`);
+});
+
 
 
 module.exports = router;
