@@ -28,8 +28,8 @@
                         <th scope="col">Estatus</th>
                         <th scope="col">Fecha Contratacion</th>
                         <th scope="col">Sueldo</th>
-                        <th scope="col">T. desc</th>
-                        <th scope="col">Sueldo Neto</th>
+
+
                         <th scope="col">Acciones</th>
                     </tr>
                 </thead>
@@ -60,12 +60,8 @@
                                 <td>
                                     <%= empleado.sueldoBruto %>
                                 </td>
-                                <td>
-                                    <%= empleado.totalDescuentos %>
-                                </td>
-                                <td>
-                                    <%= empleado.sueldoNeto %>
-                                </td>
+
+
                                 <td class="w-0">
                                     <a href="/empleados/detalle-empleado/<%= empleado.idEmpleado %>" class="btn" title="Editar"><i class="bi bi-pencil-square"></i></a>
                                     <a id="eventoAct-Inact" href="/empleados/informacion-empleado/<%= empleado.idEmpleado %>" class="btn" title="Ver informacion empleado"><i class="bi bi-folder2-open"></i></a>

@@ -26,13 +26,6 @@ const loginRoutes = require("./routes/login");
 
 
 
-//7- variables de session
-const session = require('express-session');
-app.use(session({
-    secret: 'secret',
-    resave: true,
-    saveUninitialized: true
-}));
 
 
 
@@ -49,7 +42,13 @@ app.listen(app.get("port"), () => {
 
 
 
-
+//7- variables de session
+const session = require('express-session');
+app.use(session({
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: true
+}));
 
 
 //función para limpiar la caché luego del logout

@@ -10,12 +10,17 @@ const pool = require("../database");
 router.get('/empleados', async(req, res) => {
     if (req.session.loggedin) {
 
+        // const descuentoAcumuladoDB = await pool.query(`SELECT SUM(montoDescuento) montoDescuentoAcumulado FROM descuentos_x_empleados 
+        //                                                     WHERE nombreDescuento IN ('Afp','Ars','Cooperativa','Otros','Prestamo')
+        //                                                     AND descuentos_x_empleados.idEmpleado = ${id}
+        //                                                     AND descuentos_x_empleados.estadoDescuento = 'Activo'`);
         const empleado_x_departamentoDB = await pool.query(`SELECT * FROM empleado_x_departamento, empleados, departamentos
                                                             
                                                             WHERE empleados.idEmpleado = empleado_x_departamento.idEmpleado
                                                             AND departamentos.idDepartamento = empleado_x_departamento.idDepartamento`);
         const arrayEmpleadosDB = await pool.query('SELECT * FROM empleados');
         res.render("empleados", {
+            // descuentoAcumulado: descuentoAcumuladoDB,
             empleado_x_departamento: empleado_x_departamentoDB,
             arrayEmpleados: arrayEmpleadosDB,
             login: true,
@@ -42,13 +47,55 @@ router.get("/empleados/detalle-empleado/:id", async(req, res) => {
         console.log(req.params)
 
         try {
+
+
+            const sueldoNetoDB = await pool.query(`SELECT 
+                                                            empleados.sueldoBruto  - SUM(descuentos_x_empleados.montoDescuento) montoSueldoNeto
+                                                            FROM descuentos_x_empleados, empleados
+                                                            WHERE descuentos_x_empleados.idEmpleado = ${id}
+                                                            AND empleados.idEmpleado = descuentos_x_empleados.idEmpleado
+                                                            AND descuentos_x_empleados.estadoDescuento = 'Activo' `);
+            const descuentoAcumuladoDB = await pool.query(`SELECT SUM(montoDescuento) montoDescuentoAcumulado FROM descuentos_x_empleados 
+                                                            WHERE nombreDescuento IN ('Afp','Ars','Cooperativa','Otros','Prestamo')
+                                                            AND descuentos_x_empleados.idEmpleado = ${id}
+                                                            AND descuentos_x_empleados.estadoDescuento = 'Activo'`);
+            const descuentoOtrosDB = await pool.query(`SELECT SUM(montoDescuento) montoDescuentoOtros FROM descuentos_x_empleados 
+                                                            WHERE nombreDescuento = 'Otros'
+                                                            AND descuentos_x_empleados.idEmpleado = ${id}
+                                                            AND descuentos_x_empleados.estadoDescuento = 'Activo'`);
+            const descuentoCooperativaDB = await pool.query(`SELECT SUM(montoDescuento) montoDescuentoCooperativa FROM descuentos_x_empleados 
+                                                            WHERE nombreDescuento = 'Cooperativa'
+                                                            AND descuentos_x_empleados.idEmpleado = ${id}
+                                                            AND descuentos_x_empleados.estadoDescuento = 'Activo'`);
+            const descuentoAfpDB = await pool.query(`SELECT SUM(montoDescuento) montoDescuentoAfp FROM descuentos_x_empleados 
+                                                            WHERE nombreDescuento = 'Afp'
+                                                            AND descuentos_x_empleados.idEmpleado = ${id}
+                                                            AND descuentos_x_empleados.estadoDescuento = 'Activo'`);
+            const descuentoArsDB = await pool.query(`SELECT SUM(montoDescuento) montoDescuentoArs FROM descuentos_x_empleados 
+                                                            WHERE nombreDescuento = 'Ars'
+                                                            AND descuentos_x_empleados.idEmpleado = ${id}
+                                                            AND descuentos_x_empleados.estadoDescuento = 'Activo'`);
+            const descuentoPrestamoDB = await pool.query(`SELECT SUM(montoDescuento) montoDescuentoPrestamo FROM descuentos_x_empleados 
+                                                            WHERE nombreDescuento = 'Prestamo'
+                                                            AND descuentos_x_empleados.idEmpleado = ${id}
+                                                            AND descuentos_x_empleados.estadoDescuento = 'Activo'`);
             const empleado_x_departamentoDB = await pool.query(`SELECT * FROM empleado_x_departamento, empleados, departamentos
                                                             WHERE empleado_x_departamento.idEmpleado  = ${id}
                                                             AND empleados.idEmpleado = empleado_x_departamento.idEmpleado
                                                             AND departamentos.idDepartamento = empleado_x_departamento.idDepartamento`);
             const empleadoDB = await pool.query("SELECT * FROM empleados WHERE idEmpleado = ?", [id]);
+            console.log(descuentoAfpDB[0]);
+            console.log(descuentoArsDB[0]);
+            console.log(descuentoPrestamoDB[0]);
             console.log(empleadoDB[0]);
             res.render("detalle-empleado", {
+                sueldoNeto: sueldoNetoDB[0],
+                descuentoAcumulado: descuentoAcumuladoDB[0],
+                descuentoOtros: descuentoOtrosDB[0],
+                descuentoCooperativa: descuentoCooperativaDB[0],
+                descuentoAfp: descuentoAfpDB[0],
+                descuentoPrestamo: descuentoPrestamoDB[0],
+                descuentoArs: descuentoArsDB[0],
                 empleado_x_departamento: empleado_x_departamentoDB,
                 empleado: empleadoDB[0],
                 login: true,
@@ -128,6 +175,14 @@ router.get("/empleados/informacion-empleado/:id", async(req, res) => {
         const id = req.params.id
 
         try {
+            const arrayDescuento_x_empleadoDB = await pool.query(`SELECT descuentos_x_empleados.idDescuento_x_empleado FROM descuentos_x_empleados, empleados
+                                                                    WHERE descuentos_x_empleados.idEmpleado  = ${id}
+                                                                    AND empleados.idEmpleado = descuentos_x_empleados.idEmpleado 
+                                                                    AND descuentos_x_empleados.estadoDescuento = 'Activo' `);
+            const descuentoAcumuladoDB = await pool.query(`SELECT SUM(montoDescuento) montoDescuentoAcumulado FROM descuentos_x_empleados 
+                                                            WHERE nombreDescuento IN ('Afp','Ars','Cooperativa','Otros','Prestamo')
+                                                            AND descuentos_x_empleados.idEmpleado = ${id}
+                                                            AND descuentos_x_empleados.estadoDescuento = 'Activo'`);
             const empleado_x_departamentoDB = await pool.query(`SELECT * FROM empleado_x_departamento, empleados, departamentos
                                                             WHERE empleado_x_departamento.idEmpleado  = ${id}
                                                             AND empleados.idEmpleado = empleado_x_departamento.idEmpleado
@@ -135,6 +190,8 @@ router.get("/empleados/informacion-empleado/:id", async(req, res) => {
             const empleadoDB = await pool.query("SELECT * FROM empleados WHERE idEmpleado = ?", [id]);
             console.log(empleadoDB[0]);
             res.render("informacion-empleado", {
+                arrayDescuento_x_empleado: arrayDescuento_x_empleadoDB,
+                descuentoAcumulado: descuentoAcumuladoDB[0],
                 empleado_x_departamento: empleado_x_departamentoDB[0],
                 empleado: empleadoDB[0],
                 login: true,
@@ -145,7 +202,8 @@ router.get("/empleados/informacion-empleado/:id", async(req, res) => {
             console.log(error)
             res.render("informacion-empleado", {
                 error: true,
-                mensaje: "no se encuentra el id seleccionado"
+                mensaje: "no se encuentra el id seleccionado",
+
             });
         }
 
@@ -406,6 +464,7 @@ router.post('/empleados/informacion-empleado/editar-empleado-x-departamento/:id'
     res.redirect(`/empleados/informacion-empleado/ver-empleado-x-departamento/${id}`);
 });
 
+// @@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 // RENDERIZANDO Y MOSTRANDO VISTA CREAR DESCUENTO X EMPLEADO
 router.get("/empleados/informacion-empleado/crear-descuento-x-empleado/:id", async(req, res) => {
@@ -565,6 +624,7 @@ router.post('/empleados/informacion-empleado/editar-descuento-x-empleado/:id', a
     // req.flash('success', 'Link actualizado correctamente');
     res.redirect(`/empleados/informacion-empleado/ver-descuento-x-empleado/${idEmpleado}`);
 });
+
 
 
 

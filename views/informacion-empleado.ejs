@@ -8,6 +8,7 @@
             <a href="/empleados" class="btn btn-warning mt-3 "><i class="bi bi-arrow-left me-lg-3"></i>Volver
                 a
                 atras</a>
+
         </div>
 
         <div class="header-container p-2 mb-3 mt-3 h-25 text-light " style="background-color: #acacac5c; border-radius: 8px;">
@@ -55,21 +56,28 @@
 
                     <div class="card_coperativa">
                         <div class="card-body d-flex justify-content-center flex-column ">
-                            <h5 class=" d-flex justify-content-center text-secondary ">Departamento</h5>
-                            <p class="card-text d-flex justify-content-center text-secondary">Tiene 2 </p>
-                            <div class="d-flex justify-content-center">
-                                <div class="d-flex flex-nowrap ">
-                                    <a href="/empleados/informacion-empleado/ver-empleado-x-departamento/<%= empleado.idEmpleado %> " class="btn btn-secondary d-flex me-lg-2"><i
-                                            class="bi bi-files me-lg-2"></i>Ver</a>
-                                    <a href="/empleados/informacion-empleado/crear-empleado-x-departamento/<%= empleado.idEmpleado %> " class="btn  d-flex me-lg-2" style="background-color: #02aeae;"><i
-                                            class="bi bi-file-earmark-plus me-lg-2"></i>Agregar</a>
-                                </div>
-                            </div>
+                            <h5 class=" d-flex justify-content-center text-secondary font-weight-bold">Departamento</h5>
+                            <% if (empleado_x_departamento) { %>
+
+                                <p class="card-text d-flex justify-content-center text-secondary">
+                                    <%= empleado_x_departamento.nombre_dpto %>
+                                </p>
+                                <% }else { %>
+                                    <p class="card-text d-flex justify-content-center text-secondary">No Asignado</p>
+                                    <% } %>
+                                        <div class="d-flex justify-content-center">
+                                            <div class="d-flex flex-nowrap ">
+                                                <a href="/empleados/informacion-empleado/ver-empleado-x-departamento/<%= empleado.idEmpleado %> " class="btn btn-secondary d-flex me-lg-2"><i
+                                                        class="bi bi-files me-lg-2"></i>Ver</a>
+                                                <a href="/empleados/informacion-empleado/crear-empleado-x-departamento/<%= empleado.idEmpleado %> " class="btn  d-flex me-lg-2" style="background-color: #02aeae;"><i
+                                                        class="bi bi-file-earmark-plus me-lg-2"></i>Agregar</a>
+                                            </div>
+                                        </div>
                         </div>
                     </div>
                     <div class="card_poncheEntra">
                         <div class="card-body d-flex justify-content-center flex-column ">
-                            <h5 class=" d-flex justify-content-center text-secondary ">Documentos</h5>
+                            <h5 class=" d-flex justify-content-center text-secondary font-weight-bold">Documentos</h5>
                             <p class="card-text d-flex justify-content-center text-secondary ">Tiene 2 Documentos</p>
                             <div class="d-flex justify-content-center">
                                 <div class="d-flex flex-nowrap ">
@@ -86,8 +94,10 @@
                 <div class="d-xl-flex">
                     <div class="card_pago">
                         <div class="card-body d-flex justify-content-center flex-column ">
-                            <h5 class=" d-flex justify-content-center text-secondary ">Pagos</h5>
-                            <p class="card-text d-flex justify-content-center text-secondary ">Tiene 2 Pagos</p>
+                            <h5 class=" d-flex justify-content-center text-secondary font-weight-bold">Pagos
+                            </h5>
+                            <p class="card-text d-flex justify-content-center text-secondary ">Tiene 2 Pagos Realizados
+                            </p>
                             <div class="d-flex justify-content-center">
                                 <div class="d-flex flex-nowrap ">
                                     <a href="#" class="btn btn-secondary d-flex me-lg-2"><i
@@ -101,8 +111,10 @@
                     </div>
                     <div class="card_documento ">
                         <div class="card-body d-flex justify-content-center flex-column ">
-                            <h5 class="d-flex justify-content-center text-secondary ">Descuentos</h5>
-                            <p class="card-text d-flex justify-content-center text-secondary ">Tiene 2 Descuentos</p>
+                            <h5 class="d-flex justify-content-center text-secondary font-weight-bold">Descuentos</h5>
+                            <p class="card-text d-flex justify-content-center text-secondary ">Tiene
+                                <%= arrayDescuento_x_empleado.length %> Descuentos Activos
+                            </p>
                             <div class="d-flex justify-content-center ">
                                 <div class="d-flex flex-nowrap ">
                                     <a href="/empleados/informacion-empleado/ver-descuento-x-empleado/<%= empleado.idEmpleado %> " class="btn btn-secondary d-flex me-lg-2"><i
@@ -131,7 +143,7 @@
                     <th scope="col">Departamento</th>
                     <th scope="col">Sueldo</th>
                     <th scope="col">T. desc</th>
-                    <th scope="col">Sueldo Neto</th>
+
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>
@@ -164,11 +176,9 @@
                         <%= empleado.sueldoBruto %>
                     </td>
                     <td>
-                        <%= empleado.totalDescuentos %>
+                        <%= descuentoAcumulado.montoDescuentoAcumulado %>
                     </td>
-                    <td>
-                        <%= empleado.sueldoNeto %>
-                    </td>
+
                     <td class="w-0 "><a href="/empleados/detalle-empleado/<%= empleado.idEmpleado %>" class="btn " title="Editar"><i class="bi bi-pencil-square "></i></a>
                         <a href="/empleados/informacion-empleado/<%= empleado.idEmpleado %>" class="btn " title="Ver informacion empleado"><i class="bi bi-folder2-open "></i></a>
                     </td>
