@@ -8,12 +8,10 @@
     <div class="container-fluid mt-2">
         <h2 class=" text-secondary">Departamentos</h2>
         <hr>
-        <div class="d-flex align-items-center justify-content-end ">
-            <a class="btn my-4 me-lg-3" style="background-color: #02aeae;" href="/crear-departamento"><i
-                    class="bi bi-person-plus me-lg-3"></i>Agregar
-                Departamento</a>
-            <a class="btn my-4 text-light " href="/asignamientos-departamentos"><i
-                    class="bi bi-person-plus me-lg-3"></i>Ver
+        <div class="d-lg-flex align-items-center justify-content-end my-4 ">
+            <a class="btn  me-lg-3" style="background-color: #02aeae;" href="/crear-departamento"><i
+                    class="bi bi-person-plus me-lg-3"></i>Agregar Departamento</a>
+            <a class="btn " href="/asignamientos-departamentos"><i class="bi bi-person-plus me-lg-3"></i>Ver
                 Asignamientos</a>
         </div>
 
@@ -47,11 +45,17 @@
                                         timeZone: "America/Santo_Domingo" }).slice(0, 10); %>
                                 </td>
                                 <td>
-                                    <%= departamento.estadoDepartamento %>
+                                    <% if (departamento.estadoDepartamento=="Inactivo" ) { %>
+                                        <p class="bg-danger text-light">
+                                            <%= departamento.estadoDepartamento %>
+                                        </p>
+                                        <% }else { %>
+                                            <%= departamento.estadoDepartamento %>
+                                                <% } %>
                                 </td>
 
                                 <td>
-                                    <a href="/departamentos/editar-departamento/<%= departamento.idDepartamento %>" class="btn btn-secondary">Editar</a>
+                                    <a href="/departamentos/editar-departamento/<%= departamento.idDepartamento %>" class="btn ">Editar</a>
 
                                 </td>
                             </tr>

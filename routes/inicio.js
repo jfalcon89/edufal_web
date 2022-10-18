@@ -14,7 +14,7 @@ router.get('/inicio', async(req, res) => {
         // novedades
         const novedadesDB = await pool.query('SELECT idNovedad, cambio, nombre_dpto, fechaNovedad, name FROM novedades_delete_dpto UNION ALL SELECT idNovedad, cambio, nombre_dpto, fechaNovedad, name FROM novedades_add_dpto UNION ALL SELECT idNovedad, cambio, nombre_dpto, fechaNovedad, name FROM novedades_edit_dpto ;')
 
-        const arrayEmpleadosDB = await pool.query('SELECT * FROM empleados');
+        const arrayEmpleadosDB = await pool.query('SELECT idEmpleado FROM empleados WHERE estatus="Activo"');
         const arrayDepartamentosDB = await pool.query('SELECT * FROM departamentos');
         const arrayUserDB = await pool.query('SELECT * FROM users');
 

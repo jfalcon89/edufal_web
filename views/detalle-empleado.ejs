@@ -3,16 +3,14 @@
 
     <div class="container-fluid mt-2">
 
-        <h2 class="text-secondary" id="inimation-dog">Editar datos de empleado</h2>
+        <h2 class="text-secondary" id="inimation-dog">Editar Empleado</h2>
         <hr>
         <form id="editar" class="" action="/empleados/detalle-empleado/<%= empleado.idEmpleado %> " method="POST">
             <div class="d-flex justify-content-end ">
                 <button class="btn  mt-3 me-lg-3" style="background-color: #02aeae;" type="submit"><i
-                        class="bi bi-check-lg me-lg-3"></i>Guardar
-                    cambios</button>
-                <a href="/empleados" class="btn btn-warning mt-3 me-lg-3"><i class="bi bi-arrow-left me-lg-3"></i>Volver
-                    a
-                    atras</a>
+                        class="bi bi-check-lg me-lg-3"></i>Guardar cambios</button>
+                <a href="/empleados" class="btn btn-warning mt-3 me-lg-3 "><i class="bi bi-arrow-left me-lg-3"></i>Volver a atras</a>
+                <a href="/empleados/informacion-empleado/<%= empleado.idEmpleado %>" class="btn mt-3 "><i class="bi bi-info-circle me-lg-3"></i>Informacion</a>
             </div>
 
             <div class="container-datos-header d-flex">
@@ -25,7 +23,7 @@
                                 <div class="input-group-prepend">
                                     <label class="input-group-text p-2 me-lg-3">Codigo</label>
                                 </div>
-                                <input type="text" name="codigo" value="" class="form-control" id="codigo">
+                                <input type="text" name="codigo" value="<%= empleado.idEmpleado %>" class="form-control" id="codigo" disabled>
                             </div>
                         </div>
 
@@ -38,6 +36,7 @@
                                     <select name="estatus" class="form-control" id="estatus">
                                         <option class="text-dark" value="<%= empleado.estatus %>" selected>
                                             <%= empleado.estatus %>
+                                            
                                         </option>
                                         <option class="text-dark" value="Activo">Activo</option>
                                         <option class="text-dark" value="Inactivo">Inactivo</option>

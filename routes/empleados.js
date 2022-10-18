@@ -18,8 +18,39 @@ router.get('/empleados', async(req, res) => {
                                                             
                                                             WHERE empleados.idEmpleado = empleado_x_departamento.idEmpleado
                                                             AND departamentos.idDepartamento = empleado_x_departamento.idDepartamento`);
-        const arrayEmpleadosDB = await pool.query('SELECT * FROM empleados');
+        const arrayEmpleadosDB = await pool.query('SELECT * FROM empleados WHERE estatus="Activo"');
         res.render("empleados", {
+            // descuentoAcumulado: descuentoAcumuladoDB,
+            empleado_x_departamento: empleado_x_departamentoDB,
+            arrayEmpleados: arrayEmpleadosDB,
+            login: true,
+            name: req.session.name
+
+        });
+
+    } else {
+        res.render('login', {
+            login: false,
+            name: 'Debe iniciar sesión',
+        });
+    }
+
+});
+
+// RENDERIZANDO Y MOSTRANDO  EMPLEADOS INACTIVOS********************
+router.get('/empleados-inactivos', async(req, res) => {
+    if (req.session.loggedin) {
+
+        // const descuentoAcumuladoDB = await pool.query(`SELECT SUM(montoDescuento) montoDescuentoAcumulado FROM descuentos_x_empleados 
+        //                                                     WHERE nombreDescuento IN ('Afp','Ars','Cooperativa','Otros','Prestamo')
+        //                                                     AND descuentos_x_empleados.idEmpleado = ${id}
+        //                                                     AND descuentos_x_empleados.estadoDescuento = 'Activo'`);
+        const empleado_x_departamentoDB = await pool.query(`SELECT * FROM empleado_x_departamento, empleados, departamentos
+                                                            
+                                                            WHERE empleados.idEmpleado = empleado_x_departamento.idEmpleado
+                                                            AND departamentos.idDepartamento = empleado_x_departamento.idDepartamento`);
+        const arrayEmpleadosDB = await pool.query('SELECT * FROM empleados WHERE estatus="Inactivo"');
+        res.render("empleados-inactivos", {
             // descuentoAcumulado: descuentoAcumuladoDB,
             empleado_x_departamento: empleado_x_departamentoDB,
             arrayEmpleados: arrayEmpleadosDB,
@@ -366,7 +397,7 @@ router.get("/empleados/informacion-empleado/crear-empleado-x-departamento/:id", 
 
         try {
             const empleadoDB = await pool.query("SELECT * FROM empleados WHERE idEmpleado = ?", [id]);
-            const arrayDepartamentosDB = await pool.query('SELECT * FROM departamentos');
+            const arrayDepartamentosDB = await pool.query('SELECT * FROM departamentos WHERE estadoDepartamento = "Activo"');
             const empleado_x_departamentoDB = await pool.query(`SELECT * FROM empleado_x_departamento, empleados, departamentos
                                                             WHERE empleado_x_departamento.idEmpleado  = ${id}
                                                             AND empleados.idEmpleado = empleado_x_departamento.idEmpleado
@@ -444,7 +475,7 @@ router.get("/empleados/informacion-empleado/editar-empleado-x-departamento/:id",
 
     try {
         const empleadoDB = await pool.query("SELECT * FROM empleados WHERE idEmpleado = ?", [id]);
-        const arrayDepartamentosDB = await pool.query('SELECT * FROM departamentos');
+        const arrayDepartamentosDB = await pool.query('SELECT * FROM departamentos WHERE estadoDepartamento = "Activo"');
         const empleado_x_departamentoDB = await pool.query(`SELECT * FROM empleado_x_departamento, empleados, departamentos WHERE empleados.idEmpleado = ${id} AND empleados.idEmpleado = empleado_x_departamento.idEmpleado AND departamentos.idDepartamento = empleado_x_departamento.idDepartamento;`);
         console.log(empleado_x_departamentoDB[0]);
         res.render("editar-empleado-x-departamento", {

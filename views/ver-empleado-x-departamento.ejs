@@ -2,7 +2,7 @@
     bgActive3: "active" , bgActive4: "" , bgActive5: "" , bgActive6: "" }); %>
 
     <div class="container-fluid d-flex flex-column mt-2">
-        <h2 class=" text-secondary">Ver Departamento por Empleado</h2>
+        <h2 class=" text-secondary">Departamento Asignado</h2>
         <hr>
 
         <div class="d-flex align-items-center justify-content-end ">
@@ -60,8 +60,8 @@
                     <div class="container-table table-responsive">
                         <table class="table table-sm table-hover ">
                             <thead class="thead-ligth">
-                                <tr>
-                                    <!-- <th scope="col">Id</th> -->
+                                <tr class="text-truncate">
+                                    <th scope="col">Codigo Asignacion</th>
                                     <th scope="col">Codigo Dpto</th>
                                     <th scope="col">Nombre Dpto</th>
                                     <th scope="col">Fecha Registro</th>
@@ -76,8 +76,11 @@
                                 <% if (empleado_x_departamentoDB.length> 0) { %>
                                     <% empleado_x_departamentoDB.forEach(function(entrada) { %>
 
-                                        <tr>
+                                        <tr class="text-truncate">
 
+                                            <td>
+                                                <%= empleado_x_departamento.idEmpleado_x_departamento %>
+                                            </td>
                                             <td>
                                                 <%= empleado_x_departamento.idDepartamento %>
                                             </td>
@@ -88,21 +91,44 @@
                                                 <%= empleado_x_departamento.fechaRegistroB %>
                                             </td>
                                             <td>
-                                                <%= empleado_x_departamento.estadoDepartamentoB %>
+                                                <% if (empleado_x_departamento.estadoDepartamentoB=="Inactivo" ) { %>
+                                                    <p class="bg-danger text-light">
+                                                        <%= empleado_x_departamento.estadoDepartamentoB %>
+                                                    </p>
+                                                    <% }else { %>
+                                                        <%= empleado_x_departamento.estadoDepartamentoB %>
+                                                            <% } %>
                                             </td>
-                                            <td class="w-0 "><a type="submit" href="/empleados/informacion-empleado/eliminar-departamento-x-empleado/<%= empleado_x_departamento.idEmpleado_x_departamento %>" class="btn " title="Eliminar Dpto"><i
-                                                        class="bi bi-x-lg me-lg-3"></i></a>
-                                                <!-- <a id="eventoAct-Inact" href="/empleados/informacion-empleado/<%=  %>" class="btn " title="Ver informacion empleado"><i class="bi bi-folder2-open "></i></a> -->
-                                                <!-- <a type="submit" href="/empleados/informacion-empleado/editar-empleado-x-departamento/<%= %>" class="btnEliminarEmpleado_v_empleado btn  btn-block me-lg-3"><i class="bi bi-x-lg me-lg-3" title="Eliminar dpto empleado"></i></a> -->
-
-
-
-                                                <a id="eventoAct-Inact" href="/empleados/informacion-empleado/editar-empleado-x-departamento/<%= empleado_x_departamento.idEmpleado %>" class="btn btnFormat w-25 me-lg-3">Edit dpto</a>
+                                            <td>
+                                                <a href="/empleados/informacion-empleado/editar-empleado-x-departamento/<%= empleado_x_departamento.idEmpleado %>" class="btn btnFormat ">Editar</a>
+                                                <a type="button" class="btn text-light bg-danger " data-bs-toggle="modal" data-bs-target="#staticBackdrop" title="Eliminar Dpto">Eliminar</a>
 
 
                                             </td>
 
                                         </tr>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="staticBackdropLabel">Eliminar Asignacion Dpto
+                                                        </h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                        <a type="submit" href="/empleados/informacion-empleado/eliminar-departamento-x-empleado/<%= empleado_x_departamento.idEmpleado_x_departamento %>" class="btn text-light bg-danger " title="Eliminar Dpto">Eliminar Dpto<i class="bi me-lg-3"></i></a>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
 
                                         <% }) %>
                                             <% } %>
@@ -117,6 +143,7 @@
 
 
     </div>
+
 
 
 

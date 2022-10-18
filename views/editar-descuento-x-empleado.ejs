@@ -72,7 +72,10 @@
                         <option class="text-dark" value="Otros">Otros</option>
                         <option class="text-dark" value="Prestamo">Prestamo</option>
                     </select>
-                    <input type="number" class="form-control text-secondary" name="montoDescuento" placeholder="Monto Descuento" value="<%= arrayDescuento_x_empleado.montoDescuento %>" required>
+                    <div class="input-field">
+                        <label for="montoDescuento">Monto Descuento</label>
+                        <input type="number" class="form-control text-secondary" name="montoDescuento" id="montoDescuento" placeholder="Monto Descuento" value="<%= arrayDescuento_x_empleado.montoDescuento %>" required>
+                    </div>
                     <select name="estadoDescuento" class="form-control text-secondary" required>
                         <option class="text-dark" value="<%= arrayDescuento_x_empleado.estadoDescuento %>" selected>
                             <%= arrayDescuento_x_empleado.estadoDescuento %>

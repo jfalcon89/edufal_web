@@ -8,14 +8,14 @@
         <div class="d-flex justify-content-end align-items-center">
 
             <div class="justify-content-center d-flex">
-                <spam class="text-light me-lg-3 "><b>Fecha</b>
+                <spam class="text-secondary me-lg-3 "><b>Fecha</b>
                     <%= now %>
                 </spam>
             </div>
         </div>
 
 
-        <form class="" action="" method="POST">
+        <form class="" autocomplete="off" action="" method="POST">
 
             <div class="d-flex justify-content-end">
 
@@ -86,7 +86,7 @@
 
             <div class="form-group d-flex justify-content-center espaciado ">
                 <label for="nombre" class=" p-2">Nombre</label>
-                <input type="text" name="nombre" class="form-control p-2 mt-2" id="nombre" aria-describedby="emailHelp" placeholder="">
+                <input type="text" name="nombre" class="form-control p-2 mt-2" id="nombre" aria-describedby="emailHelp">
             </div>
 
             <div class="form-group d-flex justify-content-center espaciado ">
@@ -97,15 +97,7 @@
             <div class="form-group d-flex justify-content-center espaciado ">
                 <label for="departamento" class=" p-2">Departamento</label>
                 <select name="departamento" class="form-control p-2 mt-2" style="background-color: rgba(255, 0, 0, 0); border: none; ">
-                    <option class="text-dark" value="Seleccionar" selected>Seleccionar</option>
-
-                    <% if (arrayDepartamentos.length> 0) { %>
-                        <% arrayDepartamentos.forEach(departamento=> { %>
-                            <option class="text-dark" value="<%= departamento.nombre_dpto %>">
-                                <%= departamento.nombre_dpto %>
-                            </option>
-                            <% }) %>
-                                <% } %>
+                    <option class="text-dark" value="No Asignado" selected>No Asignado</option>
                 </select>
             </div>
             <div class="form-group d-flex justify-content-center espaciado ">

@@ -131,61 +131,65 @@
 
         <h3 class="mb-3">Detalle Informacion</h3>
 
-        <table class="table table-sm table-hover mb-5">
-            <thead class="thead-ligth">
-                <tr>
-                    <!-- <th scope="col">Id</th> -->
-                    <th scope="col">Codigo</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">apellido</th>
-                    <th scope="col">Cedula</th>
-                    <th scope="col">Estatus</th>
-                    <th scope="col">Departamento</th>
-                    <th scope="col">Sueldo</th>
-                    <th scope="col">T. desc</th>
+        <div class="container-table table-responsive">
 
-                    <th scope="col">Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
+            <table class="table table-sm table-hover mb-5 display responsive nowrap" style="width: 100%;">
+                <thead class="thead-ligth">
+                    <tr class="text-truncate">
+                        <!-- <th scope="col">Id</th> -->
+                        <th scope="col">Codigo</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">apellido</th>
+                        <th scope="col">Cedula</th>
+                        <th scope="col">Estatus</th>
+                        <th scope="col">Departamento</th>
+                        <th scope="col">Sueldo</th>
+                        <th scope="col">T. desc</th>
 
-                <tr>
-                    <td>
-                        <%= empleado.idEmpleado %>
-                    </td>
-                    <td>
-                        <%= empleado.nombre %>
-                    </td>
-                    <td>
-                        <%= empleado.apellido %>
-                    </td>
-                    <td>
-                        <%= empleado.cedula %>
-                    </td>
-                    <td>
-                        <%= empleado.estatus %>
-                    </td>
-                    <td>
-                        <% if (empleado_x_departamento) { %>
-                            <%= empleado_x_departamento.nombre_dpto %>
-                                <% }else { %>
-                                    <p>No Asignado</p>
-                                    <% } %>
-                    </td>
-                    <td>
-                        <%= empleado.sueldoBruto %>
-                    </td>
-                    <td>
-                        <%= descuentoAcumulado.montoDescuentoAcumulado %>
-                    </td>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
 
-                    <td class="w-0 "><a href="/empleados/detalle-empleado/<%= empleado.idEmpleado %>" class="btn " title="Editar"><i class="bi bi-pencil-square "></i></a>
-                        <a href="/empleados/informacion-empleado/<%= empleado.idEmpleado %>" class="btn " title="Ver informacion empleado"><i class="bi bi-folder2-open "></i></a>
-                    </td>
-                </tr>
+                    <tr class="text-truncate">
+                        <td>
+                            <%= empleado.idEmpleado %>
+                        </td>
+                        <td>
+                            <%= empleado.nombre %>
+                        </td>
+                        <td>
+                            <%= empleado.apellido %>
+                        </td>
+                        <td>
+                            <%= empleado.cedula %>
+                        </td>
+                        <td>
+                            <%= empleado.estatus %>
+                        </td>
+                        <td>
+                            <% if (empleado_x_departamento) { %>
+                                <%= empleado_x_departamento.nombre_dpto %>
+                                    <% }else { %>
+                                        <p>No Asignado</p>
+                                        <% } %>
+                        </td>
+                        <td>
+                            <%= empleado.sueldoBruto %>
+                        </td>
+                        <td>
+                            <%= descuentoAcumulado.montoDescuentoAcumulado %>
+                        </td>
 
-            </tbody>
-        </table>
+                        <td class="w-0 "><a href="/empleados/detalle-empleado/<%= empleado.idEmpleado %>" class="btn " title="Editar"><i
+                                    class="bi bi-pencil-square "></i></a>
+                            <a href="/empleados/informacion-empleado/<%= empleado.idEmpleado %>" class="btn " title="Ver informacion empleado"><i class="bi bi-folder2-open "></i></a>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
 
 
 

@@ -4,14 +4,18 @@
     <div class="container-fluid mt-2">
         <h2 id="mensaje"></h2>
 
-        <h2 class="text-secondary" id="inimation-dog">Empleados Activos</h2>
+        <h2 class="text-secondary" id="inimation-dog">Empleados Inactivos</h2>
         <hr>
 
         <div class="d-lg-flex align-items-center justify-content-end my-4">
 
+            <!-- <input type="text" name="buscador" id="buscar" placeholder="Buscar..."> -->
             <a class="btn   me-lg-3" style="background-color: #02aeae;" href="/crear-empleado"><i
-                    class="bi bi-person-plus me-lg-3"></i>Crear nuevo empleado</a>
-            <a href="/empleados-inactivos" class="btn  "><i class="bi bi-arrow-right me-lg-3"></i> Empleados Inactivos</a>
+                    class="bi bi-person-plus me-lg-3"></i>Crear nuevo
+                empleado</a>
+            <a href="/empleados" class="btn btn-warning "><i class="bi bi-arrow-left me-lg-3"></i>Volver
+                a
+                atras</a>
         </div>
         <h1 id="prueba"></h1>
 
@@ -50,7 +54,13 @@
                                     <%= empleado.cedula %>
                                 </td>
                                 <td>
-                                    <%= empleado.estatus %>
+                                    <% if (empleado.estatus=="Inactivo" ) { %>
+                                        <p class="bg-danger text-light">
+                                            <%= empleado.estatus %>
+                                        </p>
+                                        <% }else { %>
+                                            <%= empleado.estatus %>
+                                                <% } %>
                                 </td>
                                 <td>
                                     <%= empleado.tiempoEmpresa.toLocaleString('es-US', {
