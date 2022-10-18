@@ -67,6 +67,8 @@
                                     <th scope="col">Monto Desc</th>
                                     <th scope="col">Fecha Desc</th>
                                     <th scope="col">Estado Desc</th>
+                                    <th scope="col">Fecha Inicial</th>
+                                    <th scope="col">Fecha Final</th>
                                     <th scope="col">Observacion Desc</th>
                                     <th scope="col">Acciones</th>
                                 </tr>
@@ -95,18 +97,26 @@
                                                     timeZone: "America/Santo_Domingo" }) %>
                                             </td>
                                             <td>
-                                                <%= descuento_x_empleado.estadoDescuento %>
+                                                <% if (descuento_x_empleado.estadoDescuento=="Inactivo" ) { %>
+                                                    <p class="bg-danger">
+                                                        <%= descuento_x_empleado.estadoDescuento %>
+                                                    </p>
+                                                    <% }else { %>
+                                                        <%= descuento_x_empleado.estadoDescuento %>
+                                                            <% } %>
+                                            </td>
+                                            <td>
+                                                <%= descuento_x_empleado.fechaInicial.toLocaleDateString() %>
+                                            </td>
+                                            <td>
+                                                <%= descuento_x_empleado.fechaFinal.toLocaleDateString() %>
                                             </td>
                                             <td>
                                                 <%= descuento_x_empleado.observacionDescuento %>
                                             </td>
-                                            <td class="w-0 "><a type="submit" href="/empleados/informacion-empleado/eliminar-descuento-x-empleado/<%= descuento_x_empleado.idDescuento_x_empleado %>" class="btn " title="Eliminar Dpto">Eliminar Desc</a>
-
-
-
-                                                <a id="eventoAct-Inact" href="/empleados/informacion-empleado/editar-descuento-x-empleado/<%= descuento_x_empleado.idDescuento_x_empleado %>" class="btn  ">Edit desc</a>
-
-
+                                            <!-- <td class="w-0 "><a type="submit" href="/empleados/informacion-empleado/eliminar-descuento-x-empleado/<%= descuento_x_empleado.idDescuento_x_empleado %>" class="btn " title="Eliminar Dpto">Eliminar Desc</a> -->
+                                            <td>
+                                                <a id="eventoAct-Inact" href="/empleados/informacion-empleado/editar-descuento-x-empleado/<%= descuento_x_empleado.idDescuento_x_empleado %>" class="btn  ">Editar</a>
                                             </td>
 
                                         </tr>

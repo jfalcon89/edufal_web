@@ -69,7 +69,7 @@ router.post("/crear-departamento", async(req, res) => {
 });
 
 // ELIMINAR DEPARTAMENTO
-router.get("/departamentos/:id", async(req, res) => {
+router.get("/departamentos/editar-departamento/eliminar-departamento/:id", async(req, res) => {
 
     const { id } = req.params;
     console.log(id)

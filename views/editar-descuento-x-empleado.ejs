@@ -80,10 +80,21 @@
                         <option class="text-dark" value="Activo">Activo</option>
                         <option class="text-dark" value="Inactivo">Inactivo</option>
                     </select>
+                    <div class="d-lg-flex mt-2">
+                        <div class="me-lg-3">
+                            <label class="form-control text-secondary font-weight-bold">Fecha Inicial</label>
+                            <input type="text" class="form-control text-secondary bg-light" disabled name="fechaInicial" value="<%= arrayDescuento_x_empleado.fechaInicial.toLocaleDateString() %>">
+                        </div>
+                        <div class="">
+                            <label class="form-control text-secondary font-weight-bold">Fecha Final</label>
+                            <input type="text" class="form-control text-secondary bg-light " disabled name="fechaFinal" value="<%= arrayDescuento_x_empleado.fechaFinal.toLocaleDateString() %>">
+                        </div>
+                    </div>
                     <input maxlength="250" type="text" name="observacionDescuento" class="form-control" placeholder="Observacion" value="<%= arrayDescuento_x_empleado.observacionDescuento %>" required></input>
                     <button type="submit" class="btn  my-4 me-lg-3" style="background-color: #02aeae;">Guardar
                         Cambios</button>
-                    <small id="emailHelp" class="form-text ">Descuentos creados:</small><br>
+                    <a type="button" class="btn text-light bg-danger " data-bs-toggle="modal" data-bs-target="#staticBackdrop" title="Eliminar Dpto">Eliminar
+                    </a> <small id="emailHelp" class="form-text ">Descuentos creados:</small><br>
                     <small id="emailHelp" class="form-text ">
                         <%= %>
                     </small><br>
@@ -100,6 +111,25 @@
     </div>
 
 
-
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Eliminar Descuento
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <%= arrayDescuento_x_empleado.tipoDescuento %>
+                        <%= arrayDescuento_x_empleado.nombreDescuento %>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <a type="submit" href="/empleados/informacion-empleado/eliminar-descuento-x-empleado/<%= arrayDescuento_x_empleado.idDescuento_x_empleado %>" class="btn text-light bg-danger " title="Eliminar Dpto">Eliminar Desc</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <%- include('template/footer'); %>

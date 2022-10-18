@@ -75,6 +75,16 @@
                         <option class="text-dark" value="Activo">Activo</option>
                         <option class="text-dark" value="Inactivo">Inactivo</option>
                     </select>
+                    <div class="d-lg-flex mt-2">
+                        <div class="me-lg-3">
+                            <label class="form-control text-secondary font-weight-bold">Fecha Inicial</label>
+                            <input type="date" class="form-control text-secondary bg-light" name="fechaInicial" required>
+                        </div>
+                        <div class="">
+                            <label class="form-control text-secondary font-weight-bold">Fecha Final</label>
+                            <input type="date" class="form-control text-secondary bg-light" name="fechaFinal" required>
+                        </div>
+                    </div>
                     <textarea maxlength="250" type="text" name="observacionDescuento" class="form-control" placeholder="Observacion" required></textarea>
                     <button type="submit" class="btn  my-4 me-lg-3" style="background-color: #02aeae;">Guardar
                         Cambios</button>
