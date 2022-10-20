@@ -129,6 +129,7 @@ router.get("/empleados/detalle-empleado/:id", async(req, res) => {
                                                             AND empleados.idEmpleado = empleado_x_departamento.idEmpleado
                                                             AND departamentos.idDepartamento = empleado_x_departamento.idDepartamento`);
             const empleadoDB = await pool.query("SELECT * FROM empleados WHERE idEmpleado = ?", [id]);
+            // await pool.query(`INSERT INTO empleados WHERE empleados.idEmpleado = ${id} `);
             console.log(descuentoAfpDB[0]);
             console.log(descuentoArsDB[0]);
             console.log(descuentoPrestamoDB[0]);
@@ -191,7 +192,7 @@ router.post('/empleados/detalle-empleado/:id', async(req, res) => {
 
     await pool.query("UPDATE empleados set ? WHERE idEmpleado = ?", [nuevoEmpleado, id]);
     // req.flash('success', 'Link actualizado correctamente');
-    res.redirect('/empleados');
+    res.redirect(`/empleados/detalle-empleado/${id}`);
 });
 
 
@@ -433,6 +434,7 @@ router.get("/empleados/informacion-empleado/crear-empleado-x-departamento/:id", 
 router.get("/empleados/informacion-empleado/:id", async(req, res) => {
     const id = req.params.id
 
+
     try {
         const empleadoDB = await pool.query("SELECT * FROM empleados WHERE idEmpleado = ?", [id]);
         console.log(empleadoDB[0]);
@@ -513,7 +515,7 @@ router.post('/empleados/informacion-empleado/editar-empleado-x-departamento/:id'
     res.redirect(`/empleados/informacion-empleado/ver-empleado-x-departamento/${id}`);
 });
 
-// @@@@@@@@@@@@@@@@@@@@@@@@@@@@
+// @@@@@@@@@@@@@@@@@@@@@@@@@@@@ DESCUENTOS
 
 // RENDERIZANDO Y MOSTRANDO VISTA CREAR DESCUENTO X EMPLEADO
 router.get("/empleados/informacion-empleado/crear-descuento-x-empleado/:id", async(req, res) => {
@@ -565,7 +567,10 @@ router.post("/empleados/informacion-empleado/crear-descuento-x-empleado/:id", as
 
     };
 
+
     await pool.query('INSERT INTO descuentos_x_empleados set ?', [nuevoDescuento_x_empleado]);
+
+
     // req.flash('success', 'Link guardado correctamente');
     res.redirect(`/empleados/informacion-empleado/ver-descuento-x-empleado/${id}`);
 
@@ -582,7 +587,7 @@ router.get("/empleados/informacion-empleado/ver-descuento-x-empleado/:id", async
                                                             WHERE descuentos_x_empleados.idEmpleado  = ${id}
                                                             AND empleados.idEmpleado = descuentos_x_empleados.idEmpleado;`);
         const empleadoDB = await pool.query("SELECT * FROM empleados WHERE idEmpleado = ?", [id]);
-        console.log(arrayDescuento_x_empleadoDB[0]);
+        console.log(arrayDescuento_x_empleadoDB);
         res.render("ver-descuento-x-empleado", {
             empleado: empleadoDB[0],
             arrayDescuento_x_empleado: arrayDescuento_x_empleadoDB,
@@ -678,6 +683,194 @@ router.post('/empleados/informacion-empleado/editar-descuento-x-empleado/:id', a
 });
 
 
+
+// @@@@@@@@@@@@@@@@@@@@@@@@@@@@ PAGOS
+
+
+// RENDERIZANDO Y MOSTRANDO VISTA CREAR PAGO X EMPLEADO
+router.get("/empleados/informacion-empleado/crear-pago-x-empleado/:id", async(req, res) => {
+    if (req.session.loggedin) {
+
+        const id = req.params.id
+        console.log(id);
+
+        try {
+            const empleadoDB = await pool.query("SELECT * FROM empleados WHERE idEmpleado = ?", [id]);
+            const descuentoAcumuladoDB = await pool.query(`SELECT SUM(montoDescuento) montoDescuentoAcumulado from descuentos_x_empleados
+                                                                WHERE descuentos_x_empleados.idEmpleado = ${id}
+                                                                AND descuentos_x_empleados.estadoDescuento = "Activo"
+                                                                AND descuentos_x_empleados.fechaInicial <= CURDATE()
+                                                                AND descuentos_x_empleados.fechaFinal >= CURDATE()`);
+            const sueldoNetoDB = await pool.query(`SELECT empleados.sueldoBruto  - SUM(descuentos_x_empleados.montoDescuento) montoSueldoNeto
+                                                            FROM descuentos_x_empleados, empleados
+                                                            WHERE descuentos_x_empleados.idEmpleado = ${id}
+                                                            AND empleados.idEmpleado = descuentos_x_empleados.idEmpleado
+                                                            AND descuentos_x_empleados.estadoDescuento = 'Activo' 
+                                                            AND descuentos_x_empleados.fechaInicial <= CURDATE()
+                                                            AND descuentos_x_empleados.fechaFinal >= CURDATE() `);
+
+            console.log(descuentoAcumuladoDB[0])
+            res.render("crear-pago-x-empleado", {
+                empleado: empleadoDB[0],
+                descuentoAcumulado: descuentoAcumuladoDB[0],
+                sueldoNeto: sueldoNetoDB[0],
+                login: true,
+                name: req.session.name
+            });
+
+        } catch (error) {
+            console.log(error)
+            res.render("crear-pago-x-empleado", {
+                error: true,
+                mensaje: "no se encuentra el id seleccionado"
+            });
+        }
+
+
+    } else {
+        res.render('login', {
+            login: false,
+            name: 'Debe iniciar sesión',
+        });
+    }
+});
+
+
+// INSERTANDO NUEVO PAGO X EMPLEADO 
+router.post("/empleados/informacion-empleado/crear-pago-x-empleado/:id", async(req, res) => {
+    const { idEmpleado, departamento, frecuenciaPago, periodo, descuento, sueldoNeto, fechaPago, estadoPago, observacionPago } = req.body;
+    const id = req.params.id
+    const nuevoPago_x_empleado = {
+        idEmpleado,
+        departamento,
+        frecuenciaPago,
+        periodo,
+        descuento,
+        sueldoNeto,
+        fechaPago,
+        estadoPago,
+        observacionPago
+
+    };
+
+
+    await pool.query('INSERT INTO pagos_x_empleados set ?', [nuevoPago_x_empleado]);
+
+
+    // req.flash('success', 'Link guardado correctamente');
+    res.redirect(`/empleados/informacion-empleado/${id}`);
+
+});
+
+
+// RENDERIZANDO Y MOSTRANDO VISTA VER PAGO X EMPLEADO
+router.get("/empleados/informacion-empleado/ver-pago-x-empleado/:id", async(req, res) => {
+    const id = req.params.id
+    console.log(id);
+
+
+    try {
+        const arrayPagos_x_empleadoDB = await pool.query(`SELECT * FROM pagos_x_empleados WHERE pagos_x_empleados.idEmpleado  = ${id}`);
+        const empleadoDB = await pool.query("SELECT * FROM empleados WHERE idEmpleado = ?", [id]);
+
+        console.log(arrayPagos_x_empleadoDB)
+        console.log(empleadoDB[0])
+        res.render("ver-pago-x-empleado", {
+            empleado: empleadoDB[0],
+            arrayPagos_x_empleado: arrayPagos_x_empleadoDB,
+            login: true,
+            name: req.session.name
+        });
+
+    } catch (error) {
+        console.log(error)
+        res.render("ver-pago-x-empleado", {
+            error: true,
+            mensaje: "no se encuentra el id seleccionado",
+            login: true,
+            name: req.session.name
+        });
+    }
+});
+
+
+// RENDERIZANDO Y MOSTRANDO VISTA EDITAR PAGO X EMPLEADO
+router.get("/empleados/informacion-empleado/editar-pago-x-empleado/:id", async(req, res) => {
+    const id = req.params.id
+    console.log(id);
+
+
+    try {
+
+        const arrayPagos_x_empleadoDB = await pool.query(`SELECT * FROM pagos_x_empleados, empleados
+                                                        WHERE pagos_x_empleados.idPago_x_empleado  = ${id}
+                                                        AND empleados.idEmpleado = pagos_x_empleados.idEmpleado`);
+
+
+        console.log(arrayPagos_x_empleadoDB[0]);
+        // const empleadoDB = await pool.query("SELECT * FROM empleados WHERE idEmpleado = ?", [id]);
+        res.render("editar-pago-x-empleado", {
+            // empleado: empleadoDB[0],
+            arrayPagos_x_empleado: arrayPagos_x_empleadoDB[0],
+            login: true,
+            name: req.session.name
+        });
+
+    } catch (error) {
+        console.log(error)
+        res.render("editar-pago-x-empleado", {
+            error: true,
+            mensaje: "no se encuentra el id seleccionado",
+            login: true,
+            name: req.session.name
+        });
+    }
+});
+
+// INSERTANDO MODIFICACION PAGO X 
+router.post('/empleados/informacion-empleado/editar-pago-x-empleado/:id', async(req, res) => {
+    const { idEmpleado, frecuenciaPago, periodo, estadoPago, observacionPago } = req.body;
+    const id = req.params.id
+    const nuevoPago_x_empleado = {
+        idEmpleado,
+        // departamento,
+        frecuenciaPago,
+        periodo,
+        // descuento,
+        // sueldoNeto,
+        // fechaPago,
+        estadoPago,
+        observacionPago
+
+    };
+
+    await pool.query("UPDATE pagos_x_empleados set ? WHERE idPago_x_empleado = ?", [nuevoPago_x_empleado, id]);
+    // req.flash('success', 'Link actualizado correctamente');
+    res.redirect(`/empleados/informacion-empleado/ver-pago-x-empleado/${idEmpleado}`);
+});
+
+
+// ELIMINANDO PAGO POR EMPLEADO
+router.get("/empleados/informacion-empleado/eliminar-pago-x-empleado/:id", async(req, res) => {
+    const { id } = req.params;
+    console.log(id)
+
+    try {
+
+
+        const arrayPagos_x_empleadoDB = await pool.query(`SELECT * FROM pagos_x_empleados, empleados
+                                                            WHERE pagos_x_empleados.idPago_x_empleado  = ${id}
+                                                            AND empleados.idEmpleado = pagos_x_empleados.idEmpleado;`);
+        await pool.query("DELETE FROM pagos_x_empleados WHERE idPago_x_empleado = ?", [id]);
+        // console.log(arrayDescuento_x_empleadoDB[0].idEmpleado)
+        res.redirect(`/empleados/informacion-empleado/ver-pago-x-empleado/${arrayPagos_x_empleadoDB[0].idEmpleado}`);
+
+
+    } catch (error) {
+        console.log(error)
+    }
+
+});
 
 
 module.exports = router;

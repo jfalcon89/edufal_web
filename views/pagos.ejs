@@ -1,10 +1,32 @@
 <%- include('template/cabecera', { tituloWeb: "Nomina - Pagos" , bgActive1: "" , bgActive2: "" , bgActive3: "" ,
     bgActive4: "active" , bgActive5: "" , bgActive6: "" }); %>
 
-    <div class="container-fluid mt-5">
+    <div class="container-fluid mt-2">
         <h2 class="text-secondary">Pagos</h2>
         <hr>
 
+        <form action="" method="get">
+
+
+            <div class="d-flex">
+
+                <label for="buscarEmpleado"><a href="/pagos/resul/<% empleado.nombre %> "></a>Buscar empleado</label>
+                <input type="text" class="form-control" name="cedula" id="buscarEmpleado">
+
+            </div>
+
+            <button type="submit" class="btn">Buscar</button>
+
+        </form>
+
+
+        <% if (empleado.nombre) { %>
+            <h1>
+                <%= empleado.nombre %>
+            </h1>
+            <% } else { %>
+                <h1>SIN RESULTADOS</h1>
+                <% } %>
 
 
 
