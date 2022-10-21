@@ -81,7 +81,7 @@ router.get("/empleados/detalle-empleado/:id", async(req, res) => {
 
 
             const sueldoNetoDB = await pool.query(`SELECT 
-                                                            empleados.sueldoBruto  - SUM(descuentos_x_empleados.montoDescuento) montoSueldoNeto
+                                                            (empleados.sueldoBruto + empleados.comision ) - SUM(descuentos_x_empleados.montoDescuento) montoSueldoNeto
                                                             FROM descuentos_x_empleados, empleados
                                                             WHERE descuentos_x_empleados.idEmpleado = ${id}
                                                             AND empleados.idEmpleado = descuentos_x_empleados.idEmpleado
@@ -168,7 +168,7 @@ router.get("/empleados/detalle-empleado/:id", async(req, res) => {
 router.post('/empleados/detalle-empleado/:id', async(req, res) => {
     const id = req.params.id;
     console.log(req.params.id)
-    const { nombre, apellido, cedula, sexo, estatus, departamento, nacimiento, lugarNacimiento, nacionalidad, sueldoBruto, afp, ars, cooperativa, club, prestamos, totalDescuentos, sueldoNeto } = req.body;
+    const { nombre, apellido, cedula, sexo, estatus, departamento, nacimiento, lugarNacimiento, nacionalidad, sueldoBruto, afp, ars, cooperativa, club, prestamos, totalDescuentos, sueldoNeto, comision } = req.body;
     const nuevoEmpleado = {
         nombre,
         apellido,
@@ -187,7 +187,8 @@ router.post('/empleados/detalle-empleado/:id', async(req, res) => {
         club,
         prestamos,
         totalDescuentos,
-        sueldoNeto
+        sueldoNeto,
+        comision
     };
 
     await pool.query("UPDATE empleados set ? WHERE idEmpleado = ?", [nuevoEmpleado, id]);
@@ -221,6 +222,8 @@ router.get("/empleados/informacion-empleado/:id", async(req, res) => {
         const id = req.params.id
 
         try {
+            const validacionPagos_x_empleadoDB = await pool.query(`SELECT * FROM pagos_x_empleados WHERE pagos_x_empleados.idEmpleado  = ${id} `);
+
             const arrayDescuento_x_empleadoDB = await pool.query(`SELECT descuentos_x_empleados.idDescuento_x_empleado FROM descuentos_x_empleados, empleados
                                                                     WHERE descuentos_x_empleados.idEmpleado  = ${id}
                                                                     AND empleados.idEmpleado = descuentos_x_empleados.idEmpleado 
@@ -240,6 +243,7 @@ router.get("/empleados/informacion-empleado/:id", async(req, res) => {
             const empleadoDB = await pool.query("SELECT * FROM empleados WHERE idEmpleado = ?", [id]);
             console.log(empleadoDB[0]);
             res.render("informacion-empleado", {
+                validacionPagos_x_empleado: validacionPagos_x_empleadoDB,
                 arrayDescuento_x_empleado: arrayDescuento_x_empleadoDB,
                 descuentoAcumulado: descuentoAcumuladoDB[0],
                 empleado_x_departamento: empleado_x_departamentoDB[0],
@@ -294,7 +298,7 @@ router.get('/crear-empleado', async(req, res) => {
 
 //INSERTAR NUEVO EMPLEADO A MYSQL****************
 router.post("/crear-empleado", async(req, res) => {
-    const { nombre, apellido, cedula, sexo, estatus, departamento, nacimiento, lugarNacimiento, nacionalidad, sueldoBruto, afp, ars, cooperativa, club, prestamos, totalDescuentos, sueldoNeto } = req.body;
+    const { nombre, apellido, cedula, sexo, estatus, departamento, nacimiento, lugarNacimiento, nacionalidad, sueldoBruto, afp, ars, cooperativa, club, prestamos, totalDescuentos, sueldoNeto, comision } = req.body;
     const nuevoEmpleado = {
         nombre,
         apellido,
@@ -313,7 +317,8 @@ router.post("/crear-empleado", async(req, res) => {
         club,
         prestamos,
         totalDescuentos,
-        sueldoNeto
+        sueldoNeto,
+        comision
     };
 
     await pool.query('INSERT INTO empleados set ?', [nuevoEmpleado]);
@@ -431,23 +436,26 @@ router.get("/empleados/informacion-empleado/crear-empleado-x-departamento/:id", 
 
 
 // RENDERIZANDO Y MOSTRANDO DATOS DE EMPLEADO POR ID EN LA VISTA INFORMACION-EMPLEADO
-router.get("/empleados/informacion-empleado/:id", async(req, res) => {
-    const id = req.params.id
+// router.get("/empleados/informacion-empleado/:id", async(req, res) => {
+//     const id = req.params.id
 
 
-    try {
-        const empleadoDB = await pool.query("SELECT * FROM empleados WHERE idEmpleado = ?", [id]);
-        console.log(empleadoDB[0]);
-        res.render("informacion-empleado", { empleado: empleadoDB[0] });
+//     try {
 
-    } catch (error) {
-        console.log(error)
-        res.render("informacion-empleado", {
-            error: true,
-            mensaje: "no se encuentra el id seleccionado"
-        });
-    }
-});
+//         const empleadoDB = await pool.query("SELECT * FROM empleados WHERE idEmpleado = ?", [id]);
+//         console.log(empleadoDB[0]);
+//         res.render("informacion-empleado", {
+//             empleado: empleadoDB[0]
+//         });
+
+//     } catch (error) {
+//         console.log(error)
+//         res.render("informacion-empleado", {
+//             error: true,
+//             mensaje: "no se encuentra el id seleccionado"
+//         });
+//     }
+// });
 
 
 
@@ -738,7 +746,7 @@ router.get("/empleados/informacion-empleado/crear-pago-x-empleado/:id", async(re
 
 // INSERTANDO NUEVO PAGO X EMPLEADO 
 router.post("/empleados/informacion-empleado/crear-pago-x-empleado/:id", async(req, res) => {
-    const { idEmpleado, departamento, frecuenciaPago, periodo, descuento, sueldoNeto, fechaPago, estadoPago, observacionPago } = req.body;
+    const { idEmpleado, departamento, frecuenciaPago, periodo, descuento, sueldoNeto, fechaPago, estadoPago, observacionPago, comisionP } = req.body;
     const id = req.params.id
     const nuevoPago_x_empleado = {
         idEmpleado,
@@ -749,7 +757,8 @@ router.post("/empleados/informacion-empleado/crear-pago-x-empleado/:id", async(r
         sueldoNeto,
         fechaPago,
         estadoPago,
-        observacionPago
+        observacionPago,
+        comisionP
 
     };
 
@@ -766,18 +775,23 @@ router.post("/empleados/informacion-empleado/crear-pago-x-empleado/:id", async(r
 // RENDERIZANDO Y MOSTRANDO VISTA VER PAGO X EMPLEADO
 router.get("/empleados/informacion-empleado/ver-pago-x-empleado/:id", async(req, res) => {
     const id = req.params.id
-    console.log(id);
+        // console.log(id);
 
 
     try {
-        const arrayPagos_x_empleadoDB = await pool.query(`SELECT * FROM pagos_x_empleados WHERE pagos_x_empleados.idEmpleado  = ${id}`);
+
+        const validacionPagos_x_empleadoDB = await pool.query(`SELECT * FROM pagos_x_empleados WHERE pagos_x_empleados.idEmpleado  = ${id} `);
+        const arrayPagos_x_empleadoEneroDB = await pool.query(`SELECT * FROM pagos_x_empleados WHERE pagos_x_empleados.idEmpleado  = ${id} and pagos_x_empleados.periodo = "Enero"`);
+        const arrayPagos_x_empleadoFebreroDB = await pool.query(`SELECT * FROM pagos_x_empleados WHERE pagos_x_empleados.idEmpleado  = ${id} and pagos_x_empleados.periodo = "Febrero"`);
         const empleadoDB = await pool.query("SELECT * FROM empleados WHERE idEmpleado = ?", [id]);
 
-        console.log(arrayPagos_x_empleadoDB)
-        console.log(empleadoDB[0])
+
+        // console.log(empleadoDB[0])
         res.render("ver-pago-x-empleado", {
             empleado: empleadoDB[0],
-            arrayPagos_x_empleado: arrayPagos_x_empleadoDB,
+            validacionPagos_x_empleado: validacionPagos_x_empleadoDB,
+            arrayPagos_x_empleadoEnero: arrayPagos_x_empleadoEneroDB,
+            arrayPagos_x_empleadoFebrero: arrayPagos_x_empleadoFebreroDB,
             login: true,
             name: req.session.name
         });

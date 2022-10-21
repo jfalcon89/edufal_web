@@ -11,11 +11,22 @@ const estatusInfEmp = document.querySelector(".estatusInfEmp")
 let sueldoBruto = document.getElementById("sueldoBruto");
 let totalDescuentos = document.getElementById("totalDescuentos");
 let sueldoNeto = document.getElementById("sueldoNeto");
+let comision = document.getElementById("comision");
+
+
+
+
 if (totalDescuentos.value == '') {
-    console.log('vacio esta')
+    console.log('sin descuento')
     sueldoNeto.value = sueldoBruto.value;
 
+    sueldoNeto.value = parseInt(sueldoBruto.value) + parseInt(comision.value)
 }
+
+
+
+
+
 
 console.log(sueldoBruto.value)
 console.log(sueldoNeto.value)

@@ -119,7 +119,11 @@
             <div class="d-lg-flex justify-content-between">
                 <div class="form-group d-flex justify-content-center flex-wrap ">
                     <label for="sueldoBruto" class=" p-2">Sueldo Bruto</label>
-                    <input type="text" name="sueldoBruto" value="<%= empleado.sueldoBruto %>" class="form-control p-2 text-center mt-2" id="sueldoBruto" aria-describedby="emailHelp" value="">
+                    <input type="number" name="sueldoBruto" value="<%= empleado.sueldoBruto %>" class="form-control p-2 text-center mt-2" id="sueldoBruto" aria-describedby="emailHelp" value="">
+                </div>
+                <div class="form-group d-flex justify-content-center flex-wrap ">
+                    <label for="comision" class=" p-2">Comision</label>
+                    <input type="number" name="comision" value="<%= empleado.comision %>" class="form-control p-2 text-center mt-2" id="comision" aria-describedby="emailHelp" value="">
                 </div>
                 <div class="form-group d-flex justify-content-center flex-wrap ">
                     <label for="afp" class="p-2">Afp</label>

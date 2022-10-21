@@ -50,85 +50,166 @@
 
 
 
-        <% if (arrayPagos_x_empleado.length < 1) { %>
+        <% if (validacionPagos_x_empleado.length < 1) { %>
             <h5 class="bg-danger d-flex justify-content-center text-light">No tiene Pagos Aplicado
             </h5>
             <% } %>
 
-                <div class="container-departamento">
+                <% if (arrayPagos_x_empleadoEnero.length) { %>
+                    <h3>ENERO</h3>
+                    <div class="container-departamento">
+                        <div class="container-table table-responsive">
+                            <table class="table table-sm table-hover ">
+                                <thead class="thead-ligth">
+                                    <tr class="text-truncate">
+                                        <th scope="col">Codigo Pago</th>
+                                        <th scope="col">Codigo Empleado</th>
+                                        <th scope="col">Departamento</th>
+                                        <th scope="col">Tipo de pago</th>
+                                        <th scope="col">Mes</th>
+                                        <th scope="col">Descuento</th>
+                                        <th scope="col">Comision</th>
+                                        <th scope="col">Pago Neto</th>
+                                        <th scope="col">Fecha Pago</th>
+                                        <th scope="col">Estado Pago</th>
+                                        <th scope="col">Observacion</th>
+                                        <th scope="col">Acciones</th>
+                                    </tr>
+                                </thead>
 
-                    <div class="container-table table-responsive">
-                        <table class="table table-sm table-hover ">
-                            <thead class="thead-ligth">
-                                <tr class="text-truncate">
-                                    <th scope="col">Codigo Pago</th>
-                                    <th scope="col">Codigo Empleado</th>
-                                    <th scope="col">Departamento</th>
-                                    <th scope="col">Tipo de pago</th>
-                                    <th scope="col">Mes</th>
-                                    <th scope="col">Descuento</th>
-                                    <th scope="col">Pago Neto</th>
-                                    <th scope="col">Fecha Pago</th>
-                                    <th scope="col">Estado Pago</th>
-                                    <th scope="col">Observacion</th>
-                                    <th scope="col">Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                                <tbody>
 
-                                <% if (arrayPagos_x_empleado.length> 0) { %>
-                                    <% arrayPagos_x_empleado.forEach(pagos_x_empleado=> { %>
+                                    <% if (arrayPagos_x_empleadoEnero.length> 0) { %>
+                                        <% arrayPagos_x_empleadoEnero.forEach(pagos_x_empleado=> { %>
+                                            <tr class="text-truncate">
 
-                                        <tr class="text-truncate">
+                                                <td>
+                                                    <%= pagos_x_empleado.idPago_x_empleado %>
+                                                </td>
+                                                <td id="codDesc">
+                                                    <%= pagos_x_empleado.idEmpleado %>
+                                                </td>
+                                                <td>
+                                                    <%= pagos_x_empleado.departamento %>
+                                                </td>
+                                                <td>
+                                                    <%= pagos_x_empleado.frecuenciaPago %>
+                                                </td>
+                                                <td>
+                                                    <%= pagos_x_empleado.periodo %>
+                                                </td>
+                                                <td>
+                                                    <%= pagos_x_empleado.descuento %>
+                                                </td>
+                                                <td>
+                                                    <%= pagos_x_empleado.comisionP %>
+                                                </td>
+                                                <td>
+                                                    <%= pagos_x_empleado.sueldoNeto %>
+                                                </td>
+                                                <td>
+                                                    <%= pagos_x_empleado.fechaPago.toLocaleString('es-US', { timeZone: "America/Santo_Domingo" }) %>
+                                                </td>
+                                                <td>
+                                                    <%= pagos_x_empleado.estadoPago %>
+                                                </td>
+                                                <td>
+                                                    <%= pagos_x_empleado.observacionPago %>
+                                                </td>
 
-                                            <td>
-                                                <%= pagos_x_empleado.idPago_x_empleado %>
-                                            </td>
-                                            <td id="codDesc">
-                                                <%= pagos_x_empleado.idEmpleado %>
-                                            </td>
-                                            <td>
-                                                <%= pagos_x_empleado.departamento %>
-                                            </td>
-                                            <td>
-                                                <%= pagos_x_empleado.frecuenciaPago %>
-                                            </td>
-                                            <td>
-                                                <%= pagos_x_empleado.periodo %>
-                                            </td>
-                                            <td>
-                                                <%= pagos_x_empleado.descuento %>
-                                            </td>
-                                            <td>
-                                                <%= pagos_x_empleado.sueldoNeto %>
-                                            </td>
-                                            <td>
-                                                <%= pagos_x_empleado.fechaPago.toLocaleString('es-US', {
-                                                    timeZone: "America/Santo_Domingo" }) %>
-                                            </td>
-                                            <td>
-                                                <%= pagos_x_empleado.estadoPago %>
-                                            </td>
-                                            <td>
-                                                <%= pagos_x_empleado.observacionPago %>
-                                            </td>
+                                                <td>
+                                                    <a id="eventoAct-Inact" href="/empleados/informacion-empleado/editar-pago-x-empleado/<%= pagos_x_empleado.idPago_x_empleado %>" class="btn  ">Editar</a>
+                                                </td>
 
-                                            <td>
-                                                <a id="eventoAct-Inact" href="/empleados/informacion-empleado/editar-pago-x-empleado/<%= pagos_x_empleado.idPago_x_empleado %>" class="btn  ">Editar</a>
-                                            </td>
+                                            </tr>
 
-                                        </tr>
+                                            <% }) %>
+                                                <% } %>
 
 
-                                        <% }) %>
-                                            <% } %>
+                                </tbody>
+                            </table>
+                        </div>
 
-
-                            </tbody>
-                        </table>
                     </div>
+                    <% } %>
 
-                </div>
+                        <% if (arrayPagos_x_empleadoFebrero.length) { %>
+                            <h3>FEBRERO</h3>
+                            <div class="container-departamento">
+                                <div class="container-table table-responsive">
+                                    <table class="table table-sm table-hover ">
+                                        <thead class="thead-ligth">
+                                            <tr class="text-truncate">
+                                                <th scope="col">Codigo Pago</th>
+                                                <th scope="col">Codigo Empleado</th>
+                                                <th scope="col">Departamento</th>
+                                                <th scope="col">Tipo de pago</th>
+                                                <th scope="col">Mes</th>
+                                                <th scope="col">Descuento</th>
+                                                <th scope="col">Pago Neto</th>
+                                                <th scope="col">Fecha Pago</th>
+                                                <th scope="col">Estado Pago</th>
+                                                <th scope="col">Observacion</th>
+                                                <th scope="col">Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% if (arrayPagos_x_empleadoFebrero.length> 0) { %>
+                                                <% arrayPagos_x_empleadoFebrero.forEach(pagos_x_empleado=> { %>
+
+                                                    <tr class="text-truncate">
+
+                                                        <td>
+                                                            <%= pagos_x_empleado.idPago_x_empleado %>
+                                                        </td>
+                                                        <td id="codDesc">
+                                                            <%= pagos_x_empleado.idEmpleado %>
+                                                        </td>
+                                                        <td>
+                                                            <%= pagos_x_empleado.departamento %>
+                                                        </td>
+                                                        <td>
+                                                            <%= pagos_x_empleado.frecuenciaPago %>
+                                                        </td>
+                                                        <td>
+                                                            <%= pagos_x_empleado.periodo %>
+                                                        </td>
+                                                        <td>
+                                                            <%= pagos_x_empleado.descuento %>
+                                                        </td>
+                                                        <td>
+                                                            <%= pagos_x_empleado.sueldoNeto %>
+                                                        </td>
+                                                        <td>
+                                                            <%= pagos_x_empleado.fechaPago.toLocaleString('es-US', {
+                                                    timeZone: "America/Santo_Domingo" }) %>
+                                                        </td>
+                                                        <td>
+                                                            <%= pagos_x_empleado.estadoPago %>
+                                                        </td>
+                                                        <td>
+                                                            <%= pagos_x_empleado.observacionPago %>
+                                                        </td>
+
+                                                        <td>
+                                                            <a id="eventoAct-Inact" href="/empleados/informacion-empleado/editar-pago-x-empleado/<%= pagos_x_empleado.idPago_x_empleado %>" class="btn  ">Editar</a>
+                                                        </td>
+
+                                                    </tr>
+
+
+                                                    <% }) %>
+                                                        <% } %>
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                            <% } %>
+
 
 
     </div>
