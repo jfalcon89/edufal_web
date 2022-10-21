@@ -52,15 +52,22 @@
 
                 <div class="form-group">
                     <input type="text" class="form-control visually-hidden" name="idEmpleado" placeholder="Codigo Empleado" value="<%= empleado.idEmpleado %> " required>
-                    <input type="text" class="form-control" name="departamento" placeholder="" value="<%= empleado.departamento %> " required>
-                    <select name="frecuenciaPago" class="form-control mt-2 text-secondary" style="background-color: rgba(255, 0, 0, 0); border: none;" required>
+                    <% if (empleado_x_departamento.length> 0) { %>
+                        <% empleado_x_departamento.forEach(departamentoEmpleado=> { %>
+                            <input type="text" class="form-control" name="departamento" placeholder="" value="<%= departamentoEmpleado.nombre_dpto %> " required>
+                            <% }) %>
+                                <% }else { %>
+                                    <p class="bg-danger text-light">Puesto No Asignado</p>
+                                    <input type="text" class="form-control" name="departamento" placeholder="" value="" required>
+                                    <% } %>
+                                        <select name="frecuenciaPago" class="form-control mt-2 text-secondary" style="background-color: rgba(255, 0, 0, 0); border: none;" required>
                         <option class="text-dark" value="" selected>Seleccionar Frecuencia Pago
                         </option>
                         <option class="text-dark" value="Pago Semanal">Pago Semanal</option>
                         <option class="text-dark" value="Pago Quincenal">Pago Quincenal</option>
                         <option class="text-dark" value="Pago Mensual">Pago Mensual</option>
                     </select>
-                    <select name="periodo" class="form-control mt-2 text-secondary" style="background-color: rgba(255, 0, 0, 0); border: none;" required>
+                                        <select name="periodo" class="form-control mt-2 text-secondary" style="background-color: rgba(255, 0, 0, 0); border: none;" required>
                         <option class="text-dark" value="" selected>Seleccionar Periodo
                         </option>
                         <option class="text-dark" value="Enero">Enero</option>
@@ -76,32 +83,32 @@
                         <option class="text-dark" value="Noviembre">Noviembre</option>
                         <option class="text-dark" value="Diciembre">Diciembre</option>
                     </select>
-                    <div class="input-field">
+                                        <div class="input-field">
 
-                        <label for="descuento" class="text-secondary">Total Descuentos</label>
-                        <input type="text" class="form-control text-secondary" name="descuento" id="descuento" placeholder="" value="<%= empleado.totalDescuentos %> " required>
-                    </div>
-                    <div class="input-field">
+                                            <label for="descuento" class="text-secondary">Total Descuentos</label>
+                                            <input type="text" class="form-control text-secondary" name="descuento" id="descuento" placeholder="" value="<%= empleado.totalDescuentos %> " required>
+                                        </div>
+                                        <div class="input-field">
 
-                        <label for="comisionP" class="text-secondary">Comision</label>
-                        <input type="text" class="form-control text-secondary" name="comisionP" id="comisionP" placeholder="" value="<%= empleado.comision %> " required>
-                    </div>
-                    <div class="input-field">
+                                            <label for="comisionP" class="text-secondary">Comision</label>
+                                            <input type="text" class="form-control text-secondary" name="comisionP" id="comisionP" placeholder="" value="<%= empleado.comision %> " required>
+                                        </div>
+                                        <div class="input-field">
 
-                        <label for="sueldoNeto" class="text-secondary">Sueldo Neto</label>
-                        <input type="text" class="form-control text-secondary" name="sueldoNeto" id="sueldoNeto" placeholder="" value="<%= empleado.sueldoNeto %> " required>
-                    </div>
-                    <select name="estadoPago" class="form-control text-secondary" required>
+                                            <label for="sueldoNeto" class="text-secondary">Sueldo Neto</label>
+                                            <input type="text" class="form-control text-secondary" name="sueldoNeto" id="sueldoNeto" placeholder="" value="<%= empleado.sueldoNeto %> " required>
+                                        </div>
+                                        <select name="estadoPago" class="form-control text-secondary" required>
 
                         <option class="text-dark" value="Activo" selected>Activo</option>
                         <option class="text-dark" value="Inactivo">Inactivo</option>
                     </select>
 
-                    <textarea maxlength="250" type="text" name="observacionPago" class="form-control" placeholder="Observacion" required></textarea>
-                    <button type="submit" class="btn  my-4 me-lg-3" style="background-color: #02aeae;">Guardar
+                                        <textarea maxlength="250" type="text" name="observacionPago" class="form-control" placeholder="Observacion" required></textarea>
+                                        <button type="submit" class="btn  my-4 me-lg-3" style="background-color: #02aeae;">Guardar
                         Cambios</button>
-                    <small id="emailHelp" class="form-text ">pagos creados:</small><br>
-                    <small id="emailHelp" class="form-text ">
+                                        <small id="emailHelp" class="form-text ">pagos creados:</small><br>
+                                        <small id="emailHelp" class="form-text ">
                         <%= %>
                     </small><br>
 

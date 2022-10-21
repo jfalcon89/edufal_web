@@ -17,12 +17,14 @@ router.get('/inicio', async(req, res) => {
         const arrayEmpleadosDB = await pool.query('SELECT idEmpleado FROM empleados WHERE estatus="Activo"');
         const arrayDepartamentosDB = await pool.query('SELECT * FROM departamentos');
         const arrayUserDB = await pool.query('SELECT * FROM users');
+        const validacionPagos_x_empleadoDB = await pool.query(`SELECT * FROM pagos_x_empleados `);
 
         res.render("dashboard", {
             novedades: novedadesDB,
             arrayEmpleados: arrayEmpleadosDB,
             arrayDepartamentos: arrayDepartamentosDB,
             arrayUser: arrayUserDB,
+            validacionPagos_x_empleado: validacionPagos_x_empleadoDB,
             login: true,
             name: req.session.name
 

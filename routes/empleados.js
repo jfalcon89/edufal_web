@@ -127,7 +127,8 @@ router.get("/empleados/detalle-empleado/:id", async(req, res) => {
             const empleado_x_departamentoDB = await pool.query(`SELECT * FROM empleado_x_departamento, empleados, departamentos
                                                             WHERE empleado_x_departamento.idEmpleado  = ${id}
                                                             AND empleados.idEmpleado = empleado_x_departamento.idEmpleado
-                                                            AND departamentos.idDepartamento = empleado_x_departamento.idDepartamento`);
+                                                            AND departamentos.idDepartamento = empleado_x_departamento.idDepartamento
+                                                            AND empleado_x_departamento.estadoDepartamentoB = "Activo"`);
             const empleadoDB = await pool.query("SELECT * FROM empleados WHERE idEmpleado = ?", [id]);
             // await pool.query(`INSERT INTO empleados WHERE empleados.idEmpleado = ${id} `);
             console.log(descuentoAfpDB[0]);
@@ -239,7 +240,8 @@ router.get("/empleados/informacion-empleado/:id", async(req, res) => {
             const empleado_x_departamentoDB = await pool.query(`SELECT * FROM empleado_x_departamento, empleados, departamentos
                                                             WHERE empleado_x_departamento.idEmpleado  = ${id}
                                                             AND empleados.idEmpleado = empleado_x_departamento.idEmpleado
-                                                            AND departamentos.idDepartamento = empleado_x_departamento.idDepartamento`);
+                                                            AND departamentos.idDepartamento = empleado_x_departamento.idDepartamento
+                                                            AND empleado_x_departamento.estadoDepartamentoB = "Activo"`);
             const empleadoDB = await pool.query("SELECT * FROM empleados WHERE idEmpleado = ?", [id]);
             console.log(empleadoDB[0]);
             res.render("informacion-empleado", {
@@ -704,6 +706,11 @@ router.get("/empleados/informacion-empleado/crear-pago-x-empleado/:id", async(re
 
         try {
             const empleadoDB = await pool.query("SELECT * FROM empleados WHERE idEmpleado = ?", [id]);
+            const empleado_x_departamentoDB = await pool.query(`SELECT * FROM empleado_x_departamento, empleados, departamentos
+                                                            WHERE empleado_x_departamento.idEmpleado  = ${id}
+                                                            AND empleados.idEmpleado = empleado_x_departamento.idEmpleado
+                                                            AND departamentos.idDepartamento = empleado_x_departamento.idDepartamento
+                                                            AND empleado_x_departamento.estadoDepartamentoB = "Activo"`);
             const descuentoAcumuladoDB = await pool.query(`SELECT SUM(montoDescuento) montoDescuentoAcumulado from descuentos_x_empleados
                                                                 WHERE descuentos_x_empleados.idEmpleado = ${id}
                                                                 AND descuentos_x_empleados.estadoDescuento = "Activo"
@@ -720,6 +727,7 @@ router.get("/empleados/informacion-empleado/crear-pago-x-empleado/:id", async(re
             console.log(descuentoAcumuladoDB[0])
             res.render("crear-pago-x-empleado", {
                 empleado: empleadoDB[0],
+                empleado_x_departamento: empleado_x_departamentoDB,
                 descuentoAcumulado: descuentoAcumuladoDB[0],
                 sueldoNeto: sueldoNetoDB[0],
                 login: true,
@@ -783,6 +791,16 @@ router.get("/empleados/informacion-empleado/ver-pago-x-empleado/:id", async(req,
         const validacionPagos_x_empleadoDB = await pool.query(`SELECT * FROM pagos_x_empleados WHERE pagos_x_empleados.idEmpleado  = ${id} `);
         const arrayPagos_x_empleadoEneroDB = await pool.query(`SELECT * FROM pagos_x_empleados WHERE pagos_x_empleados.idEmpleado  = ${id} and pagos_x_empleados.periodo = "Enero"`);
         const arrayPagos_x_empleadoFebreroDB = await pool.query(`SELECT * FROM pagos_x_empleados WHERE pagos_x_empleados.idEmpleado  = ${id} and pagos_x_empleados.periodo = "Febrero"`);
+        const arrayPagos_x_empleadoMarzoDB = await pool.query(`SELECT * FROM pagos_x_empleados WHERE pagos_x_empleados.idEmpleado  = ${id} and pagos_x_empleados.periodo = "Marzo"`);
+        const arrayPagos_x_empleadoAbrilDB = await pool.query(`SELECT * FROM pagos_x_empleados WHERE pagos_x_empleados.idEmpleado  = ${id} and pagos_x_empleados.periodo = "Abril"`);
+        const arrayPagos_x_empleadoMayoDB = await pool.query(`SELECT * FROM pagos_x_empleados WHERE pagos_x_empleados.idEmpleado  = ${id} and pagos_x_empleados.periodo = "Mayo"`);
+        const arrayPagos_x_empleadoJunioDB = await pool.query(`SELECT * FROM pagos_x_empleados WHERE pagos_x_empleados.idEmpleado  = ${id} and pagos_x_empleados.periodo = "Junio"`);
+        const arrayPagos_x_empleadoJulioDB = await pool.query(`SELECT * FROM pagos_x_empleados WHERE pagos_x_empleados.idEmpleado  = ${id} and pagos_x_empleados.periodo = "Julio"`);
+        const arrayPagos_x_empleadoAgostoDB = await pool.query(`SELECT * FROM pagos_x_empleados WHERE pagos_x_empleados.idEmpleado  = ${id} and pagos_x_empleados.periodo = "Agosto"`);
+        const arrayPagos_x_empleadoSeptiembreDB = await pool.query(`SELECT * FROM pagos_x_empleados WHERE pagos_x_empleados.idEmpleado  = ${id} and pagos_x_empleados.periodo = "Septiembre"`);
+        const arrayPagos_x_empleadoOctubreDB = await pool.query(`SELECT * FROM pagos_x_empleados WHERE pagos_x_empleados.idEmpleado  = ${id} and pagos_x_empleados.periodo = "Octubre"`);
+        const arrayPagos_x_empleadoNoviembreDB = await pool.query(`SELECT * FROM pagos_x_empleados WHERE pagos_x_empleados.idEmpleado  = ${id} and pagos_x_empleados.periodo = "Noviembre"`);
+        const arrayPagos_x_empleadoDiciembreDB = await pool.query(`SELECT * FROM pagos_x_empleados WHERE pagos_x_empleados.idEmpleado  = ${id} and pagos_x_empleados.periodo = "Diciembre"`);
         const empleadoDB = await pool.query("SELECT * FROM empleados WHERE idEmpleado = ?", [id]);
 
 
@@ -792,6 +810,16 @@ router.get("/empleados/informacion-empleado/ver-pago-x-empleado/:id", async(req,
             validacionPagos_x_empleado: validacionPagos_x_empleadoDB,
             arrayPagos_x_empleadoEnero: arrayPagos_x_empleadoEneroDB,
             arrayPagos_x_empleadoFebrero: arrayPagos_x_empleadoFebreroDB,
+            arrayPagos_x_empleadoMarzo: arrayPagos_x_empleadoMarzoDB,
+            arrayPagos_x_empleadoAbril: arrayPagos_x_empleadoAbrilDB,
+            arrayPagos_x_empleadoMayo: arrayPagos_x_empleadoMayoDB,
+            arrayPagos_x_empleadoJunio: arrayPagos_x_empleadoJunioDB,
+            arrayPagos_x_empleadoJulio: arrayPagos_x_empleadoJulioDB,
+            arrayPagos_x_empleadoAgosto: arrayPagos_x_empleadoAgostoDB,
+            arrayPagos_x_empleadoSeptiembre: arrayPagos_x_empleadoSeptiembreDB,
+            arrayPagos_x_empleadoOctubre: arrayPagos_x_empleadoOctubreDB,
+            arrayPagos_x_empleadoNoviembre: arrayPagos_x_empleadoNoviembreDB,
+            arrayPagos_x_empleadoDiciembre: arrayPagos_x_empleadoDiciembreDB,
             login: true,
             name: req.session.name
         });
