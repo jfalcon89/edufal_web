@@ -47,12 +47,13 @@
         </div>
 
         <form class="" action="" method="POST">
-            <div class="container-departamento">
+            <input type="text" class="form-control visually-hidden" name="idEmpleado" placeholder="Codigo Empleado" value="<%= empleado.idEmpleado %> " required>
 
 
-                <div class="form-group">
-                    <input type="text" class="form-control visually-hidden" name="idEmpleado" placeholder="Codigo Empleado" value="<%= empleado.idEmpleado %> " required>
-                    <select name="tipoDescuento" class="form-control mt-2 text-secondary" style="background-color: rgba(255, 0, 0, 0); border: none;" required>
+            <div class="form-group ">
+                <div class="">
+                    <label for="tipoDescuento">Tipo de descuento</label>
+                    <select name="tipoDescuento" class="form-control mt-2 text-secondary" id="tipoDescuento" style="background-color: rgba(255, 0, 0, 0); border: none;" required>
                         <option class="text-dark" value="Seleccionar Tipo Descuento" selected>Seleccionar Tipo Descuento
                         </option>
                         <option class="text-dark" value="Recurrente">Recurrente</option>
@@ -60,7 +61,10 @@
                         <option class="text-dark" value="Provisional">Provisional</option>
                         <option class="text-dark" value="Otros">Otros</option>
                     </select>
-                    <select name="nombreDescuento" class="form-control mt-2 text-secondary" style="background-color: rgba(255, 0, 0, 0); border: none;" required>
+                </div>
+                <div class="">
+                    <label for="nombreDescuento">Nombre Descuento</label>
+                    <select name="nombreDescuento" class="form-control mt-2 text-secondary" id="nombreDescuento" style="background-color: rgba(255, 0, 0, 0); border: none;" required>
                         <option class="text-dark" value="Seleccionar Descuento" selected>Seleccionar Descuento
                         </option>
                         <option class="text-dark" value="Ars">Ars</option>
@@ -69,16 +73,22 @@
                         <option class="text-dark" value="Otros">Otros</option>
                         <option class="text-dark" value="Prestamo">Prestamo</option>
                     </select>
-                    <div class="input-field">
+                </div>
 
-                        <label for="montoDescuento" class="text-secondary">Monto Descuento</label>
-                        <input type="number" class="form-control text-secondary" name="montoDescuento" id="montoDescuento" placeholder="Ingresar Monto" required>
-                    </div>
-                    <select name="estadoDescuento" class="form-control text-secondary" required>
-                        <option class="text-dark" value="Selected" selected>Seleccionar Estado</option>
-                        <option class="text-dark" value="Activo">Activo</option>
+                <div class="">
+
+                    <label for="montoDescuento" class="text-secondary">Monto Descuento</label>
+                    <input type="number" class="form-control text-secondary" name="montoDescuento" id="montoDescuento" placeholder="Ingresar Monto" required>
+                </div>
+                <div class="">
+                    <label for="estadoDescuento">Estado</label>
+                    <select name="estadoDescuento" class="form-control text-secondary" id="estadoDescuento" required>
+                
+                        <option class="text-dark" value="Activo" selected>Activo</option>
                         <option class="text-dark" value="Inactivo">Inactivo</option>
                     </select>
+                </div>
+                <div class="">
                     <div class="d-lg-flex mt-2">
                         <div class="me-lg-3">
                             <label class="form-control text-secondary font-weight-bold">Fecha Inicial</label>
@@ -92,18 +102,15 @@
                     <textarea maxlength="250" type="text" name="observacionDescuento" class="form-control" placeholder="Observacion" required></textarea>
                     <button type="submit" class="btn  my-4 me-lg-3" style="background-color: #02aeae;">Guardar
                         Cambios</button>
-                    <small id="emailHelp" class="form-text ">Descuentos creados:</small><br>
-                    <small id="emailHelp" class="form-text ">
-                        <%= %>
-                    </small><br>
-
                 </div>
+
+            </div>
 
 
 
         </form>
 
-        </div>
+
 
 
     </div>

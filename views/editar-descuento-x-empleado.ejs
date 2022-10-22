@@ -48,67 +48,77 @@
         </div>
 
         <form class="" action="" method="POST">
-            <div class="container-departamento">
+            <input type="text" class="form-control visually-hidden" name="idEmpleado" placeholder="Codigo Empleado" value="<%= arrayDescuento_x_empleado.idEmpleado %> " required>
 
 
-                <div class="form-group">
-                    <input type="text" class="form-control visually-hidden" name="idEmpleado" placeholder="Codigo Empleado" value="<%= arrayDescuento_x_empleado.idEmpleado %> " required>
+
+            <div class="form-group">
+                <div>
+
+                    <label for="tipoDescuento">Tipo de descuento</label>
                     <select name="tipoDescuento" class="form-control mt-2 text-secondary" style="background-color: rgba(255, 0, 0, 0); border: none;" required>
-                        <option class="text-dark" value="<%= arrayDescuento_x_empleado.tipoDescuento %>" selected>
-                            <%= arrayDescuento_x_empleado.tipoDescuento %>
-                        </option>
-                        <option class="text-dark" value="Recurrente">Recurrente</option>
-                        <option class="text-dark" value="Fijo">Fijo</option>
-                        <option class="text-dark" value="Provisional">Provisional</option>
-                        <option class="text-dark" value="Otros">Otros</option>
-                    </select>
-                    <select name="nombreDescuento" class="form-control mt-2 text-secondary" style="background-color: rgba(255, 0, 0, 0); border: none;" required>
-                        <option class="text-dark" value="<%= arrayDescuento_x_empleado.nombreDescuento %>" selected>
-                            <%= arrayDescuento_x_empleado.nombreDescuento %>
-                        </option>
-                        <option class="text-dark" value="Ars">Ars</option>
-                        <option class="text-dark" value="Afp">Afp</option>
-                        <option class="text-dark" value="Cooperativa">Cooperativa</option>
-                        <option class="text-dark" value="Otros">Otros</option>
-                        <option class="text-dark" value="Prestamo">Prestamo</option>
-                    </select>
-                    <div class="input-field">
-                        <label for="montoDescuento" class="text-secondary">Monto Descuento</label>
-                        <input type="number" class="form-control text-secondary" name="montoDescuento" id="montoDescuento" placeholder="Monto Descuento" value="<%= arrayDescuento_x_empleado.montoDescuento %>" required>
-                    </div>
-                    <select name="estadoDescuento" class="form-control text-secondary" required>
-                        <option class="text-dark" value="<%= arrayDescuento_x_empleado.estadoDescuento %>" selected>
-                            <%= arrayDescuento_x_empleado.estadoDescuento %>
-                        </option>
-                        <option class="text-dark" value="Activo">Activo</option>
-                        <option class="text-dark" value="Inactivo">Inactivo</option>
-                    </select>
-                    <div class="d-lg-flex mt-2">
-                        <div class="me-lg-3">
-                            <label class="form-control text-secondary font-weight-bold">Fecha Inicial</label>
-                            <input type="text" class="form-control text-secondary bg-light" disabled name="fechaInicial" value="<%= arrayDescuento_x_empleado.fechaInicial.toLocaleDateString() %>">
-                        </div>
-                        <div class="">
-                            <label class="form-control text-secondary font-weight-bold">Fecha Final</label>
-                            <input type="text" class="form-control text-secondary bg-light " disabled name="fechaFinal" value="<%= arrayDescuento_x_empleado.fechaFinal.toLocaleDateString() %>">
-                        </div>
-                    </div>
-                    <input maxlength="250" type="text" name="observacionDescuento" class="form-control" placeholder="Observacion" value="<%= arrayDescuento_x_empleado.observacionDescuento %>" required></input>
-                    <button type="submit" class="btn  my-4 me-lg-3" style="background-color: #02aeae;">Guardar
-                        Cambios</button>
-                    <a type="button" class="btn text-light bg-danger " data-bs-toggle="modal" data-bs-target="#staticBackdrop" title="Eliminar Dpto">Eliminar
-                    </a> <small id="emailHelp" class="form-text ">Descuentos creados:</small><br>
-                    <small id="emailHelp" class="form-text ">
-                        <%= %>
-                    </small><br>
-
+                            <option class="text-dark" value="<%= arrayDescuento_x_empleado.tipoDescuento %>" selected>
+                                <%= arrayDescuento_x_empleado.tipoDescuento %>
+                            </option>
+                            <option class="text-dark" value="Recurrente">Recurrente</option>
+                            <option class="text-dark" value="Fijo">Fijo</option>
+                            <option class="text-dark" value="Provisional">Provisional</option>
+                            <option class="text-dark" value="Otros">Otros</option>
+                            </select>
                 </div>
+                <div>
+
+                    <label for="nombreDescuento">Nombre Descuento</label>
+                    <select name="nombreDescuento" class="form-control mt-2 text-secondary" style="background-color: rgba(255, 0, 0, 0); border: none;" required>
+                            <option class="text-dark" value="<%= arrayDescuento_x_empleado.nombreDescuento %>" selected>
+                                <%= arrayDescuento_x_empleado.nombreDescuento %>
+                            </option>
+                            <option class="text-dark" value="Ars">Ars</option>
+                            <option class="text-dark" value="Afp">Afp</option>
+                            <option class="text-dark" value="Cooperativa">Cooperativa</option>
+                            <option class="text-dark" value="Otros">Otros</option>
+                            <option class="text-dark" value="Prestamo">Prestamo</option>
+                            </select>
+                </div>
+
+                <div class="">
+                    <label for="montoDescuento" class="text-secondary">Monto Descuento</label>
+                    <input type="number" class="form-control text-secondary" name="montoDescuento" id="montoDescuento" placeholder="Monto Descuento" value="<%= arrayDescuento_x_empleado.montoDescuento %>" required>
+                </div>
+                <div>
+
+                    <label for="estadoDescuento">Estado</label>
+                    <select name="estadoDescuento" class="form-control text-secondary" required>
+                            <option class="text-dark" value="<%= arrayDescuento_x_empleado.estadoDescuento %>" selected>
+                                <%= arrayDescuento_x_empleado.estadoDescuento %>
+                            </option>
+                            <option class="text-dark" value="Activo">Activo</option>
+                            <option class="text-dark" value="Inactivo">Inactivo</option>
+                            </select>
+                </div>
+                <div class="d-lg-flex mt-2">
+                    <div class="me-lg-3">
+                        <label class="form-control text-secondary font-weight-bold">Fecha Inicial</label>
+                        <input type="text" class="form-control text-secondary bg-light" disabled name="fechaInicial" value="<%= arrayDescuento_x_empleado.fechaInicial.toLocaleDateString() %>">
+                    </div>
+                    <div class="">
+                        <label class="form-control text-secondary font-weight-bold">Fecha Final</label>
+                        <input type="text" class="form-control text-secondary bg-light " disabled name="fechaFinal" value="<%= arrayDescuento_x_empleado.fechaFinal.toLocaleDateString() %>">
+                    </div>
+                </div>
+                <input maxlength="250" type="text" name="observacionDescuento" class="form-control" placeholder="Observacion" value="<%= arrayDescuento_x_empleado.observacionDescuento %>" required></input>
+                <button type="submit" class="btn  my-4 me-lg-3" style="background-color: #02aeae;">Guardar
+                        Cambios</button>
+                <a type="button" class="btn text-light bg-danger " data-bs-toggle="modal" data-bs-target="#staticBackdrop" title="Eliminar Dpto">Eliminar
+                    </a>
+
+            </div>
 
 
 
         </form>
 
-        </div>
+
 
 
     </div>

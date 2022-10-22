@@ -4,23 +4,23 @@
     <div class="container-fluid mt-2">
         <h2 class="text-secondary">Pagos</h2>
         <hr>
-        <div class="container-fluid d-lg-flex justify-content-around" style="background-color: #acacac5c; border-radius: 15px;">
+        <div class="container-fluid d-xxl-flex justify-content-around" style="background-color: #acacac5c; border-radius: 15px;">
 
-            <div class="d-lg-flex">
-                <h2 class="me-3 font-weight-bold">Cant. Pagos</h2>
+            <div class="d-sm-flex">
+                <h2 class="me-3 font-weight-bold text-truncate">Cant. Pagos</h2>
                 <h2>
                     <%= validacionPagos_x_empleado.length %>
                 </h2>
             </div>
-            <div class="d-lg-flex">
+            <div class="d-sm-flex">
                 <h2 class="me-3 font-weight-bold text-truncate">Total Comisiones</h2>
                 <h2>
                     <%= totalComisiones.totalComisiones=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
                             }).format(totalComisiones.totalComisiones) %>
                 </h2>
             </div>
-            <div class="d-lg-flex">
-                <h2 class="me-3 font-weight-bold">Total Pagado</h2>
+            <div class="d-sm-flex">
+                <h2 class="me-3 font-weight-bold text-truncate">Total Pagado</h2>
                 <h2>
                     <%= totalSueldoNeto.totalSueldoNeto=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
                             }).format(totalSueldoNeto.totalSueldoNeto) %>
