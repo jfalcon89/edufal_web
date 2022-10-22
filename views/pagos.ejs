@@ -4,24 +4,48 @@
     <div class="container-fluid mt-2">
         <h2 class="text-secondary">Pagos</h2>
         <hr>
-        <div class="container" style="background-color: #acacac5c; border-radius: 15px;">
-            <div class="d-flex">
+        <div class="container-fluid d-lg-flex justify-content-around" style="background-color: #acacac5c; border-radius: 15px;">
 
-                <h1 class="me-3 font-weight-bold">Total Pagos
-                    <h1>
-                        <%= validacionPagos_x_empleado.length %>
-                    </h1>
-                </h1>
-
+            <div class="d-lg-flex">
+                <h2 class="me-3 font-weight-bold">Cant. Pagos</h2>
+                <h2>
+                    <%= validacionPagos_x_empleado.length %>
+                </h2>
+            </div>
+            <div class="d-lg-flex">
+                <h2 class="me-3 font-weight-bold text-truncate">Total Comisiones</h2>
+                <h2>
+                    <%= totalComisiones.totalComisiones=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
+                            }).format(totalComisiones.totalComisiones) %>
+                </h2>
+            </div>
+            <div class="d-lg-flex">
+                <h2 class="me-3 font-weight-bold">Total Pagado</h2>
+                <h2>
+                    <%= totalSueldoNeto.totalSueldoNeto=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
+                            }).format(totalSueldoNeto.totalSueldoNeto) %>
+                </h2>
             </div>
         </div>
 
 
 
         <% if (arrayPagos_x_empleadoEnero.length) { %>
-            <h3 class="font-weight-bold">ENERO -
-                <%= arrayPagos_x_empleadoEnero.length %>
-            </h3>
+            <h3>ENERO </h3>
+
+            <div class="d-lg-flex">
+                <h4 class="me-3 ">Cant.
+                    <%= arrayPagos_x_empleadoEnero.length %>
+                </h4>
+                <h4 class="me-3">Comisiones
+                    <%= pagosEnero.comisionesEnero=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
+                        }).format(pagosEnero.comisionesEnero) %>
+                </h4>
+                <h4 class="me-3">Pagado
+                    <%= pagosEnero.sueldosEnero=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
+                        }).format(pagosEnero.sueldosEnero) %>
+                </h4>
+            </div>
 
             <div class="container-departamento">
                 <div class="container-table table-responsive">
@@ -103,6 +127,19 @@
 
                 <% if (arrayPagos_x_empleadoFebrero.length) { %>
                     <h3>FEBRERO</h3>
+                    <div class="d-lg-flex">
+                        <h4 class="me-3 ">Cant.
+                            <%= arrayPagos_x_empleadoFebrero.length %>
+                        </h4>
+                        <h4 class="me-3">Comisiones
+                            <%= pagosFebrero.comisionesFebrero=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
+                                }).format(pagosFebrero.comisionesFebrero) %>
+                        </h4>
+                        <h4 class="me-3">Pagado
+                            <%= pagosFebrero.sueldosFebrero=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
+                                }).format(pagosFebrero.sueldosFebrero) %>
+                        </h4>
+                    </div>
                     <div class="container-departamento">
                         <div class="container-table table-responsive">
                             <table class="table table-sm table-hover ">
@@ -179,6 +216,19 @@
 
                         <% if (arrayPagos_x_empleadoMarzo.length) { %>
                             <h3>MARZO</h3>
+                            <div class="d-lg-flex">
+                                <h4 class="me-3 ">Cant.
+                                    <%= arrayPagos_x_empleadoMarzo.length %>
+                                </h4>
+                                <h4 class="me-3">Comisiones
+                                    <%= pagosMarzo.comisionesMarzo=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
+                                            }).format(pagosMarzo.comisionesMarzo) %>
+                                </h4>
+                                <h4 class="me-3">Pagado
+                                    <%= pagosMarzo.sueldosMarzo=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
+                                            }).format(pagosMarzo.sueldosMarzo) %>
+                                </h4>
+                            </div>
                             <div class="container-departamento">
                                 <div class="container-table table-responsive">
                                     <table class="table table-sm table-hover ">
@@ -255,6 +305,19 @@
 
                                 <% if (arrayPagos_x_empleadoAbril.length) { %>
                                     <h3>ABRIL</h3>
+                                    <div class="d-lg-flex">
+                                        <h4 class="me-3 ">Cant.
+                                            <%= arrayPagos_x_empleadoAbril.length %>
+                                        </h4>
+                                        <h4 class="me-3">Comisiones
+                                            <%= pagosAbril.comisionesAbril=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
+                                                }).format(pagosAbril.comisionesAbril) %>
+                                        </h4>
+                                        <h4 class="me-3">Pagado
+                                            <%= pagosAbril.sueldosAbril=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
+                                                }).format(pagosAbril.sueldosAbril) %>
+                                        </h4>
+                                    </div>
                                     <div class="container-departamento">
                                         <div class="container-table table-responsive">
                                             <table class="table table-sm table-hover ">
@@ -332,6 +395,19 @@
 
                                         <% if (arrayPagos_x_empleadoMayo.length) { %>
                                             <h3>MAYO</h3>
+                                            <div class="d-lg-flex">
+                                                <h4 class="me-3 ">Cant.
+                                                    <%= arrayPagos_x_empleadoMayo.length %>
+                                                </h4>
+                                                <h4 class="me-3">Comisiones
+                                                    <%= pagosMayo.comisionesMayo=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
+                                                        }).format(pagosMayo.comisionesMayo) %>
+                                                </h4>
+                                                <h4 class="me-3">Pagado
+                                                    <%= pagosMayo.sueldosMayo=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
+                                                        }).format(pagosMayo.sueldosMayo) %>
+                                                </h4>
+                                            </div>
                                             <div class="container-departamento">
                                                 <div class="container-table table-responsive">
                                                     <table class="table table-sm table-hover ">
@@ -409,6 +485,19 @@
 
                                                 <% if (arrayPagos_x_empleadoJunio.length) { %>
                                                     <h3>JUNIO</h3>
+                                                    <div class="d-lg-flex">
+                                                        <h4 class="me-3 ">Cant.
+                                                            <%= arrayPagos_x_empleadoJunio.length %>
+                                                        </h4>
+                                                        <h4 class="me-3">Comisiones
+                                                            <%= pagosJunio.comisionesJunio=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
+                                                                }).format(pagosJunio.comisionesJunio) %>
+                                                        </h4>
+                                                        <h4 class="me-3">Pagado
+                                                            <%= pagosJunio.sueldosJunio=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
+                                                                }).format(pagosJunio.sueldosJunio) %>
+                                                        </h4>
+                                                    </div>
                                                     <div class="container-departamento">
                                                         <div class="container-table table-responsive">
                                                             <table class="table table-sm table-hover ">
@@ -488,6 +577,19 @@
 
                                                         <% if (arrayPagos_x_empleadoJulio.length) { %>
                                                             <h3>JULIO</h3>
+                                                            <div class="d-lg-flex">
+                                                                <h4 class="me-3 ">Cant.
+                                                                    <%= arrayPagos_x_empleadoJulio.length %>
+                                                                </h4>
+                                                                <h4 class="me-3">Comisiones
+                                                                    <%= pagosJulio.comisionesJulio=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
+                                                                        }).format(pagosJulio.comisionesJulio) %>
+                                                                </h4>
+                                                                <h4 class="me-3">Pagado
+                                                                    <%= pagosJulio.sueldosJulio=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
+                                                                        }).format(pagosJulio.sueldosJulio) %>
+                                                                </h4>
+                                                            </div>
                                                             <div class="container-departamento">
                                                                 <div class="container-table table-responsive">
                                                                     <table class="table table-sm table-hover ">
@@ -574,6 +676,19 @@
 
                                                                 <% if (arrayPagos_x_empleadoAgosto.length) { %>
                                                                     <h3>AGOSTO</h3>
+                                                                    <div class="d-lg-flex">
+                                                                        <h4 class="me-3 ">Cant.
+                                                                            <%= arrayPagos_x_empleadoAgosto.length %>
+                                                                        </h4>
+                                                                        <h4 class="me-3">Comisiones
+                                                                            <%= pagosAgosto.comisionesAgosto=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
+                                                                                }).format(pagosAgosto.comisionesAgosto) %>
+                                                                        </h4>
+                                                                        <h4 class="me-3">Pagado
+                                                                            <%= pagosAgosto.sueldosAgosto=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
+                                                                                }).format(pagosAgosto.sueldosAgosto) %>
+                                                                        </h4>
+                                                                    </div>
                                                                     <div class="container-departamento">
                                                                         <div class="container-table table-responsive">
                                                                             <table class="table table-sm table-hover ">
@@ -675,6 +790,19 @@
 
                                                                         <% if (arrayPagos_x_empleadoSeptiembre.length) { %>
                                                                             <h3>SEPTIEMBRE</h3>
+                                                                            <div class="d-lg-flex">
+                                                                                <h4 class="me-3 ">Cant.
+                                                                                    <%= arrayPagos_x_empleadoSeptiembre.length %>
+                                                                                </h4>
+                                                                                <h4 class="me-3">Comisiones
+                                                                                    <%= pagosSeptiembre.comisionesSeptiembre=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
+                                                                                        }).format(pagosSeptiembre.comisionesSeptiembre) %>
+                                                                                </h4>
+                                                                                <h4 class="me-3">Pagado
+                                                                                    <%= pagosSeptiembre.sueldosSeptiembre=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
+                                                                                        }).format(pagosSeptiembre.sueldosSeptiembre) %>
+                                                                                </h4>
+                                                                            </div>
                                                                             <div class="container-departamento">
                                                                                 <div class="container-table table-responsive">
                                                                                     <table class="table table-sm table-hover ">
@@ -788,6 +916,19 @@
 
                                                                                 <% if (arrayPagos_x_empleadoOctubre.length) { %>
                                                                                     <h3>OCTUBRE</h3>
+                                                                                    <div class="d-lg-flex">
+                                                                                        <h4 class="me-3 ">Cant.
+                                                                                            <%= arrayPagos_x_empleadoOctubre.length %>
+                                                                                        </h4>
+                                                                                        <h4 class="me-3">Comisiones
+                                                                                            <%= pagosOctubre.comisionesOctubre=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
+                                                                                                }).format(pagosOctubre.comisionesOctubre) %>
+                                                                                        </h4>
+                                                                                        <h4 class="me-3">Pagado
+                                                                                            <%= pagosSeptiembre.sueldosSeptiembre=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
+                                                                                                }).format(pagosOctubre.sueldosOctubre) %>
+                                                                                        </h4>
+                                                                                    </div>
                                                                                     <div class="container-departamento">
                                                                                         <div class="container-table table-responsive">
                                                                                             <table class="table table-sm table-hover ">
@@ -903,6 +1044,19 @@
                                                                                             (arrayPagos_x_empleadoNoviembre.length)
                                                                                             { %>
                                                                                             <h3>NOVIEMBRE</h3>
+                                                                                            <div class="d-lg-flex">
+                                                                                                <h4 class="me-3 ">Cant.
+                                                                                                    <%= arrayPagos_x_empleadoNoviembre.length %>
+                                                                                                </h4>
+                                                                                                <h4 class="me-3">Comisiones
+                                                                                                    <%= pagosNoviembre.comisionesNoviembre=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
+                                                                                                        }).format(pagosNoviembre.comisionesNoviembre) %>
+                                                                                                </h4>
+                                                                                                <h4 class="me-3">Pagado
+                                                                                                    <%= pagosNoviembre.sueldosNoviembre=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
+                                                                                                        }).format(pagosNoviembre.sueldosNoviembre) %>
+                                                                                                </h4>
+                                                                                            </div>
                                                                                             <div class="container-departamento">
                                                                                                 <div class="container-table table-responsive">
                                                                                                     <table class="table table-sm table-hover ">
@@ -1006,6 +1160,19 @@
                                                                                                 <% if (arrayPagos_x_empleadoDiciembre.length) { %>
                                                                                                     <h3>DICIEMBRE
                                                                                                     </h3>
+                                                                                                    <div class="d-lg-flex">
+                                                                                                        <h4 class="me-3 ">Cant.
+                                                                                                            <%= arrayPagos_x_empleadoDiciembre.length %>
+                                                                                                        </h4>
+                                                                                                        <h4 class="me-3">Comisiones
+                                                                                                            <%= pagosDiciembre.comisionesDiciembre=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
+                                                                                                                }).format(pagosDiciembre.comisionesDiciembre) %>
+                                                                                                        </h4>
+                                                                                                        <h4 class="me-3">Pagado
+                                                                                                            <%= pagosDiciembre.sueldosDiciembre=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
+                                                                                                                }).format(pagosDiciembre.sueldosDiciembre) %>
+                                                                                                        </h4>
+                                                                                                    </div>
                                                                                                     <div class="container-departamento">
                                                                                                         <div class="container-table table-responsive">
                                                                                                             <table class="table table-sm table-hover ">

@@ -77,13 +77,13 @@ console.log(totalDescuentos.value)
 
 
 
-totalDescuentos.value = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(totalDescuentos.value);
-sueldoNeto.value = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(sueldoNeto.value);
-afp.value = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(afp.value);
-ars.value = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(ars.value);
-cooperativa.value = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(cooperativa.value);
-club.value = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(club.value);
-prestamos.value = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(prestamos.value);
+// totalDescuentos.value = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(totalDescuentos.value);
+// sueldoNeto.value = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(sueldoNeto.value);
+// afp.value = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(afp.value);
+// ars.value = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(ars.value);
+// cooperativa.value = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(cooperativa.value);
+// club.value = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(club.value);
+// prestamos.value = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(prestamos.value);
 
 
 

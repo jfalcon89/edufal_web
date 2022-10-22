@@ -12,8 +12,22 @@ router.get('/pagos', async(req, res) => {
 
         // const id = req.params.id
 
+        const pagosEneroDB = await pool.query(`SELECT SUM(sueldoNeto) sueldosEnero, SUM(comisionP) comisionesEnero FROM pagos_x_empleados WHERE pagos_x_empleados.periodo = "Enero"`);
+        const pagosFebreroDB = await pool.query(`SELECT SUM(sueldoNeto) sueldosFebrero, SUM(comisionP) comisionesFebrero FROM pagos_x_empleados WHERE pagos_x_empleados.periodo = "Febrero"`);
+        const pagosMarzoDB = await pool.query(`SELECT SUM(sueldoNeto) sueldosMarzo, SUM(comisionP) comisionesMarzo FROM pagos_x_empleados WHERE pagos_x_empleados.periodo = "Marzo"`);
+        const pagosAbrilDB = await pool.query(`SELECT SUM(sueldoNeto) sueldosAbril, SUM(comisionP) comisionesAbril FROM pagos_x_empleados WHERE pagos_x_empleados.periodo = "Abril"`);
+        const pagosMayoDB = await pool.query(`SELECT SUM(sueldoNeto) sueldosMayo, SUM(comisionP) comisionesMayo FROM pagos_x_empleados WHERE pagos_x_empleados.periodo = "Mayo"`);
+        const pagosJunioDB = await pool.query(`SELECT SUM(sueldoNeto) sueldosJunio, SUM(comisionP) comisionesJunio FROM pagos_x_empleados WHERE pagos_x_empleados.periodo = "Junio"`);
+        const pagosJulioDB = await pool.query(`SELECT SUM(sueldoNeto) sueldosJulio, SUM(comisionP) comisionesJulio FROM pagos_x_empleados WHERE pagos_x_empleados.periodo = "Julio"`);
+        const pagosAgostoDB = await pool.query(`SELECT SUM(sueldoNeto) sueldosAgosto, SUM(comisionP) comisionesAgosto FROM pagos_x_empleados WHERE pagos_x_empleados.periodo = "Agosto"`);
+        const pagosSeptiembreDB = await pool.query(`SELECT SUM(sueldoNeto) sueldosSeptiembre, SUM(comisionP) comisionesSeptiembre FROM pagos_x_empleados WHERE pagos_x_empleados.periodo = "Septiembre"`);
+        const pagosOctubreDB = await pool.query(`SELECT SUM(sueldoNeto) sueldosOctubre, SUM(comisionP) comisionesOctubre FROM pagos_x_empleados WHERE pagos_x_empleados.periodo = "Octubre"`);
+        const pagosNoviembreDB = await pool.query(`SELECT SUM(sueldoNeto) sueldosNoviembre, SUM(comisionP) comisionesNoviembre FROM pagos_x_empleados WHERE pagos_x_empleados.periodo = "Noviembre"`);
+        const pagosDiciembreDB = await pool.query(`SELECT SUM(sueldoNeto) sueldosDiciembre, SUM(comisionP) comisionesDiciembre FROM pagos_x_empleados WHERE pagos_x_empleados.periodo = "Diciembre"`);
 
 
+        const totalSueldoNetoDB = await pool.query(`select SUM(sueldoNeto) as totalSueldoNeto from pagos_x_empleados`);
+        const totalComisionesDB = await pool.query(`select SUM(comisionP) as totalComisiones from pagos_x_empleados `);
         const validacionPagos_x_empleadoDB = await pool.query(`SELECT * FROM pagos_x_empleados `);
         const arrayPagos_x_empleadoEneroDB = await pool.query(`SELECT * FROM pagos_x_empleados WHERE pagos_x_empleados.periodo = "Enero"`);
         const arrayPagos_x_empleadoFebreroDB = await pool.query(`SELECT * FROM pagos_x_empleados WHERE pagos_x_empleados.periodo = "Febrero"`);
@@ -33,6 +47,8 @@ router.get('/pagos', async(req, res) => {
         // console.log(empleadoDB[0])
         res.render("pagos", {
             empleado: empleadoDB[0],
+            totalSueldoNeto: totalSueldoNetoDB[0],
+            totalComisiones: totalComisionesDB[0],
             validacionPagos_x_empleado: validacionPagos_x_empleadoDB,
             arrayPagos_x_empleadoEnero: arrayPagos_x_empleadoEneroDB,
             arrayPagos_x_empleadoFebrero: arrayPagos_x_empleadoFebreroDB,
@@ -46,6 +62,18 @@ router.get('/pagos', async(req, res) => {
             arrayPagos_x_empleadoOctubre: arrayPagos_x_empleadoOctubreDB,
             arrayPagos_x_empleadoNoviembre: arrayPagos_x_empleadoNoviembreDB,
             arrayPagos_x_empleadoDiciembre: arrayPagos_x_empleadoDiciembreDB,
+            pagosEnero: pagosEneroDB[0],
+            pagosFebrero: pagosFebreroDB[0],
+            pagosMarzo: pagosMarzoDB[0],
+            pagosAbril: pagosAbrilDB[0],
+            pagosMayo: pagosMayoDB[0],
+            pagosJunio: pagosJunioDB[0],
+            pagosJulio: pagosJulioDB[0],
+            pagosAgosto: pagosAgostoDB[0],
+            pagosSeptiembre: pagosSeptiembreDB[0],
+            pagosOctubre: pagosOctubreDB[0],
+            pagosNoviembre: pagosNoviembreDB[0],
+            pagosDiciembre: pagosDiciembreDB[0],
             login: true,
             name: req.session.name
         });
