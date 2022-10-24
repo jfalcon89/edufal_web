@@ -28,8 +28,56 @@
             </div>
         </div>
 
+        <!-- chart -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js" integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        <div class="chart-container ">
+            <canvas id="myChart" style="position: relative; height:40vh; width:80vw"></canvas>
+        </div>
+        <div class="visually-hidden">
+            <p id="enero">
+                <%= pagosEnero.sueldosEnero %>
+            </p>
+            <p id="febrero">
+                <%= pagosFebrero.sueldosFebrero %>
+            </p>
+            <p id="marzo">
+                <%= pagosMarzo.sueldosMarzo %>
+            </p>
+            <p id="abril">
+                <%= pagosAbril.sueldosAbril %>
+            </p>
+            <p id="mayo">
+                <%= pagosMayo.sueldosMayo %>
+            </p>
+            <p id="junio">
+                <%= pagosJunio.sueldosJunio %>
+            </p>
+            <p id="julio">
+                <%= pagosJulio.sueldosJulio %>
+            </p>
+            <p id="agosto">
+                <%= pagosAgosto.sueldosAgosto %>
+            </p>
+            <p id="septiembre">
+                <%= pagosSeptiembre.sueldosSeptiembre %>
+            </p>
+            <p id="octubre">
+                <%= pagosOctubre.sueldosOctubre %>
+            </p>
+            <p id="noviembre">
+                <%= pagosNoviembre.sueldosNoviembre %>
+            </p>
+            <p id="diciembre">
+                <%= pagosDiciembre.sueldosDiciembre %>
+            </p>
 
 
+        </div>
+
+        <script src="/js/chart.js"></script>
+
+        <!-- chart end -->
         <% if (arrayPagos_x_empleadoEnero.length) { %>
             <h3>ENERO </h3>
 
