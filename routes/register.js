@@ -37,9 +37,9 @@ router.post('/register', async(req, res) => {
                 alertIcon: 'success',
                 showConfirmButton: false,
                 timer: 1500,
-                ruta: ''
+                ruta: 'logout'
             });
-            res.redirect('inicio');
+            res.end();
         }
     });
 })
