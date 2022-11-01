@@ -3,7 +3,7 @@
 
     <div class="container-fluid mt-2">
 
-        <h2 class="text-secondary" id="inimation-dog">Editar Empleado</h2>
+        <h2 class="text-secondary" id="inimation-dog">Detalle Empleado</h2>
         <hr>
         <form id="editar" class="" action="/empleados/detalle-empleado/<%= empleado.idEmpleado %> " method="POST">
             <div class="d-lg-flex justify-content-end ">
@@ -28,26 +28,6 @@
                             </div>
                         </div>
 
-                        <div class="form-group d-flex  ">
-                            <div class="form-group d-flex">
-                                <div class="input-group ">
-                                    <div class="input-group-prepend">
-                                        <label for="estatus" class="input-group-text p-2 me-lg-3">Estatus</label>
-                                    </div>
-                                    <select name="estatus" class="form-control" id="estatus">
-                                        <option class="text-dark" value="<%= empleado.estatus %>" selected>
-                                            <%= empleado.estatus %>
-                                            
-                                        </option>
-                                        <option class="text-dark" value="Activo">Activo</option>
-                                        <option class="text-dark" value="Inactivo">Inactivo</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="d-lg-flex justify-content-between ">
                         <div class="form-group d-flex   ">
                             <div class="input-group d-flex">
                                 <div class="input-group-prepend">
@@ -56,6 +36,7 @@
                                 <input type="text" name="cedula" value="<%= empleado.cedula %>" class="form-control" id="cedula">
                             </div>
                         </div>
+
                         <div class="form-group d-flex   ">
                             <div class="form-group d-flex">
                                 <div class="input-group ">
@@ -72,6 +53,26 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="form-group d-flex  ">
+                            <div class="form-group d-flex">
+                                <div class="input-group ">
+                                    <div class="input-group-prepend">
+                                        <label for="estatus" class="input-group-text p-2 me-lg-3">Estatus</label>
+                                    </div>
+                                    <select name="estatus" class="form-control" id="estatus">
+                                        <option class="text-dark" value="<%= empleado.estatus %>" selected>
+                                            <%= empleado.estatus %>
+                        
+                                        </option>
+                                        <option class="text-dark" value="Activo">Activo</option>
+                                        <option class="text-dark" value="Inactivo">Inactivo</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- </div> -->
+
+                        <!-- <div class="d-lg-flex justify-content-between "> -->
                     </div>
                 </div>
 
@@ -114,6 +115,22 @@
             <div class="form-group d-flex justify-content-center espaciado ">
                 <label for="nacionalidad" class=" p-2">Nacionalidad</label>
                 <input type="text" name="nacionalidad" value="<%= empleado.nacionalidad %>" class="form-control p-2 mt-2" id="nacionalidad" aria-describedby="emailHelp" placeholder="">
+            </div>
+            <div class="form-group d-flex justify-content-center espaciado ">
+                <label class=" p-2">Direccion</label>
+                <input type="text" name="direccion" value="<%= empleado.direccion %>" class="form-control p-2 mt-2" id="direccion" aria-describedby="emailHelp" placeholder="">
+            </div>
+            <div class="form-group d-flex justify-content-center espaciado ">
+                <label class=" p-2">Correo</label>
+                <input type="text" name="correo" value="<%= empleado.correo %>" class="form-control p-2 mt-2" id="correo" aria-describedby="emailHelp" placeholder="">
+            </div>
+            <div class="form-group d-flex justify-content-center espaciado ">
+                <label for="condicionContrato" class=" p-2">Contrato</label>
+                <input type="text" name="condicionContrato" value="<%= empleado.condicionContrato %>" class="form-control p-2 mt-2" id="condicionContrato" aria-describedby="emailHelp" placeholder="">
+            </div>
+            <div class="form-group d-flex justify-content-center espaciado ">
+                <label for="formaPago" class=" p-2">Forma de Pago</label>
+                <input type="text" name="formaPago" value="<%= empleado.formaPago %>" class="form-control p-2 mt-2" id="formaPago" aria-describedby="emailHelp" placeholder="">
             </div>
 
             <div class="d-lg-flex justify-content-between">

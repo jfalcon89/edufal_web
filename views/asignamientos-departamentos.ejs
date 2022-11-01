@@ -6,7 +6,7 @@
 
 
     <div class="container-fluid mt-2">
-        <h2 class=" text-secondary">Asignamientos Departamentos Empleados</h2>
+        <h2 class=" text-secondary">Asignamientos Puestos Empleados</h2>
         <hr>
         <!-- <div class="navbar-departamentos d-flex justify-content-end bg-light">
                                     <h5>agregar dpto</h5>
@@ -15,7 +15,7 @@
         <div class="d-lg-flex align-items-center justify-content-end my-4">
             <a class="btn  me-lg-3" style="background-color: #02aeae;" href="/crear-departamento"><i
                     class="bi bi-person-plus me-lg-3"></i>Agregar
-                Departamento</a>
+                Puesto</a>
             <a href="/departamentos" class="btn btn-warning "><i class="bi bi-arrow-left me-lg-3"></i>Volver
                 a
                 atras</a>
@@ -33,7 +33,9 @@
                         <th scope="col">Cedula</th>
                         <th scope="col">Sexo</th>
                         <th scope="col">Estado Asignacion</th>
-                        <th scope="col">Departamento</th>
+                        <th scope="col">Puesto</th>
+                        <th scope="col">Constrato</th>
+                        <th scope="col">Pago</th>
                         <th scope="col">Sueldo</th>
                         <th scope="col">Acciones</th>
                     </tr>
@@ -69,6 +71,12 @@
                                 </td>
                                 <td>
                                     <%= departamentoEmpleado.nombre_dpto %>
+                                </td>
+                                <td>
+                                    <%= departamentoEmpleado.condicionContrato %>
+                                </td>
+                                <td>
+                                    <%= departamentoEmpleado.formaPago %>
                                 </td>
                                 <td>
                                     <%= departamentoEmpleado.sueldoBruto %>

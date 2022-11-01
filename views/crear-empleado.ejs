@@ -29,14 +29,27 @@
 
                     <div class="d-lg-flex justify-content-between ">
                         <div class="form-group d-flex   ">
-                            <div class="input-group ">
+                            <div class="input-group d-flex">
                                 <div class="input-group-prepend">
-                                    <label class="input-group-text p-2 me-lg-3">Codigo</label>
+                                    <label class="input-group-text p-2 me-lg-3">Cedula</label>
                                 </div>
-                                <input type="text" name="codigo" value="" class="form-control" id="codigo">
+                                <input type="text" name="cedula" value="" class="form-control" id="cedula">
                             </div>
                         </div>
-
+                        <div class="form-group d-flex  ">
+                            <div class="form-group d-flex">
+                                <div class="input-group ">
+                                    <div class="input-group-prepend">
+                                        <label for="sexo" class="input-group-text p-2 me-lg-3">Sexo</label>
+                                    </div>
+                                    <select name="sexo" class="form-control" id="sexo">
+                                        <option class="text-dark" value="Seleccionar" selected>Seleccionar</option>
+                                        <option class="text-dark" value="hombre">Hombre</option>
+                                        <option class="text-dark" value="mujer">Mujer</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
                         <div class="form-group d-flex   ">
                             <div class="form-group d-flex">
                                 <div class="input-group ">
@@ -52,37 +65,8 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="d-lg-flex justify-content-between ">
-                        <div class="form-group d-flex   ">
-                            <div class="input-group d-flex">
-                                <div class="input-group-prepend">
-                                    <label class="input-group-text p-2 me-lg-3">Cedula</label>
-                                </div>
-                                <input type="text" name="cedula" value="" class="form-control" id="cedula">
-                            </div>
-                        </div>
-
-                        <div class="form-group d-flex  ">
-                            <div class="form-group d-flex">
-                                <div class="input-group ">
-                                    <div class="input-group-prepend">
-                                        <label for="sexo" class="input-group-text p-2 me-lg-3">Sexo</label>
-                                    </div>
-                                    <select name="sexo" class="form-control" id="sexo">
-                                        <option class="text-dark" value="Seleccionar" selected>Seleccionar</option>
-                                        <option class="text-dark" value="hombre">Hombre</option>
-                                        <option class="text-dark" value="mujer">Mujer</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
-
             </div>
-
 
             <div class="form-group d-flex justify-content-center espaciado ">
                 <label for="nombre" class=" p-2">Nombre</label>
@@ -111,6 +95,33 @@
             <div class="form-group d-flex justify-content-center espaciado ">
                 <label for="nacionalidad" class=" p-2">Nacionalidad</label>
                 <input type="text" name="nacionalidad" class="form-control p-2 mt-2" id="nacionalidad" aria-describedby="emailHelp" placeholder="">
+            </div>
+            <div class="form-group d-flex justify-content-center espaciado ">
+                <label class=" p-2">Direccion</label>
+                <input type="text" name="direccion" class="form-control p-2 mt-2" id="direccion" aria-describedby="emailHelp" placeholder="">
+            </div>
+            <div class="form-group d-flex justify-content-center espaciado ">
+                <label class=" p-2">Correo</label>
+                <input type="text" name="correo" class="form-control p-2 mt-2" id="correo" aria-describedby="emailHelp" placeholder="">
+            </div>
+            <div class="form-group d-flex justify-content-center espaciado ">
+                <label for="condicionContrato" class=" p-2">Contrato</label>
+                <select name="condicionContrato" class="form-control p-2 mt-2" id="condicionContrato" aria-describedby="emailHelp" required>
+                    <option value="" selected>Seleccionar</option>
+                    <option value="Temporal">Temporal</option>
+                    <option value="Fijo">Fijo</option>
+                </select>
+                <!-- <input type="text" name="condicionContrato" class="form-control p-2 mt-2" id="condicionContrato" aria-describedby="emailHelp" placeholder=""> -->
+            </div>
+            <div class="form-group d-flex justify-content-center espaciado ">
+                <label for="formaPago" class=" p-2">Forma de Pago</label>
+                <select name="formaPago" class="form-control p-2 mt-2" id="formaPago" aria-describedby="emailHelp" required>
+                    <option value="" selected>Seleccionar</option>
+                    <option value="Semanal">Semanal</option>
+                    <option value="Quincenal">Quincenal</option>
+                    <option value="Mensual">Mensual</option>
+                </select>
+                <!-- <input type="text" name="formaPago" class="form-control p-2 mt-2" id="formaPago" aria-describedby="emailHelp" placeholder=""> -->
             </div>
 
             <div class="d-lg-flex justify-content-between">

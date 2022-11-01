@@ -300,16 +300,17 @@ router.get('/crear-empleado', async(req, res) => {
 
 //INSERTAR NUEVO EMPLEADO A MYSQL****************
 router.post("/crear-empleado", async(req, res) => {
-    const { nombre, apellido, cedula, sexo, estatus, departamento, nacimiento, lugarNacimiento, nacionalidad, sueldoBruto, afp, ars, cooperativa, club, prestamos, totalDescuentos, sueldoNeto, comision } = req.body;
+    const { nombre, apellido, cedula, sexo, estatus, departamento, nacimiento, lugarNacimiento, nacionalidad, direccion, correo, sueldoBruto, afp, ars, cooperativa, club, prestamos, totalDescuentos, sueldoNeto, comision, condicionContrato, formaPago } = req.body;
     const nuevoEmpleado = {
         nombre,
         apellido,
         cedula,
         sexo,
         estatus,
-
         departamento,
         nacimiento,
+        direccion,
+        correo,
         lugarNacimiento,
         nacionalidad,
         sueldoBruto,
@@ -320,7 +321,10 @@ router.post("/crear-empleado", async(req, res) => {
         prestamos,
         totalDescuentos,
         sueldoNeto,
-        comision
+        comision,
+        condicionContrato,
+        formaPago
+
     };
 
     await pool.query('INSERT INTO empleados set ?', [nuevoEmpleado]);

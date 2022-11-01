@@ -56,7 +56,7 @@
 
                     <div class="card_coperativa">
                         <div class="card-body d-flex justify-content-center flex-column ">
-                            <h5 class=" d-flex justify-content-center text-secondary font-weight-bold">Departamento</h5>
+                            <h5 class=" d-flex justify-content-center text-secondary font-weight-bold">Puesto</h5>
                             <% if (empleado_x_departamento) { %>
 
                                 <p class="card-text d-flex justify-content-center text-secondary">
@@ -142,7 +142,9 @@
                         <th scope="col">apellido</th>
                         <th scope="col">Cedula</th>
                         <th scope="col">Estatus</th>
-                        <th scope="col">Departamento</th>
+                        <th scope="col">Puesto</th>
+                        <th scope="col">Contrato</th>
+                        <th scope="col">Pago</th>
                         <th scope="col">Sueldo</th>
                         <th scope="col">T. desc</th>
 
@@ -165,7 +167,13 @@
                             <%= empleado.cedula %>
                         </td>
                         <td>
-                            <%= empleado.estatus %>
+                            <% if (empleado.estatus=="Inactivo" ) { %>
+                                <p class="bg-danger text-light">
+                                    <%= empleado.estatus %>
+                                </p>
+                                <% }else { %>
+                                    <%= empleado.estatus %>
+                                        <% } %>
                         </td>
                         <td>
                             <% if (empleado_x_departamento) { %>
@@ -173,6 +181,12 @@
                                     <% }else { %>
                                         <p>No Asignado</p>
                                         <% } %>
+                        </td>
+                        <td>
+                            <%= empleado.condicionContrato %>
+                        </td>
+                        <td>
+                            <%= empleado.formaPago %>
                         </td>
                         <td>
                             <%= empleado.sueldoBruto %>
