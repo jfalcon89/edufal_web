@@ -36,6 +36,14 @@
                                 <input type="text" name="cedula" value="<%= empleado.cedula %>" class="form-control" id="cedula">
                             </div>
                         </div>
+                        <div class="form-group d-flex   ">
+                            <div class="input-group d-flex">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text p-2 me-lg-3">Telefono</label>
+                                </div>
+                                <input type="number" name="telefono" value="<%= empleado.telefono %>" class="form-control" id="telefono">
+                            </div>
+                        </div>
 
                         <div class="form-group d-flex   ">
                             <div class="form-group d-flex">
@@ -125,12 +133,27 @@
                 <input type="text" name="correo" value="<%= empleado.correo %>" class="form-control p-2 mt-2" id="correo" aria-describedby="emailHelp" placeholder="">
             </div>
             <div class="form-group d-flex justify-content-center espaciado ">
+
                 <label for="condicionContrato" class=" p-2">Contrato</label>
-                <input type="text" name="condicionContrato" value="<%= empleado.condicionContrato %>" class="form-control p-2 mt-2" id="condicionContrato" aria-describedby="emailHelp" placeholder="">
+                <select name="condicionContrato" class="form-control p-2 mt-2" id="condicionContrato" aria-describedby="emailHelp" required>
+                    <option value="<%= empleado.condicionContrato %>" selected>
+                        <%= empleado.condicionContrato %>
+                    </option>
+                    <option value="Temporal">Temporal</option>
+                    <option value="Fijo">Fijo</option>
+                </select>
             </div>
             <div class="form-group d-flex justify-content-center espaciado ">
+
                 <label for="formaPago" class=" p-2">Forma de Pago</label>
-                <input type="text" name="formaPago" value="<%= empleado.formaPago %>" class="form-control p-2 mt-2" id="formaPago" aria-describedby="emailHelp" placeholder="">
+                <select name="formaPago" class="form-control p-2 mt-2" id="formaPago" aria-describedby="emailHelp" required>
+                    <option value="<%= empleado.formaPago %>" selected>
+                        <%= empleado.formaPago %>
+                    </option>
+                    <option value="Semanal">Semanal</option>
+                    <option value="Quincenal">Quincenal</option>
+                    <option value="Mensual">Mensual</option>
+                </select>
             </div>
 
             <div class="d-lg-flex justify-content-between">

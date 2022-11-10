@@ -169,7 +169,7 @@ router.get("/empleados/detalle-empleado/:id", async(req, res) => {
 router.post('/empleados/detalle-empleado/:id', async(req, res) => {
     const id = req.params.id;
     console.log(req.params.id)
-    const { nombre, apellido, cedula, sexo, estatus, departamento, nacimiento, lugarNacimiento, nacionalidad, sueldoBruto, afp, ars, cooperativa, club, prestamos, totalDescuentos, sueldoNeto, comision } = req.body;
+    const { nombre, apellido, cedula, sexo, estatus, departamento, nacimiento, lugarNacimiento, nacionalidad, sueldoBruto, afp, ars, cooperativa, club, prestamos, totalDescuentos, sueldoNeto, comision, condicionContrato, formaPago, telefono } = req.body;
     const nuevoEmpleado = {
         nombre,
         apellido,
@@ -189,7 +189,10 @@ router.post('/empleados/detalle-empleado/:id', async(req, res) => {
         prestamos,
         totalDescuentos,
         sueldoNeto,
-        comision
+        comision,
+        condicionContrato,
+        formaPago,
+        telefono
     };
 
     await pool.query("UPDATE empleados set ? WHERE idEmpleado = ?", [nuevoEmpleado, id]);
@@ -300,7 +303,7 @@ router.get('/crear-empleado', async(req, res) => {
 
 //INSERTAR NUEVO EMPLEADO A MYSQL****************
 router.post("/crear-empleado", async(req, res) => {
-    const { nombre, apellido, cedula, sexo, estatus, departamento, nacimiento, lugarNacimiento, nacionalidad, direccion, correo, sueldoBruto, afp, ars, cooperativa, club, prestamos, totalDescuentos, sueldoNeto, comision, condicionContrato, formaPago } = req.body;
+    const { nombre, apellido, cedula, sexo, estatus, departamento, nacimiento, lugarNacimiento, nacionalidad, direccion, correo, sueldoBruto, afp, ars, cooperativa, club, prestamos, totalDescuentos, sueldoNeto, comision, condicionContrato, formaPago, telefono } = req.body;
     const nuevoEmpleado = {
         nombre,
         apellido,
@@ -323,7 +326,8 @@ router.post("/crear-empleado", async(req, res) => {
         sueldoNeto,
         comision,
         condicionContrato,
-        formaPago
+        formaPago,
+        telefono
 
     };
 
