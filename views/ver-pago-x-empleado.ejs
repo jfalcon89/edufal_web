@@ -108,7 +108,8 @@
                                                     <%= pagos_x_empleado.sueldoNeto %>
                                                 </td>
                                                 <td>
-                                                    <%= pagos_x_empleado.fechaPago.toLocaleString('es-US', { timeZone: "America/Santo_Domingo" }) %>
+                                                    <%= pagos_x_empleado.fechaPago.toLocaleString('es-US', {
+                                                        timeZone: "America/Santo_Domingo" }) %>
                                                 </td>
                                                 <td>
                                                     <%= pagos_x_empleado.estadoPago %>
@@ -122,43 +123,38 @@
                                                 </td>
 
                                                 <td>
-                                                    <a target="_blank" href="https://wa.me/<%= empleado.telefono %>?text=*ROSFAL SOLUCIONES DE PRESTAMOS* 
-                                                                                                                                                                                                                                                                                                                                                                                                        
-                                                                                                                                                                                                                                                                                                                                                                                                        Calle primera numero 59 Sector Enrriquillo Herrera Sto Dgo
-                                                                                                                                                                                                                                                                                                                                                
-                                                                                                                                                                                                                                                                                                                                                                                                        *TELEFONO* 829 856-0203
-                                                                                                                                                                                                                                                                                                                                                                                                        
-                                                                                                                                                                                                                                                                                                                                                                                                        ---------------------------------- 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
-                                                                                                                                                                                                                                                                                                                                                                                                        *COMPROBANTE DE PAGO*
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
-                                                                                                                                                                                                                                                                                                                                                                                                        ---------------------------------- 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
-                                                                                                                                                                                                                                                                                                                                                                                                        *Fecha:* <%= pagos_x_empleado.fechaPago.toLocaleString() %>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                
-                                                                                                                                                                                                                                                                                                                                                                                                        *Empleado:* <%= empleado.nombre %> <%= empleado.apellido %>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                
-                                                                                                                                                                                                                                                                                                                                                                                                        *Id pago:* <%= pagos_x_empleado.idPago_x_empleado %>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                
-                                                                                                                                                                                                                                                                                                                                                                                                        *Telefono:* <%= empleado.telefono %>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                
-                                                                                                                                                                                                                                                                                                                                                                                                        ----------------------------------
-                                                                                                                                                                                                                                                                                                                                                                                                                                                
-                                                                                                                                                                                                                                                                                                                                                                                                        *DETALLE DEL PAGO*
-                                                                                                                                                
-                                                                                                                                                                                                                                                                                                                                                                                                        ----------------------------------
-                                                                                                                                                                                                                                                                                                                                                                                                                                                
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                        *Descuento:* <%= pagos_x_empleado.descuento %>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                            *Comision:* <%= pagos_x_empleado.comisionP %>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *MONTO PAGADO:* <%= pagos_x_empleado.sueldoNeto %>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    =================================
-                                                                                                                                                                                                                                                                                                                                                                                                                                                
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    "
-                                                        class="btn ">Enviar
-                                                        Comprobante</a>
+                                                    <a target="_blank" href="https://wa.me/<%= empleado.telefono %>?text=*ROSFAL SOLUCIONES DE PRESTAMOS*
+
+%0ACalle primera No. 59 Sector Enriquillo Herrera Sto. Dgo.%0A
+*TELEFONO* 829 856-0203
+
+%0A----------------------------------%0A
+*COMPROBANTE DE PAGO*
+%0A----------------------------------%0A
+
+%0A*Fecha:* <%= pagos_x_empleado.fechaPago.toLocaleString().slice(0, 10) %>%0A
+
+%0A*Empleado:* <%= empleado.nombre %> <%= empleado.apellido %>%0A
+
+%0A*Id pago:* <%= pagos_x_empleado.idPago_x_empleado %>%0A
+
+%0A*Telefono:* <%= empleado.telefono %>%0A
+
+%0A----------------------------------%0A
+
+*DETALLE DEL PAGO*
+
+%0A----------------------------------%0A
+
+%0A*Descuento:* <%= pagos_x_empleado.descuento %>%0A
+
+%0A*Comision:* <%= pagos_x_empleado.comisionP %>%0A
+
+%0A*MONTO PAGADO:* <%= pagos_x_empleado.sueldoNeto %>%0A
+
+=================================
+
+" class="btn ">Enviar Comprobante</a>
                                                 </td>
 
                                             </tr>
@@ -227,7 +223,7 @@
                                                         </td>
                                                         <td>
                                                             <%= pagos_x_empleado.fechaPago.toLocaleString('es-US', {
-                                                    timeZone: "America/Santo_Domingo" }) %>
+                                                                timeZone: "America/Santo_Domingo" }) %>
                                                         </td>
                                                         <td>
                                                             <%= pagos_x_empleado.estadoPago %>
@@ -238,6 +234,40 @@
 
                                                         <td>
                                                             <a id="eventoAct-Inact" href="/empleados/informacion-empleado/editar-pago-x-empleado/<%= pagos_x_empleado.idPago_x_empleado %>" class="btn  ">Editar</a>
+                                                        </td>
+                                                        <td>
+                                                            <a target="_blank" href="https://wa.me/<%= empleado.telefono %>?text=*ROSFAL SOLUCIONES DE PRESTAMOS*
+                                                        
+%0ACalle primera No. 59 Sector Enriquillo Herrera Sto. Dgo.%0A
+*TELEFONO* 829 856-0203
+
+%0A----------------------------------%0A
+*COMPROBANTE DE PAGO*
+%0A----------------------------------%0A
+
+%0A*Fecha:* <%= pagos_x_empleado.fechaPago.toLocaleString().slice(0, 10) %>%0A
+
+%0A*Empleado:* <%= empleado.nombre %> <%= empleado.apellido %>%0A
+
+%0A*Id pago:* <%= pagos_x_empleado.idPago_x_empleado %>%0A
+
+%0A*Telefono:* <%= empleado.telefono %>%0A
+
+%0A----------------------------------%0A
+
+*DETALLE DEL PAGO*
+
+%0A----------------------------------%0A
+
+%0A*Descuento:* <%= pagos_x_empleado.descuento %>%0A
+
+%0A*Comision:* <%= pagos_x_empleado.comisionP %>%0A
+
+%0A*MONTO PAGADO:* <%= pagos_x_empleado.sueldoNeto %>%0A
+
+=================================
+
+" class="btn ">Enviar Comprobante</a>
                                                         </td>
 
                                                     </tr>
@@ -306,8 +336,8 @@
                                                                     <%= pagos_x_empleado.sueldoNeto %>
                                                                 </td>
                                                                 <td>
-                                                                    <%= pagos_x_empleado.fechaPago.toLocaleString('es-US', {
-                                                                timeZone: "America/Santo_Domingo" }) %>
+                                                                    <%= pagos_x_empleado.fechaPago.toLocaleString('es-US',
+                                                                        { timeZone: "America/Santo_Domingo" }) %>
                                                                 </td>
                                                                 <td>
                                                                     <%= pagos_x_empleado.estadoPago %>
@@ -318,6 +348,40 @@
 
                                                                 <td>
                                                                     <a id="eventoAct-Inact" href="/empleados/informacion-empleado/editar-pago-x-empleado/<%= pagos_x_empleado.idPago_x_empleado %>" class="btn  ">Editar</a>
+                                                                </td>
+                                                                <td>
+                                                                    <a target="_blank" href="https://wa.me/<%= empleado.telefono %>?text=*ROSFAL SOLUCIONES DE PRESTAMOS*
+                                                            
+%0ACalle primera No. 59 Sector Enriquillo Herrera Sto. Dgo.%0A
+*TELEFONO* 829 856-0203
+
+%0A----------------------------------%0A
+*COMPROBANTE DE PAGO*
+%0A----------------------------------%0A
+
+%0A*Fecha:* <%= pagos_x_empleado.fechaPago.toLocaleString().slice(0, 10) %>%0A
+
+%0A*Empleado:* <%= empleado.nombre %> <%= empleado.apellido %>%0A
+
+%0A*Id pago:* <%= pagos_x_empleado.idPago_x_empleado %>%0A
+
+%0A*Telefono:* <%= empleado.telefono %>%0A
+
+%0A----------------------------------%0A
+
+*DETALLE DEL PAGO*
+
+%0A----------------------------------%0A
+
+%0A*Descuento:* <%= pagos_x_empleado.descuento %>%0A
+
+%0A*Comision:* <%= pagos_x_empleado.comisionP %>%0A
+
+%0A*MONTO PAGADO:* <%= pagos_x_empleado.sueldoNeto %>%0A
+
+=================================
+
+" class="btn ">Enviar Comprobante</a>
                                                                 </td>
 
                                                             </tr>
@@ -357,7 +421,8 @@
                                                         </thead>
                                                         <tbody>
                                                             <% if (arrayPagos_x_empleadoAbril.length> 0) { %>
-                                                                <% arrayPagos_x_empleadoAbril.forEach(pagos_x_empleado=> { %>
+                                                                <% arrayPagos_x_empleadoAbril.forEach(pagos_x_empleado=>
+                                                                    { %>
 
                                                                     <tr class="text-truncate">
 
@@ -386,8 +451,9 @@
                                                                             <%= pagos_x_empleado.sueldoNeto %>
                                                                         </td>
                                                                         <td>
-                                                                            <%= pagos_x_empleado.fechaPago.toLocaleString('es-US', {
-                                                                        timeZone: "America/Santo_Domingo" }) %>
+                                                                            <%= pagos_x_empleado.fechaPago.toLocaleString('es-US',
+                                                                                { timeZone: "America/Santo_Domingo" })
+                                                                                %>
                                                                         </td>
                                                                         <td>
                                                                             <%= pagos_x_empleado.estadoPago %>
@@ -398,6 +464,40 @@
 
                                                                         <td>
                                                                             <a id="eventoAct-Inact" href="/empleados/informacion-empleado/editar-pago-x-empleado/<%= pagos_x_empleado.idPago_x_empleado %>" class="btn  ">Editar</a>
+                                                                        </td>
+                                                                        <td>
+                                                                            <a target="_blank" href="https://wa.me/<%= empleado.telefono %>?text=*ROSFAL SOLUCIONES DE PRESTAMOS*
+                                                                        
+%0ACalle primera No. 59 Sector Enriquillo Herrera Sto. Dgo.%0A
+*TELEFONO* 829 856-0203
+
+%0A----------------------------------%0A
+*COMPROBANTE DE PAGO*
+%0A----------------------------------%0A
+
+%0A*Fecha:* <%= pagos_x_empleado.fechaPago.toLocaleString().slice(0, 10) %>%0A
+
+%0A*Empleado:* <%= empleado.nombre %> <%= empleado.apellido %>%0A
+
+%0A*Id pago:* <%= pagos_x_empleado.idPago_x_empleado %>%0A
+
+%0A*Telefono:* <%= empleado.telefono %>%0A
+
+%0A----------------------------------%0A
+
+*DETALLE DEL PAGO*
+
+%0A----------------------------------%0A
+
+%0A*Descuento:* <%= pagos_x_empleado.descuento %>%0A
+
+%0A*Comision:* <%= pagos_x_empleado.comisionP %>%0A
+
+%0A*MONTO PAGADO:* <%= pagos_x_empleado.sueldoNeto %>%0A
+
+=================================
+
+" class="btn ">Enviar Comprobante</a>
                                                                         </td>
 
                                                                     </tr>
@@ -437,12 +537,15 @@
                                                                 </thead>
                                                                 <tbody>
                                                                     <% if (arrayPagos_x_empleadoMayo.length> 0) { %>
-                                                                        <% arrayPagos_x_empleadoMayo.forEach(pagos_x_empleado=> { %>
+                                                                        <%
+                                                                            arrayPagos_x_empleadoMayo.forEach(pagos_x_empleado=>
+                                                                            { %>
 
                                                                             <tr class="text-truncate">
 
                                                                                 <td>
-                                                                                    <%= pagos_x_empleado.idPago_x_empleado %>
+                                                                                    <%= pagos_x_empleado.idPago_x_empleado
+                                                                                        %>
                                                                                 </td>
                                                                                 <td id="codDesc">
                                                                                     <%= pagos_x_empleado.idEmpleado %>
@@ -451,7 +554,8 @@
                                                                                     <%= pagos_x_empleado.departamento %>
                                                                                 </td>
                                                                                 <td>
-                                                                                    <%= pagos_x_empleado.frecuenciaPago %>
+                                                                                    <%= pagos_x_empleado.frecuenciaPago
+                                                                                        %>
                                                                                 </td>
                                                                                 <td>
                                                                                     <%= pagos_x_empleado.periodo %>
@@ -466,18 +570,55 @@
                                                                                     <%= pagos_x_empleado.sueldoNeto %>
                                                                                 </td>
                                                                                 <td>
-                                                                                    <%= pagos_x_empleado.fechaPago.toLocaleString('es-US', {
-                                                                                timeZone: "America/Santo_Domingo" }) %>
+                                                                                    <%= pagos_x_empleado.fechaPago.toLocaleString('es-US',
+                                                                                        {
+                                                                                        timeZone: "America/Santo_Domingo"
+                                                                                        }) %>
                                                                                 </td>
                                                                                 <td>
                                                                                     <%= pagos_x_empleado.estadoPago %>
                                                                                 </td>
                                                                                 <td>
-                                                                                    <%= pagos_x_empleado.observacionPago %>
+                                                                                    <%= pagos_x_empleado.observacionPago
+                                                                                        %>
                                                                                 </td>
 
                                                                                 <td>
                                                                                     <a id="eventoAct-Inact" href="/empleados/informacion-empleado/editar-pago-x-empleado/<%= pagos_x_empleado.idPago_x_empleado %>" class="btn  ">Editar</a>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <a target="_blank" href="https://wa.me/<%= empleado.telefono %>?text=*ROSFAL SOLUCIONES DE PRESTAMOS*
+
+%0ACalle primera No. 59 Sector Enriquillo Herrera Sto. Dgo.%0A
+*TELEFONO* 829 856-0203
+
+%0A----------------------------------%0A
+*COMPROBANTE DE PAGO*
+%0A----------------------------------%0A
+
+%0A*Fecha:* <%= pagos_x_empleado.fechaPago.toLocaleString().slice(0, 10) %>%0A
+
+%0A*Empleado:* <%= empleado.nombre %> <%= empleado.apellido %>%0A
+
+%0A*Id pago:* <%= pagos_x_empleado.idPago_x_empleado %>%0A
+
+%0A*Telefono:* <%= empleado.telefono %>%0A
+
+%0A----------------------------------%0A
+
+*DETALLE DEL PAGO*
+
+%0A----------------------------------%0A
+
+%0A*Descuento:* <%= pagos_x_empleado.descuento %>%0A
+
+%0A*Comision:* <%= pagos_x_empleado.comisionP %>%0A
+
+%0A*MONTO PAGADO:* <%= pagos_x_empleado.sueldoNeto %>%0A
+
+=================================
+
+" class="btn ">Enviar Comprobante</a>
                                                                                 </td>
 
                                                                             </tr>
@@ -516,48 +657,98 @@
                                                                             </tr>
                                                                         </thead>
                                                                         <tbody>
-                                                                            <% if (arrayPagos_x_empleadoJunio.length> 0) { %>
-                                                                                <% arrayPagos_x_empleadoJunio.forEach(pagos_x_empleado=> { %>
+                                                                            <% if (arrayPagos_x_empleadoJunio.length> 0)
+                                                                                { %>
+                                                                                <%
+                                                                                    arrayPagos_x_empleadoJunio.forEach(pagos_x_empleado=>
+                                                                                    { %>
 
                                                                                     <tr class="text-truncate">
 
                                                                                         <td>
-                                                                                            <%= pagos_x_empleado.idPago_x_empleado %>
+                                                                                            <%= pagos_x_empleado.idPago_x_empleado
+                                                                                                %>
                                                                                         </td>
                                                                                         <td id="codDesc">
-                                                                                            <%= pagos_x_empleado.idEmpleado %>
+                                                                                            <%= pagos_x_empleado.idEmpleado
+                                                                                                %>
                                                                                         </td>
                                                                                         <td>
-                                                                                            <%= pagos_x_empleado.departamento %>
+                                                                                            <%= pagos_x_empleado.departamento
+                                                                                                %>
                                                                                         </td>
                                                                                         <td>
-                                                                                            <%= pagos_x_empleado.frecuenciaPago %>
+                                                                                            <%= pagos_x_empleado.frecuenciaPago
+                                                                                                %>
                                                                                         </td>
                                                                                         <td>
-                                                                                            <%= pagos_x_empleado.periodo %>
+                                                                                            <%= pagos_x_empleado.periodo
+                                                                                                %>
                                                                                         </td>
                                                                                         <td>
-                                                                                            <%= pagos_x_empleado.descuento %>
+                                                                                            <%= pagos_x_empleado.descuento
+                                                                                                %>
                                                                                         </td>
                                                                                         <td>
-                                                                                            <%= pagos_x_empleado.comisionP %>
+                                                                                            <%= pagos_x_empleado.comisionP
+                                                                                                %>
                                                                                         </td>
                                                                                         <td>
-                                                                                            <%= pagos_x_empleado.sueldoNeto %>
+                                                                                            <%= pagos_x_empleado.sueldoNeto
+                                                                                                %>
                                                                                         </td>
                                                                                         <td>
-                                                                                            <%= pagos_x_empleado.fechaPago.toLocaleString('es-US', {
-                                                                                        timeZone: "America/Santo_Domingo" }) %>
+                                                                                            <%= pagos_x_empleado.fechaPago.toLocaleString('es-US',
+                                                                                                {
+                                                                                                timeZone: "America/Santo_Domingo"
+                                                                                                }) %>
                                                                                         </td>
                                                                                         <td>
-                                                                                            <%= pagos_x_empleado.estadoPago %>
+                                                                                            <%= pagos_x_empleado.estadoPago
+                                                                                                %>
                                                                                         </td>
                                                                                         <td>
-                                                                                            <%= pagos_x_empleado.observacionPago %>
+                                                                                            <%= pagos_x_empleado.observacionPago
+                                                                                                %>
                                                                                         </td>
 
                                                                                         <td>
                                                                                             <a id="eventoAct-Inact" href="/empleados/informacion-empleado/editar-pago-x-empleado/<%= pagos_x_empleado.idPago_x_empleado %>" class="btn  ">Editar</a>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <a target="_blank" href="https://wa.me/<%= empleado.telefono %>?text=*ROSFAL SOLUCIONES DE PRESTAMOS*
+                                                                                        
+%0ACalle primera No. 59 Sector Enriquillo Herrera Sto. Dgo.%0A
+*TELEFONO* 829 856-0203
+
+%0A----------------------------------%0A
+*COMPROBANTE DE PAGO*
+%0A----------------------------------%0A
+
+%0A*Fecha:* <%= pagos_x_empleado.fechaPago.toLocaleString().slice(0, 10) %>%0A
+
+%0A*Empleado:* <%= empleado.nombre %> <%= empleado.apellido %>%0A
+
+%0A*Id pago:* <%= pagos_x_empleado.idPago_x_empleado %>%0A
+
+%0A*Telefono:* <%= empleado.telefono %>%0A
+
+%0A----------------------------------%0A
+
+*DETALLE DEL PAGO*
+
+%0A----------------------------------%0A
+
+%0A*Descuento:* <%= pagos_x_empleado.descuento %>%0A
+
+%0A*Comision:* <%= pagos_x_empleado.comisionP %>%0A
+
+%0A*MONTO PAGADO:* <%= pagos_x_empleado.sueldoNeto %>%0A
+
+=================================
+
+" class="btn ">Enviar
+                                                                                                Comprobante</a>
                                                                                         </td>
 
                                                                                     </tr>
@@ -582,9 +773,12 @@
                                                                                 <thead class="thead-ligth">
                                                                                     <tr class="text-truncate">
                                                                                         <th scope="col">Codigo Pago</th>
-                                                                                        <th scope="col">Codigo Empleado</th>
-                                                                                        <th scope="col">Departamento</th>
-                                                                                        <th scope="col">Tipo de pago</th>
+                                                                                        <th scope="col">Codigo Empleado
+                                                                                        </th>
+                                                                                        <th scope="col">Departamento
+                                                                                        </th>
+                                                                                        <th scope="col">Tipo de pago
+                                                                                        </th>
                                                                                         <th scope="col">Mes</th>
                                                                                         <th scope="col">Descuento</th>
                                                                                         <th scope="col">Comision</th>
@@ -596,48 +790,99 @@
                                                                                     </tr>
                                                                                 </thead>
                                                                                 <tbody>
-                                                                                    <% if (arrayPagos_x_empleadoJulio.length> 0) { %>
-                                                                                        <% arrayPagos_x_empleadoJulio.forEach(pagos_x_empleado=> { %>
+                                                                                    <% if
+                                                                                        (arrayPagos_x_empleadoJulio.length>
+                                                                                        0) { %>
+                                                                                        <%
+                                                                                            arrayPagos_x_empleadoJulio.forEach(pagos_x_empleado=>
+                                                                                            { %>
 
                                                                                             <tr class="text-truncate">
 
                                                                                                 <td>
-                                                                                                    <%= pagos_x_empleado.idPago_x_empleado %>
+                                                                                                    <%= pagos_x_empleado.idPago_x_empleado
+                                                                                                        %>
                                                                                                 </td>
                                                                                                 <td id="codDesc">
-                                                                                                    <%= pagos_x_empleado.idEmpleado %>
+                                                                                                    <%= pagos_x_empleado.idEmpleado
+                                                                                                        %>
                                                                                                 </td>
                                                                                                 <td>
-                                                                                                    <%= pagos_x_empleado.departamento %>
+                                                                                                    <%= pagos_x_empleado.departamento
+                                                                                                        %>
                                                                                                 </td>
                                                                                                 <td>
-                                                                                                    <%= pagos_x_empleado.frecuenciaPago %>
+                                                                                                    <%= pagos_x_empleado.frecuenciaPago
+                                                                                                        %>
                                                                                                 </td>
                                                                                                 <td>
-                                                                                                    <%= pagos_x_empleado.periodo %>
+                                                                                                    <%= pagos_x_empleado.periodo
+                                                                                                        %>
                                                                                                 </td>
                                                                                                 <td>
-                                                                                                    <%= pagos_x_empleado.descuento %>
+                                                                                                    <%= pagos_x_empleado.descuento
+                                                                                                        %>
                                                                                                 </td>
                                                                                                 <td>
-                                                                                                    <%= pagos_x_empleado.comisionP %>
+                                                                                                    <%= pagos_x_empleado.comisionP
+                                                                                                        %>
                                                                                                 </td>
                                                                                                 <td>
-                                                                                                    <%= pagos_x_empleado.sueldoNeto %>
+                                                                                                    <%= pagos_x_empleado.sueldoNeto
+                                                                                                        %>
                                                                                                 </td>
                                                                                                 <td>
                                                                                                     <%= pagos_x_empleado.fechaPago.toLocaleString('es-US',
-                                                                                                { timeZone: "America/Santo_Domingo" }) %>
+                                                                                                        {
+                                                                                                        timeZone: "America/Santo_Domingo"
+                                                                                                        }) %>
                                                                                                 </td>
                                                                                                 <td>
-                                                                                                    <%= pagos_x_empleado.estadoPago %>
+                                                                                                    <%= pagos_x_empleado.estadoPago
+                                                                                                        %>
                                                                                                 </td>
                                                                                                 <td>
-                                                                                                    <%= pagos_x_empleado.observacionPago %>
+                                                                                                    <%= pagos_x_empleado.observacionPago
+                                                                                                        %>
                                                                                                 </td>
 
                                                                                                 <td>
                                                                                                     <a id="eventoAct-Inact" href="/empleados/informacion-empleado/editar-pago-x-empleado/<%= pagos_x_empleado.idPago_x_empleado %>" class="btn  ">Editar</a>
+                                                                                                </td>
+                                                                                                <td>
+                                                                                                    <a target="_blank" href="https://wa.me/<%= empleado.telefono %>?text=*ROSFAL SOLUCIONES DE PRESTAMOS*
+
+%0ACalle primera No. 59 Sector Enriquillo Herrera Sto. Dgo.%0A
+*TELEFONO* 829 856-0203
+
+%0A----------------------------------%0A
+*COMPROBANTE DE PAGO*
+%0A----------------------------------%0A
+
+%0A*Fecha:* <%= pagos_x_empleado.fechaPago.toLocaleString().slice(0, 10) %>%0A
+
+%0A*Empleado:* <%= empleado.nombre %> <%= empleado.apellido %>%0A
+
+%0A*Id pago:* <%= pagos_x_empleado.idPago_x_empleado %>%0A
+
+%0A*Telefono:* <%= empleado.telefono %>%0A
+
+%0A----------------------------------%0A
+
+*DETALLE DEL PAGO*
+
+%0A----------------------------------%0A
+
+%0A*Descuento:* <%= pagos_x_empleado.descuento %>%0A
+
+%0A*Comision:* <%= pagos_x_empleado.comisionP %>%0A
+
+%0A*MONTO PAGADO:* <%= pagos_x_empleado.sueldoNeto %>%0A
+
+=================================
+
+" class="btn ">Enviar
+                                                                                                        Comprobante</a>
                                                                                                 </td>
 
                                                                                             </tr>
@@ -661,66 +906,125 @@
                                                                                     <table class="table table-sm table-hover ">
                                                                                         <thead class="thead-ligth">
                                                                                             <tr class="text-truncate">
-                                                                                                <th scope="col">Codigo Pago</th>
-                                                                                                <th scope="col">Codigo Empleado</th>
-                                                                                                <th scope="col">Departamento</th>
-                                                                                                <th scope="col">Tipo de pago</th>
+                                                                                                <th scope="col">Codigo Pago
+                                                                                                </th>
+                                                                                                <th scope="col">Codigo Empleado
+                                                                                                </th>
+                                                                                                <th scope="col">
+                                                                                                    Departamento</th>
+                                                                                                <th scope="col">Tipo de pago
+                                                                                                </th>
                                                                                                 <th scope="col">Mes</th>
-                                                                                                <th scope="col">Descuento</th>
-                                                                                                <th scope="col">Comision</th>
-                                                                                                <th scope="col">Pago Neto</th>
-                                                                                                <th scope="col">Fecha Pago</th>
-                                                                                                <th scope="col">Estado Pago</th>
-                                                                                                <th scope="col">Observacion</th>
-                                                                                                <th scope="col">Acciones</th>
+                                                                                                <th scope="col">
+                                                                                                    Descuento</th>
+                                                                                                <th scope="col">Comision
+                                                                                                </th>
+                                                                                                <th scope="col">Pago Neto
+                                                                                                </th>
+                                                                                                <th scope="col">Fecha Pago
+                                                                                                </th>
+                                                                                                <th scope="col">Estado Pago
+                                                                                                </th>
+                                                                                                <th scope="col">
+                                                                                                    Observacion</th>
+                                                                                                <th scope="col">Acciones
+                                                                                                </th>
                                                                                             </tr>
                                                                                         </thead>
                                                                                         <tbody>
-                                                                                            <% if (arrayPagos_x_empleadoAgosto.length> 0) { %>
+                                                                                            <% if
+                                                                                                (arrayPagos_x_empleadoAgosto.length>
+                                                                                                0) { %>
                                                                                                 <%
-                                                                                            arrayPagos_x_empleadoAgosto.forEach(pagos_x_empleado=>
-                                                                                            { %>
+                                                                                                    arrayPagos_x_empleadoAgosto.forEach(pagos_x_empleado=>
+                                                                                                    { %>
 
                                                                                                     <tr class="text-truncate">
 
                                                                                                         <td>
-                                                                                                            <%= pagos_x_empleado.idPago_x_empleado %>
+                                                                                                            <%= pagos_x_empleado.idPago_x_empleado
+                                                                                                                %>
                                                                                                         </td>
                                                                                                         <td id="codDesc">
-                                                                                                            <%= pagos_x_empleado.idEmpleado %>
+                                                                                                            <%= pagos_x_empleado.idEmpleado
+                                                                                                                %>
                                                                                                         </td>
                                                                                                         <td>
-                                                                                                            <%= pagos_x_empleado.departamento %>
+                                                                                                            <%= pagos_x_empleado.departamento
+                                                                                                                %>
                                                                                                         </td>
                                                                                                         <td>
-                                                                                                            <%= pagos_x_empleado.frecuenciaPago %>
+                                                                                                            <%= pagos_x_empleado.frecuenciaPago
+                                                                                                                %>
                                                                                                         </td>
                                                                                                         <td>
-                                                                                                            <%= pagos_x_empleado.periodo %>
+                                                                                                            <%= pagos_x_empleado.periodo
+                                                                                                                %>
                                                                                                         </td>
                                                                                                         <td>
-                                                                                                            <%= pagos_x_empleado.descuento %>
+                                                                                                            <%= pagos_x_empleado.descuento
+                                                                                                                %>
                                                                                                         </td>
                                                                                                         <td>
-                                                                                                            <%= pagos_x_empleado.comisionP %>
+                                                                                                            <%= pagos_x_empleado.comisionP
+                                                                                                                %>
                                                                                                         </td>
                                                                                                         <td>
-                                                                                                            <%= pagos_x_empleado.sueldoNeto %>
+                                                                                                            <%= pagos_x_empleado.sueldoNeto
+                                                                                                                %>
                                                                                                         </td>
                                                                                                         <td>
                                                                                                             <%= pagos_x_empleado.fechaPago.toLocaleString('es-US',
-                                                                                                        { timeZone: "America/Santo_Domingo" })
-                                                                                                        %>
+                                                                                                                {
+                                                                                                                timeZone: "America/Santo_Domingo"
+                                                                                                                }) %>
                                                                                                         </td>
                                                                                                         <td>
-                                                                                                            <%= pagos_x_empleado.estadoPago %>
+                                                                                                            <%= pagos_x_empleado.estadoPago
+                                                                                                                %>
                                                                                                         </td>
                                                                                                         <td>
-                                                                                                            <%= pagos_x_empleado.observacionPago %>
+                                                                                                            <%= pagos_x_empleado.observacionPago
+                                                                                                                %>
                                                                                                         </td>
 
                                                                                                         <td>
                                                                                                             <a id="eventoAct-Inact" href="/empleados/informacion-empleado/editar-pago-x-empleado/<%= pagos_x_empleado.idPago_x_empleado %>" class="btn  ">Editar</a>
+                                                                                                        </td>
+                                                                                                        <td>
+                                                                                                            <a target="_blank" href="https://wa.me/<%= empleado.telefono %>?text=*ROSFAL SOLUCIONES DE PRESTAMOS*
+
+%0ACalle primera No. 59 Sector Enriquillo Herrera Sto. Dgo.%0A
+*TELEFONO* 829 856-0203
+
+%0A----------------------------------%0A
+*COMPROBANTE DE PAGO*
+%0A----------------------------------%0A
+
+%0A*Fecha:* <%= pagos_x_empleado.fechaPago.toLocaleString().slice(0, 10) %>%0A
+
+%0A*Empleado:* <%= empleado.nombre %> <%= empleado.apellido %>%0A
+
+%0A*Id pago:* <%= pagos_x_empleado.idPago_x_empleado %>%0A
+
+%0A*Telefono:* <%= empleado.telefono %>%0A
+
+%0A----------------------------------%0A
+
+*DETALLE DEL PAGO*
+
+%0A----------------------------------%0A
+
+%0A*Descuento:* <%= pagos_x_empleado.descuento %>%0A
+
+%0A*Comision:* <%= pagos_x_empleado.comisionP %>%0A
+
+%0A*MONTO PAGADO:* <%= pagos_x_empleado.sueldoNeto %>%0A
+
+=================================
+
+" class="btn ">Enviar
+                                                                                                                Comprobante</a>
                                                                                                         </td>
 
                                                                                                     </tr>
@@ -737,78 +1041,148 @@
                                                                             </div>
                                                                             <% } %>
 
-                                                                                <% if (arrayPagos_x_empleadoSeptiembre.length) { %>
+                                                                                <% if
+                                                                                    (arrayPagos_x_empleadoSeptiembre.length)
+                                                                                    { %>
                                                                                     <h3>SEPTIEMBRE</h3>
                                                                                     <div class="container-departamento">
                                                                                         <div class="container-table table-responsive">
                                                                                             <table class="table table-sm table-hover ">
                                                                                                 <thead class="thead-ligth">
                                                                                                     <tr class="text-truncate">
-                                                                                                        <th scope="col">Codigo Pago</th>
-                                                                                                        <th scope="col">Codigo Empleado</th>
-                                                                                                        <th scope="col">Departamento</th>
-                                                                                                        <th scope="col">Tipo de pago</th>
-                                                                                                        <th scope="col">Mes</th>
-                                                                                                        <th scope="col">Descuento</th>
-                                                                                                        <th scope="col">Comision</th>
-                                                                                                        <th scope="col">Pago Neto</th>
-                                                                                                        <th scope="col">Fecha Pago</th>
-                                                                                                        <th scope="col">Estado Pago</th>
-                                                                                                        <th scope="col">Observacion</th>
-                                                                                                        <th scope="col">Acciones</th>
+                                                                                                        <th scope="col">
+                                                                                                            Codigo Pago
+                                                                                                        </th>
+                                                                                                        <th scope="col">
+                                                                                                            Codigo Empleado
+                                                                                                        </th>
+                                                                                                        <th scope="col">
+                                                                                                            Departamento
+                                                                                                        </th>
+                                                                                                        <th scope="col">
+                                                                                                            Tipo de pago
+                                                                                                        </th>
+                                                                                                        <th scope="col">
+                                                                                                            Mes</th>
+                                                                                                        <th scope="col">
+                                                                                                            Descuento
+                                                                                                        </th>
+                                                                                                        <th scope="col">
+                                                                                                            Comision
+                                                                                                        </th>
+                                                                                                        <th scope="col">
+                                                                                                            Pago Neto
+                                                                                                        </th>
+                                                                                                        <th scope="col">
+                                                                                                            Fecha Pago
+                                                                                                        </th>
+                                                                                                        <th scope="col">
+                                                                                                            Estado Pago
+                                                                                                        </th>
+                                                                                                        <th scope="col">
+                                                                                                            Observacion
+                                                                                                        </th>
+                                                                                                        <th scope="col">
+                                                                                                            Acciones
+                                                                                                        </th>
                                                                                                     </tr>
                                                                                                 </thead>
                                                                                                 <tbody>
-                                                                                                    <% if (arrayPagos_x_empleadoSeptiembre.length> 0) {
-                                                                                                %>
+                                                                                                    <% if
+                                                                                                        (arrayPagos_x_empleadoSeptiembre.length>
+                                                                                                        0) {
+                                                                                                        %>
                                                                                                         <%
-                                                                                                    arrayPagos_x_empleadoSeptiembre.forEach(pagos_x_empleado=>
-                                                                                                    { %>
+                                                                                                            arrayPagos_x_empleadoSeptiembre.forEach(pagos_x_empleado=>
+                                                                                                            { %>
 
                                                                                                             <tr class="text-truncate">
 
                                                                                                                 <td>
                                                                                                                     <%= pagos_x_empleado.idPago_x_empleado
-                                                                                                                %>
+                                                                                                                        %>
                                                                                                                 </td>
                                                                                                                 <td id="codDesc">
-                                                                                                                    <%= pagos_x_empleado.idEmpleado %>
+                                                                                                                    <%= pagos_x_empleado.idEmpleado
+                                                                                                                        %>
                                                                                                                 </td>
                                                                                                                 <td>
-                                                                                                                    <%= pagos_x_empleado.departamento %>
+                                                                                                                    <%= pagos_x_empleado.departamento
+                                                                                                                        %>
                                                                                                                 </td>
                                                                                                                 <td>
                                                                                                                     <%= pagos_x_empleado.frecuenciaPago
-                                                                                                                %>
+                                                                                                                        %>
                                                                                                                 </td>
                                                                                                                 <td>
-                                                                                                                    <%= pagos_x_empleado.periodo %>
+                                                                                                                    <%= pagos_x_empleado.periodo
+                                                                                                                        %>
                                                                                                                 </td>
                                                                                                                 <td>
-                                                                                                                    <%= pagos_x_empleado.descuento %>
+                                                                                                                    <%= pagos_x_empleado.descuento
+                                                                                                                        %>
                                                                                                                 </td>
                                                                                                                 <td>
-                                                                                                                    <%= pagos_x_empleado.comisionP %>
+                                                                                                                    <%= pagos_x_empleado.comisionP
+                                                                                                                        %>
                                                                                                                 </td>
                                                                                                                 <td>
-                                                                                                                    <%= pagos_x_empleado.sueldoNeto %>
+                                                                                                                    <%= pagos_x_empleado.sueldoNeto
+                                                                                                                        %>
                                                                                                                 </td>
                                                                                                                 <td>
                                                                                                                     <%= pagos_x_empleado.fechaPago.toLocaleString('es-US',
-                                                                                                                {
-                                                                                                                timeZone: "America/Santo_Domingo"
-                                                                                                                }) %>
+                                                                                                                        {
+                                                                                                                        timeZone: "America/Santo_Domingo"
+                                                                                                                        })
+                                                                                                                        %>
                                                                                                                 </td>
                                                                                                                 <td>
-                                                                                                                    <%= pagos_x_empleado.estadoPago %>
+                                                                                                                    <%= pagos_x_empleado.estadoPago
+                                                                                                                        %>
                                                                                                                 </td>
                                                                                                                 <td>
                                                                                                                     <%= pagos_x_empleado.observacionPago
-                                                                                                                %>
+                                                                                                                        %>
                                                                                                                 </td>
 
                                                                                                                 <td>
                                                                                                                     <a id="eventoAct-Inact" href="/empleados/informacion-empleado/editar-pago-x-empleado/<%= pagos_x_empleado.idPago_x_empleado %>" class="btn  ">Editar</a>
+                                                                                                                </td>
+                                                                                                                <td>
+                                                                                                                    <a target="_blank" href="https://wa.me/<%= empleado.telefono %>?text=*ROSFAL SOLUCIONES DE PRESTAMOS*
+
+%0ACalle primera No. 59 Sector Enriquillo Herrera Sto. Dgo.%0A
+*TELEFONO* 829 856-0203
+
+%0A----------------------------------%0A
+*COMPROBANTE DE PAGO*
+%0A----------------------------------%0A
+
+%0A*Fecha:* <%= pagos_x_empleado.fechaPago.toLocaleString().slice(0, 10) %>%0A
+
+%0A*Empleado:* <%= empleado.nombre %> <%= empleado.apellido %>%0A
+
+%0A*Id pago:* <%= pagos_x_empleado.idPago_x_empleado %>%0A
+
+%0A*Telefono:* <%= empleado.telefono %>%0A
+
+%0A----------------------------------%0A
+
+*DETALLE DEL PAGO*
+
+%0A----------------------------------%0A
+
+%0A*Descuento:* <%= pagos_x_empleado.descuento %>%0A
+
+%0A*Comision:* <%= pagos_x_empleado.comisionP %>%0A
+
+%0A*MONTO PAGADO:* <%= pagos_x_empleado.sueldoNeto %>%0A
+
+=================================
+
+" class="btn ">Enviar
+                                                                                                                        Comprobante</a>
                                                                                                                 </td>
 
                                                                                                             </tr>
@@ -825,91 +1199,157 @@
                                                                                     </div>
                                                                                     <% } %>
 
-                                                                                        <% if (arrayPagos_x_empleadoOctubre.length) { %>
+                                                                                        <% if
+                                                                                            (arrayPagos_x_empleadoOctubre.length)
+                                                                                            { %>
                                                                                             <h3>OCTUBRE</h3>
                                                                                             <div class="container-departamento">
                                                                                                 <div class="container-table table-responsive">
                                                                                                     <table class="table table-sm table-hover ">
                                                                                                         <thead class="thead-ligth">
                                                                                                             <tr class="text-truncate">
-                                                                                                                <th scope="col">Codigo Pago</th>
-                                                                                                                <th scope="col">Codigo Empleado</th>
-                                                                                                                <th scope="col">Departamento</th>
-                                                                                                                <th scope="col">Tipo de pago</th>
-                                                                                                                <th scope="col">Mes</th>
-                                                                                                                <th scope="col">Descuento</th>
-                                                                                                                <th scope="col">Comision</th>
-                                                                                                                <th scope="col">Pago Neto</th>
-                                                                                                                <th scope="col">Fecha Pago</th>
-                                                                                                                <th scope="col">Estado Pago</th>
-                                                                                                                <th scope="col">Observacion</th>
-                                                                                                                <th scope="col">Acciones</th>
+                                                                                                                <th scope="col">
+                                                                                                                    Codigo Pago
+                                                                                                                </th>
+                                                                                                                <th scope="col">
+                                                                                                                    Codigo Empleado
+                                                                                                                </th>
+                                                                                                                <th scope="col">
+                                                                                                                    Departamento
+                                                                                                                </th>
+                                                                                                                <th scope="col">
+                                                                                                                    Tipo de pago
+                                                                                                                </th>
+                                                                                                                <th scope="col">
+                                                                                                                    Mes
+                                                                                                                </th>
+                                                                                                                <th scope="col">
+                                                                                                                    Descuento
+                                                                                                                </th>
+                                                                                                                <th scope="col">
+                                                                                                                    Comision
+                                                                                                                </th>
+                                                                                                                <th scope="col">
+                                                                                                                    Pago Neto
+                                                                                                                </th>
+                                                                                                                <th scope="col">
+                                                                                                                    Fecha Pago
+                                                                                                                </th>
+                                                                                                                <th scope="col">
+                                                                                                                    Estado Pago
+                                                                                                                </th>
+                                                                                                                <th scope="col">
+                                                                                                                    Observacion
+                                                                                                                </th>
+                                                                                                                <th scope="col">
+                                                                                                                    Acciones
+                                                                                                                </th>
                                                                                                             </tr>
                                                                                                         </thead>
                                                                                                         <tbody>
-                                                                                                            <% if (arrayPagos_x_empleadoOctubre.length>
-                                                                                                        0) { %>
+                                                                                                            <% if
+                                                                                                                (arrayPagos_x_empleadoOctubre.length>
+                                                                                                                0) { %>
                                                                                                                 <%
-                                                                                                            arrayPagos_x_empleadoOctubre.forEach(pagos_x_empleado=>
-                                                                                                            { %>
+                                                                                                                    arrayPagos_x_empleadoOctubre.forEach(pagos_x_empleado=>
+                                                                                                                    { %>
 
                                                                                                                     <tr class="text-truncate">
 
                                                                                                                         <td>
                                                                                                                             <%= pagos_x_empleado.idPago_x_empleado
-                                                                                                                        %>
+                                                                                                                                %>
                                                                                                                         </td>
                                                                                                                         <td id="codDesc">
                                                                                                                             <%= pagos_x_empleado.idEmpleado
-                                                                                                                        %>
+                                                                                                                                %>
                                                                                                                         </td>
                                                                                                                         <td>
                                                                                                                             <%= pagos_x_empleado.departamento
-                                                                                                                        %>
+                                                                                                                                %>
                                                                                                                         </td>
                                                                                                                         <td>
                                                                                                                             <%= pagos_x_empleado.frecuenciaPago
-                                                                                                                        %>
+                                                                                                                                %>
                                                                                                                         </td>
                                                                                                                         <td>
                                                                                                                             <%= pagos_x_empleado.periodo
-                                                                                                                        %>
+                                                                                                                                %>
                                                                                                                         </td>
                                                                                                                         <td>
                                                                                                                             <%= pagos_x_empleado.descuento
-                                                                                                                        %>
+                                                                                                                                %>
                                                                                                                         </td>
                                                                                                                         <td>
-                                                                                                                            <%= pagos_x_empleado.comisionP %>
+                                                                                                                            <%= pagos_x_empleado.comisionP
+                                                                                                                                %>
                                                                                                                         </td>
                                                                                                                         <td>
                                                                                                                             <%= pagos_x_empleado.sueldoNeto
-                                                                                                                        %>
+                                                                                                                                %>
                                                                                                                         </td>
                                                                                                                         <td>
                                                                                                                             <%= pagos_x_empleado.fechaPago.toLocaleString('es-US',
-                                                                                                                        {
-                                                                                                                        timeZone: "America/Santo_Domingo"
-                                                                                                                        }) %>
+                                                                                                                                {
+                                                                                                                                timeZone: "America/Santo_Domingo"
+                                                                                                                                })
+                                                                                                                                %>
                                                                                                                         </td>
                                                                                                                         <td>
                                                                                                                             <%= pagos_x_empleado.estadoPago
-                                                                                                                        %>
+                                                                                                                                %>
                                                                                                                         </td>
                                                                                                                         <td>
                                                                                                                             <%= pagos_x_empleado.observacionPago
-                                                                                                                        %>
+                                                                                                                                %>
                                                                                                                         </td>
 
                                                                                                                         <td>
                                                                                                                             <a id="eventoAct-Inact" href="/empleados/informacion-empleado/editar-pago-x-empleado/<%= pagos_x_empleado.idPago_x_empleado %>" class="btn  ">Editar</a>
                                                                                                                         </td>
+                                                                                                                        <td>
+                                                                                                                            <a target="_blank" href="https://wa.me/<%= empleado.telefono %>?text=*ROSFAL SOLUCIONES DE PRESTAMOS*
+
+%0ACalle primera No. 59 Sector Enriquillo Herrera Sto. Dgo.%0A
+*TELEFONO* 829 856-0203
+
+%0A----------------------------------%0A
+*COMPROBANTE DE PAGO*
+%0A----------------------------------%0A
+
+%0A*Fecha:* <%= pagos_x_empleado.fechaPago.toLocaleString().slice(0, 10) %>%0A
+
+%0A*Empleado:* <%= empleado.nombre %> <%= empleado.apellido %>%0A
+
+%0A*Id pago:* <%= pagos_x_empleado.idPago_x_empleado %>%0A
+
+%0A*Telefono:* <%= empleado.telefono %>%0A
+
+%0A----------------------------------%0A
+
+*DETALLE DEL PAGO*
+
+%0A----------------------------------%0A
+
+%0A*Descuento:* <%= pagos_x_empleado.descuento %>%0A
+
+%0A*Comision:* <%= pagos_x_empleado.comisionP %>%0A
+
+%0A*MONTO PAGADO:* <%= pagos_x_empleado.sueldoNeto %>%0A
+
+=================================
+
+" class="btn ">Enviar
+                                                                                                                                Comprobante</a>
+                                                                                                                        </td>
 
                                                                                                                     </tr>
 
 
-                                                                                                                    <% }) %>
-                                                                                                                        <% } %>
+                                                                                                                    <% })
+                                                                                                                        %>
+                                                                                                                        <% }
+                                                                                                                            %>
 
 
                                                                                                         </tbody>
@@ -919,95 +1359,160 @@
                                                                                             </div>
                                                                                             <% } %>
 
-                                                                                                <% if (arrayPagos_x_empleadoNoviembre.length) { %>
+                                                                                                <% if
+                                                                                                    (arrayPagos_x_empleadoNoviembre.length)
+                                                                                                    { %>
                                                                                                     <h3>NOVIEMBRE</h3>
                                                                                                     <div class="container-departamento">
                                                                                                         <div class="container-table table-responsive">
                                                                                                             <table class="table table-sm table-hover ">
                                                                                                                 <thead class="thead-ligth">
                                                                                                                     <tr class="text-truncate">
-                                                                                                                        <th scope="col">Codigo Pago</th>
-                                                                                                                        <th scope="col">Codigo Empleado
+                                                                                                                        <th scope="col">
+                                                                                                                            Codigo Pago
                                                                                                                         </th>
-                                                                                                                        <th scope="col">Departamento
+                                                                                                                        <th scope="col">
+                                                                                                                            Codigo Empleado
                                                                                                                         </th>
-                                                                                                                        <th scope="col">Tipo de pago
+                                                                                                                        <th scope="col">
+                                                                                                                            Departamento
                                                                                                                         </th>
-                                                                                                                        <th scope="col">Mes</th>
-                                                                                                                        <th scope="col">Descuento</th>
-                                                                                                                        <th scope="col">Comision</th>
-                                                                                                                        <th scope="col">Pago Neto</th>
-                                                                                                                        <th scope="col">Fecha Pago</th>
-                                                                                                                        <th scope="col">Estado Pago</th>
-                                                                                                                        <th scope="col">Observacion</th>
-                                                                                                                        <th scope="col">Acciones</th>
+                                                                                                                        <th scope="col">
+                                                                                                                            Tipo de pago
+                                                                                                                        </th>
+                                                                                                                        <th scope="col">
+                                                                                                                            Mes
+                                                                                                                        </th>
+                                                                                                                        <th scope="col">
+                                                                                                                            Descuento
+                                                                                                                        </th>
+                                                                                                                        <th scope="col">
+                                                                                                                            Comision
+                                                                                                                        </th>
+                                                                                                                        <th scope="col">
+                                                                                                                            Pago Neto
+                                                                                                                        </th>
+                                                                                                                        <th scope="col">
+                                                                                                                            Fecha Pago
+                                                                                                                        </th>
+                                                                                                                        <th scope="col">
+                                                                                                                            Estado Pago
+                                                                                                                        </th>
+                                                                                                                        <th scope="col">
+                                                                                                                            Observacion
+                                                                                                                        </th>
+                                                                                                                        <th scope="col">
+                                                                                                                            Acciones
+                                                                                                                        </th>
                                                                                                                     </tr>
                                                                                                                 </thead>
                                                                                                                 <tbody>
                                                                                                                     <% if
-                                                                                                                (arrayPagos_x_empleadoNoviembre.length>
-                                                                                                                0) { %>
+                                                                                                                        (arrayPagos_x_empleadoNoviembre.length>
+                                                                                                                        0)
+                                                                                                                        {
+                                                                                                                        %>
                                                                                                                         <%
-                                                                                                                    arrayPagos_x_empleadoNoviembre.forEach(pagos_x_empleado=>
-                                                                                                                    { %>
+                                                                                                                            arrayPagos_x_empleadoNoviembre.forEach(pagos_x_empleado=>
+                                                                                                                            {
+                                                                                                                            %>
 
                                                                                                                             <tr class="text-truncate">
 
                                                                                                                                 <td>
                                                                                                                                     <%= pagos_x_empleado.idPago_x_empleado
-                                                                                                                                %>
+                                                                                                                                        %>
                                                                                                                                 </td>
                                                                                                                                 <td id="codDesc">
                                                                                                                                     <%= pagos_x_empleado.idEmpleado
-                                                                                                                                %>
+                                                                                                                                        %>
                                                                                                                                 </td>
                                                                                                                                 <td>
                                                                                                                                     <%= pagos_x_empleado.departamento
-                                                                                                                                %>
+                                                                                                                                        %>
                                                                                                                                 </td>
                                                                                                                                 <td>
                                                                                                                                     <%= pagos_x_empleado.frecuenciaPago
-                                                                                                                                %>
+                                                                                                                                        %>
                                                                                                                                 </td>
                                                                                                                                 <td>
                                                                                                                                     <%= pagos_x_empleado.periodo
-                                                                                                                                %>
+                                                                                                                                        %>
                                                                                                                                 </td>
                                                                                                                                 <td>
                                                                                                                                     <%= pagos_x_empleado.descuento
-                                                                                                                                %>
+                                                                                                                                        %>
                                                                                                                                 </td>
                                                                                                                                 <td>
-                                                                                                                                    <%= pagos_x_empleado.comisionP %>
+                                                                                                                                    <%= pagos_x_empleado.comisionP
+                                                                                                                                        %>
                                                                                                                                 </td>
                                                                                                                                 <td>
                                                                                                                                     <%= pagos_x_empleado.sueldoNeto
-                                                                                                                                %>
+                                                                                                                                        %>
                                                                                                                                 </td>
                                                                                                                                 <td>
                                                                                                                                     <%= pagos_x_empleado.fechaPago.toLocaleString('es-US',
-                                                                                                                                {
-                                                                                                                                timeZone: "America/Santo_Domingo"
-                                                                                                                                }) %>
+                                                                                                                                        {
+                                                                                                                                        timeZone: "America/Santo_Domingo"
+                                                                                                                                        })
+                                                                                                                                        %>
                                                                                                                                 </td>
                                                                                                                                 <td>
                                                                                                                                     <%= pagos_x_empleado.estadoPago
-                                                                                                                                %>
+                                                                                                                                        %>
                                                                                                                                 </td>
                                                                                                                                 <td>
                                                                                                                                     <%= pagos_x_empleado.observacionPago
-                                                                                                                                %>
+                                                                                                                                        %>
                                                                                                                                 </td>
 
                                                                                                                                 <td>
                                                                                                                                     <a id="eventoAct-Inact" href="/empleados/informacion-empleado/editar-pago-x-empleado/<%= pagos_x_empleado.idPago_x_empleado %>" class="btn  ">Editar</a>
                                                                                                                                 </td>
+                                                                                                                                <td>
+                                                                                                                                    <a target="_blank" href="https://wa.me/<%= empleado.telefono %>?text=*ROSFAL SOLUCIONES DE PRESTAMOS*
+
+%0ACalle primera No. 59 Sector Enriquillo Herrera Sto. Dgo.%0A
+*TELEFONO* 829 856-0203
+
+%0A----------------------------------%0A
+*COMPROBANTE DE PAGO*
+%0A----------------------------------%0A
+
+%0A*Fecha:* <%= pagos_x_empleado.fechaPago.toLocaleString().slice(0, 10) %>%0A
+
+%0A*Empleado:* <%= empleado.nombre %> <%= empleado.apellido %>%0A
+
+%0A*Id pago:* <%= pagos_x_empleado.idPago_x_empleado %>%0A
+
+%0A*Telefono:* <%= empleado.telefono %>%0A
+
+%0A----------------------------------%0A
+
+*DETALLE DEL PAGO*
+
+%0A----------------------------------%0A
+
+%0A*Descuento:* <%= pagos_x_empleado.descuento %>%0A
+
+%0A*Comision:* <%= pagos_x_empleado.comisionP %>%0A
+
+%0A*MONTO PAGADO:* <%= pagos_x_empleado.sueldoNeto %>%0A
+
+=================================
+
+" class="btn ">Enviar
+                                                                                                                                        Comprobante</a>
+                                                                                                                                </td>
 
                                                                                                                             </tr>
 
 
-                                                                                                                            <% }) %>
-                                                                                                                                <% } %>
+                                                                                                                            <% })
+                                                                                                                                %>
+                                                                                                                                <% }
+                                                                                                                                    %>
 
 
                                                                                                                 </tbody>
@@ -1017,104 +1522,161 @@
                                                                                                     </div>
                                                                                                     <% } %>
 
-                                                                                                        <% if (arrayPagos_x_empleadoDiciembre.length) {
-                                                                                                    %>
-                                                                                                            <h3>DICIEMBRE</h3>
+                                                                                                        <% if
+                                                                                                            (arrayPagos_x_empleadoDiciembre.length)
+                                                                                                            { %>
+                                                                                                            <h3>DICIEMBRE
+                                                                                                            </h3>
                                                                                                             <div class="container-departamento">
                                                                                                                 <div class="container-table table-responsive">
                                                                                                                     <table class="table table-sm table-hover ">
                                                                                                                         <thead class="thead-ligth">
                                                                                                                             <tr class="text-truncate">
-                                                                                                                                <th scope="col">Codigo Pago
-                                                                                                                                </th>
-                                                                                                                                <th scope="col">Codigo Empleado
+                                                                                                                                <th scope="col">
+                                                                                                                                    Codigo Pago
                                                                                                                                 </th>
                                                                                                                                 <th scope="col">
-                                                                                                                                    Departamento</th>
-                                                                                                                                <th scope="col">Tipo de pago
-                                                                                                                                </th>
-                                                                                                                                <th scope="col">Mes</th>
-                                                                                                                                <th scope="col">
-                                                                                                                                    Descuento</th>
-                                                                                                                                <th scope="col">
-                                                                                                                                    Comision</th>
-                                                                                                                                <th scope="col">Pago Neto
-                                                                                                                                </th>
-                                                                                                                                <th scope="col">Fecha Pago
-                                                                                                                                </th>
-                                                                                                                                <th scope="col">Estado Pago
+                                                                                                                                    Codigo Empleado
                                                                                                                                 </th>
                                                                                                                                 <th scope="col">
-                                                                                                                                    Observacion</th>
-                                                                                                                                <th scope="col">Acciones
+                                                                                                                                    Departamento
+                                                                                                                                </th>
+                                                                                                                                <th scope="col">
+                                                                                                                                    Tipo de pago
+                                                                                                                                </th>
+                                                                                                                                <th scope="col">
+                                                                                                                                    Mes
+                                                                                                                                </th>
+                                                                                                                                <th scope="col">
+                                                                                                                                    Descuento
+                                                                                                                                </th>
+                                                                                                                                <th scope="col">
+                                                                                                                                    Comision
+                                                                                                                                </th>
+                                                                                                                                <th scope="col">
+                                                                                                                                    Pago Neto
+                                                                                                                                </th>
+                                                                                                                                <th scope="col">
+                                                                                                                                    Fecha Pago
+                                                                                                                                </th>
+                                                                                                                                <th scope="col">
+                                                                                                                                    Estado Pago
+                                                                                                                                </th>
+                                                                                                                                <th scope="col">
+                                                                                                                                    Observacion
+                                                                                                                                </th>
+                                                                                                                                <th scope="col">
+                                                                                                                                    Acciones
                                                                                                                                 </th>
                                                                                                                             </tr>
                                                                                                                         </thead>
                                                                                                                         <tbody>
                                                                                                                             <% if
-                                                                                                                        (arrayPagos_x_empleadoDiciembre.length>
-                                                                                                                        0) { %>
+                                                                                                                                (arrayPagos_x_empleadoDiciembre.length>
+                                                                                                                                0)
+                                                                                                                                {
+                                                                                                                                %>
                                                                                                                                 <%
-                                                                                                                            arrayPagos_x_empleadoDiciembre.forEach(pagos_x_empleado=>
-                                                                                                                            { %>
+                                                                                                                                    arrayPagos_x_empleadoDiciembre.forEach(pagos_x_empleado=>
+                                                                                                                                    {
+                                                                                                                                    %>
 
                                                                                                                                     <tr class="text-truncate">
 
                                                                                                                                         <td>
                                                                                                                                             <%= pagos_x_empleado.idPago_x_empleado
-                                                                                                                                        %>
+                                                                                                                                                %>
                                                                                                                                         </td>
                                                                                                                                         <td id="codDesc">
                                                                                                                                             <%= pagos_x_empleado.idEmpleado
-                                                                                                                                        %>
+                                                                                                                                                %>
                                                                                                                                         </td>
                                                                                                                                         <td>
                                                                                                                                             <%= pagos_x_empleado.departamento
-                                                                                                                                        %>
+                                                                                                                                                %>
                                                                                                                                         </td>
                                                                                                                                         <td>
                                                                                                                                             <%= pagos_x_empleado.frecuenciaPago
-                                                                                                                                        %>
+                                                                                                                                                %>
                                                                                                                                         </td>
                                                                                                                                         <td>
                                                                                                                                             <%= pagos_x_empleado.periodo
-                                                                                                                                        %>
+                                                                                                                                                %>
                                                                                                                                         </td>
                                                                                                                                         <td>
                                                                                                                                             <%= pagos_x_empleado.descuento
-                                                                                                                                        %>
+                                                                                                                                                %>
                                                                                                                                         </td>
                                                                                                                                         <td>
-                                                                                                                                            <%= pagos_x_empleado.comisionP %>
+                                                                                                                                            <%= pagos_x_empleado.comisionP
+                                                                                                                                                %>
                                                                                                                                         </td>
                                                                                                                                         <td>
                                                                                                                                             <%= pagos_x_empleado.sueldoNeto
-                                                                                                                                        %>
+                                                                                                                                                %>
                                                                                                                                         </td>
                                                                                                                                         <td>
                                                                                                                                             <%= pagos_x_empleado.fechaPago.toLocaleString('es-US',
-                                                                                                                                        {
-                                                                                                                                        timeZone: "America/Santo_Domingo"
-                                                                                                                                        }) %>
+                                                                                                                                                {
+                                                                                                                                                timeZone: "America/Santo_Domingo"
+                                                                                                                                                })
+                                                                                                                                                %>
                                                                                                                                         </td>
                                                                                                                                         <td>
                                                                                                                                             <%= pagos_x_empleado.estadoPago
-                                                                                                                                        %>
+                                                                                                                                                %>
                                                                                                                                         </td>
                                                                                                                                         <td>
                                                                                                                                             <%= pagos_x_empleado.observacionPago
-                                                                                                                                        %>
+                                                                                                                                                %>
                                                                                                                                         </td>
 
                                                                                                                                         <td>
                                                                                                                                             <a id="eventoAct-Inact" href="/empleados/informacion-empleado/editar-pago-x-empleado/<%= pagos_x_empleado.idPago_x_empleado %>" class="btn  ">Editar</a>
                                                                                                                                         </td>
+                                                                                                                                        <td>
+                                                                                                                                            <a target="_blank" href="https://wa.me/<%= empleado.telefono %>?text=*ROSFAL SOLUCIONES DE PRESTAMOS*
+
+%0ACalle primera No. 59 Sector Enriquillo Herrera Sto. Dgo.%0A
+*TELEFONO* 829 856-0203
+
+%0A----------------------------------%0A
+*COMPROBANTE DE PAGO*
+%0A----------------------------------%0A
+
+%0A*Fecha:* <%= pagos_x_empleado.fechaPago.toLocaleString().slice(0, 10) %>%0A
+
+%0A*Empleado:* <%= empleado.nombre %> <%= empleado.apellido %>%0A
+
+%0A*Id pago:* <%= pagos_x_empleado.idPago_x_empleado %>%0A
+
+%0A*Telefono:* <%= empleado.telefono %>%0A
+
+%0A----------------------------------%0A
+
+*DETALLE DEL PAGO*
+
+%0A----------------------------------%0A
+
+%0A*Descuento:* <%= pagos_x_empleado.descuento %>%0A
+
+%0A*Comision:* <%= pagos_x_empleado.comisionP %>%0A
+
+%0A*MONTO PAGADO:* <%= pagos_x_empleado.sueldoNeto %>%0A
+
+=================================
+
+" class="btn ">Enviar
+                                                                                                                                                Comprobante</a>
+                                                                                                                                        </td>
 
                                                                                                                                     </tr>
 
 
-                                                                                                                                    <% }) %>
-                                                                                                                                        <% } %>
+                                                                                                                                    <% })
+                                                                                                                                        %>
+                                                                                                                                        <% }
+                                                                                                                                            %>
 
 
                                                                                                                         </tbody>
