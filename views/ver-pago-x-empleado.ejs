@@ -132,7 +132,7 @@
 *COMPROBANTE DE PAGO*
 %0A----------------------------------%0A
 
-%0A*Fecha:* <%= pagos_x_empleado.fechaPago.toLocaleString().slice(0, 10) %>%0A
+%0A*Fecha:* <%= pagos_x_empleado.fechaPago.toLocaleString('es-US').slice(0, 10) %>%0A
 
 %0A*Empleado:* <%= empleado.nombre %> <%= empleado.apellido %>%0A
 
@@ -596,7 +596,7 @@
 *COMPROBANTE DE PAGO*
 %0A----------------------------------%0A
 
-%0A*Fecha:* <%= pagos_x_empleado.fechaPago.toLocaleString().slice(0, 10) %>%0A
+%0A*Fecha:* <%= pagos_x_empleado.fechaPago.toLocaleString('es-US').slice(0, 10) %>%0A
 
 %0A*Empleado:* <%= empleado.nombre %> <%= empleado.apellido %>%0A
 
