@@ -11,7 +11,8 @@
 
             <a class="btn   me-lg-3" style="background-color: #02aeae;" href="/crear-empleado"><i
                     class="bi bi-person-plus me-lg-3"></i>Crear nuevo empleado</a>
-            <a href="/empleados-inactivos" class="btn  "><i class="bi bi-arrow-right me-lg-3"></i> Empleados Inactivos</a>
+            <a href="/empleados-inactivos" class="btn  "><i class="bi bi-arrow-right me-lg-3"></i> Empleados
+                Inactivos</a>
         </div>
         <h1 id="prueba"></h1>
 
@@ -24,6 +25,7 @@
                         <th scope="col">Nombre</th>
                         <th scope="col">apellido</th>
                         <th scope="col">Cedula</th>
+                        <th scope="col">Telefono</th>
                         <th scope="col">Estatus Empleado</th>
                         <th scope="col">Fecha Contratacion</th>
                         <th scope="col">Contrato</th>
@@ -53,11 +55,14 @@
                                     <%= empleado.cedula %>
                                 </td>
                                 <td>
+                                    <%= empleado.telefono %>
+                                </td>
+                                <td>
                                     <%= empleado.estatus %>
                                 </td>
                                 <td>
                                     <%= empleado.tiempoEmpresa.toLocaleString('es-US', {
-                                        timeZone: "America/Santo_Domingo" }) %>
+                                        timeZone: "America/Santo_Domingo" }).slice(0, 10) %>
                                 </td>
                                 <td>
                                     <%= empleado.condicionContrato %>
