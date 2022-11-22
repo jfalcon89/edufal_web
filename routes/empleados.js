@@ -169,7 +169,7 @@ router.get("/empleados/detalle-empleado/:id", async(req, res) => {
 router.post('/empleados/detalle-empleado/:id', async(req, res) => {
     const id = req.params.id;
     console.log(req.params.id)
-    const { nombre, apellido, cedula, sexo, estatus, departamento, nacimiento, lugarNacimiento, nacionalidad, sueldoBruto, afp, ars, cooperativa, club, prestamos, totalDescuentos, sueldoNeto, comision, condicionContrato, formaPago, telefono } = req.body;
+    const { nombre, apellido, cedula, sexo, estatus, departamento, nacimiento, lugarNacimiento, nacionalidad, sueldoBruto, afp, ars, cooperativa, club, prestamos, totalDescuentos, sueldoNeto, comision, condicionContrato, formaPago, telefono, correo } = req.body;
     const nuevoEmpleado = {
         nombre,
         apellido,
@@ -192,7 +192,8 @@ router.post('/empleados/detalle-empleado/:id', async(req, res) => {
         comision,
         condicionContrato,
         formaPago,
-        telefono
+        telefono,
+        correo
     };
 
     await pool.query("UPDATE empleados set ? WHERE idEmpleado = ?", [nuevoEmpleado, id]);
@@ -202,11 +203,15 @@ router.post('/empleados/detalle-empleado/:id', async(req, res) => {
 
 
 //ELIMINAR EMPLEADO 
-router.get("/empleados/:id", async(req, res) => {
+router.get("/empleados/detalle-empleado/eliminar-empleado/:id", async(req, res) => {
     const { id } = req.params;
     console.log(id)
 
     try {
+
+        await pool.query("DELETE FROM empleado_x_departamento WHERE IdEmpleado = ?", [id]);
+        await pool.query("DELETE FROM descuentos_x_empleados WHERE IdEmpleado = ?", [id]);
+        await pool.query("DELETE FROM pagos_x_empleados WHERE IdEmpleado = ?", [id]);
 
         await pool.query("DELETE FROM empleados WHERE idEmpleado = ?", [id]);
         // req.flash('success', 'Link eliminado correctamente');

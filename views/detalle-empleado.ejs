@@ -9,9 +9,14 @@
             <div class="d-lg-flex justify-content-end ">
                 <button class="btn  mt-3 me-lg-3" style="background-color: #02aeae;" type="submit"><i
                         class="bi bi-check-lg me-3"></i>Guardar cambios</button>
-                <button class="btn  mt-3 me-lg-3" type="submit"><i class="bi bi-check-lg me-3"></i>Enviar Nomina</button>
-                <a href="/empleados" class="btn btn-warning mt-3 me-lg-3 "><i class="bi bi-arrow-left me-3"></i>Volver a atras</a>
-                <a href="/empleados/informacion-empleado/<%= empleado.idEmpleado %>" class="btn mt-3 "><i class="bi bi-info-circle me-3"></i>Informacion</a>
+                <button class="btn  mt-3 me-lg-3" type="submit"><i class="bi bi-check-lg me-3"></i>Enviar
+                    Nomina</button>
+                <a href="/empleados" class="btn btn-warning mt-3 me-lg-3 "><i class="bi bi-arrow-left me-3"></i>Volver a
+                    atras</a>
+                <a href="/empleados/informacion-empleado/<%= empleado.idEmpleado %>" class="btn mt-3 me-lg-3"><i
+                        class="bi bi-info-circle me-3 "></i>Informacion</a>
+                <a data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="btn btn-danger mt-3 text-light "><i
+                        class="bi bi-info-circle me-3"></i>Eliminar Empleado</a>
             </div>
 
             <div class="container-datos-header d-flex">
@@ -70,7 +75,7 @@
                                     <select name="estatus" class="form-control" id="estatus">
                                         <option class="text-dark" value="<%= empleado.estatus %>" selected>
                                             <%= empleado.estatus %>
-                        
+
                                         </option>
                                         <option class="text-dark" value="Activo">Activo</option>
                                         <option class="text-dark" value="Inactivo">Inactivo</option>
@@ -212,3 +217,30 @@
 
             <script src="/js/nomina.js"></script>
             <%- include('template/footer'); %>
+
+                <!-- Modal -->
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel">Eliminar Empleado
+                                </h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <%= empleado.nombre %>
+                                    <%= empleado.apellido %>
+                            </div>
+                            <div>
+                                <span class="d-flex justify-content-center bg-secondary text-light m-4">Al eliminar este
+                                    empleado se
+                                    perderan todos los registros de pagos, descuentos, puesto asignado, etc. SEGURO QUE
+                                    LO QUIERE ELIMINAR ?</span>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <a type="submit" href="/empleados/detalle-empleado/eliminar-empleado/<%= empleado.idEmpleado %>" class="btn text-light bg-danger " title="Eliminar Empleado">Eliminar Empleado</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>

@@ -6,57 +6,659 @@
         <h2 class="text-secondary">Reportes</h2>
 
 
-        <!-- chart -->
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js" integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header " id="flush-headingOne">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        EMPLEADOS ACTIVOS
+                    </button>
+                </h2>
+                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                    <div class="container-fluid mt-2">
+                        <!-- <div class="container"> -->
+                        <!-- <div class="container-novedades"> -->
+                        <table id="datatable1" class="display responsive nowrap compact" style="width:100%">
+                            <thead class="thead-ligth">
+                                <tr>
+                                    <th scope="col">ID Empleado</th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Apellido</th>
+                                    <th scope="col">Cedula</th>
+                                    <th scope="col">Sexo</th>
+                                    <th scope="col">Telefono</th>
+                                    <th scope="col">Correo</th>
+                                    <th scope="col">Estatus</th>
+                                    <th scope="col">Fecha Contratacion</th>
+                                    <th scope="col">Contrato</th>
+                                    <th scope="col">Pago</th>
+                                    <th scope="col">Comision</th>
+                                    <th scope="col">Sueldo</th>
 
-        <div>
-            <canvas id="myChart" width="400" height="400"></canvas>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% if (arrayEmpleadosActivos.length> 0) { %>
+                                    <% arrayEmpleadosActivos.forEach(EmpleadoActivo=> { %>
+
+                                        <tr>
+                                            <td>
+                                                <%= EmpleadoActivo.idEmpleado %>
+                                            </td>
+                                            <td>
+                                                <%= EmpleadoActivo.nombre %>
+                                            </td>
+                                            <td>
+                                                <%= EmpleadoActivo.apellido %>
+                                            </td>
+                                            <td>
+                                                <%= EmpleadoActivo.cedula %>
+                                            </td>
+                                            <td>
+                                                <%= EmpleadoActivo.sexo %>
+                                            </td>
+                                            <td>
+                                                <%= EmpleadoActivo.telefono %>
+                                            </td>
+                                            <td>
+                                                <%= EmpleadoActivo.correo %>
+                                            </td>
+                                            <td>
+                                                <%= EmpleadoActivo.estatus %>
+                                            </td>
+                                            <td>
+                                                <%= EmpleadoActivo.tiempoEmpresa.toLocaleString('es-US', {
+                                                    timeZone: "America/Santo_Domingo" }).slice(0, 10); %>
+                                            </td>
+                                            <td>
+                                                <%= EmpleadoActivo.condicionContrato %>
+                                            </td>
+                                            <td>
+                                                <%= EmpleadoActivo.formaPago %>
+                                            </td>
+                                            <td>
+                                                <%= EmpleadoActivo.comision %>
+                                            </td>
+                                            <td>
+                                                <%= EmpleadoActivo.sueldoBruto %>
+                                            </td>
+
+
+                                        </tr>
+
+                                        <% }) %>
+                                            <% } %>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                </div>
+            </div>
+
         </div>
 
-        <script>
-            const ctx = document.getElementById('myChart');
-            const names = ["Carlos", "Pedro", "Ruben"];
-            const ages = [15, 20, 30];
+        <div class="accordion accordion-flush mt-3" id="accordionFlushExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header " id="flush-headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                        EMPLEADOS INACTIVOS
+                    </button>
+                </h2>
+                <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                    <div class="container-fluid mt-2">
+                        <!-- <div class="container"> -->
+                        <!-- <div class="container-novedades"> -->
+                        <table id="datatable2" class="display responsive nowrap compact" style="width:100%">
+                            <thead class="thead-ligth">
+                                <tr>
+                                    <th scope="col">ID Empleado</th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Apellido</th>
+                                    <th scope="col">Cedula</th>
+                                    <th scope="col">Sexo</th>
+                                    <th scope="col">Telefono</th>
+                                    <th scope="col">Correo</th>
+                                    <th scope="col">Estatus</th>
+                                    <th scope="col">Fecha Contratacion</th>
+                                    <th scope="col">Contrato</th>
+                                    <th scope="col">Pago</th>
+                                    <th scope="col">Comision</th>
+                                    <th scope="col">Sueldo</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% if (arrayEmpleadosInactivos.length> 0) { %>
+                                    <% arrayEmpleadosInactivos.forEach(EmpleadoInactivo=> { %>
+
+                                        <tr>
+                                            <td>
+                                                <%= EmpleadoInactivo.idEmpleado %>
+                                            </td>
+                                            <td>
+                                                <%= EmpleadoInactivo.nombre %>
+                                            </td>
+                                            <td>
+                                                <%= EmpleadoInactivo.apellido %>
+                                            </td>
+                                            <td>
+                                                <%= EmpleadoInactivo.cedula %>
+                                            </td>
+                                            <td>
+                                                <%= EmpleadoInactivo.sexo %>
+                                            </td>
+                                            <td>
+                                                <%= EmpleadoInactivo.telefono %>
+                                            </td>
+                                            <td>
+                                                <%= EmpleadoInactivo.correo %>
+                                            </td>
+                                            <td>
+                                                <%= EmpleadoInactivo.estatus %>
+                                            </td>
+                                            <td>
+                                                <%= EmpleadoInactivo.tiempoEmpresa.toLocaleString('es-US', {
+                                                    timeZone: "America/Santo_Domingo" }).slice(0, 10); %>
+                                            </td>
+                                            <td>
+                                                <%= EmpleadoInactivo.condicionContrato %>
+                                            </td>
+                                            <td>
+                                                <%= EmpleadoInactivo.formaPago %>
+                                            </td>
+                                            <td>
+                                                <%= EmpleadoInactivo.comision %>
+                                            </td>
+                                            <td>
+                                                <%= EmpleadoInactivo.sueldoBruto %>
+                                            </td>
 
 
-            const myChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: names,
-                    datasets: [{
-                        label: 'Edad',
-                        data: ages,
-                        backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 206, 86, 0.2)',
-                            'rgba(75, 192, 192, 0.2)',
-                            'rgba(153, 102, 255, 0.2)',
-                            'rgba(255, 159, 64, 0.2)'
-                        ],
-                        borderColor: [
-                            'rgba(255, 99, 132, 1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)',
-                            'rgba(255, 159, 64, 1)'
-                        ],
-                        borderWidth: 1.5
-                    }]
-                }
+                                        </tr>
 
-            })
-        </script>
+                                        <% }) %>
+                                            <% } %>
+                            </tbody>
+                        </table>
 
-        <!-- <script src="/js/chart.js"></script> -->
+                    </div>
 
-        <!-- chart end -->
+                </div>
+            </div>
+
+        </div>
+
+        <div class="accordion accordion-flush mt-3" id="accordionFlushExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header " id="flush-headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                        PAGOS EMPLEADOS
+                    </button>
+                </h2>
+                <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                    <div class="container-fluid mt-2">
+                        <!-- <div class="container"> -->
+                        <!-- <div class="container-novedades"> -->
+                        <table id="datatable3" class="display responsive nowrap compact" style="width:100%">
+                            <thead class="thead-ligth">
+                                <tr>
+                                    <th scope="col">ID Pago</th>
+                                    <th scope="col">ID Empleado</th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Apellido</th>
+                                    <th scope="col">Departamento</th>
+                                    <th scope="col">Frecuencia Pago</th>
+                                    <th scope="col">Periodo</th>
+                                    <th scope="col">Descuento</th>
+                                    <th scope="col">Comision</th>
+                                    <th scope="col">Sueldo</th>
+                                    <th scope="col">Fecha Pago</th>
+                                    <th scope="col">Estado Pago</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% if (arrayPagos.length> 0) { %>
+                                    <% arrayPagos.forEach(pago=> { %>
+
+                                        <tr>
+                                            <td>
+                                                <%= pago.idPago_x_empleado %>
+                                            </td>
+                                            <td>
+                                                <%= pago.idEmpleado %>
+                                            </td>
+                                            <td>
+                                                <%= pago.nombre %>
+                                            </td>
+                                            <td>
+                                                <%= pago.apellido %>
+                                            </td>
+                                            <td>
+                                                <%= pago.departamento %>
+                                            </td>
+                                            <td>
+                                                <%= pago.frecuenciaPago %>
+                                            </td>
+                                            <td>
+                                                <%= pago.periodo %>
+                                            </td>
+                                            <td>
+                                                <%= pago.descuento %>
+                                            </td>
+                                            <td>
+                                                <%= pago.comisionP %>
+                                            </td>
+                                            <td>
+                                                <%= pago.sueldoNeto %>
+                                            </td>
+                                            <td>
+                                                <%= pago.fechaPago.toLocaleString('es-US', {
+                                                    timeZone: "America/Santo_Domingo" }).slice(0, 10); %>
+                                            </td>
+                                            <td>
+                                                <%= pago.estadoPago %>
+                                            </td>
+
+                                        </tr>
+
+                                        <% }) %>
+                                            <% } %>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="accordion accordion-flush mt-3" id="accordionFlushExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header " id="flush-headingFour">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+                        DEPARTAMENTOS-PUESTOS
+                    </button>
+                </h2>
+                <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+                    <div class="container-fluid mt-2">
+                        <!-- <div class="container"> -->
+                        <!-- <div class="container-novedades"> -->
+                        <table id="datatable4" class="display responsive nowrap compact" style="width:100%">
+                            <thead class="thead-ligth">
+                                <tr>
+                                    <th scope="col">ID Departamento</th>
+                                    <th scope="col">Nombre Departamento</th>
+                                    <th scope="col">Fecha Registro</th>
+                                    <th scope="col">Estado Departamento</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% if (arrayDepartamentos.length> 0) { %>
+                                    <% arrayDepartamentos.forEach(departamento=> { %>
+
+                                        <tr>
+                                            <td>
+                                                <%= departamento.idDepartamento %>
+                                            </td>
+                                            <td>
+                                                <%= departamento.nombre_dpto %>
+                                            </td>
+                                            <td>
+                                                <%= departamento.fechaRegistro.toLocaleString('es-US', {
+                                                    timeZone: "America/Santo_Domingo" }).slice(0, 10); %>
+                                            </td>
+                                            <td>
+                                                <%= departamento.estadoDepartamento %>
+                                            </td>
+
+                                        </tr>
+
+                                        <% }) %>
+                                            <% } %>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="accordion accordion-flush mt-3" id="accordionFlushExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header " id="flush-headingFive">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
+                        ASIGNAMIENTOS
+                    </button>
+                </h2>
+                <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
+                    <div class="container-fluid mt-2">
+                        <!-- <div class="container"> -->
+                        <!-- <div class="container-novedades"> -->
+                        <table id="datatable5" class="display responsive nowrap compact" style="width:100%">
+                            <thead class="thead-ligth">
+                                <tr>
+                                    <th scope="col">ID Asignamiento</th>
+                                    <th scope="col">ID Empleado</th>
+                                    <th scope="col">Nombre Empleado</th>
+                                    <th scope="col">Apellido Empleado</th>
+                                    <th scope="col">Cedula</th>
+                                    <th scope="col">ID Dpto</th>
+                                    <th scope="col">Nombre Departamento</th>
+                                    <th scope="col">Fecha Asignamiento</th>
+                                    <th scope="col">Estado</th>
+                                    <th scope="col">Contrato</th>
+                                    <th scope="col">Pago</th>
+                                    <th scope="col">Descuento</th>
+                                    <th scope="col">Comision</th>
+                                    <th scope="col">Sueldo</th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% if (arrayAsignamientos.length> 0) { %>
+                                    <% arrayAsignamientos.forEach(asignamiento=> { %>
+
+                                        <tr>
+                                            <td>
+                                                <%= asignamiento.idEmpleado_x_departamento %>
+                                            </td>
+                                            <td>
+                                                <%= asignamiento.idEmpleado %>
+                                            </td>
+                                            <td>
+                                                <%= asignamiento.nombre %>
+                                            </td>
+                                            <td>
+                                                <%= asignamiento.apellido %>
+                                            </td>
+                                            <td>
+                                                <%= asignamiento.cedula %>
+                                            </td>
+                                            <td>
+                                                <%= asignamiento.idDepartamento %>
+                                            </td>
+                                            <td>
+                                                <%= asignamiento.nombre_dpto %>
+                                            </td>
+                                            <td>
+                                                <%= asignamiento.fechaRegistroB.toLocaleString('es-US', {
+                                                    timeZone: "America/Santo_Domingo" }).slice(0, 10); %>
+                                            </td>
+                                            <td>
+                                                <%= asignamiento.estadoDepartamentoB %>
+                                            </td>
+                                            <td>
+                                                <%= asignamiento.condicionContrato%>
+                                            </td>
+                                            <td>
+                                                <%= asignamiento.formaPago %>
+                                            </td>
+                                            <td>
+                                                <%= asignamiento.descuento %>
+                                            </td>
+                                            <td>
+                                                <%= asignamiento.comision %>
+                                            </td>
+                                            <td>
+                                                <%= asignamiento.sueldoBruto %>
+                                            </td>
+
+                                        </tr>
+
+                                        <% }) %>
+                                            <% } %>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
 
     </div>
 
 
+    <script>
+        $(document).ready(function() {
+            $('#datatable1').DataTable({
+                order: [
+                    [3, 'desc']
 
+                ],
+
+                dom: 'Bfrtip',
+                buttons: [{
+                        extend: 'excel',
+                        text: 'Exportar a Excel',
+                    }, {
+                        extend: 'pdfHtml5',
+                        orientation: 'landscape',
+                        pageSize: 'LEGAL',
+                        text: 'Exportar a PDF',
+                    }
+
+                ],
+
+
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                    "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ Entradas",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                }
+            });
+
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#datatable2').DataTable({
+                order: [
+                    [3, 'desc']
+
+                ],
+
+                dom: 'Bfrtip',
+                buttons: [{
+                        extend: 'excel',
+                        text: 'Exportar a Excel',
+                    }, {
+                        extend: 'pdfHtml5',
+                        orientation: 'landscape',
+                        pageSize: 'LEGAL',
+                        text: 'Exportar a PDF',
+                    }
+
+                ],
+
+
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                    "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ Entradas",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                }
+            });
+
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#datatable3').DataTable({
+                order: [
+                    [3, 'desc']
+
+                ],
+
+                dom: 'Bfrtip',
+                buttons: [{
+                        extend: 'excel',
+                        text: 'Exportar a Excel',
+                    }, {
+                        extend: 'pdfHtml5',
+                        orientation: 'landscape',
+                        pageSize: 'LEGAL',
+                        text: 'Exportar a PDF',
+                    }
+
+                ],
+
+
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                    "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ Entradas",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                }
+            });
+
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#datatable4').DataTable({
+                order: [
+                    [3, 'desc']
+
+                ],
+
+                dom: 'Bfrtip',
+                buttons: [{
+                        extend: 'excel',
+                        text: 'Exportar a Excel',
+                    }, {
+                        extend: 'pdfHtml5',
+                        orientation: 'landscape',
+                        pageSize: 'LEGAL',
+                        text: 'Exportar a PDF',
+                    }
+
+                ],
+
+
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                    "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ Entradas",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                }
+            });
+
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#datatable5').DataTable({
+                order: [
+                    [3, 'desc']
+
+                ],
+
+                dom: 'Bfrtip',
+                buttons: [{
+                        extend: 'excel',
+                        text: 'Exportar a Excel',
+                    }, {
+                        extend: 'pdfHtml5',
+                        orientation: 'landscape',
+                        pageSize: 'LEGAL',
+                        text: 'Exportar a PDF',
+                    }
+
+                ],
+
+
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                    "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ Entradas",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                }
+            });
+
+        });
+    </script>
 
     <%- include('template/footer'); %>
