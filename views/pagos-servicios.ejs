@@ -1,0 +1,1336 @@
+<%- include('template/cabecera', { tituloWeb: "Nomina - Pagos servicios" , bgActive1: "" , bgActive2: "" , bgActive3: ""
+    , bgActive4: "" , bgActive5: "" , bgActive6: "" , bgActive7: "active" }); %>
+
+
+
+    <div class="container-fluid mt-2">
+        <h2 class="text-secondary">Pagos Servicios</h2>
+        <hr>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+            data-bs-whatever="@fat">Cargar Pago</button>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Pago Servicio</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <form method="POST">
+                            <div class=" ">
+
+
+
+                                <select name="descripcionServicio" id="" class="form-control">
+                                    <option value="" class="form-control">Servicio</option>
+                                    <option value="Sistema Sispres">Sistema Sispres</option>
+                                    <option value="Servicio de Hosting Web">Servicio de Hosting Web</option>
+                                    <option value="Servicios Varios">Servicios Varios</option>
+                                </select>
+
+                                <select name="tipoPagoServicio" id="" class="form-control">
+                                    <option value="">Tipo de Pago</option>
+                                    <option value="Semanal">Semanal</option>
+                                    <option value="Quincenal">Quincenal</option>
+                                    <option value="Mensual">Mensual</option>
+                                </select>
+
+                                <select name="mesPagoServicio" id="" class="form-control">
+                                    <option value="">Mes Pago</option>
+                                    <option class="text-dark" value="Enero">Enero</option>
+                                    <option class="text-dark" value="Febrero">Febrero</option>
+                                    <option class="text-dark" value="Marzo">Marzo</option>
+                                    <option class="text-dark" value="Abril">Abril</option>
+                                    <option class="text-dark" value="Mayo">Mayo</option>
+                                    <option class="text-dark" value="Junio">Junio</option>
+                                    <option class="text-dark" value="Julio">Julio</option>
+                                    <option class="text-dark" value="Agosto">Agosto</option>
+                                    <option class="text-dark" value="Septiembre">Septiembre</option>
+                                    <option class="text-dark" value="Obtubre">Obtubre</option>
+                                    <option class="text-dark" value="Noviembre">Noviembre</option>
+                                    <option class="text-dark" value="Diciembre">Diciembre</option>
+                                </select>
+                                <input type="number" name="montoPagoServicio" placeholder="Monto" class="form-control">
+                                <input type="date" name="fechaPagoServicio" placeholder="Fecha" class="form-control">
+                                <input type="text" name="observacionPagoServicio" placeholder="Observacion"
+                                    class="form-control ">
+
+                                <button type="submit" class="btn btn-success">Cargar Pago</button>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Send message</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="container-fluid d-xxl-flex justify-content-around"
+        style="background-color: #acacac5c; border-radius: 15px;">
+
+        <div class="d-sm-flex">
+            <h2 class="me-3 font-weight-bold text-truncate">Cant. Pagos</h2>
+            <h2>
+                <%= cantPagos %>
+            </h2>
+        </div>
+
+        <div class="d-sm-flex">
+            <h2 class="me-3 font-weight-bold text-truncate">Total Pagado</h2>
+            <h2>
+                <%= serviciosTotales=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
+                    }).format(serviciosTotales) %>
+            </h2>
+        </div>
+    </div>
+
+
+
+    <!-- chart -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"
+        integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <div class="chart-container ">
+        <canvas id="myChart" style="position: relative; height:40vh; width:80vw"></canvas>
+    </div>
+    <div class="visually-hidden">
+        <p id="enero">
+            <%= serviciosEnero %>
+        </p>
+        <p id="febrero">
+            <%= serviciosFebrero %>
+        </p>
+        <p id="marzo">
+            <%= serviciosMarzo %>
+        </p>
+        <p id="abril">
+            <%= serviciosAbril %>
+        </p>
+        <p id="mayo">
+            <%= serviciosMayo %>
+        </p>
+        <p id="junio">
+            <%= serviciosJunio %>
+        </p>
+        <p id="julio">
+            <%= serviciosJulio %>
+        </p>
+        <p id="agosto">
+            <%= serviciosAgosto %>
+        </p>
+        <p id="septiembre">
+            <%= serviciosSeptiembre %>
+        </p>
+        <p id="octubre">
+            <%= serviciosOctubre %>
+        </p>
+        <p id="noviembre">
+            <%= serviciosNoviembre %>
+        </p>
+        <p id="diciembre">
+            <%= serviciosDiciembre %>
+        </p>
+
+
+    </div>
+
+    <script src="/js/chart.js"></script>
+
+    <!-- chart end -->
+
+    <% if (serviciosEnero) { %>
+        <h3>ENERO </h3>
+
+        <div class="d-lg-flex">
+            <h4 class="me-3 ">Cant.
+                <%= arrayServiciosEnero.length %>
+            </h4>
+
+            <h4 class="me-3">Monto Pagados
+                <%= serviciosEnero=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
+                    }).format(serviciosEnero) %>
+            </h4>
+        </div>
+
+        <div class="container-departamento">
+            <div class="container-table table-responsive">
+                <table class="table table-sm table-hover ">
+                    <thead class="thead-ligth">
+                        <tr class="text-truncate">
+                            <th scope="col">Codigo Pago Servicio</th>
+                            <th scope="col">Descripcion</th>
+                            <th scope="col">Tipo Pago</th>
+                            <th scope="col">Mes Pago</th>
+                            <th scope="col">Fecha Pago</th>
+                            <th scope="col">Monto Pagado</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col">Observacion</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <% if (arrayServiciosEnero.length> 0) { %>
+                            <% arrayServiciosEnero.forEach(serviciosEnero=> { %>
+                                <tr class="text-truncate">
+
+                                    <td>
+                                        <%= serviciosEnero.idPagoServicio %>
+                                    </td>
+                                    <td id="codDesc">
+                                        <%= serviciosEnero.descripcionServicio %>
+                                    </td>
+                                    <td>
+                                        <%= serviciosEnero.tipoPagoServicio %>
+                                    </td>
+                                    <td>
+                                        <%= serviciosEnero.mesPagoServicio %>
+                                    </td>
+                                    <td>
+                                        <%= serviciosEnero.fechaPagoServicio.toLocaleString('es-US', {
+                                            timeZone: "America/Santo_Domingo" }) %>
+                                    </td>
+                                    <td>
+                                        <%= serviciosEnero.montoPagoServicio %>
+                                    </td>
+                                    <td>
+                                        <%= serviciosEnero.estadoPagoServicio %>
+                                    </td>
+                                    <td>
+                                        <%= serviciosEnero.observacionPagoServicio %>
+                                    </td>
+                                    <td>
+                                        <a id="eventoAct-Inact"
+                                            href="/pagos-servicios/editar-pago-servicio/<%= serviciosEnero.idPagoServicio %>"
+                                            class="btn  ">Editar</a>
+                                    </td>
+
+                                </tr>
+
+                                <% }) %>
+                                    <% } %>
+
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        <% } %>
+
+            <% if (serviciosFebrero) { %>
+                <h3>FEBRERO</h3>
+                <div class="d-lg-flex">
+                    <h4 class="me-3 ">Cant.
+                        <%= arrayServiciosFebrero.length %>
+                    </h4>
+
+                    <h4 class="me-3">Pagado
+                        <%= serviciosFebrero=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
+                            }).format(serviciosFebrero) %>
+                    </h4>
+                </div>
+                <div class="container-departamento">
+                    <div class="container-table table-responsive">
+                        <table class="table table-sm table-hover ">
+                            <thead class="thead-ligth">
+                                <tr class="text-truncate">
+                                    <th scope="col">Codigo Pago Servicio</th>
+                                    <th scope="col">Descripcion</th>
+                                    <th scope="col">Tipo Pago</th>
+                                    <th scope="col">Mes Pago</th>
+                                    <th scope="col">Fecha Pago</th>
+                                    <th scope="col">Monto Pagado</th>
+                                    <th scope="col">Estado</th>
+                                    <th scope="col">Observacion</th>
+                                    <th scope="col">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% if (arrayServiciosFebrero.length> 0) { %>
+                                    <% arrayServiciosFebrero.forEach(serviciosFebrero=> { %>
+
+                                        <tr class="text-truncate">
+
+                                            <td>
+                                                <%= serviciosFebrero.idPagoServicio %>
+                                            </td>
+                                            <td id="codDesc">
+                                                <%= serviciosFebrero.descripcionServicio %>
+                                            </td>
+                                            <td>
+                                                <%= serviciosFebrero.tipoPagoServicio %>
+                                            </td>
+                                            <td>
+                                                <%= serviciosFebrero.mesPagoServicio %>
+                                            </td>
+                                            <td>
+                                                <%= serviciosFebrero.fechaPagoServicio.toLocaleString('es-US', {
+                                                    timeZone: "America/Santo_Domingo" }) %>
+                                            </td>
+                                            <td>
+                                                <%= serviciosFebrero.montoPagoServicio %>
+                                            </td>
+                                            <td>
+                                                <%= serviciosFebrero.estadoPagoServicio %>
+                                            </td>
+                                            <td>
+                                                <%= serviciosFebrero.observacionPagoServicio %>
+                                            </td>
+                                            <td>
+                                                <a id="eventoAct-Inact"
+                                                    href="/pagos-servicios/editar-pago-servicio/<%= serviciosFebrero.idPagoServicio %>"
+                                                    class="btn  ">Editar</a>
+                                            </td>
+
+                                        </tr>
+
+
+                                        <% }) %>
+                                            <% } %>
+
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+                <% } %>
+
+                    <% if (serviciosMarzo) { %>
+                        <h3>MARZO</h3>
+                        <div class="d-lg-flex">
+                            <h4 class="me-3 ">Cant.
+                                <%= arrayServiciosMarzo.length %>
+                            </h4>
+
+                            <h4 class="me-3">Pagado
+                                <%= serviciosMarzo=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
+                                    }).format(serviciosMarzo) %>
+                            </h4>
+                        </div>
+                        <div class="container-departamento">
+                            <div class="container-table table-responsive">
+                                <table class="table table-sm table-hover ">
+                                    <thead class="thead-ligth">
+                                        <tr class="text-truncate">
+                                            <th scope="col">Codigo Pago Servicio</th>
+                                            <th scope="col">Descripcion</th>
+                                            <th scope="col">Tipo Pago</th>
+                                            <th scope="col">Mes Pago</th>
+                                            <th scope="col">Fecha Pago</th>
+                                            <th scope="col">Monto Pagado</th>
+                                            <th scope="col">Estado</th>
+                                            <th scope="col">Observacion</th>
+                                            <th scope="col">Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% if (arrayServiciosMarzo.length> 0) { %>
+                                            <% arrayServiciosMarzo.forEach(serviciosMarzo=> { %>
+
+                                                <tr class="text-truncate">
+
+                                                    <td>
+                                                        <%= serviciosMarzo.idPagoServicio %>
+                                                    </td>
+                                                    <td id="codDesc">
+                                                        <%= serviciosMarzo.descripcionServicio %>
+                                                    </td>
+                                                    <td>
+                                                        <%= serviciosMarzo.tipoPagoServicio %>
+                                                    </td>
+                                                    <td>
+                                                        <%= serviciosMarzo.mesPagoServicio %>
+                                                    </td>
+                                                    <td>
+                                                        <%= serviciosMarzo.fechaPagoServicio.toLocaleString('es-US', {
+                                                            timeZone: "America/Santo_Domingo" }) %>
+                                                    </td>
+                                                    <td>
+                                                        <%= serviciosMarzo.montoPagoServicio %>
+                                                    </td>
+                                                    <td>
+                                                        <%= serviciosMarzo.estadoPagoServicio %>
+                                                    </td>
+                                                    <td>
+                                                        <%= serviciosMarzo.observacionPagoServicio %>
+                                                    </td>
+                                                    <td>
+                                                        <a id="eventoAct-Inact"
+                                                            href="/pagos-servicios/editar-pago-servicio/<%= serviciosMarzo.idPagoServicio %>"
+                                                            class="btn  ">Editar</a>
+                                                    </td>
+
+                                                </tr>
+
+
+                                                <% }) %>
+                                                    <% } %>
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                        <% } %>
+
+                            <% if (serviciosAbril) { %>
+                                <h3>ABRIL</h3>
+                                <div class="d-lg-flex">
+                                    <h4 class="me-3 ">Cant.
+                                        <%= arrayServiciosAbril.length %>
+                                    </h4>
+
+                                    <h4 class="me-3">Pagado
+                                        <%= serviciosAbril=Intl.NumberFormat('en-IN', { style: 'currency' ,
+                                            currency: 'USD' }).format(serviciosAbril) %>
+                                    </h4>
+                                </div>
+                                <div class="container-departamento">
+                                    <div class="container-table table-responsive">
+                                        <table class="table table-sm table-hover ">
+                                            <thead class="thead-ligth">
+                                                <tr class="text-truncate">
+                                                    <th scope="col">Codigo Pago Servicio</th>
+                                                    <th scope="col">Descripcion</th>
+                                                    <th scope="col">Tipo Pago</th>
+                                                    <th scope="col">Mes Pago</th>
+                                                    <th scope="col">Fecha Pago</th>
+                                                    <th scope="col">Monto Pagado</th>
+                                                    <th scope="col">Estado</th>
+                                                    <th scope="col">Observacion</th>
+                                                    <th scope="col">Acciones</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <% if (arrayServiciosAbril.length> 0) { %>
+                                                    <% arrayServiciosAbril.forEach(serviciosAbril=>
+                                                        { %>
+
+                                                        <tr class="text-truncate">
+
+                                                            <td>
+                                                                <%= serviciosAbril.idPagoServicio %>
+                                                            </td>
+                                                            <td id="codDesc">
+                                                                <%= serviciosAbril.descripcionServicio %>
+                                                            </td>
+                                                            <td>
+                                                                <%= serviciosAbril.tipoPagoServicio %>
+                                                            </td>
+                                                            <td>
+                                                                <%= serviciosAbril.mesPagoServicio %>
+                                                            </td>
+                                                            <td>
+                                                                <%= serviciosAbril.fechaPagoServicio.toLocaleString('es-US',
+                                                                    { timeZone: "America/Santo_Domingo" }) %>
+                                                            </td>
+                                                            <td>
+                                                                <%= serviciosAbril.montoPagoServicio %>
+                                                            </td>
+                                                            <td>
+                                                                <%= serviciosAbril.estadoPagoServicio %>
+                                                            </td>
+                                                            <td>
+                                                                <%= serviciosAbril.observacionPagoServicio %>
+                                                            </td>
+                                                            <td>
+                                                                <a id="eventoAct-Inact"
+                                                                    href="/pagos-servicios/editar-pago-servicio/<%= serviciosAbril.idPagoServicio %>"
+                                                                    class="btn  ">Editar</a>
+                                                            </td>
+
+                                                        </tr>
+
+
+                                                        <% }) %>
+                                                            <% } %>
+
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+                                <% } %>
+
+                                    <% if (serviciosMayo) { %>
+                                        <h3>MAYO</h3>
+                                        <div class="d-lg-flex">
+                                            <h4 class="me-3 ">Cant.
+                                                <%= arrayServiciosMayo.length %>
+                                            </h4>
+
+                                            <h4 class="me-3">Pagado
+                                                <%= serviciosMayo=Intl.NumberFormat('en-IN', { style: 'currency' ,
+                                                    currency: 'USD' }).format(serviciosMayo) %>
+                                            </h4>
+                                        </div>
+                                        <div class="container-departamento">
+                                            <div class="container-table table-responsive">
+                                                <table class="table table-sm table-hover ">
+                                                    <thead class="thead-ligth">
+                                                        <tr class="text-truncate">
+                                                            <th scope="col">Codigo Pago Servicio</th>
+                                                            <th scope="col">Descripcion</th>
+                                                            <th scope="col">Tipo Pago</th>
+                                                            <th scope="col">Mes Pago</th>
+                                                            <th scope="col">Fecha Pago</th>
+                                                            <th scope="col">Monto Pagado</th>
+                                                            <th scope="col">Estado</th>
+                                                            <th scope="col">Observacion</th>
+                                                            <th scope="col">Acciones</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <% if (arrayServiciosMayo.length> 0) { %>
+                                                            <% arrayServiciosMayo.forEach(serviciosMayo=>
+                                                                { %>
+
+                                                                <tr class="text-truncate">
+
+                                                                    <td>
+                                                                        <%= serviciosMayo.idPagoServicio %>
+                                                                    </td>
+                                                                    <td id="codDesc">
+                                                                        <%= serviciosMayo.descripcionServicio %>
+                                                                    </td>
+                                                                    <td>
+                                                                        <%= serviciosMayo.tipoPagoServicio %>
+                                                                    </td>
+                                                                    <td>
+                                                                        <%= serviciosMayo.mesPagoServicio %>
+                                                                    </td>
+                                                                    <td>
+                                                                        <%= serviciosMayo.fechaPagoServicio.toLocaleString('es-US',
+                                                                            { timeZone: "America/Santo_Domingo" }) %>
+                                                                    </td>
+                                                                    <td>
+                                                                        <%= serviciosMayo.montoPagoServicio %>
+                                                                    </td>
+                                                                    <td>
+                                                                        <%= serviciosMayo.estadoPagoServicio %>
+                                                                    </td>
+                                                                    <td>
+                                                                        <%= serviciosMayo.observacionPagoServicio %>
+                                                                    </td>
+                                                                    <td>
+                                                                        <a id="eventoAct-Inact"
+                                                                            href="/pagos-servicios/editar-pago-servicio/<%= serviciosMayo.idPagoServicio %>"
+                                                                            class="btn  ">Editar</a>
+                                                                    </td>
+
+                                                                </tr>
+
+
+                                                                <% }) %>
+                                                                    <% } %>
+
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                        </div>
+                                        <% } %>
+
+                                            <% if (serviciosJunio) { %>
+                                                <h3>JUNIO</h3>
+                                                <div class="d-lg-flex">
+                                                    <h4 class="me-3 ">Cant.
+                                                        <%= arrayServiciosJunio.length %>
+                                                    </h4>
+
+                                                    <h4 class="me-3">Pagado
+                                                        <%= serviciosJunio=Intl.NumberFormat('en-IN', {
+                                                            style: 'currency' , currency: 'USD'
+                                                            }).format(serviciosJunio) %>
+                                                    </h4>
+                                                </div>
+                                                <div class="container-departamento">
+                                                    <div class="container-table table-responsive">
+                                                        <table class="table table-sm table-hover ">
+                                                            <thead class="thead-ligth">
+                                                                <tr class="text-truncate">
+                                                                    <th scope="col">Codigo Pago Servicio</th>
+                                                                    <th scope="col">Descripcion</th>
+                                                                    <th scope="col">Tipo Pago</th>
+                                                                    <th scope="col">Mes Pago</th>
+                                                                    <th scope="col">Fecha Pago</th>
+                                                                    <th scope="col">Monto Pagado</th>
+                                                                    <th scope="col">Estado</th>
+                                                                    <th scope="col">Observacion</th>
+                                                                    <th scope="col">Acciones</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <% if (arrayServiciosJunio.length> 0)
+                                                                    { %>
+                                                                    <% arrayServiciosJunio.forEach(serviciosJunio=>
+                                                                        { %>
+
+                                                                        <tr class="text-truncate">
+
+                                                                            <td>
+                                                                                <%= serviciosJunio.idPagoServicio %>
+                                                                            </td>
+                                                                            <td id="codDesc">
+                                                                                <%= serviciosJunio.descripcionServicio
+                                                                                    %>
+                                                                            </td>
+                                                                            <td>
+                                                                                <%= serviciosJunio.tipoPagoServicio %>
+                                                                            </td>
+                                                                            <td>
+                                                                                <%= serviciosJunio.mesPagoServicio %>
+                                                                            </td>
+                                                                            <td>
+                                                                                <%= serviciosJunio.fechaPagoServicio.toLocaleString('es-US',
+                                                                                    { timeZone: "America/Santo_Domingo"
+                                                                                    }) %>
+                                                                            </td>
+                                                                            <td>
+                                                                                <%= serviciosJunio.montoPagoServicio %>
+                                                                            </td>
+                                                                            <td>
+                                                                                <%= serviciosJunio.estadoPagoServicio %>
+                                                                            </td>
+                                                                            <td>
+                                                                                <%= serviciosJunio.observacionPagoServicio
+                                                                                    %>
+                                                                            </td>
+                                                                            <td>
+                                                                                <a id="eventoAct-Inact"
+                                                                                    href="/pagos-servicios/editar-pago-servicio/<%= serviciosJunio.idPagoServicio %>"
+                                                                                    class="btn  ">Editar</a>
+                                                                            </td>
+
+                                                                        </tr>
+
+
+                                                                        <% }) %>
+                                                                            <% } %>
+
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+
+                                                </div>
+                                                <% } %>
+
+                                                    <% if (serviciosJulio) { %>
+                                                        <h3>JULIO</h3>
+                                                        <div class="d-lg-flex">
+                                                            <h4 class="me-3 ">Cant.
+                                                                <%= arrayServiciosJulio.length %>
+                                                            </h4>
+
+                                                            <h4 class="me-3">Pagado
+                                                                <%= serviciosJulio=Intl.NumberFormat('en-IN', {
+                                                                    style: 'currency' , currency: 'USD'
+                                                                    }).format(serviciosJulio) %>
+                                                            </h4>
+                                                        </div>
+                                                        <div class="container-departamento">
+                                                            <div class="container-table table-responsive">
+                                                                <table class="table table-sm table-hover ">
+                                                                    <thead class="thead-ligth">
+                                                                        <tr class="text-truncate">
+                                                                            <th scope="col">Codigo Pago Servicio</th>
+                                                                            <th scope="col">Descripcion</th>
+                                                                            <th scope="col">Tipo Pago</th>
+                                                                            <th scope="col">Mes Pago</th>
+                                                                            <th scope="col">Fecha Pago</th>
+                                                                            <th scope="col">Monto Pagado</th>
+                                                                            <th scope="col">Estado</th>
+                                                                            <th scope="col">Observacion</th>
+                                                                            <th scope="col">Acciones</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <% if (arrayServiciosJulio.length>
+                                                                            0)
+                                                                            { %>
+                                                                            <%
+                                                                                arrayServiciosJulio.forEach(serviciosJulio=>
+                                                                                { %>
+
+                                                                                <tr class="text-truncate">
+
+                                                                                    <td>
+                                                                                        <%= serviciosJulio.idPagoServicio
+                                                                                            %>
+                                                                                    </td>
+                                                                                    <td id="codDesc">
+                                                                                        <%= serviciosJulio.descripcionServicio
+                                                                                            %>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <%= serviciosJulio.tipoPagoServicio
+                                                                                            %>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <%= serviciosJulio.mesPagoServicio
+                                                                                            %>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <%= serviciosJulio.fechaPagoServicio.toLocaleString('es-US',
+                                                                                            {
+                                                                                            timeZone: "America/Santo_Domingo"
+                                                                                            }) %>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <%= serviciosJulio.montoPagoServicio
+                                                                                            %>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <%= serviciosJulio.estadoPagoServicio
+                                                                                            %>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <%= serviciosJulio.observacionPagoServicio
+                                                                                            %>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <a id="eventoAct-Inact"
+                                                                                            href="/pagos-servicios/editar-pago-servicio/<%= serviciosJulio.idPagoServicio %>"
+                                                                                            class="btn  ">Editar</a>
+                                                                                    </td>
+
+                                                                                </tr>
+
+                                                                                <% }) %>
+                                                                                    <% } %>
+
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+
+                                                        </div>
+                                                        <% } %>
+
+                                                            <% if (serviciosAgosto) { %>
+                                                                <h3>AGOSTO</h3>
+                                                                <div class="d-lg-flex">
+                                                                    <h4 class="me-3 ">Cant.
+                                                                        <%= arrayServiciosAgosto.length %>
+                                                                    </h4>
+
+                                                                    <h4 class="me-3">Pagado
+                                                                        <%= serviciosAgosto=Intl.NumberFormat('en-IN', {
+                                                                            style: 'currency' , currency: 'USD'
+                                                                            }).format(serviciosAgosto) %>
+                                                                    </h4>
+                                                                </div>
+                                                                <div class="container-departamento">
+                                                                    <div class="container-table table-responsive">
+                                                                        <table class="table table-sm table-hover ">
+                                                                            <thead class="thead-ligth">
+                                                                                <tr class="text-truncate">
+                                                                                    <th scope="col">Codigo Pago Servicio
+                                                                                    </th>
+                                                                                    <th scope="col">Descripcion</th>
+                                                                                    <th scope="col">Tipo Pago</th>
+                                                                                    <th scope="col">Mes Pago</th>
+                                                                                    <th scope="col">Fecha Pago</th>
+                                                                                    <th scope="col">Monto Pagado</th>
+                                                                                    <th scope="col">Estado</th>
+                                                                                    <th scope="col">Observacion</th>
+                                                                                    <th scope="col">Acciones</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                <% if (arrayServiciosAgosto.length>
+                                                                                    0) { %>
+                                                                                    <%
+                                                                                        arrayServiciosAgosto.forEach(serviciosAgosto=>
+                                                                                        { %>
+
+                                                                                        <tr class="text-truncate">
+
+                                                                                            <td>
+                                                                                                <%= serviciosAgosto.idPagoServicio
+                                                                                                    %>
+                                                                                            </td>
+                                                                                            <td id="codDesc">
+                                                                                                <%= serviciosAgosto.descripcionServicio
+                                                                                                    %>
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                <%= serviciosAgosto.tipoPagoServicio
+                                                                                                    %>
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                <%= serviciosAgosto.mesPagoServicio
+                                                                                                    %>
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                <%= serviciosAgosto.fechaPagoServicio.toLocaleString('es-US',
+                                                                                                    {
+                                                                                                    timeZone: "America/Santo_Domingo"
+                                                                                                    }) %>
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                <%= serviciosAgosto.montoPagoServicio
+                                                                                                    %>
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                <%= serviciosAgosto.estadoPagoServicio
+                                                                                                    %>
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                <%= serviciosAgosto.observacionPagoServicio
+                                                                                                    %>
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                <a id="eventoAct-Inact"
+                                                                                                    href="/pagos-servicios/editar-pago-servicio/<%= serviciosAgosto.idPagoServicio %>"
+                                                                                                    class="btn  ">Editar</a>
+                                                                                            </td>
+
+                                                                                        </tr>
+
+
+                                                                                        <% }) %>
+                                                                                            <% } %>
+
+
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+
+                                                                </div>
+                                                                <% } %>
+
+                                                                    <% if (serviciosSeptiembre) { %>
+                                                                        <h3>SEPTIEMBRE</h3>
+                                                                        <div class="d-lg-flex">
+                                                                            <h4 class="me-3 ">Cant.
+                                                                                <%= arrayServiciosSeptiembre.length %>
+                                                                            </h4>
+
+                                                                            <h4 class="me-3">Pagado
+                                                                                <%= pserviciosSeptiembre=Intl.NumberFormat('en-IN',
+                                                                                    { style: 'currency' ,
+                                                                                    currency: 'USD'
+                                                                                    }).format(serviciosSeptiembre) %>
+                                                                            </h4>
+                                                                        </div>
+                                                                        <div class="container-departamento">
+                                                                            <div
+                                                                                class="container-table table-responsive">
+                                                                                <table
+                                                                                    class="table table-sm table-hover ">
+                                                                                    <thead class="thead-ligth">
+                                                                                        <tr class="text-truncate">
+                                                                                            <th scope="col">Codigo Pago
+                                                                                                Servicio
+                                                                                            </th>
+                                                                                            <th scope="col">Descripcion
+                                                                                            </th>
+                                                                                            <th scope="col">Tipo Pago
+                                                                                            </th>
+                                                                                            <th scope="col">Mes Pago
+                                                                                            </th>
+                                                                                            <th scope="col">Fecha Pago
+                                                                                            </th>
+                                                                                            <th scope="col">Monto Pagado
+                                                                                            </th>
+                                                                                            <th scope="col">Estado</th>
+                                                                                            <th scope="col">Observacion
+                                                                                            </th>
+                                                                                            <th scope="col">Acciones
+                                                                                            </th>
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                    <tbody>
+                                                                                        <% if
+                                                                                            (arrayServiciosSeptiembre.length>
+                                                                                            0) {
+                                                                                            %>
+                                                                                            <%
+                                                                                                arrayServiciosSeptiembre.forEach(serviciosSeptiembre=>
+                                                                                                { %>
+
+                                                                                                <tr
+                                                                                                    class="text-truncate">
+
+                                                                                                    <td>
+                                                                                                        <%= serviciosSeptiembre.idPagoServicio
+                                                                                                            %>
+                                                                                                    </td>
+                                                                                                    <td id="codDesc">
+                                                                                                        <%= serviciosSeptiembre.descripcionServicio
+                                                                                                            %>
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <%= serviciosSeptiembre.tipoPagoServicio
+                                                                                                            %>
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <%= serviciosSeptiembre.mesPagoServicio
+                                                                                                            %>
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <%= serviciosSeptiembre.fechaPagoServicio.toLocaleString('es-US',
+                                                                                                            {
+                                                                                                            timeZone: "America/Santo_Domingo"
+                                                                                                            }) %>
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <%= serviciosSeptiembre.montoPagoServicio
+                                                                                                            %>
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <%= serviciosSeptiembre.estadoPagoServicio
+                                                                                                            %>
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <%= serviciosSeptiembre.observacionPagoServicio
+                                                                                                            %>
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <a id="eventoAct-Inact"
+                                                                                                            href="/pagos-servicios/editar-pago-servicio/<%= serviciosSeptiembre.idPagoServicio %>"
+                                                                                                            class="btn  ">Editar</a>
+                                                                                                    </td>
+
+                                                                                                </tr>
+
+
+                                                                                                <% }) %>
+                                                                                                    <% } %>
+
+
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <% } %>
+
+                                                                            <% if (serviciosOctubre) { %>
+                                                                                <h3>OCTUBRE</h3>
+                                                                                <div class="d-lg-flex">
+                                                                                    <h4 class="me-3 ">Cant.
+                                                                                        <%= arrayPagos_x_empleadoOctubre.length
+                                                                                            %>
+                                                                                    </h4>
+
+                                                                                    <h4 class="me-3">Pagado
+                                                                                        <%= serviciosOctubre=Intl.NumberFormat('en-IN',
+                                                                                            { style: 'currency' ,
+                                                                                            currency: 'USD'
+                                                                                            }).format(serviciosOctubre)
+                                                                                            %>
+                                                                                    </h4>
+                                                                                </div>
+                                                                                <div class="container-departamento">
+                                                                                    <div
+                                                                                        class="container-table table-responsive">
+                                                                                        <table
+                                                                                            class="table table-sm table-hover ">
+                                                                                            <thead class="thead-ligth">
+                                                                                                <tr
+                                                                                                    class="text-truncate">
+                                                                                                    <th scope="col">
+                                                                                                        Codigo Pago
+                                                                                                        Servicio
+                                                                                                    </th>
+                                                                                                    <th scope="col">
+                                                                                                        Descripcion</th>
+                                                                                                    <th scope="col">Tipo
+                                                                                                        Pago
+                                                                                                    </th>
+                                                                                                    <th scope="col">Mes
+                                                                                                        Pago
+                                                                                                    </th>
+                                                                                                    <th scope="col">
+                                                                                                        Fecha Pago</th>
+                                                                                                    <th scope="col">
+                                                                                                        Monto Pagado
+                                                                                                    </th>
+                                                                                                    <th scope="col">
+                                                                                                        Estado</th>
+                                                                                                    <th scope="col">
+                                                                                                        Observacion</th>
+                                                                                                    <th scope="col">
+                                                                                                        Acciones</th>
+                                                                                                </tr>
+                                                                                            </thead>
+                                                                                            <tbody>
+                                                                                                <% if
+                                                                                                    (arrayServiciosOctubre.length>
+                                                                                                    0) { %>
+                                                                                                    <%
+                                                                                                        arrayServiciosOctubre.forEach(serviciosOctubre=>
+                                                                                                        { %>
+
+                                                                                                        <tr
+                                                                                                            class="text-truncate">
+
+                                                                                                            <td>
+                                                                                                                <%= serviciosOctubre.idPagoServicio
+                                                                                                                    %>
+                                                                                                            </td>
+                                                                                                            <td
+                                                                                                                id="codDesc">
+                                                                                                                <%= serviciosOctubre.descripcionServicio
+                                                                                                                    %>
+                                                                                                            </td>
+                                                                                                            <td>
+                                                                                                                <%= serviciosOctubre.tipoPagoServicio
+                                                                                                                    %>
+                                                                                                            </td>
+                                                                                                            <td>
+                                                                                                                <%= serviciosOctubre.mesPagoServicio
+                                                                                                                    %>
+                                                                                                            </td>
+                                                                                                            <td>
+                                                                                                                <%= serviciosOctubre.fechaPagoServicio.toLocaleString('es-US',
+                                                                                                                    {
+                                                                                                                    timeZone: "America/Santo_Domingo"
+                                                                                                                    })
+                                                                                                                    %>
+                                                                                                            </td>
+                                                                                                            <td>
+                                                                                                                <%= serviciosOctubre.montoPagoServicio
+                                                                                                                    %>
+                                                                                                            </td>
+                                                                                                            <td>
+                                                                                                                <%= serviciosOctubre.estadoPagoServicio
+                                                                                                                    %>
+                                                                                                            </td>
+                                                                                                            <td>
+                                                                                                                <%= serviciosOctubre.observacionPagoServicio
+                                                                                                                    %>
+                                                                                                            </td>
+                                                                                                            <td>
+                                                                                                                <a id="eventoAct-Inact"
+                                                                                                                    href="/pagos-servicios/editar-pago-servicio/<%= serviciosOctubre.idPagoServicio %>"
+                                                                                                                    class="btn  ">Editar</a>
+                                                                                                            </td>
+
+                                                                                                        </tr>
+
+
+                                                                                                        <% }) %>
+                                                                                                            <% } %>
+
+
+                                                                                            </tbody>
+                                                                                        </table>
+                                                                                    </div>
+
+                                                                                </div>
+                                                                                <% } %>
+
+                                                                                    <% if (serviciosNoviembre) { %>
+                                                                                        <h3>NOVIEMBRE</h3>
+                                                                                        <div class="d-lg-flex">
+                                                                                            <h4 class="me-3 ">Cant.
+                                                                                                <%= arrayServiciosNoviembre.length
+                                                                                                    %>
+                                                                                            </h4>
+
+                                                                                            <h4 class="me-3">Pagado
+                                                                                                <%= serviciosNoviembre=Intl.NumberFormat('en-IN',
+                                                                                                    { style: 'currency'
+                                                                                                    , currency: 'USD'
+                                                                                                    }).format(serviciosNoviembre)
+                                                                                                    %>
+                                                                                            </h4>
+                                                                                        </div>
+                                                                                        <div
+                                                                                            class="container-departamento">
+                                                                                            <div
+                                                                                                class="container-table table-responsive">
+                                                                                                <table
+                                                                                                    class="table table-sm table-hover ">
+                                                                                                    <thead
+                                                                                                        class="thead-ligth">
+                                                                                                        <tr
+                                                                                                            class="text-truncate">
+                                                                                                            <th
+                                                                                                                scope="col">
+                                                                                                                Codigo
+                                                                                                                Pago
+                                                                                                                Servicio
+                                                                                                            </th>
+                                                                                                            <th
+                                                                                                                scope="col">
+                                                                                                                Descripcion
+                                                                                                            </th>
+                                                                                                            <th
+                                                                                                                scope="col">
+                                                                                                                Tipo
+                                                                                                                Pago
+                                                                                                            </th>
+                                                                                                            <th
+                                                                                                                scope="col">
+                                                                                                                Mes Pago
+                                                                                                            </th>
+                                                                                                            <th
+                                                                                                                scope="col">
+                                                                                                                Fecha
+                                                                                                                Pago
+                                                                                                            </th>
+                                                                                                            <th
+                                                                                                                scope="col">
+                                                                                                                Monto
+                                                                                                                Pagado
+                                                                                                            </th>
+                                                                                                            <th
+                                                                                                                scope="col">
+                                                                                                                Estado
+                                                                                                            </th>
+                                                                                                            <th
+                                                                                                                scope="col">
+                                                                                                                Observacion
+                                                                                                            </th>
+                                                                                                            <th
+                                                                                                                scope="col">
+                                                                                                                Acciones
+                                                                                                            </th>
+                                                                                                        </tr>
+                                                                                                    </thead>
+                                                                                                    <tbody>
+                                                                                                        <% if
+                                                                                                            (arrayServiciosNoviembre.length>
+                                                                                                            0)
+                                                                                                            {
+                                                                                                            %>
+                                                                                                            <%
+                                                                                                                arrayServiciosNoviembre.forEach(serviciosNoviembre=>
+                                                                                                                {
+                                                                                                                %>
+
+                                                                                                                <tr
+                                                                                                                    class="text-truncate">
+
+                                                                                                                    <td>
+                                                                                                                        <%= serviciosNoviembre.idPagoServicio
+                                                                                                                            %>
+                                                                                                                    </td>
+                                                                                                                    <td
+                                                                                                                        id="codDesc">
+                                                                                                                        <%= serviciosNoviembre.descripcionServicio
+                                                                                                                            %>
+                                                                                                                    </td>
+                                                                                                                    <td>
+                                                                                                                        <%= serviciosNoviembre.tipoPagoServicio
+                                                                                                                            %>
+                                                                                                                    </td>
+                                                                                                                    <td>
+                                                                                                                        <%= serviciosNoviembre.mesPagoServicio
+                                                                                                                            %>
+                                                                                                                    </td>
+                                                                                                                    <td>
+                                                                                                                        <%= serviciosNoviembre.fechaPagoServicio.toLocaleString('es-US',
+                                                                                                                            {
+                                                                                                                            timeZone: "America/Santo_Domingo"
+                                                                                                                            })
+                                                                                                                            %>
+                                                                                                                    </td>
+                                                                                                                    <td>
+                                                                                                                        <%= serviciosNoviembre.montoPagoServicio
+                                                                                                                            %>
+                                                                                                                    </td>
+                                                                                                                    <td>
+                                                                                                                        <%= serviciosNoviembre.estadoPagoServicio
+                                                                                                                            %>
+                                                                                                                    </td>
+                                                                                                                    <td>
+                                                                                                                        <%= serviciosNoviembre.observacionPagoServicio
+                                                                                                                            %>
+                                                                                                                    </td>
+                                                                                                                    <td>
+                                                                                                                        <a id="eventoAct-Inact"
+                                                                                                                            href="/pagos-servicios/editar-pago-servicio/<%= serviciosNoviembre.idPagoServicio %>"
+                                                                                                                            class="btn  ">Editar</a>
+                                                                                                                    </td>
+
+                                                                                                                </tr>
+                                                                                                                <% }) %>
+                                                                                                                    <% }
+                                                                                                                        %>
+
+
+                                                                                                    </tbody>
+                                                                                                </table>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                        <% } %>
+
+                                                                                            <% if (serviciosDiciembre) {
+                                                                                                %>
+                                                                                                <h3>DICIEMBRE
+                                                                                                </h3>
+                                                                                                <div class="d-lg-flex">
+                                                                                                    <h4 class="me-3 ">
+                                                                                                        Cant.
+                                                                                                        <%= arrayServiciosDiciembre.length
+                                                                                                            %>
+                                                                                                    </h4>
+
+                                                                                                    <h4 class="me-3">
+                                                                                                        Pagado
+                                                                                                        <%= serviciosDiciembre=Intl.NumberFormat('en-IN',
+                                                                                                            {
+                                                                                                            style: 'currency'
+                                                                                                            ,
+                                                                                                            currency: 'USD'
+                                                                                                            }).format(serviciosDiciembre)
+                                                                                                            %>
+                                                                                                    </h4>
+                                                                                                </div>
+                                                                                                <div
+                                                                                                    class="container-departamento">
+                                                                                                    <div
+                                                                                                        class="container-table table-responsive">
+                                                                                                        <table
+                                                                                                            class="table table-sm table-hover ">
+                                                                                                            <thead
+                                                                                                                class="thead-ligth">
+                                                                                                                <tr
+                                                                                                                    class="text-truncate">
+                                                                                                                    <th
+                                                                                                                        scope="col">
+                                                                                                                        Codigo
+                                                                                                                        Pago
+                                                                                                                        Servicio
+                                                                                                                    </th>
+                                                                                                                    <th
+                                                                                                                        scope="col">
+                                                                                                                        Descripcion
+                                                                                                                    </th>
+                                                                                                                    <th
+                                                                                                                        scope="col">
+                                                                                                                        Tipo
+                                                                                                                        Pago
+                                                                                                                    </th>
+                                                                                                                    <th
+                                                                                                                        scope="col">
+                                                                                                                        Mes
+                                                                                                                        Pago
+                                                                                                                    </th>
+                                                                                                                    <th
+                                                                                                                        scope="col">
+                                                                                                                        Fecha
+                                                                                                                        Pago
+                                                                                                                    </th>
+                                                                                                                    <th
+                                                                                                                        scope="col">
+                                                                                                                        Monto
+                                                                                                                        Pagado
+                                                                                                                    </th>
+                                                                                                                    <th
+                                                                                                                        scope="col">
+                                                                                                                        Estado
+                                                                                                                    </th>
+                                                                                                                    <th
+                                                                                                                        scope="col">
+                                                                                                                        Observacion
+                                                                                                                    </th>
+                                                                                                                    <th
+                                                                                                                        scope="col">
+                                                                                                                        Acciones
+                                                                                                                    </th>
+                                                                                                                </tr>
+                                                                                                            </thead>
+                                                                                                            <tbody>
+                                                                                                                <% if
+                                                                                                                    (arrayServiciosDiciembre.length>
+                                                                                                                    0)
+                                                                                                                    {
+                                                                                                                    %>
+                                                                                                                    <%
+                                                                                                                        arrayServiciosDiciembre.forEach(serviciosDiciembre=>
+                                                                                                                        {
+                                                                                                                        %>
+
+                                                                                                                        <tr
+                                                                                                                            class="text-truncate">
+
+                                                                                                                            <td>
+                                                                                                                                <%= serviciosDiciembre.idPagoServicio
+                                                                                                                                    %>
+                                                                                                                            </td>
+                                                                                                                            <td
+                                                                                                                                id="codDesc">
+                                                                                                                                <%= serviciosDiciembre.descripcionServicio
+                                                                                                                                    %>
+                                                                                                                            </td>
+                                                                                                                            <td>
+                                                                                                                                <%= serviciosDiciembre.tipoPagoServicio
+                                                                                                                                    %>
+                                                                                                                            </td>
+                                                                                                                            <td>
+                                                                                                                                <%= serviciosDiciembre.mesPagoServicio
+                                                                                                                                    %>
+                                                                                                                            </td>
+                                                                                                                            <td>
+                                                                                                                                <%= serviciosDiciembre.fechaPagoServicio.toLocaleString('es-US',
+                                                                                                                                    {
+                                                                                                                                    timeZone: "America/Santo_Domingo"
+                                                                                                                                    })
+                                                                                                                                    %>
+                                                                                                                            </td>
+                                                                                                                            <td>
+                                                                                                                                <%= serviciosDiciembre.montoPagoServicio
+                                                                                                                                    %>
+                                                                                                                            </td>
+                                                                                                                            <td>
+                                                                                                                                <%= serviciosDiciembre.estadoPagoServicio
+                                                                                                                                    %>
+                                                                                                                            </td>
+                                                                                                                            <td>
+                                                                                                                                <%= serviciosDiciembre.observacionPagoServicio
+                                                                                                                                    %>
+                                                                                                                            </td>
+                                                                                                                            <td>
+                                                                                                                                <a id="eventoAct-Inact"
+                                                                                                                                    href="/pagos-servicios/editar-pago-servicio/<%= serviciosDiciembre.idPagoServicio %>"
+                                                                                                                                    class="btn  ">Editar</a>
+                                                                                                                            </td>
+
+                                                                                                                        </tr>
+
+                                                                                                                        <% })
+                                                                                                                            %>
+                                                                                                                            <% }
+                                                                                                                                %>
+
+                                                                                                            </tbody>
+                                                                                                        </table>
+                                                                                                    </div>
+
+                                                                                                </div>
+                                                                                                <% } %>
+
+
+
+
+
+
+                                                                                                    </div>
+
+
+
+
+                                                                                                    <%- include('template/footer');
+                                                                                                        %>

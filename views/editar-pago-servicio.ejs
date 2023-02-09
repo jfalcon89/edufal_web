@@ -1,0 +1,125 @@
+<%- include('template/cabecera', { tituloWeb: "Nomina - Editar Departamento" , bgActive1: "" , bgActive2: "" ,
+    bgActive3: "" , bgActive4: "" , bgActive5: "" , bgActive6: "" , bgActive7: "active" }); %>
+
+    <div class="container-fluid mt-2">
+        <h2 class=" text-secondary">Editar Pago Servicio</h2>
+        <hr>
+
+        <div class="d-flex align-items-center justify-content-end ">
+
+            <a href="/departamentos" class="btn btn-warning my-4 "><i class="bi bi-arrow-left me-lg-3"></i>Volver
+                a
+                atras</a>
+        </div>
+
+        <div class="container-departamento">
+            <form class="" action="" method="POST">
+
+                <div class=" ">
+
+                    <div>
+                        <label for="descripcionServicio" class=" text-uppercase">Descripcion
+                            Servicio</label>
+                        <select name="descripcionServicio" id="descripcionServicio" class="form-control">
+                            <option value="<%= servicio.descripcionServicio %>" selected>
+                                <%= servicio.descripcionServicio %>
+                            </option>
+                            <option value="Sistema Sispres">Sistema Sispres</option>
+                            <option value="Servicio de Hosting Web">Servicio de Hosting Web</option>
+                            <option value="Servicios Varios">Servicios Varios</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="tipoPagoServicio" class=" text-uppercase">Tipo de pago</label>
+                        <select name="tipoPagoServicio" id="" class="form-control">
+                            <option value="<%= servicio.tipoPagoServicio %>" selected>
+                                <%= servicio.tipoPagoServicio %>
+                            </option>
+                            <option value="Semanal">Semanal</option>
+                            <option value="Quincenal">Quincenal</option>
+                            <option value="Mensual">Mensual</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="mesPagoServicio" class=" text-uppercase">Periodo</label>
+                        <select name="mesPagoServicio" id="" class="form-control">
+                            <option value="<%= servicio.mesPagoServicio %>" selected>
+                                <%= servicio.mesPagoServicio %>
+                            </option>
+                            <option class="text-dark" value="Enero">Enero</option>
+                            <option class="text-dark" value="Febrero">Febrero</option>
+                            <option class="text-dark" value="Marzo">Marzo</option>
+                            <option class="text-dark" value="Abril">Abril</option>
+                            <option class="text-dark" value="Mayo">Mayo</option>
+                            <option class="text-dark" value="Junio">Junio</option>
+                            <option class="text-dark" value="Julio">Julio</option>
+                            <option class="text-dark" value="Agosto">Agosto</option>
+                            <option class="text-dark" value="Septiembre">Septiembre</option>
+                            <option class="text-dark" value="Obtubre">Obtubre</option>
+                            <option class="text-dark" value="Noviembre">Noviembre</option>
+                            <option class="text-dark" value="Diciembre">Diciembre</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="montoPagoServicio" class=" text-uppercase">Monto</label>
+                        <input type="number" name="montoPagoServicio" placeholder="Monto" class="form-control"
+                            value="<%= servicio.montoPagoServicio %>">
+                    </div>
+
+                    <div>
+                        <label for="fechaPagoServicio" class=" text-uppercase"> Fecha pago</label>
+                        <input type="date" name="fechaPagoServicio" placeholder="Fecha" class="form-control"
+                            value="<%= servicio.fechaPagoServicio %>">
+                    </div>
+
+                    <div>
+                        <label for="observacionPagoServicio" class=" text-uppercase">Observacion</label>
+                        <input type="text" name="observacionPagoServicio" placeholder="Observacion"
+                            class="form-control " value="<%= servicio.observacionPagoServicio %>">
+                    </div>
+
+
+                </div>
+
+                <button type="submit" class="btn  my-4 me-lg-3" style="background-color: #02aeae;">Guardar
+                    Cambios</button>
+                <a type="button" class="btn text-light bg-danger " data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop" title="Eliminar Dpto">Eliminar</a>
+                <!-- <a type="button" class="btn text-light bg-danger " data-bs-toggle="modal" data-bs-target="#staticBackdrop" title="Eliminar Dpto">Eliminar -->
+
+            </form>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Eliminar Pago de Servicio
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <%= %>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <a type="submit"
+                        href="/pagos-servicios/editar-pago-servicio/eliminar-pago-servicio/<%= servicio.idPagoServicio %>"
+                        class="btn text-light bg-danger " title="Eliminar pago">Eliminar Pago</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <%- include('template/footer'); %>

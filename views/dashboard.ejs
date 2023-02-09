@@ -1,5 +1,5 @@
 <%- include('template/cabecera', { tituloWeb: "Nomina - Dashboart" , bgActive1: "active" , bgActive2: "" , bgActive3: ""
-    , bgActive4: "" , bgActive5: "" , bgActive6: "" }); %>
+    , bgActive4: "" , bgActive5: "" , bgActive6: "" , bgActive7: "" }); %>
 
     <!-- content inicio -->
 
@@ -71,10 +71,44 @@
                         <div class="card-icon">
                             <i class="material-icons ">assessment</i>
                         </div>
-                        <h3 class="text-secondary">Pagos Realizados</h3>
-                        <h3 class="card-title">
-                            <%= validacionPagos_x_empleado.length %>
-                        </h3>
+                        <h3 class="text-secondary">Pagos Empleados</h3>
+                        <div class="d-flex justify-content-between ">
+                            <h3 class="card-title">
+                                <%= sueldosTotales=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
+                                    }).format(sueldosTotales) %>
+                            </h3>
+                            <h3 class="card-title">
+                                Cant.
+                                <%= validacionPagos_x_empleado.length %>
+                            </h3>
+
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="">
+                            <a href="/pagos" class="text-secondary ">Ver Pagos</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-info card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons ">assessment</i>
+                        </div>
+                        <h3 class="text-secondary">Pagos Servicios</h3>
+                        <div class="d-flex justify-content-between ">
+
+                            <h3 class="card-title">
+                                <%= serviciosTotales=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
+                                    }).format(serviciosTotales) %>
+                            </h3>
+                            <h3 class="card-title">
+                                Cant.
+                                <%= cantPagos %>
+                            </h3>
+                        </div>
                     </div>
                     <div class="card-footer">
                         <div class="">
@@ -89,73 +123,14 @@
     </div>
 
 
-    <div class="accordion accordion-flush" id="accordionFlushExample">
-        <div class="accordion-item">
-            <h2 class="accordion-header " id="flush-headingOne">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                    HISTORIAL NOVEDADES
-                </button>
-            </h2>
-            <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                <div class="container-fluid mt-2">
-                    <!-- <div class="container"> -->
-                    <!-- <div class="container-novedades"> -->
-                    <table id="datatable" class="display responsive nowrap compact" style="width:100%">
-                        <thead class="thead-ligth">
-                            <tr>
-                                <th scope="col">ID Novedad</th>
-                                <th scope="col">Accion</th>
-                                <th scope="col">Nombre Dpto</th>
-                                <th scope="col">Fecha Novedad</th>
-                                <th scope="col">Usuario</th>
 
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <% if (novedades.length> 0) { %>
-                                <% novedades.forEach(novedad=> { %>
-
-                                    <tr>
-                                        <td>
-                                            <%= novedad.idNovedad %>
-                                        </td>
-                                        <td>
-                                            <%= novedad.cambio %>
-                                        </td>
-                                        <td>
-                                            <%= novedad.nombre_dpto %>
-                                        </td>
-                                        <td>
-                                            <%= novedad.fechaNovedad.toLocaleString('es-US', {
-                                                timeZone: "America/Santo_Domingo" }); %>
-                                        </td>
-                                        <td>
-                                            <%= novedad.name %>
-                                        </td>
-
-
-                                    </tr>
-
-                                    <% }) %>
-                                        <% } %>
-                        </tbody>
-                    </table>
-                    <!-- </div> -->
-
-                    <!-- </div> -->
-                </div>
-
-            </div>
-        </div>
-
-    </div>
 
 
 
     <!-- content fin -->
 
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('#datatable').DataTable({
                 order: [
                     [3, 'desc']

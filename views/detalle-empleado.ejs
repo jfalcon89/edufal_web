@@ -1,5 +1,5 @@
 <%- include('template/cabecera', { tituloWeb: "Nomina - Dashboart" , bgActive1: "" , bgActive2: "" , bgActive3: "active"
-    , bgActive4: "" , bgActive5: "" , bgActive6: "" }); %>
+    , bgActive4: "" , bgActive5: "" , bgActive6: "" , bgActive7: "" }); %>
 
     <div class="container-fluid mt-2">
 
@@ -29,7 +29,8 @@
                                 <div class="input-group-prepend">
                                     <label class="input-group-text p-2 me-lg-3">Codigo</label>
                                 </div>
-                                <input type="text" name="codigo" value="<%= empleado.idEmpleado %>" class="form-control" id="codigo" disabled>
+                                <input type="text" name="codigo" value="<%= empleado.idEmpleado %>" class="form-control"
+                                    id="codigo" disabled>
                             </div>
                         </div>
 
@@ -38,7 +39,8 @@
                                 <div class="input-group-prepend">
                                     <label class="input-group-text p-2 me-lg-3">Cedula</label>
                                 </div>
-                                <input type="text" name="cedula" value="<%= empleado.cedula %>" class="form-control" id="cedula">
+                                <input type="text" name="cedula" value="<%= empleado.cedula %>" class="form-control"
+                                    id="cedula">
                             </div>
                         </div>
                         <div class="form-group d-flex   ">
@@ -46,7 +48,8 @@
                                 <div class="input-group-prepend">
                                     <label class="input-group-text p-2 me-lg-3">Telefono</label>
                                 </div>
-                                <input type="number" name="telefono" value="<%= empleado.telefono %>" class="form-control" id="telefono">
+                                <input type="number" name="telefono" value="<%= empleado.telefono %>"
+                                    class="form-control" id="telefono">
                             </div>
                         </div>
 
@@ -94,18 +97,21 @@
 
             <div class="form-group d-flex justify-content-center espaciado ">
                 <label for="nombre" class=" p-2">Nombre</label>
-                <input type="text" name="nombre" value="<%= empleado.nombre %>" class="form-control p-2 mt-2" id="nombre" aria-describedby="emailHelp" placeholder="">
+                <input type="text" name="nombre" value="<%= empleado.nombre %>" class="form-control p-2 mt-2"
+                    id="nombre" aria-describedby="emailHelp" placeholder="">
             </div>
 
             <div class="form-group d-flex justify-content-center espaciado ">
                 <label for="apellido" class=" p-2">Apellido</label>
-                <input type="text" name="apellido" value="<%= empleado.apellido %>" class="form-control p-2 mt-2" id="apellido" aria-describedby="emailHelp" placeholder="">
+                <input type="text" name="apellido" value="<%= empleado.apellido %>" class="form-control p-2 mt-2"
+                    id="apellido" aria-describedby="emailHelp" placeholder="">
             </div>
 
 
             <div class="form-group d-flex justify-content-center espaciado ">
                 <label for="departamento" class=" p-2">Departamento</label>
-                <select name="departamento" class="form-control p-2 mt-2" style="background-color: rgba(255, 0, 0, 0); border: none; ">
+                <select name="departamento" class="form-control p-2 mt-2"
+                    style="background-color: rgba(255, 0, 0, 0); border: none; ">
 
 
                     <% if (empleado_x_departamento.length> 0) { %>
@@ -119,28 +125,34 @@
             </div>
             <div class="form-group d-flex justify-content-center espaciado ">
                 <label for="nacimiento" class=" p-2">Fecha de Nacimiento </label>
-                <input type="date" name="nacimiento" value="<%= empleado.nacimiento %>" class="form-control p-2 mt-2" id="nacimiento" aria-describedby="emailHelp" placeholder="">
+                <input type="date" name="nacimiento" value="<%= empleado.nacimiento %>" class="form-control p-2 mt-2"
+                    id="nacimiento" aria-describedby="emailHelp" placeholder="">
             </div>
             <div class="form-group d-flex justify-content-center espaciado ">
                 <label for="lugarNacimiento" class=" p-2">Lugar de Nacimiento </label>
-                <input type="text" name="lugarNacimiento" value="<%= empleado.lugarNacimiento %>" class="form-control p-2 mt-2" id="lugarNacimiento" aria-describedby="emailHelp" placeholder="">
+                <input type="text" name="lugarNacimiento" value="<%= empleado.lugarNacimiento %>"
+                    class="form-control p-2 mt-2" id="lugarNacimiento" aria-describedby="emailHelp" placeholder="">
             </div>
             <div class="form-group d-flex justify-content-center espaciado ">
                 <label for="nacionalidad" class=" p-2">Nacionalidad</label>
-                <input type="text" name="nacionalidad" value="<%= empleado.nacionalidad %>" class="form-control p-2 mt-2" id="nacionalidad" aria-describedby="emailHelp" placeholder="">
+                <input type="text" name="nacionalidad" value="<%= empleado.nacionalidad %>"
+                    class="form-control p-2 mt-2" id="nacionalidad" aria-describedby="emailHelp" placeholder="">
             </div>
             <div class="form-group d-flex justify-content-center espaciado ">
                 <label class=" p-2">Direccion</label>
-                <input type="text" name="direccion" value="<%= empleado.direccion %>" class="form-control p-2 mt-2" id="direccion" aria-describedby="emailHelp" placeholder="">
+                <input type="text" name="direccion" value="<%= empleado.direccion %>" class="form-control p-2 mt-2"
+                    id="direccion" aria-describedby="emailHelp" placeholder="">
             </div>
             <div class="form-group d-flex justify-content-center espaciado ">
                 <label class=" p-2">Correo</label>
-                <input type="text" name="correo" value="<%= empleado.correo %>" class="form-control p-2 mt-2" id="correo" aria-describedby="emailHelp" placeholder="">
+                <input type="text" name="correo" value="<%= empleado.correo %>" class="form-control p-2 mt-2"
+                    id="correo" aria-describedby="emailHelp" placeholder="">
             </div>
             <div class="form-group d-flex justify-content-center espaciado ">
 
                 <label for="condicionContrato" class=" p-2">Contrato</label>
-                <select name="condicionContrato" class="form-control p-2 mt-2" id="condicionContrato" aria-describedby="emailHelp" required>
+                <select name="condicionContrato" class="form-control p-2 mt-2" id="condicionContrato"
+                    aria-describedby="emailHelp" required>
                     <option value="<%= empleado.condicionContrato %>" selected>
                         <%= empleado.condicionContrato %>
                     </option>
@@ -151,7 +163,8 @@
             <div class="form-group d-flex justify-content-center espaciado ">
 
                 <label for="formaPago" class=" p-2">Forma de Pago</label>
-                <select name="formaPago" class="form-control p-2 mt-2" id="formaPago" aria-describedby="emailHelp" required>
+                <select name="formaPago" class="form-control p-2 mt-2" id="formaPago" aria-describedby="emailHelp"
+                    required>
                     <option value="<%= empleado.formaPago %>" selected>
                         <%= empleado.formaPago %>
                     </option>
@@ -164,42 +177,52 @@
             <div class="d-lg-flex justify-content-between">
                 <div class="form-group d-flex justify-content-center flex-wrap ">
                     <label for="sueldoBruto" class=" p-2">Sueldo Bruto</label>
-                    <input type="number" name="sueldoBruto" value="<%= empleado.sueldoBruto %>" class="form-control p-2 text-center mt-2" id="sueldoBruto" aria-describedby="emailHelp" value="0">
+                    <input type="number" name="sueldoBruto" value="<%= empleado.sueldoBruto %>"
+                        class="form-control p-2 text-center mt-2" id="sueldoBruto" aria-describedby="emailHelp"
+                        value="0">
                 </div>
                 <div class="form-group d-flex justify-content-center flex-wrap ">
                     <label for="comision" class=" p-2">Comision</label>
-                    <input type="number" name="comision" value="<%= empleado.comision %>" class="form-control p-2 text-center mt-2" id="comision" aria-describedby="emailHelp" value="0">
+                    <input type="number" name="comision" value="<%= empleado.comision %>"
+                        class="form-control p-2 text-center mt-2" id="comision" aria-describedby="emailHelp" value="0">
                 </div>
                 <div class="form-group d-flex justify-content-center flex-wrap ">
                     <label for="afp" class="p-2">Afp</label>
-                    <input type="text" name="afp" value="<%= descuentoAfp.montoDescuentoAfp %>" class="form-control p-2 text-center mt-2" id="afp">
+                    <input type="text" name="afp" value="<%= descuentoAfp.montoDescuentoAfp %>"
+                        class="form-control p-2 text-center mt-2" id="afp">
                 </div>
                 <div class="form-group d-flex justify-content-center flex-wrap ">
                     <label for="ars" class="p-2">Ars</label>
-                    <input type="text" name="ars" value="<%= descuentoArs.montoDescuentoArs %>" class="form-control p-2 text-center mt-2" id="ars">
+                    <input type="text" name="ars" value="<%= descuentoArs.montoDescuentoArs %>"
+                        class="form-control p-2 text-center mt-2" id="ars">
                 </div>
                 <div class="form-group d-flex justify-content-center flex-wrap ">
                     <label for="cooperativa" class="p-2">Cooperativa</label>
-                    <input type="text" name="cooperativa" value="<%= descuentoCooperativa.montoDescuentoCooperativa %>" class="form-control p-2 text-center mt-2" id="cooperativa">
+                    <input type="text" name="cooperativa" value="<%= descuentoCooperativa.montoDescuentoCooperativa %>"
+                        class="form-control p-2 text-center mt-2" id="cooperativa">
                 </div>
             </div>
 
             <div class="d-lg-flex justify-content-between">
                 <div class="form-group d-flex justify-content-center flex-wrap ">
                     <label for="club" class="p-2">Otros</label>
-                    <input type="text" name="club" value="<%= descuentoOtros.montoDescuentoOtros %>" class="form-control p-2 text-center mt-2" id="club">
+                    <input type="text" name="club" value="<%= descuentoOtros.montoDescuentoOtros %>"
+                        class="form-control p-2 text-center mt-2" id="club">
                 </div>
                 <div class="form-group d-flex justify-content-center flex-wrap ">
                     <label for="prestamos" class="p-2">Prestamos</label>
-                    <input type="text" name="prestamos" value="<%= descuentoPrestamo.montoDescuentoPrestamo %>" class="form-control p-2 text-center mt-2" id="prestamos">
+                    <input type="text" name="prestamos" value="<%= descuentoPrestamo.montoDescuentoPrestamo %>"
+                        class="form-control p-2 text-center mt-2" id="prestamos">
                 </div>
                 <div class="form-group d-flex justify-content-center flex-wrap ">
                     <label for="totalDescuentos" class="p-2">Total Descuentos</label>
-                    <input type="text" name="totalDescuentos" value="<%= descuentoAcumulado.montoDescuentoAcumulado %>" class="form-control p-2 text-danger font-weight-bold text-center mt-2" id="totalDescuentos">
+                    <input type="text" name="totalDescuentos" value="<%= descuentoAcumulado.montoDescuentoAcumulado %>"
+                        class="form-control p-2 text-danger font-weight-bold text-center mt-2" id="totalDescuentos">
                 </div>
                 <div class="form-group d-flex justify-content-center flex-wrap ">
                     <label for="sueldoNeto" class="p-2 ">Sueldo Neto</label>
-                    <input type="text" name="sueldoNeto" value="<%= sueldoNeto.montoSueldoNeto %>" class="form-control p-2 text-success font-weight-bold text-center mt-2" id="sueldoNeto">
+                    <input type="text" name="sueldoNeto" value="<%= sueldoNeto.montoSueldoNeto %>"
+                        class="form-control p-2 text-success font-weight-bold text-center mt-2" id="sueldoNeto">
                 </div>
             </div>
 
@@ -219,13 +242,15 @@
             <%- include('template/footer'); %>
 
                 <!-- Modal -->
-                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="staticBackdropLabel">Eliminar Empleado
                                 </h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <%= empleado.nombre %>
@@ -239,7 +264,9 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <a type="submit" href="/empleados/detalle-empleado/eliminar-empleado/<%= empleado.idEmpleado %>" class="btn text-light bg-danger " title="Eliminar Empleado">Eliminar Empleado</a>
+                                <a type="submit"
+                                    href="/empleados/detalle-empleado/eliminar-empleado/<%= empleado.idEmpleado %>"
+                                    class="btn text-light bg-danger " title="Eliminar Empleado">Eliminar Empleado</a>
                             </div>
                         </div>
                     </div>

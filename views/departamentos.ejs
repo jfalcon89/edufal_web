@@ -1,5 +1,5 @@
-<%- include('template/cabecera', { tituloWeb: "Nomina - Puestos" , bgActive1: "" , bgActive2: "active" ,
-    bgActive3: "" , bgActive4: "" , bgActive5: "" , bgActive6: "" }); %>
+<%- include('template/cabecera', { tituloWeb: "Nomina - Puestos" , bgActive1: "" , bgActive2: "active" , bgActive3: "" ,
+    bgActive4: "" , bgActive5: "" , bgActive6: "" , bgActive7: "" }); %>
 
 
     <!-- content inicio -->
@@ -39,7 +39,8 @@
                                 <td>
                                     <%= departamento.nombre_dpto %>
                                 </td>
-                                <input class="visually-hidden" type="text" name="nombre_dpto" value="<%= departamento.nombre_dpto %> ">
+                                <input class="visually-hidden" type="text" name="nombre_dpto"
+                                    value="<%= departamento.nombre_dpto %> ">
                                 <td>
                                     <%= departamento.fechaRegistro.toLocaleString('es-US', {
                                         timeZone: "America/Santo_Domingo" }).slice(0, 10); %>
@@ -55,7 +56,8 @@
                                 </td>
 
                                 <td>
-                                    <a href="/departamentos/editar-departamento/<%= departamento.idDepartamento %>" class="btn ">Editar</a>
+                                    <a href="/departamentos/editar-departamento/<%= departamento.idDepartamento %>"
+                                        class="btn ">Editar</a>
 
                                 </td>
                             </tr>
@@ -73,7 +75,7 @@
 
 
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('#datatable').DataTable({
                 order: [
                     [0, 'desc']

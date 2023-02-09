@@ -1,10 +1,11 @@
 <%- include('template/cabecera', { tituloWeb: "Nomina - Pagos" , bgActive1: "" , bgActive2: "" , bgActive3: "" ,
-    bgActive4: "active" , bgActive5: "" , bgActive6: "" }); %>
+    bgActive4: "active" , bgActive5: "" , bgActive6: "" , bgActive7: "" }); %>
 
     <div class="container-fluid mt-2">
         <h2 class="text-secondary">Pagos</h2>
         <hr>
-        <div class="container-fluid d-xxl-flex justify-content-around" style="background-color: #acacac5c; border-radius: 15px;">
+        <div class="container-fluid d-xxl-flex justify-content-around"
+            style="background-color: #acacac5c; border-radius: 15px;">
 
             <div class="d-sm-flex">
                 <h2 class="me-3 font-weight-bold text-truncate">Cant. Pagos</h2>
@@ -16,20 +17,22 @@
                 <h2 class="me-3 font-weight-bold text-truncate">Total Comisiones</h2>
                 <h2>
                     <%= totalComisiones.totalComisiones=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
-                            }).format(totalComisiones.totalComisiones) %>
+                        }).format(totalComisiones.totalComisiones) %>
                 </h2>
             </div>
             <div class="d-sm-flex">
                 <h2 class="me-3 font-weight-bold text-truncate">Total Pagado</h2>
                 <h2>
                     <%= totalSueldoNeto.totalSueldoNeto=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
-                            }).format(totalSueldoNeto.totalSueldoNeto) %>
+                        }).format(totalSueldoNeto.totalSueldoNeto) %>
                 </h2>
             </div>
         </div>
 
         <!-- chart -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js" integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"
+            integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
         <div class="chart-container ">
             <canvas id="myChart" style="position: relative; height:40vh; width:80vw"></canvas>
@@ -157,7 +160,9 @@
                                         </td>
 
                                         <td>
-                                            <a id="eventoAct-Inact" href="/empleados/informacion-empleado/editar-pago-x-empleado/<%= pagos_x_empleado.idPago_x_empleado %>" class="btn  ">Editar</a>
+                                            <a id="eventoAct-Inact"
+                                                href="/empleados/informacion-empleado/editar-pago-x-empleado/<%= pagos_x_empleado.idPago_x_empleado %>"
+                                                class="btn  ">Editar</a>
                                         </td>
 
                                     </tr>
@@ -180,12 +185,12 @@
                             <%= arrayPagos_x_empleadoFebrero.length %>
                         </h4>
                         <h4 class="me-3">Comisiones
-                            <%= pagosFebrero.comisionesFebrero=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
-                                }).format(pagosFebrero.comisionesFebrero) %>
+                            <%= pagosFebrero.comisionesFebrero=Intl.NumberFormat('en-IN', { style: 'currency' ,
+                                currency: 'USD' }).format(pagosFebrero.comisionesFebrero) %>
                         </h4>
                         <h4 class="me-3">Pagado
-                            <%= pagosFebrero.sueldosFebrero=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
-                                }).format(pagosFebrero.sueldosFebrero) %>
+                            <%= pagosFebrero.sueldosFebrero=Intl.NumberFormat('en-IN', { style: 'currency' ,
+                                currency: 'USD' }).format(pagosFebrero.sueldosFebrero) %>
                         </h4>
                     </div>
                     <div class="container-departamento">
@@ -249,7 +254,9 @@
                                                 </td>
 
                                                 <td>
-                                                    <a id="eventoAct-Inact" href="/empleados/informacion-empleado/editar-pago-x-empleado/<%= pagos_x_empleado.idPago_x_empleado %>" class="btn  ">Editar</a>
+                                                    <a id="eventoAct-Inact"
+                                                        href="/empleados/informacion-empleado/editar-pago-x-empleado/<%= pagos_x_empleado.idPago_x_empleado %>"
+                                                        class="btn  ">Editar</a>
                                                 </td>
 
                                             </tr>
@@ -273,12 +280,12 @@
                                     <%= arrayPagos_x_empleadoMarzo.length %>
                                 </h4>
                                 <h4 class="me-3">Comisiones
-                                    <%= pagosMarzo.comisionesMarzo=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
-                                            }).format(pagosMarzo.comisionesMarzo) %>
+                                    <%= pagosMarzo.comisionesMarzo=Intl.NumberFormat('en-IN', { style: 'currency' ,
+                                        currency: 'USD' }).format(pagosMarzo.comisionesMarzo) %>
                                 </h4>
                                 <h4 class="me-3">Pagado
-                                    <%= pagosMarzo.sueldosMarzo=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
-                                            }).format(pagosMarzo.sueldosMarzo) %>
+                                    <%= pagosMarzo.sueldosMarzo=Intl.NumberFormat('en-IN', { style: 'currency' ,
+                                        currency: 'USD' }).format(pagosMarzo.sueldosMarzo) %>
                                 </h4>
                             </div>
                             <div class="container-departamento">
@@ -342,7 +349,9 @@
                                                         </td>
 
                                                         <td>
-                                                            <a id="eventoAct-Inact" href="/empleados/informacion-empleado/editar-pago-x-empleado/<%= pagos_x_empleado.idPago_x_empleado %>" class="btn  ">Editar</a>
+                                                            <a id="eventoAct-Inact"
+                                                                href="/empleados/informacion-empleado/editar-pago-x-empleado/<%= pagos_x_empleado.idPago_x_empleado %>"
+                                                                class="btn  ">Editar</a>
                                                         </td>
 
                                                     </tr>
@@ -366,12 +375,13 @@
                                             <%= arrayPagos_x_empleadoAbril.length %>
                                         </h4>
                                         <h4 class="me-3">Comisiones
-                                            <%= pagosAbril.comisionesAbril=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
+                                            <%= pagosAbril.comisionesAbril=Intl.NumberFormat('en-IN', {
+                                                style: 'currency' , currency: 'USD'
                                                 }).format(pagosAbril.comisionesAbril) %>
                                         </h4>
                                         <h4 class="me-3">Pagado
-                                            <%= pagosAbril.sueldosAbril=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
-                                                }).format(pagosAbril.sueldosAbril) %>
+                                            <%= pagosAbril.sueldosAbril=Intl.NumberFormat('en-IN', { style: 'currency' ,
+                                                currency: 'USD' }).format(pagosAbril.sueldosAbril) %>
                                         </h4>
                                     </div>
                                     <div class="container-departamento">
@@ -425,8 +435,8 @@
                                                                     <%= pagos_x_empleado.sueldoNeto %>
                                                                 </td>
                                                                 <td>
-                                                                    <%= pagos_x_empleado.fechaPago.toLocaleString('es-US', {
-                                                                        timeZone: "America/Santo_Domingo" }) %>
+                                                                    <%= pagos_x_empleado.fechaPago.toLocaleString('es-US',
+                                                                        { timeZone: "America/Santo_Domingo" }) %>
                                                                 </td>
                                                                 <td>
                                                                     <%= pagos_x_empleado.estadoPago %>
@@ -436,7 +446,9 @@
                                                                 </td>
 
                                                                 <td>
-                                                                    <a id="eventoAct-Inact" href="/empleados/informacion-empleado/editar-pago-x-empleado/<%= pagos_x_empleado.idPago_x_empleado %>" class="btn  ">Editar</a>
+                                                                    <a id="eventoAct-Inact"
+                                                                        href="/empleados/informacion-empleado/editar-pago-x-empleado/<%= pagos_x_empleado.idPago_x_empleado %>"
+                                                                        class="btn  ">Editar</a>
                                                                 </td>
 
                                                             </tr>
@@ -460,11 +472,13 @@
                                                     <%= arrayPagos_x_empleadoMayo.length %>
                                                 </h4>
                                                 <h4 class="me-3">Comisiones
-                                                    <%= pagosMayo.comisionesMayo=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
+                                                    <%= pagosMayo.comisionesMayo=Intl.NumberFormat('en-IN', {
+                                                        style: 'currency' , currency: 'USD'
                                                         }).format(pagosMayo.comisionesMayo) %>
                                                 </h4>
                                                 <h4 class="me-3">Pagado
-                                                    <%= pagosMayo.sueldosMayo=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
+                                                    <%= pagosMayo.sueldosMayo=Intl.NumberFormat('en-IN', {
+                                                        style: 'currency' , currency: 'USD'
                                                         }).format(pagosMayo.sueldosMayo) %>
                                                 </h4>
                                             </div>
@@ -520,7 +534,8 @@
                                                                         </td>
                                                                         <td>
                                                                             <%= pagos_x_empleado.fechaPago.toLocaleString('es-US',
-                                                                                { timeZone: "America/Santo_Domingo" }) %>
+                                                                                { timeZone: "America/Santo_Domingo" })
+                                                                                %>
                                                                         </td>
                                                                         <td>
                                                                             <%= pagos_x_empleado.estadoPago %>
@@ -530,7 +545,9 @@
                                                                         </td>
 
                                                                         <td>
-                                                                            <a id="eventoAct-Inact" href="/empleados/informacion-empleado/editar-pago-x-empleado/<%= pagos_x_empleado.idPago_x_empleado %>" class="btn  ">Editar</a>
+                                                                            <a id="eventoAct-Inact"
+                                                                                href="/empleados/informacion-empleado/editar-pago-x-empleado/<%= pagos_x_empleado.idPago_x_empleado %>"
+                                                                                class="btn  ">Editar</a>
                                                                         </td>
 
                                                                     </tr>
@@ -554,11 +571,13 @@
                                                             <%= arrayPagos_x_empleadoJunio.length %>
                                                         </h4>
                                                         <h4 class="me-3">Comisiones
-                                                            <%= pagosJunio.comisionesJunio=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
+                                                            <%= pagosJunio.comisionesJunio=Intl.NumberFormat('en-IN', {
+                                                                style: 'currency' , currency: 'USD'
                                                                 }).format(pagosJunio.comisionesJunio) %>
                                                         </h4>
                                                         <h4 class="me-3">Pagado
-                                                            <%= pagosJunio.sueldosJunio=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
+                                                            <%= pagosJunio.sueldosJunio=Intl.NumberFormat('en-IN', {
+                                                                style: 'currency' , currency: 'USD'
                                                                 }).format(pagosJunio.sueldosJunio) %>
                                                         </h4>
                                                     </div>
@@ -584,13 +603,15 @@
                                                                 <tbody>
                                                                     <% if (arrayPagos_x_empleadoJunio.length> 0)
                                                                         { %>
-                                                                        <% arrayPagos_x_empleadoJunio.forEach(pagos_x_empleado=>
+                                                                        <%
+                                                                            arrayPagos_x_empleadoJunio.forEach(pagos_x_empleado=>
                                                                             { %>
 
                                                                             <tr class="text-truncate">
 
                                                                                 <td>
-                                                                                    <%= pagos_x_empleado.idPago_x_empleado %>
+                                                                                    <%= pagos_x_empleado.idPago_x_empleado
+                                                                                        %>
                                                                                 </td>
                                                                                 <td id="codDesc">
                                                                                     <%= pagos_x_empleado.idEmpleado %>
@@ -599,7 +620,8 @@
                                                                                     <%= pagos_x_empleado.departamento %>
                                                                                 </td>
                                                                                 <td>
-                                                                                    <%= pagos_x_empleado.frecuenciaPago %>
+                                                                                    <%= pagos_x_empleado.frecuenciaPago
+                                                                                        %>
                                                                                 </td>
                                                                                 <td>
                                                                                     <%= pagos_x_empleado.periodo %>
@@ -615,18 +637,22 @@
                                                                                 </td>
                                                                                 <td>
                                                                                     <%= pagos_x_empleado.fechaPago.toLocaleString('es-US',
-                                                                                        { timeZone: "America/Santo_Domingo" })
-                                                                                        %>
+                                                                                        {
+                                                                                        timeZone: "America/Santo_Domingo"
+                                                                                        }) %>
                                                                                 </td>
                                                                                 <td>
                                                                                     <%= pagos_x_empleado.estadoPago %>
                                                                                 </td>
                                                                                 <td>
-                                                                                    <%= pagos_x_empleado.observacionPago %>
+                                                                                    <%= pagos_x_empleado.observacionPago
+                                                                                        %>
                                                                                 </td>
 
                                                                                 <td>
-                                                                                    <a id="eventoAct-Inact" href="/empleados/informacion-empleado/editar-pago-x-empleado/<%= pagos_x_empleado.idPago_x_empleado %>" class="btn  ">Editar</a>
+                                                                                    <a id="eventoAct-Inact"
+                                                                                        href="/empleados/informacion-empleado/editar-pago-x-empleado/<%= pagos_x_empleado.idPago_x_empleado %>"
+                                                                                        class="btn  ">Editar</a>
                                                                                 </td>
 
                                                                             </tr>
@@ -650,11 +676,13 @@
                                                                     <%= arrayPagos_x_empleadoJulio.length %>
                                                                 </h4>
                                                                 <h4 class="me-3">Comisiones
-                                                                    <%= pagosJulio.comisionesJulio=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
+                                                                    <%= pagosJulio.comisionesJulio=Intl.NumberFormat('en-IN',
+                                                                        { style: 'currency' , currency: 'USD'
                                                                         }).format(pagosJulio.comisionesJulio) %>
                                                                 </h4>
                                                                 <h4 class="me-3">Pagado
-                                                                    <%= pagosJulio.sueldosJulio=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
+                                                                    <%= pagosJulio.sueldosJulio=Intl.NumberFormat('en-IN',
+                                                                        { style: 'currency' , currency: 'USD'
                                                                         }).format(pagosJulio.sueldosJulio) %>
                                                                 </h4>
                                                             </div>
@@ -695,26 +723,32 @@
                                                                                                 %>
                                                                                         </td>
                                                                                         <td id="codDesc">
-                                                                                            <%= pagos_x_empleado.idEmpleado %>
+                                                                                            <%= pagos_x_empleado.idEmpleado
+                                                                                                %>
                                                                                         </td>
                                                                                         <td>
-                                                                                            <%= pagos_x_empleado.departamento %>
+                                                                                            <%= pagos_x_empleado.departamento
+                                                                                                %>
                                                                                         </td>
                                                                                         <td>
                                                                                             <%= pagos_x_empleado.frecuenciaPago
                                                                                                 %>
                                                                                         </td>
                                                                                         <td>
-                                                                                            <%= pagos_x_empleado.periodo %>
+                                                                                            <%= pagos_x_empleado.periodo
+                                                                                                %>
                                                                                         </td>
                                                                                         <td>
-                                                                                            <%= pagos_x_empleado.descuento %>
+                                                                                            <%= pagos_x_empleado.descuento
+                                                                                                %>
                                                                                         </td>
                                                                                         <td>
-                                                                                            <%= pagos_x_empleado.comisionP %>
+                                                                                            <%= pagos_x_empleado.comisionP
+                                                                                                %>
                                                                                         </td>
                                                                                         <td>
-                                                                                            <%= pagos_x_empleado.sueldoNeto %>
+                                                                                            <%= pagos_x_empleado.sueldoNeto
+                                                                                                %>
                                                                                         </td>
                                                                                         <td>
                                                                                             <%= pagos_x_empleado.fechaPago.toLocaleString('es-US',
@@ -723,7 +757,8 @@
                                                                                                 }) %>
                                                                                         </td>
                                                                                         <td>
-                                                                                            <%= pagos_x_empleado.estadoPago %>
+                                                                                            <%= pagos_x_empleado.estadoPago
+                                                                                                %>
                                                                                         </td>
                                                                                         <td>
                                                                                             <%= pagos_x_empleado.observacionPago
@@ -731,7 +766,9 @@
                                                                                         </td>
 
                                                                                         <td>
-                                                                                            <a id="eventoAct-Inact" href="/empleados/informacion-empleado/editar-pago-x-empleado/<%= pagos_x_empleado.idPago_x_empleado %>" class="btn  ">Editar</a>
+                                                                                            <a id="eventoAct-Inact"
+                                                                                                href="/empleados/informacion-empleado/editar-pago-x-empleado/<%= pagos_x_empleado.idPago_x_empleado %>"
+                                                                                                class="btn  ">Editar</a>
                                                                                         </td>
 
                                                                                     </tr>
@@ -753,11 +790,14 @@
                                                                             <%= arrayPagos_x_empleadoAgosto.length %>
                                                                         </h4>
                                                                         <h4 class="me-3">Comisiones
-                                                                            <%= pagosAgosto.comisionesAgosto=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
-                                                                                }).format(pagosAgosto.comisionesAgosto) %>
+                                                                            <%= pagosAgosto.comisionesAgosto=Intl.NumberFormat('en-IN',
+                                                                                { style: 'currency' , currency: 'USD'
+                                                                                }).format(pagosAgosto.comisionesAgosto)
+                                                                                %>
                                                                         </h4>
                                                                         <h4 class="me-3">Pagado
-                                                                            <%= pagosAgosto.sueldosAgosto=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
+                                                                            <%= pagosAgosto.sueldosAgosto=Intl.NumberFormat('en-IN',
+                                                                                { style: 'currency' , currency: 'USD'
                                                                                 }).format(pagosAgosto.sueldosAgosto) %>
                                                                         </h4>
                                                                     </div>
@@ -793,7 +833,8 @@
                                                                                     </tr>
                                                                                 </thead>
                                                                                 <tbody>
-                                                                                    <% if (arrayPagos_x_empleadoAgosto.length>
+                                                                                    <% if
+                                                                                        (arrayPagos_x_empleadoAgosto.length>
                                                                                         0) { %>
                                                                                         <%
                                                                                             arrayPagos_x_empleadoAgosto.forEach(pagos_x_empleado=>
@@ -826,7 +867,8 @@
                                                                                                         %>
                                                                                                 </td>
                                                                                                 <td>
-                                                                                                    <%= pagos_x_empleado.comisionP %>
+                                                                                                    <%= pagos_x_empleado.comisionP
+                                                                                                        %>
                                                                                                 </td>
                                                                                                 <td>
                                                                                                     <%= pagos_x_empleado.sueldoNeto
@@ -848,7 +890,9 @@
                                                                                                 </td>
 
                                                                                                 <td>
-                                                                                                    <a id="eventoAct-Inact" href="/empleados/informacion-empleado/editar-pago-x-empleado/<%= pagos_x_empleado.idPago_x_empleado %>" class="btn  ">Editar</a>
+                                                                                                    <a id="eventoAct-Inact"
+                                                                                                        href="/empleados/informacion-empleado/editar-pago-x-empleado/<%= pagos_x_empleado.idPago_x_empleado %>"
+                                                                                                        class="btn  ">Editar</a>
                                                                                                 </td>
 
                                                                                             </tr>
@@ -865,24 +909,34 @@
                                                                     </div>
                                                                     <% } %>
 
-                                                                        <% if (arrayPagos_x_empleadoSeptiembre.length) { %>
+                                                                        <% if (arrayPagos_x_empleadoSeptiembre.length) {
+                                                                            %>
                                                                             <h3>SEPTIEMBRE</h3>
                                                                             <div class="d-lg-flex">
                                                                                 <h4 class="me-3 ">Cant.
-                                                                                    <%= arrayPagos_x_empleadoSeptiembre.length %>
+                                                                                    <%= arrayPagos_x_empleadoSeptiembre.length
+                                                                                        %>
                                                                                 </h4>
                                                                                 <h4 class="me-3">Comisiones
-                                                                                    <%= pagosSeptiembre.comisionesSeptiembre=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
-                                                                                        }).format(pagosSeptiembre.comisionesSeptiembre) %>
+                                                                                    <%= pagosSeptiembre.comisionesSeptiembre=Intl.NumberFormat('en-IN',
+                                                                                        { style: 'currency' ,
+                                                                                        currency: 'USD'
+                                                                                        }).format(pagosSeptiembre.comisionesSeptiembre)
+                                                                                        %>
                                                                                 </h4>
                                                                                 <h4 class="me-3">Pagado
-                                                                                    <%= pagosSeptiembre.sueldosSeptiembre=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
-                                                                                        }).format(pagosSeptiembre.sueldosSeptiembre) %>
+                                                                                    <%= pagosSeptiembre.sueldosSeptiembre=Intl.NumberFormat('en-IN',
+                                                                                        { style: 'currency' ,
+                                                                                        currency: 'USD'
+                                                                                        }).format(pagosSeptiembre.sueldosSeptiembre)
+                                                                                        %>
                                                                                 </h4>
                                                                             </div>
                                                                             <div class="container-departamento">
-                                                                                <div class="container-table table-responsive">
-                                                                                    <table class="table table-sm table-hover ">
+                                                                                <div
+                                                                                    class="container-table table-responsive">
+                                                                                    <table
+                                                                                        class="table table-sm table-hover ">
                                                                                         <thead class="thead-ligth">
                                                                                             <tr class="text-truncate">
                                                                                                 <th scope="col">
@@ -931,13 +985,15 @@
                                                                                                     arrayPagos_x_empleadoSeptiembre.forEach(pagos_x_empleado=>
                                                                                                     { %>
 
-                                                                                                    <tr class="text-truncate">
+                                                                                                    <tr
+                                                                                                        class="text-truncate">
 
                                                                                                         <td>
                                                                                                             <%= pagos_x_empleado.idPago_x_empleado
                                                                                                                 %>
                                                                                                         </td>
-                                                                                                        <td id="codDesc">
+                                                                                                        <td
+                                                                                                            id="codDesc">
                                                                                                             <%= pagos_x_empleado.idEmpleado
                                                                                                                 %>
                                                                                                         </td>
@@ -958,7 +1014,8 @@
                                                                                                                 %>
                                                                                                         </td>
                                                                                                         <td>
-                                                                                                            <%= pagos_x_empleado.comisionP %>
+                                                                                                            <%= pagos_x_empleado.comisionP
+                                                                                                                %>
                                                                                                         </td>
                                                                                                         <td>
                                                                                                             <%= pagos_x_empleado.sueldoNeto
@@ -980,7 +1037,9 @@
                                                                                                         </td>
 
                                                                                                         <td>
-                                                                                                            <a id="eventoAct-Inact" href="/empleados/informacion-empleado/editar-pago-x-empleado/<%= pagos_x_empleado.idPago_x_empleado %>" class="btn  ">Editar</a>
+                                                                                                            <a id="eventoAct-Inact"
+                                                                                                                href="/empleados/informacion-empleado/editar-pago-x-empleado/<%= pagos_x_empleado.idPago_x_empleado %>"
+                                                                                                                class="btn  ">Editar</a>
                                                                                                         </td>
 
                                                                                                     </tr>
@@ -997,31 +1056,45 @@
                                                                             </div>
                                                                             <% } %>
 
-                                                                                <% if (arrayPagos_x_empleadoOctubre.length) { %>
+                                                                                <% if
+                                                                                    (arrayPagos_x_empleadoOctubre.length)
+                                                                                    { %>
                                                                                     <h3>OCTUBRE</h3>
                                                                                     <div class="d-lg-flex">
                                                                                         <h4 class="me-3 ">Cant.
-                                                                                            <%= arrayPagos_x_empleadoOctubre.length %>
+                                                                                            <%= arrayPagos_x_empleadoOctubre.length
+                                                                                                %>
                                                                                         </h4>
                                                                                         <h4 class="me-3">Comisiones
-                                                                                            <%= pagosOctubre.comisionesOctubre=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
-                                                                                                }).format(pagosOctubre.comisionesOctubre) %>
+                                                                                            <%= pagosOctubre.comisionesOctubre=Intl.NumberFormat('en-IN',
+                                                                                                { style: 'currency' ,
+                                                                                                currency: 'USD'
+                                                                                                }).format(pagosOctubre.comisionesOctubre)
+                                                                                                %>
                                                                                         </h4>
                                                                                         <h4 class="me-3">Pagado
-                                                                                            <%= pagosSeptiembre.sueldosSeptiembre=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
-                                                                                                }).format(pagosOctubre.sueldosOctubre) %>
+                                                                                            <%= pagosSeptiembre.sueldosSeptiembre=Intl.NumberFormat('en-IN',
+                                                                                                { style: 'currency' ,
+                                                                                                currency: 'USD'
+                                                                                                }).format(pagosOctubre.sueldosOctubre)
+                                                                                                %>
                                                                                         </h4>
                                                                                     </div>
                                                                                     <div class="container-departamento">
-                                                                                        <div class="container-table table-responsive">
-                                                                                            <table class="table table-sm table-hover ">
-                                                                                                <thead class="thead-ligth">
-                                                                                                    <tr class="text-truncate">
+                                                                                        <div
+                                                                                            class="container-table table-responsive">
+                                                                                            <table
+                                                                                                class="table table-sm table-hover ">
+                                                                                                <thead
+                                                                                                    class="thead-ligth">
+                                                                                                    <tr
+                                                                                                        class="text-truncate">
                                                                                                         <th scope="col">
                                                                                                             Codigo Pago
                                                                                                         </th>
                                                                                                         <th scope="col">
-                                                                                                            Codigo Empleado
+                                                                                                            Codigo
+                                                                                                            Empleado
                                                                                                         </th>
                                                                                                         <th scope="col">
                                                                                                             Departamento
@@ -1063,13 +1136,15 @@
                                                                                                             arrayPagos_x_empleadoOctubre.forEach(pagos_x_empleado=>
                                                                                                             { %>
 
-                                                                                                            <tr class="text-truncate">
+                                                                                                            <tr
+                                                                                                                class="text-truncate">
 
                                                                                                                 <td>
                                                                                                                     <%= pagos_x_empleado.idPago_x_empleado
                                                                                                                         %>
                                                                                                                 </td>
-                                                                                                                <td id="codDesc">
+                                                                                                                <td
+                                                                                                                    id="codDesc">
                                                                                                                     <%= pagos_x_empleado.idEmpleado
                                                                                                                         %>
                                                                                                                 </td>
@@ -1090,7 +1165,8 @@
                                                                                                                         %>
                                                                                                                 </td>
                                                                                                                 <td>
-                                                                                                                    <%= pagos_x_empleado.comisionP %>
+                                                                                                                    <%= pagos_x_empleado.comisionP
+                                                                                                                        %>
                                                                                                                 </td>
                                                                                                                 <td>
                                                                                                                     <%= pagos_x_empleado.sueldoNeto
@@ -1100,7 +1176,8 @@
                                                                                                                     <%= pagos_x_empleado.fechaPago.toLocaleString('es-US',
                                                                                                                         {
                                                                                                                         timeZone: "America/Santo_Domingo"
-                                                                                                                        }) %>
+                                                                                                                        })
+                                                                                                                        %>
                                                                                                                 </td>
                                                                                                                 <td>
                                                                                                                     <%= pagos_x_empleado.estadoPago
@@ -1112,7 +1189,9 @@
                                                                                                                 </td>
 
                                                                                                                 <td>
-                                                                                                                    <a id="eventoAct-Inact" href="/empleados/informacion-empleado/editar-pago-x-empleado/<%= pagos_x_empleado.idPago_x_empleado %>" class="btn  ">Editar</a>
+                                                                                                                    <a id="eventoAct-Inact"
+                                                                                                                        href="/empleados/informacion-empleado/editar-pago-x-empleado/<%= pagos_x_empleado.idPago_x_empleado %>"
+                                                                                                                        class="btn  ">Editar</a>
                                                                                                                 </td>
 
                                                                                                             </tr>
@@ -1135,56 +1214,92 @@
                                                                                             <h3>NOVIEMBRE</h3>
                                                                                             <div class="d-lg-flex">
                                                                                                 <h4 class="me-3 ">Cant.
-                                                                                                    <%= arrayPagos_x_empleadoNoviembre.length %>
+                                                                                                    <%= arrayPagos_x_empleadoNoviembre.length
+                                                                                                        %>
                                                                                                 </h4>
-                                                                                                <h4 class="me-3">Comisiones
-                                                                                                    <%= pagosNoviembre.comisionesNoviembre=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
-                                                                                                        }).format(pagosNoviembre.comisionesNoviembre) %>
+                                                                                                <h4 class="me-3">
+                                                                                                    Comisiones
+                                                                                                    <%= pagosNoviembre.comisionesNoviembre=Intl.NumberFormat('en-IN',
+                                                                                                        {
+                                                                                                        style: 'currency'
+                                                                                                        ,
+                                                                                                        currency: 'USD'
+                                                                                                        }).format(pagosNoviembre.comisionesNoviembre)
+                                                                                                        %>
                                                                                                 </h4>
                                                                                                 <h4 class="me-3">Pagado
-                                                                                                    <%= pagosNoviembre.sueldosNoviembre=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
-                                                                                                        }).format(pagosNoviembre.sueldosNoviembre) %>
+                                                                                                    <%= pagosNoviembre.sueldosNoviembre=Intl.NumberFormat('en-IN',
+                                                                                                        {
+                                                                                                        style: 'currency'
+                                                                                                        ,
+                                                                                                        currency: 'USD'
+                                                                                                        }).format(pagosNoviembre.sueldosNoviembre)
+                                                                                                        %>
                                                                                                 </h4>
                                                                                             </div>
-                                                                                            <div class="container-departamento">
-                                                                                                <div class="container-table table-responsive">
-                                                                                                    <table class="table table-sm table-hover ">
-                                                                                                        <thead class="thead-ligth">
-                                                                                                            <tr class="text-truncate">
-                                                                                                                <th scope="col">
-                                                                                                                    Codigo Pago
+                                                                                            <div
+                                                                                                class="container-departamento">
+                                                                                                <div
+                                                                                                    class="container-table table-responsive">
+                                                                                                    <table
+                                                                                                        class="table table-sm table-hover ">
+                                                                                                        <thead
+                                                                                                            class="thead-ligth">
+                                                                                                            <tr
+                                                                                                                class="text-truncate">
+                                                                                                                <th
+                                                                                                                    scope="col">
+                                                                                                                    Codigo
+                                                                                                                    Pago
                                                                                                                 </th>
-                                                                                                                <th scope="col">
-                                                                                                                    Codigo Empleado
+                                                                                                                <th
+                                                                                                                    scope="col">
+                                                                                                                    Codigo
+                                                                                                                    Empleado
                                                                                                                 </th>
-                                                                                                                <th scope="col">
+                                                                                                                <th
+                                                                                                                    scope="col">
                                                                                                                     Departamento
                                                                                                                 </th>
-                                                                                                                <th scope="col">
-                                                                                                                    Tipo de pago
+                                                                                                                <th
+                                                                                                                    scope="col">
+                                                                                                                    Tipo
+                                                                                                                    de
+                                                                                                                    pago
                                                                                                                 </th>
-                                                                                                                <th scope="col">
+                                                                                                                <th
+                                                                                                                    scope="col">
                                                                                                                     Mes
                                                                                                                 </th>
-                                                                                                                <th scope="col">
+                                                                                                                <th
+                                                                                                                    scope="col">
                                                                                                                     Descuento
                                                                                                                 </th>
-                                                                                                                <th scope="col">
+                                                                                                                <th
+                                                                                                                    scope="col">
                                                                                                                     Comision
                                                                                                                 </th>
-                                                                                                                <th scope="col">
-                                                                                                                    Pago Neto
+                                                                                                                <th
+                                                                                                                    scope="col">
+                                                                                                                    Pago
+                                                                                                                    Neto
                                                                                                                 </th>
-                                                                                                                <th scope="col">
-                                                                                                                    Fecha Pago
+                                                                                                                <th
+                                                                                                                    scope="col">
+                                                                                                                    Fecha
+                                                                                                                    Pago
                                                                                                                 </th>
-                                                                                                                <th scope="col">
-                                                                                                                    Estado Pago
+                                                                                                                <th
+                                                                                                                    scope="col">
+                                                                                                                    Estado
+                                                                                                                    Pago
                                                                                                                 </th>
-                                                                                                                <th scope="col">
+                                                                                                                <th
+                                                                                                                    scope="col">
                                                                                                                     Observacion
                                                                                                                 </th>
-                                                                                                                <th scope="col">
+                                                                                                                <th
+                                                                                                                    scope="col">
                                                                                                                     Acciones
                                                                                                                 </th>
                                                                                                             </tr>
@@ -1200,49 +1315,69 @@
                                                                                                                     {
                                                                                                                     %>
 
-                                                                                                                    <tr class="text-truncate">
+                                                                                                                    <tr
+                                                                                                                        class="text-truncate">
 
                                                                                                                         <td>
-                                                                                                                            <%= pagos_x_empleado.idPago_x_empleado %>
+                                                                                                                            <%= pagos_x_empleado.idPago_x_empleado
+                                                                                                                                %>
                                                                                                                         </td>
-                                                                                                                        <td id="codDesc">
-                                                                                                                            <%= pagos_x_empleado.idEmpleado %>
-                                                                                                                        </td>
-                                                                                                                        <td>
-                                                                                                                            <%= pagos_x_empleado.departamento %>
-                                                                                                                        </td>
-                                                                                                                        <td>
-                                                                                                                            <%= pagos_x_empleado.frecuenciaPago %>
+                                                                                                                        <td
+                                                                                                                            id="codDesc">
+                                                                                                                            <%= pagos_x_empleado.idEmpleado
+                                                                                                                                %>
                                                                                                                         </td>
                                                                                                                         <td>
-                                                                                                                            <%= pagos_x_empleado.periodo %>
+                                                                                                                            <%= pagos_x_empleado.departamento
+                                                                                                                                %>
                                                                                                                         </td>
                                                                                                                         <td>
-                                                                                                                            <%= pagos_x_empleado.descuento %>
+                                                                                                                            <%= pagos_x_empleado.frecuenciaPago
+                                                                                                                                %>
                                                                                                                         </td>
                                                                                                                         <td>
-                                                                                                                            <%= pagos_x_empleado.comisionP %>
+                                                                                                                            <%= pagos_x_empleado.periodo
+                                                                                                                                %>
                                                                                                                         </td>
                                                                                                                         <td>
-                                                                                                                            <%= pagos_x_empleado.sueldoNeto %>
+                                                                                                                            <%= pagos_x_empleado.descuento
+                                                                                                                                %>
                                                                                                                         </td>
                                                                                                                         <td>
-                                                                                                                            <%= pagos_x_empleado.fechaPago.toLocaleString('es-US', { timeZone: "America/Santo_Domingo" }) %>
+                                                                                                                            <%= pagos_x_empleado.comisionP
+                                                                                                                                %>
                                                                                                                         </td>
                                                                                                                         <td>
-                                                                                                                            <%= pagos_x_empleado.estadoPago %>
+                                                                                                                            <%= pagos_x_empleado.sueldoNeto
+                                                                                                                                %>
                                                                                                                         </td>
                                                                                                                         <td>
-                                                                                                                            <%= pagos_x_empleado.observacionPago %>
+                                                                                                                            <%= pagos_x_empleado.fechaPago.toLocaleString('es-US',
+                                                                                                                                {
+                                                                                                                                timeZone: "America/Santo_Domingo"
+                                                                                                                                })
+                                                                                                                                %>
+                                                                                                                        </td>
+                                                                                                                        <td>
+                                                                                                                            <%= pagos_x_empleado.estadoPago
+                                                                                                                                %>
+                                                                                                                        </td>
+                                                                                                                        <td>
+                                                                                                                            <%= pagos_x_empleado.observacionPago
+                                                                                                                                %>
                                                                                                                         </td>
 
                                                                                                                         <td>
-                                                                                                                            <a id="eventoAct-Inact" href="/empleados/informacion-empleado/editar-pago-x-empleado/<%= pagos_x_empleado.idPago_x_empleado %>" class="btn  ">Editar</a>
+                                                                                                                            <a id="eventoAct-Inact"
+                                                                                                                                href="/empleados/informacion-empleado/editar-pago-x-empleado/<%= pagos_x_empleado.idPago_x_empleado %>"
+                                                                                                                                class="btn  ">Editar</a>
                                                                                                                         </td>
 
                                                                                                                     </tr>
-                                                                                                                    <% }) %>
-                                                                                                                        <% } %>
+                                                                                                                    <% })
+                                                                                                                        %>
+                                                                                                                        <% }
+                                                                                                                            %>
 
 
                                                                                                         </tbody>
@@ -1252,119 +1387,184 @@
                                                                                             </div>
                                                                                             <% } %>
 
-                                                                                                <% if (arrayPagos_x_empleadoDiciembre.length) { %>
+                                                                                                <% if
+                                                                                                    (arrayPagos_x_empleadoDiciembre.length)
+                                                                                                    { %>
                                                                                                     <h3>DICIEMBRE
                                                                                                     </h3>
-                                                                                                    <div class="d-lg-flex">
-                                                                                                        <h4 class="me-3 ">Cant.
-                                                                                                            <%= arrayPagos_x_empleadoDiciembre.length %>
+                                                                                                    <div
+                                                                                                        class="d-lg-flex">
+                                                                                                        <h4
+                                                                                                            class="me-3 ">
+                                                                                                            Cant.
+                                                                                                            <%= arrayPagos_x_empleadoDiciembre.length
+                                                                                                                %>
                                                                                                         </h4>
-                                                                                                        <h4 class="me-3">Comisiones
-                                                                                                            <%= pagosDiciembre.comisionesDiciembre=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
-                                                                                                                }).format(pagosDiciembre.comisionesDiciembre) %>
+                                                                                                        <h4
+                                                                                                            class="me-3">
+                                                                                                            Comisiones
+                                                                                                            <%= pagosDiciembre.comisionesDiciembre=Intl.NumberFormat('en-IN',
+                                                                                                                {
+                                                                                                                style: 'currency'
+                                                                                                                ,
+                                                                                                                currency: 'USD'
+                                                                                                                }).format(pagosDiciembre.comisionesDiciembre)
+                                                                                                                %>
                                                                                                         </h4>
-                                                                                                        <h4 class="me-3">Pagado
-                                                                                                            <%= pagosDiciembre.sueldosDiciembre=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
-                                                                                                                }).format(pagosDiciembre.sueldosDiciembre) %>
+                                                                                                        <h4
+                                                                                                            class="me-3">
+                                                                                                            Pagado
+                                                                                                            <%= pagosDiciembre.sueldosDiciembre=Intl.NumberFormat('en-IN',
+                                                                                                                {
+                                                                                                                style: 'currency'
+                                                                                                                ,
+                                                                                                                currency: 'USD'
+                                                                                                                }).format(pagosDiciembre.sueldosDiciembre)
+                                                                                                                %>
                                                                                                         </h4>
                                                                                                     </div>
-                                                                                                    <div class="container-departamento">
-                                                                                                        <div class="container-table table-responsive">
-                                                                                                            <table class="table table-sm table-hover ">
-                                                                                                                <thead class="thead-ligth">
-                                                                                                                    <tr class="text-truncate">
-                                                                                                                        <th scope="col">
-                                                                                                                            Codigo Pago
+                                                                                                    <div
+                                                                                                        class="container-departamento">
+                                                                                                        <div
+                                                                                                            class="container-table table-responsive">
+                                                                                                            <table
+                                                                                                                class="table table-sm table-hover ">
+                                                                                                                <thead
+                                                                                                                    class="thead-ligth">
+                                                                                                                    <tr
+                                                                                                                        class="text-truncate">
+                                                                                                                        <th
+                                                                                                                            scope="col">
+                                                                                                                            Codigo
+                                                                                                                            Pago
                                                                                                                         </th>
-                                                                                                                        <th scope="col">
-                                                                                                                            Codigo Empleado
+                                                                                                                        <th
+                                                                                                                            scope="col">
+                                                                                                                            Codigo
+                                                                                                                            Empleado
                                                                                                                         </th>
-                                                                                                                        <th scope="col">
+                                                                                                                        <th
+                                                                                                                            scope="col">
                                                                                                                             Departamento
                                                                                                                         </th>
-                                                                                                                        <th scope="col">
-                                                                                                                            Tipo de pago
+                                                                                                                        <th
+                                                                                                                            scope="col">
+                                                                                                                            Tipo
+                                                                                                                            de
+                                                                                                                            pago
                                                                                                                         </th>
-                                                                                                                        <th scope="col">
+                                                                                                                        <th
+                                                                                                                            scope="col">
                                                                                                                             Mes
                                                                                                                         </th>
-                                                                                                                        <th scope="col">
+                                                                                                                        <th
+                                                                                                                            scope="col">
                                                                                                                             Descuento
                                                                                                                         </th>
-                                                                                                                        <th scope="col">
+                                                                                                                        <th
+                                                                                                                            scope="col">
                                                                                                                             Comision
                                                                                                                         </th>
-                                                                                                                        <th scope="col">
-                                                                                                                            Pago Neto
+                                                                                                                        <th
+                                                                                                                            scope="col">
+                                                                                                                            Pago
+                                                                                                                            Neto
                                                                                                                         </th>
-                                                                                                                        <th scope="col">
-                                                                                                                            Fecha Pago
+                                                                                                                        <th
+                                                                                                                            scope="col">
+                                                                                                                            Fecha
+                                                                                                                            Pago
                                                                                                                         </th>
-                                                                                                                        <th scope="col">
-                                                                                                                            Estado Pago
+                                                                                                                        <th
+                                                                                                                            scope="col">
+                                                                                                                            Estado
+                                                                                                                            Pago
                                                                                                                         </th>
-                                                                                                                        <th scope="col">
+                                                                                                                        <th
+                                                                                                                            scope="col">
                                                                                                                             Observacion
                                                                                                                         </th>
-                                                                                                                        <th scope="col">
+                                                                                                                        <th
+                                                                                                                            scope="col">
                                                                                                                             Acciones
                                                                                                                         </th>
                                                                                                                     </tr>
                                                                                                                 </thead>
                                                                                                                 <tbody>
-                                                                                                                    <% if (arrayPagos_x_empleadoDiciembre.length>
+                                                                                                                    <% if
+                                                                                                                        (arrayPagos_x_empleadoDiciembre.length>
                                                                                                                         0)
                                                                                                                         {
                                                                                                                         %>
-                                                                                                                        <% arrayPagos_x_empleadoDiciembre.forEach(pagos_x_empleado=>
+                                                                                                                        <%
+                                                                                                                            arrayPagos_x_empleadoDiciembre.forEach(pagos_x_empleado=>
                                                                                                                             {
                                                                                                                             %>
 
-                                                                                                                            <tr class="text-truncate">
+                                                                                                                            <tr
+                                                                                                                                class="text-truncate">
 
                                                                                                                                 <td>
-                                                                                                                                    <%= pagos_x_empleado.idPago_x_empleado %>
+                                                                                                                                    <%= pagos_x_empleado.idPago_x_empleado
+                                                                                                                                        %>
                                                                                                                                 </td>
-                                                                                                                                <td id="codDesc">
-                                                                                                                                    <%= pagos_x_empleado.idEmpleado %>
-                                                                                                                                </td>
-                                                                                                                                <td>
-                                                                                                                                    <%= pagos_x_empleado.departamento %>
-                                                                                                                                </td>
-                                                                                                                                <td>
-                                                                                                                                    <%= pagos_x_empleado.frecuenciaPago %>
+                                                                                                                                <td
+                                                                                                                                    id="codDesc">
+                                                                                                                                    <%= pagos_x_empleado.idEmpleado
+                                                                                                                                        %>
                                                                                                                                 </td>
                                                                                                                                 <td>
-                                                                                                                                    <%= pagos_x_empleado.periodo %>
+                                                                                                                                    <%= pagos_x_empleado.departamento
+                                                                                                                                        %>
                                                                                                                                 </td>
                                                                                                                                 <td>
-                                                                                                                                    <%= pagos_x_empleado.descuento %>
+                                                                                                                                    <%= pagos_x_empleado.frecuenciaPago
+                                                                                                                                        %>
                                                                                                                                 </td>
                                                                                                                                 <td>
-                                                                                                                                    <%= pagos_x_empleado.comisionP %>
+                                                                                                                                    <%= pagos_x_empleado.periodo
+                                                                                                                                        %>
                                                                                                                                 </td>
                                                                                                                                 <td>
-                                                                                                                                    <%= pagos_x_empleado.sueldoNeto %>
+                                                                                                                                    <%= pagos_x_empleado.descuento
+                                                                                                                                        %>
                                                                                                                                 </td>
                                                                                                                                 <td>
-                                                                                                                                    <%= pagos_x_empleado.fechaPago.toLocaleString('es-US', {
-                                                                                                                                        timeZone: "America/Santo_Domingo" }) %>
+                                                                                                                                    <%= pagos_x_empleado.comisionP
+                                                                                                                                        %>
                                                                                                                                 </td>
                                                                                                                                 <td>
-                                                                                                                                    <%= pagos_x_empleado.estadoPago %>
+                                                                                                                                    <%= pagos_x_empleado.sueldoNeto
+                                                                                                                                        %>
                                                                                                                                 </td>
                                                                                                                                 <td>
-                                                                                                                                    <%= pagos_x_empleado.observacionPago %>
+                                                                                                                                    <%= pagos_x_empleado.fechaPago.toLocaleString('es-US',
+                                                                                                                                        {
+                                                                                                                                        timeZone: "America/Santo_Domingo"
+                                                                                                                                        })
+                                                                                                                                        %>
+                                                                                                                                </td>
+                                                                                                                                <td>
+                                                                                                                                    <%= pagos_x_empleado.estadoPago
+                                                                                                                                        %>
+                                                                                                                                </td>
+                                                                                                                                <td>
+                                                                                                                                    <%= pagos_x_empleado.observacionPago
+                                                                                                                                        %>
                                                                                                                                 </td>
 
                                                                                                                                 <td>
-                                                                                                                                    <a id="eventoAct-Inact" href="/empleados/informacion-empleado/editar-pago-x-empleado/<%= pagos_x_empleado.idPago_x_empleado %>" class="btn  ">Editar</a>
+                                                                                                                                    <a id="eventoAct-Inact"
+                                                                                                                                        href="/empleados/informacion-empleado/editar-pago-x-empleado/<%= pagos_x_empleado.idPago_x_empleado %>"
+                                                                                                                                        class="btn  ">Editar</a>
                                                                                                                                 </td>
 
                                                                                                                             </tr>
 
-                                                                                                                            <% }) %>
-                                                                                                                                <% } %>
+                                                                                                                            <% })
+                                                                                                                                %>
+                                                                                                                                <% }
+                                                                                                                                    %>
 
                                                                                                                 </tbody>
                                                                                                             </table>

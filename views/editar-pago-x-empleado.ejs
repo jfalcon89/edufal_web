@@ -1,15 +1,17 @@
 <%- include('template/cabecera', { tituloWeb: "Nomina - Crear Pagos por Empleado" , bgActive1: "" , bgActive2: "" ,
-    bgActive3: "active" , bgActive4: "" , bgActive5: "" , bgActive6: "" }); %>
+    bgActive3: "active" , bgActive4: "" , bgActive5: "" , bgActive6: "" , bgActive7: "" }); %>
 
     <div class="container-fluid d-flex flex-column mt-2">
         <h2 class=" text-secondary">Editar Pago por Empleado</h2>
         <hr>
         <div class="d-flex align-items-center justify-content-end ">
 
-            <a class="btn btn-warning my-4 " href="/empleados/informacion-empleado/ver-pago-x-empleado/<%= arrayPagos_x_empleado.idEmpleado %> "><i
+            <a class="btn btn-warning my-4 "
+                href="/empleados/informacion-empleado/ver-pago-x-empleado/<%= arrayPagos_x_empleado.idEmpleado %> "><i
                     class="bi bi-arrow-left me-lg-3"></i>Volver Atras</a>
         </div>
-        <div class="header-container p-2 mb-3 mt-3 h-25 text-light " style="background-color: #acacac5c; border-radius: 8px;">
+        <div class="header-container p-2 mb-3 mt-3 h-25 text-light "
+            style="background-color: #acacac5c; border-radius: 8px;">
             <h5 class="mt-3 font-weight-bold fs-3" style="color: #02aeae;">
                 <%= arrayPagos_x_empleado.idEmpleado %>
                     <%= arrayPagos_x_empleado.nombre %>
@@ -49,79 +51,88 @@
 
         <form class="" action="" method="POST">
 
-            <input type="text" class="form-control visually-hidden" name="idEmpleado" placeholder="Codigo Empleado" value="<%= arrayPagos_x_empleado.idEmpleado %> " required>
+            <input type="text" class="form-control visually-hidden" name="idEmpleado" placeholder="Codigo Empleado"
+                value="<%= arrayPagos_x_empleado.idEmpleado %> " required>
             <div class="">
                 <div>
                     <label for="departamento">Puesto</label>
-                    <input type="text" class="form-control" name="departamento" placeholder="" value="<%= arrayPagos_x_empleado.departamento %> " disabled required>
+                    <input type="text" class="form-control" name="departamento" placeholder=""
+                        value="<%= arrayPagos_x_empleado.departamento %> " disabled required>
                 </div>
                 <div>
                     <label for="frecuenciaPago"> Frecuencia Pago</label>
-                    <select name="frecuenciaPago" class="form-control mt-2 text-secondary" style="background-color: rgba(255, 0, 0, 0); border: none;" required>
-                            <option class="text-dark" value="<%= arrayPagos_x_empleado.frecuenciaPago %>" selected>
-                                <%= arrayPagos_x_empleado.frecuenciaPago %>
-                            </option>
-                            <option class="text-dark" value="Pago Semanal">Pago Semanal</option>
-                            <option class="text-dark" value="Pago Quincenal">Pago Quincenal</option>
-                            <option class="text-dark" value="Pago Mensual">Pago Mensual</option>
-                            </select>
+                    <select name="frecuenciaPago" class="form-control mt-2 text-secondary"
+                        style="background-color: rgba(255, 0, 0, 0); border: none;" required>
+                        <option class="text-dark" value="<%= arrayPagos_x_empleado.frecuenciaPago %>" selected>
+                            <%= arrayPagos_x_empleado.frecuenciaPago %>
+                        </option>
+                        <option class="text-dark" value="Pago Semanal">Pago Semanal</option>
+                        <option class="text-dark" value="Pago Quincenal">Pago Quincenal</option>
+                        <option class="text-dark" value="Pago Mensual">Pago Mensual</option>
+                    </select>
                 </div>
                 <div>
                     <label for="periodo">Periodo Pago</label>
-                    <select name="periodo" class="form-control mt-2 text-secondary" style="background-color: rgba(255, 0, 0, 0); border: none;" required>
-                            <option class="text-dark" value="<%= arrayPagos_x_empleado.periodo %>" selected>
-                                <%= arrayPagos_x_empleado.periodo %>
-                            </option>
-                            <option class="text-dark" value="Enero">Enero</option>
-                            <option class="text-dark" value="Febrero">Febrero</option>
-                            <option class="text-dark" value="Marzo">Marzo</option>
-                            <option class="text-dark" value="Abril">Abril</option>
-                            <option class="text-dark" value="Mayo">Mayo</option>
-                            <option class="text-dark" value="Junio">Junio</option>
-                            <option class="text-dark" value="Julio">Julio</option>
-                            <option class="text-dark" value="Agosto">Agosto</option>
-                            <option class="text-dark" value="Septiembre">Septiembre</option>
-                            <option class="text-dark" value="Obtubre">Obtubre</option>
-                            <option class="text-dark" value="Noviembre">Noviembre</option>
-                            <option class="text-dark" value="Diciembre">Diciembre</option>
-                            </select>
+                    <select name="periodo" class="form-control mt-2 text-secondary"
+                        style="background-color: rgba(255, 0, 0, 0); border: none;" required>
+                        <option class="text-dark" value="<%= arrayPagos_x_empleado.periodo %>" selected>
+                            <%= arrayPagos_x_empleado.periodo %>
+                        </option>
+                        <option class="text-dark" value="Enero">Enero</option>
+                        <option class="text-dark" value="Febrero">Febrero</option>
+                        <option class="text-dark" value="Marzo">Marzo</option>
+                        <option class="text-dark" value="Abril">Abril</option>
+                        <option class="text-dark" value="Mayo">Mayo</option>
+                        <option class="text-dark" value="Junio">Junio</option>
+                        <option class="text-dark" value="Julio">Julio</option>
+                        <option class="text-dark" value="Agosto">Agosto</option>
+                        <option class="text-dark" value="Septiembre">Septiembre</option>
+                        <option class="text-dark" value="Obtubre">Obtubre</option>
+                        <option class="text-dark" value="Noviembre">Noviembre</option>
+                        <option class="text-dark" value="Diciembre">Diciembre</option>
+                    </select>
                 </div>
                 <div class="input-field">
 
                     <label for="descuento" class="text-secondary">Total Descuentos</label>
-                    <input type="text" class="form-control text-secondary" name="descuento" id="descuento" placeholder="" value="<%= arrayPagos_x_empleado.totalDescuentos %> " disabled required>
+                    <input type="text" class="form-control text-secondary" name="descuento" id="descuento"
+                        placeholder="" value="<%= arrayPagos_x_empleado.totalDescuentos %> " disabled required>
                 </div>
                 <div class="input-field">
 
                     <label for="comisionP" class="text-secondary">Comision</label>
-                    <input type="text" class="form-control text-secondary" name="comision" id="comisionP" placeholder="" value="<%= arrayPagos_x_empleado.comisionP %> " disabled required>
+                    <input type="text" class="form-control text-secondary" name="comision" id="comisionP" placeholder=""
+                        value="<%= arrayPagos_x_empleado.comisionP %> " disabled required>
                 </div>
                 <div class="input-field">
 
                     <label for="sueldoNeto" class="text-secondary">Sueldo Neto</label>
-                    <input type="text" class="form-control text-secondary" name="sueldoNeto" id="sueldoNeto" placeholder="" value="<%= arrayPagos_x_empleado.sueldoNeto %> " disabled required>
+                    <input type="text" class="form-control text-secondary" name="sueldoNeto" id="sueldoNeto"
+                        placeholder="" value="<%= arrayPagos_x_empleado.sueldoNeto %> " disabled required>
                 </div>
                 <select name="estadoPago" class="form-control text-secondary" required>
 
-                        <option class="text-dark" value="<%= arrayPagos_x_empleado.estadoPago %>" selected>
-                            <%= arrayPagos_x_empleado.estadoPago %>
-                        </option>
-                        <option class="text-dark" value="Activo">Activo</option>
-                        <option class="text-dark" value="Inactivo">Inactivo</option>
-                    </select>
+                    <option class="text-dark" value="<%= arrayPagos_x_empleado.estadoPago %>" selected>
+                        <%= arrayPagos_x_empleado.estadoPago %>
+                    </option>
+                    <option class="text-dark" value="Activo">Activo</option>
+                    <option class="text-dark" value="Inactivo">Inactivo</option>
+                </select>
 
-                <input maxlength="250" type="text" name="observacionPago" class="form-control" placeholder="Observacion" value="<%= arrayPagos_x_empleado.observacionPago %>">
+                <input maxlength="250" type="text" name="observacionPago" class="form-control" placeholder="Observacion"
+                    value="<%= arrayPagos_x_empleado.observacionPago %>">
                 <button type="submit" class="btn  my-4 me-lg-3" style="background-color: #02aeae;">Guardar
-                        Cambios</button>
-                <a type="button" class="btn text-light bg-danger " data-bs-toggle="modal" data-bs-target="#staticBackdrop" title="Eliminar Dpto">Eliminar
-                    </a>
+                    Cambios</button>
+                <a type="button" class="btn text-light bg-danger " data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop" title="Eliminar Dpto">Eliminar
+                </a>
 
 
 
                 <small id="emailHelp" class="form-text ">pagos creados:</small><br>
                 <small id="emailHelp" class="form-text ">
-                        <%= %>
-                    </small><br>
+                    <%= %>
+                </small><br>
 
             </div>
 
@@ -136,7 +147,8 @@
 
 
     <!-- Modal -->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -150,7 +162,9 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <a type="submit" href="/empleados/informacion-empleado/eliminar-pago-x-empleado/<%= arrayPagos_x_empleado.idPago_x_empleado %>" class="btn text-light bg-danger " title="Eliminar Pago">Eliminar</a>
+                    <a type="submit"
+                        href="/empleados/informacion-empleado/eliminar-pago-x-empleado/<%= arrayPagos_x_empleado.idPago_x_empleado %>"
+                        class="btn text-light bg-danger " title="Eliminar Pago">Eliminar</a>
                 </div>
             </div>
         </div>

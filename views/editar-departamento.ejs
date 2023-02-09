@@ -1,5 +1,5 @@
 <%- include('template/cabecera', { tituloWeb: "Nomina - Editar Departamento" , bgActive1: "" , bgActive2: "active" ,
-    bgActive3: "" , bgActive4: "" , bgActive5: "" , bgActive6: "" }); %>
+    bgActive3: "" , bgActive4: "" , bgActive5: "" , bgActive6: "" , bgActive7: "" }); %>
 
     <div class="container-fluid mt-2">
         <h2 class=" text-secondary">Editar Departamento - Puesto</h2>
@@ -17,11 +17,13 @@
 
                 <div>
                     <label for="exampleInputEmail1">Nombre Puesto</label>
-                    <input type="text" class="form-control text-secondary " name="nombre_dpto" aria-describedby="emailHelp" placeholder="" value="<%= departamento.nombre_dpto %>" required>
+                    <input type="text" class="form-control text-secondary " name="nombre_dpto"
+                        aria-describedby="emailHelp" placeholder="" value="<%= departamento.nombre_dpto %>" required>
                 </div>
                 <div class="mt-3">
                     <label for="">Fecha Modificacion</label>
-                    <input type="date" class="form-control text-secondary" name="fechaRegistro" value="<%= departamento.fechaRegistro %>" required>
+                    <input type="date" class="form-control text-secondary" name="fechaRegistro"
+                        value="<%= departamento.fechaRegistro %>" required>
                 </div>
                 <div class="mt-3">
                     <label for="exampleInputEmail1">Estado Puesto</label>
@@ -36,7 +38,8 @@
 
                 <button type="submit" class="btn  my-4 me-lg-3" style="background-color: #02aeae;">Guardar
                     Cambios</button>
-                <a type="button" class="btn text-light bg-danger " data-bs-toggle="modal" data-bs-target="#staticBackdrop" title="Eliminar Dpto">Eliminar</a>
+                <a type="button" class="btn text-light bg-danger " data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop" title="Eliminar Dpto">Eliminar</a>
                 <!-- <a type="button" class="btn text-light bg-danger " data-bs-toggle="modal" data-bs-target="#staticBackdrop" title="Eliminar Dpto">Eliminar -->
 
             </form>
@@ -48,7 +51,8 @@
 
 
     <!-- Modal -->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -61,7 +65,9 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <a type="submit" href="/departamentos/editar-departamento/eliminar-departamento/<%= departamento.idDepartamento %>" class="btn text-light bg-danger " title="Eliminar Dpto">Eliminar Dpto</a>
+                    <a type="submit"
+                        href="/departamentos/editar-departamento/eliminar-departamento/<%= departamento.idDepartamento %>"
+                        class="btn text-light bg-danger " title="Eliminar Dpto">Eliminar Dpto</a>
                 </div>
             </div>
         </div>

@@ -1,5 +1,5 @@
 <%- include('template/cabecera', { tituloWeb: "Nomina - Crear Dpto Empleado" , bgActive1: "" , bgActive2: "" ,
-    bgActive3: "active" , bgActive4: "" , bgActive5: "" , bgActive6: "" }); %>
+    bgActive3: "active" , bgActive4: "" , bgActive5: "" , bgActive6: "" , bgActive7: "" }); %>
 
     <div class="container-fluid d-flex flex-column mt-2">
         <h2 class=" text-secondary">Crear Departamento por Empleado</h2>
@@ -9,7 +9,8 @@
             <a class="btn btn-warning my-4 " href="/empleados/informacion-empleado/<%= empleado.idEmpleado %> "><i
                     class="bi bi-arrow-left me-lg-3"></i>Volver Atras</a>
         </div>
-        <div class="header-container p-2 mb-3 mt-3 h-25 text-light " style="background-color: #acacac5c; border-radius: 8px;">
+        <div class="header-container p-2 mb-3 mt-3 h-25 text-light "
+            style="background-color: #acacac5c; border-radius: 8px;">
             <h5 class="mt-3 font-weight-bold fs-3" style="color: #02aeae;">
                 <%= empleado.idEmpleado %>
                     <%= empleado.nombre %>
@@ -49,15 +50,18 @@
         <form class="" action="" method="POST">
             <div class="container-departamento">
                 <% if (empleado_x_departamento) { %>
-                    <h5 class="bg-danger d-flex justify-content-center text-light">Empleado ya tiene un departamento asignado
+                    <h5 class="bg-danger d-flex justify-content-center text-light">Empleado ya tiene un departamento
+                        asignado
                     </h5>
                     <% }else { %>
 
                         <div class="form-group">
                             <!-- <label for="exampleInputEmail1">Nombre Departamento</label> -->
-                            <input type="text" class="form-control visually-hidden" name="idEmpleado" placeholder="Codigo Empleado" value="<%= empleado.idEmpleado %> " required>
+                            <input type="text" class="form-control visually-hidden" name="idEmpleado"
+                                placeholder="Codigo Empleado" value="<%= empleado.idEmpleado %> " required>
                             <!-- <label for="departamento" class=" p-2">Departamento</label> -->
-                            <select name="idDepartamento" class="form-control mt-2 text-secondary" style="background-color: rgba(255, 0, 0, 0); border: none;" required>
+                            <select name="idDepartamento" class="form-control mt-2 text-secondary"
+                                style="background-color: rgba(255, 0, 0, 0); border: none;" required>
                                 <option class="text-dark" value="Seleccionar Departamento" selected>Seleccionar
                                     Departamento
                                 </option>
@@ -71,7 +75,8 @@
                                             <% } %>
                             </select>
                             <!-- <input type="text" class="form-control" name="idDepartamento" placeholder="Codigo Departamento"> -->
-                            <input type="date" class="form-control text-secondary" name="fechaRegistroB" placeholder="Fecha Registro" required>
+                            <input type="date" class="form-control text-secondary" name="fechaRegistroB"
+                                placeholder="Fecha Registro" required>
                             <!-- <input type="text" class="form-control" name="estadoDepartamento" placeholder="Estado Dpto" required> -->
                             <select name="estadoDepartamentoB" class="form-control text-secondary" required>
                                 <option class="text-dark" value="Seleccionar">Seleccionar</option>
@@ -91,7 +96,7 @@
 
         </form>
 
-        </div>
+    </div>
 
 
     </div>

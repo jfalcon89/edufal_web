@@ -18,6 +18,10 @@ router.get('/inicio', async(req, res) => {
         const arrayDepartamentosDB = await pool.query('SELECT * FROM departamentos');
         const arrayUserDB = await pool.query('SELECT * FROM users');
         const validacionPagos_x_empleadoDB = await pool.query(`SELECT * FROM pagos_x_empleados `);
+        const serviciosTotalesDB = await pool.query("SELECT SUM(montoPagoServicio) serviciosTotales FROM pagos_servicios ")
+        const cantPagosDB = await pool.query("SELECT COUNT(montoPagoServicio) cantPagos FROM pagos_servicios")
+        const sueldosTotalesDB = await pool.query("SELECT SUM(sueldoNeto) sueldosTotales FROM pagos_x_empleados")
+
 
         res.render("dashboard", {
             novedades: novedadesDB,
@@ -25,6 +29,9 @@ router.get('/inicio', async(req, res) => {
             arrayDepartamentos: arrayDepartamentosDB,
             arrayUser: arrayUserDB,
             validacionPagos_x_empleado: validacionPagos_x_empleadoDB,
+            serviciosTotales: serviciosTotalesDB[0].serviciosTotales,
+            sueldosTotales: sueldosTotalesDB[0].sueldosTotales,
+            cantPagos: cantPagosDB[0].cantPagos,
             login: true,
             name: req.session.name
 
