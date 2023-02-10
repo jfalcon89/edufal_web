@@ -127,22 +127,24 @@
                 }).format(gastosGenerales) %>
 
         </h2>
+        <hr>
         <div class="container-table table-responsive">
-            <table class="table table-sm table-hover ">
+            <h3>Gastos por mes</h3>
+            <table class="table table-sm table-hover table-striped">
                 <thead class="thead-ligth">
                     <tr class="text-truncate">
-                        <th scope="col">Enero</th>
-                        <th scope="col">Febrero</th>
-                        <th scope="col">Marzo</th>
-                        <th scope="col">Abril</th>
-                        <th scope="col">Mayo</th>
-                        <th scope="col">Junio</th>
-                        <th scope="col">Julio</th>
-                        <th scope="col">Agosto</th>
-                        <th scope="col">Septiembre</th>
-                        <th scope="col">Octubre</th>
-                        <th scope="col">Noviembre</th>
-                        <th scope="col">Diciembre</th>
+                        <th scope="col" class="font-weight-bold">Enero</th>
+                        <th scope="col" class="font-weight-bold">Febrero</th>
+                        <th scope="col" class="font-weight-bold">Marzo</th>
+                        <th scope="col" class="font-weight-bold">Abril</th>
+                        <th scope="col" class="font-weight-bold">Mayo</th>
+                        <th scope="col" class="font-weight-bold">Junio</th>
+                        <th scope="col" class="font-weight-bold">Julio</th>
+                        <th scope="col" class="font-weight-bold">Agosto</th>
+                        <th scope="col" class="font-weight-bold">Septiembre</th>
+                        <th scope="col" class="font-weight-bold">Octubre</th>
+                        <th scope="col" class="font-weight-bold">Noviembre</th>
+                        <th scope="col" class="font-weight-bold">Diciembre</th>
                     </tr>
                 </thead>
 
@@ -151,28 +153,52 @@
                     <tr class="text-truncate">
 
                         <td>
-                            <%= %>
+                            <%= gastosEnero=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
+                                }).format(gastosEnero) %>
                         </td>
                         <td id="codDesc">
-                            <%= %>
+                            <%= gastosFebrero=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
+                                }).format(gastosFebrero) %>
                         </td>
                         <td>
-                            <%= %>
+                            <%= gastosMarzo=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
+                                }).format(gastosMarzo) %>
                         </td>
                         <td>
-                            <%= %>
+                            <%= gastosAbril=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
+                                }).format(gastosAbril) %>
                         </td>
                         <td>
-                            <%= %>
+                            <%= gastosMayo=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
+                                }).format(gastosMayo) %>
                         </td>
                         <td>
-                            <%= %>
+                            <%= gastosJunio=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
+                                }).format(gastosJunio) %>
                         </td>
                         <td>
-                            <%= %>
+                            <%= gastosJulio=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
+                                }).format(gastosJulio) %>
                         </td>
                         <td>
-                            <%= %>
+                            <%= gastosAgosto=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
+                                }).format(gastosAgosto) %>
+                        </td>
+                        <td>
+                            <%= gastosSeptiempre=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
+                                }).format(gastosSeptiempre) %>
+                        </td>
+                        <td>
+                            <%= gastosOctubre=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
+                                }).format(gastosOctubre) %>
+                        </td>
+                        <td>
+                            <%= gastosNoviembre=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
+                                }).format(gastosNoviembre) %>
+                        </td>
+                        <td>
+                            <%= gastosDiciembre=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
+                                }).format(gastosDiciembre) %>
                         </td>
 
 
@@ -195,7 +221,7 @@
     <!-- content fin -->
 
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('#datatable').DataTable({
                 order: [
                     [3, 'desc']
