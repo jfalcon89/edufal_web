@@ -59,8 +59,7 @@ router.get('/pagos-servicios', async(req, res) => {
         const cantPagosDB = await pool.query("SELECT COUNT(montoPagoServicio) cantPagos FROM pagos_servicios")
 
 
-        console.log(serviciosTotalesDB[0])
-        console.log(cantPagosDB[0])
+
         res.render("pagos-servicios", {
 
             arrayServiciosEnero: arrayServiciosEneroDB,

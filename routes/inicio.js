@@ -22,8 +22,10 @@ router.get('/inicio', async(req, res) => {
         const cantPagosDB = await pool.query("SELECT COUNT(montoPagoServicio) cantPagos FROM pagos_servicios")
         const sueldosTotalesDB = await pool.query("SELECT SUM(sueldoNeto) sueldosTotales FROM pagos_x_empleados")
 
+        const gastosGenerales = sueldosTotalesDB[0].sueldosTotales + serviciosTotalesDB[0].serviciosTotales
 
         res.render("dashboard", {
+            gastosGenerales,
             novedades: novedadesDB,
             arrayEmpleados: arrayEmpleadosDB,
             arrayDepartamentos: arrayDepartamentosDB,
