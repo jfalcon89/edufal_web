@@ -58,7 +58,7 @@
                 <hr>
             </div>
 
-            <div class="container d-flex justify-content-around mt-4 align-items-center">
+            <div class="container d-lg-flex justify-content-around mt-4 align-items-center">
                 <div class="col-6">
                     <h2 style="color: #08787a;"><strong><i
                                 class="bi bi-file-earmark-medical me-4 fs-1"></i>OBJETIVO</strong></h2>
@@ -76,7 +76,7 @@
                         alt="imagen-full-size">
                     <div class="d-md-flex " style="">
                         <div data-aos="fade-right" class="card"
-                            style=" height: 300px; border-radius: 0% 0% 5% 15%; border-left: solid 10px #1d607a;  border-image: linear-gradient(to right, #1d607a, rgb(255, 255, 255)); border-image-slice: 1; padding: 10px;">
+                            style="  border-radius: 0% 0% 5% 15%; border-left: solid 10px #1d607a;  border-image: linear-gradient(to right, #1d607a, rgb(255, 255, 255)); border-image-slice: 1; padding: 10px;">
                             <div class="card-body">
                                 <h1 class="card-title text-secondary">
                                     <%= curso.tipo_curso %>
@@ -168,18 +168,18 @@
 
                 <div class="d-flex justify-content-around">
 
-                    <button class="btn btn-dark btn-lg" type="submit" data-bs-toggle="modal"
+                    <button class="btn btn-dark me-2" type="submit" data-bs-toggle="modal"
                         data-bs-target="#exampleModalNovedad">Quiero Inscribirme</button>
                     <a href="<%= curso.url_plan_estudio %>" target="_blank" type="button"
-                        class="btn btn-outline-dark btn-lg">Descargar Plan de Estudio</a>
+                        class="btn btn-outline-dark ">Descargar Plan de Estudio</a>
                 </div>
 
             </div>
 
             <!-- contenido fijo del curso seccion 4  -->
 
-            <div data-aos="fade-up" class="container d-flex">
-                <div class="col-6" style="padding-top: 100px;">
+            <div data-aos="fade-up" class="container d-lg-flex">
+                <div class="col-lg-6" style="padding-top: 100px;">
                     <h1 class="">Metodología de Aprendizaje</h1>
 
                     <h4 class="mt-4">Contarás con un asesoramiento personalizado de tu tutor que te apoyará en todas las
@@ -188,17 +188,15 @@
                     <li class="mt-2">Grupos pequeños con un promedio de 15 participantes.</li>
                     <li class="mt-2">Todas las sesiones son grabadas y estarán disponibles permanentemente.</li>
                 </div>
-                <div class="col-6 d-flex justify-content-center">
-                    <img src="/img/img-cursos/curso-seccion-4.png" width="650" alt="">
+                <div class="col-lg-6 d-flex justify-content-center">
+                    <img src="/img/img-cursos/curso-seccion-4.png" width="650" style="max-width: 100%;" alt="">
                 </div>
             </div>
             <!-- contenido fijo del curso seccion 5  -->
 
-            <div class="container d-flex">
-                <div class="col-6 d-flex justify-content-center">
-                    <img src="/img/img-cursos/curso-seccion-5.png" width="650" alt="">
-                </div>
-                <div class="col-6" style="padding-top: 100px;">
+            <div class="container d-lg-flex">
+
+                <div class="col-lg-6" style="padding-top: 100px;">
                     <h1 class="">Plataforma Virtual Basada en Moodle</h1>
 
                     <h4 class="mt-4">Moodle brinda a los estudiantes la flexibilidad de acceder a materiales educativos
@@ -215,14 +213,17 @@
                         aprendizaje más interactivo y adaptado a las necesidades individuales
                     </li>
                 </div>
+                <div class="col-lg-6 d-flex justify-content-center">
+                    <img src="/img/img-cursos/curso-seccion-5.png" width="650" style="max-width: 100%;" alt="">
+                </div>
 
             </div>
             <hr>
             <!-- facilidades de pago seccion -->
 
             <div class="container mb-5">
-                <div class="d-md-flex">
-                    <div class="col-6 transUp d-flex justify-content-center align-items-center">
+                <div class="d-lg-flex">
+                    <div class="col-lg-6 transUp d-flex justify-content-center align-items-center">
                         <div data-aos="fade-up" class="card bg-light mb-3 me-2 curso-card "
                             style="max-width: 20rem; border-radius: 10px;">
                             <div class="card-header" style="background-color: #08787a; color: white;">
@@ -272,7 +273,7 @@
                                 Inscribirme</button>
                         </div>
                     </div>
-                    <div class="col-6 ">
+                    <div class="col-lg-6 ">
 
 
                         <h2 style="color: #08787a;" class="text-center"> <strong> Puedes reservar o inscribirte
@@ -280,14 +281,16 @@
                                 institucionales.</strong>
                         </h2>
                         <div class="d-flex justify-content-center">
-                            <img class="" width="640px" src="/img/img-cursos/numeros-cuenta-edufal.png" alt="">
+                            <img class="" width="640px" style="max-width: 100%;"
+                                src="/img/img-cursos/numeros-cuenta-edufal.png" alt="">
                         </div>
                         <p style="color: #727171;" class="text-center"> <strong>Favor enviar: Foto del recibo y/o
                                 comprobante de pago, Nombre del estudiante, Cedula del estudiante y Correo
                                 electronico.</strong>
                         </p>
                         <h2 style="color: #08787a;" class="text-center"> <strong> Aceptamos tarjetas de Credito</strong>
-                            <img width="250px" src="/img/img-cursos/img-visa-mastercard.png" alt="img-visa-mastercard">
+                            <img width="180px" style="max-width: 100%;" src="/img/img-cursos/img-visa-mastercard.png"
+                                alt="img-visa-mastercard">
                         </h2>
 
                     </div>
@@ -422,9 +425,9 @@
 
                         </div>
 
-                        <div class=" col-6 d-flex justify-content-around">
+                        <div class=" col-lg-6 d-lg-flex justify-content-around">
                             <div>
-                                <div class="card-header">
+                                <div class="card-lg-header">
                                     <h6
                                         style="background-color: #08787a; padding: 5px; border-radius: 10px; display: inline; color: white; ">
                                         <%= maestro.nombre %>
@@ -447,9 +450,9 @@
                     </div>
                 </div>
             </div>
-            <div class="d-block"
-                style="background-image: url(/img/img-cursos/background-sesion-ayuda.png); background-repeat: no-repeat; background-position: center; background-size: cover; height: 500px;">
-                <div class="container d-flex align-items-center" style="height: 85%;">
+            <div class="d-block "
+                style="background-image: url(/img/img-cursos/background-sesion-ayuda.png); background-repeat: no-repeat; background-position: center; background-size: cover; ">
+                <div class="container d-flex align-items-center" style="">
                     <div>
                         <div class="p-5"
                             style="background-color: #eafffe; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);">
@@ -463,10 +466,10 @@
                                     conocimientos de nuestro equipo altamente calificado</h5>
                             </div>
                         </div>
+                        <div class="text-center mt-5 mb-5">
+                            <button class="btn-outline-dark btn ">Necesito Mas Informacion</button>
+                        </div>
                     </div>
-                </div>
-                <div class="text-center">
-                    <button class="btn-outline-dark btn ">Necesito Mas Informacion</button>
                 </div>
             </div>
 
@@ -553,12 +556,14 @@
                             <form method="POST" class="form-group" autocomplete="off">
 
                                 <input type="text" name="id_curso" value="<%= curso.id_curso %>" class="d-none">
-                                <input type="text" name="precioOferta_inscripcion" value="<%= precioOferta %>" class="">
+                                <input type="text" name="precioOferta_inscripcion" value="<%= precioOferta %>"
+                                    class="d-none">
                                 <input type="text" name="fecha_inicio_inscripcion" value="<%= curso.fecha_inicio %>"
-                                    class="">
-                                <input type="text" name="promocion_inscripcion" value="<%= curso.promocion %>" class="">
+                                    class="d-none">
+                                <input type="text" name="promocion_inscripcion" value="<%= curso.promocion %>"
+                                    class="d-none">
                                 <input type="text" name="oferta_inscripcion_inscripcion"
-                                    value="<%= curso.oferta_inscripcion %>" class="">
+                                    value="<%= curso.oferta_inscripcion %>" class="d-none">
 
                                 <div>
                                     <label for="nombre">Nombre </label>
