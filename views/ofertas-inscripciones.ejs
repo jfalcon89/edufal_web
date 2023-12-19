@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<%- include('front-end-template/head', { tituloWeb: "Edufal Online - Ofertas Inscripcion" }); %>
+
+    <%- include('front-end-template/navbar'); %>
+
+
+        <body>
+            <div class=""
+                style="background-image: url(/img/img-cursos/background-cabecera-ofertas-inscripciones.png); background-repeat: no-repeat; background-position: center; background-size: cover; height: 440px; box-shadow: 0px 15px 15px rgba(0, 0, 0, 0.2);">
+                <div class="mt-4 row align-items-center" style="height: 100%;">
+                    <div class="d-flex">
+
+                        <div class="pt-5 fs-5 col-6" style="text-align: end;">
+                            <h1 data-aos="fade-right">
+                                <strong style="color: #005d6a; text-align: start">OFERTAS INSCRIPCIONES</strong>
+                            </h1>
+                        </div>
+
+                        <div style="" class="col-6 text-center d-flex justify-content-around align-items-center ">
+                            <% if (arrayCursos.length> 0) { %>
+                                <% arrayCursos.forEach(curso=> { %>
+                                    <div data-aos="fade-up" data-aos-duration="2000" class="zoom-in-container">
+                                        <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>"
+                                            style="color: #005d6a;" class="image-link">
+                                            <img class="zoom-in-image" src="<%= curso.url_imagen %>" alt="img-curso">
+                                        </a>
+                                        <h5 class="mt-2" style="color: #005d6a;">
+                                            <%= curso.titulo_curso %>
+                                        </h5>
+                                    </div>
+                                    <% }) %>
+                                        <% } %>
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+            <%- include('front-end-template/footer'); %>
+
+
+                <script src="/js/scriptSlide.js"></script>
+                <script src="/js/anuncios-inicio-event.js"></script>
+
+                <script>
+                    AOS.init({
+                        duration: 1000
+                    });
+                </script>
+
+
+
+
+        </body>
+
+
+
+
+</html>

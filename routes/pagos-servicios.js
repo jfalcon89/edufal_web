@@ -29,6 +29,9 @@ router.post("/pagos-servicios", async(req, res) => {
 router.get('/pagos-servicios', async(req, res) => {
     if (req.session.loggedin) {
 
+
+        const mantPagosServiciosDB = await pool.query("SELECT * FROM mant_pagos_servicios")
+
         const serviciosEneroDB = await pool.query(`SELECT SUM(montoPagoServicio) serviciosEnero FROM pagos_servicios WHERE pagos_servicios.mesPagoServicio = "Enero"`);
         const serviciosFebreroDB = await pool.query(`SELECT SUM(montoPagoServicio) serviciosFebrero FROM pagos_servicios WHERE pagos_servicios.mesPagoServicio = "Febrero"`);
         const serviciosMarzoDB = await pool.query(`SELECT SUM(montoPagoServicio) serviciosMarzo FROM pagos_servicios WHERE pagos_servicios.mesPagoServicio = "Marzo"`);
@@ -61,6 +64,8 @@ router.get('/pagos-servicios', async(req, res) => {
 
 
         res.render("pagos-servicios", {
+
+            mantPagosServicios: mantPagosServiciosDB,
 
             arrayServiciosEnero: arrayServiciosEneroDB,
             arrayServiciosFebrero: arrayServiciosFebreroDB,

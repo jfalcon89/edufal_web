@@ -5,32 +5,39 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="/img/favicon/logo-favicon.png">
+    <link rel="icon" type="image/png" href="/img/favicon/favicon-edufal.png">
     <!-- css y js bootstrap cdn -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
     <title>Nomina - Login</title>
     <link rel="stylesheet" href="/css/style2.css">
 </head>
 
-<body style="background-repeat: no-repeat; background-attachment: fixed; background-size: cover; background-image: url('/img/img-bg-login.png')">
+<body
+    style="background-repeat: no-repeat; background-attachment: fixed; background-size: cover; background-image: url('/img/img-bg-login.png')">
     <div class="login-form mt-5 " style="width: 350px;">
         <div class="d-flex justify-content-center mb-3">
 
-            <img width="200px" height="155px" src="/img/logo-nomina.png" alt="">
+            <img width="100%" height="100%" src="/img/logo-edufal.jpg" alt="logo edufal">
         </div>
 
         <form action="auth" method="POST">
             <input type="text" name="user" placeholder="User" autofocus required>
             <input type="password" name="pass" placeholder="Password" required>
             <input type="submit" class="btn-login" value="LOGIN" style="background-color: #008097;">
+            <!-- <a href="/" class="btn-warning" style="background-color: #008097;">VOLVER A EDUFAL</a> -->
         </form>
+        <div>
+
+            <a href="/" class="btn btn-warning w-100 mt-3">VOLVER A EDUFAL</a>
+        </div>
 
 
 
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
-        <% if (typeof alert != "undefined")  { %>
+        <% if (typeof alert !="undefined" ) { %>
             <script>
                 Swal.fire({
                     title: '<%= alertTitle %>',
@@ -39,8 +46,8 @@
                     showConfirmButton: <%= showConfirmButton %>,
                     timer: <%= timer %>
                 }).then(() => {
-                    window.location = '/<%= ruta %>'
-                })
+                        window.location = '/<%= ruta %>'
+                    })
             </script>
             <% } %>
     </div>

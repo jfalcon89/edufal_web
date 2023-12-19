@@ -1,0 +1,316 @@
+<%- include('template/cabecera', { tituloWeb: "Edufal - Editar Curso Adm" , bgActive1: "" , bgActive2: "active" ,
+    bgActive3: "" , bgActive4: "" , bgActive5: "" , bgActive6: "" , bgActive7: "" , bgActive8: "" }); %>
+
+    <div class="container-fluid mt-2">
+        <h2 class=" text-secondary">Editar Curso </h2>
+        <hr>
+        <form class="" action="" method="POST">
+            <div class="d-flex align-items-center justify-content-end ">
+
+                <button type="submit" class="btn  my-4 me-lg-3" style="background-color: #02aeae;">Guardar
+                    Cambios</button>
+                <a type="button" class="btn text-light bg-danger me-lg-3" data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop" title="Eliminar Curso">Eliminar</a>
+
+                <a href="/admin/cursos-adm" class="btn btn-warning my-4 "><i class="bi bi-arrow-left me-lg-3"></i>Volver
+                    a
+                    atras</a>
+            </div>
+
+            <div class="container-curso">
+
+                <div class="d-flex me-5">
+
+
+                    <div class="col-6">
+                        <h2> ID Curso:
+                            <%= curso.id_curso %>
+                        </h2>
+                        <h4>Datos Generales del Curso</h4>
+
+                        <div>
+                            <label for="exampleInputEmail1">Nombre Curso - Taller</label>
+                            <input type="text" class="form-control text-secondary " name="titulo_curso"
+                                aria-describedby="emailHelp" placeholder="" value="<%= curso.titulo_curso %>" required>
+                        </div>
+                        <div class="mt-3">
+                            <label for="">Descripcion</label>
+                            <input type="text" class="form-control text-secondary" name="descripcion"
+                                value="<%= curso.descripcion %>">
+                        </div>
+                        <div class="mt-3">
+                            <label for="exampleInputEmail1">Estado Curso</label>
+                            <select name="estado_curso" class="form-control text-secondary" required>
+                                <option class="text-dark" value="<%= curso.estado_curso %>" selected>
+                                    <%= curso.estado_curso %>
+                                </option>
+                                <option class="text-dark" value="Activo">Activo</option>
+                                <option class="text-dark" value="Inactivo">Inactivo</option>
+                            </select>
+                        </div>
+                        <div class="mt-3">
+                            <label for="">Fecha Inicio: <%= curso.fecha_inicio.toLocaleString('es-ES', {
+                                    timeZone: "America/Santo_Domingo" }).slice(0, 10) %></label>
+                            <input type="text" class="form-control text-secondary" name="fecha_inicio"
+                                value="<%= fecha_inicio %>">
+                        </div>
+                        <div class="mt-3">
+                            <label for="">Horas Clases: <%= curso.horasClases %></label>
+                            <input type="text" class="form-control text-secondary" name="horasClases"
+                                value="<%= curso.horasClases %>">
+                        </div>
+                        <div class="mt-3">
+                            <label for="">Dias de Clases</label>
+                            <input type="text" class="form-control text-secondary" name="dias_semana_clases"
+                                value="<%= curso.dias_semana_clases %>">
+                        </div>
+                        <div class="mt-3">
+                            <label for="">Duracion</label>
+                            <input type="text" class="form-control text-secondary" name="duracion"
+                                value="<%= curso.duracion %>">
+                        </div>
+                        <div class="mt-3">
+                            <label for="">Modalidad</label>
+                            <input type="text" class="form-control text-secondary" name="modalidad"
+                                value="<%= curso.modalidad %>">
+                        </div>
+                        <div class="mt-3">
+                            <label for="">Precio</label>
+                            <input type="text" class="form-control text-secondary" name="costo"
+                                value="<%= curso.costo %>">
+                        </div>
+                        <div class="mt-3">
+                            <label for="">Cantidad Cuotas</label>
+                            <input type="text" class="form-control text-secondary" name="cantidad_cuota"
+                                value="<%= curso.cantidad_cuota %>">
+                        </div>
+                        <div class="mt-3">
+                            <label for="">% Descuento</label>
+                            <input type="text" class="form-control text-secondary" name="porcentaje_descuento"
+                                value="<%= curso.porcentaje_descuento %>">
+                        </div>
+                        <div class="mt-3">
+                            <label for="">Tipo de Curso</label>
+                            <input type="text" class="form-control text-secondary" name="tipo_curso"
+                                value="<%= curso.tipo_curso %>">
+                        </div>
+                        <div class="mt-3">
+                            <label for="exampleInputEmail1">Promocion</label>
+                            <select name="promocion" class="form-control text-secondary" required>
+                                <option class="text-dark" value="<%= curso.promocion %>" selected>
+                                    <%= curso.promocion %>
+                                </option>
+                                <option class="text-dark" value="Si">Si</option>
+                                <option class="text-dark" value="No">No</option>
+                            </select>
+                        </div>
+                        <div class="mt-3">
+                            <label for="exampleInputEmail1">Oferta Inscripcion</label>
+                            <select name="oferta_inscripcion" class="form-control text-secondary" required>
+                                <option class="text-dark" value="<%= curso.oferta_inscripcion %>" selected>
+                                    <%= curso.oferta_inscripcion %>
+                                </option>
+                                <option class="text-dark" value="Si">Si</option>
+                                <option class="text-dark" value="No">No</option>
+                            </select>
+                        </div>
+                        <div class="mt-3">
+                            <label for="">Objetivos del Curso</label>
+                            <input type="text" class="form-control text-secondary" name="inf_curso"
+                                value="<%= curso.inf_curso %>">
+                        </div>
+                        <div class="mt-3">
+                            <label for="">Url Plan Estudio</label>
+                            <input type="text" class="form-control text-secondary" name="url_plan_estudio"
+                                value="<%= curso.url_plan_estudio %>">
+                        </div>
+                        <div class="mt-3">
+                            <label for="">Url Imagen miniatura</label>
+                            <input type="text" class="form-control text-secondary" name="url_imagen"
+                                value="<%= curso.url_imagen %>">
+                        </div>
+                        <div class="mt-3">
+                            <label for="">Url Imagen full Size</label>
+                            <input type="text" class="form-control text-secondary" name="url_imagen_full_size"
+                                value="<%= curso.url_imagen_full_size %>">
+                        </div>
+                    </div>
+                    <div class="col-6 mt-5 ">
+                        <h4>Datos de Modulos y Contenido</h4>
+                        <div class="mt-3 mb-4">
+                            <a href="/crear-contenido/<%= curso.id_curso %>" type="submit" class="btn btn-secondary"
+                                data-bs-toggle="modal" data-bs-target="#exampleModalNovedad<%= i %>">CREAR CONTENIDO</a>
+                            <% if (contenidoCurso.length> 0) { %>
+                                <% contenidoCurso.forEach(contenido=> { %>
+
+                                    <div>
+                                        <label for="">ID Contenido: <%= contenido.id_modulo %></label>
+                                        <input type="text" name="" value="<%= contenido.id_modulo %>">
+                                    </div>
+                                    <div>
+                                        <label for="titulo">Titulo </label>
+                                    </div>
+                                    <textarea name="" id="titulo" cols="60" rows="1"><%= contenido.titulo %></textarea>
+                                    <div>
+                                        <label for="contenido">Contenido </label>
+                                    </div>
+                                    <textarea name="" id="" cols="60" rows="6"><%= contenido.contenido %></textarea>
+                                    <div>
+                                        <a
+                                            href="/admin/cursos-adm/eliminar-contenido-curso-adm/<%= contenido.id_modulo %>">Eliminar
+                                            contenido</a>
+                                    </div>
+                                    <hr>
+                                    <% }) %>
+                                        <% } %>
+
+
+                        </div>
+
+
+                        <h4> <strong>Datos del Maestro</strong></h4>
+
+
+                        <label for="">Seleccionar Maestro</label>
+
+                        <select name="id_maestro" class="form-control text-secondary">
+                            <% if(maestro) { %>
+                                <option class="text-dark" value="<%= maestro.id_maestro %>" selected>
+                                    <%= maestro.nombre %>
+                                        <%= maestro.apellido %>
+                                </option>
+                                <% }else { %>
+                                    <option class="text-dark" value="Vacio" selected>Vacio</option>
+                                    <% } %>
+
+                                        <% if (arrayMaestros.length> 0) { %>
+                                            <% arrayMaestros.forEach(arrayMaestro=> { %>
+                                                <option class="text-dark" value="<%= arrayMaestro.id_maestro %>">
+                                                    <%= arrayMaestro.nombre %>
+                                                        <%= arrayMaestro.apellido %>
+
+                                                </option>
+                                                <% }) %>
+                                                    <% } %>
+                        </select>
+
+
+                        <% if(maestro) { %>
+
+                            <div class="d-flex justify-content-between">
+
+                                <div class="">
+                                    <div class=" mt-3 ">
+                                        <label for=" ">ID Maestro: <%= maestro.id_maestro %></label>
+
+                                    </div>
+                                    <div>
+                                        <label for=" ">Nombre Maestro</label>
+                                        <h4>
+                                            <%= maestro.nombre %>
+                                                <%= maestro.apellido %>
+                                        </h4>
+                                    </div>
+                                    <div>
+                                        <label for=" ">Telefono</label>
+                                        <h4>
+                                            <%= maestro.telefono %>
+
+                                        </h4>
+                                    </div>
+                                    <div>
+                                        <label for=" ">Correo Electronico</label>
+                                        <h4>
+                                            <%= maestro.correo_electronico %>
+
+                                        </h4>
+                                    </div>
+                                </div>
+                                <div class=" ">
+                                    <h4 class="text-center">Foto Maestro</h4>
+                                    <img style="border-radius: 10px; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);"
+                                        src="<%= maestro.url_foto_2x2 %>" alt="foto maestro">
+                                </div>
+                            </div>
+                            <% } else { %>
+                                <h4 style="color: red;">No hay maestro asignado</h4>
+                                <% } %>
+                    </div>
+
+                </div>
+
+
+                <!-- modal carga -->
+                <div class="modal fade" id="exampleModalNovedad<%= i %>" data-bs-backdrop="static"
+                    data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title text-center fw-bold" id="staticBackdropLabel">Creacion de
+                                    Contenidos
+                                </h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+
+                                <form method="POST">
+
+                                    <input type="text" name="id_curso" value="<%= curso.id_curso %>" class="d-none">
+                                    <div>
+                                        <label for="titulo">Titulo </label>
+                                    </div>
+                                    <textarea name="titulo" id="titulo" cols="50" rows="1"><%=  %></textarea>
+                                    <div>
+                                        <label for="contenido">Contenido </label>
+                                    </div>
+                                    <textarea name="contenido" id="contenido" cols="50" rows="6"><%=  %></textarea>
+
+                                    <div class="modal-footer border-0">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Cancelar</button>
+                                        <button type="submit" class="btn btn-primary">Si,
+                                            Crear Contenido</button>
+                                    </div>
+                                </form>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal eliminar -->
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel">Eliminar Curso
+                                </h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <%= curso.titulo_curso %>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <a type="submit" href="/admin/cursos-adm/eliminar-curso-adm/<%= curso.id_curso %>"
+                                    class="btn text-light bg-danger " title="Eliminar Dpto">Eliminar Curso</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </form>
+
+    </div>
+
+
+    </div>
+
+
+
+
+
+    <%- include('template/footer'); %>

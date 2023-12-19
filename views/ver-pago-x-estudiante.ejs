@@ -1,0 +1,1592 @@
+<%- include('template/cabecera', { tituloWeb: "Nomina - Descuento por Empleado" , bgActive1: "" , bgActive2: "" ,
+    bgActive3: "active" , bgActive4: "" , bgActive5: "" , bgActive6: "" , bgActive7: "" , bgActive8: "" }); %>
+
+    <div class="container-fluid d-flex flex-column mt-2">
+        <h2 class=" text-secondary">Pagos por Estudiante</h2>
+        <hr>
+
+        <div class="d-flex align-items-center justify-content-end ">
+
+            <a class="btn btn-warning  my-4 "
+                href="/admin/estudiantes-adm/informacion-estudiante-adm/<%= estudiante.id_estudiante %> "><i
+                    class="bi bi-arrow-left me-lg-3"></i>Volver Atras</a>
+        </div>
+
+        <div class="header-container p-2 mb-3 mt-3 h-25 text-light "
+            style="background-color: #acacac5c; border-radius: 8px;">
+            <h5 class="mt-3 font-weight-bold fs-3" style="color: #02aeae;">
+                <%= estudiante.id_estudiante %>
+                    <%= estudiante.nombre %>
+                        <%= estudiante.apellido %>
+            </h5>
+            <hr>
+            <div class="d-lg-flex text-secondary ">
+                <h5 class="me-lg-3">
+                    <strong class="font-weight-bold d-lg-flex">Fecha de nacimiento</strong>
+                    <%= estudiante.fecha_nacimiento %>
+                </h5>
+
+                <h5 class="me-lg-3">
+
+                    <strong class="font-weight-bold d-lg-flex">Cedula
+                    </strong>
+                    <%= estudiante.cedula %>
+                </h5>
+                <h5 class="me-lg-3">
+
+                    <strong class="font-weight-bold d-lg-flex">Sexo
+                    </strong>
+                    <%= estudiante.sexo %>
+                </h5>
+                <h5>
+                    <strong class="estatusInfEmp font-weight-bold d-lg-flex">Estatus
+                    </strong>
+                    <%= estudiante.estatus %>
+
+                </h5>
+            </div>
+        </div>
+
+
+
+
+
+        <% if (arrayPagos_estudianteEnero.length) { %>
+            <h3>ENERO</h3>
+            <div class="container-departamento">
+                <div class="container-table table-responsive">
+                    <table class="table table-sm table-hover ">
+                        <thead class="thead-ligth">
+                            <tr class="text-truncate">
+                                <th scope="col">Codigo Pago</th>
+                                <th scope="col">Codigo Estudiante</th>
+                                <th scope="col">Cedula</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Apellido</th>
+                                <th scope="col">Periodo</th>
+                                <th scope="col">Fecha Pago</th>
+                                <th scope="col">Monto Pago</th>
+                                <th scope="col">Observacion</th>
+                                <th scope="col">Acciones</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <% if (arrayPagos_estudianteEnero.length> 0) { %>
+                                <% arrayPagos_estudianteEnero.forEach(pagos_estudiante=> { %>
+                                    <tr class="text-truncate">
+
+                                        <td>
+                                            <%= pagos_estudiante.id_pago_estudiante %>
+                                        </td>
+                                        <td id="codDesc">
+                                            <%= pagos_estudiante.id_estudiante %>
+                                        </td>
+                                        <td>
+                                            <%= pagos_estudiante.cedula_pago %>
+                                        </td>
+                                        <td>
+                                            <%= pagos_estudiante.nombre %>
+                                        </td>
+                                        <td>
+                                            <%= pagos_estudiante.apellido %>
+                                        </td>
+                                        <td>
+                                            <%= pagos_estudiante.periodo %>
+                                        </td>
+                                        <td>
+                                            <%= pagos_estudiante.fecha_pago %>
+                                        </td>
+                                        <td>
+                                            <%= pagos_estudiante.monto_pago %>
+                                        </td>
+                                        <td>
+                                            <%= pagos_estudiante.observacion_pago %>
+                                        </td>
+
+
+                                        <td>
+                                            <a id="eventoAct-Inact"
+                                                href="/admin/estudiantes-adm/informacion-estudiante-adm/editar-pago-x-estudiante/<%= pagos_estudiante.id_pago_estudiante %>"
+                                                class="btn  ">Editar</a>
+                                        </td>
+
+                                        <td>
+                                            <a target="_blank" href="https://wa.me/<%= estudiante.telefono %>?text=*ROSFAL SOLUCIONES DE PRESTAMOS*
+
+%0ACalle primera No. 59 Sector Enriquillo Herrera Sto. Dgo.%0A
+*TELEFONO* 829 856-0203
+
+%0A----------------------------------%0A
+*COMPROBANTE DE PAGO*
+%0A----------------------------------%0A
+
+%0A*Fecha:* <%= pagos_estudiante.fecha_pago.toLocaleString('es-US').slice(0, 10) %>%0A
+
+%0A*Empleado:* <%= estudiante.nombre %> <%= estudiante.apellido %>%0A
+
+%0A*Id pago:* <%= pagos_estudiante.id_pago_estudiante %>%0A
+
+%0A*Telefono:* <%= estudiante.telefono %>%0A
+
+%0A----------------------------------%0A
+
+*DETALLE DEL PAGO*
+
+%0A----------------------------------%0A
+
+%0A*MONTO PAGADO:* <%= pagos_estudiante.observacion_pago %>%0A
+
+=================================
+
+" class="btn ">Enviar Comprobante</a>
+                                        </td>
+
+                                    </tr>
+
+                                    <% }) %>
+                                        <% } %>
+
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+            <% } %>
+
+                <% if (arrayPagos_estudianteFebrero.length) { %>
+                    <h3>FEBRERO</h3>
+                    <div class="container-departamento">
+                        <div class="container-table table-responsive">
+                            <table class="table table-sm table-hover ">
+                                <thead class="thead-ligth">
+                                    <tr class="text-truncate">
+                                        <th scope="col">Codigo Pago</th>
+                                        <th scope="col">Codigo Estudiante</th>
+                                        <th scope="col">Cedula</th>
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">Apellido</th>
+                                        <th scope="col">Periodo</th>
+                                        <th scope="col">Fecha Pago</th>
+                                        <th scope="col">Monto Pago</th>
+                                        <th scope="col">Observacion</th>
+                                        <th scope="col">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% if (arrayPagos_estudianteFebrero.length> 0) { %>
+                                        <% arrayPagos_estudianteFebrero.forEach(pagos_estudiante=> { %>
+
+                                            <tr class="text-truncate">
+
+                                                <td>
+                                                    <%= pagos_estudiante.id_pago_estudiante %>
+                                                </td>
+                                                <td id="codDesc">
+                                                    <%= pagos_estudiante.id_estudiante %>
+                                                </td>
+                                                <td>
+                                                    <%= pagos_estudiante.cedula_pago %>
+                                                </td>
+                                                <td>
+                                                    <%= pagos_estudiante.nombre %>
+                                                </td>
+                                                <td>
+                                                    <%= pagos_estudiante.apellido %>
+                                                </td>
+                                                <td>
+                                                    <%= pagos_estudiante.periodo %>
+                                                </td>
+                                                <td>
+                                                    <%= pagos_estudiante.fecha_pago %>
+                                                </td>
+                                                <td>
+                                                    <%= pagos_estudiante.monto_pago %>
+                                                </td>
+                                                <td>
+                                                    <%= pagos_estudiante.observacion_pago %>
+                                                </td>
+
+
+                                                <td>
+                                                    <a id="eventoAct-Inact"
+                                                        href="/admin/estudiantes-adm/informacion-estudiante-adm/editar-pago-x-estudiante/<%= pagos_estudiante.id_pago_estudiante %>"
+                                                        class="btn  ">Editar</a>
+                                                </td>
+                                                <td>
+                                                    <a target="_blank" href="https://wa.me/<%= estudiante.telefono %>?text=*ROSFAL SOLUCIONES DE PRESTAMOS*
+
+%0ACalle primera No. 59 Sector Enriquillo Herrera Sto. Dgo.%0A
+*TELEFONO* 829 856-0203
+
+%0A----------------------------------%0A
+*COMPROBANTE DE PAGO*
+%0A----------------------------------%0A
+
+%0A*Fecha:* <%= pagos_estudiante.fecha_pago.toLocaleString('es-US').slice(0, 10) %>%0A
+
+%0A*Empleado:* <%= estudiante.nombre %> <%= estudiante.apellido %>%0A
+
+%0A*Id pago:* <%= pagos_estudiante.id_pago_estudiante %>%0A
+
+%0A*Telefono:* <%= estudiante.telefono %>%0A
+
+%0A----------------------------------%0A
+
+*DETALLE DEL PAGO*
+
+%0A----------------------------------%0A
+
+%0A*Descuento:* <%= pagos_estudiante.periodo %>%0A
+
+%0A*Comision:* <%= pagos_estudiante.fecha_pago %>%0A
+
+%0A*MONTO PAGADO:* <%= pagos_estudiante.observacion_pago %>%0A
+
+=================================
+
+" class="btn ">Enviar Comprobante</a>
+                                                </td>
+
+                                            </tr>
+
+
+                                            <% }) %>
+                                                <% } %>
+
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                    <% } %>
+
+                        <% if (arrayPagos_estudianteMarzo.length) { %>
+                            <h3>MARZO</h3>
+                            <div class="container-departamento">
+                                <div class="container-table table-responsive">
+                                    <table class="table table-sm table-hover ">
+                                        <thead class="thead-ligth">
+                                            <tr class="text-truncate">
+                                                <th scope="col">Codigo Pago</th>
+                                                <th scope="col">Codigo Estudiante</th>
+                                                <th scope="col">Cedula</th>
+                                                <th scope="col">Nombre</th>
+                                                <th scope="col">Apellido</th>
+                                                <th scope="col">Periodo</th>
+                                                <th scope="col">Fecha Pago</th>
+                                                <th scope="col">Monto Pago</th>
+                                                <th scope="col">Observacion</th>
+                                                <th scope="col">Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% if (arrayPagos_estudianteMarzo.length> 0) { %>
+                                                <% arrayPagos_estudianteMarzo.forEach(pagos_estudiante=> { %>
+
+                                                    <tr class="text-truncate">
+
+                                                        <td>
+                                                            <%= pagos_estudiante.id_pago_estudiante %>
+                                                        </td>
+                                                        <td id="codDesc">
+                                                            <%= pagos_estudiante.id_estudiante %>
+                                                        </td>
+                                                        <td>
+                                                            <%= pagos_estudiante.cedula_pago %>
+                                                        </td>
+                                                        <td>
+                                                            <%= pagos_estudiante.nombre %>
+                                                        </td>
+                                                        <td>
+                                                            <%= pagos_estudiante.apellido %>
+                                                        </td>
+                                                        <td>
+                                                            <%= pagos_estudiante.periodo %>
+                                                        </td>
+                                                        <td>
+                                                            <%= pagos_estudiante.fecha_pago %>
+                                                        </td>
+                                                        <td>
+                                                            <%= pagos_estudiante.monto_pago %>
+                                                        </td>
+                                                        <td>
+                                                            <%= pagos_estudiante.observacion_pago %>
+                                                        </td>
+
+
+                                                        <td>
+                                                            <a id="eventoAct-Inact"
+                                                                href="/admin/estudiantes-adm/informacion-estudiante-adm/editar-pago-x-estudiante/<%= pagos_estudiante.id_pago_estudiante %>"
+                                                                class="btn  ">Editar</a>
+                                                        </td>
+                                                        <td>
+                                                            <a target="_blank" href="https://wa.me/<%= estudiante.telefono %>?text=*ROSFAL SOLUCIONES DE PRESTAMOS*
+
+%0ACalle primera No. 59 Sector Enriquillo Herrera Sto. Dgo.%0A
+*TELEFONO* 829 856-0203
+
+%0A----------------------------------%0A
+*COMPROBANTE DE PAGO*
+%0A----------------------------------%0A
+
+%0A*Fecha:* <%= pagos_estudiante.fecha_pago.toLocaleString('es-US').slice(0, 10) %>%0A
+
+%0A*Empleado:* <%= estudiante.nombre %> <%= estudiante.apellido %>%0A
+
+%0A*Id pago:* <%= pagos_estudiante.id_pago_estudiante %>%0A
+
+%0A*Telefono:* <%= estudiante.telefono %>%0A
+
+%0A----------------------------------%0A
+
+*DETALLE DEL PAGO*
+
+%0A----------------------------------%0A
+
+%0A*Descuento:* <%= pagos_estudiante.periodo %>%0A
+
+%0A*Comision:* <%= pagos_estudiante.fecha_pago %>%0A
+
+%0A*MONTO PAGADO:* <%= pagos_estudiante.observacion_pago %>%0A
+
+=================================
+
+" class="btn ">Enviar Comprobante</a>
+                                                        </td>
+
+                                                    </tr>
+
+
+                                                    <% }) %>
+                                                        <% } %>
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                            <% } %>
+
+                                <% if (arrayPagos_estudianteAbril.length) { %>
+                                    <h3>ABRIL</h3>
+                                    <div class="container-departamento">
+                                        <div class="container-table table-responsive">
+                                            <table class="table table-sm table-hover ">
+                                                <thead class="thead-ligth">
+                                                    <tr class="text-truncate">
+                                                        <th scope="col">Codigo Pago</th>
+                                                        <th scope="col">Codigo Estudiante</th>
+                                                        <th scope="col">Cedula</th>
+                                                        <th scope="col">Nombre</th>
+                                                        <th scope="col">Apellido</th>
+                                                        <th scope="col">Periodo</th>
+                                                        <th scope="col">Fecha Pago</th>
+                                                        <th scope="col">Monto Pago</th>
+                                                        <th scope="col">Observacion</th>
+                                                        <th scope="col">Acciones</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <% if (arrayPagos_estudianteAbril.length> 0) { %>
+                                                        <% arrayPagos_estudianteAbril.forEach(pagos_estudiante=>
+                                                            { %>
+
+                                                            <tr class="text-truncate">
+
+                                                                <td>
+                                                                    <%= pagos_estudiante.id_pago_estudiante %>
+                                                                </td>
+                                                                <td id="codDesc">
+                                                                    <%= pagos_estudiante.id_estudiante %>
+                                                                </td>
+                                                                <td>
+                                                                    <%= pagos_estudiante.cedula_pago %>
+                                                                </td>
+                                                                <td>
+                                                                    <%= pagos_estudiante.nombre %>
+                                                                </td>
+                                                                <td>
+                                                                    <%= pagos_estudiante.apellido %>
+                                                                </td>
+                                                                <td>
+                                                                    <%= pagos_estudiante.periodo %>
+                                                                </td>
+                                                                <td>
+                                                                    <%= pagos_estudiante.fecha_pago %>
+                                                                </td>
+                                                                <td>
+                                                                    <%= pagos_estudiante.monto_pago %>
+                                                                </td>
+                                                                <td>
+                                                                    <%= pagos_estudiante.observacion_pago %>
+                                                                </td>
+
+
+                                                                <td>
+                                                                    <a id="eventoAct-Inact"
+                                                                        href="/admin/estudiantes-adm/informacion-estudiante-adm/editar-pago-x-estudiante/<%= pagos_estudiante.id_pago_estudiante %>"
+                                                                        class="btn  ">Editar</a>
+                                                                </td>
+                                                                <td>
+                                                                    <a target="_blank" href="https://wa.me/<%= estudiante.telefono %>?text=*ROSFAL SOLUCIONES DE PRESTAMOS*
+
+%0ACalle primera No. 59 Sector Enriquillo Herrera Sto. Dgo.%0A
+*TELEFONO* 829 856-0203
+
+%0A----------------------------------%0A
+*COMPROBANTE DE PAGO*
+%0A----------------------------------%0A
+
+%0A*Fecha:* <%= pagos_estudiante.fecha_pago.toLocaleString('es-US').slice(0, 10) %>%0A
+
+%0A*Empleado:* <%= estudiante.nombre %> <%= estudiante.apellido %>%0A
+
+%0A*Id pago:* <%= pagos_estudiante.id_pago_estudiante %>%0A
+
+%0A*Telefono:* <%= estudiante.telefono %>%0A
+
+%0A----------------------------------%0A
+
+*DETALLE DEL PAGO*
+
+%0A----------------------------------%0A
+
+%0A*Descuento:* <%= pagos_estudiante.periodo %>%0A
+
+%0A*Comision:* <%= pagos_estudiante.fecha_pago %>%0A
+
+%0A*MONTO PAGADO:* <%= pagos_estudiante.observacion_pago %>%0A
+
+=================================
+
+" class="btn ">Enviar Comprobante</a>
+                                                                </td>
+
+                                                            </tr>
+
+
+                                                            <% }) %>
+                                                                <% } %>
+
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
+                                    <% } %>
+
+                                        <% if (arrayPagos_estudianteMayo.length) { %>
+                                            <h3>MAYO</h3>
+                                            <div class="container-departamento">
+                                                <div class="container-table table-responsive">
+                                                    <table class="table table-sm table-hover ">
+                                                        <thead class="thead-ligth">
+                                                            <tr class="text-truncate">
+                                                                <th scope="col">Codigo Pago</th>
+                                                                <th scope="col">Codigo Estudiante</th>
+                                                                <th scope="col">Cedula</th>
+                                                                <th scope="col">Nombre</th>
+                                                                <th scope="col">Apellido</th>
+                                                                <th scope="col">Periodo</th>
+                                                                <th scope="col">Fecha Pago</th>
+                                                                <th scope="col">Monto Pago</th>
+                                                                <th scope="col">Observacion</th>
+                                                                <th scope="col">Acciones</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <% if (arrayPagos_estudianteMayo.length> 0) { %>
+                                                                <% arrayPagos_estudianteMayo.forEach(pagos_estudiante=>
+                                                                    { %>
+
+                                                                    <tr class="text-truncate">
+
+                                                                        <td>
+                                                                            <%= pagos_estudiante.id_pago_estudiante %>
+                                                                        </td>
+                                                                        <td id="codDesc">
+                                                                            <%= pagos_estudiante.id_estudiante %>
+                                                                        </td>
+                                                                        <td>
+                                                                            <%= pagos_estudiante.cedula_pago %>
+                                                                        </td>
+                                                                        <td>
+                                                                            <%= pagos_estudiante.nombre %>
+                                                                        </td>
+                                                                        <td>
+                                                                            <%= pagos_estudiante.apellido %>
+                                                                        </td>
+                                                                        <td>
+                                                                            <%= pagos_estudiante.periodo %>
+                                                                        </td>
+                                                                        <td>
+                                                                            <%= pagos_estudiante.fecha_pago %>
+                                                                        </td>
+                                                                        <td>
+                                                                            <%= pagos_estudiante.monto_pago %>
+                                                                        </td>
+                                                                        <td>
+                                                                            <%= pagos_estudiante.observacion_pago %>
+                                                                        </td>
+
+
+                                                                        <td>
+                                                                            <a id="eventoAct-Inact"
+                                                                                href="/admin/estudiantes-adm/informacion-estudiante-adm/editar-pago-x-estudiante/<%= pagos_estudiante.id_pago_estudiante %>"
+                                                                                class="btn  ">Editar</a>
+                                                                        </td>
+                                                                        <td>
+                                                                            <a target="_blank" href="https://wa.me/<%= estudiante.telefono %>?text=*ROSFAL SOLUCIONES DE PRESTAMOS*
+
+%0ACalle primera No. 59 Sector Enriquillo Herrera Sto. Dgo.%0A
+*TELEFONO* 829 856-0203
+
+%0A----------------------------------%0A
+*COMPROBANTE DE PAGO*
+%0A----------------------------------%0A
+
+%0A*Fecha:* <%= pagos_estudiante.fecha_pago.toLocaleString('es-US').slice(0, 10) %>%0A
+
+%0A*Empleado:* <%= estudiante.nombre %> <%= estudiante.apellido %>%0A
+
+%0A*Id pago:* <%= pagos_estudiante.id_pago_estudiante %>%0A
+
+%0A*Telefono:* <%= estudiante.telefono %>%0A
+
+%0A----------------------------------%0A
+
+*DETALLE DEL PAGO*
+
+%0A----------------------------------%0A
+
+%0A*Descuento:* <%= pagos_estudiante.periodo %>%0A
+
+%0A*Comision:* <%= pagos_estudiante.fecha_pago %>%0A
+
+%0A*MONTO PAGADO:* <%= pagos_estudiante.observacion_pago %>%0A
+
+=================================
+
+" class="btn ">Enviar Comprobante</a>
+                                                                        </td>
+
+                                                                    </tr>
+
+
+                                                                    <% }) %>
+                                                                        <% } %>
+
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+
+                                            </div>
+                                            <% } %>
+
+                                                <% if (arrayPagos_estudianteJunio.length) { %>
+                                                    <h3>JUNIO</h3>
+                                                    <div class="container-departamento">
+                                                        <div class="container-table table-responsive">
+                                                            <table class="table table-sm table-hover ">
+                                                                <thead class="thead-ligth">
+                                                                    <tr class="text-truncate">
+                                                                        <th scope="col">Codigo Pago</th>
+                                                                        <th scope="col">Codigo Estudiante</th>
+                                                                        <th scope="col">Cedula</th>
+                                                                        <th scope="col">Nombre</th>
+                                                                        <th scope="col">Apellido</th>
+                                                                        <th scope="col">Periodo</th>
+                                                                        <th scope="col">Fecha Pago</th>
+                                                                        <th scope="col">Monto Pago</th>
+                                                                        <th scope="col">Observacion</th>
+                                                                        <th scope="col">Acciones</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <% if (arrayPagos_estudianteJunio.length> 0)
+                                                                        { %>
+                                                                        <%
+                                                                            arrayPagos_estudianteJunio.forEach(pagos_estudiante=>
+                                                                            { %>
+
+                                                                            <tr class="text-truncate">
+
+                                                                                <td>
+                                                                                    <%= pagos_estudiante.id_pago_estudiante
+                                                                                        %>
+                                                                                </td>
+                                                                                <td id="codDesc">
+                                                                                    <%= pagos_estudiante.id_estudiante
+                                                                                        %>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <%= pagos_estudiante.cedula_pago %>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <%= pagos_estudiante.nombre %>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <%= pagos_estudiante.apellido %>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <%= pagos_estudiante.periodo %>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <%= pagos_estudiante.fecha_pago %>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <%= pagos_estudiante.monto_pago %>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <%= pagos_estudiante.observacion_pago
+                                                                                        %>
+                                                                                </td>
+
+
+                                                                                <td>
+                                                                                    <a id="eventoAct-Inact"
+                                                                                        href="/admin/estudiantes-adm/informacion-estudiante-adm/editar-pago-x-estudiante/<%= pagos_estudiante.id_pago_estudiante %>"
+                                                                                        class="btn  ">Editar</a>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <a target="_blank" href="https://wa.me/<%= estudiante.telefono %>?text=*ROSFAL SOLUCIONES DE PRESTAMOS*
+
+%0ACalle primera No. 59 Sector Enriquillo Herrera Sto. Dgo.%0A
+*TELEFONO* 829 856-0203
+
+%0A----------------------------------%0A
+*COMPROBANTE DE PAGO*
+%0A----------------------------------%0A
+
+%0A*Fecha:* <%= pagos_estudiante.fecha_pago.toLocaleString('es-US').slice(0, 10) %>%0A
+
+%0A*Empleado:* <%= estudiante.nombre %> <%= estudiante.apellido %>%0A
+
+%0A*Id pago:* <%= pagos_estudiante.id_pago_estudiante %>%0A
+
+%0A*Telefono:* <%= estudiante.telefono %>%0A
+
+%0A----------------------------------%0A
+
+*DETALLE DEL PAGO*
+
+%0A----------------------------------%0A
+
+%0A*Descuento:* <%= pagos_estudiante.periodo %>%0A
+
+%0A*Comision:* <%= pagos_estudiante.fecha_pago %>%0A
+
+%0A*MONTO PAGADO:* <%= pagos_estudiante.observacion_pago %>%0A
+
+=================================
+
+" class="btn ">Enviar
+                                                                                        Comprobante</a>
+                                                                                </td>
+
+                                                                            </tr>
+
+
+                                                                            <% }) %>
+                                                                                <% } %>
+
+
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+
+                                                    </div>
+                                                    <% } %>
+
+                                                        <% if (arrayPagos_estudianteJulio.length) { %>
+                                                            <h3>JULIO</h3>
+                                                            <div class="container-departamento">
+                                                                <div class="container-table table-responsive">
+                                                                    <table class="table table-sm table-hover ">
+                                                                        <thead class="thead-ligth">
+                                                                            <tr class="text-truncate">
+                                                                                <th scope="col">Codigo Pago</th>
+                                                                                <th scope="col">Codigo Estudiante</th>
+                                                                                <th scope="col">Cedula</th>
+                                                                                <th scope="col">Nombre</th>
+                                                                                <th scope="col">Apellido</th>
+                                                                                <th scope="col">Periodo</th>
+                                                                                <th scope="col">Fecha Pago</th>
+                                                                                <th scope="col">Monto Pago</th>
+                                                                                <th scope="col">Observacion</th>
+                                                                                <th scope="col">Acciones</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <% if (arrayPagos_estudianteJulio.length>
+                                                                                0) { %>
+                                                                                <%
+                                                                                    arrayPagos_estudianteJulio.forEach(pagos_estudiante=>
+                                                                                    { %>
+
+                                                                                    <tr class="text-truncate">
+
+                                                                                        <td>
+                                                                                            <%= pagos_estudiante.id_pago_estudiante
+                                                                                                %>
+                                                                                        </td>
+                                                                                        <td id="codDesc">
+                                                                                            <%= pagos_estudiante.id_estudiante
+                                                                                                %>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <%= pagos_estudiante.cedula_pago
+                                                                                                %>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <%= pagos_estudiante.nombre
+                                                                                                %>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <%= pagos_estudiante.apellido
+                                                                                                %>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <%= pagos_estudiante.periodo
+                                                                                                %>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <%= pagos_estudiante.fecha_pago
+                                                                                                %>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <%= pagos_estudiante.monto_pago
+                                                                                                %>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <%= pagos_estudiante.observacion_pago
+                                                                                                %>
+                                                                                        </td>
+
+                                                                                        <td>
+                                                                                            <a id="eventoAct-Inact"
+                                                                                                href="/admin/estudiantes-adm/informacion-estudiante-adm/editar-pago-x-estudiante/<%= pagos_estudiante.id_pago_estudiante %>"
+                                                                                                class="btn  ">Editar</a>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <a target="_blank" href="https://wa.me/<%= estudiante.telefono %>?text=*ROSFAL SOLUCIONES DE PRESTAMOS*
+
+%0ACalle primera No. 59 Sector Enriquillo Herrera Sto. Dgo.%0A
+*TELEFONO* 829 856-0203
+
+%0A----------------------------------%0A
+*COMPROBANTE DE PAGO*
+%0A----------------------------------%0A
+
+%0A*Fecha:* <%= pagos_estudiante.fecha_pago.toLocaleString('es-US').slice(0, 10) %>%0A
+
+%0A*Empleado:* <%= estudiante.nombre %> <%= estudiante.apellido %>%0A
+
+%0A*Id pago:* <%= pagos_estudiante.id_pago_estudiante %>%0A
+
+%0A*Telefono:* <%= estudiante.telefono %>%0A
+
+%0A----------------------------------%0A
+
+*DETALLE DEL PAGO*
+
+%0A----------------------------------%0A
+
+%0A*Descuento:* <%= pagos_estudiante.periodo %>%0A
+
+%0A*Comision:* <%= pagos_estudiante.fecha_pago %>%0A
+
+%0A*MONTO PAGADO:* <%= pagos_estudiante.observacion_pago %>%0A
+
+=================================
+
+" class="btn ">Enviar
+                                                                                                Comprobante</a>
+                                                                                        </td>
+
+                                                                                    </tr>
+
+
+                                                                                    <% }) %>
+                                                                                        <% } %>
+
+
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+
+                                                            </div>
+                                                            <% } %>
+
+                                                                <% if (arrayPagos_estudianteAgosto.length) { %>
+                                                                    <h3>AGOSTO</h3>
+                                                                    <div class="container-departamento">
+                                                                        <div class="container-table table-responsive">
+                                                                            <table class="table table-sm table-hover ">
+                                                                                <thead class="thead-ligth">
+                                                                                    <tr class="text-truncate">
+                                                                                        <th scope="col">Codigo Pago</th>
+                                                                                        <th scope="col">Codigo
+                                                                                            Estudiante
+                                                                                        </th>
+                                                                                        <th scope="col">Cedula</th>
+                                                                                        <th scope="col">Nombre</th>
+                                                                                        <th scope="col">Apellido</th>
+                                                                                        <th scope="col">Periodo</th>
+                                                                                        <th scope="col">Fecha Pago</th>
+                                                                                        <th scope="col">Monto Pago</th>
+                                                                                        <th scope="col">Observacion</th>
+                                                                                        <th scope="col">Acciones</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                    <% if
+                                                                                        (arrayPagos_estudianteAgosto.length>
+                                                                                        0) { %>
+                                                                                        <%
+                                                                                            arrayPagos_estudianteAgosto.forEach(pagos_estudiante=>
+                                                                                            { %>
+
+                                                                                            <tr class="text-truncate">
+
+                                                                                                <td>
+                                                                                                    <%= pagos_estudiante.id_pago_estudiante
+                                                                                                        %>
+                                                                                                </td>
+                                                                                                <td id="codDesc">
+                                                                                                    <%= pagos_estudiante.id_estudiante
+                                                                                                        %>
+                                                                                                </td>
+                                                                                                <td>
+                                                                                                    <%= pagos_estudiante.cedula_pago
+                                                                                                        %>
+                                                                                                </td>
+                                                                                                <td>
+                                                                                                    <%= pagos_estudiante.nombre
+                                                                                                        %>
+                                                                                                </td>
+                                                                                                <td>
+                                                                                                    <%= pagos_estudiante.apellido
+                                                                                                        %>
+                                                                                                </td>
+                                                                                                <td>
+                                                                                                    <%= pagos_estudiante.periodo
+                                                                                                        %>
+                                                                                                </td>
+                                                                                                <td>
+                                                                                                    <%= pagos_estudiante.fecha_pago
+                                                                                                        %>
+                                                                                                </td>
+                                                                                                <td>
+                                                                                                    <%= pagos_estudiante.monto_pago
+                                                                                                        %>
+                                                                                                </td>
+                                                                                                <td>
+                                                                                                    <%= pagos_estudiante.observacion_pago
+                                                                                                        %>
+                                                                                                </td>
+
+                                                                                                <a id="eventoAct-Inact"
+                                                                                                    href="/admin/estudiantes-adm/informacion-estudiante-adm/editar-pago-x-estudiante/<%= pagos_estudiante.id_pago_estudiante %>"
+                                                                                                    class="btn  ">Editar</a>
+                                                                                                </td>
+                                                                                                <td>
+                                                                                                    <a target="_blank"
+                                                                                                        href="https://wa.me/<%= estudiante.telefono %>?text=*ROSFAL SOLUCIONES DE PRESTAMOS*
+
+%0ACalle primera No. 59 Sector Enriquillo Herrera Sto. Dgo.%0A
+*TELEFONO* 829 856-0203
+
+%0A----------------------------------%0A
+*COMPROBANTE DE PAGO*
+%0A----------------------------------%0A
+
+%0A*Fecha:* <%= pagos_estudiante.fecha_pago.toLocaleString('es-US').slice(0, 10) %>%0A
+
+%0A*Empleado:* <%= estudiante.nombre %> <%= estudiante.apellido %>%0A
+
+%0A*Id pago:* <%= pagos_estudiante.id_pago_estudiante %>%0A
+
+%0A*Telefono:* <%= estudiante.telefono %>%0A
+
+%0A----------------------------------%0A
+
+*DETALLE DEL PAGO*
+
+%0A----------------------------------%0A
+
+%0A*Descuento:* <%= pagos_estudiante.periodo %>%0A
+
+%0A*Comision:* <%= pagos_estudiante.fecha_pago %>%0A
+
+%0A*MONTO PAGADO:* <%= pagos_estudiante.observacion_pago %>%0A
+
+=================================
+
+" class="btn ">Enviar
+                                                                                                        Comprobante</a>
+                                                                                                </td>
+
+                                                                                            </tr>
+
+
+                                                                                            <% }) %>
+                                                                                                <% } %>
+
+
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <% } %>
+
+                                                                        <% if (arrayPagos_estudianteSeptiembre.length) {
+                                                                            %>
+                                                                            <h3>SEPTIEMBRE</h3>
+                                                                            <div class="container-departamento">
+                                                                                <div
+                                                                                    class="container-table table-responsive">
+                                                                                    <table
+                                                                                        class="table table-sm table-hover ">
+                                                                                        <thead class="thead-ligth">
+                                                                                            <tr class="text-truncate">
+                                                                                                <th scope="col">Codigo
+                                                                                                    Pago
+                                                                                                </th>
+                                                                                                <th scope="col">Codigo
+                                                                                                    Estudiante
+                                                                                                </th>
+                                                                                                <th scope="col">Cedula
+                                                                                                </th>
+                                                                                                <th scope="col">Nombre
+                                                                                                </th>
+                                                                                                <th scope="col">Apellido
+                                                                                                </th>
+                                                                                                <th scope="col">Periodo
+                                                                                                </th>
+                                                                                                <th scope="col">Fecha
+                                                                                                    Pago
+                                                                                                </th>
+                                                                                                <th scope="col">Monto
+                                                                                                    Pago</th>
+                                                                                                <th scope="col">
+                                                                                                    Observacion</th>
+                                                                                                <th scope="col">Acciones
+                                                                                                </th>
+                                                                                            </tr>
+                                                                                        </thead>
+                                                                                        <tbody>
+                                                                                            <% if
+                                                                                                (arrayPagos_estudianteSeptiembre.length>
+                                                                                                0) {
+                                                                                                %>
+                                                                                                <%
+                                                                                                    arrayPagos_estudianteSeptiembre.forEach(pagos_estudiante=>
+                                                                                                    { %>
+
+                                                                                                    <tr
+                                                                                                        class="text-truncate">
+
+                                                                                                        <td>
+                                                                                                            <%= pagos_estudiante.id_pago_estudiante
+                                                                                                                %>
+                                                                                                        </td>
+                                                                                                        <td
+                                                                                                            id="codDesc">
+                                                                                                            <%= pagos_estudiante.id_estudiante
+                                                                                                                %>
+                                                                                                        </td>
+                                                                                                        <td>
+                                                                                                            <%= pagos_estudiante.cedula_pago
+                                                                                                                %>
+                                                                                                        </td>
+                                                                                                        <td>
+                                                                                                            <%= pagos_estudiante.nombre
+                                                                                                                %>
+                                                                                                        </td>
+                                                                                                        <td>
+                                                                                                            <%= pagos_estudiante.apellido
+                                                                                                                %>
+                                                                                                        </td>
+                                                                                                        <td>
+                                                                                                            <%= pagos_estudiante.periodo
+                                                                                                                %>
+                                                                                                        </td>
+                                                                                                        <td>
+                                                                                                            <%= pagos_estudiante.fecha_pago
+                                                                                                                %>
+                                                                                                        </td>
+                                                                                                        <td>
+                                                                                                            <%= pagos_estudiante.monto_pago
+                                                                                                                %>
+                                                                                                        </td>
+                                                                                                        <td>
+                                                                                                            <%= pagos_estudiante.observacion_pago
+                                                                                                                %>
+                                                                                                        </td>
+
+
+                                                                                                        <td>
+                                                                                                            <a id="eventoAct-Inact"
+                                                                                                                href="/admin/estudiantes-adm/informacion-estudiante-adm/editar-pago-x-estudiante/<%= pagos_estudiante.id_pago_estudiante %>"
+                                                                                                                class="btn  ">Editar</a>
+                                                                                                        </td>
+                                                                                                        <td>
+                                                                                                            <a target="_blank"
+                                                                                                                href="https://wa.me/<%= estudiante.telefono %>?text=*ROSFAL SOLUCIONES DE PRESTAMOS*
+
+%0ACalle primera No. 59 Sector Enriquillo Herrera Sto. Dgo.%0A
+*TELEFONO* 829 856-0203
+
+%0A----------------------------------%0A
+*COMPROBANTE DE PAGO*
+%0A----------------------------------%0A
+
+%0A*Fecha:* <%= pagos_estudiante.fecha_pago.toLocaleString('es-US').slice(0, 10) %>%0A
+
+%0A*Empleado:* <%= estudiante.nombre %> <%= estudiante.apellido %>%0A
+
+%0A*Id pago:* <%= pagos_estudiante.id_pago_estudiante %>%0A
+
+%0A*Telefono:* <%= estudiante.telefono %>%0A
+
+%0A----------------------------------%0A
+
+*DETALLE DEL PAGO*
+
+%0A----------------------------------%0A
+
+%0A*Descuento:* <%= pagos_estudiante.periodo %>%0A
+
+%0A*Comision:* <%= pagos_estudiante.fecha_pago %>%0A
+
+%0A*MONTO PAGADO:* <%= pagos_estudiante.observacion_pago %>%0A
+
+=================================
+
+" class="btn ">Enviar
+                                                                                                                Comprobante</a>
+                                                                                                        </td>
+
+                                                                                                    </tr>
+
+
+                                                                                                    <% }) %>
+                                                                                                        <% } %>
+
+
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </div>
+
+                                                                            </div>
+                                                                            <% } %>
+
+                                                                                <% if
+                                                                                    (arrayPagos_estudianteOctubre.length)
+                                                                                    { %>
+                                                                                    <h3>OCTUBRE</h3>
+                                                                                    <div class="container-departamento">
+                                                                                        <div
+                                                                                            class="container-table table-responsive">
+                                                                                            <table
+                                                                                                class="table table-sm table-hover ">
+                                                                                                <thead
+                                                                                                    class="thead-ligth">
+                                                                                                    <tr
+                                                                                                        class="text-truncate">
+                                                                                                        <th scope="col">
+                                                                                                            Codigo Pago
+                                                                                                        </th>
+                                                                                                        <th scope="col">
+                                                                                                            Codigo
+                                                                                                            Estudiante
+                                                                                                        </th>
+                                                                                                        <th scope="col">
+                                                                                                            Cedula</th>
+                                                                                                        <th scope="col">
+                                                                                                            Nombre</th>
+                                                                                                        <th scope="col">
+                                                                                                            Apellido
+                                                                                                        </th>
+                                                                                                        <th scope="col">
+                                                                                                            Periodo</th>
+                                                                                                        <th scope="col">
+                                                                                                            Fecha Pago
+                                                                                                        </th>
+                                                                                                        <th scope="col">
+                                                                                                            Monto Pago
+                                                                                                        </th>
+                                                                                                        <th scope="col">
+                                                                                                            Observacion
+                                                                                                        </th>
+                                                                                                        <th scope="col">
+                                                                                                            Acciones
+                                                                                                        </th>
+                                                                                                    </tr>
+                                                                                                </thead>
+                                                                                                <tbody>
+                                                                                                    <% if
+                                                                                                        (arrayPagos_estudianteOctubre.length>
+                                                                                                        0) { %>
+                                                                                                        <%
+                                                                                                            arrayPagos_estudianteOctubre.forEach(pagos_estudiante=>
+                                                                                                            { %>
+
+                                                                                                            <tr
+                                                                                                                class="text-truncate">
+
+                                                                                                                <td>
+                                                                                                                    <%= pagos_estudiante.id_pago_estudiante
+                                                                                                                        %>
+                                                                                                                </td>
+                                                                                                                <td
+                                                                                                                    id="codDesc">
+                                                                                                                    <%= pagos_estudiante.id_estudiante
+                                                                                                                        %>
+                                                                                                                </td>
+                                                                                                                <td>
+                                                                                                                    <%= pagos_estudiante.cedula_pago
+                                                                                                                        %>
+                                                                                                                </td>
+                                                                                                                <td>
+                                                                                                                    <%= pagos_estudiante.nombre
+                                                                                                                        %>
+                                                                                                                </td>
+                                                                                                                <td>
+                                                                                                                    <%= pagos_estudiante.apellido
+                                                                                                                        %>
+                                                                                                                </td>
+                                                                                                                <td>
+                                                                                                                    <%= pagos_estudiante.periodo
+                                                                                                                        %>
+                                                                                                                </td>
+                                                                                                                <td>
+                                                                                                                    <%= pagos_estudiante.fecha_pago
+                                                                                                                        %>
+                                                                                                                </td>
+                                                                                                                <td>
+                                                                                                                    <%= pagos_estudiante.monto_pago
+                                                                                                                        %>
+                                                                                                                </td>
+                                                                                                                <td>
+                                                                                                                    <%= pagos_estudiante.observacion_pago
+                                                                                                                        %>
+                                                                                                                </td>
+
+
+                                                                                                                <td>
+                                                                                                                    <a id="eventoAct-Inact"
+                                                                                                                        href="/admin/estudiantes-adm/informacion-estudiante-adm/editar-pago-x-estudiante/<%= pagos_estudiante.id_pago_estudiante %>"
+                                                                                                                        class="btn  ">Editar</a>
+                                                                                                                </td>
+                                                                                                                <td>
+                                                                                                                    <a target="_blank"
+                                                                                                                        href="https://wa.me/<%= estudiante.telefono %>?text=*ROSFAL SOLUCIONES DE PRESTAMOS*
+
+%0ACalle primera No. 59 Sector Enriquillo Herrera Sto. Dgo.%0A
+*TELEFONO* 829 856-0203
+
+%0A----------------------------------%0A
+*COMPROBANTE DE PAGO*
+%0A----------------------------------%0A
+
+%0A*Fecha:* <%= pagos_estudiante.fecha_pago.toLocaleString('es-US').slice(0, 10) %>%0A
+
+%0A*Empleado:* <%= estudiante.nombre %> <%= estudiante.apellido %>%0A
+
+%0A*Id pago:* <%= pagos_estudiante.id_pago_estudiante %>%0A
+
+%0A*Telefono:* <%= estudiante.telefono %>%0A
+
+%0A----------------------------------%0A
+
+*DETALLE DEL PAGO*
+
+%0A----------------------------------%0A
+
+%0A*Descuento:* <%= pagos_estudiante.periodo %>%0A
+
+%0A*Comision:* <%= pagos_estudiante.fecha_pago %>%0A
+
+%0A*MONTO PAGADO:* <%= pagos_estudiante.observacion_pago %>%0A
+
+=================================
+
+" class="btn ">Enviar
+                                                                                                                        Comprobante</a>
+                                                                                                                </td>
+
+                                                                                                            </tr>
+
+
+                                                                                                            <% }) %>
+                                                                                                                <% } %>
+
+
+                                                                                                </tbody>
+                                                                                            </table>
+                                                                                        </div>
+
+                                                                                    </div>
+                                                                                    <% } %>
+
+                                                                                        <% if
+                                                                                            (arrayPagos_estudianteNoviembre.length)
+                                                                                            { %>
+                                                                                            <h3>NOVIEMBRE</h3>
+                                                                                            <div
+                                                                                                class="container-departamento">
+                                                                                                <div
+                                                                                                    class="container-table table-responsive">
+                                                                                                    <table
+                                                                                                        class="table table-sm table-hover ">
+                                                                                                        <thead
+                                                                                                            class="thead-ligth">
+                                                                                                            <tr
+                                                                                                                class="text-truncate">
+                                                                                                                <th
+                                                                                                                    scope="col">
+                                                                                                                    Codigo
+                                                                                                                    Pago
+                                                                                                                </th>
+                                                                                                                <th
+                                                                                                                    scope="col">
+                                                                                                                    Codigo
+                                                                                                                    Estudiante
+                                                                                                                </th>
+                                                                                                                <th
+                                                                                                                    scope="col">
+                                                                                                                    Cedula
+                                                                                                                </th>
+                                                                                                                <th
+                                                                                                                    scope="col">
+                                                                                                                    Nombre
+                                                                                                                </th>
+                                                                                                                <th
+                                                                                                                    scope="col">
+                                                                                                                    Apellido
+                                                                                                                </th>
+                                                                                                                <th
+                                                                                                                    scope="col">
+                                                                                                                    Periodo
+                                                                                                                </th>
+                                                                                                                <th
+                                                                                                                    scope="col">
+                                                                                                                    Fecha
+                                                                                                                    Pago
+                                                                                                                </th>
+                                                                                                                <th
+                                                                                                                    scope="col">
+                                                                                                                    Monto
+                                                                                                                    Pago
+                                                                                                                </th>
+                                                                                                                <th
+                                                                                                                    scope="col">
+                                                                                                                    Observacion
+                                                                                                                </th>
+                                                                                                                <th
+                                                                                                                    scope="col">
+                                                                                                                    Acciones
+                                                                                                                </th>
+                                                                                                            </tr>
+                                                                                                        </thead>
+                                                                                                        <tbody>
+                                                                                                            <% if
+                                                                                                                (arrayPagos_estudianteNoviembre.length>
+                                                                                                                0)
+                                                                                                                {
+                                                                                                                %>
+                                                                                                                <%
+                                                                                                                    arrayPagos_estudianteNoviembre.forEach(pagos_estudiante=>
+                                                                                                                    {
+                                                                                                                    %>
+
+                                                                                                                    <tr
+                                                                                                                        class="text-truncate">
+
+                                                                                                                        <td>
+                                                                                                                            <%= pagos_estudiante.id_pago_estudiante
+                                                                                                                                %>
+                                                                                                                        </td>
+                                                                                                                        <td
+                                                                                                                            id="codDesc">
+                                                                                                                            <%= pagos_estudiante.id_estudiante
+                                                                                                                                %>
+                                                                                                                        </td>
+                                                                                                                        <td>
+                                                                                                                            <%= pagos_estudiante.cedula_pago
+                                                                                                                                %>
+                                                                                                                        </td>
+                                                                                                                        <td>
+                                                                                                                            <%= pagos_estudiante.nombre
+                                                                                                                                %>
+                                                                                                                        </td>
+                                                                                                                        <td>
+                                                                                                                            <%= pagos_estudiante.apellido
+                                                                                                                                %>
+                                                                                                                        </td>
+                                                                                                                        <td>
+                                                                                                                            <%= pagos_estudiante.periodo
+                                                                                                                                %>
+                                                                                                                        </td>
+                                                                                                                        <td>
+                                                                                                                            <%= pagos_estudiante.fecha_pago
+                                                                                                                                %>
+                                                                                                                        </td>
+                                                                                                                        <td>
+                                                                                                                            <%= pagos_estudiante.monto_pago
+                                                                                                                                %>
+                                                                                                                        </td>
+                                                                                                                        <td>
+                                                                                                                            <%= pagos_estudiante.observacion_pago
+                                                                                                                                %>
+                                                                                                                        </td>
+
+
+                                                                                                                        <td>
+                                                                                                                            <a id="eventoAct-Inact"
+                                                                                                                                href="/admin/estudiantes-adm/informacion-estudiante-adm/editar-pago-x-estudiante/<%= pagos_estudiante.id_pago_estudiante %>"
+                                                                                                                                class="btn  ">Editar</a>
+                                                                                                                        </td>
+                                                                                                                        <td>
+                                                                                                                            <a target="_blank"
+                                                                                                                                href="https://wa.me/<%= estudiante.telefono %>?text=*ROSFAL SOLUCIONES DE PRESTAMOS*
+
+%0ACalle primera No. 59 Sector Enriquillo Herrera Sto. Dgo.%0A
+*TELEFONO* 829 856-0203
+
+%0A----------------------------------%0A
+*COMPROBANTE DE PAGO*
+%0A----------------------------------%0A
+
+%0A*Fecha:* <%= pagos_estudiante.fecha_pago.toLocaleString('es-US').slice(0, 10) %>%0A
+
+%0A*Empleado:* <%= estudiante.nombre %> <%= estudiante.apellido %>%0A
+
+%0A*Id pago:* <%= pagos_estudiante.id_pago_estudiante %>%0A
+
+%0A*Telefono:* <%= estudiante.telefono %>%0A
+
+%0A----------------------------------%0A
+
+*DETALLE DEL PAGO*
+
+%0A----------------------------------%0A
+
+%0A*Descuento:* <%= pagos_estudiante.periodo %>%0A
+
+%0A*Comision:* <%= pagos_estudiante.fecha_pago %>%0A
+
+%0A*MONTO PAGADO:* <%= pagos_estudiante.observacion_pago %>%0A
+
+=================================
+
+" class="btn ">Enviar
+                                                                                                                                Comprobante</a>
+                                                                                                                        </td>
+
+                                                                                                                    </tr>
+
+
+                                                                                                                    <% })
+                                                                                                                        %>
+                                                                                                                        <% }
+                                                                                                                            %>
+
+
+                                                                                                        </tbody>
+                                                                                                    </table>
+                                                                                                </div>
+
+                                                                                            </div>
+                                                                                            <% } %>
+
+                                                                                                <% if
+                                                                                                    (arrayPagos_estudianteDiciembre.length)
+                                                                                                    { %>
+                                                                                                    <h3>DICIEMBRE
+                                                                                                    </h3>
+                                                                                                    <div
+                                                                                                        class="container-departamento">
+                                                                                                        <div
+                                                                                                            class="container-table table-responsive">
+                                                                                                            <table
+                                                                                                                class="table table-sm table-hover ">
+                                                                                                                <thead
+                                                                                                                    class="thead-ligth">
+                                                                                                                    <tr
+                                                                                                                        class="text-truncate">
+                                                                                                                        <th
+                                                                                                                            scope="col">
+                                                                                                                            Codigo
+                                                                                                                            Pago
+                                                                                                                        </th>
+                                                                                                                        <th
+                                                                                                                            scope="col">
+                                                                                                                            Codigo
+                                                                                                                            Estudiante
+                                                                                                                        </th>
+                                                                                                                        <th
+                                                                                                                            scope="col">
+                                                                                                                            Cedula
+                                                                                                                        </th>
+                                                                                                                        <th
+                                                                                                                            scope="col">
+                                                                                                                            Nombre
+                                                                                                                        </th>
+                                                                                                                        <th
+                                                                                                                            scope="col">
+                                                                                                                            Apellido
+                                                                                                                        </th>
+                                                                                                                        <th
+                                                                                                                            scope="col">
+                                                                                                                            Periodo
+                                                                                                                        </th>
+                                                                                                                        <th
+                                                                                                                            scope="col">
+                                                                                                                            Fecha
+                                                                                                                            Pago
+                                                                                                                        </th>
+                                                                                                                        <th
+                                                                                                                            scope="col">
+                                                                                                                            Monto
+                                                                                                                            Pago
+                                                                                                                        </th>
+                                                                                                                        <th
+                                                                                                                            scope="col">
+                                                                                                                            Observacion
+                                                                                                                        </th>
+                                                                                                                        <th
+                                                                                                                            scope="col">
+                                                                                                                            Acciones
+                                                                                                                        </th>
+                                                                                                                    </tr>
+                                                                                                                </thead>
+                                                                                                                <tbody>
+                                                                                                                    <% if
+                                                                                                                        (arrayPagos_estudianteDiciembre.length>
+                                                                                                                        0)
+                                                                                                                        {
+                                                                                                                        %>
+                                                                                                                        <%
+                                                                                                                            arrayPagos_estudianteDiciembre.forEach(pagos_estudiante=>
+                                                                                                                            {
+                                                                                                                            %>
+
+                                                                                                                            <tr
+                                                                                                                                class="text-truncate">
+
+                                                                                                                                <td>
+                                                                                                                                    <%= pagos_estudiante.id_pago_estudiante
+                                                                                                                                        %>
+                                                                                                                                </td>
+                                                                                                                                <td
+                                                                                                                                    id="codDesc">
+                                                                                                                                    <%= pagos_estudiante.id_estudiante
+                                                                                                                                        %>
+                                                                                                                                </td>
+                                                                                                                                <td>
+                                                                                                                                    <%= pagos_estudiante.cedula_pago
+                                                                                                                                        %>
+                                                                                                                                </td>
+                                                                                                                                <td>
+                                                                                                                                    <%= pagos_estudiante.nombre
+                                                                                                                                        %>
+                                                                                                                                </td>
+                                                                                                                                <td>
+                                                                                                                                    <%= pagos_estudiante.apellido
+                                                                                                                                        %>
+                                                                                                                                </td>
+                                                                                                                                <td>
+                                                                                                                                    <%= pagos_estudiante.periodo
+                                                                                                                                        %>
+                                                                                                                                </td>
+                                                                                                                                <td>
+                                                                                                                                    <%= pagos_estudiante.fecha_pago
+                                                                                                                                        %>
+                                                                                                                                </td>
+                                                                                                                                <td>
+                                                                                                                                    <%= pagos_estudiante.monto_pago
+                                                                                                                                        %>
+                                                                                                                                </td>
+                                                                                                                                <td>
+                                                                                                                                    <%= pagos_estudiante.observacion_pago
+                                                                                                                                        %>
+                                                                                                                                </td>
+
+
+                                                                                                                                <td>
+                                                                                                                                    <a id="eventoAct-Inact"
+                                                                                                                                        href="/admin/estudiantes-adm/informacion-estudiante-adm/editar-pago-x-estudiante/<%= pagos_estudiante.id_pago_estudiante %>"
+                                                                                                                                        class="btn  ">Editar</a>
+                                                                                                                                </td>
+                                                                                                                                <td>
+                                                                                                                                    <a target="_blank"
+                                                                                                                                        href="https://wa.me/<%= estudiante.telefono %>?text=*ROSFAL SOLUCIONES DE PRESTAMOS*
+
+%0ACalle primera No. 59 Sector Enriquillo Herrera Sto. Dgo.%0A
+*TELEFONO* 829 856-0203
+
+%0A----------------------------------%0A
+*COMPROBANTE DE PAGO*
+%0A----------------------------------%0A
+
+%0A*Fecha:* <%= pagos_estudiante.fecha_pago.toLocaleString('es-US').slice(0, 10) %>%0A
+
+%0A*Empleado:* <%= estudiante.nombre %> <%= estudiante.apellido %>%0A
+
+%0A*Id pago:* <%= pagos_estudiante.id_pago_estudiante %>%0A
+
+%0A*Telefono:* <%= estudiante.telefono %>%0A
+
+%0A----------------------------------%0A
+
+*DETALLE DEL PAGO*
+
+%0A----------------------------------%0A
+
+%0A*Descuento:* <%= pagos_estudiante.periodo %>%0A
+
+%0A*Comision:* <%= pagos_estudiante.fecha_pago %>%0A
+
+%0A*MONTO PAGADO:* <%= pagos_estudiante.observacion_pago %>%0A
+
+=================================
+
+" class="btn ">Enviar
+                                                                                                                                        Comprobante</a>
+                                                                                                                                </td>
+
+                                                                                                                            </tr>
+
+
+                                                                                                                            <% })
+                                                                                                                                %>
+                                                                                                                                <% }
+                                                                                                                                    %>
+
+
+                                                                                                                </tbody>
+                                                                                                            </table>
+                                                                                                        </div>
+
+                                                                                                    </div>
+                                                                                                    <% } %>
+
+
+
+    </div>
+
+
+
+
+    <%- include('template/footer'); %>

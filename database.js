@@ -17,7 +17,7 @@ pool.getConnection((err, connection) => {
         }
     }
     if (connection) connection.release();
-    console.log("DB nomina esta conectada a MySQL");
+    console.log("DB edufal_web esta conectada a MySQL");
     return;
 });
 

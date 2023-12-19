@@ -7,61 +7,64 @@ const router = express.Router();
 //     res.render("pagos");
 // })
 
-router.get('/pagos', async(req, res) => {
+router.get('/admin/pagos-estudiantes', async(req, res) => {
     if (req.session.loggedin) {
 
-        // const id = req.params.id
+        const estudianteDB = await pool.query("SELECT * FROM estudiantes");
 
-        const pagosEneroDB = await pool.query(`SELECT SUM(sueldoNeto) sueldosEnero, SUM(comisionP) comisionesEnero FROM pagos_x_empleados WHERE pagos_x_empleados.periodo = "Enero"`);
-        const pagosFebreroDB = await pool.query(`SELECT SUM(sueldoNeto) sueldosFebrero, SUM(comisionP) comisionesFebrero FROM pagos_x_empleados WHERE pagos_x_empleados.periodo = "Febrero"`);
-        const pagosMarzoDB = await pool.query(`SELECT SUM(sueldoNeto) sueldosMarzo, SUM(comisionP) comisionesMarzo FROM pagos_x_empleados WHERE pagos_x_empleados.periodo = "Marzo"`);
-        const pagosAbrilDB = await pool.query(`SELECT SUM(sueldoNeto) sueldosAbril, SUM(comisionP) comisionesAbril FROM pagos_x_empleados WHERE pagos_x_empleados.periodo = "Abril"`);
-        const pagosMayoDB = await pool.query(`SELECT SUM(sueldoNeto) sueldosMayo, SUM(comisionP) comisionesMayo FROM pagos_x_empleados WHERE pagos_x_empleados.periodo = "Mayo"`);
-        const pagosJunioDB = await pool.query(`SELECT SUM(sueldoNeto) sueldosJunio, SUM(comisionP) comisionesJunio FROM pagos_x_empleados WHERE pagos_x_empleados.periodo = "Junio"`);
-        const pagosJulioDB = await pool.query(`SELECT SUM(sueldoNeto) sueldosJulio, SUM(comisionP) comisionesJulio FROM pagos_x_empleados WHERE pagos_x_empleados.periodo = "Julio"`);
-        const pagosAgostoDB = await pool.query(`SELECT SUM(sueldoNeto) sueldosAgosto, SUM(comisionP) comisionesAgosto FROM pagos_x_empleados WHERE pagos_x_empleados.periodo = "Agosto"`);
-        const pagosSeptiembreDB = await pool.query(`SELECT SUM(sueldoNeto) sueldosSeptiembre, SUM(comisionP) comisionesSeptiembre FROM pagos_x_empleados WHERE pagos_x_empleados.periodo = "Septiembre"`);
-        const pagosOctubreDB = await pool.query(`SELECT SUM(sueldoNeto) sueldosOctubre, SUM(comisionP) comisionesOctubre FROM pagos_x_empleados WHERE pagos_x_empleados.periodo = "Octubre"`);
-        const pagosNoviembreDB = await pool.query(`SELECT SUM(sueldoNeto) sueldosNoviembre, SUM(comisionP) comisionesNoviembre FROM pagos_x_empleados WHERE pagos_x_empleados.periodo = "Noviembre"`);
-        const pagosDiciembreDB = await pool.query(`SELECT SUM(sueldoNeto) sueldosDiciembre, SUM(comisionP) comisionesDiciembre FROM pagos_x_empleados WHERE pagos_x_empleados.periodo = "Diciembre"`);
+        const totalPagosNetoDB = await pool.query(`select SUM(monto_pago) as totalPagosNeto from pagos_estudiantes`);
+        const cantidadPagosEstudiantesDB = await pool.query(`SELECT id_pago_estudiante FROM pagos_estudiantes `);
 
+        // chart
+        const pagosEneroDB = await pool.query(`SELECT SUM(monto_pago) pagosEnero FROM pagos_estudiantes WHERE pagos_estudiantes.periodo = "Enero"`);
+        const pagosFebreroDB = await pool.query(`SELECT SUM(monto_pago) pagosFebrero FROM pagos_estudiantes WHERE pagos_estudiantes.periodo = "Febrero"`);
+        const pagosMarzoDB = await pool.query(`SELECT SUM(monto_pago) pagosMarzo FROM pagos_estudiantes WHERE pagos_estudiantes.periodo = "Marzo"`);
+        const pagosAbrilDB = await pool.query(`SELECT SUM(monto_pago) pagosAbril FROM pagos_estudiantes WHERE pagos_estudiantes.periodo = "Abril"`);
+        const pagosMayoDB = await pool.query(`SELECT SUM(monto_pago) pagosMayo FROM pagos_estudiantes WHERE pagos_estudiantes.periodo = "Mayo"`);
+        const pagosJunioDB = await pool.query(`SELECT SUM(monto_pago) pagosJunio FROM pagos_estudiantes WHERE pagos_estudiantes.periodo = "Junio"`);
+        const pagosJulioDB = await pool.query(`SELECT SUM(monto_pago) pagosJulio FROM pagos_estudiantes WHERE pagos_estudiantes.periodo = "Julio"`);
+        const pagosAgostoDB = await pool.query(`SELECT SUM(monto_pago) pagosAgosto FROM pagos_estudiantes WHERE pagos_estudiantes.periodo = "Agosto"`);
+        const pagosSeptiembreDB = await pool.query(`SELECT SUM(monto_pago) pagosSeptiembre FROM pagos_estudiantes WHERE pagos_estudiantes.periodo = "Septiembre"`);
+        const pagosOctubreDB = await pool.query(`SELECT SUM(monto_pago) pagosOctubre FROM pagos_estudiantes WHERE pagos_estudiantes.periodo = "Octubre"`);
+        const pagosNoviembreDB = await pool.query(`SELECT SUM(monto_pago) pagosNoviembre FROM pagos_estudiantes WHERE pagos_estudiantes.periodo = "Noviembre"`);
+        const pagosDiciembreDB = await pool.query(`SELECT SUM(monto_pago) pagosDiciembre FROM pagos_estudiantes WHERE pagos_estudiantes.periodo = "Diciembre"`);
 
-        const totalSueldoNetoDB = await pool.query(`select SUM(sueldoNeto) as totalSueldoNeto from pagos_x_empleados`);
-        const totalComisionesDB = await pool.query(`select SUM(comisionP) as totalComisiones from pagos_x_empleados `);
-        const validacionPagos_x_empleadoDB = await pool.query(`SELECT * FROM pagos_x_empleados `);
-        const arrayPagos_x_empleadoEneroDB = await pool.query(`SELECT * FROM pagos_x_empleados WHERE pagos_x_empleados.periodo = "Enero"`);
-        const arrayPagos_x_empleadoFebreroDB = await pool.query(`SELECT * FROM pagos_x_empleados WHERE pagos_x_empleados.periodo = "Febrero"`);
-        const arrayPagos_x_empleadoMarzoDB = await pool.query(`SELECT * FROM pagos_x_empleados WHERE pagos_x_empleados.periodo = "Marzo"`);
-        const arrayPagos_x_empleadoAbrilDB = await pool.query(`SELECT * FROM pagos_x_empleados WHERE pagos_x_empleados.periodo = "Abril"`);
-        const arrayPagos_x_empleadoMayoDB = await pool.query(`SELECT * FROM pagos_x_empleados WHERE pagos_x_empleados.periodo = "Mayo"`);
-        const arrayPagos_x_empleadoJunioDB = await pool.query(`SELECT * FROM pagos_x_empleados WHERE pagos_x_empleados.periodo = "Junio"`);
-        const arrayPagos_x_empleadoJulioDB = await pool.query(`SELECT * FROM pagos_x_empleados WHERE pagos_x_empleados.periodo = "Julio"`);
-        const arrayPagos_x_empleadoAgostoDB = await pool.query(`SELECT * FROM pagos_x_empleados WHERE pagos_x_empleados.periodo = "Agosto"`);
-        const arrayPagos_x_empleadoSeptiembreDB = await pool.query(`SELECT * FROM pagos_x_empleados WHERE pagos_x_empleados.periodo = "Septiembre"`);
-        const arrayPagos_x_empleadoOctubreDB = await pool.query(`SELECT * FROM pagos_x_empleados WHERE pagos_x_empleados.periodo = "Octubre"`);
-        const arrayPagos_x_empleadoNoviembreDB = await pool.query(`SELECT * FROM pagos_x_empleados WHERE pagos_x_empleados.periodo = "Noviembre"`);
-        const arrayPagos_x_empleadoDiciembreDB = await pool.query(`SELECT * FROM pagos_x_empleados WHERE pagos_x_empleados.periodo = "Diciembre"`);
-        const empleadoDB = await pool.query("SELECT * FROM empleados");
+        // pagos por mes
+        const arrayPagos_estudiantesFebreroDB = await pool.query(`SELECT * FROM pagos_estudiantes WHERE pagos_estudiantes.periodo = "Febrero"`);
+        const arrayPagos_estudiantesEneroDB = await pool.query(`SELECT * FROM pagos_estudiantes WHERE pagos_estudiantes.periodo = "Enero"`);
+        const arrayPagos_estudiantesMarzoDB = await pool.query(`SELECT * FROM pagos_estudiantes WHERE pagos_estudiantes.periodo = "Marzo"`);
+        const arrayPagos_estudiantesAbrilDB = await pool.query(`SELECT * FROM pagos_estudiantes WHERE pagos_estudiantes.periodo = "Abril"`);
+        const arrayPagos_estudiantesMayoDB = await pool.query(`SELECT * FROM pagos_estudiantes WHERE pagos_estudiantes.periodo = "Mayo"`);
+        const arrayPagos_estudiantesJunioDB = await pool.query(`SELECT * FROM pagos_estudiantes WHERE pagos_estudiantes.periodo = "Junio"`);
+        const arrayPagos_estudiantesJulioDB = await pool.query(`SELECT * FROM pagos_estudiantes WHERE pagos_estudiantes.periodo = "Julio"`);
+        const arrayPagos_estudiantesAgostoDB = await pool.query(`SELECT * FROM pagos_estudiantes WHERE pagos_estudiantes.periodo = "Agosto"`);
+        const arrayPagos_estudiantesSeptiembreDB = await pool.query(`SELECT * FROM pagos_estudiantes WHERE pagos_estudiantes.periodo = "Septiembre"`);
+        const arrayPagos_estudiantesOctubreDB = await pool.query(`SELECT * FROM pagos_estudiantes WHERE pagos_estudiantes.periodo = "Octubre"`);
+        const arrayPagos_estudiantesNoviembreDB = await pool.query(`SELECT * FROM pagos_estudiantes WHERE pagos_estudiantes.periodo = "Noviembre"`);
+        const arrayPagos_estudiantesDiciembreDB = await pool.query(`SELECT * FROM pagos_estudiantes WHERE pagos_estudiantes.periodo = "Diciembre"`);
 
+        const monto_pendiente_pagos_cursos_DB = await pool.query(`SELECT SUM(CAST(REPLACE(REPLACE(precioOferta_inscripcion, '$', ''), ',', '') AS DECIMAL(10,2))) AS monto_pendiente FROM inscripciones where inscripciones.estado_inscripcion in ("Nuevo", "Iniciado", "Finalizado")`);
+
+        const monto_pendiente = monto_pendiente_pagos_cursos_DB[0].monto_pendiente - totalPagosNetoDB[0].totalPagosNeto
 
         // console.log(empleadoDB[0])
-        res.render("pagos", {
-            empleado: empleadoDB[0],
-            totalSueldoNeto: totalSueldoNetoDB[0],
-            totalComisiones: totalComisionesDB[0],
-            validacionPagos_x_empleado: validacionPagos_x_empleadoDB,
-            arrayPagos_x_empleadoEnero: arrayPagos_x_empleadoEneroDB,
-            arrayPagos_x_empleadoFebrero: arrayPagos_x_empleadoFebreroDB,
-            arrayPagos_x_empleadoMarzo: arrayPagos_x_empleadoMarzoDB,
-            arrayPagos_x_empleadoAbril: arrayPagos_x_empleadoAbrilDB,
-            arrayPagos_x_empleadoMayo: arrayPagos_x_empleadoMayoDB,
-            arrayPagos_x_empleadoJunio: arrayPagos_x_empleadoJunioDB,
-            arrayPagos_x_empleadoJulio: arrayPagos_x_empleadoJulioDB,
-            arrayPagos_x_empleadoAgosto: arrayPagos_x_empleadoAgostoDB,
-            arrayPagos_x_empleadoSeptiembre: arrayPagos_x_empleadoSeptiembreDB,
-            arrayPagos_x_empleadoOctubre: arrayPagos_x_empleadoOctubreDB,
-            arrayPagos_x_empleadoNoviembre: arrayPagos_x_empleadoNoviembreDB,
-            arrayPagos_x_empleadoDiciembre: arrayPagos_x_empleadoDiciembreDB,
+        res.render("pagos-estudiantes", {
+            estudiante: estudianteDB[0],
+            totalPagosNeto: totalPagosNetoDB[0],
+            monto_pendiente,
+            cantidadPagosEstudiantes: cantidadPagosEstudiantesDB,
+            arrayPagos_estudiantesEnero: arrayPagos_estudiantesEneroDB,
+            arrayPagos_estudiantesFebrero: arrayPagos_estudiantesFebreroDB,
+            arrayPagos_estudiantesMarzo: arrayPagos_estudiantesMarzoDB,
+            arrayPagos_estudiantesAbril: arrayPagos_estudiantesAbrilDB,
+            arrayPagos_estudiantesMayo: arrayPagos_estudiantesMayoDB,
+            arrayPagos_estudiantesJunio: arrayPagos_estudiantesJunioDB,
+            arrayPagos_estudiantesJulio: arrayPagos_estudiantesJulioDB,
+            arrayPagos_estudiantesAgosto: arrayPagos_estudiantesAgostoDB,
+            arrayPagos_estudiantesSeptiembre: arrayPagos_estudiantesSeptiembreDB,
+            arrayPagos_estudiantesOctubre: arrayPagos_estudiantesOctubreDB,
+            arrayPagos_estudiantesNoviembre: arrayPagos_estudiantesNoviembreDB,
+            arrayPagos_estudiantesDiciembre: arrayPagos_estudiantesDiciembreDB,
             pagosEnero: pagosEneroDB[0],
             pagosFebrero: pagosFebreroDB[0],
             pagosMarzo: pagosMarzoDB[0],
@@ -78,7 +81,7 @@ router.get('/pagos', async(req, res) => {
             name: req.session.name
         });
     } else {
-        res.render('pagos', {
+        res.render('pagos-estudiantes', {
             login: false,
             name: 'Debe iniciar sesión',
         });

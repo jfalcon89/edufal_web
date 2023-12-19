@@ -44,7 +44,7 @@ router.post('/auth', async(req, res) => {
                     alertIcon: 'success',
                     showConfirmButton: false,
                     timer: 1500,
-                    ruta: 'inicio'
+                    ruta: 'admin/dashboard'
                 });
             }
             res.end();

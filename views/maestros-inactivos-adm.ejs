@@ -1,0 +1,130 @@
+<%- include('template/cabecera', { tituloWeb: "Edufal - Maestros Inactivos" , bgActive1: "" , bgActive2: "" ,
+    bgActive3: "" , bgActive4: "" , bgActive5: "" , bgActive6: "active" , bgActive7: "" , bgActive8: "" }); %>
+
+    <div class="container-fluid mt-2">
+        <h2 class="text-secondary">Maestros Inactivos</h2>
+
+    </div>
+    <hr>
+
+    <div class=" ">
+        <div class="text-end">
+
+            <a href="/admin/maestros-adm" class="btn btn-info m-3">Maestros Activos</a>
+        </div>
+
+        <div class="container-table table-responsive mt-5 " id="" style=" ">
+
+            <table id="datatable" class=" table table-sm table-hover table-striped">
+                <thead class="thead-ligth">
+                    <tr class="text-truncate">
+                        <th scope="col" class="font-weight-bold">Id Maestro</th>
+
+                        <th scope="col" class="font-weight-bold">Nombre</th>
+                        <th scope="col" class="font-weight-bold">Apellido</th>
+                        <th scope="col" class="font-weight-bold">Cedula</th>
+                        <th scope="col" class="font-weight-bold">Telefono</th>
+                        <th scope="col" class="font-weight-bold">Correo</th>
+                        <th scope="col" class="font-weight-bold">Fecha Contratacion</th>
+                        <th scope="col" class="font-weight-bold">Estado</th>
+                        <th scope="col" class="font-weight-bold">Accion</th>
+                        <th scope="col" class="font-weight-bold">Foto Maestro</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (maestros.length> 0) { %>
+                        <% maestros.forEach(maestro=> { %>
+
+                            <tr class="text-truncate">
+                                <td>
+                                    <%= maestro.id_maestro %>
+                                </td>
+
+                                <td>
+                                    <%= maestro.nombre %>
+                                </td>
+                                <td>
+                                    <%= maestro.apellido %>
+                                </td>
+                                <td>
+                                    <%= maestro.cedula %>
+                                </td>
+                                <td>
+                                    <%= maestro.telefono %>
+                                </td>
+                                <td>
+                                    <%= maestro.correo_electronico %>
+                                </td>
+                                <td>
+                                    <%= maestro.fecha_contratacion %>
+                                </td>
+                                <td>
+                                    <%= maestro.estado %>
+                                </td>
+
+                                <td>
+                                    <a class="btn"
+                                        href="/admin/maestros-adm/editar-maestro-adm/<%= maestro.id_maestro %>">Editar
+                                        Maestro</a>
+
+                                </td>
+                                <td>
+                                    <img width="150px" src="<%= maestro.url_foto_2x2 %>" alt="img-maestro">
+
+                                </td>
+
+                                <% }) %>
+                                    <% } %>
+
+                            </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+
+    <!-- <script src="js/configuracion.js"></script> -->
+
+
+    <script>
+        $(document).ready(function () {
+            $('#datatable').DataTable({
+                order: [
+                    [0, 'desc']
+                ],
+
+
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                    "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ Entradas",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                }
+            });
+
+        });
+    </script>
+    <%- include('template/footer'); %>

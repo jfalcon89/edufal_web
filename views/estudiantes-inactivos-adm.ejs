@@ -1,0 +1,378 @@
+<%- include('template/cabecera', { tituloWeb: "Edufal Adm - Estudiantes Adm" , bgActive1: "" , bgActive2: "" ,
+    bgActive3: "active" , bgActive4: "" , bgActive5: "" , bgActive6: "" , bgActive7: "" , bgActive8: "" }); %>
+
+    <div class="container-fluid mt-2">
+        <h2 id="mensaje"></h2>
+
+        <h2 class="text-secondary" id="inimation-dog">Estudiantes Inactivos</h2>
+        <hr>
+
+        <div class="d-lg-flex align-items-center justify-content-end my-4">
+
+
+            <a href="/admin/Estudiantes-adm" class="btn btn-info "><i class="bi bi-arrow-right me-lg-3"></i> Estudiantes
+                Activo</a>
+        </div>
+        <h1 id="prueba"></h1>
+
+        <div class="container-table table-responsive">
+            <table id="datatable" class="display responsive nowrap " style="width:100%">
+                <thead class="thead-ligth">
+                    <tr>
+                        <!-- <th scope="col">Id</th> -->
+                        <th scope="col">Codigo</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">apellido</th>
+                        <th scope="col">Cedula</th>
+                        <th scope="col">Telefono</th>
+                        <th scope="col">Correo Electronico</th>
+                        <th scope="col">Monto Pendiente</th>
+                        <th scope="col">Forma de Pago</th>
+                        <th scope="col">Pais</th>
+                        <th scope="col">Estatus</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (arrayEstudiantes.length> 0) { %>
+                        <% arrayEstudiantes.forEach(estudiante=> { %>
+
+                            <tr>
+                                <td>
+                                    <%= estudiante.id_estudiante %>
+                                </td>
+                                <td>
+                                    <%= estudiante.nombre %>
+                                </td>
+                                <td>
+                                    <%= estudiante.apellido %>
+                                </td>
+                                <td>
+                                    <%= estudiante.cedula %>
+                                </td>
+                                <td>
+                                    <%= estudiante.telefono %>
+                                </td>
+                                <td>
+                                    <%= estudiante.correo_electronico %>
+                                </td>
+                                <td>
+                                    <% if (pendiente && pendiente.length> 0) { %>
+                                        <% let tieneMontoPendiente=false; %>
+                                            <% for (const item of pendiente) { %>
+                                                <% if (item.cedula===estudiante.cedula) { %>
+                                                    <% if (item.monto_pendiente> 0) { %>
+                                                        <%= item.monto_pendiente %>
+                                                            <% tieneMontoPendiente=true; %>
+                                                                <% } %>
+                                                                    <% } %>
+                                                                        <% } %>
+                                                                            <% if (!tieneMontoPendiente) { %>
+                                                                                No tiene monto pendiente
+                                                                                <% } %>
+                                                                                    <% } else { %>
+                                                                                        No hay cedula de cobro pendiente
+                                                                                        <% } %>
+
+                                </td>
+                                <td>
+                                    <%= estudiante.forma_pago %>
+                                </td>
+                                <td>
+                                    <%= estudiante.pais %>
+                                </td>
+                                <td>
+                                    <%= estudiante.estatus %>
+                                </td>
+
+
+
+                                <td class="w-0">
+                                    <a href="/admin/estudiantes-adm/editar-estudiante-adm/<%= estudiante.id_estudiante %>"
+                                        class="btn" title="Editar Estudiante"><i class="bi bi-pencil-square"></i></a>
+                                    <a id="eventoAct-Inact"
+                                        href="/admin/estudiantes-adm/informacion-estudiante-adm/<%= estudiante.id_estudiante %>"
+                                        class="btn" title="Ver Informacion Estudiante"><i
+                                            class="bi bi-folder2-open"></i></a>
+
+
+
+                                </td>
+                            </tr>
+
+                            <% }) %>
+                                <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+
+
+    <footer class=" footer ">
+        <!-- <div class=" container-fluid ">
+            <nav class=" float-left ">
+                <ul>
+                    <li>
+                        <a href=" https://www.creative-tim.com ">
+                            Creative Tim
+                        </a>
+                    </li>
+                    <li>
+                        <a href=" https://creative-tim.com/presentation ">
+                            About Us
+                        </a>
+                    </li>
+                    <li>
+                        <a href=" http://blog.creative-tim.com ">
+                            Blog
+                        </a>
+                    </li>
+                    <li>
+                        <a href=" https://www.creative-tim.com/license ">
+                            Licenses
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class=" copyright float-right " id=" date ">
+                , made with <i class=" material-icons ">favorite</i> by
+                <a href=" https://www.creative-tim.com " target=" _blank ">Creative Tim</a> for a better web.
+            </div>
+        </div> -->
+    </footer>
+    <script>
+        const x = new Date().getFullYear();
+        let date = document.getElementById('date');
+        date.innerHTML = '&copy; ' + x + date.innerHTML;
+    </script>
+    </div>
+    </div>
+
+    <!--   Core JS Files   -->
+
+    <!-- <script src=" /assets/js/core/jquery.min.js "></script> -->
+    <script src=" /assets/js/core/popper.min.js "></script>
+    <script src=" /assets/js/core/bootstrap-material-design.min.js "></script>
+    <script src=" https://unpkg.com/default-passive-events "></script>
+    <script src=" /assets/js/plugins/perfect-scrollbar.jquery.min.js "></script>
+
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src=" https://buttons.github.io/buttons.js "></script>
+    <!--  Google Maps Plugin    -->
+    <script src=" https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE "></script>
+    <!-- Chartist JS -->
+    <script src=" /assets/js/plugins/chartist.min.js "></script>
+    <!--  Notifications Plugin    -->
+    <script src=" /assets/js/plugins/bootstrap-notify.js "></script>
+    <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src=" /assets/js/material-dashboard.js?v=2.1.0 "></script>
+    <!-- Material Dashboard DEMO methods, don't include it in your project! -->
+    <script src=" /assets/demo/demo.js "></script>
+    <script>
+        $(document).ready(function () {
+            $().ready(function () {
+                $sidebar = $('.sidebar');
+
+                $sidebar_img_container = $sidebar.find('.sidebar-background');
+
+                $full_page = $('.full-page');
+
+                $sidebar_responsive = $('body > .navbar-collapse');
+
+                window_width = $(window).width();
+
+                $('.fixed-plugin a').click(function (event) {
+                    // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
+                    if ($(this).hasClass('switch-trigger')) {
+                        if (event.stopPropagation) {
+                            event.stopPropagation();
+                        } else if (window.event) {
+                            window.event.cancelBubble = true;
+                        }
+                    }
+                });
+
+                $('.fixed-plugin .active-color span').click(function () {
+                    $full_page_background = $('.full-page-background');
+
+                    $(this).siblings().removeClass('active');
+                    $(this).addClass('active');
+
+                    var new_color = $(this).data('color');
+
+                    if ($sidebar.length != 0) {
+                        $sidebar.attr('data-color', new_color);
+                    }
+
+                    if ($full_page.length != 0) {
+                        $full_page.attr('filter-color', new_color);
+                    }
+
+                    if ($sidebar_responsive.length != 0) {
+                        $sidebar_responsive.attr('data-color', new_color);
+                    }
+                });
+
+                $('.fixed-plugin .background-color .badge').click(function () {
+                    $(this).siblings().removeClass('active');
+                    $(this).addClass('active');
+
+                    var new_color = $(this).data('background-color');
+
+                    if ($sidebar.length != 0) {
+                        $sidebar.attr('data-background-color', new_color);
+                    }
+                });
+
+                $('.fixed-plugin .img-holder').click(function () {
+                    $full_page_background = $('.full-page-background');
+
+                    $(this).parent('li').siblings().removeClass('active');
+                    $(this).parent('li').addClass('active');
+
+
+                    var new_image = $(this).find(" img ").attr('src');
+
+                    if ($sidebar_img_container.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
+                        $sidebar_img_container.fadeOut('fast', function () {
+                            $sidebar_img_container.css('background-image', 'url(" ' + new_image + ' ")');
+                            $sidebar_img_container.fadeIn('fast');
+                        });
+                    }
+
+                    if ($full_page_background.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
+                        var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
+
+                        $full_page_background.fadeOut('fast', function () {
+                            $full_page_background.css('background-image', 'url(" ' + new_image_full_page + ' ")');
+                            $full_page_background.fadeIn('fast');
+                        });
+                    }
+
+                    if ($('.switch-sidebar-image input:checked').length == 0) {
+                        var new_image = $('.fixed-plugin li.active .img-holder').find(" img ").attr('src');
+                        var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
+
+                        $sidebar_img_container.css('background-image', 'url(" ' + new_image + ' ")');
+                        $full_page_background.css('background-image', 'url(" ' + new_image_full_page + ' ")');
+                    }
+
+                    if ($sidebar_responsive.length != 0) {
+                        $sidebar_responsive.css('background-image', 'url(" ' + new_image + ' ")');
+                    }
+                });
+
+                $('.switch-sidebar-image input').change(function () {
+                    $full_page_background = $('.full-page-background');
+
+                    $input = $(this);
+
+                    if ($input.is(':checked')) {
+                        if ($sidebar_img_container.length != 0) {
+                            $sidebar_img_container.fadeIn('fast');
+                            $sidebar.attr('data-image', '#');
+                        }
+
+                        if ($full_page_background.length != 0) {
+                            $full_page_background.fadeIn('fast');
+                            $full_page.attr('data-image', '#');
+                        }
+
+                        background_image = true;
+                    } else {
+                        if ($sidebar_img_container.length != 0) {
+                            $sidebar.removeAttr('data-image');
+                            $sidebar_img_container.fadeOut('fast');
+                        }
+
+                        if ($full_page_background.length != 0) {
+                            $full_page.removeAttr('data-image', '#');
+                            $full_page_background.fadeOut('fast');
+                        }
+
+                        background_image = false;
+                    }
+                });
+
+                $('.switch-sidebar-mini input').change(function () {
+                    $body = $('body');
+
+                    $input = $(this);
+
+                    if (md.misc.sidebar_mini_active == true) {
+                        $('body').removeClass('sidebar-mini');
+                        md.misc.sidebar_mini_active = false;
+
+                        $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar();
+
+                    } else {
+
+                        $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar('destroy');
+
+                        setTimeout(function () {
+                            $('body').addClass('sidebar-mini');
+
+                            md.misc.sidebar_mini_active = true;
+                        }, 300);
+                    }
+
+                    // we simulate the window Resize so the charts will get updated in realtime.
+                    var simulateWindowResize = setInterval(function () {
+                        window.dispatchEvent(new Event('resize'));
+                    }, 180);
+
+                    // we stop the simulation of Window Resize after the animations are completed
+                    setTimeout(function () {
+                        clearInterval(simulateWindowResize);
+                    }, 1000);
+
+                });
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            // Javascript method's body can be found in assets/js/demos.js
+            md.initDashboardPageCharts();
+
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $('#datatable').DataTable({
+                order: [
+                    [0, 'desc']
+                ],
+
+
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                    "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ Entradas",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                }
+            });
+
+        });
+    </script>
+    </body>
+
+    </html>

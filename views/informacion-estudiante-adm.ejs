@@ -1,0 +1,215 @@
+<%- include('template/cabecera', { tituloWeb: "Nomina - Informacion Estudiante" , bgActive1: "" , bgActive2: "" ,
+    bgActive3: "active" , bgActive4: "" , bgActive5: "" , bgActive6: "" , bgActive7: "" , bgActive8: "" }); %>
+
+    <div class="container-fluid d-flex flex-column mt-2">
+        <h2 class="text-secondary">Informacion Estudiante</h2>
+        <hr>
+        <div class=" mb-2 d-flex justify-content-end">
+            <a href="/admin/estudiantes-adm/editar-estudiante-adm/<%= estudiante.id_estudiante %>"
+                class="btn btn-warning mt-3 "><i class="bi bi-arrow-left me-lg-3"></i>Volver
+                a
+                atras</a>
+
+        </div>
+
+        <div class="header-container p-2 mb-3 mt-3 h-25 text-light "
+            style="background-color: #acacac5c; border-radius: 8px;">
+            <h5 class="mt-3 font-weight-bold fs-3" style="color: #02aeae;">
+                <%= estudiante.id_estudiante %>
+                    <%= estudiante.nombre %>
+                        <%= estudiante.apellido %>
+            </h5>
+            <hr>
+            <div class="d-lg-flex text-secondary ">
+                <h5 class="me-lg-3">
+                    <strong class="font-weight-bold d-lg-flex">Fecha de nacimiento</strong>
+                    <%= estudiante.fecha_nacimiento %>
+                </h5>
+                <h5 class="me-lg-3">
+                    <strong id="" class="font-weight-bold d-lg-flex">Fecha Creacion </strong>
+                    <%= %>
+                </h5>
+                <h5 class="me-lg-3">
+
+                    <strong class="font-weight-bold d-lg-flex">Cedula
+                    </strong>
+                    <%= estudiante.cedula %>
+                </h5>
+                <h5 class="me-lg-3">
+
+                    <strong class="font-weight-bold d-lg-flex">Sexo
+                    </strong>
+                    <%= estudiante.sexo %>
+                </h5>
+                <h5>
+                    <strong class="estatusInfEmp font-weight-bold d-lg-flex">Estatus
+                    </strong>
+                    <%= estudiante.estatus %>
+
+                </h5>
+            </div>
+        </div>
+
+
+
+        <div class="text-light mb-5" style="background-color: #acacac5c; border-radius: 15px;">
+            <div class="d-sm-flex justify-content-around ">
+                <div class="d-xl-flex ">
+
+                    <div class="card_coperativa">
+                        <div class="card-body d-flex justify-content-center flex-column ">
+                            <h5 class=" d-flex justify-content-center text-secondary font-weight-bold">Puesto</h5>
+
+
+
+
+                            <p class="card-text d-flex justify-content-center text-secondary">No Asignado</p>
+
+                            <div class="d-flex justify-content-center">
+                                <div class="d-flex flex-nowrap ">
+                                    <a href="/empleados/informacion-empleado/ver-empleado-x-departamento/<%= estudiante.id_estudiante %> "
+                                        class="btn btn-secondary d-flex me-lg-2"><i
+                                            class="bi bi-files me-lg-2"></i>Ver</a>
+                                    <a href="/empleados/informacion-empleado/crear-empleado-x-departamento/<%= estudiante.id_estudiante %> "
+                                        class="btn  d-flex me-lg-2" style="background-color: #02aeae;"><i
+                                            class="bi bi-file-earmark-plus me-lg-2"></i>Agregar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card_poncheEntra">
+                        <div class="card-body d-flex justify-content-center flex-column ">
+                            <h5 class=" d-flex justify-content-center text-secondary font-weight-bold">Documentos</h5>
+                            <p class="card-text d-flex justify-content-center text-secondary ">Tiene 2 Documentos</p>
+                            <div class="d-flex justify-content-center">
+                                <div class="d-flex flex-nowrap ">
+                                    <a href="#" class="btn btn-secondary d-flex me-lg-2"><i
+                                            class="bi bi-files me-lg-2"></i>Ver</a>
+                                    <a href="#" class="btn  d-flex me-lg-2" style="background-color: #02aeae;"><i
+                                            class="bi bi-file-earmark-plus me-lg-2"></i>Agregar</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-xl-flex">
+                    <div class="card_pago">
+                        <div class="card-body d-flex justify-content-center flex-column ">
+                            <h5 class=" d-flex justify-content-center text-secondary font-weight-bold">Pagos
+                            </h5>
+                            <p class="card-text d-flex justify-content-center text-secondary ">Tiene
+                                <%= cant_pagos_estudiante %> Pagos Realizados
+                            </p>
+                            <div class="d-flex justify-content-center">
+                                <div class="d-flex flex-nowrap ">
+                                    <a href="/admin/estudiantes-adm/informacion-estudiante-adm/ver-pago-x-estudiante/<%= estudiante.id_estudiante %> "
+                                        class="btn btn-secondary d-flex me-lg-2"><i
+                                            class="bi bi-files me-lg-2"></i>Ver</a>
+                                    <a href="/admin/estudiantes-adm/informacion-estudiante-adm/crear-pago-x-estudiante/<%= estudiante.id_estudiante %> "
+                                        class="btn  d-flex me-lg-2" style="background-color: #02aeae;"><i
+                                            class="bi bi-file-earmark-plus me-lg-2"></i>Agregar</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card_documento ">
+                        <div class="card-body d-flex justify-content-center flex-column ">
+                            <h5 class="d-flex justify-content-center text-secondary font-weight-bold">Descuentos</h5>
+                            <p class="card-text d-flex justify-content-center text-secondary ">Tiene
+                                <%= %> Descuentos Activos
+                            </p>
+                            <div class="d-flex justify-content-center ">
+                                <div class="d-flex flex-nowrap ">
+                                    <a href="/empleados/informacion-empleado/ver-descuento-x-empleado/<%= estudiante.id_estudiante %> "
+                                        class="btn btn-secondary d-flex me-lg-2"><i
+                                            class="bi bi-files me-lg-2"></i>Ver</a>
+                                    <a href="/empleados/informacion-empleado/crear-descuento-x-empleado/<%= estudiante.id_estudiante %> "
+                                        class="btn  d-flex me-lg-2" style="background-color: #02aeae;"><i
+                                            class="bi bi-file-earmark-plus me-lg-2"></i>Agregar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="mb-3">Detalle Informacion</h3>
+
+        <div class="container-table table-responsive">
+
+            <table class="table table-sm table-hover mb-5 display responsive nowrap" style="width: 100%;">
+                <thead class="thead-ligth">
+                    <tr class="text-truncate">
+                        <!-- <th scope="col">Id</th> -->
+                        <th scope="col">Codigo</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">apellido</th>
+                        <th scope="col">Cedula</th>
+                        <th scope="col">Estatus</th>
+                        <th scope="col">Telefono</th>
+                        <th scope="col">Correo</th>
+                        <th scope="col">Forma de Pago</th>
+
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr class="text-truncate">
+                        <td>
+                            <%= estudiante.id_estudiante %>
+                        </td>
+                        <td>
+                            <%= estudiante.nombre %>
+                        </td>
+                        <td>
+                            <%= estudiante.apellido %>
+                        </td>
+                        <td>
+                            <%= estudiante.cedula %>
+                        </td>
+                        <td>
+                            <% if (estudiante.estatus=="Inactivo" ) { %>
+                                <p class="bg-danger text-light">
+                                    <%= estudiante.estatus %>
+                                </p>
+                                <% }else { %>
+                                    <%= estudiante.estatus %>
+                                        <% } %>
+                        </td>
+                        <td>
+
+                            <%= estudiante.telefono %>
+
+                        </td>
+                        <td>
+                            <%= estudiante.correo_electronico %>
+                        </td>
+                        <td>
+                            <%= estudiante.forma_pago %>
+                        </td>
+
+
+
+                        <td class="w-0 "><a
+                                href="/admin/estudiantes-adm/editar-estudiante-adm/<%= estudiante.id_estudiante %>"
+                                class="btn " title="Editar"><i class="bi bi-pencil-square "></i></a>
+
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+
+
+    </div>
+
+
+
+
+    <%- include('template/footer'); %>

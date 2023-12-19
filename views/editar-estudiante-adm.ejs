@@ -1,0 +1,281 @@
+<%- include('template/cabecera', { tituloWeb: "Edufal - Editar Estudiante" , bgActive1: "" , bgActive2: "" ,
+    bgActive3: "active" , bgActive4: "" , bgActive5: "" , bgActive6: "" , bgActive7: "" , bgActive8: "" }); %>
+
+    <div class="container-fluid mt-2">
+
+        <h2 class="text-secondary" id="inimation-dog">Editar Estudiante</h2>
+        <hr>
+        <form id="editar" class=""
+            action="/admin/estudiantes-adm/editar-estudiante-adm/<%= estudiante.id_estudiante %> " method="POST">
+            <div class="d-lg-flex justify-content-end ">
+                <button class="btn  mt-3 me-lg-3" style="background-color: #02aeae;" type="submit"><i
+                        class="bi bi-check-lg me-3"></i>Guardar cambios</button>
+                <button class="btn  mt-3 me-lg-3" type="submit"><i class="bi bi-check-lg me-3"></i>Enviar
+                    Nomina</button>
+                <a href="/admin/estudiantes-adm" class="btn btn-warning mt-3 me-lg-3 "><i
+                        class="bi bi-arrow-left me-3"></i>Volver a
+                    atras</a>
+                <a href="/admin/estudiantes-adm/informacion-estudiante-adm/<%= estudiante.id_estudiante %>"
+                    class="btn mt-3 me-lg-3"><i class="bi bi-info-circle me-3 "></i>Informacion</a>
+                <a data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="btn btn-danger mt-3 text-light "><i
+                        class="bi bi-info-circle me-3"></i>Eliminar Estudiante</a>
+            </div>
+
+            <div class="container-datos-header d-flex">
+
+                <div class="datos-de-busqueda justify-content-between" style="width: 80%;">
+
+                    <div class="d-lg-flex justify-content-between ">
+                        <div class="form-group d-flex   ">
+                            <div class="input-group ">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text p-2 me-lg-3">Codigo</label>
+                                </div>
+                                <input type="text" name="codigo" value="<%= estudiante.id_estudiante %>"
+                                    class="form-control" id="codigo" disabled>
+                            </div>
+                        </div>
+
+                        <div class="form-group d-flex   ">
+                            <div class="input-group d-flex">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text p-2 me-lg-3">Cedula</label>
+                                </div>
+                                <input type="text" name="cedula" value="<%= estudiante.cedula %>" class="form-control"
+                                    id="cedula">
+                            </div>
+                        </div>
+                        <div class="form-group d-flex   ">
+                            <div class="input-group d-flex">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text p-2 me-lg-3">Telefono</label>
+                                </div>
+                                <input type="number" name="telefono" value="<%= estudiante.telefono %>"
+                                    class="form-control" id="telefono">
+                            </div>
+                        </div>
+
+                        <div class="form-group d-flex   ">
+                            <div class="form-group d-flex">
+                                <div class="input-group ">
+                                    <div class="input-group-prepend">
+                                        <label for="sexo" class="input-group-text p-2 me-lg-3">Sexo</label>
+                                    </div>
+                                    <select name="sexo" class="form-control" id="sexo">
+                                        <option class="text-dark" value="<%= estudiante.sexo %>" selected>
+                                            <%= estudiante.sexo %>
+                                        </option>
+                                        <option class="text-dark" value="hombre">Hombre</option>
+                                        <option class="text-dark" value="mujer">Mujer</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group d-flex  ">
+                            <div class="form-group d-flex">
+                                <div class="input-group ">
+                                    <div class="input-group-prepend">
+                                        <label for="estatus" class="input-group-text p-2 me-lg-3">Estatus</label>
+                                    </div>
+                                    <select name="estatus" class="form-control" id="estatus">
+                                        <option class="text-dark" value="<%= estudiante.estatus %>" selected>
+                                            <%= estudiante.estatus %>
+
+                                        </option>
+                                        <option class="text-dark" value="Activo">Activo</option>
+                                        <option class="text-dark" value="Inactivo">Inactivo</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- </div> -->
+
+                        <!-- <div class="d-lg-flex justify-content-between "> -->
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="form-group d-flex justify-content-center espaciado ">
+                <label for="nombre" class=" p-2">Nombre</label>
+                <input type="text" name="nombre" value="<%= estudiante.nombre %>" class="form-control p-2 mt-2"
+                    id="nombre" aria-describedby="emailHelp" placeholder="">
+            </div>
+
+            <div class="form-group d-flex justify-content-center espaciado ">
+                <label for="apellido" class=" p-2">Apellido</label>
+                <input type="text" name="apellido" value="<%= estudiante.apellido %>" class="form-control p-2 mt-2"
+                    id="apellido" aria-describedby="emailHelp" placeholder="">
+            </div>
+
+
+            <div class="form-group d-flex justify-content-start  ">
+                <label for="titulo_curso" class=" p-2">Cursos Inscritos</label>
+
+                <% if (curso_x_estudiante.length) { %>
+                    <% curso_x_estudiante.forEach(cursoEstudiante=> { %>
+                        <ul>
+                            <% if(cursoEstudiante.estado_inscripcion=='Nuevo' ){ %>
+                                <strong class="bg-secondary text-light me-3">
+                                    <%= cursoEstudiante.estado_inscripcion %>
+                                </strong>
+                                <% } %>
+                                    <% if(cursoEstudiante.estado_inscripcion=='Iniciado' ){ %>
+                                        <strong class="bg-info text-light me-3">
+                                            <%= cursoEstudiante.estado_inscripcion %>
+                                        </strong>
+                                        <% } %>
+                                            <% if(cursoEstudiante.estado_inscripcion=='Finalizado' ){ %>
+                                                <strong class="bg-primary text-light me-3">
+                                                    <%= cursoEstudiante.estado_inscripcion %>
+                                                </strong>
+                                                <% } %>
+                                                    <% if(cursoEstudiante.estado_inscripcion=='Declinado/Retirado' ){ %>
+                                                        <strong class="bg-danger text-light me-3">
+                                                            <%= cursoEstudiante.estado_inscripcion %>
+                                                        </strong>
+                                                        <% } %>
+                                                            <img style="width: 50px;"
+                                                                src="<%= cursoEstudiante.url_imagen %>"
+                                                                alt="imagen curso">
+                                                            <%= cursoEstudiante.titulo_curso %>
+                        </ul>
+
+
+
+                        <% }) %>
+                            <% }else { %>
+                                <ul style="color: red;">
+                                    No Inscrito
+                                </ul>
+                                <% } %>
+
+            </div>
+
+            <div class="form-group d-flex justify-content-center espaciado ">
+                <label for="nacimiento" class=" p-2">Fecha de Nacimiento </label>
+                <input type="date" name="fecha_nacimiento" value="<%= estudiante.fecha_nacimiento %>"
+                    class="form-control p-2 mt-2" id="fecha_nacimiento" aria-describedby="emailHelp" placeholder="">
+            </div>
+
+
+            <div class="form-group d-flex justify-content-center espaciado ">
+                <label class=" p-2">Direccion</label>
+                <input type="text" name="direccion" value="<%= estudiante.direccion %>" class="form-control p-2 mt-2"
+                    id="direccion" aria-describedby="emailHelp" placeholder="">
+            </div>
+            <div class="form-group d-flex justify-content-center espaciado ">
+                <label class=" p-2">Correo Electronico</label>
+                <input type="text" name="correo_electronico" value="<%= estudiante.correo_electronico %>"
+                    class="form-control p-2 mt-2" id="correo" aria-describedby="emailHelp" placeholder="">
+            </div>
+            <div class="form-group d-flex justify-content-center espaciado ">
+                <label class=" p-2">Nacionalidad</label>
+                <input type="text" name="pais" value="<%= estudiante.pais %>" class="form-control p-2 mt-2" id="correo"
+                    aria-describedby="emailHelp" placeholder="">
+            </div>
+
+            <div class="form-group d-flex justify-content-center espaciado ">
+
+                <label for="formaPago" class=" p-2">Forma de Pago</label>
+                <select name="forma_pago" class="form-control p-2 mt-2" id="forma_pago" aria-describedby="emailHelp">
+                    <option value="<%= estudiante.forma_pago %>" selected>
+                        <%= estudiante.forma_pago %>
+                    </option>
+                    <option value="Ninguna">Ninguna</option>
+                    <option value="Unico Pago">Unico Pago</option>
+                    <option value="Semanal">Semanal</option>
+                    <option value="Quincenal">Quincenal</option>
+                    <option value="Mensual">Mensual</option>
+                </select>
+            </div>
+
+            <div class="d-lg-flex justify-content-between">
+                <div class="form-group d-flex justify-content-center flex-wrap ">
+                    <label for="sueldoBruto" class=" p-2">Balance Pendiente</label>
+                    <input type="number" name="sueldoBruto" value="<%= balance_pendiente %>"
+                        class="form-control p-2 text-center mt-2" id="sueldoBruto" aria-describedby="emailHelp"
+                        value="0">
+                </div>
+
+                <div class="form-group d-flex justify-content-center flex-wrap ">
+                    <label for="" class="p-2">Monto Pagado</label>
+                    <input type="text" name="" value="<%= monto_pago %>" class="form-control p-2 text-center mt-2"
+                        id="afp">
+                </div>
+                <div class="form-group d-flex justify-content-center flex-wrap ">
+                    <label for="ars" class="p-2">Porcentaje Descuento</label>
+                    <input type="text" name="ars" value="<%=  %>" class="form-control p-2 text-center mt-2" id="ars">
+                </div>
+                <div class="form-group d-flex justify-content-center flex-wrap ">
+                    <label for="cooperativa" class="p-2">Balance Neto</label>
+                    <input type="text" name="cooperativa" value="<%=  %>" class="form-control p-2 text-center mt-2"
+                        id="cooperativa">
+                </div>
+            </div>
+
+            <!-- <div class="d-lg-flex justify-content-between">
+                <div class="form-group d-flex justify-content-center flex-wrap ">
+                    <label for="club" class="p-2">Otros no usar</label>
+                    <input type="text" name="club" value="<%=  %>" class="form-control p-2 text-center mt-2" id="club">
+                </div>
+                <div class="form-group d-flex justify-content-center flex-wrap ">
+                    <label for="prestamos" class="p-2">Prestamos no usar</label>
+                    <input type="text" name="prestamos" value="<%=  %>" class="form-control p-2 text-center mt-2"
+                        id="prestamos">
+                </div>
+                <div class="form-group d-flex justify-content-center flex-wrap ">
+                    <label for="totalDescuentos" class="p-2">Total Descuentos</label>
+                    <input type="text" name="totalDescuentos" value="<%=  %>"
+                        class="form-control p-2 text-danger font-weight-bold text-center mt-2" id="totalDescuentos">
+                </div>
+                <div class="form-group d-flex justify-content-center flex-wrap ">
+                    <label for="sueldoNeto" class="p-2 ">Balance Neto</label>
+                    <input type="text" name="sueldoNeto" value="<%=  %>"
+                        class="form-control p-2 text-success font-weight-bold text-center mt-2" id="sueldoNeto">
+                </div>
+            </div> -->
+
+
+        </form>
+
+
+    </div>
+    <%- include('template/modalReporteNomina'); %>
+        <%- include('template/modalParametrosNomina'); %>
+
+
+            <script src="/js/nomina.js"></script>
+            <%- include('template/footer'); %>
+
+                <!-- Modal Eliminar -->
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel">Eliminar Estudiante
+                                </h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <%= estudiante.nombre %>
+                                    <%= estudiante.apellido %>
+                            </div>
+                            <div>
+                                <span class="d-flex justify-content-center bg-secondary text-light m-4">Al eliminar este
+                                    estudiante se
+                                    perderan todos los registros de pagos, descuentos, cursos asignado, etc. SEGURO QUE
+                                    LO QUIERE ELIMINAR ?</span>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <a type="submit"
+                                    href="/admin/estudiantes-adm/eliminar-estudiante-adm/<%= estudiante.id_estudiante %>"
+                                    class="btn text-light bg-danger " title="Eliminar Empleado">Eliminar Estudiante</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>

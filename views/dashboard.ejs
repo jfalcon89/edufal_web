@@ -1,5 +1,5 @@
-<%- include('template/cabecera', { tituloWeb: "Nomina - Dashboart" , bgActive1: "active" , bgActive2: "" , bgActive3: ""
-    , bgActive4: "" , bgActive5: "" , bgActive6: "" , bgActive7: "" }); %>
+<%- include('template/cabecera', { tituloWeb: "Edufal Adm - Dashboart" , bgActive1: "active" , bgActive2: "" ,
+    bgActive3: "" , bgActive4: "" , bgActive5: "" , bgActive6: "" , bgActive7: "" , bgActive8: "" }); %>
 
     <!-- content inicio -->
 
@@ -10,38 +10,53 @@
         <div class=" row ">
             <div class=" col-xl-3 col-lg-6 col-md-6 col-sm-6 ">
                 <div class=" card card-stats ">
-                    <div class=" card-header card-header-warning card-header-icon ">
+                    <div class=" card-header card-header-info card-header-icon ">
                         <div class=" card-icon ">
                             <i class=" material-icons ">people</i>
                         </div>
-                        <h3 class="text-secondary">Total Empleados</h3>
-                        <h3 class=" card-title ">
-                            <%= arrayEmpleados.length %>
-
-                        </h3>
+                        <h3 class="text-secondary">Estudiantes</h3>
+                        <div class="d-flex justify-content-between ">
+                            <h4 class="text-secondary"><strong>Todos: </strong>
+                                <%= total_estudiantes %>
+                            </h4>
+                            <h4 class="text-secondary"><strong>Activos: </strong>
+                                <%= estudiantes_activos %>
+                            </h4>
+                            <h4 class="text-secondary"><strong>Inactivos: </strong>
+                                <%= estudiantes_inactivos %>
+                            </h4>
+                        </div>
                     </div>
                     <div class=" card-footer ">
                         <div class=" ">
 
-                            <a href=" /empleados " class="text-secondary ">Ver Empleados</a>
+                            <a href=" /admin/estudiantes " class="text-secondary ">Ver Estudiantes</a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class=" col-xl-3 col-lg-6 col-md-6 col-sm-6 ">
                 <div class=" card card-stats ">
-                    <div class=" card-header card-header-success card-header-icon ">
+                    <div class=" card-header card-header-info card-header-icon ">
                         <div class=" card-icon ">
                             <i class=" material-icons ">store</i>
                         </div>
-                        <h3 class="text-secondary">Total Puestos</h3>
-                        <h3 class=" card-title ">
-                            <%= arrayDepartamentos.length %>
-                        </h3>
+                        <h3 class="text-secondary">Total Cursos</h3>
+                        <div class="d-flex justify-content-between ">
+                            <h4 class="text-secondary"><strong>Todos: </strong>
+                                <%= total_cursos %>
+                            </h4>
+                            <h4 class="text-secondary"><strong>Activos: </strong>
+                                <%= cursos_activos %>
+                            </h4>
+                            <h4 class="text-secondary"><strong>Inactivos: </strong>
+                                <%= cursos_inactivos %>
+                            </h4>
+                        </div>
                     </div>
                     <div class=" card-footer ">
                         <div class="  ">
-                            <a href=" /departamentos " class="text-secondary ">Ver Puestos</a>
+                            <a href=" /admin/cursos_adm " class="text-secondary ">Ver Cursos</a>
 
                         </div>
                     </div>
@@ -53,14 +68,30 @@
                         <div class=" card-icon ">
                             <i class=" material-icons ">laptop</i>
                         </div>
-                        <h3 class="text-secondary">Total Usuarios </h3>
-                        <h3 class=" card-title ">
-                            <%= arrayUser.length %>
-                        </h3>
+                        <h3 class="text-secondary">Inscripciones </h3>
+                        <div class="d-flex justify-content-between ">
+                            <h4 style="text-align: center;" class="text-secondary "><strong>Todas: </strong>
+                                <%= total_inscripciones %>
+                            </h4>
+                            <h4 style="text-align: center;" class="text-secondary"><strong>Nuevas: </strong>
+                                <%= inscripciones_nuevas %>
+                            </h4>
+                            <h4 style="text-align: center;" class="text-secondary"><strong>Iniciadas: </strong>
+                                <%= inscripciones_iniciadas %>
+                            </h4>
+
+                            <h4 style="text-align: center;" class="text-secondary"><strong>Finalizadas: </strong>
+                                <%= inscripciones_finalizadas %>
+                            </h4>
+                            <h4 style="text-align: center;" class="text-secondary"><strong>D/Retiradas: </strong>
+                                <%= inscripciones_declinadas_retiradas %>
+                            </h4>
+
+                        </div>
                     </div>
                     <div class=" card-footer ">
                         <div class="  ">
-                            <a href="#" class="text-secondary ">Ver usuarios</a>
+                            <a href="/admin/Inscripciones_adm" class="text-secondary ">Ver Inscripciones</a>
                         </div>
                     </div>
                 </div>
@@ -68,47 +99,59 @@
 
             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
                 <div class="card card-stats">
-                    <div class="card-header card-header-danger card-header-icon">
+                    <div class="card-header card-header-info card-header-icon">
                         <div class="card-icon">
                             <i class="material-icons ">assessment</i>
                         </div>
-                        <h3 class="text-secondary">Pagos Empleados</h3>
+                        <h3 class="text-secondary">Maestros</h3>
                         <div class="d-flex justify-content-between ">
-                            <h3 class="card-title">
-                                <%= sueldosTotales=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
-                                    }).format(sueldosTotales) %>
-                            </h3>
-                            <h3 class="card-title">
-                                Cant.
-                                <%= validacionPagos_x_empleado.length %>
-                            </h3>
+                            <h4 class="text-secondary"><strong>Todos: </strong>
+                                <%= total_maestros %>
+                            </h4>
+                            <h4 class="text-secondary"><strong>Activos: </strong>
+                                <%= maestros_activo %>
+                            </h4>
+                            <h4 class="text-secondary"><strong>Inactivos: </strong>
+                                <%= maestros_inactivos %>
+                            </h4>
 
                         </div>
                     </div>
                     <div class="card-footer">
                         <div class="">
-                            <a href="/pagos" class="text-secondary ">Ver Pagos</a>
+                            <a href="/admin/maestros_adm" class="text-secondary ">Ver Maestros</a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
                 <div class="card card-stats">
-                    <div class="card-header card-header-danger card-header-icon">
+                    <div class="card-header card-header-info card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons ">assessment</i>
+                        </div>
+                        <h3 class="text-secondary">Pagos Estudiantes</h3>
+                        <div class="d-flex justify-content-between ">
+                            <h4 class="text-secondary"><strong>Pendientes: </strong>10</h4>
+                            <h4 class="text-secondary"><strong>Pagados: </strong>6</h4>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="">
+                            <a href="/pagos-servicios" class="text-secondary ">Ver Pagos</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-info card-header-icon">
                         <div class="card-icon">
                             <i class="material-icons ">assessment</i>
                         </div>
                         <h3 class="text-secondary">Pagos Servicios</h3>
                         <div class="d-flex justify-content-between ">
-
-                            <h3 class="card-title">
-                                <%= serviciosTotales=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
-                                    }).format(serviciosTotales) %>
-                            </h3>
-                            <h3 class="card-title">
-                                Cant.
-                                <%= cantPagos %>
-                            </h3>
+                            <h4 class="text-secondary"><strong>Pagados: </strong>6</h4>
                         </div>
                     </div>
                     <div class="card-footer">
@@ -121,88 +164,96 @@
 
         </div>
 
-        <h2>
-            <strong>Gastos Totales</strong>
-            <%= gastosGenerales=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
-                }).format(gastosGenerales) %>
 
-        </h2>
         <hr>
         <div class="container-table table-responsive">
-            <h3>Gastos por mes</h3>
+            <h3>PAGOS POR MES</h3>
             <table class="table table-sm table-hover table-striped">
                 <thead class="thead-ligth">
                     <tr class="text-truncate">
-                        <th scope="col" class="font-weight-bold">Enero</th>
-                        <th scope="col" class="font-weight-bold">Febrero</th>
-                        <th scope="col" class="font-weight-bold">Marzo</th>
-                        <th scope="col" class="font-weight-bold">Abril</th>
-                        <th scope="col" class="font-weight-bold">Mayo</th>
-                        <th scope="col" class="font-weight-bold">Junio</th>
-                        <th scope="col" class="font-weight-bold">Julio</th>
-                        <th scope="col" class="font-weight-bold">Agosto</th>
-                        <th scope="col" class="font-weight-bold">Septiembre</th>
-                        <th scope="col" class="font-weight-bold">Octubre</th>
-                        <th scope="col" class="font-weight-bold">Noviembre</th>
-                        <th scope="col" class="font-weight-bold">Diciembre</th>
+                        <th scope="col" class="font-weight-bold me-3">Enero <span class="badge badge-secondary">
+                                <%= cant_pagosEnero.pagosEnero %>
+                            </span>
+                        </th>
+                        <th scope="col" class="font-weight-bold">Febrero <span class="badge badge-secondary">
+                                <%= cant_pagosFebrero.pagosFebrero %>
+                            </span></th>
+                        <th scope="col" class="font-weight-bold">Marzo <span class="badge badge-secondary">
+                                <%= cant_pagosMarzo.pagosMarzo %>
+                            </span></th>
+                        <th scope="col" class="font-weight-bold">Abril <span class="badge badge-secondary">
+                                <%= cant_pagosAbril.pagosAbril %>
+                            </span></th>
+                        <th scope="col" class="font-weight-bold">Mayo <span class="badge badge-secondary">
+                                <%= cant_pagosMayo.pagosMayo %>
+                            </span></th>
+                        <th scope="col" class="font-weight-bold">Junio <span class="badge badge-secondary">
+                                <%= cant_pagosJunio.pagosJunio %>
+                            </span></th>
+                        <th scope="col" class="font-weight-bold">Julio <span class="badge badge-secondary">
+                                <%= cant_pagosJulio.pagosJulio %>
+                            </span></th>
+                        <th scope="col" class="font-weight-bold">Agosto <span class="badge badge-secondary">
+                                <%= cant_pagosAgosto.pagosAgosto %>
+                            </span></th>
+                        <th scope="col" class="font-weight-bold">Septiembre <span class="badge badge-secondary">
+                                <%= cant_pagosSeptiembre.pagosSeptiembre %>
+                            </span></th>
+                        <th scope="col" class="font-weight-bold">Octubre <span class="badge badge-secondary">
+                                <%= cant_pagosOctubre.pagosOctubre %>
+                            </span></th>
+                        <th scope="col" class="font-weight-bold">Noviembre <span class="badge badge-secondary">
+                                <%= cant_pagosNoviembre.pagosNoviembre %>
+                            </span></th>
+                        <th scope="col" class="font-weight-bold">Diciembre <span class="badge badge-secondary">
+                                <%= cant_pagosDiciembre.pagosDiciembre %>
+                            </span></th>
                     </tr>
                 </thead>
 
                 <tbody>
+                    <tr>
 
-                    <tr class="text-truncate">
 
                         <td>
-                            <%= gastosEnero=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
-                                }).format(gastosEnero) %>
-                        </td>
-                        <td id="codDesc">
-                            <%= gastosFebrero=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
-                                }).format(gastosFebrero) %>
+                            <%= pagosEnero.pagosEnero %>
                         </td>
                         <td>
-                            <%= gastosMarzo=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
-                                }).format(gastosMarzo) %>
+                            <%= pagosFebrero.pagosFebrero %>
                         </td>
                         <td>
-                            <%= gastosAbril=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
-                                }).format(gastosAbril) %>
+                            <%= pagosMarzo.pagosMarzo %>
                         </td>
                         <td>
-                            <%= gastosMayo=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
-                                }).format(gastosMayo) %>
+                            <%= pagosAbril.pagosAbril %>
                         </td>
                         <td>
-                            <%= gastosJunio=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
-                                }).format(gastosJunio) %>
+                            <%= pagosMayo.pagosMayo %>
                         </td>
                         <td>
-                            <%= gastosJulio=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
-                                }).format(gastosJulio) %>
+                            <%= pagosJunio.pagosJunio %>
                         </td>
                         <td>
-                            <%= gastosAgosto=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
-                                }).format(gastosAgosto) %>
+                            <%= pagosJulio.pagosJulio %>
                         </td>
                         <td>
-                            <%= gastosSeptiempre=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
-                                }).format(gastosSeptiempre) %>
+                            <%= pagosAgosto.pagosAgosto %>
                         </td>
                         <td>
-                            <%= gastosOctubre=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
-                                }).format(gastosOctubre) %>
+                            <%= pagosSeptiembre.pagosSeptiembre %>
                         </td>
                         <td>
-                            <%= gastosNoviembre=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
-                                }).format(gastosNoviembre) %>
+                            <%= pagosOctubre.pagosOctubre %>
                         </td>
                         <td>
-                            <%= gastosDiciembre=Intl.NumberFormat('en-IN', { style: 'currency' , currency: 'USD'
-                                }).format(gastosDiciembre) %>
+                            <%= pagosNoviembre.pagosNoviembre %>
                         </td>
-
+                        <td>
+                            <%= pagosDiciembre.pagosDiciembre %>
+                        </td>
 
                     </tr>
+
 
 
 
@@ -214,14 +265,63 @@
     </div>
 
 
+    <!-- chart -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"
+        integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+    <div class="chart-container ">
+        <canvas id="myChart" style="position: relative; height:35vh; width:80vw"></canvas>
+    </div>
+    <div class="visually-hidden">
+        <p id="enero">
+            <%= pagosEnero.pagosEnero %>
+        </p>
+        <p id="febrero">
+            <%= pagosFebrero.pagosFebrero %>
+        </p>
+        <p id="marzo">
+            <%= pagosMarzo.pagosMarzo %>
+        </p>
+        <p id="abril">
+            <%= pagosAbril.pagosAbril %>
+        </p>
+        <p id="mayo">
+            <%= pagosMayo.pagosMayo %>
+        </p>
+        <p id="junio">
+            <%= pagosJunio.pagosJunio %>
+        </p>
+        <p id="julio">
+            <%= pagosJulio.pagosJulio %>
+        </p>
+        <p id="agosto">
+            <%= pagosAgosto.pagosAgosto %>
+        </p>
+        <p id="septiembre">
+            <%= pagosSeptiembre.pagosSeptiembre %>
+        </p>
+        <p id="octubre">
+            <%= pagosOctubre.pagosOctubre %>
+        </p>
+        <p id="noviembre">
+            <%= pagosNoviembre.pagosNoviembre %>
+        </p>
+        <p id="diciembre">
+            <%= pagosDiciembre.pagosDiciembre %>
+        </p>
+
+
+    </div>
+
+    <script src="/js/chart.js"></script>
 
 
 
     <!-- content fin -->
 
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('#datatable').DataTable({
                 order: [
                     [3, 'desc']

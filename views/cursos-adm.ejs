@@ -1,0 +1,147 @@
+<%- include('template/cabecera', { tituloWeb: "Edufal Adm - Cursos" , bgActive1: "" , bgActive2: "active" ,
+    bgActive3: "" , bgActive4: "" , bgActive5: "" , bgActive6: "" , bgActive7: "" , bgActive8: "" }); %>
+
+
+    <!-- content inicio -->
+
+
+    <div class="container-fluid mt-2">
+        <h2 class=" text-secondary">Cursos - Talleres</h2>
+        <hr>
+        <h3 class=""><strong>Total de Inscripciones Activas: </strong>
+            <%= totalInscripciones.cantidad_inscripciones %>
+        </h3>
+        <div class="d-lg-flex align-items-center justify-content-end my-4 ">
+            <a class="btn  me-lg-3" style="background-color: #02aeae;" href="/admin/cursos-adm/crear-curso-adm"><i
+                    class="bi bi-person-plus me-lg-3"></i>Crear Nuevo Curso</a>
+            <a class="btn " href="/admin/inscripciones-adm"><i class="bi bi-person-lines-fill me-lg-3"></i>Ver
+                Inscripciones</a>
+        </div>
+
+        <div class="container-departamento">
+
+            <table id="datatable" class="display responsive nowrap" style="width:100%">
+                <thead class="thead-ligth">
+                    <tr>
+                        <!-- <th scope="col">Id</th> -->
+                        <th scope="col">ID Curso</th>
+                        <th scope="col">Titulo Curso</th>
+                        <!-- <th scope="col">Descripcion</th> -->
+                        <th scope="col">Estado</th>
+                        <th scope="col">Fecha Inicio</th>
+                        <th scope="col">Duracion</th>
+                        <th scope="col">Modalidad</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">Promocion</th>
+                        <th scope="col">Oferta Inscripcion</th>
+                        <th scope="col">Total Inscripciones</th>
+                        <th scope="col">Id Maestro</th>
+                        <th scope="col">Acciones</th>
+                        <th scope="col">Portada</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (arrayCursos.length> 0) { %>
+                        <% arrayCursos.forEach(curso=> { %>
+
+                            <tr>
+                                <td>
+                                    <%= curso.id_curso %>
+                                </td>
+                                <td>
+                                    <%= curso.titulo_curso %>
+                                </td>
+
+                                <td>
+                                    <% if (curso.estado_curso=="Inactivo" ) { %>
+                                        <strong class="bg-danger text-light">
+                                            <%= curso.estado_curso %>
+                                        </strong>
+                                        <% }else { %>
+                                            <%= curso.estado_curso %>
+                                                <% } %>
+                                </td>
+                                <td>
+                                    <%= curso.fecha_inicio.toLocaleString('es-ES', { timeZone: "America/Santo_Domingo"
+                                        }).slice(0, 10) %>
+                                </td>
+                                <td>
+                                    <%= curso.duracion %>
+                                </td>
+                                <td>
+                                    <%= curso.modalidad %>
+                                </td>
+                                <td>
+                                    <%= curso.costo %>
+                                </td>
+                                <td>
+                                    <%= curso.tipo_curso %>
+                                </td>
+                                <td>
+                                    <%= curso.promocion %>
+                                </td>
+                                <td>
+                                    <%= curso.oferta_inscripcion %>
+                                </td>
+                                <td>
+                                    <%= curso.total_inscripciones %>
+                                </td>
+                                <td>
+                                    <%= curso.id_maestro %>
+                                </td>
+                                <td>
+                                    <a href="/admin/cursos-adm/editar-curso-adm/<%= curso.id_curso %>"
+                                        class="btn ">Editar</a>
+
+                                </td>
+                                <td>
+                                    <img style="border-radius: 10px;" src="<%= curso.url_imagen %>" alt="img curso">
+                                </td>
+                            </tr>
+
+                            <% }) %>
+                                <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+    <!-- content fin -->
+
+
+    <script>
+        $(document).ready(function () {
+            $('#datatable').DataTable({
+                order: [
+                    [0, 'desc']
+                ],
+
+
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                    "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ Entradas",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                }
+            });
+
+        });
+    </script>
+    <%- include('template/footer'); %>

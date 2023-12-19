@@ -1,0 +1,194 @@
+<%- include('template/cabecera', { tituloWeb: "Nomina - Inscripciones" , bgActive1: "" , bgActive2: "" , bgActive3: "" ,
+    bgActive4: "" , bgActive5: "" , bgActive6: "" , bgActive7: "" , bgActive8: "active" }); %>
+
+
+    <!-- content inicio -->
+
+
+    <div class="container-fluid mt-2">
+        <h2 class=" text-secondary">Inscripciones</h2>
+        <hr>
+        <!-- <div class="navbar-departamentos d-flex justify-content-end bg-light">
+                                    <h5>agregar dpto</h5>
+                                </div> -->
+
+        <div class="d-lg-flex align-items-center justify-content-end my-4">
+
+            <a class="btn  me-lg-3" style="background-color: #02aeae;" href="/crear-departamento"><i
+                    class="bi bi-person-plus me-lg-3"></i>Inscribir Estudiante</a>
+            <a class="btn  me-lg-3" style="background-color: gray;" href="/crear-departamento"><i
+                    class="bi bi bi-calendar-x me-lg-3"></i>Ver Inscripciones Finalizadas</a>
+            <a href="/admin/cursos-adm" class="btn btn-warning "><i class="bi bi-arrow-left me-lg-3"></i>Volver
+                a
+                atras</a>
+        </div>
+
+        <div class="container-departamento">
+
+            <table id="datatable" class="display responsive nowrap" style="width:100%">
+                <thead class="thead-ligth">
+                    <tr>
+                        <!-- <th scope="col">Id</th> -->
+                        <th scope="col">ID Inscripcion</th>
+                        <th scope="col">Curso</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Cedula</th>
+                        <th scope="col">Fecha Nacimiento</th>
+                        <th scope="col">Telefono</th>
+                        <th scope="col">Correo</th>
+                        <!-- <th scope="col">Direccion</th> -->
+                        <th scope="col">Estado Curso</th>
+                        <th scope="col">Estado Inscripcion</th>
+                        <th scope="col">Fecha Inscripcion</th>
+                        <th scope="col">Fecha Inicio</th>
+                        <th scope="col">Modalidad</th>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Promocion</th>
+                        <th scope="col">Oferta Inscripcion</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (arrayInscripciones.length> 0) { %>
+                        <% arrayInscripciones.forEach(inscripcion=> { %>
+
+                            <tr>
+                                <td>
+                                    <%= inscripcion.id_inscripcion %>
+                                </td>
+                                <td><img style="width: 50px;" src="<%= inscripcion.url_imagen %>" alt="img curso">
+                                    <%= inscripcion.titulo_curso %>
+                                </td>
+                                <td>
+                                    <%= inscripcion.nombre %>
+                                </td>
+                                <td>
+                                    <%= inscripcion.apellido %>
+                                </td>
+                                <td>
+                                    <%= inscripcion.cedula %>
+                                </td>
+                                <td>
+                                    <%= inscripcion.fecha_nacimiento.toLocaleString('es-ES', {
+                                        timeZone: "America/Santo_Domingo" }).slice(0, 10) %>
+                                </td>
+                                <td>
+                                    <%= inscripcion.telefono %>
+                                </td>
+                                <td>
+                                    <%= inscripcion.correo_electronico %>
+                                </td>
+
+                                <td>
+                                    <% if (inscripcion.estado_curso=="Inactivo" ) { %>
+                                        <strong class="bg-danger text-light">
+                                            <%= inscripcion.estado_curso %>
+                                        </strong>
+                                        <% }else { %>
+                                            <%= inscripcion.estado_curso %>
+                                                <% } %>
+                                </td>
+                                <td>
+                                    <% if (inscripcion.estado_inscripcion=="Declinado/Retirado" ) { %>
+                                        <strong class="bg-danger text-light">
+                                            <%= inscripcion.estado_inscripcion %>
+                                        </strong>
+                                        <% } %>
+                                            <% if (inscripcion.estado_inscripcion=="Nuevo" ) { %>
+                                                <strong class="bg-secondary text-light">
+                                                    <%= inscripcion.estado_inscripcion %>
+                                                </strong>
+                                                <% } %>
+                                                    <% if (inscripcion.estado_inscripcion=="Iniciado" ) { %>
+                                                        <strong class="bg-info text-light">
+                                                            <%= inscripcion.estado_inscripcion %>
+                                                        </strong>
+                                                        <% } %>
+                                                            <% if (inscripcion.estado_inscripcion=="Finalizado" ) { %>
+                                                                <strong class="bg-primary text-light">
+                                                                    <%= inscripcion.estado_inscripcion %>
+                                                                </strong>
+                                                                <% } %>
+
+                                </td>
+                                <td>
+                                    <%= inscripcion.fecha_inscripcion.toLocaleString('es-ES', {
+                                        timeZone: "America/Santo_Domingo" }).slice(0, 10) %>
+                                </td>
+                                <td>
+                                    <%= inscripcion.fecha_inicio_inscripcion %>
+                                </td>
+                                <td>
+                                    <%= inscripcion.modalidad %>
+                                </td>
+                                <td>
+                                    <%= inscripcion.tipo_curso %>
+                                </td>
+                                <td>
+                                    <%= inscripcion.precioOferta_inscripcion %>
+                                </td>
+                                <td>
+                                    <%= inscripcion.promocion_inscripcion %>
+                                </td>
+                                <td>
+                                    <%= inscripcion.oferta_inscripcion_inscripcion %>
+                                </td>
+
+                                <td class="w-0">
+                                    <a href="/admin/inscripciones-adm/editar-inscripcion-adm/<%= inscripcion.id_inscripcion %>"
+                                        class="btn" title="Editar Inscripcion"><i class="bi bi-pencil-square"></i></a>
+                                    <a id="eventoAct-Inact"
+                                        href="/admin/estudiantes-adm/editar-estudiante-adm/<%= inscripcion.cedula %>"
+                                        class="btn" title="Ver Estudiante"><i class="bi bi-folder2-open"></i></a>
+
+
+                                </td>
+                            </tr>
+
+                            <% }) %>
+                                <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+    <!-- content fin -->
+    <script>
+        $(document).ready(function () {
+            $('#datatable').DataTable({
+                order: [
+                    [0, 'desc']
+                ],
+
+
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                    "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ Entradas",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                }
+            });
+
+        });
+    </script>
+
+
+    <%- include('template/footer'); %>

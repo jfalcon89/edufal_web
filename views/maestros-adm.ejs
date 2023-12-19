@@ -1,0 +1,212 @@
+<%- include('template/cabecera', { tituloWeb: "Nomina - Configuracion" , bgActive1: "" , bgActive2: "" , bgActive3: "" ,
+    bgActive4: "" , bgActive5: "" , bgActive6: "active" , bgActive7: "" , bgActive8: "" }); %>
+
+    <div class="container-fluid mt-2">
+        <h2 class="text-secondary">Maestros Activos</h2>
+
+    </div>
+    <hr>
+
+    <div class=" ">
+        <div class="text-end">
+            <button class="btn btn-success m-3" data-bs-toggle="modal" data-bs-target="#exampleModalNovedad">Crear
+                Maestro</button>
+            <a href="/admin/maestros-inactivos-adm" class="btn m-3">Maestros Inactivos</a>
+        </div>
+
+        <div class="container-table table-responsive mt-5 " id="" style=" ">
+
+            <table id="datatable" class=" table table-sm table-hover table-striped">
+                <thead class="thead-ligth">
+                    <tr class="text-truncate">
+                        <th scope="col" class="font-weight-bold">Id Maestro</th>
+
+                        <th scope="col" class="font-weight-bold">Nombre</th>
+                        <th scope="col" class="font-weight-bold">Apellido</th>
+                        <th scope="col" class="font-weight-bold">Cedula</th>
+                        <th scope="col" class="font-weight-bold">Telefono</th>
+                        <th scope="col" class="font-weight-bold">Correo</th>
+                        <th scope="col" class="font-weight-bold">Fecha Contratacion</th>
+                        <th scope="col" class="font-weight-bold">Estado</th>
+                        <th scope="col" class="font-weight-bold">Accion</th>
+                        <th scope="col" class="font-weight-bold">Foto Maestro</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (maestros.length> 0) { %>
+                        <% maestros.forEach(maestro=> { %>
+
+                            <tr class="text-truncate">
+                                <td>
+                                    <%= maestro.id_maestro %>
+                                </td>
+
+                                <td>
+                                    <%= maestro.nombre %>
+                                </td>
+                                <td>
+                                    <%= maestro.apellido %>
+                                </td>
+                                <td>
+                                    <%= maestro.cedula %>
+                                </td>
+                                <td>
+                                    <%= maestro.telefono %>
+                                </td>
+                                <td>
+                                    <%= maestro.correo_electronico %>
+                                </td>
+                                <td>
+                                    <%= maestro.fecha_contratacion %>
+                                </td>
+                                <td>
+                                    <%= maestro.estado %>
+                                </td>
+
+                                <td>
+                                    <a class="btn"
+                                        href="/admin/maestros-adm/editar-maestro-adm/<%= maestro.id_maestro %>">Editar
+                                    </a>
+
+                                </td>
+                                <td>
+                                    <img width="150px" src="<%= maestro.url_foto_2x2 %>" alt="img-maestro">
+
+                                </td>
+
+                                <% }) %>
+                                    <% } %>
+
+                            </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+
+        <!-- modal crear maestro -->
+        <div class="modal fade" id="exampleModalNovedad<%=  %>" data-bs-backdrop="static" data-bs-keyboard="false"
+            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-center fw-bold" id="staticBackdropLabel">CREACION DE NUEVO MAESTRO
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <form method="POST" class="" autocomplete="off">
+
+
+                            <div>
+                                <label for="nombre">Nombre </label>
+                                <input class="form-control" type="text" name="nombre" value="" required>
+                            </div>
+
+                            <div>
+                                <label for="apellido">Apellido</label>
+                                <input class="form-control" type="text" name="apellido" value="" required>
+                            </div>
+                            <div>
+                                <label for="cedula">Cedula </label>
+                                <input class="form-control" type="number" name="cedula" value="" required>
+                            </div>
+
+                            <div>
+                                <label for="fecha_nacimiento">Fecha Nacimiento</label>
+                                <input class="form-control" type="date" name="fecha_nacimiento" value="" required>
+                            </div>
+                            <div>
+                                <label for="direccion">Direccion </label>
+                                <input class="form-control" type="text" name="direccion" value="" required>
+                            </div>
+
+                            <div>
+                                <label for="telefono">Telefono</label>
+                                <input class="form-control" type="number" name="telefono" value="" required>
+                            </div>
+                            <div>
+                                <label for="correo_electronico">Correo Electronico</label>
+                                <input class="form-control" type="text" name="correo_electronico" value="" required>
+                            </div>
+                            <div>
+                                <label for="fecha_contratacion">Fecha Contratacion</label>
+                                <input class="form-control" type="text" name="fecha_contratacion" value="" required>
+                            </div>
+                            <div>
+                                <label for="url_curriculum">Url Curriculum</label>
+                                <input class="form-control" type="text" name="url_curriculum" value="">
+                            </div>
+                            <div>
+                                <label for="url_foto_cedula">Url Foto Cedula</label>
+                                <input class="form-control" type="text" name="url_foto_cedula" value="">
+                            </div>
+                            <div>
+                                <label for="url_foto_2x2">Url Foto 2x2</label>
+                                <input class="form-control" type="text" name="url_foto_2x2" value="">
+                            </div>
+
+                            <div>
+                                <label for="estado">Estado</label>
+                                <select class="form-control" name="estado" id="estado" required>
+                                    <option value="Activo">Activo</option>
+                                    <option value="Inactivo">Inactivo</option>
+                                </select>
+
+                            </div>
+                            <div class="modal-footer border-0">
+                                <button type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-primary">Si,
+                                    CREAR</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+
+    <!-- <script src="js/configuracion.js"></script> -->
+
+
+    <script>
+        $(document).ready(function () {
+            $('#datatable').DataTable({
+                order: [
+                    [0, 'desc']
+                ],
+
+
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                    "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ Entradas",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                }
+            });
+
+        });
+    </script>
+    <%- include('template/footer'); %>

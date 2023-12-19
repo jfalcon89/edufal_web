@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<%- include('front-end-template/head', { tituloWeb: "Edufal Online - Quienes Somos" }); %>
+
+    <%- include('front-end-template/navbar'); %>
+
+
+        <body>
+
+            <div class="d-flex align-items-center"
+                style="background-image: url(/img/img-cursos/background-cabecera-quienes-somos.png); background-repeat: no-repeat; background-position: center; background-size: cover; height: 440px; box-shadow: 0px 15px 15px rgba(0, 0, 0, 0.2);">
+                <div class="container mt-4 ">
+                    <p data-aos="fade-down-left" class=""
+                        style="background-color: green; padding: 5px; border-radius: 10px; display: inline; color: white;">
+                        CLASES ONLINE
+                    </p>
+
+                    <div class="pt-5 fs-5">
+                        <h1 data-aos="fade-right" class="text-center"><strong style="color: #005d6a;">QUIENES
+                                SOMOS</strong>
+
+                        </h1>
+
+
+
+                    </div>
+                    <div class="pb-5" style="color: #08787a;">
+                        <h1><strong>
+
+                                <%= %>
+                            </strong>
+
+                        </h1>
+
+
+                    </div>
+                    <!-- <div class="pb-5" style="padding: #08787a;"><button class="btn btn-dark btn-lg" type="submit"
+                            data-bs-toggle="modal" data-bs-target="#exampleModalNovedad">Quiero
+                            Inscribirme</button>
+
+                    </div> -->
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+            <%- include('front-end-template/footer'); %>
+
+
+                <script src="/js/scriptSlide.js"></script>
+                <script src="/js/anuncios-inicio-event.js"></script>
+
+                <script>
+                    AOS.init({
+                        duration: 1000
+                    });
+                </script>
+
+
+
+
+
+        </body>
+
+
+
+
+
+</html>

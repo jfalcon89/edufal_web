@@ -1,0 +1,178 @@
+<%- include('template/cabecera', { tituloWeb: "Edufal - Editar Maestro" , bgActive1: "" , bgActive2: "" , bgActive3: ""
+    , bgActive4: "" , bgActive5: "" , bgActive6: "active" , bgActive7: "" , bgActive8: "" }); %>
+
+    <div class="container-fluid mt-2">
+        <h2 class="text-secondary"> Editar Maestro</h2>
+
+    </div>
+    <hr>
+    <form method="POST" class="" autocomplete="off">
+        <div class="d-flex align-items-center justify-content-end ">
+
+            <button type="submit" class="btn  my-4 me-lg-3" style="background-color: #02aeae;">Guardar
+                Cambios</button>
+            <a type="button" class="btn text-light bg-danger me-lg-3" data-bs-toggle="modal"
+                data-bs-target="#staticBackdrop" title="Eliminar Maestro">Eliminar</a>
+
+            <a href="/admin/maestros-adm" class="btn btn-warning my-4 "><i class="bi bi-arrow-left me-lg-3"></i>Volver
+                a
+                atras</a>
+        </div>
+        <div class=" ">
+
+            <div class="modal-header">
+                <h5 class="modal-title text-center fw-bold" id="staticBackdropLabel">EDITAR MAESTRO ID:
+                    <%= maestro.id_maestro %>
+                </h5>
+                <div>
+                    <img width="150px" src="<%= maestro.url_foto_2x2 %>" alt="img-maestro">
+                </div>
+
+            </div>
+            <div class="modal-body">
+
+                <form method="POST" class="" autocomplete="off">
+
+
+                    <div>
+                        <label for="nombre">Nombre </label>
+                        <input class="form-control" type="text" name="nombre" value="<%= maestro.nombre %>" required>
+                    </div>
+
+                    <div>
+                        <label for="apellido">Apellido</label>
+                        <input class="form-control" type="text" name="apellido" value="<%= maestro.apellido %>"
+                            required>
+                    </div>
+                    <div>
+                        <label for="cedula">Cedula </label>
+                        <input class="form-control" type="number" name="cedula" value="<%= maestro.cedula %>" required>
+                    </div>
+
+                    <div>
+                        <label for="fecha_nacimiento">Fecha Nacimiento</label>
+                        <input class="form-control" type="date" name="fecha_nacimiento"
+                            value="<%= maestro.fecha_nacimiento %>" required>
+                    </div>
+                    <div>
+                        <label for="direccion">Direccion </label>
+                        <input class="form-control" type="text" name="direccion" value="<%= maestro.direccion %>"
+                            required>
+                    </div>
+
+                    <div>
+                        <label for="telefono">Telefono</label>
+                        <input class="form-control" type="number" name="telefono" value="<%= maestro.telefono %>"
+                            required>
+                    </div>
+                    <div>
+                        <label for="correo_electronico">Correo Electronico</label>
+                        <input class="form-control" type="text" name="correo_electronico"
+                            value="<%= maestro.correo_electronico %>" required>
+                    </div>
+                    <div>
+                        <label for="fecha_contratacion">Fecha Contratacion</label>
+                        <input class="form-control" type="text" name="fecha_contratacion"
+                            value="<%= maestro.fecha_contratacion %>" required>
+                    </div>
+                    <div>
+                        <label for="url_curriculum">Url Curriculum</label>
+                        <input class="form-control" type="text" name="url_curriculum"
+                            value="<%= maestro.url_curriculum %>">
+                    </div>
+                    <div>
+                        <label for="url_foto_cedula">Url Foto Cedula</label>
+                        <input class="form-control" type="text" name="url_foto_cedula"
+                            value="<%= maestro.url_foto_cedula %>">
+                    </div>
+                    <div>
+                        <label for="url_foto_2x2">Url Foto 2x2</label>
+                        <input class="form-control" type="text" name="url_foto_2x2" value="<%= maestro.url_foto_2x2 %>">
+                    </div>
+
+                    <div>
+                        <label for="estado">Estado</label>
+                        <select class="form-control" name="estado" id="estado">
+                            <option value="<%= maestro.estado %>" selected>
+                                <%= maestro.estado %>
+                            </option>
+                            <option value="Activo">Activo</option>
+                            <option value="Inactivo">Inactivo</option>
+                        </select>
+
+                    </div>
+
+
+                    <!-- Modal eliminar -->
+                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="staticBackdropLabel">Eliminar Maestro
+                                    </h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <%= maestro.nombre %>
+                                        <%= maestro.apellido %>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                    <a type="submit"
+                                        href="/admin/maestros-adm/eliminar-maestro-adm/<%= maestro.id_maestro %>"
+                                        class="btn text-light bg-danger " title="Eliminar Dpto">Eliminar Curso</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
+
+        </div>
+
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script>
+            AOS.init();
+        </script>
+
+        <!-- <script src="js/configuracion.js"></script> -->
+
+
+        <script>
+            $(document).ready(function () {
+                $('#datatable').DataTable({
+                    order: [
+                        [0, 'desc']
+                    ],
+
+
+                    language: {
+                        "decimal": "",
+                        "emptyTable": "No hay información",
+                        "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                        "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                        "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                        "infoPostFix": "",
+                        "thousands": ",",
+                        "lengthMenu": "Mostrar _MENU_ Entradas",
+                        "loadingRecords": "Cargando...",
+                        "processing": "Procesando...",
+                        "search": "Buscar:",
+                        "zeroRecords": "Sin resultados encontrados",
+                        "paginate": {
+                            "first": "Primero",
+                            "last": "Ultimo",
+                            "next": "Siguiente",
+                            "previous": "Anterior"
+                        }
+                    }
+                });
+
+            });
+        </script>
+        <%- include('template/footer'); %>

@@ -1,0 +1,233 @@
+<%- include('template/cabecera', { tituloWeb: "Edufal - Editar Inscripciones" , bgActive1: "" , bgActive2: "" ,
+    bgActive3: "" , bgActive4: "" , bgActive5: "" , bgActive6: "" , bgActive7: "" , bgActive8: "active" }); %>
+
+
+    <!-- content inicio -->
+
+
+    <div class="container-fluid mt-2">
+        <h2 class=" text-secondary">Ver / Editar Inscripciones</h2>
+        <hr>
+
+        <form method="POST" class="" autocomplete="off">
+
+            <div class="d-lg-flex align-items-center justify-content-end my-4">
+
+                <button type="submit" class="btn  my-4 me-lg-3" style="background-color: #02aeae;">Guardar
+                    Cambios</button>
+                <a type="button" class="btn text-light bg-danger me-lg-3" data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop" title="Eliminar Inscripcion">Eliminar</a>
+
+                <a href="/admin/inscripciones-adm" class="btn btn-warning my-4 "><i
+                        class="bi bi-arrow-left me-lg-3"></i>Volver
+                    a
+                    atras</a>
+            </div>
+
+            <div class="container-inscripciones">
+
+
+
+                <div class="">
+                    <div class="">
+                        <h5 class="modal-title  fw-bold" id="staticBackdropLabel"><strong>Inscripcion:
+                            </strong>
+                            <%= inscripcion.id_inscripcion %>
+                        </h5>
+                        <h5 class="modal-title  fw-bold" id="staticBackdropLabel"><strong>Curso:
+                            </strong>
+
+                            <%= inscripcion.id_curso %>
+
+                        </h5>
+                        <div>
+                            <% if(curso){ %>
+                                <img style="width: 150px;" src="<%= curso.url_imagen %>" alt="img-curso">
+                                <% }else{ %>
+                                    <img style="width: 150px;"
+                                        src="https://onedrive.live.com/embed?resid=C31F9C66E8BCAAC9%211383&authkey=%21AAPd5B90CfeEDaY&width=256"
+                                        alt="img-curso">
+                                    <% } %>
+                        </div>
+
+                    </div>
+                    <div class="modal-body">
+
+
+                        <div>
+                            <label for="id_curso">Curso </label>
+
+                            <select name="id_curso" id="" class="form-control">
+                                <% if(curso){ %>
+                                    <option value="<%= curso.id_curso %>" selected>
+                                        <%= curso.titulo_curso %>
+                                    </option>
+                                    <% }else{ %>
+                                        <option value="<%= inscripcion.id_curso %>"><strong style="color: red;">Curso
+                                                Inactivo
+                                            </strong>
+
+                                        </option>
+                                        <% } %>
+                                            <% if (arrayCursos.length> 0) { %>
+                                                <% arrayCursos.forEach(arrayCursos=> { %>
+                                                    <option value="<%= arrayCursos.id_curso %>">
+                                                        <%= arrayCursos.titulo_curso %>
+                                                    </option>
+                                                    <% }) %>
+                                                        <% } %>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="nombre">Nombre </label>
+                            <input class="form-control" type="text" name="nombre" value="<%= inscripcion.nombre %>">
+                        </div>
+                        <div>
+                            <label for="apellido">Apellido</label>
+                            <input class="form-control" type="text" name="apellido" value="<%= inscripcion.apellido %>">
+                        </div>
+                        <div>
+                            <label for="cedula">Cedula </label>
+                            <input class="form-control" type="number" name="cedula" value="<%= inscripcion.cedula %>">
+                        </div>
+
+                        <div>
+                            <label for="fecha_nacimiento">Fecha Nacimiento</label>
+                            <input class="form-control" type="text" name="fecha_nacimiento"
+                                value="<%= inscripcion.fecha_nacimiento.toLocaleString('es-ES', ).slice(0, 10) %>">
+                        </div>
+                        <div>
+                            <label for="direccion">Direccion </label>
+                            <input class="form-control" type="text" name="direccion"
+                                value="<%= inscripcion.direccion %>">
+                        </div>
+
+                        <div>
+                            <label for="telefono">Telefono</label>
+                            <input class="form-control" type="number" name="telefono"
+                                value="<%= inscripcion.telefono %>">
+                        </div>
+                        <div>
+                            <label for="correo_electronico">Correo Electronico</label>
+                            <input class="form-control" type="text" name="correo_electronico"
+                                value="<%= inscripcion.correo_electronico %>">
+                        </div>
+                        <div>
+                            <label for="pais">Pais</label>
+                            <input class="form-control" type="text" name="pais" value="<%= inscripcion.pais %>">
+                        </div>
+                        <div>
+                            <label for="fecha_inscripcion">Fecha Inscripcion</label>
+                            <input class="form-control" type="text" name="fecha_inscripcion"
+                                value="<%= inscripcion.fecha_inscripcion.toLocaleString('es-ES' ) %>">
+                        </div>
+                        <div>
+                            <label for="precioOferta_inscripcion">Precio Inscripcion</label>
+                            <input class="form-control" type="text" name="precioOferta_inscripcion"
+                                value="<%= inscripcion.precioOferta_inscripcion %>">
+                        </div>
+                        <div>
+                            <label for="fecha_inicio_inscripcion">Fecha Inicio Inscripcion</label>
+                            <input class="form-control" type="text" name="fecha_inicio_inscripcion"
+                                value="<%= inscripcion.fecha_inicio_inscripcion %>">
+                        </div>
+                        <div>
+                            <label for="promocion_inscripcion">Promocion Inscripcion</label>
+                            <input class="form-control" type="text" name="promocion_inscripcion"
+                                value="<%= inscripcion.promocion_inscripcion %>">
+                        </div>
+                        <div>
+                            <label for="oferta_inscripcion_inscripcion">Oferta Inscripcion</label>
+                            <input class="form-control" type="text" name="oferta_inscripcion_inscripcion"
+                                value="<%= inscripcion.oferta_inscripcion_inscripcion %>">
+                        </div>
+                        <div>
+                            <label for="estado_inscripcion">Estado Inscripcion</label>
+                            <select class="form-control" name="estado_inscripcion" id="estado_inscripcion">
+                                <option value="<%= inscripcion.estado_inscripcion %>" selected>
+                                    <%= inscripcion.estado_inscripcion %>
+                                </option>
+                                <option value="Nuevo">Nuevo</option>
+                                <option value="Iniciado">Iniciado</option>
+                                <option value="Finalizado">Finalizado</option>
+                                <option value="Declinado/Retirado">Declinado/Retirado</option>
+                            </select>
+                        </div>
+
+                        <!-- Modal eliminar -->
+                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="staticBackdropLabel">Eliminar Inscripcion
+                                        </h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <% if(curso){ %>
+                                            <%= curso.titulo_curso %>
+                                                <% }else { %>
+                                                    Curso Inactivo
+                                                    <% } %>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Close</button>
+                                        <a type="submit"
+                                            href="/admin/inscripciones-adm/eliminar-inscripcion-adm/<%= inscripcion.id_inscripcion %>"
+                                            class="btn text-light bg-danger " title="Eliminar Inscripcion">Eliminar
+                                            Inscripcion</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+        </form>
+    </div>
+    </div>
+
+
+    </div>
+    </div>
+
+
+
+    <!-- content fin -->
+    <script>
+        $(document).ready(function () {
+            $('#datatable').DataTable({
+                order: [
+                    [0, 'desc']
+                ],
+
+
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                    "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ Entradas",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                }
+            });
+
+        });
+    </script>
+
+
+    <%- include('template/footer'); %>

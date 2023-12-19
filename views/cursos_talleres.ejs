@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<%- include('front-end-template/head', { tituloWeb: "Edufal Online - Cursos & Talleres" }); %>
+
+    <%- include('front-end-template/navbar'); %>
+
+
+        <body>
+
+            <div class="d-flex align-items-center"
+                style="background-image: url(/img/img-cursos/background-cabecera-ver-todos-cursos.png); background-repeat: no-repeat; background-position: center; background-size: cover; height: 440px; box-shadow: 0px 15px 15px rgba(0, 0, 0, 0.2);">
+                <div class="container mt-4 ">
+                    <p data-aos="fade-down-left" class=""
+                        style="background-color: green; padding: 5px; border-radius: 10px; display: inline; color: white;">
+                        CLASES ONLINE
+                    </p>
+
+                    <div class="pt-5 fs-5">
+                        <h1 data-aos="fade-right" class="text-center"><strong style="color: #005d6a;">CURSOS &
+                                TALLERES</strong>
+
+                        </h1>
+
+
+
+                    </div>
+                    <div class="pb-5" style="color: #08787a;">
+                        <h1><strong>
+
+                                <%= %>
+                            </strong>
+
+                        </h1>
+
+
+                    </div>
+                    <!-- <div class="pb-5" style="padding: #08787a;"><button class="btn btn-dark btn-lg" type="submit"
+                            data-bs-toggle="modal" data-bs-target="#exampleModalNovedad">Quiero
+                            Inscribirme</button>
+
+                    </div> -->
+                </div>
+            </div>
+
+
+
+            <div class="mt-2 container">
+
+                <nav aria-label="breadcrumb" class="">
+                    <ol class="breadcrumb ">
+                        <li class="breadcrumb-item "><a href="/" class="text-decoration-none">Inicio</a></li>
+
+                        <li class="breadcrumb-item active" aria-current="page">
+                            Cursos Talleres
+                        </li>
+                    </ol>
+                </nav>
+                <hr>
+            </div>
+
+            <div class="container-fluid d-flex justify-content-center" style="max-width: 2020px;">
+
+                <div class=" d-sm-flex flex-wrap justify-content-center">
+
+
+                    <% if (arrayCursos.length> 0) { %>
+                        <% arrayCursos.forEach(curso=> { %>
+
+
+
+
+
+                            <div data-aos="fade-up" class="transUp card bg-light mb-3 curso-card p-0 m-3"
+                                style="max-width: 19rem; border-radius: 10px;">
+                                <div class="card-header" style="background-color: white; border: none;">
+                                    <strong>
+                                        <%= curso.tipo_curso %>
+                                    </strong>
+                                </div>
+                                <div class="curso-item">
+                                    <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>">
+                                        <img class="curso-imagen" src="<%= curso.url_imagen %>" alt="">
+                                    </a>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <strong>
+                                            <%= curso.titulo_curso %>
+                                        </strong>
+                                    </h5>
+                                    <p class="card-text">
+                                        <%= curso.descripcion %>
+                                    </p>
+                                </div>
+                                <div>
+                                    <h6><del>
+
+                                            $ <%= curso.costo %>
+                                        </del>
+                                        <strong style="color: red;">
+
+                                            <%= curso.porcentaje_descuento.slice(2, ) %>% OFF
+                                        </strong>
+
+                                    </h6>
+                                    <del class="d-none">
+
+                                        <%= Math.abs(curso.costo=curso.costo * curso.porcentaje_descuento - curso.costo)
+                                            %>
+                                    </del>
+                                    <h5 style="color: #005d6a;"><strong>
+
+                                            Precio: <%= curso.costo=Intl.NumberFormat('en-EN', { style: 'currency' ,
+                                                currency: 'USD' }).format(Math.abs(curso.costo)) %>
+                                        </strong>
+                                    </h5>
+                                    <p><i class="bi bi-stopwatch me-1"></i>
+                                        <%= curso.duracion %> de clases -
+                                            <del class="d-none">
+                                                <%= sesiones=curso.duracion %>
+                                            </del><i class="bi bi-calendar3 me-1"></i>
+                                            <%= sesiones.slice(0, 3)/2 %> Secciones
+                                                <% console.log('seciones' + sesiones.slice(0, 3)/2) %>
+                                    </p>
+                                    <p style="color: gray; text-align: center; font-size: small;">Garantía de reembolso
+                                        de 30 días</p>
+                                </div>
+                                <div class="btn-group">
+                                    <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>" type="button"
+                                        class="btn btn-secondary ">
+                                        Mas informacion
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+
+                            <% }) %>
+                                <% } %>
+                </div>
+
+
+            </div>
+
+
+
+
+            <div class=" d-lg-flex w-100">
+                <div class="container">
+                    <h2 style="color: #005d6a; font-weight: 600;" class=" p-5 text-center">
+                        <strong>PROXIMOS CURSOS &
+                            TALLERES</strong>
+                    </h2>
+
+                    <% if (arrayCursos.length> 0) { %>
+                        <% arrayCursos.forEach(curso=> { %>
+                            <div class="justify-content-around d-lg-flex mt-5">
+                                <div class="col-4">
+
+                                    <div class="me-5">
+                                        <h4 style="font-size: 50px; font-weight: bold; color: #005d6a;">
+                                            <%= curso.fecha_inicio %>
+                                        </h4>
+                                    </div>
+                                    <div class="me-5 mt-0 text-center">
+                                        <p>Noviembre</p>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <h4>
+                                        <a style="color: #005d6a; " class="text-decoration-none font-weight-bold"
+                                            href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>">
+
+                                            <%= curso.titulo_curso %>
+                                        </a>
+                                    </h4>
+                                    <div class="d-flex">
+                                        <p class="me-5">7:00 pm - 9:00 pm</p>
+                                        <p>MODALIDA:
+                                            <%= curso.modalidad %>
+                                        </p>
+
+                                    </div>
+                                    <div>
+                                        <p>
+                                            <%= curso.descripcion %>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <img src="<%= curso.url_imagen %>" alt="img-curso">
+                                </div>
+                            </div>
+                            <hr>
+                            <% }) %>
+                                <% } %>
+
+
+                                    <div class="d-flex justify-content-center mt-4">
+                                        <a class="btn text-white mb-5 mt-4" style="background-color:#005d6a ;"
+                                            href="/contacto">CONTACTANOS </a>
+                                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+            <%- include('front-end-template/footer'); %>
+
+
+
+                <script src="/js/scriptSlide.js"></script>
+                <script src="/js/anuncios-inicio-event.js"></script>
+
+                <script>
+                    AOS.init({
+                        duration: 1000
+                    });
+                </script>
+
+
+
+
+
+
+        </body>
+
+
+
+
+</html>

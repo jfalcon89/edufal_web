@@ -20,14 +20,19 @@
 
                         <form method="POST">
                             <div class=" ">
-
-
-
                                 <select name="descripcionServicio" id="" class="form-control">
-                                    <option value="" class="form-control">Servicio</option>
-                                    <option value="Sistema Sispres">Sistema Sispres</option>
-                                    <option value="Servicio de Hosting Web">Servicio de Hosting Web</option>
-                                    <option value="Servicios Varios">Servicios Varios</option>
+                                    <option value="" class="form-control" selected>Servicio</option>
+                                    <% if (mantPagosServicios.length> 0) { %>
+                                        <% mantPagosServicios.forEach(mantPagosServicios=> { %>
+                                            <option class="text-dark" value="<%= mantPagosServicios.servicio %>">
+                                                <%= mantPagosServicios.servicio %>
+                                            </option>
+                                            <% }) %>
+                                                <% } %>
+                                                    <option value="Sistema Sispres">Sistema Sispres</option>
+                                                    <option value="Servicio de Hosting Web">Servicio de Hosting Web
+                                                    </option>
+                                                    <option value="Servicios Varios">Servicios Varios</option>
                                 </select>
 
                                 <select name="tipoPagoServicio" id="" class="form-control">

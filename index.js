@@ -13,19 +13,25 @@ const pool = require("./database");
 const { database } = require('./keys');
 
 //rutas requiere
-const departamentosRoutes = require("./routes/departamentos");
 const inicioRoutes = require("./routes/inicio");
-const empleadosRoutes = require("./routes/empleados");
+const quienesSomosRoutes = require("./routes/quienes-somos");
+const cursosRoutes = require("./routes/cursos");
+const vacantesRoutes = require("./routes/vacantes");
+const talleresRoutes = require("./routes/talleres");
+const ofertasInscripcionesRoutes = require("./routes/ofertas-inscripciones");
+const cursosAdmRoutes = require("./routes/cursos-adm");
+const inscripcionesAdmRoutes = require("./routes/inscripciones-adm");
+const dashboardRoutes = require("./routes/dashboard");
+const estudiantesRoutes = require("./routes/estudiantes");
+// const maestrosRoutes = require("./routes/maestros-adm");
 const contactosRoutes = require("./routes/contactos");
+const preguntasFrecuentesRoutes = require("./routes/preguntas-frecuentes");
 const pagosRoutes = require("./routes/pagos");
 const pagosServiciosRoutes = require("./routes/pagos-servicios");
 const reportesRoutes = require("./routes/reportes");
-const configuracionRoutes = require("./routes/configuracion");
+const maestrosAdmRoutes = require("./routes/maestros-adm");
 const registerRoutes = require("./routes/register");
-const indexRoutes = require("./routes/index");
 const loginRoutes = require("./routes/login");
-
-
 
 
 
@@ -37,9 +43,6 @@ app.set("port", process.env.PORT || 3001);
 app.listen(app.get("port"), () => {
     console.log("servidor funcionando en el puerto", app.get("port"))
 });
-
-///nuevo codigo***************************************
-
 
 
 
@@ -67,17 +70,6 @@ app.get('/logout', function(req, res) {
     })
 });
 
-///nuevo codigo*********************************************
-
-////---------CONEXION A LA BASE DE DATOS MONGODB----------////
-// const mongoose = require("mongoose");
-
-// const uri = `mongodb+srv://${process.env.USUARIO}:${process.env.PASSWORD}@cluster0.cnkdh.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority`;
-
-// mongoose.connect(uri, (err) => {
-//     if (err) throw err
-//     console.log("la conexion a base de datos mongoDB funciona");
-// });
 
 
 //CONFIGURACION PARA LEER EL BODY
@@ -89,26 +81,32 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
 
-//----------RUTAS WEB DE LOS HANDLERS----------------//
-
-app.use("/", inicioRoutes);
-app.use("/", departamentosRoutes);
-app.use("/", empleadosRoutes);
-app.use("/", contactosRoutes);
-app.use("/", pagosRoutes);
-app.use("/", pagosServiciosRoutes);
-app.use("/", reportesRoutes);
-app.use("/", configuracionRoutes);
-app.use("/", registerRoutes);
-app.use("/", indexRoutes);
-app.use("/", loginRoutes);
-
-
-
 // estatica 404
 // app.use((req, res, next) => {
 //     res.status(404).render("404");
 // });
+
+//----------RUTAS WEB DE LOS HANDLERS----------------//
+
+app.use("/", inicioRoutes);
+app.use("/", quienesSomosRoutes);
+app.use("/", cursosRoutes);
+app.use("/", talleresRoutes);
+app.use("/", vacantesRoutes);
+app.use("/", ofertasInscripcionesRoutes);
+app.use("/", inscripcionesAdmRoutes);
+app.use("/", preguntasFrecuentesRoutes);
+app.use("/", dashboardRoutes);
+app.use("/", cursosAdmRoutes);
+app.use("/", estudiantesRoutes);
+app.use("/", contactosRoutes);
+app.use("/", pagosRoutes);
+app.use("/", pagosServiciosRoutes);
+app.use("/", reportesRoutes);
+app.use("/", maestrosAdmRoutes);
+app.use("/", registerRoutes);
+app.use("/", loginRoutes);
+
 
 //motor de plantilla 
 app.set("view engine", "ejs");
