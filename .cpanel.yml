@@ -2,4 +2,4 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/edufjvsv/public_html/edufal_web/
-    - /bin/cp -R / $DEPLOYPATH
+    - /bin/rsync -av / $DEPLOYPATH
