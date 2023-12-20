@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/edufjvsv/public_html/edufal_web/
+    - /bin/cp -R images $DEPLOYPATH
