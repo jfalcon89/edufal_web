@@ -109,8 +109,45 @@
                     id="apellido" aria-describedby="emailHelp" placeholder="">
             </div>
 
+            <div class="form-group d-flex justify-content-center espaciado ">
+                <label for="nacimiento" class=" p-2">Fecha de Nacimiento </label>
+                <input type="date" name="fecha_nacimiento" value="<%= estudiante.fecha_nacimiento %>"
+                    class="form-control p-2 mt-2" id="fecha_nacimiento" aria-describedby="emailHelp" placeholder="">
+            </div>
 
-            <div class="form-group d-flex justify-content-start  ">
+
+            <div class="form-group d-flex justify-content-center espaciado ">
+                <label class=" p-2">Direccion</label>
+                <input type="text" name="direccion" value="<%= estudiante.direccion %>" class="form-control p-2 mt-2"
+                    id="direccion" aria-describedby="emailHelp" placeholder="">
+            </div>
+            <div class="form-group d-flex justify-content-center espaciado ">
+                <label class=" p-2">Correo Electronico</label>
+                <input type="text" name="correo_electronico" value="<%= estudiante.correo_electronico %>"
+                    class="form-control p-2 mt-2" id="correo" aria-describedby="emailHelp" placeholder="">
+            </div>
+            <div class="form-group d-flex justify-content-center espaciado ">
+                <label class=" p-2">Nacionalidad</label>
+                <input type="text" name="pais" value="<%= estudiante.pais %>" class="form-control p-2 mt-2" id="correo"
+                    aria-describedby="emailHelp" placeholder="">
+            </div>
+
+            <div class="form-group d-flex justify-content-center espaciado ">
+
+                <label for="formaPago" class=" p-2">Forma de Pago</label>
+                <select name="forma_pago" class="form-control p-2 mt-2" id="forma_pago" aria-describedby="emailHelp">
+                    <option value="<%= estudiante.forma_pago %>" selected>
+                        <%= estudiante.forma_pago %>
+                    </option>
+                    <option value="Ninguna">Ninguna</option>
+                    <option value="Unico Pago">Unico Pago</option>
+                    <option value="Semanal">Semanal</option>
+                    <option value="Quincenal">Quincenal</option>
+                    <option value="Mensual">Mensual</option>
+                </select>
+            </div>
+
+            <div class="form-group d-flex flex-wrap justify-content-start  ">
                 <label for="titulo_curso" class=" p-2">Cursos Inscritos</label>
 
                 <% if (curso_x_estudiante.length) { %>
@@ -151,44 +188,6 @@
                                 </ul>
                                 <% } %>
 
-            </div>
-
-            <div class="form-group d-flex justify-content-center espaciado ">
-                <label for="nacimiento" class=" p-2">Fecha de Nacimiento </label>
-                <input type="date" name="fecha_nacimiento" value="<%= estudiante.fecha_nacimiento %>"
-                    class="form-control p-2 mt-2" id="fecha_nacimiento" aria-describedby="emailHelp" placeholder="">
-            </div>
-
-
-            <div class="form-group d-flex justify-content-center espaciado ">
-                <label class=" p-2">Direccion</label>
-                <input type="text" name="direccion" value="<%= estudiante.direccion %>" class="form-control p-2 mt-2"
-                    id="direccion" aria-describedby="emailHelp" placeholder="">
-            </div>
-            <div class="form-group d-flex justify-content-center espaciado ">
-                <label class=" p-2">Correo Electronico</label>
-                <input type="text" name="correo_electronico" value="<%= estudiante.correo_electronico %>"
-                    class="form-control p-2 mt-2" id="correo" aria-describedby="emailHelp" placeholder="">
-            </div>
-            <div class="form-group d-flex justify-content-center espaciado ">
-                <label class=" p-2">Nacionalidad</label>
-                <input type="text" name="pais" value="<%= estudiante.pais %>" class="form-control p-2 mt-2" id="correo"
-                    aria-describedby="emailHelp" placeholder="">
-            </div>
-
-            <div class="form-group d-flex justify-content-center espaciado ">
-
-                <label for="formaPago" class=" p-2">Forma de Pago</label>
-                <select name="forma_pago" class="form-control p-2 mt-2" id="forma_pago" aria-describedby="emailHelp">
-                    <option value="<%= estudiante.forma_pago %>" selected>
-                        <%= estudiante.forma_pago %>
-                    </option>
-                    <option value="Ninguna">Ninguna</option>
-                    <option value="Unico Pago">Unico Pago</option>
-                    <option value="Semanal">Semanal</option>
-                    <option value="Quincenal">Quincenal</option>
-                    <option value="Mensual">Mensual</option>
-                </select>
             </div>
 
             <div class="d-lg-flex justify-content-between">
