@@ -57,16 +57,18 @@
                 </nav>
                 <hr>
             </div>
-
-            <div class="container d-lg-flex justify-content-around mt-4 align-items-center">
-                <div class="col-6">
-                    <h2 style="color: #08787a;"><strong><i
-                                class="bi bi-file-earmark-medical me-4 fs-1"></i>OBJETIVO</strong></h2>
-                </div>
-                <div>
-                    <h5>
-                        <%= curso.inf_curso %>
-                    </h5>
+            <div class="container">
+                <div class="container d-lg-flex justify-content-around mt-4 align-items-center"
+                    style="text-align: justify;">
+                    <div class="col-6">
+                        <h2 style="color: #08787a;"><strong><i
+                                    class="bi bi-file-earmark-medical me-4 fs-1"></i>OBJETIVO</strong></h2>
+                    </div>
+                    <div>
+                        <h6>
+                            <%= curso.inf_curso %>
+                        </h6>
+                    </div>
                 </div>
             </div>
 
@@ -82,14 +84,14 @@
                                     <%= curso.tipo_curso %>
 
                                 </h1>
-                                <h4 class="card-title" style="color: #08787a;"> <i
+                                <h4 class="card-title" style="color: #08787a; font-size: 18px;"> <i
                                         class="bi bi-calendar3 me-2"></i><strong>Inicio:</strong>
                                     <%= diaSemana %>
                                         <%= dia %> De
                                             <%= mes %>
 
                                 </h4>
-                                <p><i class="bi bi-stopwatch me-1"></i>
+                                <p style="font-size: 15px;"><i class="bi bi-stopwatch me-1"></i>
                                     <%= curso.duracion %> de clases -
                                         <del class="d-none">
                                             <%= sesiones=curso.duracion %>

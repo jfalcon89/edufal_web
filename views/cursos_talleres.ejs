@@ -94,35 +94,37 @@
                                     </p>
                                 </div>
                                 <div>
-                                    <h6><del>
+                                    <div style="margin-left: 15px;">
+                                        <h6><del style="margin-right: 10px;">
 
-                                            $ <%= curso.costo %>
+                                                $ <%= curso.costo %>
+                                            </del>
+                                            <strong style="color: red;">
+
+                                                <%= curso.porcentaje_descuento.slice(2, ) %>% OFF
+                                            </strong>
+
+                                        </h6>
+                                        <del class="d-none">
+
+                                            <%= Math.abs(curso.costo=curso.costo * curso.porcentaje_descuento -
+                                                curso.costo) %>
                                         </del>
-                                        <strong style="color: red;">
+                                        <h5 style="color: #005d6a;"><strong>
 
-                                            <%= curso.porcentaje_descuento.slice(2, ) %>% OFF
-                                        </strong>
-
-                                    </h6>
-                                    <del class="d-none">
-
-                                        <%= Math.abs(curso.costo=curso.costo * curso.porcentaje_descuento - curso.costo)
-                                            %>
-                                    </del>
-                                    <h5 style="color: #005d6a;"><strong>
-
-                                            Precio: <%= curso.costo=Intl.NumberFormat('en-EN', { style: 'currency' ,
-                                                currency: 'USD' }).format(Math.abs(curso.costo)) %>
-                                        </strong>
-                                    </h5>
-                                    <p><i class="bi bi-stopwatch me-1"></i>
-                                        <%= curso.duracion %> de clases -
-                                            <del class="d-none">
-                                                <%= sesiones=curso.duracion %>
-                                            </del><i class="bi bi-calendar3 me-1"></i>
-                                            <%= sesiones.slice(0, 3)/2 %> Secciones
-                                                <% console.log('seciones' + sesiones.slice(0, 3)/2) %>
-                                    </p>
+                                                Precio: <%= curso.costo=Intl.NumberFormat('en-EN', { style: 'currency' ,
+                                                    currency: 'USD' }).format(Math.abs(curso.costo)) %>
+                                            </strong>
+                                        </h5>
+                                        <p style="font-size: small;"><i class="bi bi-stopwatch me-1"></i>
+                                            <%= curso.duracion %> de clases -
+                                                <del class="d-none">
+                                                    <%= sesiones=curso.duracion %>
+                                                </del><i class="bi bi-calendar3 me-1"></i>
+                                                <%= sesiones.slice(0, 3)/2 %> Secciones
+                                                    <% console.log('seciones' + sesiones.slice(0, 3)/2) %>
+                                        </p>
+                                    </div>
                                     <p style="color: gray; text-align: center; font-size: small;">Garantía de reembolso
                                         de 30 días</p>
                                 </div>
