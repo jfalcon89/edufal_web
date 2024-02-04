@@ -8,11 +8,9 @@
 
         <body>
 
-            <div class="d-flex align-items-center"
-                style="background-image: url(/img/img-cursos/background-cabecera-ver-todos-cursos.png); background-repeat: no-repeat; background-position: center; background-size: cover; height: 440px; box-shadow: 0px 15px 15px rgba(0, 0, 0, 0.2);">
+            <div class="d-flex align-items-center" style="background-image: url(/img/img-cursos/background-cabecera-ver-todos-cursos.png); background-repeat: no-repeat; background-position: center; background-size: cover; height: 440px; box-shadow: 0px 15px 15px rgba(0, 0, 0, 0.2);">
                 <div class="container mt-4 ">
-                    <p data-aos="fade-down-left" class=""
-                        style="background-color: green; padding: 5px; border-radius: 10px; display: inline; color: white;">
+                    <p data-aos="fade-down-left" class="" style="background-color: green; padding: 5px; border-radius: 10px; display: inline; color: white;">
                         CLASES ONLINE
                     </p>
 
@@ -59,7 +57,27 @@
                 <hr>
             </div>
 
+            <!-- filtro de busqueda -->
+            <div class="container">
+                <div class="d-flex justify-content-end align-items-baseline">
+
+                    <label for="filtroBusqueda" class="text-truncate me-2">Buscar cursos por título</label>
+                    <div class="mb-4 d-flex">
+                        <input type="text" class="form-control" id="filtroBusqueda">
+                        <button type="button" class="btn btn-primary d-inline" onclick="filtrarCursos()">Buscar</button>
+                    </div>
+                </div>
+                <!-- Botones para filtrar por tipo_curso -->
+                <div class="mb-4">
+                    <button type="button" class="btn btn-outline-secondary btn-sm" onclick="filtrarPorTipo('CURSO')">CURSO</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm" onclick="filtrarPorTipo('TALLER')">TALLER</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm" onclick="filtrarPorTipo('DIPLOMADO')">DIPLOMADO</button>
+                    <button type="button" class="btn btn-secondary btn-sm" onclick="verTodos()">Ver todo</button>
+                </div>
+            </div>
+
             <div class="container-fluid d-flex justify-content-center" style="max-width: 2020px;">
+
 
                 <div class=" d-sm-flex flex-wrap justify-content-center">
 
@@ -68,11 +86,7 @@
                         <% arrayCursos.forEach(curso=> { %>
 
 
-
-
-
-                            <div data-aos="fade-up" class="transUp card bg-light mb-3 curso-card p-0 m-3"
-                                style="max-width: 19rem; border-radius: 10px;">
+                            <div data-aos="fade-up" class="transUp card bg-light mb-3 curso-card p-0 m-3" style="max-width: 19rem; border-radius: 10px;">
                                 <div class="card-header" style="background-color: white; border: none;">
                                     <strong>
                                         <%= curso.tipo_curso %>
@@ -125,12 +139,10 @@
                                                     <% console.log('seciones' + sesiones.slice(0, 3)/2) %>
                                         </p>
                                     </div>
-                                    <p style="color: gray; text-align: center; font-size: small;">Garantía de reembolso
-                                        de 30 días</p>
+                                    <p style="color: gray; text-align: center; font-size: small;">Garantía de reembolso de 30 días</p>
                                 </div>
                                 <div class="btn-group">
-                                    <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>" type="button"
-                                        class="btn btn-secondary ">
+                                    <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>" type="button" class="btn btn-secondary ">
                                         Mas informacion
                                     </a>
 
@@ -172,8 +184,7 @@
                                 </div>
                                 <div class="col-4">
                                     <h4>
-                                        <a style="color: #005d6a; " class="text-decoration-none font-weight-bold"
-                                            href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>">
+                                        <a style="color: #005d6a; " class="text-decoration-none font-weight-bold" href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>">
 
                                             <%= curso.titulo_curso %>
                                         </a>
@@ -201,14 +212,59 @@
 
 
                                     <div class="d-flex justify-content-center mt-4">
-                                        <a class="btn text-white mb-5 mt-4" style="background-color:#005d6a ;"
-                                            href="/contacto">CONTACTANOS </a>
+                                        <a class="btn text-white mb-5 mt-4" style="background-color:#005d6a ;" href="/contacto">CONTACTANOS </a>
                                     </div>
                 </div>
             </div>
 
 
+            <script>
+                function filtrarCursos() {
+                    // Obtén el valor del campo de búsqueda
+                    var filtro = document.getElementById('filtroBusqueda').value.toLowerCase();
 
+                    // Obtén todos los elementos de curso
+                    var cursos = document.getElementsByClassName('curso-card');
+
+                    // Itera sobre los elementos de curso y muestra/oculta según el filtro
+                    for (var i = 0; i < cursos.length; i++) {
+                        var tituloCurso = cursos[i].querySelector('.card-title strong').innerText.toLowerCase();
+                        if (tituloCurso.includes(filtro)) {
+                            cursos[i].style.display = 'block'; // Muestra el curso
+                        } else {
+                            cursos[i].style.display = 'none'; // Oculta el curso
+                        }
+                    }
+                }
+            </script>
+
+            <script>
+                function filtrarPorTipo(tipo) {
+                    // Obtén todos los elementos de curso
+                    var cursos = document.getElementsByClassName('curso-card');
+
+                    // Restablecer la visibilidad de todos los cursos
+                    for (var i = 0; i < cursos.length; i++) {
+                        cursos[i].style.display = 'block';
+                    }
+
+                    // Iterar sobre los elementos de curso y mostrar/ocultar según el tipo
+                    for (var i = 0; i < cursos.length; i++) {
+                        var tipoCurso = cursos[i].querySelector('.card-header strong').innerText;
+                        if (tipoCurso !== tipo) {
+                            cursos[i].style.display = 'none'; // Oculta el curso si no es del tipo seleccionado
+                        }
+                    }
+                }
+
+                function verTodos() {
+                    // Obtén todos los elementos de curso y restablece la visibilidad
+                    var cursos = document.getElementsByClassName('curso-card');
+                    for (var i = 0; i < cursos.length; i++) {
+                        cursos[i].style.display = 'block';
+                    }
+                }
+            </script>
 
 
 
