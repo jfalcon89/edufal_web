@@ -8,11 +8,9 @@
 
         <body>
 
-            <div class="d-flex align-items-center"
-                style="background-image: url(/img/img-cursos/background-cabecera-ver-todos-cursos.png); background-repeat: no-repeat; background-position: center; background-size: cover; height: 440px; box-shadow: 0px 15px 15px rgba(0, 0, 0, 0.2);">
+            <div class="d-flex align-items-center" style="background-image: url(/img/img-cursos/background-cabecera-ver-todos-cursos.png); background-repeat: no-repeat; background-position: center; background-size: cover; height: 440px; box-shadow: 0px 15px 15px rgba(0, 0, 0, 0.2);">
                 <div class="container mt-4 ">
-                    <p data-aos="fade-down-left" class=""
-                        style="background-color: green; padding: 5px; border-radius: 10px; display: inline; color: white;">
+                    <p data-aos="fade-down-left" class="" style="background-color: green; padding: 5px; border-radius: 10px; display: inline; color: white;">
                         CLASES ONLINE
                     </p>
 
@@ -71,12 +69,9 @@
                 </div>
                 <!-- Botones para filtrar por tipo_curso -->
                 <div class="mb-4">
-                    <button type="button" class="btn btn-outline-secondary btn-sm"
-                        onclick="filtrarPorTipo('CURSO')">CURSO</button>
-                    <button type="button" class="btn btn-outline-secondary btn-sm"
-                        onclick="filtrarPorTipo('TALLER')">TALLER</button>
-                    <button type="button" class="btn btn-outline-secondary btn-sm"
-                        onclick="filtrarPorTipo('DIPLOMADO')">DIPLOMADO</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm" onclick="filtrarPorTipo('CURSO')">CURSO</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm" onclick="filtrarPorTipo('TALLER')">TALLER</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm" onclick="filtrarPorTipo('DIPLOMADO')">DIPLOMADO</button>
                     <button type="button" class="btn btn-secondary btn-sm" onclick="verTodos()">Ver todo</button>
                 </div>
             </div>
@@ -91,8 +86,7 @@
                         <% arrayCursos.forEach(curso=> { %>
 
 
-                            <div class="transUp card bg-light mb-3 curso-card p-0 m-3"
-                                style="max-width: 19rem; border-radius: 10px;">
+                            <div class="transUp card bg-light mb-3 curso-card p-0 m-3 " style="max-width: 19rem; border-radius: 10px;">
                                 <div class="card-header" style="background-color: white; border: none;">
                                     <strong>
                                         <%= curso.tipo_curso %>
@@ -145,15 +139,13 @@
                                                     <% console.log('seciones' + sesiones.slice(0, 3)/2) %>
                                         </p>
                                     </div>
-                                    <p style="color: gray; text-align: center; font-size: small;">Garantía de reembolso
-                                        de 30 días</p>
-                                </div>
-                                <div class="btn-group">
-                                    <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>" type="button"
-                                        class="btn btn-secondary ">
-                                        Mas informacion
-                                    </a>
+                                    <p style="color: gray; text-align: center; font-size: small;">Garantía de reembolso de 30 días</p>
+                                    <div class="btn-group d-flex ">
+                                        <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>" type="button" class="btn btn-secondary ">
+                                            Mas informacion
+                                        </a>
 
+                                    </div>
                                 </div>
 
                             </div>
@@ -176,7 +168,7 @@
                     totalPaginas: Math.ceil(<%= arrayCursos.length %> / 5),
                     //Asumiendo 10 como valor inicial
 
-                    mostrarPagina: function (pagina) {
+                    mostrarPagina: function(pagina) {
                         this.paginaActual = pagina;
                         var inicio = (pagina - 1) * this.cursosPorPagina;
                         var fin = inicio + this.cursosPorPagina;
@@ -189,45 +181,45 @@
                         this.actualizarInfoPaginacion();
                     },
 
-                        cambiarElementosPorPagina: function () {
-                            this.cursosPorPagina = parseInt(document.getElementById('elementosPorPagina').value);
-                            this.totalPaginas = Math.ceil(<%= arrayCursos.length %> / this.cursosPorPagina);
+                    cambiarElementosPorPagina: function() {
+                        this.cursosPorPagina = parseInt(document.getElementById('elementosPorPagina').value);
+                        this.totalPaginas = Math.ceil(<%= arrayCursos.length %> / this.cursosPorPagina);
                         this.mostrarPagina(1);
-                        },
+                    },
 
-                        cambiarPagina: function (direccion) {
-                            if (direccion === 'anterior' && this.paginaActual > 1) {
-                                this.mostrarPagina(this.paginaActual - 1);
-                            } else if (direccion === 'siguiente' && this.paginaActual < this.totalPaginas) {
-                                this.mostrarPagina(this.paginaActual + 1);
-                            }
-                        },
-
-                        actualizarInfoPaginacion: function () {
-                            document.getElementById('paginaActual').innerText = this.paginaActual;
-                            document.getElementById('totalPaginas').innerText = this.totalPaginas;
-                        },
-
-                        // Método para inicializar la paginación
-                        inicializar: function () {
-                            // Crear botones de paginación
-                            var botonesPagina = document.getElementById('botonesPagina');
-                            for (var i = 1; i <= this.totalPaginas; i++) {
-                                var boton = document.createElement('button');
-                                boton.type = 'button';
-                                boton.className = 'btn btn-secondary';
-                                boton.innerText = i;
-                                boton.onclick = (function (pagina) {
-                                    return function () {
-                                        paginacion.mostrarPagina(pagina);
-                                    };
-                                })(i);
-                                botonesPagina.appendChild(boton);
-                            }
-
-                            // Mostrar la primera página al cargar la página
-                            this.mostrarPagina(1);
+                    cambiarPagina: function(direccion) {
+                        if (direccion === 'anterior' && this.paginaActual > 1) {
+                            this.mostrarPagina(this.paginaActual - 1);
+                        } else if (direccion === 'siguiente' && this.paginaActual < this.totalPaginas) {
+                            this.mostrarPagina(this.paginaActual + 1);
                         }
+                    },
+
+                    actualizarInfoPaginacion: function() {
+                        document.getElementById('paginaActual').innerText = this.paginaActual;
+                        document.getElementById('totalPaginas').innerText = this.totalPaginas;
+                    },
+
+                    // Método para inicializar la paginación
+                    inicializar: function() {
+                        // Crear botones de paginación
+                        var botonesPagina = document.getElementById('botonesPagina');
+                        for (var i = 1; i <= this.totalPaginas; i++) {
+                            var boton = document.createElement('button');
+                            boton.type = 'button';
+                            boton.className = 'btn btn-secondary';
+                            boton.innerText = i;
+                            boton.onclick = (function(pagina) {
+                                return function() {
+                                    paginacion.mostrarPagina(pagina);
+                                };
+                            })(i);
+                            botonesPagina.appendChild(boton);
+                        }
+
+                        // Mostrar la primera página al cargar la página
+                        this.mostrarPagina(1);
+                    }
                 };
 
                 // Inicializar la paginación
@@ -248,10 +240,8 @@
                         <option value="30">30</option>
                     </select>
 
-                    <button type="button" class="btn btn-secondary mx-2"
-                        onclick="paginacion.cambiarPagina('anterior')">Anterior</button>
-                    <button type="button" class="btn btn-secondary mx-2"
-                        onclick="paginacion.cambiarPagina('siguiente')">Siguiente</button>
+                    <button type="button" class="btn btn-secondary mx-2" onclick="paginacion.cambiarPagina('anterior')">Anterior</button>
+                    <button type="button" class="btn btn-secondary mx-2" onclick="paginacion.cambiarPagina('siguiente')">Siguiente</button>
 
                     <div class="btn-group" id="botonesPagina">
                         <!-- Botones de paginación se agregarán aquí -->
@@ -284,8 +274,7 @@
                                 </div>
                                 <div class="col-4">
                                     <h4>
-                                        <a style="color: #005d6a; " class="text-decoration-none font-weight-bold"
-                                            href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>">
+                                        <a style="color: #005d6a; " class="text-decoration-none font-weight-bold" href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>">
 
                                             <%= curso.titulo_curso %>
                                         </a>
@@ -313,8 +302,7 @@
 
 
                                     <div class="d-flex justify-content-center mt-4">
-                                        <a class="btn text-white mb-5 mt-4" style="background-color:#005d6a ;"
-                                            href="/contacto">CONTACTANOS </a>
+                                        <a class="btn text-white mb-5 mt-4" style="background-color:#005d6a ;" href="/contacto">CONTACTANOS </a>
                                     </div>
                 </div>
             </div>
