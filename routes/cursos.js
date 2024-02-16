@@ -32,6 +32,7 @@ router.get("/cursos_talleres/ver_curso_taller/:id", async(req, res) => {
     const cursoDB = await pool.query(`SELECT * FROM cursos where cursos.estado_curso = "Activo" and cursos.titulo_curso = "${curso}" `);
     const contenidoCursoDB = await pool.query(`SELECT * FROM modulos, cursos where cursos.titulo_curso = "${curso}" and  modulos.id_curso = cursos.id_curso;`);
     const maestroDB = await pool.query(`SELECT * FROM maestros WHERE maestros.id_maestro = ${cursoDB[0].id_maestro}`);
+    const arrayCursosDB = await pool.query('SELECT * FROM cursos where cursos.estado_curso = "Activo" and cursos.promocion = "Si";');
 
     // calculo porcentaje oferta inicio
     let porcentajeOferta = cursoDB[0].porcentaje_descuento - 1
@@ -164,7 +165,8 @@ router.get("/cursos_talleres/ver_curso_taller/:id", async(req, res) => {
         diaClase1,
         diaClase2,
         diaClase3,
-        sesiones
+        sesiones,
+        arrayCursos: arrayCursosDB
 
 
     });
@@ -223,6 +225,7 @@ router.post("/cursos_talleres/ver_curso_taller/:id", async(req, res) => {
     const cursoDB = await pool.query(`SELECT * FROM cursos, modulos WHERE cursos.estado_curso = "Activo" AND cursos.titulo_curso = "${curso}"`);
     const contenidoCursoDB = await pool.query(`SELECT * FROM modulos WHERE modulos.id_curso = "${id_curso}"`);
     const maestroDB = await pool.query(`SELECT * FROM maestros WHERE maestros.id_maestro = ${cursoDB[0].id_maestro}`);
+    const arrayCursosDB = await pool.query(`SELECT * FROM cursos where cursos.estado_curso = "Activo" `);
 
     // calculo porcentaje oferta inicio
     let porcentajeOferta = cursoDB[0].porcentaje_descuento - 1
@@ -366,7 +369,8 @@ router.post("/cursos_talleres/ver_curso_taller/:id", async(req, res) => {
             alertIcon: 'success',
             showConfirmButton: false,
             timer: 2000,
-            ruta: `cursos_talleres/ver_curso_taller/${cursoDB[0].titulo_curso}`
+            ruta: `cursos_talleres/ver_curso_taller/${cursoDB[0].titulo_curso}`,
+            arrayCursos: arrayCursosDB
         });
     } catch (error) {
         console.error('Error al consultar la base de datos:', error);
@@ -387,10 +391,12 @@ router.get("/cursos_talleres", async(req, res) => {
 
     const cursoDB = await pool.query(`SELECT * FROM cursos where cursos.estado_curso = "Activo" and cursos.titulo_curso = "${curso}" `);
     const contenidoCursoDB = await pool.query(`SELECT * FROM modulos, cursos where cursos.titulo_curso = "${curso}" and  modulos.id_curso = cursos.id_curso;`);
+    const arrayCursosDB = await pool.query('SELECT * FROM cursos where cursos.estado_curso = "Activo" and cursos.promocion = "Si";');
 
     res.render('ver-curso-taller', {
         curso: cursoDB[0],
-        contenidoCurso: contenidoCursoDB
+        contenidoCurso: contenidoCursoDB,
+        arrayCursos: arrayCursosDB
 
     });
 

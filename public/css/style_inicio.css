@@ -213,3 +213,22 @@
            flex-basis: 100%;
        }
    }
+   /* conteo de cifras */
+   
+   .container-cifras {
+       max-width: 800px;
+       margin: 0 auto;
+   }
+   
+   .count-section {
+       margin-bottom: 20px;
+   }
+   
+   h2 {
+       font-size: 20px;
+   }
+   
+   .count {
+       font-size: 24px;
+       color: #007bff;
+   }

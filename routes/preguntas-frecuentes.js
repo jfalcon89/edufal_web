@@ -8,9 +8,11 @@ const bcrypt = require('bcryptjs');
 
 
 // //12 - Método para controlar que está auth en todas las páginas
-router.get('/preguntas-frecuentes', (req, res) => {
+router.get('/preguntas-frecuentes', async(req, res) => {
 
-    res.render('preguntas-frecuentes');
+    const arrayCursosDB = await pool.query(`SELECT * FROM cursos where cursos.estado_curso = "Activo" `);
+
+    res.render('preguntas-frecuentes', { arrayCursos: arrayCursosDB });
 
 });
 
