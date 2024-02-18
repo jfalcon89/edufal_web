@@ -230,63 +230,83 @@
 
 
 
+
+
     <!-- (Content) Proximos cursos y talleres -->
-    <div class=" d-lg-flex w-100">
+    <div class="container p-5 ">
+        <h2 class="mb-4 " style="color: #005d6a; font-weight: 600; text-align:center;"><strong>PROXIMAS
+                CAPACITACIONES</strong>
+        </h2>
 
-        <div class="container">
-            <h2 style="color: #005d6a; font-weight: 600;" class=" p-5 text-center"><strong>PROXIMOS CURSOS &
-                    TALLERES</strong></h2>
+        <% if (arrayCursos.length> 0) { %>
+            <% arrayCursos.forEach(curso=> { %>
 
-            <% if (arrayCursos.length> 0) { %>
-                <% arrayCursos.forEach(curso=> { %>
-                    <div class="justify-content-around d-lg-flex mt-5">
-                        <div class="col-4">
+                <div class="card mb-4">
+                    <div class="row g-0">
+                        <div style="text-align: center; margin: auto; " class="col-md-4 ">
+                            <img src="<%= curso.url_imagen %>" class="w-100  img-fluid rounded-start  " alt="img-curso">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a style="color: #005d6a; " class="text-decoration-none font-weight-bold"
+                                        href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>">
 
-                            <div class="me-5">
-                                <h4 style="font-size: 50px; font-weight: bold; color: #005d6a;">
-                                    <%= curso.fecha_inicio.toLocaleString('es-ES', { timeZone: "America/Santo_Domingo"
-                                        }).slice(0, 10) %>
+                                        <%= curso.titulo_curso %>
+                                    </a>
                                 </h4>
-                            </div>
-                            <div class="me-5 mt-0 text-center">
-                                <p>Noviembre</p>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <h4>
-                                <a style="color: #005d6a; " class="text-decoration-none font-weight-bold"
-                                    href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>">
+                                <div class="d-lg-flex ">
 
-                                    <%= curso.titulo_curso %>
-                                </a>
-                            </h4>
-                            <div class="d-flex">
-                                <p class="me-5">7:00 pm - 9:00 pm</p>
-                                <p>MODALIDA:
-                                    <%= curso.modalidad %>
-                                </p>
+                                    <h4 class="card-title me-5 " style="color: #08787a; font-size: 18px;"> <i
+                                            class="bi bi-calendar3 me-2"></i><strong>Inicio:</strong>
+                                        <%= curso.fecha_inicio.toLocaleString('en-us', { weekday:"long", year:"numeric",
+                                            month:"short"}) %>
+                                    </h4>
+                                    <h4 style="color: #08787a; font-size: 18px;">
+                                        <p class="flex-grow-1 me-2"><i class="bi bi-stopwatch me-1"></i>
+                                            <strong>Hora: </strong> 7:00 pm - 9:00 pm
+                                        </p>
+                                    </h4>
+                                </div>
 
+                                <div>
+                                    <p>
+                                        <%= curso.descripcion %>
+                                    </p>
+                                </div>
+                                <div class="d-flex justify-content-between  align-items-center">
+
+
+                                    <div class="d-flex  ">
+
+                                        <p style="color: #08787a;"><strong><i class="bi bi-patch-check"></i>
+                                                <%= curso.tipo_curso %>
+                                            </strong>
+
+                                        </p>
+                                    </div>
+                                    <div class="d-flex  ">
+
+                                        <p style="color: #08787a;"><strong>MODALIDA:</strong>
+                                            <%= curso.modalidad %>
+                                        </p>
+                                    </div>
+
+
+                                </div>
                             </div>
-                            <div>
-                                <p>
-                                    <%= curso.descripcion %>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <img style="border-radius: 10px;" src="<%= curso.url_imagen %>" alt="img-curso">
                         </div>
                     </div>
-                    <hr>
-                    <% }) %>
-                        <% } %>
+                </div>
+                <hr>
+                <% }) %>
+                    <% } %>
 
-
-                            <div class="d-flex justify-content-center mt-4">
-                                <a class="btn text-white mb-5 mt-4" style="background-color:#005d6a ;"
-                                    href="/contactos">CONTACTANOS </a>
-                            </div>
-        </div>
+                        <div class="d-flex justify-content-center mt-4">
+                            <a class="btn text-white mb-5 mt-4" style="background-color:#005d6a ;"
+                                href="/contactos">CONTACTANOS
+                            </a>
+                        </div>
     </div>
 
 
@@ -356,7 +376,7 @@
                 <img src="https://onedrive.live.com/embed?resid=C31F9C66E8BCAAC9%211495&authkey=%21AIZlFx9gPup3ZbM&width=256"
                     alt="Imagen testimonio 3" style="width: 100px; border-radius: 50%;">
                 <p class="testimonial-text">"Cuando necesito tomar cursos sobre temas que mi universidad no ofrece,
-                    Coursera es uno de los mejores lugares a los que puedo recurrir."</p>
+                    Edufal Online es uno de los mejores lugares a los que puedo recurrir."</p>
                 <p class="testimonial-name">Larry W.</p>
                 <p class="testimonial-details">Estudiante desde 2021</p>
             </div>
@@ -364,7 +384,7 @@
                 <img src="https://onedrive.live.com/embed?resid=C31F9C66E8BCAAC9%211493&authkey=%21AEhjv0GBlxA830g&width=256"
                     alt="Imagen testimonio 4" style="width: 100px; border-radius: 50%;">
                 <p class="testimonial-text">"Aprender no solo se trata de hacer mejor un trabajo: implica mucho más.
-                    Coursera me permite aprender sin límites."</p>
+                    Edufal Online me permite aprender sin límites."</p>
                 <p class="testimonial-name">Chaitanya A.</p>
                 <p class="testimonial-details">Estudiante desde 2021</p>
             </div>
