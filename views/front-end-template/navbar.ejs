@@ -3,12 +3,10 @@
         <div class="d-lg-flex">
 
             <a class="text-decoration-none" href="contacto@edufalonline.com" target="_blank">
-                <p class="text-light m-0 me-4 d-flex" style="font-size: large;"><i
-                        class="bi bi-envelope-check me-2"></i>contacto@edufalonline.com</p>
+                <p class="text-light m-0 me-4 d-flex" style="font-size: large;"><i class="bi bi-envelope-check me-2"></i>contacto@edufalonline.com</p>
             </a>
             <a class="text-decoration-none" href="https://bit.ly/3xzs0RV" target="_blank">
-                <p class="text-light m-0 " style="font-size: large;"><i
-                        class="bi bi-telephone-forward me-2"></i>829-856-0203</p>
+                <p class="text-light m-0 " style="font-size: large;"><i class="bi bi-telephone-forward me-2"></i>829-856-0203</p>
             </a>
         </div>
         <div class="container-redes align-items-center d-flex ">
@@ -19,19 +17,15 @@
             <div>
 
                 <!-- <h6 class="text-white mb-3"><strong>NUESTRAS REDES SOCIALES</strong></h6> -->
-                <a href="https://www.facebook.com/rosfalrd/" target="_blank"> <img style="width: 30px;"
-                        src="/img/logo-facebook.png" alt="facebook"></a>
-                <a href="https://www.instagram.com/rosfalrd/" target="_blank"> <img style="width: 30px;"
-                        src="/img/logo-instagram.png" alt="instagram"></a>
-                <a href="https://bit.ly/3pUAZZq" target="_blank"> <img style="width: 30px;"
-                        src="/img/logo-ws-navar-footer.png" alt="ws"></a>
+                <a href="https://www.facebook.com/rosfalrd/" target="_blank"> <img style="width: 30px;" src="/img/logo-facebook.png" alt="facebook"></a>
+                <a href="https://www.instagram.com/rosfalrd/" target="_blank"> <img style="width: 30px;" src="/img/logo-instagram.png" alt="instagram"></a>
+                <a href="https://bit.ly/3pUAZZq" target="_blank"> <img style="width: 30px;" src="/img/logo-ws-navar-footer.png" alt="ws"></a>
                 <a href="#"> <img style="width: 30px;" src="/img/logo-twiter.png" alt="twier"></a>
             </div>
         </div>
         <!-- <a href="/login" class="m">LOGIN</a> -->
     </div>
-    <a class="text-decoration-none d-none d-sm-block" href="https://edufalonline.com/aulavirtual/login/"
-        target="_blank">
+    <a class="text-decoration-none d-none d-sm-block" href="https://edufalonline.com/aulavirtual/login/" target="_blank">
         <h5 class="text-light text-truncate " style="font-size: large; margin-top: 6px;">Aula Virtual</h5>
     </a>
 </div>
@@ -43,12 +37,10 @@
         <nav class="navbar navbar-expand-xxl navbar-light bg-0 p-0 ">
 
 
-            <a class="navbar-brand " href="/"><img src="/img/logo-edufal.jpg" style="width: 220; height: 70px;"
-                    alt="logo edufal"></a>
+            <a class="navbar-brand " href="/"><img src="/img/logo-edufal.jpg" style="width: 220; height: 70px;" alt="logo edufal"></a>
             <!-- <div class="container-fluid"> -->
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse  justify-content-around" id="navbarNav">
@@ -63,18 +55,19 @@
                     </li>
 
                     <li class="nav-item">
+
+
                         <div class="d-flex me-lg-3">
-                            <a class="nav-link  " style="font-size: 15px;" href="/cursos_talleres"><strong
-                                    class="hover text-truncate">CURSOS & TALLERES</strong></a>
-                            <div class="btn-group dropleft" role="group">
-                                <button type="" class="bg-white border-0 dropdown-toggle dropdown-toggle-split"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                </button>
+                            <div class="btn-group " role="group">
+                                <button type="" class="bg-white border-0 dropdown-toggle dropdown-toggle-split nav-link hover text-truncate" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <strong>CURSOS & TALLERES</strong></button>
                                 <div class="dropdown-menu">
+                                    <a class="nav-link " style="font-size: 15px; margin-left: 5px;" href="/cursos_talleres"><strong class="hover text-truncate">IR A
+                                            CURSOS <i class="bi bi-arrow-right-square-fill"></i></strong></a>
                                     <% if (arrayCursos.length> 0) { %>
                                         <% arrayCursos.forEach(curso=> { %>
-                                            <a class="dropdown-item"
-                                                href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>">
+                                            <a class="dropdown-item list-group-item d-inline-block text-truncate" style="max-width: 340px;" href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>">
+                                                <i class="bi bi-chevron-double-right"></i>
                                                 <%= curso.titulo_curso %>
                                             </a>
                                             <% }) %>
@@ -82,6 +75,7 @@
                                 </div>
                             </div>
                         </div>
+
                     </li>
 
                     <li class="nav-item">
@@ -102,8 +96,7 @@
                                 class="hover">CONTACTOS</strong></a>
                     </li>
                     <li class="nav-item d-lg-none">
-                        <a class="nav-link me-lg-3" style="font-size: 15px;"
-                            href="https://edufalonline.com/aulavirtual/login/"><strong class="hover text-truncate">Aula
+                        <a class="nav-link me-lg-3" style="font-size: 15px;" href="https://edufalonline.com/aulavirtual/login/"><strong class="hover text-truncate">Aula
                                 Virtual</strong></a>
                     </li>
 
