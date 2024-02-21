@@ -56,7 +56,7 @@ router.get('/admin/cursos-adm/crear-curso-adm', async(req, res) => {
 router.post('/admin/cursos-adm/crear-curso-adm', async(req, res) => {
 
 
-    const { titulo_curso, descripcion, id_maestro, estado_curso, fecha_inicio, horasClases, duracion, modalidad, costo, tipo_curso, url_imagen, url_imagen_full_size, promocion, inf_curso, url_plan_estudio, oferta_inscripcion, precio_oferta, cantidad_cuota, porcentaje_descuento, dias_semana_clases } = req.body;
+    const { titulo_curso, descripcion, id_maestro, estado_curso, fecha_inicio, horasClases, duracion, modalidad, costo, tipo_curso, url_imagen, url_imagen_full_size, promocion, inf_curso, url_plan_estudio, oferta_inscripcion, dirigido_a, cantidad_cuota, porcentaje_descuento, dias_semana_clases } = req.body;
     const nuevoCurso = {
         titulo_curso,
         descripcion,
@@ -74,7 +74,7 @@ router.post('/admin/cursos-adm/crear-curso-adm', async(req, res) => {
         inf_curso,
         url_plan_estudio,
         oferta_inscripcion,
-        precio_oferta,
+        dirigido_a,
         cantidad_cuota,
         porcentaje_descuento,
         dias_semana_clases
@@ -165,7 +165,7 @@ router.post('/admin/cursos-adm/editar-curso-adm/:id', async(req, res) => {
     const id = req.params.id;
     console.log(req.params.id)
 
-    const { titulo_curso, descripcion, id_maestro, estado_curso, fecha_inicio, horasClases, duracion, modalidad, costo, tipo_curso, url_imagen, url_imagen_full_size, promocion, inf_curso, url_plan_estudio, oferta_inscripcion, precio_oferta, cantidad_cuota, porcentaje_descuento, dias_semana_clases } = req.body;
+    const { titulo_curso, descripcion, id_maestro, estado_curso, fecha_inicio, horasClases, duracion, modalidad, costo, tipo_curso, url_imagen, url_imagen_full_size, promocion, inf_curso, url_plan_estudio, oferta_inscripcion, dirigido_a, cantidad_cuota, porcentaje_descuento, dias_semana_clases } = req.body;
     const updateCurso = {
         titulo_curso,
         descripcion,
@@ -184,7 +184,7 @@ router.post('/admin/cursos-adm/editar-curso-adm/:id', async(req, res) => {
         inf_curso,
         url_plan_estudio,
         oferta_inscripcion,
-        precio_oferta,
+        dirigido_a,
         cantidad_cuota,
         porcentaje_descuento,
         dias_semana_clases

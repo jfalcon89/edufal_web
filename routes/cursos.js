@@ -140,6 +140,36 @@ router.get("/cursos_talleres/ver_curso_taller/:id", async(req, res) => {
         // Puedes agregar más lógica aquí según sea necesario para índices adicionales
     });
 
+    // separacion dirigido a candidatos
+    if (cursoDB[0].dirigido_a) {
+        var dirigido_a = cursoDB[0].dirigido_a;
+
+        // Divide la cadena en intervalos de tiempo usando la coma como separador
+        var intervalosDeCandidatos = dirigido_a.split('*');
+
+        // Variables para almacenar los horarios
+        var candidato_1, candidato_2, candidato_3, candidato_4;
+
+        // Itera sobre los intervalos de tiempo
+        intervalosDeCandidatos.forEach(function(intervalo, indice) {
+            // Trim para eliminar espacios en blanco al inicio y al final de cada intervalo
+            var intervaloLimpio = intervalo.trim();
+
+            // Asigna a las variables horario1 y horario2 en función del índice
+            if (indice === 0) {
+                candidato_1 = intervaloLimpio;
+            } else if (indice === 1) {
+                candidato_2 = intervaloLimpio;
+            } else if (indice === 2) {
+                candidato_3 = intervaloLimpio;
+            } else if (indice === 3) {
+                candidato_4 = intervaloLimpio;
+            }
+
+            // Puedes agregar más lógica aquí según sea necesario para índices adicionales
+        });
+    }
+
     // Imprime los horarios almacenados
     // console.log('Dia clase 1:', diaClase1);
     // console.log('Dia clase 2:', diaClase2);
@@ -166,7 +196,11 @@ router.get("/cursos_talleres/ver_curso_taller/:id", async(req, res) => {
         diaClase2,
         diaClase3,
         sesiones,
-        arrayCursos: arrayCursosDB
+        arrayCursos: arrayCursosDB,
+        candidato_1,
+        candidato_2,
+        candidato_3,
+        candidato_4
 
 
     });
