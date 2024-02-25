@@ -29,6 +29,7 @@
                         <!-- <th scope="col">Descripcion</th> -->
                         <th scope="col">Estado</th>
                         <th scope="col">Fecha Inicio</th>
+                        <th scope="col">Fecha Oferta</th>
                         <th scope="col">Duracion</th>
                         <th scope="col">Modalidad</th>
                         <th scope="col">Precio</th>
@@ -38,7 +39,7 @@
                         <th scope="col">Total Inscripciones</th>
                         <th scope="col">Id Maestro</th>
                         <th scope="col">Acciones</th>
-                        <th scope="col">Portada</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -49,7 +50,7 @@
                                 <td>
                                     <%= curso.id_curso %>
                                 </td>
-                                <td>
+                                <td><img src="<%= curso.url_imagen %>" width="50px" alt="portada_curso">
                                     <%= curso.titulo_curso %>
                                 </td>
 
@@ -65,6 +66,23 @@
                                 <td>
                                     <%= curso.fecha_inicio.toLocaleString('es-ES', { timeZone: "America/Santo_Domingo"
                                         }).slice(0, 10) %>
+                                </td>
+                                <td>
+                                    <% if(curso.fecha_oferta) { %>
+                                        <%= curso.fecha_oferta.toLocaleString('es-ES', {
+                                            timeZone: "America/Santo_Domingo" }).slice(0, 10) %>
+
+                                            <% if(curso.fecha_oferta < ahora) { %>
+                                                <strong class="bg-danger text-light ">Oferta Vencida</strong>
+                                                <% } %>
+                                                    <% if (ahora < curso.fecha_oferta){ %>
+                                                        <strong class="bg-primary text-light ">Oferta Activa</strong>
+                                                        <% } %>
+
+                                                            <% } else { %>
+
+                                                                Sin Oferta
+                                                                <% } %>
                                 </td>
                                 <td>
                                     <%= curso.duracion %>
@@ -91,13 +109,10 @@
                                     <%= curso.id_maestro %>
                                 </td>
                                 <td>
-                                    <a href="/admin/cursos-adm/editar-curso-adm/<%= curso.id_curso %>"
-                                        class="btn ">Editar</a>
+                                    <a href="/admin/cursos-adm/editar-curso-adm/<%= curso.id_curso %>" class="btn ">Editar</a>
 
                                 </td>
-                                <td>
-                                    <img style="border-radius: 10px;" src="<%= curso.url_imagen %>" alt="img curso">
-                                </td>
+
                             </tr>
 
                             <% }) %>
@@ -113,7 +128,7 @@
 
 
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('#datatable').DataTable({
                 order: [
                     [0, 'desc']

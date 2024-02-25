@@ -81,7 +81,8 @@
                             style="  border-radius: 0% 0% 5% 15%; border-left: solid 10px #1d607a;  border-image: linear-gradient(to right, #1d607a, rgb(255, 255, 255)); border-image-slice: 1; padding: 10px;">
                             <div class="card-body">
                                 <h1 class="card-title text-secondary">
-                                    <%= curso.tipo_curso %>
+
+                                    <%= curso.tipo_curso %><i class="bi bi-shield-check m-3 "></i>
 
                                 </h1>
                                 <h4 class="card-title" style="color: #08787a; font-size: 18px;"> <i
@@ -126,6 +127,11 @@
                                                             </p>
                                                             <% } %>
                                                                 <!-- <a href="#!" class="btn btn-primary">Go somewhere</a> -->
+                                                                <h3><strong>Incluye:</strong></h3>
+                                                                <li>Material de apoyo en general</li>
+                                                                <li>Clases online con profesionales</li>
+                                                                <li>Acceso al aula virtual sin limite de tiempo</li>
+                                                                <li>Certificado digital o fisico</li>
                             </div>
                         </div>
                         <div data-aos="fade-up" class="card col-md-6" style="border: none;">
@@ -145,7 +151,8 @@
 
                                             <ul class="p-0 ">
                                                 <li class="accordion-item">
-                                                    <button class="accordion-header">
+                                                    <button class="accordion-header"
+                                                        style="width: 100%; text-align: left;">
                                                         <%= contenido.titulo %>
                                                     </button>
                                                     <div class="accordion-body">
@@ -200,14 +207,23 @@
                                             Online en Vivo</h6>
                                     </div>
                                     <div class="curso-item mt-2" style="text-align: center;">
-                                        <h3 style="color: #08787a;" class="card-title mt-4 "> <i
-                                                class="bi bi-calendar3 me-2"><strong></i>
-                                            <%= diaClase1 %>
-                                                </strong>
-                                        </h3>
-                                        <h5 class="mt-4"><i class="bi bi-stopwatch me-2"></i>Hora:
-                                            <%= horario1 %>
-                                        </h5>
+                                        <% if(diaClase1){ %>
+                                            <h3 style="color: #08787a;" class="card-title mt-4 "> <i
+                                                    class="bi bi-calendar3 me-2"><strong></i>
+                                                <%= diaClase1 %>
+                                                    </strong>
+                                            </h3>
+                                            <% }else{ %>
+                                                <h3 style="color: #08787a;" class="card-title mt-4 "> <i
+                                                        class="bi bi-calendar3 me-2"></i>
+                                                    <strong>
+                                                        NO Disponible
+                                                    </strong>
+                                                </h3>
+                                                <% } %>
+                                                    <h5 class="mt-4"><i class="bi bi-stopwatch me-2"></i>Hora:
+                                                        <%= horario1 %>
+                                                    </h5>
                                     </div>
                                     <div class="card-body text-center mt-2">
                                         <p class="card-text">
@@ -228,14 +244,24 @@
                                             Online en Vivo</h6>
                                     </div>
                                     <div class="curso-item mt-2" style="text-align: center;">
-                                        <h3 style="color: #08787a;" class="card-title mt-4 "> <strong> <i
+                                        <% if(diaClase2){ %>
+                                            <h3 style="color: #08787a;" class="card-title mt-4 "> <i
                                                     class="bi bi-calendar3 me-2"></i>
-                                                <%= diaClase2 %>
-                                            </strong>
-                                        </h3>
-                                        <h5 class="mt-4"><i class="bi bi-stopwatch me-2"></i>Hora:
-                                            <%= horario1 %>
-                                        </h5>
+                                                <strong>
+                                                    <%= diaClase2 %>
+                                                </strong>
+                                            </h3>
+                                            <% }else{ %>
+                                                <h3 style="color: #08787a;" class="card-title mt-4 "><i
+                                                        class="bi bi-calendar3 me-2"></i>
+                                                    <strong>
+                                                        NO Disponible
+                                                    </strong>
+                                                </h3>
+                                                <% } %>
+                                                    <h5 class="mt-4"><i class="bi bi-stopwatch me-2"></i>Hora:
+                                                        <%= horario1 %>
+                                                    </h5>
                                     </div>
                                     <div class="card-body text-center mt-2">
                                         <p class="card-text">
@@ -256,19 +282,26 @@
                                             Online en Vivo</h6>
                                     </div>
                                     <div class="curso-item mt-2" style="text-align: center;">
-                                        <h3 style="color: #08787a;" class="card-title mt-4 "> <i
-                                                class="bi bi-calendar3 me-2"><strong></i>
-                                            <% if(diaClase3){ %>
-                                                <%= diaClase3 %>
+                                        <% if(diaClase3){ %>
+                                            <h3 style="color: #08787a;" class="card-title mt-4 "> <i
+                                                    class="bi bi-calendar3 me-2"></i>
+                                                <strong>
+                                                    <%= diaClase3 %>
+                                                </strong>
+                                            </h3>
+                                            <% }else{ %>
+                                                <h3 style="color: #08787a;" class="card-title mt-4 "> <i
+                                                        class="bi bi-calendar3 me-2"></i>
+                                                    <strong>
+                                                        NO Disponible
                                                     </strong>
-                                                    <% }else{ %>
-                                                        NO Disponibles
-                                                        <% } %>
-                                        </h3>
-                                        <h5 class="mt-4"><i class="bi bi-stopwatch me-2"></i>Hora:
+                                                </h3>
 
-                                            <%= horario2 %>
-                                        </h5>
+                                                <% } %>
+                                                    <h5 class="mt-4"><i class="bi bi-stopwatch me-2"></i>Hora:
+
+                                                        <%= horario2 %>
+                                                    </h5>
                                     </div>
                                     <div class="card-body text-center mt-2">
                                         <p class="card-text">
@@ -376,72 +409,124 @@
                     <div class="col-lg-6 transUp d-flex justify-content-center align-items-center">
                         <div data-aos="fade-up" class="card bg-light mb-3 me-2 curso-card "
                             style="max-width: 20rem; border-radius: 10px;">
-                            <div class="card-header" style="background-color: #08787a; color: white;">
-                                <h4> <strong>FACILIDADES DE PAGO</strong></h4>
-                            </div>
-                            <div class="curso-item">
 
-                            </div>
-                            <div class="card-body text-center mt-2">
-                                <p class="card-text"><del>
+                            <% if(diferencia < 0){ %>
+                                <div class="card-header" style="background-color: #08787a; color: white;">
+                                    <h4> <strong>FACILIDADES DE PAGO</strong></h4>
+                                </div>
+                                <div class="curso-item">
 
-                                        Precio Regular
-                                        <%= precioRegular %>
-                                    </del>
+                                </div>
+                                <div class="card-body text-center mt-2">
+                                    <p class="card-text"><del>
 
+                                            Precio Regular
+                                            <%= precioRegular %>
+                                        </del>
+
+                                    </p>
+                                    <h2 class="mb-5" style="color: red;"><strong>
+
+                                            <%= porcentaje_descuento.slice(2, ) %>%
+                                        </strong>OFF
+                                    </h2>
+                                    <h5 class="card-title">
+                                        PRECIO OFERTA
+                                    </h5>
+                                    <h1 class="card-title" style="color: #08787a;">
+                                        RD <strong>
+
+                                            <%= precioOferta=Intl.NumberFormat('en-EN', { style: 'currency' ,
+                                                currency: 'USD' }).format(precioOferta) %>
+                                        </strong>
+                                    </h1>
+                                    <p>EN
+                                        <%= cantidadCuotas %> COMODAS CUOTAS
+                                    </p>
+                                    <h2 class="mb-5">DE <strong>
+
+                                            <%= montoCuotas=Intl.NumberFormat('en-EN', { style: 'currency' ,
+                                                currency: 'USD' }).format(montoCuotas) %>
+                                        </strong>
+                                    </h2>
+                                </div>
+                                <p style="color: gray; text-align: center; font-size: small;">Garantía de reembolso de
+                                    30 días
                                 </p>
-                                <h2 class="mb-5" style="color: red;"><strong>
+                                <button class="btn btn-dark btn-lg" type="submit" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModalNovedad">Quiero
+                                    Inscribirme</button>
 
-                                        <%= porcentaje_descuento.slice(2, ) %>%
-                                    </strong>OFF
-                                </h2>
-                                <h5 class="card-title">
-                                    PRECIO OFERTA
-                                </h5>
-                                <h1 class="card-title" style="color: #08787a;">
-                                    RD <strong>
+                                <% }else{ %>
+                                    <div class="card-header text-center "
+                                        style="background-color: #08787a; color: white;">
+                                        <h4> <strong>OFERTA LIMITADA</strong></h4>
+                                    </div>
+                                    <div class="curso-item">
 
-                                        <%= precioOferta=Intl.NumberFormat('en-EN', { style: 'currency' ,
-                                            currency: 'USD' }).format(precioOferta) %>
-                                    </strong>
-                                </h1>
-                                <p>EN
-                                    <%= cantidadCuotas %> COMODAS CUOTAS
-                                </p>
-                                <h2 class="mb-5">DE <strong>
+                                    </div>
+                                    <div class="card-body text-center mt-2">
+                                        <img style="max-width: 100%;" height="100%"
+                                            src="https://onedrive.live.com/embed?resid=C31F9C66E8BCAAC9%211499&authkey=%21AMDjB1agslRWaiU&width=256"
+                                            alt="100% gratis">
 
-                                        <%= montoCuotas=Intl.NumberFormat('en-EN', { style: 'currency' , currency: 'USD'
-                                            }).format(montoCuotas) %>
-                                    </strong>
-                                </h2>
-                            </div>
-                            <p style="color: gray; text-align: center; font-size: small;">Garantía de reembolso de 30
-                                días
-                            </p>
-                            <button class="btn btn-dark btn-lg" type="submit" data-bs-toggle="modal"
-                                data-bs-target="#exampleModalNovedad">Quiero
-                                Inscribirme</button>
+                                        <h5 class="card-title">
+                                            PRECIO OFERTA
+                                        </h5>
+                                        <h1 class="card-title" style="color: #08787a;">
+                                            <strong>
+
+                                                GRATIS
+                                            </strong>
+                                        </h1>
+                                        <h5>¡Aprovecha Ahora!
+                                            <%= curso.tipo_curso %> Gratis por Tiempo Limitado, <strong>¡Inscríbete
+                                                    Ya!</strong>
+                                        </h5>
+                                        <p id="fecha_oferta" class="d-none ">
+                                            <%= curso.fecha_oferta %>
+                                        </p>
+                                        <p id="demo"></p>
+
+                                    </div>
+                                    <p style="color: gray; text-align: center; font-size: small;">Incluye certificado
+                                        digital o fisico.
+                                    </p>
+                                    <button class="btn btn-dark btn-lg" type="submit" data-bs-toggle="modal"
+                                        data-bs-target="#exampleModalNovedad">Quiero
+                                        Inscribirme</button>
+
+                                    <% } %>
+
                         </div>
                     </div>
                     <div class="col-lg-6 ">
 
+                        <% if(diferencia < 0){ %>
 
-                        <h2 style="color: #08787a;" class="text-center"> <strong> Puedes reservar o inscribirte
-                                depositando en una de nuestras cuentas
-                                institucionales.</strong>
-                        </h2>
-                        <div class="d-flex justify-content-center">
-                            <img class="" width="640px" style="max-width: 100%;"
-                                src="/img/img-cursos/numeros-cuenta-edufal.png" alt="">
-                        </div>
-                        <p style="color: #727171;" class="text-center"> <strong>Favor enviar: Foto del recibo y/o
-                                comprobante de pago, Nombre del estudiante, Cedula del estudiante y Correo
-                                electronico.</strong>
-                        </p>
-                        <h2 style="color: #08787a;" class="text-center"> <strong> Aceptamos tarjetas de Credito</strong>
-                            <img width="180px" style="max-width: 100%;" src="/img/img-cursos/img-visa-mastercard.png"
-                                alt="img-visa-mastercard">
-                        </h2>
+                            <h2 style="color: #08787a;" class="text-center"> <strong> Puedes reservar o inscribirte
+                                    depositando en una de nuestras cuentas
+                                    institucionales.</strong>
+                            </h2>
+                            <div class="d-flex justify-content-center">
+                                <img class="" width="640px" style="max-width: 100%;"
+                                    src="/img/img-cursos/numeros-cuenta-edufal.png" alt="">
+                            </div>
+                            <p style="color: #727171;" class="text-center"> <strong>Favor enviar: Foto del recibo y/o
+                                    comprobante de pago, Nombre del estudiante, Cedula del estudiante y Correo
+                                    electronico.</strong>
+                            </p>
+                            <h2 style="color: #08787a;" class="text-center"> <strong> Aceptamos tarjetas de
+                                    Credito</strong>
+                                <img width="180px" style="max-width: 100%;"
+                                    src="/img/img-cursos/img-visa-mastercard.png" alt="img-visa-mastercard">
+                            </h2>
+
+                            <% }else { %>
+                                <h1 style="color: #08787a;" class="text-center d-flex h-100 align-items-center  ">"Tu
+                                    potencial es ilimitado. ¡Despierta cada día y conquista tus metas con determinación
+                                    y pasión!"</h1>
+                                <% } %>
 
                     </div>
 
@@ -450,6 +535,8 @@
             </div>
 
 
+            <script src="/js/conteo_regresivo.js">
+            </script>
 
             <!-- maestro docente -->
             <% if(maestro){ %>
@@ -619,58 +706,69 @@
                                     <form method="POST" class="form-group" autocomplete="off">
 
                                         <input type="text" name="id_curso" value="<%= curso.id_curso %>" class="d-none">
-                                        <input type="text" name="precioOferta_inscripcion" value="<%= precioOferta %>"
-                                            class="d-none">
-                                        <input type="text" name="fecha_inicio_inscripcion"
-                                            value="<%= curso.fecha_inicio %>" class="d-none">
-                                        <input type="text" name="promocion_inscripcion" value="<%= curso.promocion %>"
-                                            class="d-none">
-                                        <input type="text" name="oferta_inscripcion_inscripcion"
-                                            value="<%= curso.oferta_inscripcion %>" class="d-none">
+                                        <% if(diferencia < 0){ %>
+                                            <input type="text" name="precioOferta_inscripcion"
+                                                value="<%= precioOferta %>" class="d-none">
+                                            <% }else { %>
+                                                <input type="text" name="precioOferta_inscripcion" value=""
+                                                    class="d-none">
+                                                <% } %>
+                                                    <input type="text" name="fecha_inicio_inscripcion"
+                                                        value="<%= curso.fecha_inicio %>" class="d-none">
+                                                    <input type="text" name="promocion_inscripcion"
+                                                        value="<%= curso.promocion %>" class="d-none">
+                                                    <input type="text" name="oferta_inscripcion_inscripcion"
+                                                        value="<%= curso.oferta_inscripcion %>" class="d-none">
 
-                                        <div>
-                                            <label for="nombre">Nombre </label>
-                                        </div>
-                                        <input class="form-control" type="text" name="nombre" value="" required>
+                                                    <div>
+                                                        <label for="nombre">Nombre </label>
+                                                    </div>
+                                                    <input class="form-control" type="text" name="nombre" value=""
+                                                        required>
 
-                                        <div>
-                                            <label for="apellido">Apellido</label>
-                                        </div>
-                                        <input class="form-control" type="text" name="apellido" value="" required>
-                                        <div>
-                                            <label for="cedula">Cedula </label>
-                                        </div>
-                                        <input class="form-control" type="number" name="cedula" value="" required>
+                                                    <div>
+                                                        <label for="apellido">Apellido</label>
+                                                    </div>
+                                                    <input class="form-control" type="text" name="apellido" value=""
+                                                        required>
+                                                    <div>
+                                                        <label for="cedula">Cedula </label>
+                                                    </div>
+                                                    <input class="form-control" type="number" name="cedula" value=""
+                                                        required>
 
-                                        <div>
-                                            <label for="fecha_nacimiento">Fecha Nacimiento</label>
-                                        </div>
-                                        <input class="form-control" type="date" name="fecha_nacimiento" value=""
-                                            required>
-                                        <div>
-                                            <label for="direccion">Direccion </label>
-                                        </div>
-                                        <input class="form-control" type="text" name="direccion" value="" required>
+                                                    <div>
+                                                        <label for="fecha_nacimiento">Fecha Nacimiento</label>
+                                                    </div>
+                                                    <input class="form-control" type="date" name="fecha_nacimiento"
+                                                        value="" required>
+                                                    <div>
+                                                        <label for="direccion">Direccion </label>
+                                                    </div>
+                                                    <input class="form-control" type="text" name="direccion" value=""
+                                                        required>
 
-                                        <div>
-                                            <label for="telefono">Telefono</label>
-                                        </div>
-                                        <input class="form-control" type="number" name="telefono" value="" required>
-                                        <div>
-                                            <label for="correo_electronico">Correo Electronico</label>
-                                        </div>
-                                        <input class="form-control" type="text" name="correo_electronico" value=""
-                                            required>
-                                        <div>
-                                            <label for="pais">Pais</label>
-                                        </div>
-                                        <input class="form-control" type="text" name="pais" value="" required>
-                                        <div class="modal-footer border-0">
-                                            <button type="button" class="btn btn-secondary"
-                                                data-bs-dismiss="modal">Cancelar</button>
-                                            <button type="submit" class="btn btn-primary">Si,
-                                                INSCRIBIRME</button>
-                                        </div>
+                                                    <div>
+                                                        <label for="telefono">Telefono</label>
+                                                    </div>
+                                                    <input class="form-control" type="number" name="telefono" value=""
+                                                        required>
+                                                    <div>
+                                                        <label for="correo_electronico">Correo Electronico</label>
+                                                    </div>
+                                                    <input class="form-control" type="text" name="correo_electronico"
+                                                        value="" required>
+                                                    <div>
+                                                        <label for="pais">Pais</label>
+                                                    </div>
+                                                    <input class="form-control" type="text" name="pais" value=""
+                                                        required>
+                                                    <div class="modal-footer border-0">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Cancelar</button>
+                                                        <button type="submit" class="btn btn-primary">Si,
+                                                            INSCRIBIRME</button>
+                                                    </div>
                                     </form>
                                 </div>
                             </div>

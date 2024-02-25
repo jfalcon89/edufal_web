@@ -211,16 +211,16 @@
         </div>
         <div class="cta-options">
             <div class="cta-option">
-                <h3>Acompañamiento personalizado</h3>
-                <p>Contamos con un equipo de Profesionales a tu disposición para brindarte la asesoria que garantice una
-                    correcta gestión de tus procesos de enseñanzas.</p>
-                <a href="#asesoria" class="cta-link">Clic para ver más</a>
-            </div>
-            <div class="cta-option">
                 <h3>Capacitaciones</h3>
                 <p>Explora los Cursos, Diplomados y Talleres que impartimos todos por profesores de basta experiencia en
                     modalidad virtual y presencial pero sobre todo en horarios flexibles.</p>
                 <a href="#capacitaciones" class="cta-link">Clic para ver más</a>
+            </div>
+            <div class="cta-option">
+                <h3>Acompañamiento personalizado</h3>
+                <p>Contamos con un equipo de Profesionales a tu disposición para brindarte la asesoria que garantice una
+                    correcta gestión de tus procesos de enseñanzas.</p>
+                <a href="#asesoria" class="cta-link">Clic para ver más</a>
             </div>
             <div class="cta-option">
                 <h3>Impulsamos tu Empresa</h3>
@@ -237,84 +237,106 @@
 
     <!-- (Content) Proximos cursos y talleres -->
     <div class="container  ">
-        <h2 class="mb-4 mt-4  " style="color: #005d6a; font-weight: 600; text-align:center;"><strong>PROXIMAS
-                CAPACITACIONES</strong>
+        <h2 class="mb-4 mt-4  " style="color: #005d6a; font-weight: 600; text-align:center;"><strong>CAPACITACIONES
+                PROXIMOS A INICIAR</strong>
         </h2>
 
         <% if (arrayCursosPromo.length> 0) { %>
             <% arrayCursosPromo.forEach(curso=> { %>
 
-                <div class="card mb-4">
-                    <div class="row g-0">
-
-                        <div style="text-align: center; margin: auto; " class="col-md-4 ">
-                            <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>">
-                                <img src="<%= curso.url_imagen %>" class="w-100  img-fluid rounded-start  "
-                                    alt="img-curso">
-                            </a>
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h4 class="card-title">
-                                    <a style="color: #005d6a; " class="text-decoration-none font-weight-bold"
-                                        href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>">
-
-                                        <%= curso.titulo_curso %>
-                                    </a>
-                                </h4>
-                                <div class="d-lg-flex ">
-
-                                    <h4 class="card-title me-5 " style="color: #08787a; font-size: 18px;"> <i
-                                            class="bi bi-calendar3 me-2"></i><strong>Inicio:</strong>
-                                        <%= curso.fecha_inicio.toLocaleString('en-us', { weekday:"long", year:"numeric",
-                                            month:"short"}) %>
-                                    </h4>
-                                    <h4 style="color: #08787a; font-size: 18px;">
-                                        <p class="flex-grow-1 me-2"><i class="bi bi-stopwatch me-1"></i>
-                                            <strong>Hora: </strong> 7:00 pm - 9:00 pm
-                                        </p>
-                                    </h4>
-                                </div>
-
-                                <div>
-                                    <p>
-                                        <%= curso.descripcion %>
-                                    </p>
-                                </div>
-                                <div class="d-flex justify-content-between  align-items-center">
+                <% var fechaString=curso.fecha_inicio %>
+                    <% var nuevaFecha=new Date(Date.parse(fechaString.replace(/(\d{2})\/(\d{2})\/(\d{4})/, "$2/$1/$3"
+                        ))); %>
+                        <% var fechaFormateada=new Date(nuevaFecha); %>
 
 
-                                    <div class="d-flex justify-content-between w-100 ">
 
-                                        <p style="color: #08787a;"><strong class="d-flex "><i
-                                                    class="bi bi-patch-check"></i>
-                                                <%= curso.tipo_curso %>
-                                            </strong>
 
-                                        </p>
-                                        <div class="d-flex  ">
+                            <% console.log(fechaFormateada + '_' + 'inicio' + typeof fechaFormateada ) %>
 
-                                            <p style="color: #08787a;" class="d-flex "><strong>MODALIDA:</strong>
-                                                <%= curso.modalidad %>
-                                            </p>
+                                <% console.log(fecha_hoy + '_' + 'hoy' + typeof fecha_hoy) %>
+
+
+                                    <% if(fecha_hoy < fechaFormateada ){ %>
+
+                                        <div class="card mb-4">
+                                            <div class="row g-0">
+
+                                                <div style="text-align: center; margin: auto; " class="col-md-4 ">
+                                                    <a
+                                                        href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>">
+                                                        <img src="<%= curso.url_imagen %>"
+                                                            class="w-100  img-fluid rounded-start  " alt="img-curso">
+                                                    </a>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="card-body">
+                                                        <h4 class="card-title">
+                                                            <a style="color: #005d6a; "
+                                                                class="text-decoration-none font-weight-bold"
+                                                                href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>">
+
+                                                                <%= curso.titulo_curso %>
+                                                            </a>
+                                                        </h4>
+                                                        <div class="d-lg-flex ">
+
+                                                            <h4 class="card-title me-5 "
+                                                                style="color: #08787a; font-size: 18px;">
+                                                                <i
+                                                                    class="bi bi-calendar3 me-2"></i><strong>Inicio:</strong>
+                                                                <%= curso.fecha_inicio.toLocaleString('en-us', {
+                                                                    weekday:"long", year:"numeric", month:"short"}) %>
+                                                            </h4>
+                                                            <h4 style="color: #08787a; font-size: 18px;">
+                                                                <p class="flex-grow-1 me-2"><i
+                                                                        class="bi bi-stopwatch me-1"></i>
+                                                                    <strong>Hora: </strong> 7:00 pm - 9:00 pm
+                                                                </p>
+                                                            </h4>
+                                                        </div>
+
+                                                        <div>
+                                                            <p>
+                                                                <%= curso.descripcion %>
+                                                            </p>
+                                                        </div>
+                                                        <div class="d-flex justify-content-between  align-items-center">
+
+
+                                                            <div class="d-flex justify-content-between w-100 ">
+
+                                                                <p style="color: #08787a;"><strong class="d-flex "><i
+                                                                            class="bi bi-patch-check"></i>
+                                                                        <%= curso.tipo_curso %>
+                                                                    </strong>
+
+                                                                </p>
+                                                                <div class="d-flex  ">
+
+                                                                    <p style="color: #08787a;" class="d-flex ">
+                                                                        <strong>MODALIDA:</strong>
+                                                                        <%= curso.modalidad %>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <% }) %>
-                    <% } %>
-
-                        <div class="d-flex justify-content-center mt-4">
-                            <a class="btn text-white mb-5 mt-4" style="background-color:#005d6a ;"
-                                href="/contactos">CONTACTANOS
-                            </a>
-                        </div>
+                                        <hr>
+                                        <% } %>
+                                            <% }) %>
+                                                <% } %>
+                                                    <div class="d-flex justify-content-center mt-4">
+                                                        <a class="btn text-white mb-5 mt-4"
+                                                            style="background-color:#005d6a ;"
+                                                            href="/contactos">CONTACTANOS
+                                                        </a>
+                                                    </div>
     </div>
 
 
@@ -322,8 +344,51 @@
 
     <!-- Beneficios de estudiar con nosotros -->
     <div class="container mt-5">
-        <h2>Beneficios de Estudiar con Nosotros</h2>
-        <!-- Agrega información sobre los beneficios -->
+
+        <div class="testimonial-container">
+            <a href="#1" class="testimonial-card">
+
+                <img src="https://onedrive.live.com/embed?resid=C31F9C66E8BCAAC9%211492&authkey=%21AJ977kmmW0TgRho&width=256"
+                    alt="Imagen testimonio 1" style="width: 100px; border-radius: 50%;">
+                <h5>Marketing</h5>
+
+            </a>
+            <div class="testimonial-card">
+                <img src="https://onedrive.live.com/embed?resid=C31F9C66E8BCAAC9%211494&authkey=%21AHa9h1kDsNBFKug&width=256"
+                    alt="Imagen testimonio 2" style="width: 100px; border-radius: 50%;">
+                <a href="#">Desarrollo</a>
+            </div>
+            <div class="testimonial-card">
+                <img src="https://onedrive.live.com/embed?resid=C31F9C66E8BCAAC9%211495&authkey=%21AIZlFx9gPup3ZbM&width=256"
+                    alt="Imagen testimonio 3" style="width: 100px; border-radius: 50%;">
+                <a href="#">Negocios</a>
+            </div>
+            <div class="testimonial-card">
+                <img src="https://onedrive.live.com/embed?resid=C31F9C66E8BCAAC9%211493&authkey=%21AEhjv0GBlxA830g&width=256"
+                    alt="Imagen testimonio 4" style="width: 100px; border-radius: 50%;">
+                <a href="#">Informática y software</a>
+            </div>
+            <div class="testimonial-card">
+                <img src="https://onedrive.live.com/embed?resid=C31F9C66E8BCAAC9%211492&authkey=%21AJ977kmmW0TgRho&width=256"
+                    alt="Imagen testimonio 1" style="width: 100px; border-radius: 50%;">
+                <a href="#">Marketing</a>
+            </div>
+            <div class="testimonial-card">
+                <img src="https://onedrive.live.com/embed?resid=C31F9C66E8BCAAC9%211494&authkey=%21AHa9h1kDsNBFKug&width=256"
+                    alt="Imagen testimonio 2" style="width: 100px; border-radius: 50%;">
+                <a href="#">Desarrollo</a>
+            </div>
+            <div class="testimonial-card">
+                <img src="https://onedrive.live.com/embed?resid=C31F9C66E8BCAAC9%211495&authkey=%21AIZlFx9gPup3ZbM&width=256"
+                    alt="Imagen testimonio 3" style="width: 100px; border-radius: 50%;">
+                <a href="#">Negocios</a>
+            </div>
+            <div class="testimonial-card">
+                <img src="https://onedrive.live.com/embed?resid=C31F9C66E8BCAAC9%211493&authkey=%21AEhjv0GBlxA830g&width=256"
+                    alt="Imagen testimonio 4" style="width: 100px; border-radius: 50%;">
+                <a href="#">Informática y software</a>
+            </div>
+        </div>
     </div>
 
 
@@ -406,7 +471,8 @@
             <h2 class="faq-title">Preguntas Frecuentes</h2>
             <ul class="">
                 <li class="accordion-item">
-                    <button class="accordion-header">¿Por qué debería inscribirme en un curso online de Edufal?</button>
+                    <button class="accordion-header" style="width: 100%; text-align: left;">¿Por qué debería inscribirme
+                        en un curso online de Edufal?</button>
                     <div class="accordion-body">
                         <p>Edufal ofrece cursos online de alta calidad con contenido actualizado y profesores expertos
                             en sus campos. Nuestros cursos son flexibles, accesibles desde cualquier lugar y te permiten
@@ -415,7 +481,8 @@
                     </div>
                 </li>
                 <li class="accordion-item">
-                    <button class="accordion-header">¿Cuáles son los beneficios de los cursos online de Edufal?</button>
+                    <button class="accordion-header" style="width: 100%; text-align: left;">¿Cuáles son los beneficios
+                        de los cursos online de Edufal?</button>
                     <div class="accordion-body">
                         <p>Los cursos online de Edufal te brindan la flexibilidad para estudiar según tu horario, acceso
                             a recursos multimedia, interacción con otros estudiantes y la posibilidad de obtener
@@ -425,7 +492,8 @@
                 </li>
 
                 <li class="accordion-item">
-                    <button class="accordion-header">¿Si me pierdo una o más clases, ¿puedo recuperarlas?</button>
+                    <button class="accordion-header" style="width: 100%; text-align: left;">¿Si me pierdo una o más
+                        clases, ¿puedo recuperarlas?</button>
                     <div class="accordion-body">
                         <p>Todas las clases quedan grabadas de por vida en tu plataforma moodle. Siempre podrás volver a
                             verlas cada vez que lo necesites.
@@ -433,7 +501,8 @@
                     </div>
                 </li>
                 <li class="accordion-item">
-                    <button class="accordion-header">¿De qué manera adquiriré conocimientos?</button>
+                    <button class="accordion-header" style="width: 100%; text-align: left;">¿De qué manera adquiriré
+                        conocimientos?</button>
                     <div class="accordion-body">
                         <p>Te enfrentarás a escenarios laborales reales, donde deberás poner en práctica lo adquirido de
                             manera individual y colaborativa. A través de la experimentación y la corrección de errores,
@@ -443,7 +512,8 @@
                     </div>
                 </li>
                 <li class="accordion-item">
-                    <button class="accordion-header">¿Cómo se desarrollan las clases virtuales en tiempo real?</button>
+                    <button class="accordion-header" style="width: 100%; text-align: left;">¿Cómo se desarrollan las
+                        clases virtuales en tiempo real?</button>
                     <div class="accordion-body">
                         <p>Las sesiones tienen una duración de 2 a 3 horas de lunes a viernes (3 o 4 horas los sábados)
                             y se llevan a cabo de manera virtual en tiempo real, utilizando aulas virtuales que permiten
@@ -454,7 +524,8 @@
                     </div>
                 </li>
                 <li class="accordion-item">
-                    <button class="accordion-header">¿Cuál es la función de la Comunidad de Graduados?</button>
+                    <button class="accordion-header" style="width: 100%; text-align: left;">¿Cuál es la función de la
+                        Comunidad de Graduados?</button>
                     <div class="accordion-body">
                         <p>La Comunidad de Graduados es nuestra plataforma digital donde hallarás todos los recursos
                             relacionados con el curso. Tendrás acceso a clases en directo, así como a materiales de
@@ -464,7 +535,8 @@
                     </div>
                 </li>
                 <li class="accordion-item">
-                    <button class="accordion-header">¿En qué consiste la Garantía de Competencia?</button>
+                    <button class="accordion-header" style="width: 100%; text-align: left;">¿En qué consiste la Garantía
+                        de Competencia?</button>
                     <div class="accordion-body">
                         <p>La Garantía de Competencia es un servicio integrado en todos los programas del centro
                             educativo, diseñado para resolver cualquier incertidumbre sobre los temas tratados en clase.

@@ -66,6 +66,16 @@
                                 value="<%= fecha_inicio %>">
                         </div>
                         <div class="mt-3">
+                            <% if(curso.fecha_oferta){ %>
+                                <label for="">Fecha Oferta: <%= curso.fecha_oferta %></label>
+                                <input type="text" class="form-control text-secondary" name="fecha_oferta"
+                                    value="<%= curso.fecha_oferta.toISOString() %>">
+                                <% } else { %>
+                                    <label for="">Fecha Oferta: No definado</label>
+                                    <input type="date" class="form-control text-secondary" name="fecha_oferta" value="">
+                                    <% } %>
+                        </div>
+                        <div class="mt-3">
                             <label for="">Horas Clases: <%= curso.horasClases %></label>
                             <input type="text" class="form-control text-secondary" name="horasClases"
                                 value="<%= curso.horasClases %>">
