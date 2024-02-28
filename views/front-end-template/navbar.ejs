@@ -61,35 +61,405 @@
                         <a class="nav-link me-lg-3 " style="font-size: 15px;" href="/quienes-somos"><strong
                                 class="hover text-truncate">QUIENES SOMOS</strong></a>
                     </li>
-
                     <li class="nav-item">
-
-
                         <div class="d-flex me-lg-3">
                             <div class="btn-group d-block  " role="group">
-                                <button type=""
-                                    class="bg-white border-0 dropdown-toggle dropdown-toggle-split nav-link hover text-truncate"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <strong>CURSOS & TALLERES</strong></button>
-                                <div class="dropdown-menu">
-                                    <a class="nav-link " style="font-size: 15px; margin-left: 5px;"
-                                        href="/cursos_talleres"><strong class="hover text-truncate">VER TODOS LOS
-                                            CURSOS <i class="bi bi-arrow-right-square-fill"></i></strong></a>
-                                    <% if (arrayCursos.length> 0) { %>
-                                        <% arrayCursos.forEach(curso=> { %>
-                                            <a class="dropdown-item list-group-item d-inline-block text-truncate"
-                                                style="max-width: 340px;"
-                                                href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>">
-                                                <i class="bi bi-chevron-double-right"></i>
-                                                <%= curso.titulo_curso %>
-                                            </a>
-                                            <% }) %>
-                                                <% } %>
+
+                                <button class="drop-btn bg-white border-0 nav-link hover text-truncate ">
+                                    <span class="bi bi-caret-down-fill"><strong>CURSOS & TALLERES</strong></span>
+                                </button>
+
+                                <div class="nav_categoria">
+                                    <!-- <div class="tooltip"></div> -->
+                                    <div class="wrapper ">
+                                        <ul class="menu-bar list-group-item">
+                                            <li class="" style="border: 1px solid rgba(0, 0, 0, .125)">
+                                                <a href="/cursos_talleres">
+
+                                                    <strong>VER TODOS LOS CURSOS</strong><i
+                                                        class="bi bi-arrow-right-square-fill"></i>
+                                                </a>
+                                            </li>
+
+                                            <li class="setting-item ">
+                                                <a href="#" class="">
+
+                                                    Desarrollo e Ingeniería <i class="bi bi-chevron-double-right"></i>
+                                                </a>
+                                            </li>
+                                            <li class="help-item">
+                                                <a href="#">
+
+                                                    Negocios y emprendimiento <i class="bi bi-chevron-double-right"></i>
+                                                </a>
+                                            </li>
+                                            <li class="categoria_3-item">
+                                                <a href="#">
+
+                                                    Diseño grafico <i class="bi bi-chevron-double-right"></i>
+                                                </a>
+                                            </li>
+                                            <li class="categoria_4-item">
+                                                <a href="#">
+
+                                                    Contenido Digital <i class="bi bi-chevron-double-right"></i>
+                                                </a>
+                                            </li>
+                                            <li class="categoria_5-item">
+                                                <a href="#">
+
+                                                    Idiomas y habilidades lingüísticas<i
+                                                        class="bi bi-chevron-double-right"></i>
+                                                </a>
+                                            </li>
+                                            <li class="categoria_6-item">
+                                                <a href="#">
+
+                                                    Marketing digital <i class="bi bi-chevron-double-right"></i>
+                                                </a>
+                                            </li>
+                                            <li class="categoria_7-item">
+                                                <a href="#">
+
+                                                    Ciencia de datos y análisis <i
+                                                        class="bi bi-chevron-double-right"></i>
+                                                </a>
+                                            </li>
+                                            <li class="categoria_8-item">
+                                                <a href="#">
+
+                                                    Finanzas personales y contabilidad<i
+                                                        class="bi bi-chevron-double-right"></i>
+                                                </a>
+                                            </li>
+
+                                        </ul>
+                                        <!-- Desarrollo e Ingeniería sub-Menu-items -->
+                                        <ul class="setting-drop">
+                                            <li class="arrow back-setting-btn "
+                                                style="border: 1px solid rgba(0, 0, 0, .125)"><i
+                                                    class="bi bi-chevron-double-left me-3 "></i>Desarrollo e Ingeniería
+                                            </li>
+                                            <% if (arrayCursos.length> 0) { %>
+                                                <% arrayCursos.forEach(curso=> { %>
+                                                    <li style="padding-left: 65px;"
+                                                        class="text-truncate hover_anchas_subcat ">
+                                                        <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>"
+                                                            class=" " style="display: contents;">
+
+                                                            <%= curso.titulo_curso %>
+                                                        </a>
+                                                    </li>
+                                                    <% }) %>
+                                                        <% } %>
+
+
+
+                                                            <li>
+                                                                <a href="#">
+                                                                    <div class="icon">
+                                                                        <span class="fas fa-lock"></span>
+                                                                    </div>
+                                                                    Password
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">
+                                                                    <div class="icon">
+                                                                        <span class="fas fa-address-book"></span>
+                                                                    </div>
+                                                                    Activity log
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">
+                                                                    <div class="icon">
+                                                                        <span class="fas fa-globe-asia"></span>
+                                                                    </div>
+                                                                    Languages
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">
+                                                                    <div class="icon">
+                                                                        <span class="fas fa-sign-out-alt"></span>
+                                                                    </div>
+                                                                    Log out
+                                                                </a>
+                                                            </li>
+                                        </ul>
+                                        <!-- Negocios y emprendimiento sub-Menu-items -->
+                                        <ul class="help-drop">
+                                            <li class="arrow back-help-btn"><span
+                                                    class="fas fa-arrow-left"></span>Negocios y Emprendimiento
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="icon">
+                                                        <span class="fas fa-question-circle"></span>
+                                                    </div>
+                                                    Help centre
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="icon">
+                                                        <span class="fas fa-envelope"></span>
+                                                    </div>
+                                                    Support Inbox
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="icon">
+                                                        <span class="fas fa-comment-alt"></span>
+                                                    </div>
+                                                    Send feedback
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="icon">
+                                                        <span class="fas fa-exclamation-circle"></span>
+                                                    </div>
+                                                    Report problem
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <!-- Diseño grafico sub-Menu-items -->
+                                        <ul class="categoria_3-drop">
+                                            <li class="arrow back-categoria_3-btn"><span
+                                                    class="fas fa-arrow-left"></span>Diseño grafico
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="icon">
+                                                        <span class="fas fa-question-circle"></span>
+                                                    </div>
+                                                    curso cat.3
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="icon">
+                                                        <span class="fas fa-envelope"></span>
+                                                    </div>
+                                                    curso cat.3
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="icon">
+                                                        <span class="fas fa-comment-alt"></span>
+                                                    </div>
+                                                    curso cat.3
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="icon">
+                                                        <span class="fas fa-exclamation-circle"></span>
+                                                    </div>
+                                                    curso cat.3
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <!-- Contenido Digital sub-Menu-items -->
+                                        <ul class="categoria_4-drop">
+                                            <li class="arrow back-categoria_4-btn"><span
+                                                    class="fas fa-arrow-left"></span>Contenido Digital
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="icon">
+                                                        <span class="fas fa-question-circle"></span>
+                                                    </div>
+                                                    curso cat.4
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="icon">
+                                                        <span class="fas fa-envelope"></span>
+                                                    </div>
+                                                    curso cat.4
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="icon">
+                                                        <span class="fas fa-comment-alt"></span>
+                                                    </div>
+                                                    curso cat.4
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="icon">
+                                                        <span class="fas fa-exclamation-circle"></span>
+                                                    </div>
+                                                    curso cat.4
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <!-- Idiomas y habilidades lingüísticas sub-Menu-items -->
+                                        <ul class="categoria_5-drop">
+                                            <li class="arrow back-categoria_5-btn"><span
+                                                    class="fas fa-arrow-left"></span>Idiomas y habilidades lingüísticas
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="icon">
+                                                        <span class="fas fa-question-circle"></span>
+                                                    </div>
+                                                    curso cat.5
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="icon">
+                                                        <span class="fas fa-envelope"></span>
+                                                    </div>
+                                                    curso cat.5
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="icon">
+                                                        <span class="fas fa-comment-alt"></span>
+                                                    </div>
+                                                    curso cat.5
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="icon">
+                                                        <span class="fas fa-exclamation-circle"></span>
+                                                    </div>
+                                                    curso cat.5
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <!-- Marketing digital sub-Menu-items -->
+                                        <ul class="categoria_6-drop">
+                                            <li class="arrow back-categoria_6-btn"><span
+                                                    class="fas fa-arrow-left"></span>Marketing digital
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="icon">
+                                                        <span class="fas fa-question-circle"></span>
+                                                    </div>
+                                                    curso cat.6
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="icon">
+                                                        <span class="fas fa-envelope"></span>
+                                                    </div>
+                                                    curso cat.6
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="icon">
+                                                        <span class="fas fa-comment-alt"></span>
+                                                    </div>
+                                                    curso cat.6
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="icon">
+                                                        <span class="fas fa-exclamation-circle"></span>
+                                                    </div>
+                                                    curso cat.6
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <!-- Ciencia de datos y análisis sub-Menu-items -->
+                                        <ul class="categoria_7-drop">
+                                            <li class="arrow back-categoria_7-btn"><span
+                                                    class="fas fa-arrow-left"></span>Ciencia de datos y análisis
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="icon">
+                                                        <span class="fas fa-question-circle"></span>
+                                                    </div>
+                                                    curso cat.7
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="icon">
+                                                        <span class="fas fa-envelope"></span>
+                                                    </div>
+                                                    curso cat.7
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="icon">
+                                                        <span class="fas fa-comment-alt"></span>
+                                                    </div>
+                                                    curso cat.7
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="icon">
+                                                        <span class="fas fa-exclamation-circle"></span>
+                                                    </div>
+                                                    curso cat.7
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <!-- Finanzas personales y contabilidad sub-Menu-items -->
+                                        <ul class="categoria_8-drop">
+                                            <li class="arrow back-categoria_8-btn"><span
+                                                    class="fas fa-arrow-left"></span>Finanzas personales y contabilidad
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="icon">
+                                                        <span class="fas fa-question-circle"></span>
+                                                    </div>
+                                                    curso cat.8
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="icon">
+                                                        <span class="fas fa-envelope"></span>
+                                                    </div>
+                                                    curso cat.8
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="icon">
+                                                        <span class="fas fa-comment-alt"></span>
+                                                    </div>
+                                                    curso cat.8
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="icon">
+                                                        <span class="fas fa-exclamation-circle"></span>
+                                                    </div>
+                                                    curso cat.8
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
                     </li>
+
 
                     <li class="nav-item">
                         <a class="nav-link me-lg-3" style="font-size: 15px;" href="/ofertas-inscripciones"><strong
@@ -121,3 +491,140 @@
         </nav>
     </div>
 </div>
+
+
+
+<script>
+    const drop_btn = document.querySelector(".drop-btn span");
+    const tooltip = document.querySelector(".tooltip");
+    const menu_wrapper = document.querySelector(".wrapper");
+    const menu_bar = document.querySelector(".menu-bar");
+
+    const setting_drop = document.querySelector(".setting-drop");
+    const setting_item = document.querySelector(".setting-item");
+    const setting_btn = document.querySelector(".back-setting-btn");
+
+    const help_drop = document.querySelector(".help-drop");
+    const help_item = document.querySelector(".help-item");
+    const help_btn = document.querySelector(".back-help-btn");
+
+    const categoria_3_drop = document.querySelector(".categoria_3-drop");
+    const categoria_3_item = document.querySelector(".categoria_3-item");
+    const categoria_3_btn = document.querySelector(".back-categoria_3-btn");
+
+    const categoria_4_drop = document.querySelector(".categoria_4-drop");
+    const categoria_4_item = document.querySelector(".categoria_4-item");
+    const categoria_4_btn = document.querySelector(".back-categoria_4-btn");
+
+    const categoria_5_drop = document.querySelector(".categoria_5-drop");
+    const categoria_5_item = document.querySelector(".categoria_5-item");
+    const categoria_5_btn = document.querySelector(".back-categoria_5-btn");
+
+    const categoria_6_drop = document.querySelector(".categoria_6-drop");
+    const categoria_6_item = document.querySelector(".categoria_6-item");
+    const categoria_6_btn = document.querySelector(".back-categoria_6-btn");
+
+    const categoria_7_drop = document.querySelector(".categoria_7-drop");
+    const categoria_7_item = document.querySelector(".categoria_7-item");
+    const categoria_7_btn = document.querySelector(".back-categoria_7-btn");
+
+    const categoria_8_drop = document.querySelector(".categoria_8-drop");
+    const categoria_8_item = document.querySelector(".categoria_8-item");
+    const categoria_8_btn = document.querySelector(".back-categoria_8-btn");
+
+    drop_btn.onclick = (() => {
+        menu_wrapper.classList.toggle("show");
+        tooltip.classList.toggle("show");
+    });
+
+    setting_item.onclick = (() => {
+        menu_bar.style.marginLeft = "-400px";
+        setTimeout(() => {
+            setting_drop.style.display = "block";
+        }, 100);
+    });
+
+    setting_btn.onclick = (() => {
+        menu_bar.style.marginLeft = "0px";
+        setting_drop.style.display = "none";
+    });
+
+    help_item.onclick = (() => {
+        menu_bar.style.marginLeft = "-400px";
+        setTimeout(() => {
+            help_drop.style.display = "block";
+        }, 100);
+    });
+
+    help_btn.onclick = (() => {
+        help_drop.style.display = "none";
+        menu_bar.style.marginLeft = "0px";
+    });
+
+    categoria_3_item.onclick = (() => {
+        menu_bar.style.marginLeft = "-400px";
+        setTimeout(() => {
+            categoria_3_drop.style.display = "block";
+        }, 100);
+    });
+
+    categoria_3_btn.onclick = (() => {
+        categoria_3_drop.style.display = "none";
+        menu_bar.style.marginLeft = "0px";
+    });
+    categoria_4_item.onclick = (() => {
+        menu_bar.style.marginLeft = "-400px";
+        setTimeout(() => {
+            categoria_4_drop.style.display = "block";
+        }, 100);
+    });
+
+    categoria_4_btn.onclick = (() => {
+        categoria_4_drop.style.display = "none";
+        menu_bar.style.marginLeft = "0px";
+    });
+    categoria_5_item.onclick = (() => {
+        menu_bar.style.marginLeft = "-400px";
+        setTimeout(() => {
+            categoria_5_drop.style.display = "block";
+        }, 100);
+    });
+
+    categoria_5_btn.onclick = (() => {
+        categoria_5_drop.style.display = "none";
+        menu_bar.style.marginLeft = "0px";
+    });
+    categoria_6_item.onclick = (() => {
+        menu_bar.style.marginLeft = "-400px";
+        setTimeout(() => {
+            categoria_6_drop.style.display = "block";
+        }, 100);
+    });
+
+    categoria_6_btn.onclick = (() => {
+        categoria_6_drop.style.display = "none";
+        menu_bar.style.marginLeft = "0px";
+    });
+    categoria_7_item.onclick = (() => {
+        menu_bar.style.marginLeft = "-400px";
+        setTimeout(() => {
+            categoria_7_drop.style.display = "block";
+        }, 100);
+    });
+
+    categoria_7_btn.onclick = (() => {
+        categoria_7_drop.style.display = "none";
+        menu_bar.style.marginLeft = "0px";
+    });
+    categoria_8_item.onclick = (() => {
+        menu_bar.style.marginLeft = "-400px";
+        setTimeout(() => {
+            categoria_8_drop.style.display = "block";
+        }, 100);
+    });
+
+    categoria_8_btn.onclick = (() => {
+        categoria_8_drop.style.display = "none";
+        menu_bar.style.marginLeft = "0px";
+    });
+</script>

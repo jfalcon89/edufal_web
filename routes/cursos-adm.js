@@ -130,6 +130,8 @@ router.get("/admin/cursos-adm/editar-curso-adm/:id", async(req, res) => {
             const contenidoCursoDB = await pool.query("SELECT * FROM modulos WHERE modulos.id_curso = ?", [id]);
             const maestroDB = await pool.query(`SELECT * FROM maestros WHERE maestros.id_maestro = ${cursoDB[0].id_maestro}`);
             const arrayMaestrosDB = await pool.query(`SELECT * FROM maestros WHERE maestros.estado = 'Activo'`);
+            const arrayCategoriasDB = await pool.query(`SELECT * FROM categorias WHERE categorias.estado = 'Activo'`);
+            const categoriaDB = await pool.query(`SELECT * FROM categorias WHERE categorias.id_categoria = ${cursoDB[0].id_categoria}`);
 
             console.log('maestro ' + cursoDB[0].id_maestro)
 
@@ -142,6 +144,8 @@ router.get("/admin/cursos-adm/editar-curso-adm/:id", async(req, res) => {
                 fecha_inicio,
                 contenidoCurso: contenidoCursoDB,
                 maestro: maestroDB[0],
+                categoria: categoriaDB[0],
+                arrayCategorias: arrayCategoriasDB,
                 arrayMaestros: arrayMaestrosDB,
                 login: true,
                 name: req.session.name,
@@ -170,7 +174,7 @@ router.post('/admin/cursos-adm/editar-curso-adm/:id', async(req, res) => {
     const id = req.params.id;
     console.log(req.params.id)
 
-    const { titulo_curso, descripcion, id_maestro, estado_curso, fecha_inicio, horasClases, duracion, modalidad, costo, tipo_curso, url_imagen, url_imagen_full_size, promocion, inf_curso, url_plan_estudio, oferta_inscripcion, dirigido_a, cantidad_cuota, porcentaje_descuento, dias_semana_clases, fecha_oferta } = req.body;
+    const { titulo_curso, descripcion, id_maestro, estado_curso, fecha_inicio, horasClases, duracion, modalidad, costo, tipo_curso, url_imagen, url_imagen_full_size, promocion, inf_curso, url_plan_estudio, oferta_inscripcion, dirigido_a, cantidad_cuota, porcentaje_descuento, dias_semana_clases, fecha_oferta, id_categoria } = req.body;
     const updateCurso = {
         titulo_curso,
         descripcion,
@@ -192,7 +196,8 @@ router.post('/admin/cursos-adm/editar-curso-adm/:id', async(req, res) => {
         dirigido_a,
         cantidad_cuota,
         porcentaje_descuento,
-        dias_semana_clases
+        dias_semana_clases,
+        id_categoria
     };
 
 

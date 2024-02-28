@@ -60,6 +60,27 @@
                             </select>
                         </div>
                         <div class="mt-3">
+                            <label for="exampleInputEmail1">Categoria Curso</label>
+                            <select name="id_categoria" class="form-control text-secondary">
+                                <% if(categoria){ %>
+                                    <option class="text-dark" value="<%= categoria.id_categoria %>" selected>
+                                        <%= categoria.nombre_categoria %>
+                                    </option>
+                                    <% } else { %>
+                                        <option class="text-dark" value="" selected>
+                                            Categoria no definida
+                                        </option>
+                                        <% } %>
+                                            <% if (arrayCategorias.length> 0) { %>
+                                                <% arrayCategorias.forEach(categoria=> { %>
+                                                    <option class="text-dark" value="<%= categoria.id_categoria %>">
+                                                        <%= categoria.nombre_categoria %>
+                                                    </option>
+                                                    <% }) %>
+                                                        <% } %>
+                            </select>
+                        </div>
+                        <div class="mt-3">
                             <label for="">Fecha Inicio: <%= curso.fecha_inicio.toLocaleString('es-ES', {
                                     timeZone: "America/Santo_Domingo" }).slice(0, 10) %></label>
                             <input type="text" class="form-control text-secondary" name="fecha_inicio"
@@ -67,13 +88,20 @@
                         </div>
                         <div class="mt-3">
                             <% if(curso.fecha_oferta){ %>
-                                <label for="">Fecha Oferta: <%= curso.fecha_oferta %></label>
-                                <input type="text" class="form-control text-secondary" name="fecha_oferta"
-                                    value="<%= curso.fecha_oferta.toISOString() %>">
-                                <% } else { %>
-                                    <label for="">Fecha Oferta: No definado</label>
-                                    <input type="date" class="form-control text-secondary" name="fecha_oferta" value="">
-                                    <% } %>
+                                <% if(curso.fecha_oferta=='0000-00-00 00:00:00' ){ %>
+                                    <label for="">Fecha Oferta: Oferta eliminada</label>
+                                    <input type="text" class="form-control text-secondary" name="fecha_oferta"
+                                        value="<%= curso.fecha_oferta %>">
+                                    <% } else{ %>
+                                        <label for="">Fecha Oferta: <%= curso.fecha_oferta %></label>
+                                        <input type="text" class="form-control text-secondary" name="fecha_oferta"
+                                            value="<%= curso.fecha_oferta.toISOString() %>">
+                                        <% } %>
+                                            <% } else { %>
+                                                <label for="">Fecha Oferta: No definada</label>
+                                                <input type="date" class="form-control text-secondary"
+                                                    name="fecha_oferta" value="">
+                                                <% } %>
                         </div>
                         <div class="mt-3">
                             <label for="">Horas Clases: <%= curso.horasClases %></label>
