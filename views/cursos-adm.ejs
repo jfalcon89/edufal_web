@@ -71,23 +71,30 @@
                                 <td>
                                     <% if(curso.fecha_oferta) { %>
                                         <% if(curso.fecha_oferta=='0000-00-00 00:00:00' ){ %>
-                                            Oferta eliminada
-                                            <% } %>
-                                                <%= curso.fecha_oferta.toLocaleString('es-ES', {
-                                                    timeZone: "America/Santo_Domingo" }).slice(0, 10) %>
-
+                                            <%= curso.fecha_oferta.toLocaleString('es-ES', {
+                                                timeZone: "America/Santo_Domingo" }).slice(0, 10) %>
+                                                <strong class="bg-danger text-light ">Oferta eliminada</strong>
+                                                <% } %>
                                                     <% if(curso.fecha_oferta < ahora) { %>
-                                                        <strong class="bg-danger text-light ">Oferta Vencida</strong>
-                                                        <% } %>
-                                                            <% if (ahora < curso.fecha_oferta){ %>
-                                                                <strong class="bg-primary text-light ">Oferta
-                                                                    Activa</strong>
-                                                                <% } %>
-
-                                                                    <% } else { %>
-
-                                                                        Sin Oferta
+                                                        <%= curso.fecha_oferta.toLocaleString('es-ES', {
+                                                            timeZone: "America/Santo_Domingo" }).slice(0, 10) %>
+                                                            <strong class="bg-danger text-light ">Oferta
+                                                                Vencida</strong>
+                                                            <% } %>
+                                                                <% if (ahora < curso.fecha_oferta){ %>
+                                                                    <%= curso.fecha_oferta.toLocaleString('es-ES', {
+                                                                        timeZone: "America/Santo_Domingo" }).slice(0,
+                                                                        10) %>
+                                                                        <strong class="bg-primary text-light ">Oferta
+                                                                            Activa</strong>
                                                                         <% } %>
+
+                                                                            <% } else { %>
+
+                                                                                <strong class="bg-warning ">
+                                                                                    Sin Oferta
+                                                                                    Publicada</strong>
+                                                                                <% } %>
                                 </td>
                                 <td>
                                     <%= curso.duracion %>
@@ -117,8 +124,7 @@
                                     <%= curso.id_categoria %>
                                 </td>
                                 <td>
-                                    <a href="/admin/cursos-adm/editar-curso-adm/<%= curso.id_curso %>"
-                                        class="btn ">Editar</a>
+                                    <a href="/admin/cursos-adm/editar-curso-adm/<%= curso.id_curso %>" class="btn ">Editar</a>
 
                                 </td>
 
@@ -137,7 +143,7 @@
 
 
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('#datatable').DataTable({
                 order: [
                     [0, 'desc']
