@@ -8,9 +8,11 @@
 
         <body>
 
-            <div class="d-flex align-items-center" style="background-image: url(/img/img-cursos/background-cabecera-ver-todos-cursos.png); background-repeat: no-repeat; background-position: center; background-size: cover; height: 440px; box-shadow: 0px 15px 15px rgba(0, 0, 0, 0.2);">
+            <div class="d-flex align-items-center"
+                style="background-image: url(/img/img-cursos/background-cabecera-ver-todos-cursos.png); background-repeat: no-repeat; background-position: center; background-size: cover; height: 440px; box-shadow: 0px 15px 15px rgba(0, 0, 0, 0.2);">
                 <div class="container mt-4 ">
-                    <p data-aos="fade-down-left" class="" style="background-color: green; padding: 5px; border-radius: 10px; display: inline; color: white;">
+                    <p data-aos="fade-down-left" class=""
+                        style="background-color: green; padding: 5px; border-radius: 10px; display: inline; color: white;">
                         CLASES ONLINE
                     </p>
 
@@ -60,8 +62,10 @@
 
             <!-- nuevo carousel -->
             <!-- <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'> -->
-            <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css'>
-            <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+            <link rel='stylesheet'
+                href='https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css'>
+            <link rel='stylesheet'
+                href='https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
 
 
 
@@ -77,9 +81,12 @@
                 </div>
                 <!-- Botones para filtrar por tipo_curso -->
                 <div class="mb-4">
-                    <button type="button" class="btn btn-outline-secondary btn-sm" onclick="filtrarPorTipo('CURSO')">CURSO</button>
-                    <button type="button" class="btn btn-outline-secondary btn-sm" onclick="filtrarPorTipo('TALLER')">TALLER</button>
-                    <button type="button" class="btn btn-outline-secondary btn-sm" onclick="filtrarPorTipo('DIPLOMADO')">DIPLOMADO</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm"
+                        onclick="filtrarPorTipo('CURSO')">CURSO</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm"
+                        onclick="filtrarPorTipo('TALLER')">TALLER</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm"
+                        onclick="filtrarPorTipo('DIPLOMADO')">DIPLOMADO</button>
                     <!-- <button type="button" class="btn btn-secondary btn-sm" onclick="verTodos()">Ver todo</button> -->
                     <button type="button" class="btn btn-secondary btn-sm" onclick="ocultarTodos()">Limpiar
                         Busqueda</button>
@@ -97,10 +104,12 @@
 
 
                                     <!-- Nueva card inicio  -->
-                                    <div class="post-slide curso-card-busqueda card" style="max-width: 19rem; border-radius: 10px;">
+                                    <div class="post-slide curso-card-busqueda card"
+                                        style="max-width: 19rem; border-radius: 10px;">
                                         <div class="post-img">
                                             <img src="<%= curso.url_imagen %>" alt="">
-                                            <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>" class="over-layer"><i class="fa fa-link"></i></a>
+                                            <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>"
+                                                class="over-layer"><i class="fa fa-link"></i></a>
                                         </div>
                                         <div class="post-content">
                                             <h3 class="post-title card-title">
@@ -125,7 +134,8 @@
                                             </div>
                                             <div>
 
-                                                <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>" class="read-more">Ver mas</a>
+                                                <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>"
+                                                    class="read-more">Ver mas</a>
                                             </div>
                                         </div>
                                     </div>
@@ -145,220 +155,237 @@
                 <hr>
                 <h1>Desarrollo de software y programacion</h1>
             </div>
-            <div class="container-fluid" style="max-width: 2020px; margin-top: 90px;">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div id="news-slider-categoria-1" class="owl-carousel">
-                            <% if (arrayCursosCategoria1.length> 0) { %>
-                                <% arrayCursosCategoria1.forEach(curso=> { %>
-                                    <% var ahora=new Date().getTime(); %>
-                                        <% var diferencia=curso.fecha_oferta - ahora; %>
-                                            <div class="post-slide1 d-flex justify-content-center ">
-                                                <div class="transUp card bg-light mb-3 curso-card p-0 m-3 " style="max-width: 19rem; border-radius: 10px;">
-                                                    <div class="card-header" style="background-color: white; border: none;">
-                                                        <strong>
-                                                            <%= curso.tipo_curso %>
+            <div class="container-fluid d-flex justify-content-center " style="max-width: 2020px; ">
+                <div id="news-slider-categoria-1" class="mt-5 d-sm-flex flex-wrap justify-content-center owl-carousel">
+
+                    <% if (arrayCursosCategoria1.length> 0) { %>
+                        <% arrayCursosCategoria1.forEach(curso=> { %>
+
+                            <% var ahora=new Date().getTime(); %>
+                                <% var diferencia=curso.fecha_oferta - ahora; %>
+
+
+
+                                    <div class="post-slide card " style="max-width: 19rem; border-radius: 10px;">
+                                        <div class="post-img">
+                                            <img src="<%= curso.url_imagen %>" alt="">
+                                            <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>"
+                                                class="over-layer"><i class="fa fa-link"></i></a>
+                                        </div>
+                                        <div class="post-content  ">
+                                            <h3 class="post-title card-title">
+                                                <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>"><strong
+                                                        class="card-title">
+                                                        <%= curso.titulo_curso %>
+                                                    </strong>
+
+                                                </a>
+                                            </h3>
+                                            <p class="post-description">
+                                                <%= curso.descripcion %>
+                                            </p>
+                                            <div class="d-flex ">
+
+                                                <span class="post-date me-3 "><i
+                                                        class="fa fa-clock-o"></i><strong>Inicio:</strong>
+                                                    <%= curso.fecha_inicio %>
+                                                </span>
+                                                <strong>
+                                                    <%= curso.tipo_curso %>
+                                                </strong>
+
+                                            </div>
+
+                                            <div style="margin-top: 10px;">
+                                                <h6><del style="margin-right: 10px;">
+                                                        $ <%= curso.costo %>
+                                                    </del>
+                                                    <% if (diferencia < 0 || curso.fecha_oferta=='0000-00-00 00:00:00' )
+                                                        { %>
+                                                        <strong style="color: red;">
+                                                            <%= curso.porcentaje_descuento.slice(2, ) %>%
+                                                                OFF
                                                         </strong>
-                                                    </div>
-                                                    <div class="curso-item">
-                                                        <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>">
-                                                            <img class="curso-imagen" src="<%= curso.url_imagen %>"
-                                                                alt="">
-                                                        </a>
-                                                    </div>
-                                                    <div class="card-body">
-                                                        <h5 class="card-title">
-                                                            <strong>
-                                                                <%= curso.titulo_curso %>
+                                                        <% } else { %>
+                                                            <strong style="color: red;">
+                                                                100% OFF
+                                                            </strong>
+                                                            <p>
+                                                                Por tiempo LIMITADO
+                                                            </p>
+                                                            <% } %>
+
+                                                </h6>
+                                                <del class="d-none">
+                                                    <%= Math.abs(curso.costo=curso.costo * curso.porcentaje_descuento -
+                                                        curso.costo) %>
+                                                </del>
+                                                <% if (diferencia < 0 || curso.fecha_oferta=='0000-00-00 00:00:00' ) {
+                                                    %>
+                                                    <h5 style="color: #005d6a;"><strong>
+
+                                                            Precio: <%= curso.costo=Intl.NumberFormat('en-EN', {
+                                                                style: 'currency' , currency: 'USD'
+                                                                }).format(Math.abs(curso.costo)) %>
+                                                        </strong>
+                                                    </h5>
+                                                    <% }else { %>
+
+                                                        <h5 style="color: #005d6a;"><strong>
+                                                                Precio: GRATIS
                                                             </strong>
                                                         </h5>
-                                                        <p class="card-text">
-                                                            <%= curso.descripcion %>
-                                                        </p>
-                                                    </div>
-                                                    <div>
-                                                        <div style="margin-left: 15px;">
-                                                            <h6><del style="margin-right: 10px;">
-                                                                    $ <%= curso.costo %>
-                                                                </del>
-                                                                <% if (diferencia < 0 ||
-                                                                    curso.fecha_oferta=='0000-00-00 00:00:00' ) { %>
-                                                                    <strong style="color: red;">
-                                                                        <%= curso.porcentaje_descuento.slice(2, ) %>%
-                                                                            OFF
-                                                                    </strong>
-                                                                    <% } else { %>
-                                                                        <strong style="color: red;">
-                                                                            100% OFF
-                                                                        </strong>
-                                                                        <p>
-                                                                            Por tiempo LIMITADO
-                                                                        </p>
-                                                                        <% } %>
-
-                                                            </h6>
-                                                            <del class="d-none">
-                                                                <%= Math.abs(curso.costo=curso.costo *
-                                                                    curso.porcentaje_descuento - curso.costo) %>
-                                                            </del>
-                                                            <% if (diferencia < 0 ||
-                                                                curso.fecha_oferta=='0000-00-00 00:00:00' ) { %>
-                                                                <h5 style="color: #005d6a;"><strong>
-
-                                                                        Precio: <%=
-                                                                            curso.costo=Intl.NumberFormat('en-EN', {
-                                                                            style: 'currency' , currency: 'USD'
-                                                                            }).format(Math.abs(curso.costo)) %>
-                                                                    </strong>
-                                                                </h5>
-                                                                <% }else { %>
-
-                                                                    <h5 style="color: #005d6a;"><strong>
-                                                                            Precio: GRATIS
-                                                                        </strong>
-                                                                    </h5>
-                                                                    <% } %>
-                                                                        <p style="font-size: small;"><i class="bi bi-stopwatch me-1"></i>
-                                                                            <%= curso.duracion %> de clases -
-                                                                                <del class="d-none">
-                                                                                    <%= sesiones=curso.duracion %>
-                                                                                </del><i class="bi bi-calendar3 me-1"></i>
-                                                                                <%= sesiones.slice(0, 3)/2 %> Secciones
-                                                                                    <% console.log('seciones' +
-                                                                                        sesiones.slice(0, 3)/2) %>
-                                                                        </p>
-                                                        </div>
-                                                        <% if (diferencia < 0 ||
-                                                            curso.fecha_oferta=='0000-00-00 00:00:00' ) { %>
-                                                            <p style="color: gray; text-align: center; font-size: small;">
-                                                                Garantía de reembolso de 30 días</p>
-                                                            <% }else { %>
-                                                                <p style="color: gray; text-align: center; font-size: small;">
-                                                                    Incluye certificado digital o fisico.</p>
-                                                                <% } %>
-                                                                    <div class="btn-group d-flex ">
-                                                                        <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>" type="button" class="btn btn-secondary ">
-                                                                            Mas informacion
-                                                                        </a>
-                                                                    </div>
-                                                    </div>
-                                                </div>
+                                                        <% } %>
+                                                            <p style="font-size: small;"><i
+                                                                    class="bi bi-stopwatch me-1"></i>
+                                                                <%= curso.duracion %> de clases -
+                                                                    <del class="d-none">
+                                                                        <%= sesiones=curso.duracion %>
+                                                                    </del><i class="bi bi-calendar3 me-1"></i>
+                                                                    <%= sesiones.slice(0, 3)/2 %> Secciones
+                                                                        <% console.log('seciones' + sesiones.slice(0,
+                                                                            3)/2) %>
+                                                            </p>
                                             </div>
-                                            <% }) %>
-                                                <% } %>
+                                            <% if (diferencia < 0 || curso.fecha_oferta=='0000-00-00 00:00:00' ) { %>
+                                                <p style="color: gray; text-align: center; font-size: small;">
+                                                    Garantía de reembolso de 30 días</p>
+                                                <% }else { %>
+                                                    <p style="color: gray; text-align: center; font-size: small;">
+                                                        Incluye certificado digital o fisico.</p>
+                                                    <% } %>
+
+
+                                                        <div>
+
+                                                            <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>"
+                                                                class="read-more">Ver mas</a>
+                                                        </div>
+                                        </div>
+                                    </div>
 
 
 
 
-                        </div>
-                    </div>
+
+                                    <% }) %>
+                                        <% } %>
+
                 </div>
+
+
             </div>
+
             <div class="container-fluid " style="max-width: 2020px">
                 <hr>
                 <h1>Negocios y emprendimiento</h1>
             </div>
-            <div class="container-fluid" style="max-width: 2020px; margin-top: 90px;">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div id="news-slider-categoria-2" class="owl-carousel">
-                            <% if (arrayCursosCategoria2.length> 0) { %>
-                                <% arrayCursosCategoria2.forEach(curso=> { %>
-                                    <% var ahora=new Date().getTime(); %>
-                                        <% var diferencia=curso.fecha_oferta - ahora; %>
-                                            <div class="post-slide1 d-flex justify-content-center ">
-                                                <div class="transUp card bg-light mb-3 curso-card p-0 m-3 " style="max-width: 19rem; border-radius: 10px;">
-                                                    <div class="card-header" style="background-color: white; border: none;">
-                                                        <strong>
-                                                            <%= curso.tipo_curso %>
+            <div class="container-fluid d-flex justify-content-center " style="max-width: 2020px; ">
+                <div id="news-slider-categoria-2" class="mt-5 d-sm-flex flex-wrap justify-content-center owl-carousel">
+                    <% if (arrayCursosCategoria2.length> 0) { %>
+                        <% arrayCursosCategoria2.forEach(curso=> { %>
+                            <% var ahora=new Date().getTime(); %>
+                                <% var diferencia=curso.fecha_oferta - ahora; %>
+                                    <div class="post-slide card " style="max-width: 19rem; border-radius: 10px;">
+                                        <div class="post-img">
+                                            <img src="<%= curso.url_imagen %>" alt="">
+                                            <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>"
+                                                class="over-layer"><i class="fa fa-link"></i></a>
+                                        </div>
+                                        <div class="post-content  ">
+                                            <h3 class="post-title card-title">
+                                                <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>"><strong
+                                                        class="card-title">
+                                                        <%= curso.titulo_curso %>
+                                                    </strong>
+
+                                                </a>
+                                            </h3>
+                                            <p class="post-description">
+                                                <%= curso.descripcion %>
+                                            </p>
+                                            <div class="d-flex ">
+
+                                                <span class="post-date me-3 "><i
+                                                        class="fa fa-clock-o"></i><strong>Inicio:</strong>
+                                                    <%= curso.fecha_inicio %>
+                                                </span>
+                                                <strong>
+                                                    <%= curso.tipo_curso %>
+                                                </strong>
+
+                                            </div>
+
+                                            <div style="margin-top: 10px;">
+                                                <h6><del style="margin-right: 10px;">
+                                                        $ <%= curso.costo %>
+                                                    </del>
+                                                    <% if (diferencia < 0 || curso.fecha_oferta=='0000-00-00 00:00:00' )
+                                                        { %>
+                                                        <strong style="color: red;">
+                                                            <%= curso.porcentaje_descuento.slice(2, ) %>%
+                                                                OFF
                                                         </strong>
-                                                    </div>
-                                                    <div class="curso-item">
-                                                        <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>">
-                                                            <img class="curso-imagen" src="<%= curso.url_imagen %>"
-                                                                alt="">
-                                                        </a>
-                                                    </div>
-                                                    <div class="card-body">
-                                                        <h5 class="card-title">
-                                                            <strong>
-                                                                <%= curso.titulo_curso %>
+                                                        <% } else { %>
+                                                            <strong style="color: red;">
+                                                                100% OFF
+                                                            </strong>
+                                                            <p>
+                                                                Por tiempo LIMITADO
+                                                            </p>
+                                                            <% } %>
+
+                                                </h6>
+                                                <del class="d-none">
+                                                    <%= Math.abs(curso.costo=curso.costo * curso.porcentaje_descuento -
+                                                        curso.costo) %>
+                                                </del>
+                                                <% if (diferencia < 0 || curso.fecha_oferta=='0000-00-00 00:00:00' ) {
+                                                    %>
+                                                    <h5 style="color: #005d6a;"><strong>
+
+                                                            Precio: <%= curso.costo=Intl.NumberFormat('en-EN', {
+                                                                style: 'currency' , currency: 'USD'
+                                                                }).format(Math.abs(curso.costo)) %>
+                                                        </strong>
+                                                    </h5>
+                                                    <% }else { %>
+
+                                                        <h5 style="color: #005d6a;"><strong>
+                                                                Precio: GRATIS
                                                             </strong>
                                                         </h5>
-                                                        <p class="card-text">
-                                                            <%= curso.descripcion %>
-                                                        </p>
-                                                    </div>
-                                                    <div>
-                                                        <div style="margin-left: 15px;">
-                                                            <h6><del style="margin-right: 10px;">
-                                                                    $ <%= curso.costo %>
-                                                                </del>
-                                                                <% if (diferencia < 0 ||
-                                                                    curso.fecha_oferta=='0000-00-00 00:00:00' ) { %>
-                                                                    <strong style="color: red;">
-                                                                        <%= curso.porcentaje_descuento.slice(2, ) %>%
-                                                                            OFF
-                                                                    </strong>
-                                                                    <% } else { %>
-                                                                        <strong style="color: red;">
-                                                                            100% OFF
-                                                                        </strong>
-                                                                        <p>
-                                                                            Por tiempo LIMITADO
-                                                                        </p>
-                                                                        <% } %>
-
-                                                            </h6>
-                                                            <del class="d-none">
-                                                                <%= Math.abs(curso.costo=curso.costo *
-                                                                    curso.porcentaje_descuento - curso.costo) %>
-                                                            </del>
-                                                            <% if (diferencia < 0 ||
-                                                                curso.fecha_oferta=='0000-00-00 00:00:00' ) { %>
-                                                                <h5 style="color: #005d6a;"><strong>
-
-                                                                        Precio: <%=
-                                                                            curso.costo=Intl.NumberFormat('en-EN', {
-                                                                            style: 'currency' , currency: 'USD'
-                                                                            }).format(Math.abs(curso.costo)) %>
-                                                                    </strong>
-                                                                </h5>
-                                                                <% }else { %>
-
-                                                                    <h5 style="color: #005d6a;"><strong>
-                                                                            Precio: GRATIS
-                                                                        </strong>
-                                                                    </h5>
-                                                                    <% } %>
-                                                                        <p style="font-size: small;"><i class="bi bi-stopwatch me-1"></i>
-                                                                            <%= curso.duracion %> de clases -
-                                                                                <del class="d-none">
-                                                                                    <%= sesiones=curso.duracion %>
-                                                                                </del><i class="bi bi-calendar3 me-1"></i>
-                                                                                <%= sesiones.slice(0, 3)/2 %> Secciones
-                                                                                    <% console.log('seciones' +
-                                                                                        sesiones.slice(0, 3)/2) %>
-                                                                        </p>
-                                                        </div>
-                                                        <% if (diferencia < 0 ||
-                                                            curso.fecha_oferta=='0000-00-00 00:00:00' ) { %>
-                                                            <p style="color: gray; text-align: center; font-size: small;">
-                                                                Garantía de reembolso de 30 días</p>
-                                                            <% }else { %>
-                                                                <p style="color: gray; text-align: center; font-size: small;">
-                                                                    Incluye certificado digital o fisico.</p>
-                                                                <% } %>
-                                                                    <div class="btn-group d-flex ">
-                                                                        <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>" type="button" class="btn btn-secondary ">
-                                                                            Mas informacion
-                                                                        </a>
-                                                                    </div>
-                                                    </div>
-                                                </div>
+                                                        <% } %>
+                                                            <p style="font-size: small;"><i
+                                                                    class="bi bi-stopwatch me-1"></i>
+                                                                <%= curso.duracion %> de clases -
+                                                                    <del class="d-none">
+                                                                        <%= sesiones=curso.duracion %>
+                                                                    </del><i class="bi bi-calendar3 me-1"></i>
+                                                                    <%= sesiones.slice(0, 3)/2 %> Secciones
+                                                                        <% console.log('seciones' + sesiones.slice(0,
+                                                                            3)/2) %>
+                                                            </p>
                                             </div>
-                                            <% }) %>
-                                                <% } %>
+                                            <% if (diferencia < 0 || curso.fecha_oferta=='0000-00-00 00:00:00' ) { %>
+                                                <p style="color: gray; text-align: center; font-size: small;">
+                                                    Garantía de reembolso de 30 días</p>
+                                                <% }else { %>
+                                                    <p style="color: gray; text-align: center; font-size: small;">
+                                                        Incluye certificado digital o fisico.</p>
+                                                    <% } %>
+
+
+                                                        <div>
+
+                                                            <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>"
+                                                                class="read-more">Ver
+                                                                mas</a>
+                                                        </div>
+                                        </div>
+                                    </div>
+                                    <% }) %>
+                                        <% } %>
 
 
 
@@ -369,9 +396,746 @@
 
 
 
-                        </div>
-                    </div>
                 </div>
+
+            </div>
+            <div class="container-fluid " style="max-width: 2020px">
+                <hr>
+                <h1>Diseño Grafico</h1>
+            </div>
+            <div class="container-fluid d-flex justify-content-center " style="max-width: 2020px; ">
+                <div id="news-slider-categoria-3" class="mt-5 d-sm-flex flex-wrap justify-content-center owl-carousel">
+                    <% if (arrayCursosCategoria3.length> 0) { %>
+                        <% arrayCursosCategoria3.forEach(curso=> { %>
+                            <% var ahora=new Date().getTime(); %>
+                                <% var diferencia=curso.fecha_oferta - ahora; %>
+                                    <div class="post-slide card " style="max-width: 19rem; border-radius: 10px;">
+                                        <div class="post-img">
+                                            <img src="<%= curso.url_imagen %>" alt="">
+                                            <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>"
+                                                class="over-layer"><i class="fa fa-link"></i></a>
+                                        </div>
+                                        <div class="post-content  ">
+                                            <h3 class="post-title card-title">
+                                                <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>"><strong
+                                                        class="card-title">
+                                                        <%= curso.titulo_curso %>
+                                                    </strong>
+
+                                                </a>
+                                            </h3>
+                                            <p class="post-description">
+                                                <%= curso.descripcion %>
+                                            </p>
+                                            <div class="d-flex ">
+
+                                                <span class="post-date me-3 "><i
+                                                        class="fa fa-clock-o"></i><strong>Inicio:</strong>
+                                                    <%= curso.fecha_inicio %>
+                                                </span>
+                                                <strong>
+                                                    <%= curso.tipo_curso %>
+                                                </strong>
+
+                                            </div>
+
+                                            <div style="margin-top: 10px;">
+                                                <h6><del style="margin-right: 10px;">
+                                                        $ <%= curso.costo %>
+                                                    </del>
+                                                    <% if (diferencia < 0 || curso.fecha_oferta=='0000-00-00 00:00:00' )
+                                                        { %>
+                                                        <strong style="color: red;">
+                                                            <%= curso.porcentaje_descuento.slice(2, ) %>%
+                                                                OFF
+                                                        </strong>
+                                                        <% } else { %>
+                                                            <strong style="color: red;">
+                                                                100% OFF
+                                                            </strong>
+                                                            <p>
+                                                                Por tiempo LIMITADO
+                                                            </p>
+                                                            <% } %>
+
+                                                </h6>
+                                                <del class="d-none">
+                                                    <%= Math.abs(curso.costo=curso.costo * curso.porcentaje_descuento -
+                                                        curso.costo) %>
+                                                </del>
+                                                <% if (diferencia < 0 || curso.fecha_oferta=='0000-00-00 00:00:00' ) {
+                                                    %>
+                                                    <h5 style="color: #005d6a;"><strong>
+
+                                                            Precio: <%= curso.costo=Intl.NumberFormat('en-EN', {
+                                                                style: 'currency' , currency: 'USD'
+                                                                }).format(Math.abs(curso.costo)) %>
+                                                        </strong>
+                                                    </h5>
+                                                    <% }else { %>
+
+                                                        <h5 style="color: #005d6a;"><strong>
+                                                                Precio: GRATIS
+                                                            </strong>
+                                                        </h5>
+                                                        <% } %>
+                                                            <p style="font-size: small;"><i
+                                                                    class="bi bi-stopwatch me-1"></i>
+                                                                <%= curso.duracion %> de clases -
+                                                                    <del class="d-none">
+                                                                        <%= sesiones=curso.duracion %>
+                                                                    </del><i class="bi bi-calendar3 me-1"></i>
+                                                                    <%= sesiones.slice(0, 3)/2 %> Secciones
+                                                                        <% console.log('seciones' + sesiones.slice(0,
+                                                                            3)/2) %>
+                                                            </p>
+                                            </div>
+                                            <% if (diferencia < 0 || curso.fecha_oferta=='0000-00-00 00:00:00' ) { %>
+                                                <p style="color: gray; text-align: center; font-size: small;">
+                                                    Garantía de reembolso de 30 días</p>
+                                                <% }else { %>
+                                                    <p style="color: gray; text-align: center; font-size: small;">
+                                                        Incluye certificado digital o fisico.</p>
+                                                    <% } %>
+
+
+                                                        <div>
+
+                                                            <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>"
+                                                                class="read-more">Ver
+                                                                mas</a>
+                                                        </div>
+                                        </div>
+                                    </div>
+                                    <% }) %>
+                                        <% } %>
+
+
+
+
+
+
+
+
+
+
+                </div>
+
+            </div>
+            <div class="container-fluid " style="max-width: 2020px">
+                <hr>
+                <h1>Contenido Digital & Multimedia</h1>
+            </div>
+            <div class="container-fluid d-flex justify-content-center " style="max-width: 2020px; ">
+                <div id="news-slider-categoria-4" class="mt-5 d-sm-flex flex-wrap justify-content-center owl-carousel">
+                    <% if (arrayCursosCategoria4.length> 0) { %>
+                        <% arrayCursosCategoria4.forEach(curso=> { %>
+                            <% var ahora=new Date().getTime(); %>
+                                <% var diferencia=curso.fecha_oferta - ahora; %>
+                                    <div class="post-slide card " style="max-width: 19rem; border-radius: 10px;">
+                                        <div class="post-img">
+                                            <img src="<%= curso.url_imagen %>" alt="">
+                                            <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>"
+                                                class="over-layer"><i class="fa fa-link"></i></a>
+                                        </div>
+                                        <div class="post-content  ">
+                                            <h3 class="post-title card-title">
+                                                <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>"><strong
+                                                        class="card-title">
+                                                        <%= curso.titulo_curso %>
+                                                    </strong>
+
+                                                </a>
+                                            </h3>
+                                            <p class="post-description">
+                                                <%= curso.descripcion %>
+                                            </p>
+                                            <div class="d-flex ">
+
+                                                <span class="post-date me-3 "><i
+                                                        class="fa fa-clock-o"></i><strong>Inicio:</strong>
+                                                    <%= curso.fecha_inicio %>
+                                                </span>
+                                                <strong>
+                                                    <%= curso.tipo_curso %>
+                                                </strong>
+
+                                            </div>
+
+                                            <div style="margin-top: 10px;">
+                                                <h6><del style="margin-right: 10px;">
+                                                        $ <%= curso.costo %>
+                                                    </del>
+                                                    <% if (diferencia < 0 || curso.fecha_oferta=='0000-00-00 00:00:00' )
+                                                        { %>
+                                                        <strong style="color: red;">
+                                                            <%= curso.porcentaje_descuento.slice(2, ) %>%
+                                                                OFF
+                                                        </strong>
+                                                        <% } else { %>
+                                                            <strong style="color: red;">
+                                                                100% OFF
+                                                            </strong>
+                                                            <p>
+                                                                Por tiempo LIMITADO
+                                                            </p>
+                                                            <% } %>
+
+                                                </h6>
+                                                <del class="d-none">
+                                                    <%= Math.abs(curso.costo=curso.costo * curso.porcentaje_descuento -
+                                                        curso.costo) %>
+                                                </del>
+                                                <% if (diferencia < 0 || curso.fecha_oferta=='0000-00-00 00:00:00' ) {
+                                                    %>
+                                                    <h5 style="color: #005d6a;"><strong>
+
+                                                            Precio: <%= curso.costo=Intl.NumberFormat('en-EN', {
+                                                                style: 'currency' , currency: 'USD'
+                                                                }).format(Math.abs(curso.costo)) %>
+                                                        </strong>
+                                                    </h5>
+                                                    <% }else { %>
+
+                                                        <h5 style="color: #005d6a;"><strong>
+                                                                Precio: GRATIS
+                                                            </strong>
+                                                        </h5>
+                                                        <% } %>
+                                                            <p style="font-size: small;"><i
+                                                                    class="bi bi-stopwatch me-1"></i>
+                                                                <%= curso.duracion %> de clases -
+                                                                    <del class="d-none">
+                                                                        <%= sesiones=curso.duracion %>
+                                                                    </del><i class="bi bi-calendar3 me-1"></i>
+                                                                    <%= sesiones.slice(0, 3)/2 %> Secciones
+                                                                        <% console.log('seciones' + sesiones.slice(0,
+                                                                            3)/2) %>
+                                                            </p>
+                                            </div>
+                                            <% if (diferencia < 0 || curso.fecha_oferta=='0000-00-00 00:00:00' ) { %>
+                                                <p style="color: gray; text-align: center; font-size: small;">
+                                                    Garantía de reembolso de 30 días</p>
+                                                <% }else { %>
+                                                    <p style="color: gray; text-align: center; font-size: small;">
+                                                        Incluye certificado digital o fisico.</p>
+                                                    <% } %>
+
+
+                                                        <div>
+
+                                                            <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>"
+                                                                class="read-more">Ver
+                                                                mas</a>
+                                                        </div>
+                                        </div>
+                                    </div>
+                                    <% }) %>
+                                        <% } %>
+
+
+
+
+
+
+
+
+
+
+                </div>
+
+            </div>
+            <div class="container-fluid " style="max-width: 2020px">
+                <hr>
+                <h1>Idiomas & Habilidades Lingüísticas</h1>
+            </div>
+            <div class="container-fluid d-flex justify-content-center " style="max-width: 2020px; ">
+                <div id="news-slider-categoria-5" class="mt-5 d-sm-flex flex-wrap justify-content-center owl-carousel">
+                    <% if (arrayCursosCategoria5.length> 0) { %>
+                        <% arrayCursosCategoria5.forEach(curso=> { %>
+                            <% var ahora=new Date().getTime(); %>
+                                <% var diferencia=curso.fecha_oferta - ahora; %>
+                                    <div class="post-slide card " style="max-width: 19rem; border-radius: 10px;">
+                                        <div class="post-img">
+                                            <img src="<%= curso.url_imagen %>" alt="">
+                                            <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>"
+                                                class="over-layer"><i class="fa fa-link"></i></a>
+                                        </div>
+                                        <div class="post-content  ">
+                                            <h3 class="post-title card-title">
+                                                <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>"><strong
+                                                        class="card-title">
+                                                        <%= curso.titulo_curso %>
+                                                    </strong>
+
+                                                </a>
+                                            </h3>
+                                            <p class="post-description">
+                                                <%= curso.descripcion %>
+                                            </p>
+                                            <div class="d-flex ">
+
+                                                <span class="post-date me-3 "><i
+                                                        class="fa fa-clock-o"></i><strong>Inicio:</strong>
+                                                    <%= curso.fecha_inicio %>
+                                                </span>
+                                                <strong>
+                                                    <%= curso.tipo_curso %>
+                                                </strong>
+
+                                            </div>
+
+                                            <div style="margin-top: 10px;">
+                                                <h6><del style="margin-right: 10px;">
+                                                        $ <%= curso.costo %>
+                                                    </del>
+                                                    <% if (diferencia < 0 || curso.fecha_oferta=='0000-00-00 00:00:00' )
+                                                        { %>
+                                                        <strong style="color: red;">
+                                                            <%= curso.porcentaje_descuento.slice(2, ) %>%
+                                                                OFF
+                                                        </strong>
+                                                        <% } else { %>
+                                                            <strong style="color: red;">
+                                                                100% OFF
+                                                            </strong>
+                                                            <p>
+                                                                Por tiempo LIMITADO
+                                                            </p>
+                                                            <% } %>
+
+                                                </h6>
+                                                <del class="d-none">
+                                                    <%= Math.abs(curso.costo=curso.costo * curso.porcentaje_descuento -
+                                                        curso.costo) %>
+                                                </del>
+                                                <% if (diferencia < 0 || curso.fecha_oferta=='0000-00-00 00:00:00' ) {
+                                                    %>
+                                                    <h5 style="color: #005d6a;"><strong>
+
+                                                            Precio: <%= curso.costo=Intl.NumberFormat('en-EN', {
+                                                                style: 'currency' , currency: 'USD'
+                                                                }).format(Math.abs(curso.costo)) %>
+                                                        </strong>
+                                                    </h5>
+                                                    <% }else { %>
+
+                                                        <h5 style="color: #005d6a;"><strong>
+                                                                Precio: GRATIS
+                                                            </strong>
+                                                        </h5>
+                                                        <% } %>
+                                                            <p style="font-size: small;"><i
+                                                                    class="bi bi-stopwatch me-1"></i>
+                                                                <%= curso.duracion %> de clases -
+                                                                    <del class="d-none">
+                                                                        <%= sesiones=curso.duracion %>
+                                                                    </del><i class="bi bi-calendar3 me-1"></i>
+                                                                    <%= sesiones.slice(0, 3)/2 %> Secciones
+                                                                        <% console.log('seciones' + sesiones.slice(0,
+                                                                            3)/2) %>
+                                                            </p>
+                                            </div>
+                                            <% if (diferencia < 0 || curso.fecha_oferta=='0000-00-00 00:00:00' ) { %>
+                                                <p style="color: gray; text-align: center; font-size: small;">
+                                                    Garantía de reembolso de 30 días</p>
+                                                <% }else { %>
+                                                    <p style="color: gray; text-align: center; font-size: small;">
+                                                        Incluye certificado digital o fisico.</p>
+                                                    <% } %>
+
+
+                                                        <div>
+
+                                                            <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>"
+                                                                class="read-more">Ver
+                                                                mas</a>
+                                                        </div>
+                                        </div>
+                                    </div>
+                                    <% }) %>
+                                        <% } %>
+
+
+
+
+
+
+
+
+
+
+                </div>
+
+            </div>
+            <div class="container-fluid " style="max-width: 2020px">
+                <hr>
+                <h1>Marketing Digital</h1>
+            </div>
+            <div class="container-fluid d-flex justify-content-center " style="max-width: 2020px; ">
+                <div id="news-slider-categoria-6" class="mt-5 d-sm-flex flex-wrap justify-content-center owl-carousel">
+                    <% if (arrayCursosCategoria6.length> 0) { %>
+                        <% arrayCursosCategoria6.forEach(curso=> { %>
+                            <% var ahora=new Date().getTime(); %>
+                                <% var diferencia=curso.fecha_oferta - ahora; %>
+                                    <div class="post-slide card " style="max-width: 19rem; border-radius: 10px;">
+                                        <div class="post-img">
+                                            <img src="<%= curso.url_imagen %>" alt="">
+                                            <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>"
+                                                class="over-layer"><i class="fa fa-link"></i></a>
+                                        </div>
+                                        <div class="post-content  ">
+                                            <h3 class="post-title card-title">
+                                                <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>"><strong
+                                                        class="card-title">
+                                                        <%= curso.titulo_curso %>
+                                                    </strong>
+
+                                                </a>
+                                            </h3>
+                                            <p class="post-description">
+                                                <%= curso.descripcion %>
+                                            </p>
+                                            <div class="d-flex ">
+
+                                                <span class="post-date me-3 "><i
+                                                        class="fa fa-clock-o"></i><strong>Inicio:</strong>
+                                                    <%= curso.fecha_inicio %>
+                                                </span>
+                                                <strong>
+                                                    <%= curso.tipo_curso %>
+                                                </strong>
+
+                                            </div>
+
+                                            <div style="margin-top: 10px;">
+                                                <h6><del style="margin-right: 10px;">
+                                                        $ <%= curso.costo %>
+                                                    </del>
+                                                    <% if (diferencia < 0 || curso.fecha_oferta=='0000-00-00 00:00:00' )
+                                                        { %>
+                                                        <strong style="color: red;">
+                                                            <%= curso.porcentaje_descuento.slice(2, ) %>%
+                                                                OFF
+                                                        </strong>
+                                                        <% } else { %>
+                                                            <strong style="color: red;">
+                                                                100% OFF
+                                                            </strong>
+                                                            <p>
+                                                                Por tiempo LIMITADO
+                                                            </p>
+                                                            <% } %>
+
+                                                </h6>
+                                                <del class="d-none">
+                                                    <%= Math.abs(curso.costo=curso.costo * curso.porcentaje_descuento -
+                                                        curso.costo) %>
+                                                </del>
+                                                <% if (diferencia < 0 || curso.fecha_oferta=='0000-00-00 00:00:00' ) {
+                                                    %>
+                                                    <h5 style="color: #005d6a;"><strong>
+
+                                                            Precio: <%= curso.costo=Intl.NumberFormat('en-EN', {
+                                                                style: 'currency' , currency: 'USD'
+                                                                }).format(Math.abs(curso.costo)) %>
+                                                        </strong>
+                                                    </h5>
+                                                    <% }else { %>
+
+                                                        <h5 style="color: #005d6a;"><strong>
+                                                                Precio: GRATIS
+                                                            </strong>
+                                                        </h5>
+                                                        <% } %>
+                                                            <p style="font-size: small;"><i
+                                                                    class="bi bi-stopwatch me-1"></i>
+                                                                <%= curso.duracion %> de clases -
+                                                                    <del class="d-none">
+                                                                        <%= sesiones=curso.duracion %>
+                                                                    </del><i class="bi bi-calendar3 me-1"></i>
+                                                                    <%= sesiones.slice(0, 3)/2 %> Secciones
+                                                                        <% console.log('seciones' + sesiones.slice(0,
+                                                                            3)/2) %>
+                                                            </p>
+                                            </div>
+                                            <% if (diferencia < 0 || curso.fecha_oferta=='0000-00-00 00:00:00' ) { %>
+                                                <p style="color: gray; text-align: center; font-size: small;">
+                                                    Garantía de reembolso de 30 días</p>
+                                                <% }else { %>
+                                                    <p style="color: gray; text-align: center; font-size: small;">
+                                                        Incluye certificado digital o fisico.</p>
+                                                    <% } %>
+
+
+                                                        <div>
+
+                                                            <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>"
+                                                                class="read-more">Ver
+                                                                mas</a>
+                                                        </div>
+                                        </div>
+                                    </div>
+                                    <% }) %>
+                                        <% } %>
+
+
+
+
+
+
+
+
+
+
+                </div>
+
+            </div>
+            <div class="container-fluid " style="max-width: 2020px">
+                <hr>
+                <h1>Ciencia de Datos & Analisis</h1>
+            </div>
+            <div class="container-fluid d-flex justify-content-center " style="max-width: 2020px; ">
+                <div id="news-slider-categoria-7" class="mt-5 d-sm-flex flex-wrap justify-content-center owl-carousel">
+                    <% if (arrayCursosCategoria7.length> 0) { %>
+                        <% arrayCursosCategoria7.forEach(curso=> { %>
+                            <% var ahora=new Date().getTime(); %>
+                                <% var diferencia=curso.fecha_oferta - ahora; %>
+                                    <div class="post-slide card " style="max-width: 19rem; border-radius: 10px;">
+                                        <div class="post-img">
+                                            <img src="<%= curso.url_imagen %>" alt="">
+                                            <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>"
+                                                class="over-layer"><i class="fa fa-link"></i></a>
+                                        </div>
+                                        <div class="post-content  ">
+                                            <h3 class="post-title card-title">
+                                                <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>"><strong
+                                                        class="card-title">
+                                                        <%= curso.titulo_curso %>
+                                                    </strong>
+
+                                                </a>
+                                            </h3>
+                                            <p class="post-description">
+                                                <%= curso.descripcion %>
+                                            </p>
+                                            <div class="d-flex ">
+
+                                                <span class="post-date me-3 "><i
+                                                        class="fa fa-clock-o"></i><strong>Inicio:</strong>
+                                                    <%= curso.fecha_inicio %>
+                                                </span>
+                                                <strong>
+                                                    <%= curso.tipo_curso %>
+                                                </strong>
+
+                                            </div>
+
+                                            <div style="margin-top: 10px;">
+                                                <h6><del style="margin-right: 10px;">
+                                                        $ <%= curso.costo %>
+                                                    </del>
+                                                    <% if (diferencia < 0 || curso.fecha_oferta=='0000-00-00 00:00:00' )
+                                                        { %>
+                                                        <strong style="color: red;">
+                                                            <%= curso.porcentaje_descuento.slice(2, ) %>%
+                                                                OFF
+                                                        </strong>
+                                                        <% } else { %>
+                                                            <strong style="color: red;">
+                                                                100% OFF
+                                                            </strong>
+                                                            <p>
+                                                                Por tiempo LIMITADO
+                                                            </p>
+                                                            <% } %>
+
+                                                </h6>
+                                                <del class="d-none">
+                                                    <%= Math.abs(curso.costo=curso.costo * curso.porcentaje_descuento -
+                                                        curso.costo) %>
+                                                </del>
+                                                <% if (diferencia < 0 || curso.fecha_oferta=='0000-00-00 00:00:00' ) {
+                                                    %>
+                                                    <h5 style="color: #005d6a;"><strong>
+
+                                                            Precio: <%= curso.costo=Intl.NumberFormat('en-EN', {
+                                                                style: 'currency' , currency: 'USD'
+                                                                }).format(Math.abs(curso.costo)) %>
+                                                        </strong>
+                                                    </h5>
+                                                    <% }else { %>
+
+                                                        <h5 style="color: #005d6a;"><strong>
+                                                                Precio: GRATIS
+                                                            </strong>
+                                                        </h5>
+                                                        <% } %>
+                                                            <p style="font-size: small;"><i
+                                                                    class="bi bi-stopwatch me-1"></i>
+                                                                <%= curso.duracion %> de clases -
+                                                                    <del class="d-none">
+                                                                        <%= sesiones=curso.duracion %>
+                                                                    </del><i class="bi bi-calendar3 me-1"></i>
+                                                                    <%= sesiones.slice(0, 3)/2 %> Secciones
+                                                                        <% console.log('seciones' + sesiones.slice(0,
+                                                                            3)/2) %>
+                                                            </p>
+                                            </div>
+                                            <% if (diferencia < 0 || curso.fecha_oferta=='0000-00-00 00:00:00' ) { %>
+                                                <p style="color: gray; text-align: center; font-size: small;">
+                                                    Garantía de reembolso de 30 días</p>
+                                                <% }else { %>
+                                                    <p style="color: gray; text-align: center; font-size: small;">
+                                                        Incluye certificado digital o fisico.</p>
+                                                    <% } %>
+
+
+                                                        <div>
+
+                                                            <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>"
+                                                                class="read-more">Ver
+                                                                mas</a>
+                                                        </div>
+                                        </div>
+                                    </div>
+                                    <% }) %>
+                                        <% } %>
+
+
+
+
+
+
+
+
+
+
+                </div>
+
+            </div>
+            <div class="container-fluid " style="max-width: 2020px">
+                <hr>
+                <h1>Finanzas Personales & Contabilidad</h1>
+            </div>
+            <div class="container-fluid d-flex justify-content-center " style="max-width: 2020px; ">
+                <div id="news-slider-categoria-8" class="mt-5 d-sm-flex flex-wrap justify-content-center owl-carousel">
+                    <% if (arrayCursosCategoria8.length> 0) { %>
+                        <% arrayCursosCategoria8.forEach(curso=> { %>
+                            <% var ahora=new Date().getTime(); %>
+                                <% var diferencia=curso.fecha_oferta - ahora; %>
+                                    <div class="post-slide card " style="max-width: 19rem; border-radius: 10px;">
+                                        <div class="post-img">
+                                            <img src="<%= curso.url_imagen %>" alt="">
+                                            <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>"
+                                                class="over-layer"><i class="fa fa-link"></i></a>
+                                        </div>
+                                        <div class="post-content  ">
+                                            <h3 class="post-title card-title">
+                                                <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>"><strong
+                                                        class="card-title">
+                                                        <%= curso.titulo_curso %>
+                                                    </strong>
+
+                                                </a>
+                                            </h3>
+                                            <p class="post-description">
+                                                <%= curso.descripcion %>
+                                            </p>
+                                            <div class="d-flex ">
+
+                                                <span class="post-date me-3 "><i
+                                                        class="fa fa-clock-o"></i><strong>Inicio:</strong>
+                                                    <%= curso.fecha_inicio %>
+                                                </span>
+                                                <strong>
+                                                    <%= curso.tipo_curso %>
+                                                </strong>
+
+                                            </div>
+
+                                            <div style="margin-top: 10px;">
+                                                <h6><del style="margin-right: 10px;">
+                                                        $ <%= curso.costo %>
+                                                    </del>
+                                                    <% if (diferencia < 0 || curso.fecha_oferta=='0000-00-00 00:00:00' )
+                                                        { %>
+                                                        <strong style="color: red;">
+                                                            <%= curso.porcentaje_descuento.slice(2, ) %>%
+                                                                OFF
+                                                        </strong>
+                                                        <% } else { %>
+                                                            <strong style="color: red;">
+                                                                100% OFF
+                                                            </strong>
+                                                            <p>
+                                                                Por tiempo LIMITADO
+                                                            </p>
+                                                            <% } %>
+
+                                                </h6>
+                                                <del class="d-none">
+                                                    <%= Math.abs(curso.costo=curso.costo * curso.porcentaje_descuento -
+                                                        curso.costo) %>
+                                                </del>
+                                                <% if (diferencia < 0 || curso.fecha_oferta=='0000-00-00 00:00:00' ) {
+                                                    %>
+                                                    <h5 style="color: #005d6a;"><strong>
+
+                                                            Precio: <%= curso.costo=Intl.NumberFormat('en-EN', {
+                                                                style: 'currency' , currency: 'USD'
+                                                                }).format(Math.abs(curso.costo)) %>
+                                                        </strong>
+                                                    </h5>
+                                                    <% }else { %>
+
+                                                        <h5 style="color: #005d6a;"><strong>
+                                                                Precio: GRATIS
+                                                            </strong>
+                                                        </h5>
+                                                        <% } %>
+                                                            <p style="font-size: small;"><i
+                                                                    class="bi bi-stopwatch me-1"></i>
+                                                                <%= curso.duracion %> de clases -
+                                                                    <del class="d-none">
+                                                                        <%= sesiones=curso.duracion %>
+                                                                    </del><i class="bi bi-calendar3 me-1"></i>
+                                                                    <%= sesiones.slice(0, 3)/2 %> Secciones
+                                                                        <% console.log('seciones' + sesiones.slice(0,
+                                                                            3)/2) %>
+                                                            </p>
+                                            </div>
+                                            <% if (diferencia < 0 || curso.fecha_oferta=='0000-00-00 00:00:00' ) { %>
+                                                <p style="color: gray; text-align: center; font-size: small;">
+                                                    Garantía de reembolso de 30 días</p>
+                                                <% }else { %>
+                                                    <p style="color: gray; text-align: center; font-size: small;">
+                                                        Incluye certificado digital o fisico.</p>
+                                                    <% } %>
+
+
+                                                        <div>
+
+                                                            <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>"
+                                                                class="read-more">Ver
+                                                                mas</a>
+                                                        </div>
+                                        </div>
+                                    </div>
+                                    <% }) %>
+                                        <% } %>
+
+
+
+
+
+
+
+
+
+
+                </div>
+
             </div>
 
 
@@ -382,7 +1146,7 @@
             <script src='https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js'></script>
 
             <script>
-                $(document).ready(function() {
+                $(document).ready(function () {
                     $("#news-slider-categoria-1").owlCarousel({
                         items: 5,
                         itemsDesktop: [1199, 3],
@@ -397,8 +1161,99 @@
                 });
             </script>
             <script>
-                $(document).ready(function() {
+                $(document).ready(function () {
                     $("#news-slider-categoria-2").owlCarousel({
+                        items: 5,
+                        itemsDesktop: [1199, 3],
+                        itemsDesktopSmall: [980, 2],
+                        itemsMobile: [600, 1],
+                        navigation: true,
+                        navigationText: ["", ""],
+                        pagination: true,
+                        autoPlay: true
+                    });
+
+                });
+            </script>
+            <script>
+                $(document).ready(function () {
+                    $("#news-slider-categoria-3").owlCarousel({
+                        items: 5,
+                        itemsDesktop: [1199, 3],
+                        itemsDesktopSmall: [980, 2],
+                        itemsMobile: [600, 1],
+                        navigation: true,
+                        navigationText: ["", ""],
+                        pagination: true,
+                        autoPlay: true
+                    });
+
+                });
+            </script>
+            <script>
+                $(document).ready(function () {
+                    $("#news-slider-categoria-4").owlCarousel({
+                        items: 5,
+                        itemsDesktop: [1199, 3],
+                        itemsDesktopSmall: [980, 2],
+                        itemsMobile: [600, 1],
+                        navigation: true,
+                        navigationText: ["", ""],
+                        pagination: true,
+                        autoPlay: true
+                    });
+
+                });
+            </script>
+            <script>
+                $(document).ready(function () {
+                    $("#news-slider-categoria-5").owlCarousel({
+                        items: 5,
+                        itemsDesktop: [1199, 3],
+                        itemsDesktopSmall: [980, 2],
+                        itemsMobile: [600, 1],
+                        navigation: true,
+                        navigationText: ["", ""],
+                        pagination: true,
+                        autoPlay: true
+                    });
+
+                });
+            </script>
+            <script>
+                $(document).ready(function () {
+                    $("#news-slider-categoria-6").owlCarousel({
+                        items: 5,
+                        itemsDesktop: [1199, 3],
+                        itemsDesktopSmall: [980, 2],
+                        itemsMobile: [600, 1],
+                        navigation: true,
+                        navigationText: ["", ""],
+                        pagination: true,
+                        autoPlay: true
+
+                    });
+
+                });
+            </script>
+            <script>
+                $(document).ready(function () {
+                    $("#news-slider-categoria-7").owlCarousel({
+                        items: 5,
+                        itemsDesktop: [1199, 3],
+                        itemsDesktopSmall: [980, 2],
+                        itemsMobile: [600, 1],
+                        navigation: true,
+                        navigationText: ["", ""],
+                        pagination: true,
+                        autoPlay: true
+                    });
+
+                });
+            </script>
+            <script>
+                $(document).ready(function () {
+                    $("#news-slider-categoria-8").owlCarousel({
                         items: 5,
                         itemsDesktop: [1199, 3],
                         itemsDesktopSmall: [980, 2],
@@ -423,7 +1278,7 @@
 
             <script>
                 // Ocultar la clase 'curso-card-busqueda' inicialmente
-                document.addEventListener("DOMContentLoaded", function() {
+                document.addEventListener("DOMContentLoaded", function () {
                     var cursos = document.getElementsByClassName('curso-card-busqueda');
                     for (var i = 0; i < cursos.length; i++) {
                         cursos[i].style.display = 'none';
