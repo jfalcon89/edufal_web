@@ -303,6 +303,16 @@ router.post("/cursos_talleres/ver_curso_taller/:id", async(req, res) => {
 
     // console.log('NUEVO ESTUDIANTE ' + nuevoEstudiante.cedula);
 
+    // categorias navbar
+    const arrayCursosCategoria1DB = await pool.query(`SELECT * FROM cursos where cursos.estado_curso = "Activo" and cursos.id_categoria = '1' `);
+    const arrayCursosCategoria2DB = await pool.query(`SELECT * FROM cursos where cursos.estado_curso = "Activo" and cursos.id_categoria = '2' `);
+    const arrayCursosCategoria3DB = await pool.query(`SELECT * FROM cursos where cursos.estado_curso = "Activo" and cursos.id_categoria = '3' `);
+    const arrayCursosCategoria4DB = await pool.query(`SELECT * FROM cursos where cursos.estado_curso = "Activo" and cursos.id_categoria = '4' `);
+    const arrayCursosCategoria5DB = await pool.query(`SELECT * FROM cursos where cursos.estado_curso = "Activo" and cursos.id_categoria = '5' `);
+    const arrayCursosCategoria6DB = await pool.query(`SELECT * FROM cursos where cursos.estado_curso = "Activo" and cursos.id_categoria = '6' `);
+    const arrayCursosCategoria7DB = await pool.query(`SELECT * FROM cursos where cursos.estado_curso = "Activo" and cursos.id_categoria = '7' `);
+    const arrayCursosCategoria8DB = await pool.query(`SELECT * FROM cursos where cursos.estado_curso = "Activo" and cursos.id_categoria = '8' `);
+
     const cursoDB = await pool.query(`SELECT * FROM cursos, modulos WHERE cursos.estado_curso = "Activo" AND cursos.titulo_curso = "${curso}"`);
     const contenidoCursoDB = await pool.query(`SELECT * FROM modulos WHERE modulos.id_curso = "${id_curso}"`);
     const maestroDB = await pool.query(`SELECT * FROM maestros WHERE maestros.id_maestro = ${cursoDB[0].id_maestro}`);
@@ -489,7 +499,15 @@ router.post("/cursos_talleres/ver_curso_taller/:id", async(req, res) => {
             candidato_2,
             candidato_3,
             candidato_4,
-            diferencia
+            diferencia,
+            arrayCursosCategoria1: arrayCursosCategoria1DB,
+            arrayCursosCategoria2: arrayCursosCategoria2DB,
+            arrayCursosCategoria3: arrayCursosCategoria3DB,
+            arrayCursosCategoria4: arrayCursosCategoria4DB,
+            arrayCursosCategoria5: arrayCursosCategoria5DB,
+            arrayCursosCategoria6: arrayCursosCategoria6DB,
+            arrayCursosCategoria7: arrayCursosCategoria7DB,
+            arrayCursosCategoria8: arrayCursosCategoria8DB
         });
     } catch (error) {
         console.error('Error al consultar la base de datos:', error);

@@ -3,10 +3,12 @@
         <div class="d-lg-flex">
 
             <a class="text-decoration-none" href="contacto@edufalonline.com" target="_blank">
-                <p class="text-light m-0 me-4 d-flex" style="font-size: large;"><i class="bi bi-envelope-check me-2"></i>contacto@edufalonline.com</p>
+                <p class="text-light m-0 me-4 d-flex" style="font-size: large;"><i
+                        class="bi bi-envelope-check me-2"></i>contacto@edufalonline.com</p>
             </a>
             <a class="text-decoration-none" href="https://bit.ly/3xzs0RV" target="_blank">
-                <p class="text-light m-0 " style="font-size: large;"><i class="bi bi-telephone-forward me-2"></i>829-856-0203</p>
+                <p class="text-light m-0 " style="font-size: large;"><i
+                        class="bi bi-telephone-forward me-2"></i>829-856-0203</p>
             </a>
         </div>
         <div class="container-redes align-items-center d-flex ">
@@ -17,15 +19,19 @@
             <div>
 
                 <!-- <h6 class="text-white mb-3"><strong>NUESTRAS REDES SOCIALES</strong></h6> -->
-                <a href="https://www.facebook.com/rosfalrd/" target="_blank"> <img style="width: 30px;" src="/img/logo-facebook.png" alt="facebook"></a>
-                <a href="https://www.instagram.com/rosfalrd/" target="_blank"> <img style="width: 30px;" src="/img/logo-instagram.png" alt="instagram"></a>
-                <a href="https://bit.ly/3pUAZZq" target="_blank"> <img style="width: 30px;" src="/img/logo-ws-navar-footer.png" alt="ws"></a>
+                <a href="https://www.facebook.com/rosfalrd/" target="_blank"> <img style="width: 30px;"
+                        src="/img/logo-facebook.png" alt="facebook"></a>
+                <a href="https://www.instagram.com/rosfalrd/" target="_blank"> <img style="width: 30px;"
+                        src="/img/logo-instagram.png" alt="instagram"></a>
+                <a href="https://bit.ly/3pUAZZq" target="_blank"> <img style="width: 30px;"
+                        src="/img/logo-ws-navar-footer.png" alt="ws"></a>
                 <a href="#"> <img style="width: 30px;" src="/img/logo-twiter.png" alt="twier"></a>
             </div>
         </div>
         <!-- <a href="/login" class="m">LOGIN</a> -->
     </div>
-    <a class="text-decoration-none d-none d-sm-block" href="https://edufalonline.com/aulavirtual/login/" target="_blank">
+    <a class="text-decoration-none d-none d-sm-block" href="https://edufalonline.com/aulavirtual/login/"
+        target="_blank">
         <h5 class="text-light text-truncate " style="font-size: large; margin-top: 6px;">Aula Virtual</h5>
     </a>
 </div>
@@ -37,10 +43,12 @@
         <nav class="navbar navbar-expand-xxl navbar-light bg-0 p-0  ">
 
 
-            <a class="navbar-brand " href="/"><img src="/img/logo-edufal.jpg" style="width: 220; height: 70px;" alt="logo edufal"></a>
+            <a class="navbar-brand " href="/"><img src="/img/logo-edufal.jpg" style="width: 220; height: 70px;"
+                    alt="logo edufal"></a>
             <!-- <div class="container-fluid"> -->
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse  justify-content-around" id="navbarNav">
@@ -68,7 +76,8 @@
                                             <li class="" style="border: 1px solid rgba(0, 0, 0, .125)">
                                                 <a href="/cursos_talleres">
 
-                                                    <strong>VER TODOS LOS CURSOS</strong><i class="bi bi-arrow-right-square-fill"></i>
+                                                    <strong>VER TODOS LOS CURSOS</strong><i
+                                                        class="bi bi-arrow-right-square-fill"></i>
                                                 </a>
                                             </li>
 
@@ -128,16 +137,25 @@
                                         </ul>
                                         <!-- Desarrollo de software y programacion sub-Menu-items -->
                                         <ul class="setting-drop">
-                                            <li class="arrow back-setting-btn text-truncate" style="border: 1px solid rgba(0, 0, 0, .125)"><i class="bi bi-chevron-double-left me-3 "></i>Desarrollo de software y programacion
+                                            <li class="arrow back-setting-btn text-truncate"
+                                                style="border: 1px solid rgba(0, 0, 0, .125)"><i
+                                                    class="bi bi-chevron-double-left me-3 "></i>Desarrollo de software y
+                                                programacion
                                             </li>
                                             <% if (arrayCursosCategoria1.length> 0) { %>
                                                 <% arrayCursosCategoria1.forEach(curso=> { %>
-                                                    <li style="padding-left: 65px;" class="text-truncate hover_anchas_subcat ">
+                                                    <li style="padding-left: 65px;"
+                                                        class="text-truncate hover_anchas_subcat ">
 
 
-                                                        <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>" class=" " data-toggle="tooltip" data-placement="top" title="<%= curso.titulo_curso %>" style="display: contents;">
+                                                        <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>"
+                                                            class=" " data-toggle="tooltip" data-placement="top"
+                                                            title="<%= curso.titulo_curso %>"
+                                                            style="display: contents;">
 
-                                                            <img src="<%= curso.url_imagen %>" width="50px" alt="portada_curso"><%= curso.titulo_curso %>
+                                                            <img src="<%= curso.url_imagen %>" width="50px"
+                                                                alt="portada_curso">
+                                                            <%= curso.titulo_curso %>
                                                         </a>
                                                     </li>
                                                     <% }) %>
@@ -146,14 +164,23 @@
                                         </ul>
                                         <!-- Negocios y emprendimiento sub-Menu-items -->
                                         <ul class="help-drop">
-                                            <li class="arrow back-help-btn text-truncate" style="padding-left: 35px; border: 1px solid rgba(0, 0, 0, .125)"><i class="bi bi-chevron-double-left me-3 "></i>Negocios y Emprendimiento
+                                            <li class="arrow back-help-btn text-truncate"
+                                                style="padding-left: 35px; border: 1px solid rgba(0, 0, 0, .125)"><i
+                                                    class="bi bi-chevron-double-left me-3 "></i>Negocios y
+                                                Emprendimiento
                                             </li>
                                             <% if (arrayCursosCategoria2.length> 0) { %>
                                                 <% arrayCursosCategoria2.forEach(curso=> { %>
-                                                    <li style="padding-left: 35px;" class="text-truncate hover_anchas_subcat ">
-                                                        <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>" class=" " data-toggle="tooltip" data-placement="top" title="<%= curso.titulo_curso %>" style="display: contents;">
+                                                    <li style="padding-left: 65px;"
+                                                        class="text-truncate hover_anchas_subcat ">
+                                                        <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>"
+                                                            class=" " data-toggle="tooltip" data-placement="top"
+                                                            title="<%= curso.titulo_curso %>"
+                                                            style="display: contents;">
 
-                                                            <img src="<%= curso.url_imagen %>" width="50px" alt="portada_curso"><%= curso.titulo_curso %>
+                                                            <img src="<%= curso.url_imagen %>" width="50px"
+                                                                alt="portada_curso">
+                                                            <%= curso.titulo_curso %>
                                                         </a>
                                                     </li>
                                                     <% }) %>
@@ -161,14 +188,22 @@
                                         </ul>
                                         <!-- Diseño grafico sub-Menu-items -->
                                         <ul class="categoria_3-drop">
-                                            <li class="arrow back-categoria_3-btn text-truncate" style="padding-left: 35px; border: 1px solid rgba(0, 0, 0, .125)"><i class="bi bi-chevron-double-left me-3 "></i>Diseño Grafico
+                                            <li class="arrow back-categoria_3-btn text-truncate"
+                                                style="padding-left: 65px; border: 1px solid rgba(0, 0, 0, .125)"><i
+                                                    class="bi bi-chevron-double-left me-3 "></i>Diseño Grafico
                                             </li>
                                             <% if (arrayCursosCategoria3.length> 0) { %>
                                                 <% arrayCursosCategoria3.forEach(curso=> { %>
-                                                    <li style="padding-left: 35px;" class="text-truncate hover_anchas_subcat ">
-                                                        <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>" class=" " data-toggle="tooltip" data-placement="top" title="<%= curso.titulo_curso %>" style="display: contents;">
+                                                    <li style="padding-left: 65px;"
+                                                        class="text-truncate hover_anchas_subcat ">
+                                                        <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>"
+                                                            class=" " data-toggle="tooltip" data-placement="top"
+                                                            title="<%= curso.titulo_curso %>"
+                                                            style="display: contents;">
 
-                                                            <img src="<%= curso.url_imagen %>" width="50px" alt="portada_curso"><%= curso.titulo_curso %>
+                                                            <img src="<%= curso.url_imagen %>" width="50px"
+                                                                alt="portada_curso">
+                                                            <%= curso.titulo_curso %>
                                                         </a>
                                                     </li>
                                                     <% }) %>
@@ -176,14 +211,22 @@
                                         </ul>
                                         <!-- Contenido Digital sub-Menu-items -->
                                         <ul class="categoria_4-drop">
-                                            <li class="arrow back-categoria_4-btn text-truncate" style="padding-left: 35px; border: 1px solid rgba(0, 0, 0, .125)"><i class="bi bi-chevron-double-left me-3 "></i>Contenido Digital
+                                            <li class="arrow back-categoria_4-btn text-truncate"
+                                                style=" border: 1px solid rgba(0, 0, 0, .125)"><i
+                                                    class="bi bi-chevron-double-left me-3 "></i>Contenido Digital
                                             </li>
                                             <% if (arrayCursosCategoria4.length> 0) { %>
                                                 <% arrayCursosCategoria4.forEach(curso=> { %>
-                                                    <li style="padding-left: 35px;" class="text-truncate hover_anchas_subcat ">
-                                                        <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>" class=" " data-toggle="tooltip" data-placement="top" title="<%= curso.titulo_curso %>" style="display: contents;">
+                                                    <li style="padding-left: 65px;"
+                                                        class="text-truncate hover_anchas_subcat ">
+                                                        <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>"
+                                                            class=" " data-toggle="tooltip" data-placement="top"
+                                                            title="<%= curso.titulo_curso %>"
+                                                            style="display: contents;">
 
-                                                            <img src="<%= curso.url_imagen %>" width="50px" alt="portada_curso"><%= curso.titulo_curso %>
+                                                            <img src="<%= curso.url_imagen %>" width="50px"
+                                                                alt="portada_curso">
+                                                            <%= curso.titulo_curso %>
                                                         </a>
                                                     </li>
                                                     <% }) %>
@@ -191,14 +234,23 @@
                                         </ul>
                                         <!-- Idiomas y habilidades lingüísticas sub-Menu-items -->
                                         <ul class="categoria_5-drop">
-                                            <li class="arrow back-categoria_5-btn text-truncate" style="border: 1px solid rgba(0, 0, 0, .125)"><i class="bi bi-chevron-double-left me-3 "></i>Idiomas y habilidades lingüísticas
+                                            <li class="arrow back-categoria_5-btn text-truncate"
+                                                style="border: 1px solid rgba(0, 0, 0, .125)"><i
+                                                    class="bi bi-chevron-double-left me-3 "></i>Idiomas y habilidades
+                                                lingüísticas
                                             </li>
                                             <% if (arrayCursosCategoria5.length> 0) { %>
                                                 <% arrayCursosCategoria5.forEach(curso=> { %>
-                                                    <li style="padding-left: 65px;" class="text-truncate hover_anchas_subcat ">
-                                                        <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>" class=" " data-toggle="tooltip" data-placement="top" title="<%= curso.titulo_curso %>" style="display: contents;">
+                                                    <li style="padding-left: 65px;"
+                                                        class="text-truncate hover_anchas_subcat ">
+                                                        <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>"
+                                                            class=" " data-toggle="tooltip" data-placement="top"
+                                                            title="<%= curso.titulo_curso %>"
+                                                            style="display: contents;">
 
-                                                            <img src="<%= curso.url_imagen %>" width="50px" alt="portada_curso"><%= curso.titulo_curso %>
+                                                            <img src="<%= curso.url_imagen %>" width="50px"
+                                                                alt="portada_curso">
+                                                            <%= curso.titulo_curso %>
                                                         </a>
                                                     </li>
                                                     <% }) %>
@@ -206,14 +258,22 @@
                                         </ul>
                                         <!-- Marketing digital sub-Menu-items -->
                                         <ul class="categoria_6-drop">
-                                            <li class="arrow back-categoria_6-btn text-truncate" style="padding-left: 35px; border: 1px solid rgba(0, 0, 0, .125)"><i class="bi bi-chevron-double-left me-3 "></i>Marketing Digital
+                                            <li class="arrow back-categoria_6-btn text-truncate"
+                                                style=" border: 1px solid rgba(0, 0, 0, .125)"><i
+                                                    class="bi bi-chevron-double-left me-3 "></i>Marketing Digital
                                             </li>
                                             <% if (arrayCursosCategoria6.length> 0) { %>
                                                 <% arrayCursosCategoria6.forEach(curso=> { %>
-                                                    <li style="padding-left: 35px;" class="text-truncate hover_anchas_subcat ">
-                                                        <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>" class=" " data-toggle="tooltip" data-placement="top" title="<%= curso.titulo_curso %>" style="display: contents;">
+                                                    <li style="padding-left: 65px;"
+                                                        class="text-truncate hover_anchas_subcat ">
+                                                        <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>"
+                                                            class=" " data-toggle="tooltip" data-placement="top"
+                                                            title="<%= curso.titulo_curso %>"
+                                                            style="display: contents;">
 
-                                                            <img src="<%= curso.url_imagen %>" width="50px" alt="portada_curso"><%= curso.titulo_curso %>
+                                                            <img src="<%= curso.url_imagen %>" width="50px"
+                                                                alt="portada_curso">
+                                                            <%= curso.titulo_curso %>
                                                         </a>
                                                     </li>
                                                     <% }) %>
@@ -221,14 +281,23 @@
                                         </ul>
                                         <!-- Ciencia de datos y análisis sub-Menu-items -->
                                         <ul class="categoria_7-drop">
-                                            <li class="arrow back-categoria_7-btn text-truncate" style="padding-left: 35px; border: 1px solid rgba(0, 0, 0, .125)"><i class="bi bi-chevron-double-left me-3 "></i>Ciencia de Datos & Análisis
+                                            <li class="arrow back-categoria_7-btn text-truncate"
+                                                style=" border: 1px solid rgba(0, 0, 0, .125)"><i
+                                                    class="bi bi-chevron-double-left me-3 "></i>Ciencia de Datos &
+                                                Análisis
                                             </li>
                                             <% if (arrayCursosCategoria7.length> 0) { %>
                                                 <% arrayCursosCategoria7.forEach(curso=> { %>
-                                                    <li style="padding-left: 35px;" class="text-truncate hover_anchas_subcat ">
-                                                        <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>" class=" " data-toggle="tooltip" data-placement="top" title="<%= curso.titulo_curso %>" style="display: contents;">
+                                                    <li style="padding-left: 65px;"
+                                                        class="text-truncate hover_anchas_subcat ">
+                                                        <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>"
+                                                            class=" " data-toggle="tooltip" data-placement="top"
+                                                            title="<%= curso.titulo_curso %>"
+                                                            style="display: contents;">
 
-                                                            <img src="<%= curso.url_imagen %>" width="50px" alt="portada_curso"><%= curso.titulo_curso %>
+                                                            <img src="<%= curso.url_imagen %>" width="50px"
+                                                                alt="portada_curso">
+                                                            <%= curso.titulo_curso %>
                                                         </a>
                                                     </li>
                                                     <% }) %>
@@ -236,14 +305,23 @@
                                         </ul>
                                         <!-- Finanzas personales y contabilidad sub-Menu-items -->
                                         <ul class="categoria_8-drop">
-                                            <li class="arrow back-categoria_8-btn text-truncate" style="border: 1px solid rgba(0, 0, 0, .125)"><i class="bi bi-chevron-double-left me-3 "></i>Finanzas Personales & Contabilidad
+                                            <li class="arrow back-categoria_8-btn text-truncate"
+                                                style="border: 1px solid rgba(0, 0, 0, .125)"><i
+                                                    class="bi bi-chevron-double-left me-3 "></i>Finanzas Personales &
+                                                Contabilidad
                                             </li>
                                             <% if (arrayCursosCategoria8.length> 0) { %>
                                                 <% arrayCursosCategoria8.forEach(curso=> { %>
-                                                    <li style="padding-left: 65px;" class="text-truncate hover_anchas_subcat ">
-                                                        <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>" class=" " data-toggle="tooltip" data-placement="top" title="<%= curso.titulo_curso %>" style="display: contents;">
+                                                    <li style="padding-left: 65px;"
+                                                        class="text-truncate hover_anchas_subcat ">
+                                                        <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>"
+                                                            class=" " data-toggle="tooltip" data-placement="top"
+                                                            title="<%= curso.titulo_curso %>"
+                                                            style="display: contents;">
 
-                                                            <img src="<%= curso.url_imagen %>" width="50px" alt="portada_curso"><%= curso.titulo_curso %>
+                                                            <img src="<%= curso.url_imagen %>" width="50px"
+                                                                alt="portada_curso">
+                                                            <%= curso.titulo_curso %>
                                                         </a>
                                                     </li>
                                                     <% }) %>
@@ -274,7 +352,8 @@
                                 class="hover">CONTACTOS</strong></a>
                     </li>
                     <li class="nav-item d-lg-none">
-                        <a class="nav-link me-lg-3" style="font-size: 15px;" href="https://edufalonline.com/aulavirtual/login/"><strong class="hover text-truncate">Aula
+                        <a class="nav-link me-lg-3" style="font-size: 15px;"
+                            href="https://edufalonline.com/aulavirtual/login/"><strong class="hover text-truncate">Aula
                                 Virtual</strong></a>
                     </li>
 
