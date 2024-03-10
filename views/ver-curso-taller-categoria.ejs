@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<%- include('front-end-template/head', { tituloWeb: "Edufal Online - Categorias" }); %>
+
+    <%- include('front-end-template/navbar'); %>
+
+
+        <body>
+            <div class="d-flex align-items-center" style="background-image: url(/img/img-cursos/background-cabecera-ver-todos-cursos.png); background-repeat: no-repeat; background-position: center; background-size: cover; height: 440px; box-shadow: 0px 15px 15px rgba(0, 0, 0, 0.2);">
+                <div class="container mt-4 ">
+                    <p data-aos="fade-down-left" class="" style="background-color: green; padding: 5px; border-radius: 10px; display: inline; color: white;">
+                        CLASES ONLINE
+                    </p>
+
+                    <div class="pt-5 fs-5">
+                        <h1 data-aos="fade-right" class="text-start "><strong style="color: #005d6a;">CATEGORIA</strong>
+
+                        </h1>
+
+
+
+                    </div>
+                    <div class="pb-5" style="color: #005d6a; ">
+                        <h1 data-aos="fade-left"><strong style=" background-color: rgba(250, 235, 215, 0.733); border-radius: 10px;">
+
+                                <%= categoria.nombre_categoria %>
+                            </strong>
+
+                        </h1>
+
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="mt-2 container">
+
+                <nav aria-label="breadcrumb " class="">
+                    <ol class="breadcrumb" style="">
+                        <li class="breadcrumb-item "><a href="/" class="text-decoration-none">Inicio</a></li>
+                        <li class="breadcrumb-item "><a href="/cursos_talleres" class="text-decoration-none">Cursos Talleres</a></li>
+
+                        <li class="breadcrumb-item active" aria-current="page">
+                            <%= categoria.nombre_categoria %>
+                        </li>
+                    </ol>
+                </nav>
+                <hr>
+            </div>
+
+            <!-- filtro de busqueda -->
+            <div class="container">
+                <div class="d-sm-flex justify-content-end align-items-baseline">
+
+                    <label for="filtroBusqueda" class="text-truncate me-2">Buscar Cursos por Título</label>
+                    <div class="mb-4 d-flex">
+                        <input type="text" class="form-control" id="filtroBusqueda">
+                        <button type="button" class="btn  d-inline me-2 " style="background-color: darkcyan; color: white" onclick="filtrarCursos()">Buscar</button>
+                        <button type="button" class="btn btn-secondary btn-sm" onclick="ocultarTodos()">Restrablecer </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="container " style="max-width: 1660px">
+
+                <h1 style="color: cadetblue; font-size: 2.0rem;">
+                    <%= categoria.nombre_categoria %>
+                </h1>
+            </div>
+            <div class="container-fluid d-flex justify-content-center " style="max-width: 2020px; ">
+                <div id="news-slider-categoria-1" class="mt-5 d-sm-flex flex-wrap justify-content-center owl-carousel">
+
+                    <% if (arrayCursosCategoria.length> 0) { %>
+                        <% arrayCursosCategoria.forEach(curso=> { %>
+
+                            <% var ahora=new Date().getTime(); %>
+                                <% var diferencia=curso.fecha_oferta - ahora; %>
+
+
+
+                                    <div class="post-slide card curso-card-busqueda " style="max-width: 19rem; border-radius: 10px;">
+                                        <div class="post-img">
+                                            <img src="<%= curso.url_imagen %>" alt="">
+                                            <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>" class="over-layer"><i class="fa fa-link"></i></a>
+                                        </div>
+                                        <div class="post-content  ">
+                                            <h3 class="post-title card-title">
+                                                <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>"><strong
+                                                        class="card-title">
+                                                        <%= curso.titulo_curso %>
+                                                    </strong>
+
+                                                </a>
+                                            </h3>
+                                            <p class="post-description">
+                                                <%= curso.descripcion %>
+                                            </p>
+                                            <div class="d-flex ">
+
+                                                <span class="post-date me-3 "><i
+                                                        class="fa fa-clock-o"></i><strong>Inicio:</strong>
+                                                    <%= curso.fecha_inicio %>
+                                                </span>
+                                                <strong>
+                                                    <%= curso.tipo_curso %>
+                                                </strong>
+
+                                            </div>
+
+                                            <div style="margin-top: 10px;">
+                                                <h6><del style="margin-right: 10px;">
+                                                        $ <%= curso.costo %>
+                                                    </del>
+                                                    <% if (diferencia < 0 || curso.fecha_oferta=='0000-00-00 00:00:00' )
+                                                        { %>
+                                                        <strong style="color: red;">
+                                                            <%= curso.porcentaje_descuento.slice(2, ) %>%
+                                                                OFF
+                                                        </strong>
+                                                        <% } else { %>
+                                                            <strong style="color: red;">
+                                                                100% OFF
+                                                            </strong>
+                                                            <p>
+                                                                Por tiempo LIMITADO
+                                                            </p>
+                                                            <% } %>
+
+                                                </h6>
+                                                <del class="d-none">
+                                                    <%= Math.abs(curso.costo=curso.costo * curso.porcentaje_descuento -
+                                                        curso.costo) %>
+                                                </del>
+                                                <% if (diferencia < 0 || curso.fecha_oferta=='0000-00-00 00:00:00' ) {
+                                                    %>
+                                                    <h5 style="color: #005d6a;"><strong>
+
+                                                            Precio: <%= curso.costo=Intl.NumberFormat('en-EN', {
+                                                                style: 'currency' , currency: 'USD'
+                                                                }).format(Math.abs(curso.costo)) %>
+                                                        </strong>
+                                                    </h5>
+                                                    <% }else { %>
+
+                                                        <h5 style="color: #005d6a;"><strong>
+                                                                Precio: GRATIS
+                                                            </strong>
+                                                        </h5>
+                                                        <% } %>
+                                                            <p style="font-size: small;"><i class="bi bi-stopwatch me-1"></i>
+                                                                <%= curso.duracion %> de clases -
+                                                                    <del class="d-none">
+                                                                        <%= sesiones=curso.duracion %>
+                                                                    </del><i class="bi bi-calendar3 me-1"></i>
+                                                                    <%= sesiones.slice(0, 3)/2 %> Secciones
+                                                                        <% console.log('seciones' + sesiones.slice(0,
+                                                                            3)/2) %>
+                                                            </p>
+                                            </div>
+                                            <% if (diferencia < 0 || curso.fecha_oferta=='0000-00-00 00:00:00' ) { %>
+                                                <p style="color: gray; text-align: center; font-size: small;">
+                                                    Garantía de reembolso de 30 días</p>
+                                                <% }else { %>
+                                                    <p style="color: gray; text-align: center; font-size: small;">
+                                                        Incluye certificado digital o fisico.</p>
+                                                    <% } %>
+
+
+                                                        <div>
+
+                                                            <a href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>" class="read-more">Ver mas</a>
+                                                        </div>
+                                        </div>
+                                    </div>
+
+
+
+
+
+                                    <% }) %>
+                                        <% } %>
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+            <%- include('front-end-template/footer'); %>
+
+
+
+                <script src="/js/scriptSlide.js"></script>
+                <script src="/js/anuncios-inicio-event.js"></script>
+
+                <script>
+                    AOS.init({
+                        duration: 1000
+                    });
+                </script>
+
+
+                <script>
+                    // Ocultar la clase 'curso-card-busqueda' inicialmente
+                    document.addEventListener("DOMContentLoaded", function() {
+                        var cursos = document.getElementsByClassName('curso-card-busqueda');
+                        for (var i = 0; i < cursos.length; i++) {
+                            cursos[i].style.display = 'block';
+                        }
+                    });
+
+                    function filtrarCursos() {
+                        // Obtén el valor del campo de búsqueda
+                        var filtro = document.getElementById('filtroBusqueda').value.toLowerCase();
+
+                        // Obtén todos los elementos de curso
+                        var cursos = document.getElementsByClassName('curso-card-busqueda');
+
+                        // Itera sobre los elementos de curso y muestra/oculta según el filtro
+                        for (var i = 0; i < cursos.length; i++) {
+                            var tituloCurso = cursos[i].querySelector('.card-title strong').innerText.toLowerCase();
+                            if (tituloCurso.includes(filtro)) {
+                                cursos[i].style.display = 'block'; // Muestra el curso
+                            } else {
+                                cursos[i].style.display = 'none'; // Oculta el curso
+                            }
+                        }
+                    }
+
+                    function ocultarTodos() {
+                        // Oculta todos los elementos con la clase 'curso-card-busqueda'
+                        var cursos = document.getElementsByClassName('curso-card-busqueda');
+                        for (var i = 0; i < cursos.length; i++) {
+                            cursos[i].style.display = 'block';
+                        }
+                    }
+                </script>
+
+                <script>
+                    function filtrarPorTipo(tipo) {
+                        // Obtén todos los elementos de curso
+                        var cursos = document.getElementsByClassName('curso-card-busqueda');
+
+                        // Restablecer la visibilidad de todos los cursos
+                        for (var i = 0; i < cursos.length; i++) {
+                            cursos[i].style.display = 'block';
+                        }
+
+                        // Iterar sobre los elementos de curso y mostrar/ocultar según el tipo
+                        for (var i = 0; i < cursos.length; i++) {
+                            var tipoCurso = cursos[i].querySelector('.card-header strong').innerText;
+                            if (tipoCurso !== tipo) {
+                                cursos[i].style.display = 'none'; // Oculta el curso si no es del tipo seleccionado
+                            }
+                        }
+                    }
+
+                    function verTodos() {
+                        // Obtén todos los elementos de curso y restablece la visibilidad
+                        var cursos = document.getElementsByClassName('curso-card-busqueda');
+                        for (var i = 0; i < cursos.length; i++) {
+                            cursos[i].style.display = 'none';
+                        }
+                    }
+                </script>
+
+        </body>
+
+
+
+
+
+</html>
