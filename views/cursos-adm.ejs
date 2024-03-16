@@ -8,9 +8,24 @@
     <div class="container-fluid mt-2">
         <h2 class=" text-secondary">Cursos - Talleres</h2>
         <hr>
-        <h3 class=""><strong>Total de Inscripciones Activas: </strong>
+        <h3 class=""><strong>Total de Inscripciones: </strong>
             <%= totalInscripciones.cantidad_inscripciones %>
         </h3>
+        <div class="d-sm-flex ">
+
+            <p class="me-3 "> <strong class="bg-secondary text-light me-1  ">Nuevo:</strong> <strong>
+                    <%= totalInscripcionesNuevo.cantidad_inscripciones %>
+                </strong> </p>
+            <p class="me-3 "> <strong class="bg-info text-light me-1 ">Iniciado:</strong> <strong>
+                    <%= totalInscripcionesInicido.cantidad_inscripciones %>
+                </strong> </p>
+            <p class="me-3 "> <strong class="bg-primary text-light me-1 ">Finalizado:</strong> <strong>
+                    <%= totalInscripcionesFinalizado.cantidad_inscripciones %>
+                </strong> </p>
+            <p class="me-3 "> <strong class="bg-danger text-light me-1">Declinado/Retirado:</strong> <strong>
+                    <%= totalInscripcionesDeclinadoRetirado.cantidad_inscripciones %>
+                </strong> </p>
+        </div>
         <div class="d-lg-flex align-items-center justify-content-end my-4 ">
             <a class="btn  me-lg-3" style="background-color: #02aeae;" href="/admin/cursos-adm/crear-curso-adm"><i
                     class="bi bi-person-plus me-lg-3"></i>Crear Nuevo Curso</a>
@@ -73,27 +88,28 @@
                                         <% if(curso.fecha_oferta=='0000-00-00 00:00:00' ){ %>
                                             <%= curso.fecha_oferta.toLocaleString('es-ES', {
                                                 timeZone: "America/Santo_Domingo" }).slice(0, 10) %>
-                                                <strong class="bg-danger text-light ">Oferta eliminada</strong>
+                                                <strong class="bg-warning  ">Sin Oferta 100% OFF</strong>
                                                 <% } %>
                                                     <% if(curso.fecha_oferta < ahora) { %>
                                                         <%= curso.fecha_oferta.toLocaleString('es-ES', {
                                                             timeZone: "America/Santo_Domingo" }).slice(0, 10) %>
-                                                            <strong class="bg-danger text-light ">Oferta
+                                                            <strong class="bg-danger text-light ">Oferta 100% OFF
                                                                 Vencida</strong>
                                                             <% } %>
                                                                 <% if (ahora < curso.fecha_oferta){ %>
                                                                     <%= curso.fecha_oferta.toLocaleString('es-ES', {
                                                                         timeZone: "America/Santo_Domingo" }).slice(0,
                                                                         10) %>
-                                                                        <strong class="bg-primary text-light ">Oferta
+                                                                        <strong class="bg-info text-light ">Oferta
+                                                                            100% OFF
                                                                             Activa</strong>
                                                                         <% } %>
 
                                                                             <% } else { %>
-
+                                                                                0000-00-00
                                                                                 <strong class="bg-warning ">
-                                                                                    Sin Oferta
-                                                                                    Publicada</strong>
+                                                                                    Sin Oferta 100% OFF
+                                                                                </strong>
                                                                                 <% } %>
                                 </td>
                                 <td>
@@ -124,7 +140,8 @@
                                     <%= curso.id_categoria %>
                                 </td>
                                 <td>
-                                    <a href="/admin/cursos-adm/editar-curso-adm/<%= curso.id_curso %>" class="btn ">Editar</a>
+                                    <a href="/admin/cursos-adm/editar-curso-adm/<%= curso.id_curso %>"
+                                        class="btn ">Editar</a>
 
                                 </td>
 
@@ -143,7 +160,7 @@
 
 
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('#datatable').DataTable({
                 order: [
                     [0, 'desc']

@@ -71,8 +71,12 @@
                                     <%= inscripcion.cedula %>
                                 </td>
                                 <td>
-                                    <%= inscripcion.fecha_nacimiento.toLocaleString('es-ES', {
-                                        timeZone: "America/Santo_Domingo" }).slice(0, 10) %>
+                                    <% if(inscripcion.fecha_nacimiento){ %>
+                                        <%= inscripcion.fecha_nacimiento.toLocaleString('es-ES', {
+                                            timeZone: "America/Santo_Domingo" }).slice(0, 10) %>
+                                            <% }else{ %>
+                                                Sin registro
+                                                <% } %>
                                 </td>
                                 <td>
                                     <%= inscripcion.telefono %>
@@ -127,7 +131,11 @@
                                     <%= inscripcion.tipo_curso %>
                                 </td>
                                 <td>
-                                    <%= inscripcion.precioOferta_inscripcion %>
+                                    <% if(inscripcion.precioOferta_inscripcion){ %>
+                                        <%= inscripcion.precioOferta_inscripcion %>
+                                            <% }else{ %>
+                                                <strong class="bg-secondary text-white ">100% OFF</strong>
+                                                <% } %>
                                 </td>
                                 <td>
                                     <%= inscripcion.promocion_inscripcion %>
@@ -140,7 +148,7 @@
                                     <a href="/admin/inscripciones-adm/editar-inscripcion-adm/<%= inscripcion.id_inscripcion %>"
                                         class="btn" title="Editar Inscripcion"><i class="bi bi-pencil-square"></i></a>
                                     <a id="eventoAct-Inact"
-                                        href="/admin/estudiantes-adm/editar-estudiante-adm/<%= inscripcion.cedula %>"
+                                        href="/admin/estudiantes-adm/editar-estudiante-adm/<%= inscripcion.id_estudiante %>"
                                         class="btn" title="Ver Estudiante"><i class="bi bi-folder2-open"></i></a>
 
 

@@ -9,7 +9,8 @@
 
                 <button type="submit" class="btn  my-lg-4 me-lg-3" style="background-color: #02aeae;">Guardar
                     Cambios</button>
-                <a type="button" class="btn text-light bg-danger me-lg-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop" title="Eliminar Curso">Eliminar</a>
+                <a type="button" class="btn text-light bg-danger me-lg-3" data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop" title="Eliminar Curso">Eliminar</a>
 
                 <a href="/admin/cursos-adm" class="btn btn-warning my-4 "><i class="bi bi-arrow-left me-lg-3"></i>Volver
                     a
@@ -30,19 +31,23 @@
 
                         <div>
                             <label for="exampleInputEmail1">Nombre Curso - Taller</label>
-                            <input type="text" class="form-control text-secondary " name="titulo_curso" aria-describedby="emailHelp" placeholder="" value="<%= curso.titulo_curso %>" required>
+                            <input type="text" class="form-control text-secondary " name="titulo_curso"
+                                aria-describedby="emailHelp" placeholder="" value="<%= curso.titulo_curso %>" required>
                         </div>
                         <div class="mt-3">
                             <label for="">Descripcion</label>
-                            <input type="text" class="form-control text-secondary" name="descripcion" value="<%= curso.descripcion %>">
+                            <input type="text" class="form-control text-secondary" name="descripcion"
+                                value="<%= curso.descripcion %>">
                         </div>
                         <div class="mt-3">
                             <label for="">Dirigido a</label>
-                            <input type="text" class="form-control text-secondary" name="dirigido_a" value="<%= curso.dirigido_a %>">
+                            <input type="text" class="form-control text-secondary" name="dirigido_a"
+                                value="<%= curso.dirigido_a %>">
                         </div>
                         <div class="mt-3">
                             <label for="">Objetivos del Curso</label>
-                            <input type="text" class="form-control text-secondary" name="inf_curso" value="<%= curso.inf_curso %>">
+                            <input type="text" class="form-control text-secondary" name="inf_curso"
+                                value="<%= curso.inf_curso %>">
                         </div>
                         <div class="mt-3">
                             <label for="exampleInputEmail1">Estado Curso</label>
@@ -59,7 +64,8 @@
                             <select name="id_categoria" class="form-control text-secondary">
                                 <% if(categoria){ %>
                                     <option class="text-dark" value="<%= categoria.id_categoria %>" selected>
-                                        <%= categoria.id_categoria %> <%= categoria.nombre_categoria %>
+                                        <%= categoria.id_categoria %>
+                                            <%= categoria.nombre_categoria %>
                                     </option>
                                     <% } else { %>
                                         <option class="text-dark" value="" selected>
@@ -69,7 +75,8 @@
                                             <% if (arrayCategorias.length> 0) { %>
                                                 <% arrayCategorias.forEach(categoria=> { %>
                                                     <option class="text-dark" value="<%= categoria.id_categoria %>">
-                                                        <%= categoria.id_categoria %> <%= categoria.nombre_categoria %>
+                                                        <%= categoria.id_categoria %>
+                                                            <%= categoria.nombre_categoria %>
                                                     </option>
                                                     <% }) %>
                                                         <% } %>
@@ -78,53 +85,69 @@
                         <div class="mt-3">
                             <label for="">Fecha Inicio: <%= curso.fecha_inicio.toLocaleString('es-ES', {
                                     timeZone: "America/Santo_Domingo" }).slice(0, 10) %></label>
-                            <input type="text" class="form-control text-secondary" name="fecha_inicio" value="<%= fecha_inicio %>">
+                            <input type="text" class="form-control text-secondary" name="fecha_inicio"
+                                value="<%= fecha_inicio %>">
                         </div>
                         <div class="mt-3">
                             <% if(curso.fecha_oferta){ %>
                                 <% if(curso.fecha_oferta=='0000-00-00 00:00:00' ){ %>
-                                    <label for="">Fecha Oferta: Oferta eliminada</label>
-                                    <input type="text" class="form-control text-secondary" name="fecha_oferta" value="<%= curso.fecha_oferta %>">
+                                    <label for="">Fecha Oferta: <strong class="bg-warning ">
+                                            Sin Oferta 100% OFF
+                                        </strong></label>
+                                    <input type="text" class="form-control text-secondary" name="fecha_oferta"
+                                        value="<%= curso.fecha_oferta %>">
                                     <% } else{ %>
                                         <label for="">Fecha Oferta: <%= curso.fecha_oferta %></label>
-                                        <input type="text" class="form-control text-secondary" name="fecha_oferta" value="<%= curso.fecha_oferta.toISOString() %>">
+                                        <input type="text" class="form-control text-secondary" name="fecha_oferta"
+                                            value="<%= curso.fecha_oferta.toISOString() %>">
                                         <% } %>
                                             <% } else { %>
-                                                <label for="">Fecha Oferta: No definada</label>
-                                                <input type="date" class="form-control text-secondary" name="fecha_oferta" value="">
+                                                <label for="">Fecha Oferta: <strong class="bg-warning ">
+                                                        Sin Oferta 100% OFF
+                                                    </strong></label>
+                                                <input type="date" class="form-control text-secondary"
+                                                    name="fecha_oferta" value="">
                                                 <% } %>
                         </div>
                         <div class="mt-3">
                             <label for="">Horas Clases: <%= curso.horasClases %></label>
-                            <input type="text" class="form-control text-secondary" name="horasClases" value="<%= curso.horasClases %>">
+                            <input type="text" class="form-control text-secondary" name="horasClases"
+                                value="<%= curso.horasClases %>">
                         </div>
                         <div class="mt-3">
                             <label for="">Dias de Clases</label>
-                            <input type="text" class="form-control text-secondary" name="dias_semana_clases" value="<%= curso.dias_semana_clases %>">
+                            <input type="text" class="form-control text-secondary" name="dias_semana_clases"
+                                value="<%= curso.dias_semana_clases %>">
                         </div>
                         <div class="mt-3">
                             <label for="">Duracion</label>
-                            <input type="text" class="form-control text-secondary" name="duracion" value="<%= curso.duracion %>">
+                            <input type="text" class="form-control text-secondary" name="duracion"
+                                value="<%= curso.duracion %>">
                         </div>
                         <div class="mt-3">
                             <label for="">Modalidad</label>
-                            <input type="text" class="form-control text-secondary" name="modalidad" value="<%= curso.modalidad %>">
+                            <input type="text" class="form-control text-secondary" name="modalidad"
+                                value="<%= curso.modalidad %>">
                         </div>
                         <div class="mt-3">
                             <label for="">Precio</label>
-                            <input type="text" class="form-control text-secondary" name="costo" value="<%= curso.costo %>">
+                            <input type="text" class="form-control text-secondary" name="costo"
+                                value="<%= curso.costo %>">
                         </div>
                         <div class="mt-3">
                             <label for="">Cantidad Cuotas</label>
-                            <input type="text" class="form-control text-secondary" name="cantidad_cuota" value="<%= curso.cantidad_cuota %>">
+                            <input type="text" class="form-control text-secondary" name="cantidad_cuota"
+                                value="<%= curso.cantidad_cuota %>">
                         </div>
                         <div class="mt-3">
                             <label for="">% Descuento</label>
-                            <input type="text" class="form-control text-secondary" name="porcentaje_descuento" value="<%= curso.porcentaje_descuento %>">
+                            <input type="text" class="form-control text-secondary" name="porcentaje_descuento"
+                                value="<%= curso.porcentaje_descuento %>">
                         </div>
                         <div class="mt-3">
                             <label for="">Tipo de Curso</label>
-                            <input type="text" class="form-control text-secondary" name="tipo_curso" value="<%= curso.tipo_curso %>">
+                            <input type="text" class="form-control text-secondary" name="tipo_curso"
+                                value="<%= curso.tipo_curso %>">
                         </div>
                         <div class="mt-3">
                             <label for="exampleInputEmail1">Promocion</label>
@@ -149,21 +172,25 @@
 
                         <div class="mt-3">
                             <label for="">Url Plan Estudio</label>
-                            <input type="text" class="form-control text-secondary" name="url_plan_estudio" value="<%= curso.url_plan_estudio %>">
+                            <input type="text" class="form-control text-secondary" name="url_plan_estudio"
+                                value="<%= curso.url_plan_estudio %>">
                         </div>
                         <div class="mt-3">
                             <label for="">Url Imagen miniatura</label>
-                            <input type="text" class="form-control text-secondary" name="url_imagen" value="<%= curso.url_imagen %>">
+                            <input type="text" class="form-control text-secondary" name="url_imagen"
+                                value="<%= curso.url_imagen %>">
                         </div>
                         <div class="mt-3">
                             <label for="">Url Imagen full Size</label>
-                            <input type="text" class="form-control text-secondary" name="url_imagen_full_size" value="<%= curso.url_imagen_full_size %>">
+                            <input type="text" class="form-control text-secondary" name="url_imagen_full_size"
+                                value="<%= curso.url_imagen_full_size %>">
                         </div>
                     </div>
                     <div class="col-lg-6 mt-5 ">
                         <h4>Datos de Modulos y Contenido</h4>
                         <div class="mt-3 mb-4">
-                            <a href="/crear-contenido/<%= curso.id_curso %>" type="submit" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModalNovedad<%= i %>">CREAR CONTENIDO</a>
+                            <a href="/crear-contenido/<%= curso.id_curso %>" type="submit" class="btn btn-secondary"
+                                data-bs-toggle="modal" data-bs-target="#exampleModalNovedad<%= i %>">CREAR CONTENIDO</a>
                             <% if (contenidoCurso.length> 0) { %>
                                 <% contenidoCurso.forEach(contenido=> { %>
 
@@ -174,13 +201,17 @@
                                     <div>
                                         <label for="titulo">Titulo </label>
                                     </div>
-                                    <textarea name="" id="titulo" style="width: 100%; max-width: 600px; " rows="1"><%= contenido.titulo %></textarea>
+                                    <textarea name="" id="titulo" style="width: 100%; max-width: 600px; "
+                                        rows="1"><%= contenido.titulo %></textarea>
                                     <div>
                                         <label for="contenido">Contenido </label>
                                     </div>
-                                    <textarea name="" id="" style="width: 100%; max-width: 600px; height: auto; resize: vertical;" rows="6"><%= contenido.contenido %></textarea>
+                                    <textarea name="" id=""
+                                        style="width: 100%; max-width: 600px; height: auto; resize: vertical;"
+                                        rows="6"><%= contenido.contenido %></textarea>
                                     <div>
-                                        <a href="/admin/cursos-adm/eliminar-contenido-curso-adm/<%= contenido.id_modulo %>">Eliminar
+                                        <a
+                                            href="/admin/cursos-adm/eliminar-contenido-curso-adm/<%= contenido.id_modulo %>">Eliminar
                                             contenido</a>
                                     </div>
                                     <hr>
@@ -251,7 +282,8 @@
                                 </div>
                                 <div class=" ">
                                     <h4 class="text-center">Foto Maestro</h4>
-                                    <img style="border-radius: 10px; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);" src="<%= maestro.url_foto_2x2 %>" alt="foto maestro">
+                                    <img style="border-radius: 10px; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);"
+                                        src="<%= maestro.url_foto_2x2 %>" alt="foto maestro">
                                 </div>
                             </div>
                             <% } else { %>
@@ -263,13 +295,16 @@
 
 
                 <!-- modal carga -->
-                <div class="modal fade" id="exampleModalNovedad<%= i %>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal fade" id="exampleModalNovedad<%= i %>" data-bs-backdrop="static"
+                    data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title text-center fw-bold" id="staticBackdropLabel">Creacion de Contenidos
+                                <h5 class="modal-title text-center fw-bold" id="staticBackdropLabel">Creacion de
+                                    Contenidos
                                 </h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
 
@@ -279,14 +314,18 @@
                                     <div>
                                         <label for="titulo">Titulo </label>
                                     </div>
-                                    <textarea name="titulo" id="titulo" style="width: 100%; max-width: 500px; " rows="1"><%=  %></textarea>
+                                    <textarea name="titulo" id="titulo" style="width: 100%; max-width: 500px; "
+                                        rows="1"><%=  %></textarea>
                                     <div>
                                         <label for="contenido">Contenido </label>
                                     </div>
-                                    <textarea name="contenido" id="contenido" style="width: 100%; max-width: 500px; height: auto; resize: vertical;" rows="6"><%=  %></textarea>
+                                    <textarea name="contenido" id="contenido"
+                                        style="width: 100%; max-width: 500px; height: auto; resize: vertical;"
+                                        rows="6"><%=  %></textarea>
 
                                     <div class="modal-footer border-0">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Cancelar</button>
                                         <button type="submit" class="btn btn-primary">Si,
                                             Crear Contenido</button>
                                     </div>
@@ -299,27 +338,30 @@
                     </div>
                 </div>
                 <!-- Modal eliminar -->
-                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="staticBackdropLabel">Eliminar Curso
                                 </h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <%= curso.titulo_curso %>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <a type="submit" href="/admin/cursos-adm/eliminar-curso-adm/<%= curso.id_curso %>" class="btn text-light bg-danger " title="Eliminar Dpto">Eliminar Curso</a>
+                                <a type="submit" href="/admin/cursos-adm/eliminar-curso-adm/<%= curso.id_curso %>"
+                                    class="btn text-light bg-danger " title="Eliminar Dpto">Eliminar Curso</a>
                             </div>
                         </div>
                     </div>
                 </div>
         </form>
 
-        </div>
+    </div>
 
 
     </div>

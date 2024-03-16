@@ -16,12 +16,22 @@ router.get('/admin/cursos-adm', async(req, res) => {
 
         const arrayCursosDB = await pool.query('SELECT cursos.*, IFNULL(contador.cantidad_inscripciones, 0) AS total_inscripciones FROM cursos LEFT JOIN(SELECT id_curso, COUNT(id_inscripcion) AS cantidad_inscripciones FROM inscripciones GROUP BY id_curso ) AS contador ON cursos.id_curso = contador.id_curso; ');
 
-        const totalInscripcionesDB = await pool.query(`SELECT  COUNT(inscripciones.id_inscripcion) AS cantidad_inscripciones FROM inscripciones where inscripciones.estado_inscripcion in ('Nuevo', 'Iniciado', 'Finalizado');`);
+        const totalInscripcionesDB = await pool.query(`SELECT  COUNT(inscripciones.id_inscripcion) AS cantidad_inscripciones FROM inscripciones where inscripciones.estado_inscripcion in ('Nuevo', 'Iniciado', 'Finalizado', 'Declinado/Retirado');`);
+        const totalInscripcionesNuevoDB = await pool.query(`SELECT  COUNT(inscripciones.id_inscripcion) AS cantidad_inscripciones FROM inscripciones where inscripciones.estado_inscripcion in ('Nuevo');`);
+        const totalInscripcionesInicidoDB = await pool.query(`SELECT  COUNT(inscripciones.id_inscripcion) AS cantidad_inscripciones FROM inscripciones where inscripciones.estado_inscripcion in ('Iniciado');`);
+        const totalInscripcionesFinalizadoDB = await pool.query(`SELECT  COUNT(inscripciones.id_inscripcion) AS cantidad_inscripciones FROM inscripciones where inscripciones.estado_inscripcion in ('Finalizado');`);
+        const totalInscripcionesDeclinadoRetiradoDB = await pool.query(`SELECT  COUNT(inscripciones.id_inscripcion) AS cantidad_inscripciones FROM inscripciones where inscripciones.estado_inscripcion in ('Declinado/Retirado');`);
+
+
         console.log(totalInscripcionesDB)
 
         res.render("cursos-adm", {
             arrayCursos: arrayCursosDB,
             totalInscripciones: totalInscripcionesDB[0],
+            totalInscripcionesNuevo: totalInscripcionesNuevoDB[0],
+            totalInscripcionesInicido: totalInscripcionesInicidoDB[0],
+            totalInscripcionesFinalizado: totalInscripcionesFinalizadoDB[0],
+            totalInscripcionesDeclinadoRetirado: totalInscripcionesDeclinadoRetiradoDB[0],
             ahora,
             login: true,
             name: req.session.name
