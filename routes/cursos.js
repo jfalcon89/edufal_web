@@ -77,6 +77,9 @@ router.get("/cursos_talleres/ver_curso_taller/:id", async(req, res) => {
     const maestroDB = await pool.query(`SELECT * FROM maestros WHERE maestros.id_maestro = ${cursoDB[0].id_maestro}`);
     const arrayCursosDB = await pool.query('SELECT * FROM cursos where cursos.estado_curso = "Activo" and cursos.promocion = "Si";');
 
+    const arrayCursosRelacionadosDB = await pool.query(`SELECT * FROM cursos where cursos.estado_curso = "Activo" and cursos.id_categoria = "${cursoDB[0].id_categoria}" `);
+
+
     // calculo porcentaje oferta inicio
     let porcentajeOferta = cursoDB[0].porcentaje_descuento - 1
     let precioRegular = cursoDB[0].costo;
@@ -247,7 +250,8 @@ router.get("/cursos_talleres/ver_curso_taller/:id", async(req, res) => {
         arrayCursosCategoria5: arrayCursosCategoria5DB,
         arrayCursosCategoria6: arrayCursosCategoria6DB,
         arrayCursosCategoria7: arrayCursosCategoria7DB,
-        arrayCursosCategoria8: arrayCursosCategoria8DB
+        arrayCursosCategoria8: arrayCursosCategoria8DB,
+        arrayCursosRelacionados: arrayCursosRelacionadosDB
 
 
     });
@@ -313,10 +317,14 @@ router.post("/cursos_talleres/ver_curso_taller/:id", async(req, res) => {
     const arrayCursosCategoria7DB = await pool.query(`SELECT * FROM cursos where cursos.estado_curso = "Activo" and cursos.id_categoria = '7' `);
     const arrayCursosCategoria8DB = await pool.query(`SELECT * FROM cursos where cursos.estado_curso = "Activo" and cursos.id_categoria = '8' `);
 
+
+
     const cursoDB = await pool.query(`SELECT * FROM cursos, modulos WHERE cursos.estado_curso = "Activo" AND cursos.titulo_curso = "${curso}"`);
     const contenidoCursoDB = await pool.query(`SELECT * FROM modulos WHERE modulos.id_curso = "${id_curso}"`);
     const maestroDB = await pool.query(`SELECT * FROM maestros WHERE maestros.id_maestro = ${cursoDB[0].id_maestro}`);
     const arrayCursosDB = await pool.query(`SELECT * FROM cursos where cursos.estado_curso = "Activo" `);
+
+    const arrayCursosRelacionadosDB = await pool.query(`SELECT * FROM cursos where cursos.estado_curso = "Activo" and cursos.id_categoria = "${cursoDB[0].id_categoria}" `);
 
     // calculo porcentaje oferta inicio
     let porcentajeOferta = cursoDB[0].porcentaje_descuento - 1
@@ -507,7 +515,8 @@ router.post("/cursos_talleres/ver_curso_taller/:id", async(req, res) => {
             arrayCursosCategoria5: arrayCursosCategoria5DB,
             arrayCursosCategoria6: arrayCursosCategoria6DB,
             arrayCursosCategoria7: arrayCursosCategoria7DB,
-            arrayCursosCategoria8: arrayCursosCategoria8DB
+            arrayCursosCategoria8: arrayCursosCategoria8DB,
+            arrayCursosRelacionados: arrayCursosRelacionadosDB
         });
     } catch (error) {
         console.error('Error al consultar la base de datos:', error);
