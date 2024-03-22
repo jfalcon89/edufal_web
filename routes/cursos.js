@@ -264,6 +264,7 @@ router.post("/cursos_talleres/ver_curso_taller/:id", async(req, res) => {
 
     const {
         id_curso,
+        nombre_curso,
         precioOferta_inscripcion,
         fecha_inicio_inscripcion,
         promocion_inscripcion,
@@ -280,6 +281,7 @@ router.post("/cursos_talleres/ver_curso_taller/:id", async(req, res) => {
 
     const nuevaInscripcion = {
         id_curso,
+        nombre_curso,
         precioOferta_inscripcion,
         fecha_inicio_inscripcion,
         promocion_inscripcion,
@@ -432,7 +434,8 @@ router.post("/cursos_talleres/ver_curso_taller/:id", async(req, res) => {
     var ahora = new Date().getTime();
     var diferencia = cursoDB[0].fecha_oferta - ahora;
 
-    // separacion dirigido a candidatos
+    console.log(diferencia)
+        // separacion dirigido a candidatos
     if (cursoDB[0].dirigido_a) {
         var dirigido_a = cursoDB[0].dirigido_a;
 

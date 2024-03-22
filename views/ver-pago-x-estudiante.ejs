@@ -7,13 +7,11 @@
 
         <div class="d-flex align-items-center justify-content-end ">
 
-            <a class="btn btn-warning  my-4 "
-                href="/admin/estudiantes-adm/informacion-estudiante-adm/<%= estudiante.id_estudiante %> "><i
+            <a class="btn btn-warning  my-4 " href="/admin/estudiantes-adm/informacion-estudiante-adm/<%= estudiante.id_estudiante %> "><i
                     class="bi bi-arrow-left me-lg-3"></i>Volver Atras</a>
         </div>
 
-        <div class="header-container p-2 mb-3 mt-3 h-25 text-light "
-            style="background-color: #acacac5c; border-radius: 8px;">
+        <div class="header-container p-2 mb-3 mt-3 h-25 text-light " style="background-color: #acacac5c; border-radius: 8px;">
             <h5 class="mt-3 font-weight-bold fs-3" style="color: #02aeae;">
                 <%= estudiante.id_estudiante %>
                     <%= estudiante.nombre %>
@@ -59,6 +57,7 @@
                         <thead class="thead-ligth">
                             <tr class="text-truncate">
                                 <th scope="col">Codigo Pago</th>
+                                <th scope="col">Curso</th>
                                 <th scope="col">Codigo Estudiante</th>
                                 <th scope="col">Cedula</th>
                                 <th scope="col">Nombre</th>
@@ -79,6 +78,9 @@
 
                                         <td>
                                             <%= pagos_estudiante.id_pago_estudiante %>
+                                        </td>
+                                        <td>
+                                            <%= pagos_estudiante.curso_pago %>
                                         </td>
                                         <td id="codDesc">
                                             <%= pagos_estudiante.id_estudiante %>
@@ -107,9 +109,7 @@
 
 
                                         <td>
-                                            <a id="eventoAct-Inact"
-                                                href="/admin/estudiantes-adm/informacion-estudiante-adm/editar-pago-x-estudiante/<%= pagos_estudiante.id_pago_estudiante %>"
-                                                class="btn  ">Editar</a>
+                                            <a id="eventoAct-Inact" href="/admin/estudiantes-adm/informacion-estudiante-adm/editar-pago-x-estudiante/<%= pagos_estudiante.id_pago_estudiante %>" class="btn  ">Editar</a>
                                         </td>
 
                                         <td>
@@ -164,6 +164,7 @@
                                 <thead class="thead-ligth">
                                     <tr class="text-truncate">
                                         <th scope="col">Codigo Pago</th>
+                                        <th scope="col">Curso</th>
                                         <th scope="col">Codigo Estudiante</th>
                                         <th scope="col">Cedula</th>
                                         <th scope="col">Nombre</th>
@@ -183,6 +184,9 @@
 
                                                 <td>
                                                     <%= pagos_estudiante.id_pago_estudiante %>
+                                                </td>
+                                                <td>
+                                                    <%= pagos_estudiante.curso_pago %>
                                                 </td>
                                                 <td id="codDesc">
                                                     <%= pagos_estudiante.id_estudiante %>
@@ -211,9 +215,7 @@
 
 
                                                 <td>
-                                                    <a id="eventoAct-Inact"
-                                                        href="/admin/estudiantes-adm/informacion-estudiante-adm/editar-pago-x-estudiante/<%= pagos_estudiante.id_pago_estudiante %>"
-                                                        class="btn  ">Editar</a>
+                                                    <a id="eventoAct-Inact" href="/admin/estudiantes-adm/informacion-estudiante-adm/editar-pago-x-estudiante/<%= pagos_estudiante.id_pago_estudiante %>" class="btn  ">Editar</a>
                                                 </td>
                                                 <td>
                                                     <a target="_blank" href="https://wa.me/<%= estudiante.telefono %>?text=*ROSFAL SOLUCIONES DE PRESTAMOS*
@@ -272,6 +274,7 @@
                                         <thead class="thead-ligth">
                                             <tr class="text-truncate">
                                                 <th scope="col">Codigo Pago</th>
+                                                <th scope="col">Curso</th>
                                                 <th scope="col">Codigo Estudiante</th>
                                                 <th scope="col">Cedula</th>
                                                 <th scope="col">Nombre</th>
@@ -291,6 +294,9 @@
 
                                                         <td>
                                                             <%= pagos_estudiante.id_pago_estudiante %>
+                                                        </td>
+                                                        <td>
+                                                            <%= pagos_estudiante.curso_pago %>
                                                         </td>
                                                         <td id="codDesc">
                                                             <%= pagos_estudiante.id_estudiante %>
@@ -319,9 +325,7 @@
 
 
                                                         <td>
-                                                            <a id="eventoAct-Inact"
-                                                                href="/admin/estudiantes-adm/informacion-estudiante-adm/editar-pago-x-estudiante/<%= pagos_estudiante.id_pago_estudiante %>"
-                                                                class="btn  ">Editar</a>
+                                                            <a id="eventoAct-Inact" href="/admin/estudiantes-adm/informacion-estudiante-adm/editar-pago-x-estudiante/<%= pagos_estudiante.id_pago_estudiante %>" class="btn  ">Editar</a>
                                                         </td>
                                                         <td>
                                                             <a target="_blank" href="https://wa.me/<%= estudiante.telefono %>?text=*ROSFAL SOLUCIONES DE PRESTAMOS*
@@ -380,6 +384,7 @@
                                                 <thead class="thead-ligth">
                                                     <tr class="text-truncate">
                                                         <th scope="col">Codigo Pago</th>
+                                                        <th scope="col">Curso</th>
                                                         <th scope="col">Codigo Estudiante</th>
                                                         <th scope="col">Cedula</th>
                                                         <th scope="col">Nombre</th>
@@ -400,6 +405,9 @@
 
                                                                 <td>
                                                                     <%= pagos_estudiante.id_pago_estudiante %>
+                                                                </td>
+                                                                <td>
+                                                                    <%= pagos_estudiante.curso_pago %>
                                                                 </td>
                                                                 <td id="codDesc">
                                                                     <%= pagos_estudiante.id_estudiante %>
@@ -428,9 +436,7 @@
 
 
                                                                 <td>
-                                                                    <a id="eventoAct-Inact"
-                                                                        href="/admin/estudiantes-adm/informacion-estudiante-adm/editar-pago-x-estudiante/<%= pagos_estudiante.id_pago_estudiante %>"
-                                                                        class="btn  ">Editar</a>
+                                                                    <a id="eventoAct-Inact" href="/admin/estudiantes-adm/informacion-estudiante-adm/editar-pago-x-estudiante/<%= pagos_estudiante.id_pago_estudiante %>" class="btn  ">Editar</a>
                                                                 </td>
                                                                 <td>
                                                                     <a target="_blank" href="https://wa.me/<%= estudiante.telefono %>?text=*ROSFAL SOLUCIONES DE PRESTAMOS*
@@ -489,6 +495,7 @@
                                                         <thead class="thead-ligth">
                                                             <tr class="text-truncate">
                                                                 <th scope="col">Codigo Pago</th>
+                                                                <th scope="col">Curso</th>
                                                                 <th scope="col">Codigo Estudiante</th>
                                                                 <th scope="col">Cedula</th>
                                                                 <th scope="col">Nombre</th>
@@ -509,6 +516,9 @@
 
                                                                         <td>
                                                                             <%= pagos_estudiante.id_pago_estudiante %>
+                                                                        </td>
+                                                                        <td>
+                                                                            <%= pagos_estudiante.curso_pago %>
                                                                         </td>
                                                                         <td id="codDesc">
                                                                             <%= pagos_estudiante.id_estudiante %>
@@ -537,9 +547,7 @@
 
 
                                                                         <td>
-                                                                            <a id="eventoAct-Inact"
-                                                                                href="/admin/estudiantes-adm/informacion-estudiante-adm/editar-pago-x-estudiante/<%= pagos_estudiante.id_pago_estudiante %>"
-                                                                                class="btn  ">Editar</a>
+                                                                            <a id="eventoAct-Inact" href="/admin/estudiantes-adm/informacion-estudiante-adm/editar-pago-x-estudiante/<%= pagos_estudiante.id_pago_estudiante %>" class="btn  ">Editar</a>
                                                                         </td>
                                                                         <td>
                                                                             <a target="_blank" href="https://wa.me/<%= estudiante.telefono %>?text=*ROSFAL SOLUCIONES DE PRESTAMOS*
@@ -598,6 +606,7 @@
                                                                 <thead class="thead-ligth">
                                                                     <tr class="text-truncate">
                                                                         <th scope="col">Codigo Pago</th>
+                                                                        <th scope="col">Curso</th>
                                                                         <th scope="col">Codigo Estudiante</th>
                                                                         <th scope="col">Cedula</th>
                                                                         <th scope="col">Nombre</th>
@@ -621,6 +630,9 @@
                                                                                 <td>
                                                                                     <%= pagos_estudiante.id_pago_estudiante
                                                                                         %>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <%= pagos_estudiante.curso_pago %>
                                                                                 </td>
                                                                                 <td id="codDesc">
                                                                                     <%= pagos_estudiante.id_estudiante
@@ -651,9 +663,7 @@
 
 
                                                                                 <td>
-                                                                                    <a id="eventoAct-Inact"
-                                                                                        href="/admin/estudiantes-adm/informacion-estudiante-adm/editar-pago-x-estudiante/<%= pagos_estudiante.id_pago_estudiante %>"
-                                                                                        class="btn  ">Editar</a>
+                                                                                    <a id="eventoAct-Inact" href="/admin/estudiantes-adm/informacion-estudiante-adm/editar-pago-x-estudiante/<%= pagos_estudiante.id_pago_estudiante %>" class="btn  ">Editar</a>
                                                                                 </td>
                                                                                 <td>
                                                                                     <a target="_blank" href="https://wa.me/<%= estudiante.telefono %>?text=*ROSFAL SOLUCIONES DE PRESTAMOS*
@@ -713,6 +723,7 @@
                                                                         <thead class="thead-ligth">
                                                                             <tr class="text-truncate">
                                                                                 <th scope="col">Codigo Pago</th>
+                                                                                <th scope="col">Curso</th>
                                                                                 <th scope="col">Codigo Estudiante</th>
                                                                                 <th scope="col">Cedula</th>
                                                                                 <th scope="col">Nombre</th>
@@ -735,6 +746,10 @@
 
                                                                                         <td>
                                                                                             <%= pagos_estudiante.id_pago_estudiante
+                                                                                                %>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <%= pagos_estudiante.curso_pago
                                                                                                 %>
                                                                                         </td>
                                                                                         <td id="codDesc">
@@ -771,9 +786,7 @@
                                                                                         </td>
 
                                                                                         <td>
-                                                                                            <a id="eventoAct-Inact"
-                                                                                                href="/admin/estudiantes-adm/informacion-estudiante-adm/editar-pago-x-estudiante/<%= pagos_estudiante.id_pago_estudiante %>"
-                                                                                                class="btn  ">Editar</a>
+                                                                                            <a id="eventoAct-Inact" href="/admin/estudiantes-adm/informacion-estudiante-adm/editar-pago-x-estudiante/<%= pagos_estudiante.id_pago_estudiante %>" class="btn  ">Editar</a>
                                                                                         </td>
                                                                                         <td>
                                                                                             <a target="_blank" href="https://wa.me/<%= estudiante.telefono %>?text=*ROSFAL SOLUCIONES DE PRESTAMOS*
@@ -833,8 +846,8 @@
                                                                                 <thead class="thead-ligth">
                                                                                     <tr class="text-truncate">
                                                                                         <th scope="col">Codigo Pago</th>
-                                                                                        <th scope="col">Codigo
-                                                                                            Estudiante
+                                                                                        <th scope="col">Curso</th>
+                                                                                        <th scope="col">Codigo Estudiante
                                                                                         </th>
                                                                                         <th scope="col">Cedula</th>
                                                                                         <th scope="col">Nombre</th>
@@ -858,6 +871,10 @@
 
                                                                                                 <td>
                                                                                                     <%= pagos_estudiante.id_pago_estudiante
+                                                                                                        %>
+                                                                                                </td>
+                                                                                                <td>
+                                                                                                    <%= pagos_estudiante.curso_pago
                                                                                                         %>
                                                                                                 </td>
                                                                                                 <td id="codDesc">
@@ -893,13 +910,10 @@
                                                                                                         %>
                                                                                                 </td>
 
-                                                                                                <a id="eventoAct-Inact"
-                                                                                                    href="/admin/estudiantes-adm/informacion-estudiante-adm/editar-pago-x-estudiante/<%= pagos_estudiante.id_pago_estudiante %>"
-                                                                                                    class="btn  ">Editar</a>
+                                                                                                <a id="eventoAct-Inact" href="/admin/estudiantes-adm/informacion-estudiante-adm/editar-pago-x-estudiante/<%= pagos_estudiante.id_pago_estudiante %>" class="btn  ">Editar</a>
                                                                                                 </td>
                                                                                                 <td>
-                                                                                                    <a target="_blank"
-                                                                                                        href="https://wa.me/<%= estudiante.telefono %>?text=*ROSFAL SOLUCIONES DE PRESTAMOS*
+                                                                                                    <a target="_blank" href="https://wa.me/<%= estudiante.telefono %>?text=*ROSFAL SOLUCIONES DE PRESTAMOS*
 
 %0ACalle primera No. 59 Sector Enriquillo Herrera Sto. Dgo.%0A
 *TELEFONO* 829 856-0203
@@ -952,17 +966,15 @@
                                                                             %>
                                                                             <h3>SEPTIEMBRE</h3>
                                                                             <div class="container-departamento">
-                                                                                <div
-                                                                                    class="container-table table-responsive">
-                                                                                    <table
-                                                                                        class="table table-sm table-hover ">
+                                                                                <div class="container-table table-responsive">
+                                                                                    <table class="table table-sm table-hover ">
                                                                                         <thead class="thead-ligth">
                                                                                             <tr class="text-truncate">
-                                                                                                <th scope="col">Codigo
-                                                                                                    Pago
+                                                                                                <th scope="col">Codigo Pago
                                                                                                 </th>
-                                                                                                <th scope="col">Codigo
-                                                                                                    Estudiante
+                                                                                                <th scope="col">Curso
+                                                                                                </th>
+                                                                                                <th scope="col">Codigo Estudiante
                                                                                                 </th>
                                                                                                 <th scope="col">Cedula
                                                                                                 </th>
@@ -972,11 +984,10 @@
                                                                                                 </th>
                                                                                                 <th scope="col">Periodo
                                                                                                 </th>
-                                                                                                <th scope="col">Fecha
-                                                                                                    Pago
+                                                                                                <th scope="col">Fecha Pago
                                                                                                 </th>
-                                                                                                <th scope="col">Monto
-                                                                                                    Pago</th>
+                                                                                                <th scope="col">Monto Pago
+                                                                                                </th>
                                                                                                 <th scope="col">
                                                                                                     Observacion</th>
                                                                                                 <th scope="col">Acciones
@@ -992,15 +1003,17 @@
                                                                                                     arrayPagos_estudianteSeptiembre.forEach(pagos_estudiante=>
                                                                                                     { %>
 
-                                                                                                    <tr
-                                                                                                        class="text-truncate">
+                                                                                                    <tr class="text-truncate">
 
                                                                                                         <td>
                                                                                                             <%= pagos_estudiante.id_pago_estudiante
                                                                                                                 %>
                                                                                                         </td>
-                                                                                                        <td
-                                                                                                            id="codDesc">
+                                                                                                        <td>
+                                                                                                            <%= pagos_estudiante.curso_pago
+                                                                                                                %>
+                                                                                                        </td>
+                                                                                                        <td id="codDesc">
                                                                                                             <%= pagos_estudiante.id_estudiante
                                                                                                                 %>
                                                                                                         </td>
@@ -1035,13 +1048,10 @@
 
 
                                                                                                         <td>
-                                                                                                            <a id="eventoAct-Inact"
-                                                                                                                href="/admin/estudiantes-adm/informacion-estudiante-adm/editar-pago-x-estudiante/<%= pagos_estudiante.id_pago_estudiante %>"
-                                                                                                                class="btn  ">Editar</a>
+                                                                                                            <a id="eventoAct-Inact" href="/admin/estudiantes-adm/informacion-estudiante-adm/editar-pago-x-estudiante/<%= pagos_estudiante.id_pago_estudiante %>" class="btn  ">Editar</a>
                                                                                                         </td>
                                                                                                         <td>
-                                                                                                            <a target="_blank"
-                                                                                                                href="https://wa.me/<%= estudiante.telefono %>?text=*ROSFAL SOLUCIONES DE PRESTAMOS*
+                                                                                                            <a target="_blank" href="https://wa.me/<%= estudiante.telefono %>?text=*ROSFAL SOLUCIONES DE PRESTAMOS*
 
 %0ACalle primera No. 59 Sector Enriquillo Herrera Sto. Dgo.%0A
 *TELEFONO* 829 856-0203
@@ -1095,20 +1105,18 @@
                                                                                     { %>
                                                                                     <h3>OCTUBRE</h3>
                                                                                     <div class="container-departamento">
-                                                                                        <div
-                                                                                            class="container-table table-responsive">
-                                                                                            <table
-                                                                                                class="table table-sm table-hover ">
-                                                                                                <thead
-                                                                                                    class="thead-ligth">
-                                                                                                    <tr
-                                                                                                        class="text-truncate">
+                                                                                        <div class="container-table table-responsive">
+                                                                                            <table class="table table-sm table-hover ">
+                                                                                                <thead class="thead-ligth">
+                                                                                                    <tr class="text-truncate">
                                                                                                         <th scope="col">
                                                                                                             Codigo Pago
                                                                                                         </th>
                                                                                                         <th scope="col">
-                                                                                                            Codigo
-                                                                                                            Estudiante
+                                                                                                            Curso
+                                                                                                        </th>
+                                                                                                        <th scope="col">
+                                                                                                            Codigo Estudiante
                                                                                                         </th>
                                                                                                         <th scope="col">
                                                                                                             Cedula</th>
@@ -1141,15 +1149,17 @@
                                                                                                             arrayPagos_estudianteOctubre.forEach(pagos_estudiante=>
                                                                                                             { %>
 
-                                                                                                            <tr
-                                                                                                                class="text-truncate">
+                                                                                                            <tr class="text-truncate">
 
                                                                                                                 <td>
                                                                                                                     <%= pagos_estudiante.id_pago_estudiante
                                                                                                                         %>
                                                                                                                 </td>
-                                                                                                                <td
-                                                                                                                    id="codDesc">
+                                                                                                                <td>
+                                                                                                                    <%= pagos_estudiante.curso_pago
+                                                                                                                        %>
+                                                                                                                </td>
+                                                                                                                <td id="codDesc">
                                                                                                                     <%= pagos_estudiante.id_estudiante
                                                                                                                         %>
                                                                                                                 </td>
@@ -1184,13 +1194,10 @@
 
 
                                                                                                                 <td>
-                                                                                                                    <a id="eventoAct-Inact"
-                                                                                                                        href="/admin/estudiantes-adm/informacion-estudiante-adm/editar-pago-x-estudiante/<%= pagos_estudiante.id_pago_estudiante %>"
-                                                                                                                        class="btn  ">Editar</a>
+                                                                                                                    <a id="eventoAct-Inact" href="/admin/estudiantes-adm/informacion-estudiante-adm/editar-pago-x-estudiante/<%= pagos_estudiante.id_pago_estudiante %>" class="btn  ">Editar</a>
                                                                                                                 </td>
                                                                                                                 <td>
-                                                                                                                    <a target="_blank"
-                                                                                                                        href="https://wa.me/<%= estudiante.telefono %>?text=*ROSFAL SOLUCIONES DE PRESTAMOS*
+                                                                                                                    <a target="_blank" href="https://wa.me/<%= estudiante.telefono %>?text=*ROSFAL SOLUCIONES DE PRESTAMOS*
 
 %0ACalle primera No. 59 Sector Enriquillo Herrera Sto. Dgo.%0A
 *TELEFONO* 829 856-0203
@@ -1243,58 +1250,42 @@
                                                                                             (arrayPagos_estudianteNoviembre.length)
                                                                                             { %>
                                                                                             <h3>NOVIEMBRE</h3>
-                                                                                            <div
-                                                                                                class="container-departamento">
-                                                                                                <div
-                                                                                                    class="container-table table-responsive">
-                                                                                                    <table
-                                                                                                        class="table table-sm table-hover ">
-                                                                                                        <thead
-                                                                                                            class="thead-ligth">
-                                                                                                            <tr
-                                                                                                                class="text-truncate">
-                                                                                                                <th
-                                                                                                                    scope="col">
-                                                                                                                    Codigo
-                                                                                                                    Pago
+                                                                                            <div class="container-departamento">
+                                                                                                <div class="container-table table-responsive">
+                                                                                                    <table class="table table-sm table-hover ">
+                                                                                                        <thead class="thead-ligth">
+                                                                                                            <tr class="text-truncate">
+                                                                                                                <th scope="col">
+                                                                                                                    Codigo Pago
                                                                                                                 </th>
-                                                                                                                <th
-                                                                                                                    scope="col">
-                                                                                                                    Codigo
-                                                                                                                    Estudiante
+                                                                                                                <th scope="col">
+                                                                                                                    Curso
                                                                                                                 </th>
-                                                                                                                <th
-                                                                                                                    scope="col">
+                                                                                                                <th scope="col">
+                                                                                                                    Codigo Estudiante
+                                                                                                                </th>
+                                                                                                                <th scope="col">
                                                                                                                     Cedula
                                                                                                                 </th>
-                                                                                                                <th
-                                                                                                                    scope="col">
+                                                                                                                <th scope="col">
                                                                                                                     Nombre
                                                                                                                 </th>
-                                                                                                                <th
-                                                                                                                    scope="col">
+                                                                                                                <th scope="col">
                                                                                                                     Apellido
                                                                                                                 </th>
-                                                                                                                <th
-                                                                                                                    scope="col">
+                                                                                                                <th scope="col">
                                                                                                                     Periodo
                                                                                                                 </th>
-                                                                                                                <th
-                                                                                                                    scope="col">
-                                                                                                                    Fecha
-                                                                                                                    Pago
+                                                                                                                <th scope="col">
+                                                                                                                    Fecha Pago
                                                                                                                 </th>
-                                                                                                                <th
-                                                                                                                    scope="col">
-                                                                                                                    Monto
-                                                                                                                    Pago
+                                                                                                                <th scope="col">
+                                                                                                                    Monto Pago
                                                                                                                 </th>
-                                                                                                                <th
-                                                                                                                    scope="col">
+                                                                                                                <th scope="col">
                                                                                                                     Observacion
                                                                                                                 </th>
-                                                                                                                <th
-                                                                                                                    scope="col">
+                                                                                                                <th scope="col">
                                                                                                                     Acciones
                                                                                                                 </th>
                                                                                                             </tr>
@@ -1310,15 +1301,17 @@
                                                                                                                     {
                                                                                                                     %>
 
-                                                                                                                    <tr
-                                                                                                                        class="text-truncate">
+                                                                                                                    <tr class="text-truncate">
 
                                                                                                                         <td>
                                                                                                                             <%= pagos_estudiante.id_pago_estudiante
                                                                                                                                 %>
                                                                                                                         </td>
-                                                                                                                        <td
-                                                                                                                            id="codDesc">
+                                                                                                                        <td>
+                                                                                                                            <%= pagos_estudiante.curso_pago
+                                                                                                                                %>
+                                                                                                                        </td>
+                                                                                                                        <td id="codDesc">
                                                                                                                             <%= pagos_estudiante.id_estudiante
                                                                                                                                 %>
                                                                                                                         </td>
@@ -1353,13 +1346,10 @@
 
 
                                                                                                                         <td>
-                                                                                                                            <a id="eventoAct-Inact"
-                                                                                                                                href="/admin/estudiantes-adm/informacion-estudiante-adm/editar-pago-x-estudiante/<%= pagos_estudiante.id_pago_estudiante %>"
-                                                                                                                                class="btn  ">Editar</a>
+                                                                                                                            <a id="eventoAct-Inact" href="/admin/estudiantes-adm/informacion-estudiante-adm/editar-pago-x-estudiante/<%= pagos_estudiante.id_pago_estudiante %>" class="btn  ">Editar</a>
                                                                                                                         </td>
                                                                                                                         <td>
-                                                                                                                            <a target="_blank"
-                                                                                                                                href="https://wa.me/<%= estudiante.telefono %>?text=*ROSFAL SOLUCIONES DE PRESTAMOS*
+                                                                                                                            <a target="_blank" href="https://wa.me/<%= estudiante.telefono %>?text=*ROSFAL SOLUCIONES DE PRESTAMOS*
 
 %0ACalle primera No. 59 Sector Enriquillo Herrera Sto. Dgo.%0A
 *TELEFONO* 829 856-0203
@@ -1415,58 +1405,42 @@
                                                                                                     { %>
                                                                                                     <h3>DICIEMBRE
                                                                                                     </h3>
-                                                                                                    <div
-                                                                                                        class="container-departamento">
-                                                                                                        <div
-                                                                                                            class="container-table table-responsive">
-                                                                                                            <table
-                                                                                                                class="table table-sm table-hover ">
-                                                                                                                <thead
-                                                                                                                    class="thead-ligth">
-                                                                                                                    <tr
-                                                                                                                        class="text-truncate">
-                                                                                                                        <th
-                                                                                                                            scope="col">
-                                                                                                                            Codigo
-                                                                                                                            Pago
+                                                                                                    <div class="container-departamento">
+                                                                                                        <div class="container-table table-responsive">
+                                                                                                            <table class="table table-sm table-hover ">
+                                                                                                                <thead class="thead-ligth">
+                                                                                                                    <tr class="text-truncate">
+                                                                                                                        <th scope="col">
+                                                                                                                            Codigo Pago
                                                                                                                         </th>
-                                                                                                                        <th
-                                                                                                                            scope="col">
-                                                                                                                            Codigo
-                                                                                                                            Estudiante
+                                                                                                                        <th scope="col">
+                                                                                                                            Curso
                                                                                                                         </th>
-                                                                                                                        <th
-                                                                                                                            scope="col">
+                                                                                                                        <th scope="col">
+                                                                                                                            Codigo Estudiante
+                                                                                                                        </th>
+                                                                                                                        <th scope="col">
                                                                                                                             Cedula
                                                                                                                         </th>
-                                                                                                                        <th
-                                                                                                                            scope="col">
+                                                                                                                        <th scope="col">
                                                                                                                             Nombre
                                                                                                                         </th>
-                                                                                                                        <th
-                                                                                                                            scope="col">
+                                                                                                                        <th scope="col">
                                                                                                                             Apellido
                                                                                                                         </th>
-                                                                                                                        <th
-                                                                                                                            scope="col">
+                                                                                                                        <th scope="col">
                                                                                                                             Periodo
                                                                                                                         </th>
-                                                                                                                        <th
-                                                                                                                            scope="col">
-                                                                                                                            Fecha
-                                                                                                                            Pago
+                                                                                                                        <th scope="col">
+                                                                                                                            Fecha Pago
                                                                                                                         </th>
-                                                                                                                        <th
-                                                                                                                            scope="col">
-                                                                                                                            Monto
-                                                                                                                            Pago
+                                                                                                                        <th scope="col">
+                                                                                                                            Monto Pago
                                                                                                                         </th>
-                                                                                                                        <th
-                                                                                                                            scope="col">
+                                                                                                                        <th scope="col">
                                                                                                                             Observacion
                                                                                                                         </th>
-                                                                                                                        <th
-                                                                                                                            scope="col">
+                                                                                                                        <th scope="col">
                                                                                                                             Acciones
                                                                                                                         </th>
                                                                                                                     </tr>
@@ -1482,15 +1456,17 @@
                                                                                                                             {
                                                                                                                             %>
 
-                                                                                                                            <tr
-                                                                                                                                class="text-truncate">
+                                                                                                                            <tr class="text-truncate">
 
                                                                                                                                 <td>
                                                                                                                                     <%= pagos_estudiante.id_pago_estudiante
                                                                                                                                         %>
                                                                                                                                 </td>
-                                                                                                                                <td
-                                                                                                                                    id="codDesc">
+                                                                                                                                <td>
+                                                                                                                                    <%= pagos_estudiante.curso_pago
+                                                                                                                                        %>
+                                                                                                                                </td>
+                                                                                                                                <td id="codDesc">
                                                                                                                                     <%= pagos_estudiante.id_estudiante
                                                                                                                                         %>
                                                                                                                                 </td>
@@ -1525,13 +1501,10 @@
 
 
                                                                                                                                 <td>
-                                                                                                                                    <a id="eventoAct-Inact"
-                                                                                                                                        href="/admin/estudiantes-adm/informacion-estudiante-adm/editar-pago-x-estudiante/<%= pagos_estudiante.id_pago_estudiante %>"
-                                                                                                                                        class="btn  ">Editar</a>
+                                                                                                                                    <a id="eventoAct-Inact" href="/admin/estudiantes-adm/informacion-estudiante-adm/editar-pago-x-estudiante/<%= pagos_estudiante.id_pago_estudiante %>" class="btn  ">Editar</a>
                                                                                                                                 </td>
                                                                                                                                 <td>
-                                                                                                                                    <a target="_blank"
-                                                                                                                                        href="https://wa.me/<%= estudiante.telefono %>?text=*ROSFAL SOLUCIONES DE PRESTAMOS*
+                                                                                                                                    <a target="_blank" href="https://wa.me/<%= estudiante.telefono %>?text=*ROSFAL SOLUCIONES DE PRESTAMOS*
 
 %0ACalle primera No. 59 Sector Enriquillo Herrera Sto. Dgo.%0A
 *TELEFONO* 829 856-0203

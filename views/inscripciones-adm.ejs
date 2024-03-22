@@ -59,7 +59,7 @@
                                     <%= inscripcion.id_inscripcion %>
                                 </td>
                                 <td><img style="width: 50px;" src="<%= inscripcion.url_imagen %>" alt="img curso">
-                                    <%= inscripcion.titulo_curso %>
+                                    <%= inscripcion.nombre_curso %>
                                 </td>
                                 <td>
                                     <%= inscripcion.nombre %>
@@ -145,11 +145,8 @@
                                 </td>
 
                                 <td class="w-0">
-                                    <a href="/admin/inscripciones-adm/editar-inscripcion-adm/<%= inscripcion.id_inscripcion %>"
-                                        class="btn" title="Editar Inscripcion"><i class="bi bi-pencil-square"></i></a>
-                                    <a id="eventoAct-Inact"
-                                        href="/admin/estudiantes-adm/editar-estudiante-adm/<%= inscripcion.id_estudiante %>"
-                                        class="btn" title="Ver Estudiante"><i class="bi bi-folder2-open"></i></a>
+                                    <a href="/admin/inscripciones-adm/editar-inscripcion-adm/<%= inscripcion.id_inscripcion %>" class="btn" title="Editar Inscripcion"><i class="bi bi-pencil-square"></i></a>
+                                    <a id="eventoAct-Inact" href="/admin/estudiantes-adm/editar-estudiante-adm/<%= inscripcion.id_estudiante %>" class="btn" title="Ver Estudiante"><i class="bi bi-folder2-open"></i></a>
 
 
                                 </td>
@@ -166,7 +163,7 @@
 
     <!-- content fin -->
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('#datatable').DataTable({
                 order: [
                     [0, 'desc']

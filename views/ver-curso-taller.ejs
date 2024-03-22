@@ -8,12 +8,10 @@
 
         <body>
 
-            <div class="d-flex align-items-center"
-                style="background-image: url(/img/img-cursos/background-cabecera-ver-curso2.png); background-repeat: no-repeat; background-position: center; background-size: cover; height: 440px; box-shadow: 0px 15px 15px rgba(0, 0, 0, 0.2);">
+            <div class="d-flex align-items-center" style="background-image: url(/img/img-cursos/background-cabecera-ver-curso2.png); background-repeat: no-repeat; background-position: center; background-size: cover; height: 440px; box-shadow: 0px 15px 15px rgba(0, 0, 0, 0.2);">
 
                 <div class="container mt-4  ">
-                    <p data-aos="fade-left" class=""
-                        style="background-color: green; padding: 5px; border-radius: 10px; display: inline; color: white;">
+                    <p data-aos="fade-left" class="" style="background-color: green; padding: 5px; border-radius: 10px; display: inline; color: white;">
                         CLASES ONLINE
                     </p>
 
@@ -23,16 +21,14 @@
                         </h1>
                     </div>
                     <div class="pb-5" style="color: #08787a;">
-                        <h1 data-aos="fade-left"><strong
-                                style="background-color: rgba(250, 235, 215, 0.733); border-radius: 10px;">
+                        <h1 data-aos="fade-left"><strong style="background-color: rgba(250, 235, 215, 0.733); border-radius: 10px;">
 
                                 <%= curso.titulo_curso %>
                             </strong>
 
                         </h1>
                     </div>
-                    <div class="pb-5" style="padding: #08787a;"><button class="btn btn-dark btn-lg bounce-top"
-                            type="submit" data-bs-toggle="modal" data-bs-target="#exampleModalNovedad">Quiero
+                    <div class="pb-5" style="padding: #08787a;"><button class="btn btn-dark btn-lg bounce-top" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModalNovedad">Quiero
                             Inscribirme</button>
 
                     </div>
@@ -62,8 +58,7 @@
                 </div>
             </div>
             <div class="container">
-                <div class="container d-lg-flex justify-content-around mt-4 align-items-center"
-                    style="text-align: justify;">
+                <div class="container d-lg-flex justify-content-around mt-4 align-items-center" style="text-align: justify;">
                     <div class="col-6">
                         <h2 style="color: #08787a;"><strong><i
                                     class="bi bi-file-earmark-medical me-4 fs-1"></i>OBJETIVO</strong>
@@ -83,20 +78,17 @@
                     <div class="container">
                         <div class="">
 
-                            <img style="border-radius: 10px;" class="w-100" src="<%= curso.url_imagen_full_size %>"
-                                alt="imagen-full-size">
+                            <img style="border-radius: 10px;" class="w-100" src="<%= curso.url_imagen_full_size %>" alt="imagen-full-size">
 
                         </div>
 
                         <div class="d-md-flex " style="">
-                            <div data-aos="fade-right" class="card"
-                                style="  border-radius: 0% 0% 5% 15%; border-left: solid 10px #1d607a;  border-image: linear-gradient(to right, #1d607a, rgb(255, 255, 255)); border-image-slice: 1; padding: 10px;">
+                            <div data-aos="fade-right" class="card" style="  border-radius: 0% 0% 5% 15%; border-left: solid 10px #1d607a;  border-image: linear-gradient(to right, #1d607a, rgb(255, 255, 255)); border-image-slice: 1; padding: 10px;">
                                 <div class="card-body">
                                     <h1 class="card-title text-secondary">
                                         <%= curso.tipo_curso %><i class="bi bi-shield-check m-3 "></i>
                                     </h1>
-                                    <h4 class="card-title" style="color: #08787a; font-size: 18px;"> <i
-                                            class="bi bi-calendar3 me-2"></i><strong>Inicio:</strong>
+                                    <h4 class="card-title" style="color: #08787a; font-size: 18px;"> <i class="bi bi-calendar3 me-2"></i><strong>Inicio:</strong>
                                         <%= diaSemana %>
                                             <%= dia %> De
                                                 <%= mes %>
@@ -157,8 +149,7 @@
                                             <div class=" ">
                                                 <ul class="p-0 ">
                                                     <li class="accordion-item">
-                                                        <button class="accordion-header"
-                                                            style="width: 100%; text-align: left;">
+                                                        <button class="accordion-header" style="width: 100%; text-align: left;">
                                                             <%= contenido.titulo %>
                                                         </button>
                                                         <div class="accordion-body">
@@ -187,11 +178,9 @@
                         </div>
                         <div class="d-flex justify-content-around mt-5 ">
 
-                            <button class="btn btn-dark me-2" type="submit" data-bs-toggle="modal"
-                                data-bs-target="#exampleModalNovedad">Quiero
+                            <button class="btn btn-dark me-2" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModalNovedad">Quiero
                                 Inscribirme</button>
-                            <a href="<%= curso.url_plan_estudio %>" target="_blank" type="button"
-                                class="btn btn-outline-dark ">Descargar Plan
+                            <a href="<%= curso.url_plan_estudio %>" target="_blank" type="button" class="btn btn-outline-dark ">Descargar Plan
                                 de Estudio</a>
                         </div>
 
@@ -200,24 +189,19 @@
                             <h1 class="text-center mt-5 mb-5">Horarios Disponibles De Clases</h1>
                             <div class="d-md-flex mt-5 justify-content-around ">
                                 <div class=" transUp d-flex justify-content-center">
-                                    <div data-aos="fade-up" class="card bg-light mb-3 me-2 curso-card"
-                                        style="max-width: 20rem; border-radius: 10px; text-align: end;">
-                                        <div class="card-header"
-                                            style="background-image: url(/img/img-cursos/horario1-img.png); background-repeat: no-repeat; background-position: center; background-size: cover; height: 275px;">
-                                            <h6
-                                                style="background-color: green; padding: 5px; border-radius: 10px; display: inline; color: white; ">
+                                    <div data-aos="fade-up" class="card bg-light mb-3 me-2 curso-card" style="max-width: 20rem; border-radius: 10px; text-align: end;">
+                                        <div class="card-header" style="background-image: url(/img/img-cursos/horario1-img.png); background-repeat: no-repeat; background-position: center; background-size: cover; height: 275px;">
+                                            <h6 style="background-color: green; padding: 5px; border-radius: 10px; display: inline; color: white; ">
                                                 Online en Vivo</h6>
                                         </div>
                                         <div class="curso-item mt-2" style="text-align: center;">
                                             <% if(diaClase1){ %>
-                                                <h3 style="color: #08787a;" class="card-title mt-4 "> <i
-                                                        class="bi bi-calendar3 me-2"><strong></i>
+                                                <h3 style="color: #08787a;" class="card-title mt-4 "> <i class="bi bi-calendar3 me-2"><strong></i>
                                                     <%= diaClase1 %>
                                                         </strong>
                                                 </h3>
                                                 <% }else{ %>
-                                                    <h3 style="color: #08787a;" class="card-title mt-4 "> <i
-                                                            class="bi bi-calendar3 me-2"></i>
+                                                    <h3 style="color: #08787a;" class="card-title mt-4 "> <i class="bi bi-calendar3 me-2"></i>
                                                         <strong>
                                                             NO Disponible
                                                         </strong>
@@ -237,25 +221,20 @@
                                     </div>
                                 </div>
                                 <div class=" transUp d-flex justify-content-center">
-                                    <div data-aos="fade-up" class="card bg-light mb-3 me-2 curso-card"
-                                        style="max-width: 20rem; border-radius: 10px; text-align: end;">
-                                        <div class="card-header"
-                                            style="background-image: url(/img/img-cursos/horario2-img.png); background-repeat: no-repeat; background-position: center; background-size: cover; height: 275px;">
-                                            <h6
-                                                style="background-color: green; padding: 5px; border-radius: 10px; display: inline; color: white; ">
+                                    <div data-aos="fade-up" class="card bg-light mb-3 me-2 curso-card" style="max-width: 20rem; border-radius: 10px; text-align: end;">
+                                        <div class="card-header" style="background-image: url(/img/img-cursos/horario2-img.png); background-repeat: no-repeat; background-position: center; background-size: cover; height: 275px;">
+                                            <h6 style="background-color: green; padding: 5px; border-radius: 10px; display: inline; color: white; ">
                                                 Online en Vivo</h6>
                                         </div>
                                         <div class="curso-item mt-2" style="text-align: center;">
                                             <% if(diaClase2){ %>
-                                                <h3 style="color: #08787a;" class="card-title mt-4 "> <i
-                                                        class="bi bi-calendar3 me-2"></i>
+                                                <h3 style="color: #08787a;" class="card-title mt-4 "> <i class="bi bi-calendar3 me-2"></i>
                                                     <strong>
                                                         <%= diaClase2 %>
                                                     </strong>
                                                 </h3>
                                                 <% }else{ %>
-                                                    <h3 style="color: #08787a;" class="card-title mt-4 "><i
-                                                            class="bi bi-calendar3 me-2"></i>
+                                                    <h3 style="color: #08787a;" class="card-title mt-4 "><i class="bi bi-calendar3 me-2"></i>
                                                         <strong>
                                                             NO Disponible
                                                         </strong>
@@ -275,25 +254,20 @@
                                     </div>
                                 </div>
                                 <div class=" transUp d-flex justify-content-center">
-                                    <div data-aos="fade-up" class="card bg-light mb-3 me-2 curso-card"
-                                        style="max-width: 20rem; border-radius: 10px; text-align: end;">
-                                        <div class="card-header"
-                                            style="background-image: url(/img/img-cursos/horario3-img.png); background-repeat: no-repeat; background-position: center; background-size: cover; height: 275px;">
-                                            <h6
-                                                style="background-color: green; padding: 5px; border-radius: 10px; display: inline; color: white; ">
+                                    <div data-aos="fade-up" class="card bg-light mb-3 me-2 curso-card" style="max-width: 20rem; border-radius: 10px; text-align: end;">
+                                        <div class="card-header" style="background-image: url(/img/img-cursos/horario3-img.png); background-repeat: no-repeat; background-position: center; background-size: cover; height: 275px;">
+                                            <h6 style="background-color: green; padding: 5px; border-radius: 10px; display: inline; color: white; ">
                                                 Online en Vivo</h6>
                                         </div>
                                         <div class="curso-item mt-2" style="text-align: center;">
                                             <% if(diaClase3){ %>
-                                                <h3 style="color: #08787a;" class="card-title mt-4 "> <i
-                                                        class="bi bi-calendar3 me-2"></i>
+                                                <h3 style="color: #08787a;" class="card-title mt-4 "> <i class="bi bi-calendar3 me-2"></i>
                                                     <strong>
                                                         <%= diaClase3 %>
                                                     </strong>
                                                 </h3>
                                                 <% }else{ %>
-                                                    <h3 style="color: #08787a;" class="card-title mt-4 "> <i
-                                                            class="bi bi-calendar3 me-2"></i>
+                                                    <h3 style="color: #08787a;" class="card-title mt-4 "> <i class="bi bi-calendar3 me-2"></i>
                                                         <strong>
                                                             NO Disponible
                                                         </strong>
@@ -328,8 +302,7 @@
                 <div class="col-lg-6" style="padding-top: 100px;">
                     <h1 class="">Metodología de Aprendizaje</h1>
 
-                    <h4 class="mt-4">Contarás con un asesoramiento personalizado de tu tutor que te apoyará en todas las
-                        prácticas a lo largo del programa</h4>
+                    <h4 class="mt-4">Contarás con un asesoramiento personalizado de tu tutor que te apoyará en todas las prácticas a lo largo del programa</h4>
                     <li class="mt-2">Sesiones en línea en tiempo real con profesionales altamente capacitados.
                     </li>
                     <li class="mt-2">Grupos pequeños con un promedio de 15 participantes.</li>
@@ -337,8 +310,7 @@
                     </li>
                 </div>
                 <div class="col-lg-6 d-flex justify-content-center">
-                    <img src="/img/img-cursos/curso-seccion-4.png" width="650" style="max-width: 100%;" height="100%"
-                        alt="">
+                    <img src="/img/img-cursos/curso-seccion-4.png" width="650" style="max-width: 100%;" height="100%" alt="">
                 </div>
             </div>
             <!-- contenido fijo del curso seccion 5  -->
@@ -348,24 +320,17 @@
                 <div class="col-lg-6" style="padding-top: 100px;">
                     <h1 class="">Plataforma Virtual Basada en Moodle</h1>
 
-                    <h4 class="mt-4">Moodle brinda a los estudiantes la flexibilidad de acceder a materiales educativos
-                        y participar en actividades en cualquier momento y lugar con conexión a Internet, adaptándose
-                        así a sus horarios personales y profesionales.
+                    <h4 class="mt-4">Moodle brinda a los estudiantes la flexibilidad de acceder a materiales educativos y participar en actividades en cualquier momento y lugar con conexión a Internet, adaptándose así a sus horarios personales y profesionales.
                     </h4>
-                    <li class="mt-2">La plataforma Moodle ofrece una variedad de recursos educativos, como documentos,
-                        presentaciones, videos y foros de discusión.
+                    <li class="mt-2">La plataforma Moodle ofrece una variedad de recursos educativos, como documentos, presentaciones, videos y foros de discusión.
                     </li>
-                    <li class="mt-2">Moodle facilita el seguimiento del progreso del estudiante y la evaluación
-                        continua.
+                    <li class="mt-2">Moodle facilita el seguimiento del progreso del estudiante y la evaluación continua.
                     </li>
-                    <li class="mt-2">Los profesores pueden utilizar herramientas integradas para asignar tareas,
-                        calificar actividades y proporcionar retroalimentación, lo que contribuye a un proceso de
-                        aprendizaje más interactivo y adaptado a las necesidades individuales
+                    <li class="mt-2">Los profesores pueden utilizar herramientas integradas para asignar tareas, calificar actividades y proporcionar retroalimentación, lo que contribuye a un proceso de aprendizaje más interactivo y adaptado a las necesidades individuales
                     </li>
                 </div>
                 <div class="col-lg-6 d-flex justify-content-center">
-                    <img src="/img/img-cursos/curso-seccion-5.png" width="650" style="max-width: 100%; " height="100%"
-                        alt="">
+                    <img src="/img/img-cursos/curso-seccion-5.png" width="650" style="max-width: 100%; " height="100%" alt="">
                 </div>
 
             </div>
@@ -375,8 +340,7 @@
             <div class="container mb-5">
                 <div class="d-lg-flex">
                     <div class="col-lg-6 transUp d-flex justify-content-center align-items-center">
-                        <div data-aos="fade-up" class="card bg-light mb-3 me-2 curso-card "
-                            style="max-width: 20rem; border-radius: 10px;">
+                        <div data-aos="fade-up" class="card bg-light mb-3 me-2 curso-card " style="max-width: 20rem; border-radius: 10px;">
 
                             <% if(diferencia < 0 || curso.fecha_oferta=='0000-00-00 00:00:00' ){ %>
                                 <div class="card-header" style="background-color: #08787a; color: white;">
@@ -418,25 +382,20 @@
                                         </strong>
                                     </h2>
                                 </div>
-                                <p style="color: gray; text-align: center; font-size: small;">Garantía de reembolso de
-                                    30 días
+                                <p style="color: gray; text-align: center; font-size: small;">Garantía de reembolso de 30 días
                                 </p>
-                                <button class="btn btn-dark btn-lg" type="submit" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModalNovedad">Quiero
+                                <button class="btn btn-dark btn-lg" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModalNovedad">Quiero
                                     Inscribirme</button>
 
                                 <% }else{ %>
-                                    <div class="card-header text-center "
-                                        style="background-color: #08787a; color: white;">
+                                    <div class="card-header text-center " style="background-color: #08787a; color: white;">
                                         <h4> <strong>OFERTA LIMITADA</strong></h4>
                                     </div>
                                     <div class="curso-item">
 
                                     </div>
                                     <div class="card-body text-center mt-2">
-                                        <img style="max-width: 100%;" height="100%"
-                                            src="https://onedrive.live.com/embed?resid=C31F9C66E8BCAAC9%211499&authkey=%21AMDjB1agslRWaiU&width=256"
-                                            alt="100% gratis">
+                                        <img style="max-width: 100%;" height="100%" src="https://onedrive.live.com/embed?resid=C31F9C66E8BCAAC9%211499&authkey=%21AMDjB1agslRWaiU&width=256" alt="100% gratis">
 
                                         <h5 class="card-title">
                                             PRECIO OFERTA
@@ -461,8 +420,7 @@
                                     <p style="color: gray; text-align: center; font-size: small;">
                                         Incluye certificado digital o fisico.
                                     </p>
-                                    <button class="btn btn-dark btn-lg" type="submit" data-bs-toggle="modal"
-                                        data-bs-target="#exampleModalNovedad">Quiero
+                                    <button class="btn btn-dark btn-lg" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModalNovedad">Quiero
                                         Inscribirme</button>
 
                                     <% } %>
@@ -479,8 +437,7 @@
                                     institucionales.</strong>
                             </h2>
                             <div class="d-flex justify-content-center">
-                                <img class="" width="640px" style="max-width: 100%;"
-                                    src="/img/img-cursos/numeros-cuenta-edufal.png" alt="">
+                                <img class="" width="640px" style="max-width: 100%;" src="/img/img-cursos/numeros-cuenta-edufal.png" alt="">
                             </div>
                             <p style="color: #727171;" class="text-center"> <strong>Favor enviar: Foto
                                     del
@@ -492,14 +449,11 @@
                             <h2 style="color: #08787a;" class="text-center"> <strong> Aceptamos tarjetas
                                     de
                                     Credito</strong>
-                                <img width="180px" style="max-width: 100%;"
-                                    src="/img/img-cursos/img-visa-mastercard.png" alt="img-visa-mastercard">
+                                <img width="180px" style="max-width: 100%;" src="/img/img-cursos/img-visa-mastercard.png" alt="img-visa-mastercard">
                             </h2>
 
                             <% }else { %>
-                                <h1 style="color: #08787a;" class="text-center d-flex h-100 align-items-center  ">"Tu
-                                    potencial es ilimitado. ¡Despierta cada día y conquista tus metas con determinación
-                                    y pasión!"
+                                <h1 style="color: #08787a;" class="text-center d-flex h-100 align-items-center  ">"Tu potencial es ilimitado. ¡Despierta cada día y conquista tus metas con determinación y pasión!"
                                 </h1>
                                 <% } %>
 
@@ -515,8 +469,7 @@
 
             <!-- maestro docente -->
             <% if(maestro){ %>
-                <div
-                    style="margin-top: 100px; background-image: url(/img/img-cursos/background-cabecera-ver-todos-cursos.png); background-repeat: no-repeat; background-position: center; background-size: cover; ">
+                <div style="margin-top: 100px; background-image: url(/img/img-cursos/background-cabecera-ver-todos-cursos.png); background-repeat: no-repeat; background-position: center; background-size: cover; ">
 
 
                     <div class="container mt-5">
@@ -530,14 +483,11 @@
                                 style="background-image: url(); background-repeat: no-repeat; background-position: center; background-size: cover; height: 275px;"> -->
                                 <div>
 
-                                    <img class="card" data-aos="fade-up"
-                                        style="width: 200px; border-radius: 10px; box-shadow: 1px #08787a;"
-                                        src="<%= maestro.url_foto_2x2 %>" alt="img-docente">
+                                    <img class="card" data-aos="fade-up" style="width: 200px; border-radius: 10px; box-shadow: 1px #08787a;" src="<%= maestro.url_foto_2x2 %>" alt="img-docente">
                                 </div>
                                 <div class="mt-2 mb-5">
 
-                                    <h6
-                                        style="background-color: #08787a; padding: 5px; border-radius: 10px; display: inline; color: white; ">
+                                    <h6 style="background-color: #08787a; padding: 5px; border-radius: 10px; display: inline; color: white; ">
                                         Docente</h6>
                                 </div>
 
@@ -547,8 +497,7 @@
                             <div class=" col-lg-6 d-lg-flex justify-content-around">
                                 <div>
                                     <div class="card-lg-header">
-                                        <h6
-                                            style="background-color: #08787a; padding: 5px; border-radius: 10px; display: inline; color: white; ">
+                                        <h6 style="background-color: #08787a; padding: 5px; border-radius: 10px; display: inline; color: white; ">
                                             <%= maestro.nombre %>
                                                 <%= maestro.apellido %>
                                         </h6>
@@ -556,10 +505,7 @@
                                     <div>
 
                                         <h6 class="mt-4">
-                                            Bienvenidos a una nueva era educativa, donde la enseñanza se encuentra en
-                                            constante evolución. Hoy, nos complace presentar a un educador visionario y
-                                            líder, José Miguel Falcón, experto en clases online y preparaciones
-                                            tecnológicas.
+                                            Bienvenidos a una nueva era educativa, donde la enseñanza se encuentra en constante evolución. Hoy, nos complace presentar a un educador visionario y líder, José Miguel Falcón, experto en clases online y preparaciones tecnológicas.
                                         </h6>
                                     </div>
 
@@ -581,8 +527,7 @@
                                     <div class="d-sm-flex ">
 
 
-                                        <a class="me-2 "
-                                            href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>">
+                                        <a class="me-2 " href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>">
                                             <img style="width: 135px; " src="<%= curso.url_imagen %>" class="   "
                                                 alt="img-curso">
                                         </a>
@@ -594,9 +539,7 @@
                                             <h5 style="margin-bottom: 1px; " class="">
                                                 <li style="list-style:none" class="text-truncate">
 
-                                                    <a style="color: #005d6a; margin-bottom: 1px; "
-                                                        class="text-decoration-none font-weight-bold text-truncate"
-                                                        href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>">
+                                                    <a style="color: #005d6a; margin-bottom: 1px; " class="text-decoration-none font-weight-bold text-truncate" href="/cursos_talleres/ver_curso_taller/<%= curso.titulo_curso %>">
 
                                                         <%= curso.titulo_curso %>
                                                     </a>
@@ -629,8 +572,7 @@
                                                     <strong><i class="bi bi-laptop me-1"></i>MODALIDA:</strong>
                                                     <%= curso.modalidad %>
                                                 </p>
-                                                <p style="color: #08787a;" class=" "><i
-                                                        class="bi bi-stopwatch me-1"></i><strong>Hora: </strong>
+                                                <p style="color: #08787a;" class=" "><i class="bi bi-stopwatch me-1"></i><strong>Hora: </strong>
                                                     <%= curso.horasClases.slice( 0,15 ) %>
                                                 </p>
                                             </div>
@@ -644,19 +586,15 @@
                         </div>
                     </div>
 
-                    <div class="d-block "
-                        style="background-image: url(/img/img-cursos/background-sesion-ayuda.png); background-repeat: no-repeat; background-position: center; background-size: cover; ">
+                    <div class="d-block " style="background-image: url(/img/img-cursos/background-sesion-ayuda.png); background-repeat: no-repeat; background-position: center; background-size: cover; ">
                         <div class="container d-flex align-items-center" style="">
                             <div>
-                                <div class="p-5"
-                                    style="background-color: #eafffe; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);">
+                                <div class="p-5" style="background-color: #eafffe; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);">
                                     <div>
                                         <h4>Necesitas Alguna Asesoria ?</h4>
                                     </div>
                                     <div>
-                                        <h6>Aclara todas tus incertidumbres gracias al respaldo de nuestro grupo de
-                                            especialistas en orientación académica y asesoría profesional. Obtén
-                                            respuestas claras y detalladas a tus preguntas, aprovechando la experiencia
+                                        <h6>Aclara todas tus incertidumbres gracias al respaldo de nuestro grupo de especialistas en orientación académica y asesoría profesional. Obtén respuestas claras y detalladas a tus preguntas, aprovechando la experiencia
                                             y conocimientos de nuestro equipo altamente calificado
                                         </h6>
                                     </div>
@@ -677,33 +615,26 @@
                             <strong>1. ¿Por qué debería inscribirme en un curso online de
                                 Edufal?</strong>
                             <div>
-                                Edufal ofrece cursos online de alta calidad con contenido actualizado y profesores
-                                expertos en sus campos. Nuestros cursos son flexibles, accesibles desde cualquier lugar
-                                y te permiten aprender a tu propio ritmo.
+                                Edufal ofrece cursos online de alta calidad con contenido actualizado y profesores expertos en sus campos. Nuestros cursos son flexibles, accesibles desde cualquier lugar y te permiten aprender a tu propio ritmo.
                             </div>
                         </div>
                         <div class="mt-4">
                             <strong>2. ¿Cuáles son los beneficios de los cursos online de
                                 Edufal?</strong>
                             <div>
-                                Los cursos online de Edufal te brindan la flexibilidad para estudiar según tu horario,
-                                acceso a recursos multimedia, interacción con otros estudiantes y la posibilidad de
-                                obtener certificaciones reconocidas en el mercado laboral.
+                                Los cursos online de Edufal te brindan la flexibilidad para estudiar según tu horario, acceso a recursos multimedia, interacción con otros estudiantes y la posibilidad de obtener certificaciones reconocidas en el mercado laboral.
                             </div>
                         </div>
                         <div class="mt-4">
                             <strong>3. Si me pierdo una o más clases, ¿puedo recuperarlas?</strong>
                             <div>
-                                Todas las clases quedan grabadas de por vida en tu plataforma moodle. Siempre podrás
-                                volver a verlas cada vez que lo necesites.
+                                Todas las clases quedan grabadas de por vida en tu plataforma moodle. Siempre podrás volver a verlas cada vez que lo necesites.
                             </div>
                         </div>
                         <div class="mt-4">
                             <strong>4. ¿De qué manera adquiriré conocimientos?</strong>
                             <div>
-                                Te enfrentarás a escenarios laborales reales, donde deberás poner en práctica lo
-                                adquirido de manera individual y colaborativa. A través de la experimentación y la
-                                corrección de errores, superarás desafíos y adquirirás nuevas destrezas que podrás luego
+                                Te enfrentarás a escenarios laborales reales, donde deberás poner en práctica lo adquirido de manera individual y colaborativa. A través de la experimentación y la corrección de errores, superarás desafíos y adquirirás nuevas destrezas que podrás luego
                                 aplicar en tu entorno laboral.
                             </div>
                         </div>
@@ -711,39 +642,29 @@
                             <strong>5. ¿Cómo se desarrollan las clases virtuales en tiempo
                                 real?</strong>
                             <div>
-                                Las sesiones tienen una duración de 2 a 3 horas de lunes a viernes (3 o 4 horas los
-                                sábados) y se llevan a cabo de manera virtual en tiempo real, utilizando aulas virtuales
-                                que permiten la interacción con el instructor y tus compañeros. Mantenemos grupos
-                                reducidos para brindar un seguimiento más personalizado a lo largo de tu proceso de
-                                aprendizaje.
+                                Las sesiones tienen una duración de 2 a 3 horas de lunes a viernes (3 o 4 horas los sábados) y se llevan a cabo de manera virtual en tiempo real, utilizando aulas virtuales que permiten la interacción con el instructor y tus compañeros. Mantenemos grupos
+                                reducidos para brindar un seguimiento más personalizado a lo largo de tu proceso de aprendizaje.
                             </div>
                         </div>
                         <div class="mt-4">
                             <strong>6. ¿Cuál es la función de la Comunidad de Graduados?</strong>
                             <div>
-                                La Comunidad de Graduados es nuestra plataforma digital donde hallarás todos los
-                                recursos relacionados con el curso. Tendrás acceso a clases en directo, así como a
-                                materiales de lectura, videos y laboratorios, con una suscripción de por vida que se
-                                actualiza
+                                La Comunidad de Graduados es nuestra plataforma digital donde hallarás todos los recursos relacionados con el curso. Tendrás acceso a clases en directo, así como a materiales de lectura, videos y laboratorios, con una suscripción de por vida que se actualiza
                                 de manera constante.
                             </div>
                         </div>
                         <div class="mt-4 mb-4">
                             <strong>7. ¿En qué consiste la Garantía de Competencia?</strong>
                             <div>
-                                La Garantía de Competencia es un servicio integrado en todos los programas del centro
-                                educativo, diseñado para resolver cualquier incertidumbre sobre los temas tratados en
-                                clase. Si por alguna razón personal te ausentaste en una o más sesiones, o si deseas
-                                revisar un tema específico nuevamente, tienes la opción de retomar el curso de forma
-                                parcial o completa hasta en dos ocasiones adicionales, en un periodo de seis meses.
+                                La Garantía de Competencia es un servicio integrado en todos los programas del centro educativo, diseñado para resolver cualquier incertidumbre sobre los temas tratados en clase. Si por alguna razón personal te ausentaste en una o más sesiones, o si deseas
+                                revisar un tema específico nuevamente, tienes la opción de retomar el curso de forma parcial o completa hasta en dos ocasiones adicionales, en un periodo de seis meses.
                             </div>
                         </div>
 
                     </div>
 
                     <!-- modal Inscripcion -->
-                    <div class="modal fade" id="exampleModalNovedad<%=  %>" data-bs-backdrop="static"
-                        data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal fade" id="exampleModalNovedad<%=  %>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -751,76 +672,67 @@
                                         Inscripcion
                                         <%= curso.titulo_curso %>
                                     </h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
 
                                     <form method="POST" class="form-group" autocomplete="off">
 
                                         <input type="text" name="id_curso" value="<%= curso.id_curso %>" class="d-none">
-                                        <% if(diferencia < 0){ %>
-                                            <input type="text" name="precioOferta_inscripcion"
-                                                value="<%= precioOferta %>" class="d-none">
+                                        <% if(diferencia < 0 || curso.fecha_oferta=='0000-00-00 00:00:00' ){ %>
+                                            <input type="text" name="precioOferta_inscripcion" value="<%= precioOferta %>" class="d-none">
                                             <% }else { %>
-                                                <input type="text" name="precioOferta_inscripcion" value=""
-                                                    class="d-none">
+                                                <input type="text" name="precioOferta_inscripcion" value="" class="d-none">
                                                 <% } %>
-                                                    <input type="text" name="fecha_inicio_inscripcion"
-                                                        value="<%= curso.fecha_inicio %>" class="d-none">
-                                                    <input type="text" name="promocion_inscripcion"
-                                                        value="<%= curso.promocion %>" class="d-none">
-                                                    <input type="text" name="oferta_inscripcion_inscripcion"
-                                                        value="<%= curso.oferta_inscripcion %>" class="d-none">
+                                                    <input type="text" name="fecha_inicio_inscripcion" value="<%= curso.fecha_inicio %>" class="d-none">
+                                                    <input type="text" name="promocion_inscripcion" value="<%= curso.promocion %>" class="d-none">
+                                                    <input type="text" name="oferta_inscripcion_inscripcion" value="<%= curso.oferta_inscripcion %>" class="d-none">
+                                                    <input type="text" name="nombre_curso" value="<%= curso.titulo_curso %>" class="d-none">
 
                                                     <div>
                                                         <label for="nombre">Nombre </label>
                                                     </div>
-                                                    <input class="form-control" type="text" name="nombre" value=""
-                                                        required>
+                                                    <input class="form-control" type="text" name="nombre" value="" required>
 
                                                     <div>
                                                         <label for="apellido">Apellido</label>
                                                     </div>
-                                                    <input class="form-control" type="text" name="apellido" value=""
-                                                        required>
+                                                    <input class="form-control" type="text" name="apellido" value="" required>
                                                     <div>
                                                         <label for="cedula">Cedula </label>
                                                     </div>
-                                                    <input class="form-control" type="number" name="cedula" value=""
-                                                        required>
+                                                    <input class="form-control" type="number" name="cedula" value="" required>
 
                                                     <div>
                                                         <label for="fecha_nacimiento">Fecha
                                                             Nacimiento</label>
                                                     </div>
-                                                    <input class="form-control" type="date" name="fecha_nacimiento"
-                                                        value="" required>
+                                                    <input class="form-control" type="date" name="fecha_nacimiento" value="" required>
                                                     <div>
                                                         <label for="direccion">Direccion </label>
                                                     </div>
-                                                    <input class="form-control" type="text" name="direccion" value=""
-                                                        required>
+                                                    <input class="form-control" type="text" name="direccion" value="" required>
 
                                                     <div>
                                                         <label for="telefono">Telefono</label>
                                                     </div>
-                                                    <input class="form-control" type="number" name="telefono" value=""
-                                                        required>
+                                                    <input class="form-control" type="number" name="telefono" value="" required>
                                                     <div>
                                                         <label for="correo_electronico">Correo
                                                             Electronico</label>
                                                     </div>
-                                                    <input class="form-control" type="text" name="correo_electronico"
-                                                        value="" required>
+                                                    <input class="form-control" type="text" name="correo_electronico" value="" required>
                                                     <div>
-                                                        <label for="pais">Pais</label>
+                                                        <label for="pais">Nacionalidad</label>
                                                     </div>
-                                                    <input class="form-control" type="text" name="pais" value=""
-                                                        required>
+                                                    <select class="form-control" name="pais" id="" required>
+                                                        <option value="">Seleccionar</option>
+                                                        <option value="DOMINICANO/A">DOMINICANO/A</option>
+                                                        <option value="EXTRANJERO/A">EXTRANJERO/A</option>
+                                                    </select>
+                                                    <!-- <input class="form-control" type="text" name="pais" value="" required> -->
                                                     <div class="modal-footer border-0">
-                                                        <button type="button" class="btn btn-secondary"
-                                                            data-bs-dismiss="modal">Cancelar</button>
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                                                         <button type="submit" class="btn btn-primary">Si,
                                                             INSCRIBIRME</button>
                                                     </div>
@@ -842,8 +754,8 @@
                                 showConfirmButton: <%= showConfirmButton %>,
                                 timer: <%= timer %>
                             }).then(() => {
-                                    window.location = '/<%= ruta %>'
-                                })
+                                window.location = '/<%= ruta %>'
+                            })
                         </script>
                         <% } %>
 

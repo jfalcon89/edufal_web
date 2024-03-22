@@ -666,9 +666,22 @@ router.get("/admin/estudiantes-adm/informacion-estudiante-adm/crear-pago-x-estud
 
         try {
             const estudianteDB = await pool.query("SELECT * FROM estudiantes WHERE id_estudiante = ?", [id]);
+            const inscripcionesDB = await pool.query("SELECT * FROM inscripciones WHERE inscripciones.cedula = ?", [estudianteDB[0].cedula]);
+            const monto_pendienteDB = await pool.query(`SELECT SUM(CAST(REPLACE(REPLACE(precioOferta_inscripcion, '$', ''), ',', '') AS DECIMAL(10,2))) AS monto_pendiente
+                                                            FROM inscripciones 
+                                                            WHERE inscripciones.cedula = '${estudianteDB[0].cedula}' and inscripciones.estado_inscripcion in ('Nuevo', 'Iniciado', 'Finalizado')`);
+            const monto_pagoDB = await pool.query(`SELECT SUM(monto_pago) AS monto_pago
+                                                            FROM pagos_estudiantes
+                                                            WHERE pagos_estudiantes.cedula_pago = '${estudianteDB[0].cedula}'`);
+
+            const balance_pendiente = monto_pendienteDB[0].monto_pendiente - monto_pagoDB[0].monto_pago
+
+            console.log(balance_pendiente)
 
             res.render("crear-pago-x-estudiante", {
                 estudiante: estudianteDB[0],
+                inscripciones: inscripcionesDB,
+                balance_pendiente,
                 login: true,
                 name: req.session.name
             });
@@ -693,7 +706,7 @@ router.get("/admin/estudiantes-adm/informacion-estudiante-adm/crear-pago-x-estud
 
 // INSERTANDO NUEVO PAGO X ESTUDIANTE >>>>>>>>>>>>>>>
 router.post("/admin/estudiantes-adm/informacion-estudiante-adm/crear-pago-x-estudiante/:id", async(req, res) => {
-    const { cedula_pago, id_estudiante, nombre, apellido, periodo, monto_pago, fecha_pago, observacion_pago } = req.body;
+    const { cedula_pago, id_estudiante, nombre, apellido, periodo, monto_pago, fecha_pago, observacion_pago, curso_pago } = req.body;
     const id = req.params.id
     const nuevo_Pago_x_estudiante = {
         cedula_pago,
@@ -703,7 +716,8 @@ router.post("/admin/estudiantes-adm/informacion-estudiante-adm/crear-pago-x-estu
         periodo,
         monto_pago,
         fecha_pago,
-        observacion_pago
+        observacion_pago,
+        curso_pago
     };
 
 
@@ -775,13 +789,14 @@ router.get("/admin/estudiantes-adm/informacion-estudiante-adm/editar-pago-x-estu
         try {
             const estudianteDB = await pool.query(`SELECT * FROM estudiantes, pagos_estudiantes WHERE pagos_estudiantes.id_pago_estudiante = ${id} and pagos_estudiantes.id_estudiante = estudiantes.id_estudiante `);
             const pago_estudianteDB = await pool.query("SELECT * FROM pagos_estudiantes WHERE pagos_estudiantes.id_pago_estudiante = ?", [id]);
+            const inscripcionesDB = await pool.query("SELECT * FROM inscripciones WHERE inscripciones.cedula = ?", [estudianteDB[0].cedula]);
 
 
 
             res.render("editar-pago-x-estudiante", {
                 estudiante: estudianteDB[0],
                 pago_estudiante: pago_estudianteDB[0],
-
+                inscripciones: inscripcionesDB,
                 login: true,
                 name: req.session.name
             });
@@ -808,7 +823,7 @@ router.get("/admin/estudiantes-adm/informacion-estudiante-adm/editar-pago-x-estu
 // INSERTANDO MODIFICACION PAGO X ESTUDIANTE >>>>>>>>>>>>>>>
 router.post('/admin/estudiantes-adm/informacion-estudiante-adm/editar-pago-x-estudiante/:id', async(req, res) => {
 
-    const { id_estudiante, cedula_pago, nombre, apellido, monto_pago, fecha_pago, observacion_pago, periodo } = req.body;
+    const { id_estudiante, cedula_pago, nombre, apellido, monto_pago, fecha_pago, observacion_pago, periodo, curso_pago } = req.body;
     const id = req.params.id
     const updatePago_x_estudiante = {
         id_estudiante,
@@ -818,7 +833,8 @@ router.post('/admin/estudiantes-adm/informacion-estudiante-adm/editar-pago-x-est
         monto_pago,
         fecha_pago,
         observacion_pago,
-        periodo
+        periodo,
+        curso_pago
 
     };
 

@@ -5,8 +5,7 @@
 
         <h2 class="text-secondary" id="inimation-dog">Editar Estudiante</h2>
         <hr>
-        <form id="editar" class=""
-            action="/admin/estudiantes-adm/editar-estudiante-adm/<%= estudiante.id_estudiante %> " method="POST">
+        <form id="editar" class="" action="/admin/estudiantes-adm/editar-estudiante-adm/<%= estudiante.id_estudiante %> " method="POST">
             <div class="d-lg-flex justify-content-end ">
                 <button class="btn  mt-3 me-lg-3" style="background-color: #02aeae;" type="submit"><i
                         class="bi bi-check-lg me-3"></i>Guardar cambios</button>
@@ -15,8 +14,7 @@
                 <a href="/admin/estudiantes-adm" class="btn btn-warning mt-3 me-lg-3 "><i
                         class="bi bi-arrow-left me-3"></i>Volver a
                     atras</a>
-                <a href="/admin/estudiantes-adm/informacion-estudiante-adm/<%= estudiante.id_estudiante %>"
-                    class="btn mt-3 me-lg-3"><i class="bi bi-info-circle me-3 "></i>Informacion</a>
+                <a href="/admin/estudiantes-adm/informacion-estudiante-adm/<%= estudiante.id_estudiante %>" class="btn mt-3 me-lg-3"><i class="bi bi-info-circle me-3 "></i>Informacion</a>
                 <a data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="btn btn-danger mt-3 text-light "><i
                         class="bi bi-info-circle me-3"></i>Eliminar Estudiante</a>
             </div>
@@ -31,8 +29,7 @@
                                 <div class="input-group-prepend">
                                     <label class="input-group-text p-2 me-lg-3">Codigo</label>
                                 </div>
-                                <input type="text" name="codigo" value="<%= estudiante.id_estudiante %>"
-                                    class="form-control" id="codigo" disabled>
+                                <input type="text" name="codigo" value="<%= estudiante.id_estudiante %>" class="form-control" id="codigo" disabled>
                             </div>
                         </div>
 
@@ -41,8 +38,7 @@
                                 <div class="input-group-prepend">
                                     <label class="input-group-text p-2 me-lg-3">Cedula</label>
                                 </div>
-                                <input type="text" name="cedula" value="<%= estudiante.cedula %>" class="form-control"
-                                    id="cedula">
+                                <input type="text" name="cedula" value="<%= estudiante.cedula %>" class="form-control" id="cedula">
                             </div>
                         </div>
                         <div class="form-group d-flex   ">
@@ -50,8 +46,7 @@
                                 <div class="input-group-prepend">
                                     <label class="input-group-text p-2 me-lg-3">Telefono</label>
                                 </div>
-                                <input type="number" name="telefono" value="<%= estudiante.telefono %>"
-                                    class="form-control" id="telefono">
+                                <input type="number" name="telefono" value="<%= estudiante.telefono %>" class="form-control" id="telefono">
                             </div>
                         </div>
 
@@ -99,37 +94,31 @@
 
             <div class="form-group d-flex justify-content-center espaciado ">
                 <label for="nombre" class=" p-2">Nombre</label>
-                <input type="text" name="nombre" value="<%= estudiante.nombre %>" class="form-control p-2 mt-2"
-                    id="nombre" aria-describedby="emailHelp" placeholder="">
+                <input type="text" name="nombre" value="<%= estudiante.nombre %>" class="form-control p-2 mt-2" id="nombre" aria-describedby="emailHelp" placeholder="">
             </div>
 
             <div class="form-group d-flex justify-content-center espaciado ">
                 <label for="apellido" class=" p-2">Apellido</label>
-                <input type="text" name="apellido" value="<%= estudiante.apellido %>" class="form-control p-2 mt-2"
-                    id="apellido" aria-describedby="emailHelp" placeholder="">
+                <input type="text" name="apellido" value="<%= estudiante.apellido %>" class="form-control p-2 mt-2" id="apellido" aria-describedby="emailHelp" placeholder="">
             </div>
 
             <div class="form-group d-flex justify-content-center espaciado ">
                 <label for="nacimiento" class=" p-2">Fecha de Nacimiento </label>
-                <input type="date" name="fecha_nacimiento" value="<%= estudiante.fecha_nacimiento %>"
-                    class="form-control p-2 mt-2" id="fecha_nacimiento" aria-describedby="emailHelp" placeholder="">
+                <input type="date" name="fecha_nacimiento" value="<%= estudiante.fecha_nacimiento %>" class="form-control p-2 mt-2" id="fecha_nacimiento" aria-describedby="emailHelp" placeholder="">
             </div>
 
 
             <div class="form-group d-flex justify-content-center espaciado ">
                 <label class=" p-2">Direccion</label>
-                <input type="text" name="direccion" value="<%= estudiante.direccion %>" class="form-control p-2 mt-2"
-                    id="direccion" aria-describedby="emailHelp" placeholder="">
+                <input type="text" name="direccion" value="<%= estudiante.direccion %>" class="form-control p-2 mt-2" id="direccion" aria-describedby="emailHelp" placeholder="">
             </div>
             <div class="form-group d-flex justify-content-center espaciado ">
                 <label class=" p-2">Correo Electronico</label>
-                <input type="text" name="correo_electronico" value="<%= estudiante.correo_electronico %>"
-                    class="form-control p-2 mt-2" id="correo" aria-describedby="emailHelp" placeholder="">
+                <input type="text" name="correo_electronico" value="<%= estudiante.correo_electronico %>" class="form-control p-2 mt-2" id="correo" aria-describedby="emailHelp" placeholder="">
             </div>
             <div class="form-group d-flex justify-content-center espaciado ">
                 <label class=" p-2">Nacionalidad</label>
-                <input type="text" name="pais" value="<%= estudiante.pais %>" class="form-control p-2 mt-2" id="correo"
-                    aria-describedby="emailHelp" placeholder="">
+                <input type="text" name="pais" value="<%= estudiante.pais %>" class="form-control p-2 mt-2" id="correo" aria-describedby="emailHelp" placeholder="">
             </div>
 
             <div class="form-group d-flex justify-content-center espaciado ">
@@ -173,10 +162,8 @@
                                                             <%= cursoEstudiante.estado_inscripcion %>
                                                         </strong>
                                                         <% } %>
-                                                            <img style="width: 50px;"
-                                                                src="<%= cursoEstudiante.url_imagen %>"
-                                                                alt="imagen curso">
-                                                            <%= cursoEstudiante.titulo_curso %>
+                                                            <img style="width: 50px;" src="<%= cursoEstudiante.url_imagen %>" alt="imagen curso">
+                                                            <%= cursoEstudiante.nombre_curso %>
                         </ul>
 
 
@@ -193,15 +180,12 @@
             <div class="d-lg-flex justify-content-between">
                 <div class="form-group d-flex justify-content-center flex-wrap ">
                     <label for="sueldoBruto" class=" p-2">Balance Pendiente</label>
-                    <input type="number" name="sueldoBruto" value="<%= balance_pendiente %>"
-                        class="form-control p-2 text-center mt-2" id="sueldoBruto" aria-describedby="emailHelp"
-                        value="0">
+                    <input type="number" name="sueldoBruto" value="<%= balance_pendiente %>" class="form-control p-2 text-center mt-2" id="sueldoBruto" aria-describedby="emailHelp" value="0">
                 </div>
 
                 <div class="form-group d-flex justify-content-center flex-wrap ">
                     <label for="" class="p-2">Monto Pagado</label>
-                    <input type="text" name="" value="<%= monto_pago %>" class="form-control p-2 text-center mt-2"
-                        id="afp">
+                    <input type="text" name="" value="<%= monto_pago %>" class="form-control p-2 text-center mt-2" id="afp">
                 </div>
                 <div class="form-group d-flex justify-content-center flex-wrap ">
                     <label for="ars" class="p-2">Porcentaje Descuento</label>
@@ -209,8 +193,7 @@
                 </div>
                 <div class="form-group d-flex justify-content-center flex-wrap ">
                     <label for="cooperativa" class="p-2">Balance Neto</label>
-                    <input type="text" name="cooperativa" value="<%=  %>" class="form-control p-2 text-center mt-2"
-                        id="cooperativa">
+                    <input type="text" name="cooperativa" value="<%=  %>" class="form-control p-2 text-center mt-2" id="cooperativa">
                 </div>
             </div>
 
@@ -249,15 +232,13 @@
             <%- include('template/footer'); %>
 
                 <!-- Modal Eliminar -->
-                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
-                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="staticBackdropLabel">Eliminar Estudiante
                                 </h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <%= estudiante.nombre %>
@@ -271,9 +252,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <a type="submit"
-                                    href="/admin/estudiantes-adm/eliminar-estudiante-adm/<%= estudiante.id_estudiante %>"
-                                    class="btn text-light bg-danger " title="Eliminar Empleado">Eliminar Estudiante</a>
+                                <a type="submit" href="/admin/estudiantes-adm/eliminar-estudiante-adm/<%= estudiante.id_estudiante %>" class="btn text-light bg-danger " title="Eliminar Empleado">Eliminar Estudiante</a>
                             </div>
                         </div>
                     </div>

@@ -6,12 +6,10 @@
         <hr>
         <div class="d-flex align-items-center justify-content-end ">
 
-            <a class="btn btn-warning my-4 "
-                href="/admin/estudiantes-adm/informacion-estudiante-adm/ver-pago-x-estudiante/<%= estudiante.id_estudiante %> "><i
+            <a class="btn btn-warning my-4 " href="/admin/estudiantes-adm/informacion-estudiante-adm/ver-pago-x-estudiante/<%= estudiante.id_estudiante %> "><i
                     class="bi bi-arrow-left me-lg-3"></i>Volver Atras</a>
         </div>
-        <div class="header-container p-2 mb-3 mt-3 h-25 text-light "
-            style="background-color: #acacac5c; border-radius: 8px;">
+        <div class="header-container p-2 mb-3 mt-3 h-25 text-light " style="background-color: #acacac5c; border-radius: 8px;">
             <h5 class="mt-3 font-weight-bold fs-3" style="color: #02aeae;">
                 <%= estudiante.id_estudiante %>
                     <%= estudiante.nombre %>
@@ -59,8 +57,7 @@
                 <input style="display: none;" type="text" name="apellido" value="<%= estudiante.apellido %>">
                 <div>
                     <label for="periodo">Periodo Pago</label>
-                    <select name="periodo" class="form-control mt-2 text-secondary"
-                        style="background-color: rgba(255, 0, 0, 0); border: none;" required>
+                    <select name="periodo" class="form-control mt-2 text-secondary" style="background-color: rgba(255, 0, 0, 0); border: none;" required>
                         <option class="text-dark" value="<%= pago_estudiante.periodo %>" selected>
                             <%= pago_estudiante.periodo %>
                         </option>
@@ -81,28 +78,40 @@
                 <div class="input-field">
 
                     <label for="monto_pago" class="text-secondary">Monto Pago</label>
-                    <input type="text" class="form-control text-secondary" name="monto_pago" id="monto_pago"
-                        placeholder="" value="<%= pago_estudiante.monto_pago %> " required>
+                    <input type="text" class="form-control text-secondary" name="monto_pago" id="monto_pago" placeholder="" value="<%= pago_estudiante.monto_pago %> " required>
+                </div>
+                <div class="input-field">
+                    <label for="curso_pago" class="text-secondary">Curso Pago</label>
+                    <select class="form-control text-secondary" name="curso_pago" id="" required>
+                        <option value="<%= pago_estudiante.curso_pago %>" selected>
+                            <%= pago_estudiante.curso_pago %>
+                        </option>
+                        <% if (inscripciones.length> 0) { %>
+                            <% inscripciones.forEach(inscripcion=> { %>
+                                <option value="<%= inscripcion.nombre_curso %>">
+                                    <%= inscripcion.nombre_curso %>
+                                </option>
+                                <% }) %>
+                                    <% } %>
+                    </select>
+
                 </div>
                 <div class="input-field">
 
                     <label for="fecha_pago" class="text-secondary">Fecha Pago</label>
-                    <input type="text" class="form-control text-secondary" name="fecha_pago" id="fecha_pago"
-                        placeholder="" value="<%= pago_estudiante.fecha_pago %> ">
+                    <input type="text" class="form-control text-secondary" name="fecha_pago" id="fecha_pago" placeholder="" value="<%= pago_estudiante.fecha_pago %> ">
                 </div>
                 <div class="input-field">
 
                     <label for="observacion_pago" class="text-secondary">Obeservacion</label>
-                    <input type="text" class="form-control text-secondary" name="observacion_pago" id="observacion_pago"
-                        placeholder="" value="<%= pago_estudiante.observacion_pago %> ">
+                    <input type="text" class="form-control text-secondary" name="observacion_pago" id="observacion_pago" placeholder="" value="<%= pago_estudiante.observacion_pago %> ">
                 </div>
 
 
 
                 <button type="submit" class="btn  my-4 me-lg-3" style="background-color: #02aeae;">Guardar
                     Cambios</button>
-                <a type="button" class="btn text-light bg-danger " data-bs-toggle="modal"
-                    data-bs-target="#staticBackdrop" title="Eliminar Dpto">Eliminar
+                <a type="button" class="btn text-light bg-danger " data-bs-toggle="modal" data-bs-target="#staticBackdrop" title="Eliminar Dpto">Eliminar
                 </a>
 
 
@@ -125,8 +134,7 @@
 
 
     <!-- Modal -->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -140,9 +148,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <a type="submit"
-                        href="/admin/estudiantes-adm/informacion-estudiante-adm/eliminar-pago-x-estudiante/<%= pago_estudiante.id_pago_estudiante %>"
-                        class="btn text-light bg-danger " title="Eliminar Pago">Eliminar</a>
+                    <a type="submit" href="/admin/estudiantes-adm/informacion-estudiante-adm/eliminar-pago-x-estudiante/<%= pago_estudiante.id_pago_estudiante %>" class="btn text-light bg-danger " title="Eliminar Pago">Eliminar</a>
                 </div>
             </div>
         </div>
