@@ -41,13 +41,7 @@
 
                         </h5>
                         <div>
-                            <% if(curso){ %>
-                                <img style="width: 150px;" src="<%= curso.url_imagen %>" alt="img-curso">
-                                <% }else{ %>
-                                    <img style="width: 150px;"
-                                        src="https://onedrive.live.com/embed?resid=C31F9C66E8BCAAC9%211383&authkey=%21AAPd5B90CfeEDaY&width=256"
-                                        alt="img-curso">
-                                    <% } %>
+                            <img style="width: 150px;" src="<%= curso.url_imagen %>" alt="img-curso">
                         </div>
 
                     </div>
@@ -55,27 +49,16 @@
 
 
                         <div>
-                            <label for="id_curso">Curso </label>
+                            <label for="nombre_curso">Curso Inscripcion </label>
 
-                            <select name="id_curso" id="" class="form-control">
-                                <% if(curso){ %>
-                                    <option value="<%= curso.id_curso %>" selected>
-                                        <%= curso.titulo_curso %>
-                                    </option>
-                                    <% }else{ %>
-                                        <option value="<%= inscripcion.id_curso %>"><strong style="color: red;">Curso
-                                                Inactivo
-                                            </strong>
+                            <select class="form-control text-secondary" name="nombre_curso" id="" required>
+                                <option value="<%= inscripcion.nombre_curso %>" selected>
+                                    -<%= inscripcion.estado_inscripcion %>- <%= inscripcion.nombre_curso %>
+                                </option>
 
-                                        </option>
-                                        <% } %>
-                                            <% if (arrayCursos.length> 0) { %>
-                                                <% arrayCursos.forEach(arrayCursos=> { %>
-                                                    <option value="<%= arrayCursos.id_curso %>">
-                                                        <%= arrayCursos.titulo_curso %>
-                                                    </option>
-                                                    <% }) %>
-                                                        <% } %>
+
+
+
                             </select>
                         </div>
                         <div>

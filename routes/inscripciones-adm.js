@@ -48,8 +48,9 @@ router.get("/admin/inscripciones-adm/editar-inscripcion-adm/:id", async(req, res
         try {
 
             const inscripcionDB = await pool.query("SELECT * FROM inscripciones WHERE inscripciones.id_inscripcion = ?", [id]);
-            const cursoDB = await pool.query(`SELECT * FROM cursos WHERE cursos.estado_curso = 'Activo' and cursos.id_curso = ${inscripcionDB[0].id_curso} `);
+            const cursoDB = await pool.query(`SELECT * FROM cursos WHERE cursos.id_curso = ${inscripcionDB[0].id_curso} `);
             const arrayCursosDB = await pool.query("SELECT * FROM cursos WHERE cursos.estado_curso = 'Activo'")
+            const inscripcionesDB = await pool.query("SELECT * FROM inscripciones WHERE inscripciones.cedula = ?", [inscripcionDB[0].cedula]);
 
             console.log(cursoDB[0])
 
@@ -57,6 +58,7 @@ router.get("/admin/inscripciones-adm/editar-inscripcion-adm/:id", async(req, res
                 curso: cursoDB[0],
                 inscripcion: inscripcionDB[0],
                 arrayCursos: arrayCursosDB,
+                inscripciones: inscripcionesDB,
                 login: true,
                 name: req.session.name
 
@@ -85,9 +87,9 @@ router.post('/admin/inscripciones-adm/editar-inscripcion-adm/:id', async(req, re
     const id = req.params.id;
     console.log(req.params.id)
 
-    const { id_curso, nombre, apellido, cedula, fecha_nacimiento, direccion, telefono, correo_electronico, pais, precioOferta_inscripcion, fecha_inicio_inscripcion, promocion_inscripcion, oferta_inscripcion_inscripcion, estado_inscripcion } = req.body;
+    const { nombre, apellido, cedula, fecha_nacimiento, direccion, telefono, correo_electronico, pais, nombre_curso, precioOferta_inscripcion, fecha_inicio_inscripcion, promocion_inscripcion, oferta_inscripcion_inscripcion, estado_inscripcion } = req.body;
     const updateInscripcion = {
-        id_curso,
+
         nombre,
         apellido,
         cedula,
@@ -96,7 +98,7 @@ router.post('/admin/inscripciones-adm/editar-inscripcion-adm/:id', async(req, re
         telefono,
         correo_electronico,
         pais,
-
+        nombre_curso,
         precioOferta_inscripcion,
         fecha_inicio_inscripcion,
         promocion_inscripcion,
