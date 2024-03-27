@@ -5,6 +5,7 @@ const router = express.Router();
 const moment = require("moment");
 const pool = require("../database");
 const bcrypt = require('bcryptjs');
+const nodemailer = require("nodemailer");
 
 
 // //12 - Método para controlar que está auth en todas las páginas
@@ -480,6 +481,140 @@ router.post("/cursos_talleres/ver_curso_taller/:id", async(req, res) => {
         }
 
         await pool.query('INSERT INTO inscripciones SET ?', [nuevaInscripcion]);
+
+
+
+        // FUNCION QUE ENVIA AL CORREO NOTIFICACION DE SOLICITUD DE PRESTAMOS A ROSFAL
+        var fecha_inscripcion = new Date();
+        fecha_inscripcion = fecha_inscripcion.toLocaleString('es-ES', {
+            timeZone: "America/Santo_Domingo"
+        }).slice(0, 10);
+
+        async function notificacionCorreo() {
+            try {
+                const from = "contacto@edufalonline.com"
+                const toNotificacion = "jfalcon@edufalonline.com"
+
+                // console.log(nombre + " en enviar correo");
+                // console.log(apellido + " en enviar correo");
+
+                // Configurar la conexión SMTP con el servidor de correo personalizado
+                let transporter = nodemailer.createTransport({
+                    host: "edufalonline.com",
+                    port: 465, // El puerto puede variar según la configuración de su servidor
+                    secure: true, // Si utiliza SSL/TLS, establezca este valor en true
+                    tls: {
+                        rejectUnauthorized: false
+                    },
+                    auth: {
+                        user: process.env.USERCORREO,
+                        pass: process.env.PASSCORREO,
+                    },
+                });
+
+                // Configurar los detalles del correo electrónico
+                let info = await transporter.sendMail({
+                    from: `${from} EDUFAL ONLINE`,
+                    to: `${toNotificacion}`,
+                    subject: `Nueva inscripcion de estudiante ${nombre} ${apellido}`,
+                    html: `
+            
+            <P><strong>Asunto</strong>: Confirmación de inscripcion <strong>${nombre_curso}</strong> </p>
+            <P><strong>Fecha inscripcion</strong>: ${fecha_inscripcion} <strong>Fecha de inicio:</strong> ${fecha_inicio_inscripcion} </p><br>
+
+            <P><strong>Estudiante</strong>: ${nombre} ${apellido}</p>
+            <P><strong>Cedula</strong>: ${cedula}</p>
+            <P><strong>Precio incripcion</strong>: ${precioOferta_inscripcion}</p>
+            <P><strong>Direccion</strong>: ${direccion}</p>
+            <P><strong>Correo electronico</strong>: ${correo_electronico}</p>
+            <P><strong>Telefono</strong>: ${telefono}</p>
+            <P><strong>Pais</strong>: ${pais}</p><br>
+           
+            
+           
+            <P>Atentamente,</p>
+        
+            <h4 style="color: #2D8DBD;">EDUFAL ONLINE</h4>
+            <P><strong>T.</strong> 829-856-0203 <strong>EMAIL.</strong> contacto@edufalonline.com </P>
+            <P>Síguenos en <strong>FB:</strong> Edufal Online <strong>IG:</strong> @Edufal_online </P>
+            <a href="www.edufalonline.com">www.edufalonline.com</a>
+            `
+
+                });
+
+                console.log("Correo enviado: %s", info.messageId);
+
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+        notificacionCorreo()
+
+
+        // FUNCION QUE ENVIA NOTIFICACION DE SOLICITUD DE INSCRIPCION AL ESTUDIANTE
+        if (correo_electronico) {
+            async function enviarCorreo() {
+                try {
+                    const from = "contacto@edufalonline.com"
+
+                    // console.log(nombre + " en enviar correo");
+                    // console.log(apellido + " en enviar correo");
+
+                    // Configurar la conexión SMTP con el servidor de correo personalizado
+                    let transporter = nodemailer.createTransport({
+                        host: "edufalonline.com",
+                        port: 465, // El puerto puede variar según la configuración de su servidor
+                        secure: true, // Si utiliza SSL/TLS, establezca este valor en true
+                        tls: {
+                            rejectUnauthorized: false
+                        },
+                        auth: {
+                            user: process.env.USERCORREO,
+                            pass: process.env.PASSCORREO,
+                        },
+                    });
+
+                    // Configurar los detalles del correo electrónico
+                    let info = await transporter.sendMail({
+                        from: `${from} EDUFAL ONLINE`,
+                        to: `${correo_electronico}`,
+                        subject: `Gracias por tu inscripcion ${nombre} ${apellido}`,
+                        html: `
+                
+                <P><strong>Asunto:</strong> Confirmación de inscripcion <strong>${nombre_curso}</strong> </p>
+                <P><strong>Fecha inscripcion</strong>: ${fecha_inscripcion} <strong>Fecha de inicio:</strong> ${fecha_inicio_inscripcion} </p><br>
+
+                <P>Estimado/a ${nombre} ${apellido},</p>
+            
+                <P>Esperamos que se encuentre bien. Le escribimos para confirmar que hemos recibido su solicitud de inscripcion correctamente.</p>
+            
+                <P>Nos complace informarle que su inscripcion estara siendo revisada. Nos pondremos en contacto con usted en breve para informarle sobre su aprobacion.</p>
+            
+                <P>Mientras tanto, si tiene alguna pregunta o inquietud, no dude en ponerse en contacto con nosotros.</p><br>
+            
+                <P>Gracias por elegir nuestra academia.</p><br>
+            
+                <P>Atentamente,</p><br>
+            
+                <h4 style="color: #2D8DBD;">EDUFAL ONLINE</h4>
+                <P><strong>T.</strong> 829-856-0203 <strong>EMAIL.</strong> contacto@edufalonline.com </P>
+                <P>Síguenos en <strong>FB:</strong> Edufal Online <strong>IG:</strong> @Edufal_online </P>
+                <a href="www.edufalonline.com">www.edufalonline.com</a>
+                `
+
+                    });
+
+                    console.log("Correo enviado: %s", info.messageId);
+
+                } catch (error) {
+                    console.log(error);
+                }
+            }
+
+            enviarCorreo()
+        };
+
 
         res.render('ver-curso-taller', {
             curso: cursoDB[0],
