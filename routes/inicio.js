@@ -21,7 +21,22 @@ router.get('/', async(req, res) => {
     const arrayCursosCategoria8DB = await pool.query(`SELECT * FROM cursos where cursos.estado_curso = "Activo" and cursos.id_categoria = '8' `);
 
     const arrayCursosDB = await pool.query('SELECT * FROM cursos where cursos.estado_curso = "Activo" ;');
-    const arrayCursosPromoDB = await pool.query('SELECT * FROM cursos where cursos.estado_curso = "Activo" and cursos.promocion = "Si";');
+    const arrayCursosPromoDB = await pool.query(`SELECT * FROM cursos where cursos.estado_curso = "Activo" and cursos.promocion = "Si" AND STR_TO_DATE(fecha_inicio, '%d/%m/%Y') BETWEEN DATE_FORMAT(NOW(), '%Y-%m-01') AND LAST_DAY(NOW());`);
+
+    const mesEnCursoDB = await pool.query(`SELECT CASE MONTH(NOW())
+    WHEN 1 THEN 'Enero'
+    WHEN 2 THEN 'Febrero'
+    WHEN 3 THEN 'Marzo'
+    WHEN 4 THEN 'Abril'
+    WHEN 5 THEN 'Mayo'
+    WHEN 6 THEN 'Junio'
+    WHEN 7 THEN 'Julio'
+    WHEN 8 THEN 'Agosto'
+    WHEN 9 THEN 'Septiembre'
+    WHEN 10 THEN 'Octubre'
+    WHEN 11 THEN 'Noviembre'
+    WHEN 12 THEN 'Diciembre'
+END AS mes_actual_español;`);
 
     const categoria1DB = await pool.query(`SELECT * FROM categorias where categorias.id_categoria = '1' `);
     const categoria2DB = await pool.query(`SELECT * FROM categorias where categorias.id_categoria = '2' `);
@@ -42,6 +57,7 @@ router.get('/', async(req, res) => {
         arrayCursos: arrayCursosDB,
         arrayCursosPromo: arrayCursosPromoDB,
         fecha_hoy,
+        mesEnCurso: mesEnCursoDB[0].mes_actual_español,
         arrayCursosCategoria1: arrayCursosCategoria1DB,
         arrayCursosCategoria2: arrayCursosCategoria2DB,
         arrayCursosCategoria3: arrayCursosCategoria3DB,

@@ -29,8 +29,10 @@
         <div class="d-lg-flex align-items-center justify-content-end my-4 ">
             <a class="btn  me-lg-3" style="background-color: #02aeae;" href="/admin/cursos-adm/crear-curso-adm"><i
                     class="bi bi-person-plus me-lg-3"></i>Crear Nuevo Curso</a>
-            <a class="btn " href="/admin/inscripciones-adm"><i class="bi bi-person-lines-fill me-lg-3"></i>Ver
+            <a class="btn me-lg-3" href="/admin/inscripciones-adm"><i class="bi bi-person-lines-fill me-lg-3"></i>Ver
                 Inscripciones</a>
+            <a class="btn " href="/admin/programacion-adm"><i class="bi bi-person-lines-fill me-lg-3"></i>Ver
+                Programacion</a>
         </div>
 
         <div class="container-departamento">
@@ -140,8 +142,7 @@
                                     <%= curso.id_categoria %>
                                 </td>
                                 <td>
-                                    <a href="/admin/cursos-adm/editar-curso-adm/<%= curso.id_curso %>"
-                                        class="btn ">Editar</a>
+                                    <a href="/admin/cursos-adm/editar-curso-adm/<%= curso.id_curso %>" class="btn ">Editar</a>
 
                                 </td>
 
@@ -160,7 +161,7 @@
 
 
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('#datatable').DataTable({
                 order: [
                     [0, 'desc']
