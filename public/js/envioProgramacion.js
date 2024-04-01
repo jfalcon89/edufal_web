@@ -1,5 +1,3 @@
-// const nodemailer = require("nodemailer");
-
 // Asignar el evento click al botón
 document.getElementById('envioProgramacionBtn').addEventListener('click', enviarProgramacion);
 
@@ -19,5 +17,3 @@ async function enviarProgramacion() {
         // alert('Error al enviar las notificaciones.');
     }
 }
-
-// enviarProgramacion()

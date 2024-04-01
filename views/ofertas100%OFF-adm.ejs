@@ -6,18 +6,17 @@
 
 
     <div class="container-fluid mt-2">
-        <h2 class=" text-secondary">Programacion - Cursos mes de
+        <h2 class=" text-secondary">Programacion - Ofertas 100% OFF mes de
             <%= mesEnCurso %>
         </h2>
         <hr>
 
 
         <div class="d-lg-flex align-items-center justify-content-end my-4 ">
-            <a id="envioProgramacionBtn" class="btn  me-lg-3" style="color: white; background-color: #02aeae;"><i
-                    class="bi bi-person-plus me-lg-3"></i>Enviar Programacion</a>
-            <a class="btn" href="/admin/ofertas100%OFF-adm"><i class="bi bi-person-lines-fill me-lg-3"></i>Ver
-                Ofertas 100% OFF</a>
-
+            <a id="envioProgramacionCursosGratisBtn" class="btn  me-lg-3" style="color: white; background-color: #02aeae;"><i class="bi bi-person-plus me-lg-3"></i>Enviar
+                Programacion</a>
+            <a class="btn " href="/admin/programacion-adm"><i class="bi bi-person-lines-fill me-lg-3"></i>Ver
+                Programacion del Mes</a>
         </div>
         <% console.log(mesEnCurso) %>
             <div class="container">
@@ -63,21 +62,10 @@
                 <hr>
 
                 <div>
-                    <p><strong>Asunto: </strong>¿Vas a dejar pasar otro mes sin capacitarte? 😳😱</p>
-                    <td style="background-color: #f8f8f8; padding: 20px; text-align: center;">
-                        <h3 style="color: #333333;">¡No dejes que el tiempo pase sin tomar acción! Inscríbete en nuestros cursos ahora mismo y da el primer paso hacia un futuro brillante. 🚀🌟
-                        </h3>
-                    </td>
-                    <p>
-                        <%= mesEnCurso %> es un mes dedicado a aquellos que están comprometidos con alcanzar sus metas antes de que termine el 2023. ¿Te encuentras entre ellos? En EDUFAL, encontrarás programas diseñados para proporcionarte conocimientos siempre de las
-                            manos de expertos en la industria. Tu éxito está a solo un diplomado de distancia.
-                    </p>
-                    <p style="">
-                        Escríbeme ahora mismo para solicitar más información sobre tu diplomado, curso o taller ideal y para verificar si aún hay cupo disponible. ¡Trabajaré para asegurarte el tuyo!
-                    </p><br>
+                    <h3>Capacitaciones 100% OFF de
+                        <%= mesEnCurso %>
+                    </h3>
                 </div>
-
-
                 <% if(arrayCursosCategoria1.length> 0){ %>
                     <table class=" table-bordered table-sm" style="width:100%">
                         <h3 style="background-color: #005d6a; color: white;">
@@ -90,6 +78,7 @@
 
                                 <th style="column-count: 4;" scope="col">Titulo Curso</th>
                                 <th scope="col">Fecha Inicio</th>
+                                <th scope="col">Oferta valida hasta</th>
                                 <th scope="col">Horarios de Clase</th>
 
 
@@ -98,27 +87,31 @@
                         <tbody>
                             <% if (arrayCursosCategoria1.length> 0) { %>
                                 <% arrayCursosCategoria1.forEach(curso=> { %>
+                                    <% console.log(arrayCursosCategoria1) %>
+                                        <tr>
 
-                                    <tr>
-
-                                        <td>
-                                            <%= curso.titulo_curso %>
-                                        </td>
-
-
-                                        <td>
-                                            <%= curso.fecha_inicio.toLocaleString('es-ES', {
-                                                timeZone: "America/Santo_Domingo" }).slice(0, 10) %>
-                                        </td>
-                                        <td>
-                                            <%= curso.horasClases %>
-                                        </td>
+                                            <td>
+                                                <%= curso.titulo_curso %>
+                                            </td>
 
 
-                                    </tr>
+                                            <td>
+                                                <%= curso.fecha_inicio.toLocaleString('es-ES', {
+                                                    timeZone: "America/Santo_Domingo" }).slice(0, 10) %>
+                                            </td>
+                                            <td>
+                                                <%= curso.fecha_oferta.toLocaleString('es-ES', {
+                                                    timeZone: "America/Santo_Domingo" }).slice(0, 10) %>
+                                            </td>
+                                            <td>
+                                                <%= curso.horasClases %>
+                                            </td>
 
-                                    <% }) %>
-                                        <% } %>
+
+                                        </tr>
+
+                                        <% }) %>
+                                            <% } %>
                         </tbody>
                     </table>
                     <% } %>
@@ -134,6 +127,7 @@
 
                                         <th style="column-count: 4;" scope="col">Titulo Curso</th>
                                         <th scope="col">Fecha Inicio</th>
+                                        <th scope="col">Oferta valida hasta</th>
                                         <th scope="col">Horarios de Clase</th>
 
 
@@ -152,6 +146,10 @@
 
                                                 <td>
                                                     <%= curso.fecha_inicio.toLocaleString('es-ES', {
+                                                        timeZone: "America/Santo_Domingo" }).slice(0, 10) %>
+                                                </td>
+                                                <td>
+                                                    <%= curso.fecha_oferta.toLocaleString('es-ES', {
                                                         timeZone: "America/Santo_Domingo" }).slice(0, 10) %>
                                                 </td>
                                                 <td>
@@ -178,6 +176,7 @@
 
                                                 <th style="column-count: 4;" scope="col">Titulo Curso</th>
                                                 <th scope="col">Fecha Inicio</th>
+                                                <th scope="col">Oferta valida hasta</th>
                                                 <th scope="col">Horarios de Clase</th>
 
 
@@ -196,6 +195,10 @@
 
                                                         <td>
                                                             <%= curso.fecha_inicio.toLocaleString('es-ES', {
+                                                                timeZone: "America/Santo_Domingo" }).slice(0, 10) %>
+                                                        </td>
+                                                        <td>
+                                                            <%= curso.fecha_oferta.toLocaleString('es-ES', {
                                                                 timeZone: "America/Santo_Domingo" }).slice(0, 10) %>
                                                         </td>
                                                         <td>
@@ -222,6 +225,7 @@
 
                                                         <th style="column-count: 4;" scope="col">Titulo Curso</th>
                                                         <th scope="col">Fecha Inicio</th>
+                                                        <th scope="col">Oferta valida hasta</th>
                                                         <th scope="col">Horarios de Clase</th>
 
 
@@ -240,6 +244,11 @@
 
                                                                 <td>
                                                                     <%= curso.fecha_inicio.toLocaleString('es-ES', {
+                                                                        timeZone: "America/Santo_Domingo" }).slice(0,
+                                                                        10) %>
+                                                                </td>
+                                                                <td>
+                                                                    <%= curso.fecha_oferta.toLocaleString('es-ES', {
                                                                         timeZone: "America/Santo_Domingo" }).slice(0,
                                                                         10) %>
                                                                 </td>
@@ -268,6 +277,7 @@
                                                                 <th style="column-count: 4;" scope="col">Titulo Curso
                                                                 </th>
                                                                 <th scope="col">Fecha Inicio</th>
+                                                                <th scope="col">Oferta valida hasta</th>
                                                                 <th scope="col">Horarios de Clase</th>
 
 
@@ -286,6 +296,11 @@
 
                                                                         <td>
                                                                             <%= curso.fecha_inicio.toLocaleString('es-ES',
+                                                                                { timeZone: "America/Santo_Domingo"
+                                                                                }).slice(0, 10) %>
+                                                                        </td>
+                                                                        <td>
+                                                                            <%= curso.fecha_oferta.toLocaleString('es-ES',
                                                                                 { timeZone: "America/Santo_Domingo"
                                                                                 }).slice(0, 10) %>
                                                                         </td>
@@ -314,6 +329,7 @@
                                                                         <th style="column-count: 4;" scope="col">Titulo Curso
                                                                         </th>
                                                                         <th scope="col">Fecha Inicio</th>
+                                                                        <th scope="col">Oferta valida hasta</th>
                                                                         <th scope="col">Horarios de Clase</th>
 
 
@@ -332,6 +348,12 @@
 
                                                                                 <td>
                                                                                     <%= curso.fecha_inicio.toLocaleString('es-ES',
+                                                                                        {
+                                                                                        timeZone: "America/Santo_Domingo"
+                                                                                        }).slice(0, 10) %>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <%= curso.fecha_oferta.toLocaleString('es-ES',
                                                                                         {
                                                                                         timeZone: "America/Santo_Domingo"
                                                                                         }).slice(0, 10) %>
@@ -359,8 +381,10 @@
                                                                         <thead class="thead-ligth">
                                                                             <tr>
 
-                                                                                <th style="column-count: 4;" scope="col">Titulo Curso</th>
+                                                                                <th style="column-count: 4;" scope="col">Titulo Curso
+                                                                                </th>
                                                                                 <th scope="col">Fecha Inicio</th>
+                                                                                <th scope="col">Oferta valida hasta</th>
                                                                                 <th scope="col">Horarios de Clase</th>
 
 
@@ -381,6 +405,12 @@
 
                                                                                         <td>
                                                                                             <%= curso.fecha_inicio.toLocaleString('es-ES',
+                                                                                                {
+                                                                                                timeZone: "America/Santo_Domingo"
+                                                                                                }).slice(0, 10) %>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <%= curso.fecha_oferta.toLocaleString('es-ES',
                                                                                                 {
                                                                                                 timeZone: "America/Santo_Domingo"
                                                                                                 }).slice(0, 10) %>
@@ -412,6 +442,8 @@
                                                                                         </th>
                                                                                         <th scope="col">Fecha Inicio
                                                                                         </th>
+                                                                                        <th scope="col">Oferta valida hasta
+                                                                                        </th>
                                                                                         <th scope="col">Horarios de Clase
                                                                                         </th>
 
@@ -442,6 +474,13 @@
                                                                                                         %>
                                                                                                 </td>
                                                                                                 <td>
+                                                                                                    <%= curso.fecha_oferta.toLocaleString('es-ES',
+                                                                                                        {
+                                                                                                        timeZone: "America/Santo_Domingo"
+                                                                                                        }).slice(0, 10)
+                                                                                                        %>
+                                                                                                </td>
+                                                                                                <td>
                                                                                                     <%= curso.horasClases
                                                                                                         %>
                                                                                                 </td>
@@ -455,42 +494,120 @@
                                                                             </table>
                                                                             <% } %>
 
+
+                                                                                <div class="mt-4 ">
+
+
+                                                                                    <table align="center" cellpadding="0" cellspacing="0" width="720">
+
+                                                                                        <tr>
+                                                                                            <td style="background-color: #f8f8f8; padding: 20px; text-align: center;">
+                                                                                                <h1 style="color: #333333;">
+                                                                                                    ¡Aprovecha nuestras capacitaciones 100% gratis este mes de
+                                                                                                    <%= mesEnCurso %>!
+                                                                                                </h1>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+
+                                                                                            <td style="background-color: #ffffff; padding: 30px;">
+                                                                                                <p><strong>Asunto:
+                                                                                                    </strong>¡Aprovecha nuestras capacitaciones 100% gratis este mes de
+                                                                                                    <%= mesEnCurso %>! 😳😱
+                                                                                                </p>
+                                                                                                <p>Hola [Nombre del Estudiante],
+                                                                                                </p>
+                                                                                                <p>¡Espero que estés teniendo un excelente día! Quería informarte sobre una increíble oportunidad que tenemos este mes en EDUFAL ONLINE: ¡nuestras capacitaciones
+                                                                                                    totalmente gratuitas!
+                                                                                                </p>
+                                                                                                <p>En EDUFAL ONLINE, creemos firmemente en brindar acceso a la educación de calidad para todos, y por eso estamos ofreciendo una selección especial de cursos
+                                                                                                    online completamente gratis durante todo este mes. Esta es tu oportunidad de adquirir nuevos conocimientos, mejorar tus habilidades y avanzar en tu camino
+                                                                                                    hacia el éxito, sin ningún costo.</p>
+                                                                                                <p>Nuestras capacitaciones gratuitas cubren una amplia gama de áreas, incluyendo Desarrollo de Software, Negocios y Emprendimiento, Diseño Gráfico, Contenido
+                                                                                                    Digital y Multimedia, Idiomas y Habilidades Lingüísticas, Marketing Digital, Ciencia de Datos y Análisis, Finanzas Personales y Contabilidad, entre otros.
+                                                                                                </p>
+                                                                                                <p>Al inscribirte en nuestros cursos gratuitos, tendrás acceso a:</p>
+                                                                                                <ul>
+                                                                                                    <li><strong>Contenido
+                                                                                                            de
+                                                                                                            Calidad:</strong> Cursos diseñados por expertos en cada campo para garantizar que obtengas conocimientos actualizados y relevantes.
+                                                                                                    </li>
+                                                                                                    <li><strong>Flexibilidad
+                                                                                                            Horaria:</strong> Estudia a tu ritmo, adaptando los horarios según tus necesidades y disponibilidad.
+                                                                                                    </li>
+                                                                                                    <li><strong>Certificación
+                                                                                                            de
+                                                                                                            Participación:</strong> Al completar con éxito el curso, recibirás una certificación que respaldará tus nuevos conocimientos y habilidades.
+                                                                                                    </li>
+                                                                                                </ul>
+                                                                                                <p>No dejes pasar esta oportunidad única de aprender y crecer sin costo alguno. Te animamos a explorar nuestra lista de cursos gratuitos y registrarte hoy mismo
+                                                                                                    para asegurar tu lugar.
+                                                                                                </p>
+                                                                                                <p>Para más información y para inscribirte en nuestras capacitaciones gratuitas, te invitamos a visitar nuestra página web
+                                                                                                    <a href="www.edufalonline.com">aquí</a> o contactarnos directamente a través de este correo electrónico contacto@edufalonline.com.
+                                                                                                </p>
+                                                                                                <p>¡Esperamos contar contigo en nuestra comunidad de aprendizaje este mes!
+                                                                                                </p>
+                                                                                                <p>Saludos cordiales,
+                                                                                                </p><br>
+
+                                                                                                <div style="text-align: center; margin-top: 30px;">
+
+                                                                                                    <h4><a href="https://bit.ly/3xzs0RV" style="background-color: #005d6a; border-radius: 10px; padding: 10px; text-decoration: none; color: white;">ESCRIBEMOS
+                                                                                                            PARA MAS
+                                                                                                            INFORMACION</a>
+                                                                                                    </h4><br>
+                                                                                                    <p style="margin: 0 auto; width: 50%;">
+                                                                                                        Te esperamos en el AULA!</p><br>
+                                                                                                    <img src="https://onedrive.live.com/embed?resid=C31F9C66E8BCAAC9%211711&authkey=%21AJoA5g9yVo7CavY&width=396&height=122" width="396" height="122" />
+
+
+                                                                                                    <footer class=" mt-0 mb-0">
+                                                                                                        <div class="container ">
+                                                                                                            <div class="container-dir mt-5 mb-5">
+                                                                                                            </div>
+                                                                                                            <div class="container-dir mt-5 mb-5">
+                                                                                                                <h6 class="text-black  mb-3">
+                                                                                                                    Calle Primera #59 Sector Enriquillo de Herrera Santo Domingo R.D 829-856-0203 contacto@edufalonline.com
+                                                                                                                </h6>
+                                                                                                            </div>
+                                                                                                            <div class="container-redes mt-5 mb-5">
+                                                                                                                <h6 class="text-black  mb-3">
+                                                                                                                    <strong>NUESTRAS
+                                                                                                                        REDES
+                                                                                                                        SOCIALES</strong>
+                                                                                                                </h6>
+                                                                                                                <a href="https://www.facebook.com/rosfalrd/" target="_blank">
+                                                                                                                    <img style="width: 40px;" src="https://onedrive.live.com/embed?resid=C31F9C66E8BCAAC9%211715&authkey=%21AKCgUx2Zi1sFJFk&width=256" alt="facebook"></a>
+                                                                                                                <a href="https://www.instagram.com/rosfalrd/" target="_blank">
+                                                                                                                    <img style="width: 40px;" src="https://onedrive.live.com/embed?resid=C31F9C66E8BCAAC9%211712&authkey=%21AET2kpZIjaoW6W0&width=40" alt="instagram"></a>
+                                                                                                                <a href="https://bit.ly/3xzs0RV" target="_blank">
+                                                                                                                    <img style="width: 40px;" src="https://onedrive.live.com/embed?resid=C31F9C66E8BCAAC9%211713&authkey=%21AJ-hUrQAndRfUv8&width=323&height=299" alt="ws"></a>
+                                                                                                                <a href="#">
+                                                                                                                    <img style="width: 40px;" src="https://onedrive.live.com/embed?resid=C31F9C66E8BCAAC9%211714&authkey=%21ABz2uGGcqo6A1gY&width=256" alt="twier"></a>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </footer>
+                                                                                                    <hr class="mt-0 mb-0">
+                                                                                                    <div class="mt-0 mb-0" style="background-color:#000000 ;">
+                                                                                                        <p class="text-white text-center pt-3 pb-3 m-0">
+                                                                                                            © Copyright 2023 - Edufal Online
+                                                                                                        </p>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </table>
+                                                                                </div>
+
             </div>
     </div>
 
-    <div style="text-align: center; margin-top: 30px;">
-
-        <h4><a href="https://bit.ly/3xzs0RV" style="background-color: #005d6a; border-radius: 10px; padding: 10px; text-decoration: none; color: white;">ESCRIBEMOS
-                PARA MAS INFORMACION</a></h4><br>
-        <p style="margin: 0 auto; width: 50%;">Te esperamos en el AULA!</p><br>
-        <img src="https://onedrive.live.com/embed?resid=C31F9C66E8BCAAC9%211711&authkey=%21AJoA5g9yVo7CavY&width=396&height=122" width="396" height="122" />
-
-
-        <footer class=" mt-0 mb-0">
-            <div class="container ">
-                <div class="container-dir mt-5 mb-5">
-                </div>
-                <div class="container-dir mt-5 mb-5">
-                    <h6 class="text-black  mb-3"> Calle Primera #59 Sector Enriquillo de Herrera Santo Domingo R.D 829-856-0203 contacto@edufalonline.com</h6>
-                </div>
-                <div class="container-redes mt-5 mb-5">
-                    <h6 class="text-black  mb-3"><strong>NUESTRAS REDES SOCIALES</strong></h6>
-                    <a href="https://www.facebook.com/rosfalrd/" target="_blank"> <img style="width: 40px;" src="https://onedrive.live.com/embed?resid=C31F9C66E8BCAAC9%211715&authkey=%21AKCgUx2Zi1sFJFk&width=256" alt="facebook"></a>
-                    <a href="https://www.instagram.com/rosfalrd/" target="_blank"> <img style="width: 40px;" src="https://onedrive.live.com/embed?resid=C31F9C66E8BCAAC9%211712&authkey=%21AET2kpZIjaoW6W0&width=40" alt="instagram"></a>
-                    <a href="https://bit.ly/3xzs0RV" target="_blank"> <img style="width: 40px;" src="https://onedrive.live.com/embed?resid=C31F9C66E8BCAAC9%211713&authkey=%21AJ-hUrQAndRfUv8&width=323&height=299" alt="ws"></a>
-                    <a href="#"> <img style="width: 40px;" src="https://onedrive.live.com/embed?resid=C31F9C66E8BCAAC9%211714&authkey=%21ABz2uGGcqo6A1gY&width=256" alt="twier"></a>
-                </div>
-            </div>
-        </footer>
-        <hr class="mt-0 mb-0">
-        <div class="mt-0 mb-0" style="background-color:#000000 ;">
-            <p class="text-white text-center pt-3 pb-3 m-0">© Copyright 2023 - Edufal Online</p>
-        </div>
-    </div>
 
 
 
-    <script src="/js/envioProgramacion.js"></script>
+
+    <script src="/js/envioProgramacionCursosGratis.js"></script>
 
 
     <%- include('template/footer'); %>
