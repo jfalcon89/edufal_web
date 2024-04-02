@@ -400,6 +400,7 @@ router.get('/admin/ofertas100%OFF-adm', async(req, res) => {
         const arrayCursosCategoria8DB = await pool.query(`SELECT titulo_curso, fecha_inicio, fecha_oferta, horasClases, nombre_categoria FROM cursos, categorias where cursos.estado_curso = "Activo" and cursos.id_categoria = "8" and cursos.id_categoria = categorias.id_categoria AND STR_TO_DATE(fecha_inicio, '%d/%m/%Y') BETWEEN DATE_FORMAT(NOW(), '%Y-%m-01') AND LAST_DAY(NOW()) AND fecha_oferta > fecha_inicio AND fecha_oferta > now();`);
 
         const arrayEstudiantesDB = await pool.query(`SELECT nombre, correo_electronico FROM estudiantes where estudiantes.correo_electronico in ('jfalcon89@hotmail.com', 'josemiguelfalconzapata@gmail.com') limit 2`);
+        // const arrayEstudiantesDB = await pool.query(`SELECT nombre, correo_electronico FROM estudiantes `);
 
         const mesEnCursoDB = await pool.query(`SELECT CASE MONTH(NOW())
     WHEN 1 THEN 'Enero'
@@ -526,11 +527,11 @@ router.get('/envioProgramacionRuta', async(req, res) => {
                         <div style="display: flex; justify-content: center;">
                         <div style="max-width: 720px;">
                         <p style="max-width: 720px; margin: 0 auto;">Hola, ${estudiante.nombre}<br><br>
-                        ${mesEnCursoDB[0].mes_actual_español} es un mes dedicado a aquellos que están comprometidos con alcanzar sus metas antes de que termine el 2023. ¿Te encuentras entre ellos? En EDUFAL, encontrarás programas diseñados para proporcionarte conocimientos siempre de las manos de expertos en la industria. Tu éxito está a solo un diplomado de distancia.
+                        ${mesEnCursoDB[0].mes_actual_español} es un mes dedicado a aquellos que están comprometidos con alcanzar sus metas antes de que termine el año. ¿Te encuentras entre ellos? En EDUFAL, encontrarás programas diseñados para proporcionarte conocimientos siempre de las manos de expertos en la industria. Tu éxito está a solo un diplomado de distancia.
                         </p><br>
 
                         <p style="max-width: 720px; margin: 0 auto;">
-                        Escríbeme ahora mismo para solicitar más información sobre tu diplomado, curso o taller ideal y para verificar si aún hay cupo disponible. ¡Trabajaré para asegurarte el tuyo!
+                        Escríbeme ahora mismo <a href="www.edufalonline.com">aquí</a> o solicita más información sobre tu diplomado, curso o taller ideal para verificar si aún hay cupo disponible. ¡Trabajaré para asegurarte el tuyo!
                         </p><br>
                         </div>
                          </div>

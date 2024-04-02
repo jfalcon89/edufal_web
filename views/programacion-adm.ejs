@@ -30,7 +30,8 @@
                 <button type="button" class="btn btn-sm " data-toggle="modal" data-target=".bd-example-modal-lg">Ver
                     listado</button>
 
-                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
+                    aria-labelledby="myLargeModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                             <table class=" table-bordered table-sm" style="width:100%">
@@ -55,7 +56,7 @@
 
                                             <% }) %>
                                                 <% } %>
-                                                    <tbody>
+                                <tbody>
                             </table>
                         </div>
                     </div>
@@ -63,21 +64,10 @@
                 <hr>
 
                 <div>
-                    <p><strong>Asunto: </strong>¿Vas a dejar pasar otro mes sin capacitarte? 😳😱</p>
-                    <td style="background-color: #f8f8f8; padding: 20px; text-align: center;">
-                        <h3 style="color: #333333;">¡No dejes que el tiempo pase sin tomar acción! Inscríbete en nuestros cursos ahora mismo y da el primer paso hacia un futuro brillante. 🚀🌟
-                        </h3>
-                    </td>
-                    <p>
-                        <%= mesEnCurso %> es un mes dedicado a aquellos que están comprometidos con alcanzar sus metas antes de que termine el 2023. ¿Te encuentras entre ellos? En EDUFAL, encontrarás programas diseñados para proporcionarte conocimientos siempre de las
-                            manos de expertos en la industria. Tu éxito está a solo un diplomado de distancia.
-                    </p>
-                    <p style="">
-                        Escríbeme ahora mismo para solicitar más información sobre tu diplomado, curso o taller ideal y para verificar si aún hay cupo disponible. ¡Trabajaré para asegurarte el tuyo!
-                    </p><br>
+                    <h3>Capacitaciones del mes de
+                        <%= mesEnCurso %>
+                    </h3>
                 </div>
-
-
                 <% if(arrayCursosCategoria1.length> 0){ %>
                     <table class=" table-bordered table-sm" style="width:100%">
                         <h3 style="background-color: #005d6a; color: white;">
@@ -302,7 +292,8 @@
                                                     </table>
                                                     <% } %>
                                                         <% if(arrayCursosCategoria6.length> 0){ %>
-                                                            <table class=" table-bordered table-sm" style="width: 100%;">
+                                                            <table class=" table-bordered table-sm"
+                                                                style="width: 100%;">
                                                                 <h3 style="background-color: #005d6a; color: white;">
                                                                     <strong>
                                                                         <%= arrayCursosCategoria6[0].nombre_categoria %>
@@ -311,7 +302,8 @@
                                                                 <thead class="thead-ligth">
                                                                     <tr>
 
-                                                                        <th style="column-count: 4;" scope="col">Titulo Curso
+                                                                        <th style="column-count: 4;" scope="col">Titulo
+                                                                            Curso
                                                                         </th>
                                                                         <th scope="col">Fecha Inicio</th>
                                                                         <th scope="col">Horarios de Clase</th>
@@ -349,8 +341,10 @@
                                                             </table>
                                                             <% } %>
                                                                 <% if(arrayCursosCategoria7.length> 0){ %>
-                                                                    <table class=" table-bordered table-sm" style="width: 100%;">
-                                                                        <h3 style="background-color: #005d6a; color: white;">
+                                                                    <table class=" table-bordered table-sm"
+                                                                        style="width: 100%;">
+                                                                        <h3
+                                                                            style="background-color: #005d6a; color: white;">
                                                                             <strong>
                                                                                 <%= arrayCursosCategoria7[0].nombre_categoria
                                                                                     %>
@@ -359,7 +353,8 @@
                                                                         <thead class="thead-ligth">
                                                                             <tr>
 
-                                                                                <th style="column-count: 4;" scope="col">Titulo Curso</th>
+                                                                                <th style="column-count: 4;"
+                                                                                    scope="col">Titulo Curso</th>
                                                                                 <th scope="col">Fecha Inicio</th>
                                                                                 <th scope="col">Horarios de Clase</th>
 
@@ -398,8 +393,10 @@
                                                                     </table>
                                                                     <% } %>
                                                                         <% if(arrayCursosCategoria8.length> 0){ %>
-                                                                            <table class=" table-bordered table-sm" style="width: 100%;">
-                                                                                <h3 style="background-color: #005d6a; color: white;">
+                                                                            <table class=" table-bordered table-sm"
+                                                                                style="width: 100%;">
+                                                                                <h3
+                                                                                    style="background-color: #005d6a; color: white;">
                                                                                     <strong>
                                                                                         <%= arrayCursosCategoria8[0].nombre_categoria
                                                                                             %>
@@ -408,11 +405,13 @@
                                                                                 <thead class="thead-ligth">
                                                                                     <tr>
 
-                                                                                        <th style="column-count: 4;" scope="col">Titulo Curso
+                                                                                        <th style="column-count: 4;"
+                                                                                            scope="col">Titulo Curso
                                                                                         </th>
                                                                                         <th scope="col">Fecha Inicio
                                                                                         </th>
-                                                                                        <th scope="col">Horarios de Clase
+                                                                                        <th scope="col">Horarios de
+                                                                                            Clase
                                                                                         </th>
 
 
@@ -458,35 +457,81 @@
             </div>
     </div>
 
-    <div style="text-align: center; margin-top: 30px;">
 
-        <h4><a href="https://bit.ly/3xzs0RV" style="background-color: #005d6a; border-radius: 10px; padding: 10px; text-decoration: none; color: white;">ESCRIBEMOS
-                PARA MAS INFORMACION</a></h4><br>
-        <p style="margin: 0 auto; width: 50%;">Te esperamos en el AULA!</p><br>
-        <img src="https://onedrive.live.com/embed?resid=C31F9C66E8BCAAC9%211711&authkey=%21AJoA5g9yVo7CavY&width=396&height=122" width="396" height="122" />
+    <div class="mt-4 ">
+        <table align="center" cellpadding="0" cellspacing="0" width="720">
+            <tr>
+
+                <td style="background-color: #f8f8f8; padding: 20px; text-align: center;">
+                    <h3 style="color: #333333;">¡No dejes que el tiempo pase sin tomar acción! Inscríbete en nuestros
+                        cursos ahora mismo y da el primer paso hacia un futuro brillante. 🚀🌟
+                    </h3>
+                </td>
+            </tr>
+            <tr>
+                <td style="background-color: #ffffff; padding: 30px;">
+                    <p><strong>Asunto: </strong>¿Vas a dejar pasar otro mes sin capacitarte? 😳😱</p>
+                    <p>
+                        <%= mesEnCurso %> es un mes dedicado a aquellos que están comprometidos con alcanzar sus metas
+                            antes de que termine el año. ¿Te encuentras entre ellos? En EDUFAL, encontrarás programas
+                            diseñados para proporcionarte conocimientos siempre de las manos
+                            de expertos en la industria. Tu éxito está a solo un diplomado de distancia.
+                    </p>
+                    <p style="">
+                        Escríbeme ahora mismo <a href="www.edufalonline.com">aquí</a> o solicita más información sobre
+                        tu diplomado, curso o taller ideal para verificar si aún hay cupo disponible. ¡Trabajaré para
+                        asegurarte el tuyo!
+                    </p><br>
+                    <div style="text-align: center; margin-top: 30px;">
+
+                        <h4><a href="https://bit.ly/3xzs0RV"
+                                style="background-color: #005d6a; border-radius: 10px; padding: 10px; text-decoration: none; color: white;">ESCRIBEMOS
+                                PARA MAS INFORMACION</a></h4><br>
+                        <p style="margin: 0 auto; width: 50%;">Te esperamos en el AULA!</p><br>
+                        <img src="https://onedrive.live.com/embed?resid=C31F9C66E8BCAAC9%211711&authkey=%21AJoA5g9yVo7CavY&width=396&height=122"
+                            width="396" height="122" />
 
 
-        <footer class=" mt-0 mb-0">
-            <div class="container ">
-                <div class="container-dir mt-5 mb-5">
-                </div>
-                <div class="container-dir mt-5 mb-5">
-                    <h6 class="text-black  mb-3"> Calle Primera #59 Sector Enriquillo de Herrera Santo Domingo R.D 829-856-0203 contacto@edufalonline.com</h6>
-                </div>
-                <div class="container-redes mt-5 mb-5">
-                    <h6 class="text-black  mb-3"><strong>NUESTRAS REDES SOCIALES</strong></h6>
-                    <a href="https://www.facebook.com/rosfalrd/" target="_blank"> <img style="width: 40px;" src="https://onedrive.live.com/embed?resid=C31F9C66E8BCAAC9%211715&authkey=%21AKCgUx2Zi1sFJFk&width=256" alt="facebook"></a>
-                    <a href="https://www.instagram.com/rosfalrd/" target="_blank"> <img style="width: 40px;" src="https://onedrive.live.com/embed?resid=C31F9C66E8BCAAC9%211712&authkey=%21AET2kpZIjaoW6W0&width=40" alt="instagram"></a>
-                    <a href="https://bit.ly/3xzs0RV" target="_blank"> <img style="width: 40px;" src="https://onedrive.live.com/embed?resid=C31F9C66E8BCAAC9%211713&authkey=%21AJ-hUrQAndRfUv8&width=323&height=299" alt="ws"></a>
-                    <a href="#"> <img style="width: 40px;" src="https://onedrive.live.com/embed?resid=C31F9C66E8BCAAC9%211714&authkey=%21ABz2uGGcqo6A1gY&width=256" alt="twier"></a>
-                </div>
-            </div>
-        </footer>
-        <hr class="mt-0 mb-0">
-        <div class="mt-0 mb-0" style="background-color:#000000 ;">
-            <p class="text-white text-center pt-3 pb-3 m-0">© Copyright 2023 - Edufal Online</p>
-        </div>
+                        <footer class=" mt-0 mb-0">
+                            <div class="container ">
+                                <div class="container-dir mt-5 mb-5">
+                                </div>
+                                <div class="container-dir mt-5 mb-5">
+                                    <h6 class="text-black  mb-3"> Calle Primera #59 Sector Enriquillo de Herrera Santo
+                                        Domingo R.D 829-856-0203 contacto@edufalonline.com</h6>
+                                </div>
+                                <div class="container-redes mt-5 mb-5">
+                                    <h6 class="text-black  mb-3"><strong>NUESTRAS REDES SOCIALES</strong></h6>
+                                    <a href="https://www.facebook.com/rosfalrd/" target="_blank"> <img
+                                            style="width: 40px;"
+                                            src="https://onedrive.live.com/embed?resid=C31F9C66E8BCAAC9%211715&authkey=%21AKCgUx2Zi1sFJFk&width=256"
+                                            alt="facebook"></a>
+                                    <a href="https://www.instagram.com/rosfalrd/" target="_blank"> <img
+                                            style="width: 40px;"
+                                            src="https://onedrive.live.com/embed?resid=C31F9C66E8BCAAC9%211712&authkey=%21AET2kpZIjaoW6W0&width=40"
+                                            alt="instagram"></a>
+                                    <a href="https://bit.ly/3xzs0RV" target="_blank"> <img style="width: 40px;"
+                                            src="https://onedrive.live.com/embed?resid=C31F9C66E8BCAAC9%211713&authkey=%21AJ-hUrQAndRfUv8&width=323&height=299"
+                                            alt="ws"></a>
+                                    <a href="#"> <img style="width: 40px;"
+                                            src="https://onedrive.live.com/embed?resid=C31F9C66E8BCAAC9%211714&authkey=%21ABz2uGGcqo6A1gY&width=256"
+                                            alt="twier"></a>
+                                </div>
+                            </div>
+                        </footer>
+                        <hr class="mt-0 mb-0">
+                        <div class="mt-0 mb-0" style="background-color:#000000 ;">
+                            <p class="text-white text-center pt-3 pb-3 m-0">© Copyright 2023 - Edufal Online</p>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+
+        </table>
     </div>
+
+
 
 
 
