@@ -68,99 +68,56 @@
                         <%= mesEnCurso %>
                     </h3>
                 </div>
-                <% if(arrayCursosCategoria1.length> 0){ %>
-                    <table class=" table-bordered table-sm" style="width:100%">
-                        <h3 style="background-color: #005d6a; color: white;">
-                            <strong>
-                                <%= arrayCursosCategoria1[0].nombre_categoria %>
-                            </strong>
-                        </h3>
-                        <thead class="thead-ligth">
-                            <tr>
+                <table>
+                    <% if(arrayCursosCategoria1.length> 0){ %>
+                        <table class=" table-bordered table-sm" style="width:100%">
+                            <h3 style="background-color: #005d6a; color: white;">
+                                <strong>
+                                    <%= arrayCursosCategoria1[0].nombre_categoria %>
+                                </strong>
+                            </h3>
+                            <thead class="thead-ligth">
+                                <tr>
 
-                                <th style="column-count: 4;" scope="col">Titulo Curso</th>
-                                <th scope="col">Fecha Inicio</th>
-                                <th scope="col">Horarios de Clase</th>
-
-
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <% if (arrayCursosCategoria1.length> 0) { %>
-                                <% arrayCursosCategoria1.forEach(curso=> { %>
-
-                                    <tr>
-
-                                        <td>
-                                            <%= curso.titulo_curso %>
-                                        </td>
+                                    <th style="column-count: 4;" scope="col">Titulo Curso</th>
+                                    <th scope="col">Fecha Inicio</th>
+                                    <th scope="col">Horarios de Clase</th>
 
 
-                                        <td>
-                                            <%= curso.fecha_inicio.toLocaleString('es-ES', {
-                                                timeZone: "America/Santo_Domingo" }).slice(0, 10) %>
-                                        </td>
-                                        <td>
-                                            <%= curso.horasClases %>
-                                        </td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% if (arrayCursosCategoria1.length> 0) { %>
+                                    <% arrayCursosCategoria1.forEach(curso=> { %>
+
+                                        <tr>
+
+                                            <td>
+                                                <%= curso.titulo_curso %>
+                                            </td>
 
 
-                                    </tr>
-
-                                    <% }) %>
-                                        <% } %>
-                        </tbody>
-                    </table>
-                    <% } %>
-                        <% if(arrayCursosCategoria2.length> 0){ %>
-                            <table class=" table-bordered table-sm" style="width: 100%;">
-                                <h3 style="background-color: #005d6a; color: white;">
-                                    <strong>
-                                        <%= arrayCursosCategoria2[0].nombre_categoria %>
-                                    </strong>
-                                </h3>
-                                <thead class="thead-ligth">
-                                    <tr>
-
-                                        <th style="column-count: 4;" scope="col">Titulo Curso</th>
-                                        <th scope="col">Fecha Inicio</th>
-                                        <th scope="col">Horarios de Clase</th>
+                                            <td>
+                                                <%= curso.fecha_inicio.toLocaleString('es-ES', {
+                                                    timeZone: "America/Santo_Domingo" }).slice(0, 10) %>
+                                            </td>
+                                            <td>
+                                                <%= curso.horasClases %>
+                                            </td>
 
 
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <% if (arrayCursosCategoria2.length> 0) { %>
-                                        <% arrayCursosCategoria2.forEach(curso=> { %>
+                                        </tr>
 
-                                            <tr>
+                                        <% }) %>
+                                            <% } %>
+                            </tbody>
 
-                                                <td>
-                                                    <%= curso.titulo_curso %>
-                                                </td>
-
-
-                                                <td>
-                                                    <%= curso.fecha_inicio.toLocaleString('es-ES', {
-                                                        timeZone: "America/Santo_Domingo" }).slice(0, 10) %>
-                                                </td>
-                                                <td>
-                                                    <%= curso.horasClases %>
-                                                </td>
-
-
-                                            </tr>
-
-                                            <% }) %>
-                                                <% } %>
-                                </tbody>
-                            </table>
                             <% } %>
-                                <% if(arrayCursosCategoria3.length> 0){ %>
+                                <% if(arrayCursosCategoria2.length> 0){ %>
                                     <table class=" table-bordered table-sm" style="width: 100%;">
                                         <h3 style="background-color: #005d6a; color: white;">
                                             <strong>
-                                                <%= arrayCursosCategoria3[0].nombre_categoria %>
+                                                <%= arrayCursosCategoria2[0].nombre_categoria %>
                                             </strong>
                                         </h3>
                                         <thead class="thead-ligth">
@@ -174,8 +131,8 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <% if (arrayCursosCategoria3.length> 0) { %>
-                                                <% arrayCursosCategoria3.forEach(curso=> { %>
+                                            <% if (arrayCursosCategoria2.length> 0) { %>
+                                                <% arrayCursosCategoria2.forEach(curso=> { %>
 
                                                     <tr>
 
@@ -200,11 +157,11 @@
                                         </tbody>
                                     </table>
                                     <% } %>
-                                        <% if(arrayCursosCategoria4.length> 0){ %>
+                                        <% if(arrayCursosCategoria3.length> 0){ %>
                                             <table class=" table-bordered table-sm" style="width: 100%;">
                                                 <h3 style="background-color: #005d6a; color: white;">
                                                     <strong>
-                                                        <%= arrayCursosCategoria4[0].nombre_categoria %>
+                                                        <%= arrayCursosCategoria3[0].nombre_categoria %>
                                                     </strong>
                                                 </h3>
                                                 <thead class="thead-ligth">
@@ -218,8 +175,8 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <% if (arrayCursosCategoria4.length> 0) { %>
-                                                        <% arrayCursosCategoria4.forEach(curso=> { %>
+                                                    <% if (arrayCursosCategoria3.length> 0) { %>
+                                                        <% arrayCursosCategoria3.forEach(curso=> { %>
 
                                                             <tr>
 
@@ -245,11 +202,11 @@
                                                 </tbody>
                                             </table>
                                             <% } %>
-                                                <% if(arrayCursosCategoria5.length> 0){ %>
+                                                <% if(arrayCursosCategoria4.length> 0){ %>
                                                     <table class=" table-bordered table-sm" style="width: 100%;">
                                                         <h3 style="background-color: #005d6a; color: white;">
                                                             <strong>
-                                                                <%= arrayCursosCategoria5[0].nombre_categoria %>
+                                                                <%= arrayCursosCategoria4[0].nombre_categoria %>
                                                             </strong>
                                                         </h3>
                                                         <thead class="thead-ligth">
@@ -264,8 +221,8 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <% if (arrayCursosCategoria5.length> 0) { %>
-                                                                <% arrayCursosCategoria5.forEach(curso=> { %>
+                                                            <% if (arrayCursosCategoria4.length> 0) { %>
+                                                                <% arrayCursosCategoria4.forEach(curso=> { %>
 
                                                                     <tr>
 
@@ -291,12 +248,12 @@
                                                         </tbody>
                                                     </table>
                                                     <% } %>
-                                                        <% if(arrayCursosCategoria6.length> 0){ %>
+                                                        <% if(arrayCursosCategoria5.length> 0){ %>
                                                             <table class=" table-bordered table-sm"
                                                                 style="width: 100%;">
                                                                 <h3 style="background-color: #005d6a; color: white;">
                                                                     <strong>
-                                                                        <%= arrayCursosCategoria6[0].nombre_categoria %>
+                                                                        <%= arrayCursosCategoria5[0].nombre_categoria %>
                                                                     </strong>
                                                                 </h3>
                                                                 <thead class="thead-ligth">
@@ -312,8 +269,8 @@
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                    <% if (arrayCursosCategoria6.length> 0) { %>
-                                                                        <% arrayCursosCategoria6.forEach(curso=> { %>
+                                                                    <% if (arrayCursosCategoria5.length> 0) { %>
+                                                                        <% arrayCursosCategoria5.forEach(curso=> { %>
 
                                                                             <tr>
 
@@ -340,13 +297,13 @@
                                                                 </tbody>
                                                             </table>
                                                             <% } %>
-                                                                <% if(arrayCursosCategoria7.length> 0){ %>
+                                                                <% if(arrayCursosCategoria6.length> 0){ %>
                                                                     <table class=" table-bordered table-sm"
                                                                         style="width: 100%;">
                                                                         <h3
                                                                             style="background-color: #005d6a; color: white;">
                                                                             <strong>
-                                                                                <%= arrayCursosCategoria7[0].nombre_categoria
+                                                                                <%= arrayCursosCategoria6[0].nombre_categoria
                                                                                     %>
                                                                             </strong>
                                                                         </h3>
@@ -354,7 +311,9 @@
                                                                             <tr>
 
                                                                                 <th style="column-count: 4;"
-                                                                                    scope="col">Titulo Curso</th>
+                                                                                    scope="col">
+                                                                                    Titulo Curso
+                                                                                </th>
                                                                                 <th scope="col">Fecha Inicio</th>
                                                                                 <th scope="col">Horarios de Clase</th>
 
@@ -362,8 +321,8 @@
                                                                             </tr>
                                                                         </thead>
                                                                         <tbody>
-                                                                            <% if (arrayCursosCategoria7.length> 0) { %>
-                                                                                <% arrayCursosCategoria7.forEach(curso=>
+                                                                            <% if (arrayCursosCategoria6.length> 0) { %>
+                                                                                <% arrayCursosCategoria6.forEach(curso=>
                                                                                     {
                                                                                     %>
 
@@ -392,13 +351,13 @@
                                                                         </tbody>
                                                                     </table>
                                                                     <% } %>
-                                                                        <% if(arrayCursosCategoria8.length> 0){ %>
+                                                                        <% if(arrayCursosCategoria7.length> 0){ %>
                                                                             <table class=" table-bordered table-sm"
                                                                                 style="width: 100%;">
                                                                                 <h3
                                                                                     style="background-color: #005d6a; color: white;">
                                                                                     <strong>
-                                                                                        <%= arrayCursosCategoria8[0].nombre_categoria
+                                                                                        <%= arrayCursosCategoria7[0].nombre_categoria
                                                                                             %>
                                                                                     </strong>
                                                                                 </h3>
@@ -418,12 +377,13 @@
                                                                                     </tr>
                                                                                 </thead>
                                                                                 <tbody>
-                                                                                    <% if (arrayCursosCategoria8.length>
+                                                                                    <% if (arrayCursosCategoria7.length>
                                                                                         0)
                                                                                         { %>
                                                                                         <%
-                                                                                            arrayCursosCategoria8.forEach(curso=>
-                                                                                            { %>
+                                                                                            arrayCursosCategoria7.forEach(curso=>
+                                                                                            {
+                                                                                            %>
 
                                                                                             <tr>
 
@@ -453,6 +413,73 @@
                                                                                 </tbody>
                                                                             </table>
                                                                             <% } %>
+                                                                                <% if(arrayCursosCategoria8.length> 0){
+                                                                                    %>
+                                                                                    <table
+                                                                                        class=" table-bordered table-sm"
+                                                                                        style="width: 100%;">
+                                                                                        <h3
+                                                                                            style="background-color: #005d6a; color: white;">
+                                                                                            <strong>
+                                                                                                <%= arrayCursosCategoria8[0].nombre_categoria
+                                                                                                    %>
+                                                                                            </strong>
+                                                                                        </h3>
+                                                                                        <thead class="thead-ligth">
+                                                                                            <tr>
+
+                                                                                                <th style="column-count: 4;"
+                                                                                                    scope="col">Titulo
+                                                                                                    Curso
+                                                                                                </th>
+                                                                                                <th scope="col">Fecha
+                                                                                                    Inicio
+                                                                                                </th>
+                                                                                                <th scope="col">Horarios
+                                                                                                    de Clase
+                                                                                                </th>
+
+
+                                                                                            </tr>
+                                                                                        </thead>
+                                                                                        <tbody>
+                                                                                            <% if
+                                                                                                (arrayCursosCategoria8.length>
+                                                                                                0)
+                                                                                                { %>
+                                                                                                <%
+                                                                                                    arrayCursosCategoria8.forEach(curso=>
+                                                                                                    { %>
+
+                                                                                                    <tr>
+
+                                                                                                        <td>
+                                                                                                            <%= curso.titulo_curso
+                                                                                                                %>
+                                                                                                        </td>
+
+
+                                                                                                        <td>
+                                                                                                            <%= curso.fecha_inicio.toLocaleString('es-ES',
+                                                                                                                {
+                                                                                                                timeZone: "America/Santo_Domingo"
+                                                                                                                }).slice(0,
+                                                                                                                10) %>
+                                                                                                        </td>
+                                                                                                        <td>
+                                                                                                            <%= curso.horasClases
+                                                                                                                %>
+                                                                                                        </td>
+
+
+                                                                                                    </tr>
+
+                                                                                                    <% }) %>
+                                                                                                        <% } %>
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                    <% } %>
+
 
             </div>
     </div>
@@ -530,6 +557,8 @@
 
         </table>
     </div>
+
+
 
 
 

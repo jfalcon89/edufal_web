@@ -17,7 +17,7 @@
         </div>
         <h1 id="prueba"></h1>
 
-        <div class="container-table table-responsive">
+        <div class="container-table ">
             <table id="datatable" class="display responsive nowrap " style="width:100%">
                 <thead class="thead-ligth">
                     <tr>
@@ -351,7 +351,47 @@
                 order: [
                     [0, 'desc']
                 ],
-
+                "processing": false,
+                "dom": "<'row' <'col-md-12 float-right'B>><'row'<'col-md-6 col-sm-12'l><'col-md-6 col-sm-12'f>r><'table-scrollable't><'row'<'col-md-5 col-sm-12'i><'col-md-7 col-sm-12'p>>",
+                "buttons": [{
+                    extend: 'print',
+                    title: "Listado de Estudiantes",
+                    titleAttr: 'Imprimir',
+                    text: '<i class="fa fa-print" aria-hidden="true"></i>',
+                    className: 'btn btn-secondary',
+                    exportOptions: {
+                        columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+                    },
+                    customize: function (win) {
+                        $(win.document.body).find('table')
+                            .addClass('compact')
+                            .css('font-size', 'inherit');
+                        $(win.document.body).find('h1').css('text-align', 'center');
+                        $(win.document.body).css('font-size', '9px');
+                    }
+                }, {
+                    extend: 'pdf',
+                    orientation: 'landscape',
+                    pageSize: 'LEGAL',
+                    titleAttr: 'Exportar a PDF',
+                    text: '<i class="bi bi-filetype-pdf" aria-hidden="true"></i>',
+                    className: 'btn btn-danger',
+                    exportOptions: {
+                        columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+                    },
+                    // Centra la tabla del PDF
+                    // customize: function (doc) {
+                    //     doc.content[1].margin = [100, 0, 100, 0] //left, top, right, bottom
+                    // }
+                }, {
+                    extend: 'excel',
+                    titleAttr: 'Exportar a Excel',
+                    text: '<i class= "bi bi-file-earmark-spreadsheet" aria-hidden="true"></i>',
+                    className: 'btn btn-success',
+                    exportOptions: {
+                        columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+                    }
+                }],
 
                 language: {
                     "decimal": "",
