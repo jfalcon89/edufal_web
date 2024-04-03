@@ -42,28 +42,113 @@
             </div>
 
 
+            <div class="container">
 
+                <h3 class="d-flex mt-5 mb-5" style="color: #08787a;"><strong>Formulario de Contacto</strong></h3>
 
+                <form class="" autocomplete="off" action="" method="POST">
+                    <!-- <input type="text" name="estadoMensaje" class="form-control " value="Nuevo"> -->
 
+                    <div class="  d-lg-flex flex-lg-row">
+                        <div class="form-group me-lg-3 mb-3 w-100 ">
+                            <!-- <label for="nombre" class=" text-black-50 p-2"><strong>Nombre</strong></label> -->
+                            <input type="text" name="nombre" class="form-control p-2 " id="nombre" aria-describedby=""
+                                placeholder="Nombre" required>
+                        </div>
+                        <div class="form-group  mb-3 w-100 ">
+                            <!-- <label for="apellido" class="p-2">Apellido</label> -->
+                            <input type="tel" name="telefono" class="form-control p-2" id="telefono" aria-describedby=""
+                                placeholder="Telefono" required>
+                        </div>
+                    </div>
+                    <div class="d-lg-flex flex-lg-row">
+                        <div class="form-group me-lg-3 mb-3 w-100">
+                            <!-- <label for="direccion" class="p-2">Direccion </label> -->
+                            <input type="email" name="email" class="form-control p-2" id="email" aria-describedby=""
+                                placeholder="Email">
+                        </div>
+                        <div class="form-group mb-3 w-100">
+                            <!-- <label for="direccionNegocio" class=" p-2">Direccion del Negocio</label> -->
+                            <!-- <input type="text" name="asunto" class="form-control p-2" id="asunto" aria-describedby="" placeholder="Asunto" required> -->
+                            <select name="asunto" id="" class="form-control p-2 form-select text-secondary" required>
+                                <option value="" selected>Asunto</option>
+                                <option value="Soporte técnico">Soporte técnico</option>
+                                <option value="Asesoramiento académico">Asesoramiento académico</option>
+                                <option value="Consultas sobre cursos específicos">Consultas sobre cursos específicos
+                                </option>
+                                <option value="Información sobre becas o descuentos">Información sobre becas o
+                                    descuentos</option>
+                                <option value="Consultas sobre pagos y facturación">Consultas sobre pagos y facturación
+                                </option>
+                                <option value="Otro Motivo">Otro Motivo</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <!-- <label for="email" class=" p-2">Email</label> -->
+                        <textarea maxlength="250" type="text" v name="mensaje" class="form-control p-2" id="mensaje"
+                            aria-describedby="" placeholder="Mensaje" required></textarea>
+                    </div>
 
+                    <button class="btn p-2 mt-5 mb-4 text-white" style="background-color: #08787a;" type="submit"><i
+                            class="bi bi-check-lg me-lg-2"></i>ENVIAR</button>
 
+                </form>
 
+                <div class="container-dir mt-2 mb-5">
+                    <!-- <img class="mb-5" src="/img/LOGO- footer.png" alt="logo" style="width: 120px;"> -->
+                    <h6 class="text-secondary"><i class="bi bi-geo-alt-fill me-2"></i>Calle Primera #59</h6>
+                    <h6 style="margin-left: 25px;" class="text-secondary">Sector Enriquillo de Herrera</h6>
+                    <h6 style="margin-left: 25px;" class="text-secondary">Santo Domingo R.D</h6>
+                    <h6 class="text-secondary"><i class="bi bi-envelope-fill me-2"></i>contacto@edufalonline.com</h6>
+                    <h6 class="text-secondary"><i class="bi bi-telephone-fill me-2"></i>829-856-0203</h6>
+                </div>
+            </div>
 
-
-
-            <%- include('front-end-template/footer'); %>
-
-
-
-
-                <script src="/js/scriptSlide.js"></script>
-                <script src="/js/anuncios-inicio-event.js"></script>
-
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+            <% if (typeof alert !="undefined" ) { %>
                 <script>
-                    AOS.init({
-                        duration: 1000
-                    });
+                    Swal.fire({
+                        title: '<%= alertTitle %>',
+                        text: '<%= alertMessage %>',
+                        icon: '<%= alertIcon %>',
+                        showConfirmButton: <%= showConfirmButton %>,
+                        timer: <%= timer %>
+                    }).then(() => {
+                            window.location = '/<%= ruta %>'
+                        })
                 </script>
+                <% } %>
+
+                    <div class="container-map">
+
+                        <iframe class="w-100"
+                            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d15136.442388133928!2d-69.96694444999999!3d18.4786489!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2sdo!4v1661720189182!5m2!1ses-419!2sdo"
+                            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+                    </div>
+
+
+
+
+
+
+
+
+                    <%- include('front-end-template/footer'); %>
+
+
+
+
+                        <script src="/js/scriptSlide.js"></script>
+                        <script src="/js/anuncios-inicio-event.js"></script>
+
+                        <script>
+                            AOS.init({
+                                duration: 1000
+                            });
+                        </script>
 
 
 

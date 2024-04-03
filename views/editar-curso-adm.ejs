@@ -30,27 +30,37 @@
                         <h4>Datos Generales del Curso</h4>
 
                         <div>
-                            <label for="exampleInputEmail1">Nombre Curso - Taller</label>
+                            <label for="exampleInputEmail1">Nombre Curso - Taller <i class="bi bi-info-circle-fill"
+                                    data-toggle="tooltip" data-placement="top"
+                                    title="Nombre de la capacitacion"></i></label>
                             <input type="text" class="form-control text-secondary " name="titulo_curso"
                                 aria-describedby="emailHelp" placeholder="" value="<%= curso.titulo_curso %>" required>
                         </div>
                         <div class="mt-3">
-                            <label for="">Descripcion</label>
+                            <label for="">Descripcion <i class="bi bi-info-circle-fill" data-toggle="tooltip"
+                                    data-placement="top"
+                                    title="Informacion que los visitantes ven en la portada de la capacitacion"></i></label>
                             <input type="text" class="form-control text-secondary" name="descripcion"
                                 value="<%= curso.descripcion %>">
                         </div>
                         <div class="mt-3">
-                            <label for="">Dirigido a</label>
+                            <label for="">Dirigido a <i class="bi bi-info-circle-fill" data-toggle="tooltip"
+                                    data-placement="top"
+                                    title="A que personas se ajusta esta capacitacion, formato aceptado 'Separacion por asteristo '*' entre parrafos'"></i></label>
                             <input type="text" class="form-control text-secondary" name="dirigido_a"
                                 value="<%= curso.dirigido_a %>">
                         </div>
                         <div class="mt-3">
-                            <label for="">Objetivos del Curso</label>
+                            <label for="">Objetivos del Curso <i class="bi bi-info-circle-fill" data-toggle="tooltip"
+                                    data-placement="top"
+                                    title="Objetivo principal del curso, esta info se mostrara en la primera seccion en la parte superior dentro del curso "></i></label>
                             <input type="text" class="form-control text-secondary" name="inf_curso"
                                 value="<%= curso.inf_curso %>">
                         </div>
                         <div class="mt-3">
-                            <label for="exampleInputEmail1">Estado Curso</label>
+                            <label for="exampleInputEmail1">Estado Curso <i class="bi bi-info-circle-fill"
+                                    data-toggle="tooltip" data-placement="top"
+                                    title="Activo: Se mostrara a todos los visitantes de la pagina. Inactivo: No se mostrara a los visitantes pero si en el panel administrativo"></i></label>
                             <select name="estado_curso" class="form-control text-secondary" required>
                                 <option class="text-dark" value="<%= curso.estado_curso %>" selected>
                                     <%= curso.estado_curso %>
@@ -60,7 +70,9 @@
                             </select>
                         </div>
                         <div class="mt-3">
-                            <label for="exampleInputEmail1">Categoria Curso</label>
+                            <label for="exampleInputEmail1">Categoria Curso <i class="bi bi-info-circle-fill"
+                                    data-toggle="tooltip" data-placement="top"
+                                    title="De acuerdo con el tipo de capacitacion debe estar incluido en una categoria sino no se mostrara a los visitantes"></i></label>
                             <select name="id_categoria" class="form-control text-secondary">
                                 <% if(categoria){ %>
                                     <option class="text-dark" value="<%= categoria.id_categoria %>" selected>
@@ -84,7 +96,9 @@
                         </div>
                         <div class="mt-3">
                             <label for="">Fecha Inicio: <%= curso.fecha_inicio.toLocaleString('es-ES', {
-                                    timeZone: "America/Santo_Domingo" }).slice(0, 10) %></label>
+                                    timeZone: "America/Santo_Domingo" }).slice(0, 10) %> <i
+                                        class="bi bi-info-circle-fill" data-toggle="tooltip" data-placement="top"
+                                        title="Fecha en la que inicia el curso, formato aceptado: dd/mm/aaaa"></i></label>
                             <input type="text" class="form-control text-secondary" name="fecha_inicio"
                                 value="<%= fecha_inicio %>">
                         </div>
@@ -93,64 +107,88 @@
                                 <% if(curso.fecha_oferta=='0000-00-00 00:00:00' ){ %>
                                     <label for="">Fecha Oferta: <strong class="bg-warning ">
                                             Sin Oferta 100% OFF
-                                        </strong></label>
+                                        </strong> <i class="bi bi-info-circle-fill" data-toggle="tooltip"
+                                            data-placement="top"
+                                            title="Fecha en la que se termina la oferta 100% OFF, formato aceptado: 0000-00-00"></i></label>
                                     <input type="text" class="form-control text-secondary" name="fecha_oferta"
                                         value="<%= curso.fecha_oferta %>">
                                     <% } else{ %>
-                                        <label for="">Fecha Oferta: <%= curso.fecha_oferta %></label>
+                                        <label for="">Fecha Oferta: <%= curso.fecha_oferta %> <i
+                                                    class="bi bi-info-circle-fill" data-toggle="tooltip"
+                                                    data-placement="top"
+                                                    title="Fecha en la que se termina la oferta 100% OFF, formato aceptado: 0000-00-00"></i></label>
                                         <input type="text" class="form-control text-secondary" name="fecha_oferta"
                                             value="<%= curso.fecha_oferta.toISOString() %>">
                                         <% } %>
                                             <% } else { %>
                                                 <label for="">Fecha Oferta: <strong class="bg-warning ">
                                                         Sin Oferta 100% OFF
-                                                    </strong></label>
+                                                    </strong> <i class="bi bi-info-circle-fill" data-toggle="tooltip"
+                                                        data-placement="top"
+                                                        title="Fecha en la que se termina la oferta 100% OFF, formato aceptado: 0000-00-00"></i></label>
                                                 <input type="date" class="form-control text-secondary"
                                                     name="fecha_oferta" value="">
                                                 <% } %>
                         </div>
                         <div class="mt-3">
-                            <label for="">Horas Clases: <%= curso.horasClases %></label>
+                            <label for="">Horas Clases: <%= curso.horasClases %> <i class="bi bi-info-circle-fill"
+                                        data-toggle="tooltip" data-placement="top"
+                                        title="Horarios de las clases dias de semana y sabados, formato aceptado: para los dias de semana 7:00pm a 9:00pm y separa con coma ',' para el horario de los sabado ejemplo: 7:00pm a 9:00pm, 9:00am a 12:00pm"></i></label>
                             <input type="text" class="form-control text-secondary" name="horasClases"
                                 value="<%= curso.horasClases %>">
                         </div>
                         <div class="mt-3">
-                            <label for="">Dias de Clases</label>
+                            <label for="">Dias de Clases <i class="bi bi-info-circle-fill" data-toggle="tooltip"
+                                    data-placement="top"
+                                    title="Dias que se impartiran las clases virtuales, se debe tomanr el primer dia de la semana del dia en que inicia el curso, formato aceptado: LUNES, MIERCOLES, SABADOS cada dia de la semana se debe separar con coma"></i></label>
                             <input type="text" class="form-control text-secondary" name="dias_semana_clases"
                                 value="<%= curso.dias_semana_clases %>">
                         </div>
                         <div class="mt-3">
-                            <label for="">Duracion</label>
+                            <label for="">Duracion <i class="bi bi-info-circle-fill" data-toggle="tooltip"
+                                    data-placement="top"
+                                    title="La duracion del curso es la suma del total de sesiones de 4 horas a la semana, formato aceptado: ejemplo '26 Horas' a su vez este total de horas se divide en 2 que seria el total de sesiones del curso"></i></label>
                             <input type="text" class="form-control text-secondary" name="duracion"
                                 value="<%= curso.duracion %>">
                         </div>
                         <div class="mt-3">
-                            <label for="">Modalidad</label>
+                            <label for="">Modalidad <i class="bi bi-info-circle-fill" data-toggle="tooltip"
+                                    data-placement="top" title="La modalidad por ahora solo sera VIRTUAL"></i></label>
                             <input type="text" class="form-control text-secondary" name="modalidad"
                                 value="<%= curso.modalidad %>">
                         </div>
                         <div class="mt-3">
-                            <label for="">Precio</label>
+                            <label for="">Precio <i class="bi bi-info-circle-fill" data-toggle="tooltip"
+                                    data-placement="top"
+                                    title="Es el precio inicial del curso sin descuento y es el que se mostrara tachado si se aplica algun porcentaje de descuento"></i></label>
                             <input type="text" class="form-control text-secondary" name="costo"
                                 value="<%= curso.costo %>">
                         </div>
                         <div class="mt-3">
-                            <label for="">Cantidad Cuotas</label>
+                            <label for="">Cantidad Cuotas <i class="bi bi-info-circle-fill" data-toggle="tooltip"
+                                    data-placement="top"
+                                    title="Si el curso va a tener alguna facilidad de pago se deben indicar las cantidades de cuotas permitidas"></i></label>
                             <input type="text" class="form-control text-secondary" name="cantidad_cuota"
                                 value="<%= curso.cantidad_cuota %>">
                         </div>
                         <div class="mt-3">
-                            <label for="">% Descuento</label>
+                            <label for="">% Descuento <i class="bi bi-info-circle-fill" data-toggle="tooltip"
+                                    data-placement="top"
+                                    title="Si el curso va a tener algun descuento aqui se indica, formato aceptado: 0.50 siendo este porcentaje lo que se descontara del precio original del curso"></i></label>
                             <input type="text" class="form-control text-secondary" name="porcentaje_descuento"
                                 value="<%= curso.porcentaje_descuento %>">
                         </div>
                         <div class="mt-3">
-                            <label for="">Tipo de Curso</label>
+                            <label for="">Tipo de Curso <i class="bi bi-info-circle-fill" data-toggle="tooltip"
+                                    data-placement="top"
+                                    title="El tipo de curso debe ser CURSO, TALLER O DIPLOMADO dependiente de la estructura del material del curso"></i></label>
                             <input type="text" class="form-control text-secondary" name="tipo_curso"
                                 value="<%= curso.tipo_curso %>">
                         </div>
                         <div class="mt-3">
-                            <label for="exampleInputEmail1">Promocion</label>
+                            <label for="exampleInputEmail1">Promocion <i class="bi bi-info-circle-fill"
+                                    data-toggle="tooltip" data-placement="top"
+                                    title="Si para cuando se quiere mostrar el curso en la pagina de inicio en proximas capacitaciones y No si se quiere sacar del listado"></i></label>
                             <select name="promocion" class="form-control text-secondary" required>
                                 <option class="text-dark" value="<%= curso.promocion %>" selected>
                                     <%= curso.promocion %>
@@ -160,7 +198,9 @@
                             </select>
                         </div>
                         <div class="mt-3">
-                            <label for="exampleInputEmail1">Oferta Inscripcion</label>
+                            <label for="exampleInputEmail1">Oferta Inscripcion <i class="bi bi-info-circle-fill"
+                                    data-toggle="tooltip" data-placement="top"
+                                    title="Si para los cursos que van a ser gratis"></i></label>
                             <select name="oferta_inscripcion" class="form-control text-secondary" required>
                                 <option class="text-dark" value="<%= curso.oferta_inscripcion %>" selected>
                                     <%= curso.oferta_inscripcion %>
@@ -171,23 +211,32 @@
                         </div>
 
                         <div class="mt-3">
-                            <label for="">Url Plan Estudio</label>
+                            <label for="">Url Plan Estudio <i class="bi bi-info-circle-fill" data-toggle="tooltip"
+                                    data-placement="top"
+                                    title="Documento que los estudiantes van a poder descargar cuando entren como visitantes donde van a poder ver todo el temario del curso"></i></label>
                             <input type="text" class="form-control text-secondary" name="url_plan_estudio"
                                 value="<%= curso.url_plan_estudio %>">
                         </div>
                         <div class="mt-3">
-                            <label for="">Url Imagen miniatura</label>
+                            <label for="">Url Imagen miniatura <i class="bi bi-info-circle-fill" data-toggle="tooltip"
+                                    data-placement="top"
+                                    title="Imagen que los visitantes van a ver en la portada miniatura del curso"></i></label>
                             <input type="text" class="form-control text-secondary" name="url_imagen"
                                 value="<%= curso.url_imagen %>">
                         </div>
                         <div class="mt-3">
-                            <label for="">Url Imagen full Size</label>
+                            <label for="">Url Imagen full Size <i class="bi bi-info-circle-fill" data-toggle="tooltip"
+                                    data-placement="top"
+                                    title="Imagen del curso que los visitantes van a ver una vez entren a ver todos los detalles del curso"></i></label>
                             <input type="text" class="form-control text-secondary" name="url_imagen_full_size"
                                 value="<%= curso.url_imagen_full_size %>">
                         </div>
                     </div>
                     <div class="col-lg-6 mt-5 ">
-                        <h4>Datos de Modulos y Contenido</h4>
+                        <h4>Datos de Modulos y Contenido <i class="bi bi-info-circle-fill" data-toggle="tooltip"
+                                data-placement="top"
+                                title="Para crear un modulo y su contenido dar click en 'CREAR CONTENIDO' cada modulo y su contenido se deben crear por separado"></i>
+                        </h4>
                         <div class="mt-3 mb-4">
                             <a href="/crear-contenido/<%= curso.id_curso %>" type="submit" class="btn btn-secondary"
                                 data-bs-toggle="modal" data-bs-target="#exampleModalNovedad<%= i %>">CREAR CONTENIDO</a>
