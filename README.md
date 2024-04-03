@@ -18,15 +18,15 @@
 <p>BOOTSTRAP 5.1</p>
 <h2 id="deployment-dev">Deployment Dev</h2>
 <p><strong>Repositorio Github:</strong></p>
-<p><a href="https://github.com/jfalcon89/centuProgramacionWeb.git">https://github.com/jfalcon89/centuProgramacionWeb</a></p>
+<p><a href="https://github.com/jfalcon89/edufal_web.git">https://github.com/jfalcon89/edufal_web.git</a></p>
 <p><strong>Dominio dev:</strong></p>
-<p><a href="https://my-app-nomina-v01.herokuapp.com/nomina">my-app-nomina-v01.herokuapp.com</a></p>
+<p><a href="https://edufalonline.com/">Edufal Online Academia v01</a></p>
 <p><strong>Proveedor Dominio:</strong></p>
-<p>Heroku App</p>
+<p>Namecheap</p>
 <p><strong>Proveedor Hosting dev:</strong></p>
-<p>Heroku App</p>
+<p>Namecheap</p>
 <p><strong>Versiones dev:</strong></p>
-<p>v01 junio 2022</p>
+<p>v01 18/12/2023</p>
 <h2 id="responsive-web-design">Responsive Web Design</h2>
 <p>Dispositivos soportados: PC, Tablet</p>
 <h2 id="versiones-produccion">Versiones produccion:</h2>
