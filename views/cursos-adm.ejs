@@ -46,6 +46,7 @@
                         <!-- <th scope="col">Descripcion</th> -->
                         <th scope="col">Estado</th>
                         <th scope="col">Fecha Inicio</th>
+                        <th scope="col">Notif. via Correo</th>
                         <th scope="col">Fecha Oferta</th>
                         <th scope="col">Duracion</th>
                         <th scope="col">Modalidad</th>
@@ -86,66 +87,87 @@
                                         }).slice(0, 10) %>
                                 </td>
                                 <td>
-                                    <% if(curso.fecha_oferta) { %>
-                                        <% if(curso.fecha_oferta=='0000-00-00 00:00:00' ){ %>
-                                            <%= curso.fecha_oferta.toLocaleString('es-ES', {
-                                                timeZone: "America/Santo_Domingo" }).slice(0, 10) %>
-                                                <strong class="bg-warning  ">Sin Oferta 100% OFF</strong>
-                                                <% } %>
-                                                    <% if(curso.fecha_oferta < ahora) { %>
+                                    <% curso.fecha_notificacion=new Date(curso.fecha_notificacion) %>
+                                        <% curso.fecha_fin_notificacion=new Date(curso.fecha_fin_notificacion) %>
+
+                                            <% if(fecha_hoy> curso.fecha_notificacion){ %>
+                                                <% if(fecha_hoy <=curso.fecha_fin_notificacion ){ %>
+                                                    <i class="bi bi-envelope me-2 text-success"></i> Notificar Estudiantes
+
+                                                    <% }else{ %>
+                                                        <i class="bi bi-slash-circle me-2 text-danger"></i> Curso Iniciado
+                                                        <% } %>
+                                                            <% }else{ %>
+                                                                <%= curso.fecha_notificacion.toLocaleString('es-ES', {
+                                                                    timeZone: "America/Santo_Domingo" }).slice(0, 10) %>
+                                                                    <% } %>
+                                </td>
+                                <% console.log( fecha_hoy + ' fecha_hoy' ) %>
+                                    <% console.log( curso.fecha_notificacion + ' curso.fecha_notificacion' ) %>
+                                        <% console.log( curso.fecha_fin_notificacion + ' fecha fin notificacion' ) %>
+                                            <td>
+                                                <% if(curso.fecha_oferta) { %>
+                                                    <% if(curso.fecha_oferta=='0000-00-00 00:00:00' ){ %>
                                                         <%= curso.fecha_oferta.toLocaleString('es-ES', {
                                                             timeZone: "America/Santo_Domingo" }).slice(0, 10) %>
-                                                            <strong class="bg-danger text-light ">Oferta 100% OFF
-                                                                Vencida</strong>
+                                                            <strong class="bg-warning  ">Sin Oferta 100% OFF</strong>
                                                             <% } %>
-                                                                <% if (ahora < curso.fecha_oferta){ %>
+                                                                <% if(curso.fecha_oferta < ahora) { %>
                                                                     <%= curso.fecha_oferta.toLocaleString('es-ES', {
                                                                         timeZone: "America/Santo_Domingo" }).slice(0,
                                                                         10) %>
-                                                                        <strong class="bg-info text-light ">Oferta
-                                                                            100% OFF
-                                                                            Activa</strong>
+                                                                        <strong class="bg-danger text-light ">Oferta
+                                                                            100%
+                                                                            OFF
+                                                                            Vencida</strong>
                                                                         <% } %>
+                                                                            <% if (ahora < curso.fecha_oferta){ %>
+                                                                                <%= curso.fecha_oferta.toLocaleString('es-ES',
+                                                                                    { timeZone: "America/Santo_Domingo"
+                                                                                    }).slice(0, 10) %>
+                                                                                    <strong class="bg-info text-light ">Oferta
+                                                                                        100% OFF
+                                                                                        Activa</strong>
+                                                                                    <% } %>
 
-                                                                            <% } else { %>
-                                                                                0000-00-00
-                                                                                <strong class="bg-warning ">
-                                                                                    Sin Oferta 100% OFF
-                                                                                </strong>
-                                                                                <% } %>
-                                </td>
-                                <td>
-                                    <%= curso.duracion %>
-                                </td>
-                                <td>
-                                    <%= curso.modalidad %>
-                                </td>
-                                <td>
-                                    <%= curso.costo %>
-                                </td>
-                                <td>
-                                    <%= curso.tipo_curso %>
-                                </td>
-                                <td>
-                                    <%= curso.promocion %>
-                                </td>
-                                <td>
-                                    <%= curso.oferta_inscripcion %>
-                                </td>
-                                <td>
-                                    <%= curso.total_inscripciones %>
-                                </td>
-                                <td>
-                                    <%= curso.id_maestro %>
-                                </td>
-                                <td>
-                                    <%= curso.id_categoria %>
-                                </td>
-                                <td>
-                                    <a href="/admin/cursos-adm/editar-curso-adm/<%= curso.id_curso %>"
-                                        class="btn ">Editar</a>
+                                                                                        <% } else { %>
+                                                                                            0000-00-00
+                                                                                            <strong class="bg-warning ">
+                                                                                                Sin Oferta 100% OFF
+                                                                                            </strong>
+                                                                                            <% } %>
+                                            </td>
+                                            <td>
+                                                <%= curso.duracion %>
+                                            </td>
+                                            <td>
+                                                <%= curso.modalidad %>
+                                            </td>
+                                            <td>
+                                                <%= curso.costo %>
+                                            </td>
+                                            <td>
+                                                <%= curso.tipo_curso %>
+                                            </td>
+                                            <td>
+                                                <%= curso.promocion %>
+                                            </td>
+                                            <td>
+                                                <%= curso.oferta_inscripcion %>
+                                            </td>
+                                            <td>
+                                                <%= curso.total_inscripciones %>
+                                            </td>
+                                            <td>
+                                                <%= curso.id_maestro %>
+                                            </td>
+                                            <td>
+                                                <%= curso.id_categoria %>
+                                            </td>
+                                            <td>
+                                                <a href="/admin/cursos-adm/editar-curso-adm/<%= curso.id_curso %>" class="btn ">Editar</a>
 
-                                </td>
+                                            </td>
 
                             </tr>
 
@@ -162,7 +184,7 @@
 
 
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('#datatable').DataTable({
                 order: [
                     [0, 'desc']
@@ -178,7 +200,7 @@
                     exportOptions: {
                         columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13]
                     },
-                    customize: function (win) {
+                    customize: function(win) {
                         $(win.document.body).find('table')
                             .addClass('compact')
                             .css('font-size', 'inherit');
