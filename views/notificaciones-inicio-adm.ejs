@@ -1,0 +1,160 @@
+<%- include('template/cabecera', { tituloWeb: "Edufal Programacion - Temporada" , bgActive1: "" , bgActive2: "active" ,
+    bgActive3: "" , bgActive4: "" , bgActive5: "" , bgActive6: "" , bgActive7: "" , bgActive8: "" }); %>
+
+
+    <!-- content inicio -->
+
+
+    <div class="container-fluid mt-2">
+        <h2 class=" text-secondary">Envio notificaciones inicios de clases - mes de
+            <%= mesEnCurso %>
+        </h2>
+        <hr>
+
+
+        <div class="d-lg-flex align-items-center justify-content-end my-4 ">
+            <a id="envioProgramacionBtn" class="btn  me-lg-3" style="color: white; background-color: #02aeae;"><i
+                    class="bi bi-person-plus me-lg-3"></i>Enviar Programacion</a>
+            <a class="btn" href="/admin/ofertas100%OFF-adm"><i class="bi bi-person-lines-fill me-lg-3"></i>Ver
+                Ofertas 100% OFF</a>
+
+        </div>
+        <% console.log(mesEnCurso) %>
+            <div class="container">
+                <h3><strong>Estudiantes que recibiran este correo de notificacion:</strong></h3>
+
+
+                <h1>
+                    <%= arrayEstudiantes.length %>
+                </h1>
+                <button type="button" class="btn btn-sm " data-toggle="modal" data-target=".bd-example-modal-lg">Ver
+                    listado</button>
+
+                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <table class=" table-bordered table-sm" style="width:100%">
+                                <thead class="thead-ligth">
+                                    <tr>
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">Correro Electronico</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% if (arrayEstudiantes.length> 0) { %>
+                                        <% arrayEstudiantes.forEach(estudiante=> { %>
+                                            <tr></tr>
+                                            <td>
+                                                <%= estudiante.nombre %>
+                                            </td>
+                                            <td>
+                                                <%= estudiante.correo_electronico %>
+                                            </td>
+                                            </tr>
+
+
+                                            <% }) %>
+                                                <% } %>
+                                                    <tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+
+                <div>
+
+                    <% if (arrayEstudiantes.length> 0) { %>
+                        <h3><strong>Inicios de clases: </strong>
+                            <%= arrayEstudiantes[0].fecha_inicio_inscripcion %>
+
+                        </h3>
+                        <h3>
+                            <strong>
+                                <%= arrayEstudiantes[0].id_curso %>--
+                                    <%= arrayEstudiantes[0].nombre_curso %>
+                            </strong>
+                        </h3>
+                        <% }else { %>
+                            No hay inscripciones
+                            <% } %>
+                </div>
+
+
+                <table class=" table-bordered table-sm" style="width:100%">
+
+                    <thead class="thead-ligth">
+                        <tr>
+
+                            <th style="" scope="">ID Inscripcion</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Apellido</th>
+                            <th scope="col">Cedula</th>
+                            <th scope="col">Telefono</th>
+                            <th scope="col">Correo Electronico</th>
+                            <th scope="col">Fecha Insc.</th>
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if (arrayEstudiantes.length> 0) { %>
+                            <% arrayEstudiantes.forEach(estudiante=> { %>
+
+                                <tr>
+
+                                    <td>
+                                        <a href="/admin/inscripciones-adm/editar-inscripcion-adm/<%= estudiante.id_inscripcion %>">
+                                            <%= estudiante.id_inscripcion %>
+                                        </a>
+
+                                    </td>
+
+
+                                    <td>
+                                        <%= estudiante.nombre %>
+                                    </td>
+                                    <td>
+                                        <%= estudiante.apellido %>
+                                    </td>
+                                    <td>
+                                        <%= estudiante.cedula %>
+                                    </td>
+                                    <td>
+                                        <%= estudiante.telefono %>
+                                    </td>
+
+                                    <td>
+                                        <%= estudiante.correo_electronico %>
+                                    </td>
+                                    <td>
+                                        <%= estudiante.fecha_inscripcion.toLocaleString('es-ES', {
+                                            timeZone: "America/Santo_Domingo" }).slice(0, 10) %>
+                                    </td>
+
+
+                                </tr>
+
+                                <% }) %>
+                                    <% } %>
+                    </tbody>
+                </table>
+
+
+
+            </div>
+    </div>
+
+
+
+
+
+
+
+    <script src="/js/conteo_regresivo_notif_inicio.js"></script>
+
+
+    <script src="/js/envioProgramacion.js"></script>
+
+
+    <%- include('template/footer'); %>

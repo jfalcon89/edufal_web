@@ -53,8 +53,9 @@
                         <th scope="col">Precio</th>
                         <th scope="col">Tipo</th>
                         <th scope="col">Promocion</th>
-                        <th scope="col">Oferta Inscripcion</th>
-                        <th scope="col">Total Inscripciones</th>
+                        <th scope="col">Oferta Insc.</th>
+                        <th scope="col">Total Insc.</th>
+                        <th scope="col">Nuevos</th>
                         <th scope="col">Id Maestro</th>
                         <th scope="col">Id Categoria</th>
                         <th scope="col">Acciones</th>
@@ -92,10 +93,14 @@
 
                                             <% if(fecha_hoy> curso.fecha_notificacion){ %>
                                                 <% if(fecha_hoy <=curso.fecha_fin_notificacion ){ %>
-                                                    <i class="bi bi-envelope me-2 text-success"></i> Notificar Estudiantes
+                                                    <i class="bi bi-envelope me-2 text-success"></i><a href="/admin/notificaciones-inicio-adm/<%= curso.id_curso %>">Notificar
+                                                        Estudiantes</a>
 
                                                     <% }else{ %>
-                                                        <i class="bi bi-slash-circle me-2 text-danger"></i> Curso Iniciado
+                                                        <i class="bi bi-slash-circle me-2 text-danger"></i>
+                                                        <a href="/admin/notificaciones-inicio-adm/<%= curso.id_curso %>">Curso
+                                                            Iniciado</a>
+
                                                         <% } %>
                                                             <% }else{ %>
                                                                 <%= curso.fecha_notificacion.toLocaleString('es-ES', {
@@ -157,6 +162,9 @@
                                             </td>
                                             <td>
                                                 <%= curso.total_inscripciones %>
+                                            </td>
+                                            <td>
+                                                <%= curso.inscripciones_nuevas %>
                                             </td>
                                             <td>
                                                 <%= curso.id_maestro %>

@@ -29,8 +29,14 @@ router.get('/admin/cursos-adm', async(req, res) => {
         // console.log(fecha_hoy + 'fecha_hoy'); // Salida: "09/05/2024" (para la fecha de hoy)
 
 
-        const arrayCursosDB = await pool.query(`SELECT cursos.*, IFNULL(contador.cantidad_inscripciones, 0) AS total_inscripciones, DATE_FORMAT(DATE_SUB(STR_TO_DATE(cursos.fecha_inicio, '%d/%m/%Y'), INTERVAL 2 DAY), '%a %b %e %Y %H:%i:%s GMT-0400 (hora estándar del Atlántico)') AS fecha_notificacion,
-    DATE_FORMAT(DATE_ADD(STR_TO_DATE(cursos.fecha_inicio, '%d/%m/%Y'), INTERVAL 2 DAY), '%a %b %e %Y %H:%i:%s GMT-0400 (hora estándar del Atlántico)') AS fecha_fin_notificacion FROM cursos LEFT JOIN (SELECT id_curso, COUNT(id_inscripcion) AS cantidad_inscripciones FROM inscripciones GROUP BY id_curso) AS contador ON cursos.id_curso = contador.id_curso;`);
+        const arrayCursosDB = await pool.query(`SELECT cursos.*, 
+       IFNULL(contador.cantidad_inscripciones, 0) AS total_inscripciones, 
+       DATE_FORMAT(DATE_SUB(STR_TO_DATE(cursos.fecha_inicio, '%d/%m/%Y'), INTERVAL 2 DAY), '%a %b %e %Y %H:%i:%s GMT-0400 (hora estándar del Atlántico)') AS fecha_notificacion, 
+       DATE_FORMAT(DATE_ADD(STR_TO_DATE(cursos.fecha_inicio, '%d/%m/%Y'), INTERVAL 2 DAY), '%a %b %e %Y %H:%i:%s GMT-0400 (hora estándar del Atlántico)') AS fecha_fin_notificacion,
+       (SELECT COUNT(id_inscripcion) FROM inscripciones WHERE inscripciones.id_curso = cursos.id_curso AND inscripciones.estado_inscripcion = 'Nuevo') AS inscripciones_nuevas
+        FROM cursos 
+        LEFT JOIN (SELECT id_curso, COUNT(id_inscripcion) AS cantidad_inscripciones FROM inscripciones GROUP BY id_curso) AS contador 
+        ON cursos.id_curso = contador.id_curso;`);
 
         const totalInscripcionesDB = await pool.query(`SELECT  COUNT(inscripciones.id_inscripcion) AS cantidad_inscripciones FROM inscripciones where inscripciones.estado_inscripcion in ('Nuevo', 'Iniciado', 'Finalizado', 'Declinado/Retirado');`);
         const totalInscripcionesNuevoDB = await pool.query(`SELECT  COUNT(inscripciones.id_inscripcion) AS cantidad_inscripciones FROM inscripciones where inscripciones.estado_inscripcion in ('Nuevo');`);
@@ -378,6 +384,53 @@ END AS mes_actual_español;`);
             arrayCursosCategoria6: arrayCursosCategoria6DB,
             arrayCursosCategoria7: arrayCursosCategoria7DB,
             arrayCursosCategoria8: arrayCursosCategoria8DB,
+            mesEnCurso: mesEnCursoDB[0].mes_actual_español,
+            arrayEstudiantes: arrayEstudiantesDB,
+            ahora,
+            login: true,
+            name: req.session.name
+
+        });
+    } else {
+        res.render('login', {
+            login: false,
+            name: 'Debe iniciar sesión',
+        });
+    }
+
+});
+// RENDERIZANDO Y MOSTRANDO LAS NOTIFICACIONES DE INICIO DE CURSOS DEL MES EN CURSO ADM*********************
+router.get('/admin/notificaciones-inicio-adm/:id', async(req, res) => {
+    if (req.session.loggedin) {
+
+        const { id } = req.params;
+
+        var ahora = new Date().getTime();
+
+
+        const arrayEstudiantesDB = await pool.query(`SELECT * FROM inscripciones where inscripciones.id_curso = '${id}' and inscripciones.estado_inscripcion = 'Nuevo';`);
+
+
+        const mesEnCursoDB = await pool.query(`SELECT CASE MONTH(NOW())
+    WHEN 1 THEN 'Enero'
+    WHEN 2 THEN 'Febrero'
+    WHEN 3 THEN 'Marzo'
+    WHEN 4 THEN 'Abril'
+    WHEN 5 THEN 'Mayo'
+    WHEN 6 THEN 'Junio'
+    WHEN 7 THEN 'Julio'
+    WHEN 8 THEN 'Agosto'
+    WHEN 9 THEN 'Septiembre'
+    WHEN 10 THEN 'Octubre'
+    WHEN 11 THEN 'Noviembre'
+    WHEN 12 THEN 'Diciembre'
+END AS mes_actual_español;`);
+
+
+
+
+
+        res.render("notificaciones-inicio-adm", {
             mesEnCurso: mesEnCursoDB[0].mes_actual_español,
             arrayEstudiantes: arrayEstudiantesDB,
             ahora,
