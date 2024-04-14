@@ -31,8 +31,10 @@
                     class="bi bi-person-plus me-lg-3"></i>Crear Nuevo Curso</a>
             <a class="btn me-lg-3" href="/admin/inscripciones-adm"><i class="bi bi-person-lines-fill me-lg-3"></i>Ver
                 Inscripciones</a>
-            <a class="btn " href="/admin/programacion-adm"><i class="bi bi-person-lines-fill me-lg-3"></i>Ver
+            <a class="btn me-lg-3" href="/admin/programacion-adm"><i class="bi bi-person-lines-fill me-lg-3"></i>Ver
                 Programacion</a>
+            <a class="btn" href="/admin/ofertas100%OFF-adm"><i class="bi bi-person-lines-fill me-lg-3"></i>Ver
+                Ofertas 100% OFF</a>
         </div>
 
         <div class="container-departamento">
@@ -93,12 +95,18 @@
 
                                             <% if(fecha_hoy> curso.fecha_notificacion){ %>
                                                 <% if(fecha_hoy <=curso.fecha_fin_notificacion ){ %>
-                                                    <i class="bi bi-envelope me-2 text-success"></i><a href="/admin/notificaciones-inicio-adm/<%= curso.id_curso %>">Notificar
-                                                        Estudiantes</a>
+                                                    <i class="bi bi-envelope me-2 text-success" data-toggle="tooltip"
+                                                        data-placement="top" title="Notificar estudiantes antes de: <%= curso.fecha_fin_notificacion.toLocaleString('es-ES', {}).slice(0, 10)
+                                                            %>"></i><a
+                                                        href="/admin/notificaciones-inicio-adm/<%= curso.id_curso %>">Notificar
+                                                        Estudiantes </a>
 
                                                     <% }else{ %>
-                                                        <i class="bi bi-slash-circle me-2 text-danger"></i>
-                                                        <a href="/admin/notificaciones-inicio-adm/<%= curso.id_curso %>">Curso
+                                                        <i class="bi bi-slash-circle me-2 text-danger"
+                                                            data-toggle="tooltip" data-placement="top"
+                                                            title="Curso iniciado, enviara notificaciones tardia. Fecha limite de notif <%= curso.fecha_fin_notificacion.toLocaleString('es-ES', {}).slice(0, 10) %>"></i>
+                                                        <a
+                                                            href="/admin/notificaciones-inicio-adm/<%= curso.id_curso %>">Curso
                                                             Iniciado</a>
 
                                                         <% } %>
@@ -130,7 +138,8 @@
                                                                                 <%= curso.fecha_oferta.toLocaleString('es-ES',
                                                                                     { timeZone: "America/Santo_Domingo"
                                                                                     }).slice(0, 10) %>
-                                                                                    <strong class="bg-info text-light ">Oferta
+                                                                                    <strong
+                                                                                        class="bg-info text-light ">Oferta
                                                                                         100% OFF
                                                                                         Activa</strong>
                                                                                     <% } %>
@@ -173,7 +182,8 @@
                                                 <%= curso.id_categoria %>
                                             </td>
                                             <td>
-                                                <a href="/admin/cursos-adm/editar-curso-adm/<%= curso.id_curso %>" class="btn ">Editar</a>
+                                                <a href="/admin/cursos-adm/editar-curso-adm/<%= curso.id_curso %>"
+                                                    class="btn ">Editar</a>
 
                                             </td>
 
@@ -192,7 +202,7 @@
 
 
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('#datatable').DataTable({
                 order: [
                     [0, 'desc']
@@ -208,7 +218,7 @@
                     exportOptions: {
                         columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13]
                     },
-                    customize: function(win) {
+                    customize: function (win) {
                         $(win.document.body).find('table')
                             .addClass('compact')
                             .css('font-size', 'inherit');
