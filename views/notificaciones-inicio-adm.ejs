@@ -13,8 +13,8 @@
 
 
         <div class="d-lg-flex align-items-center justify-content-end my-4 ">
-            <a id="envioProgramacionBtn" class="btn  me-lg-3" style="color: white; background-color: #02aeae;"><i
-                    class="bi bi-person-plus me-lg-3"></i>Enviar Notificaciones</a>
+            <a id="envioNotificacionesInicioBtn" class="btn  me-lg-3" href="<%= curso.id_curso %>" style="color: white; background-color: #02aeae;"><i class="bi bi-person-plus me-lg-3"></i>Enviar
+                Notificaciones</a>
             <a class="btn btn-warning" href="/admin/cursos-adm"><i class="bi bi-person-lines-fill me-lg-3"></i>Volver
                 atras</a>
 
@@ -30,8 +30,7 @@
                 <button type="button" class="btn btn-sm " data-toggle="modal" data-target=".bd-example-modal-lg">Ver
                     listado</button>
 
-                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
-                    aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                             <table class=" table-bordered table-sm" style="width:100%">
@@ -56,7 +55,7 @@
 
                                             <% }) %>
                                                 <% } %>
-                                <tbody>
+                                                    <tbody>
                             </table>
                         </div>
                     </div>
@@ -66,15 +65,16 @@
                 <div>
 
                     <% if (arrayEstudiantes.length> 0) { %>
-                        <h3><strong>Inicios de clases: </strong>
+                        <h3><strong>Inicio de clases: </strong>
                             <%= arrayEstudiantes[0].fecha_inicio_inscripcion %>
 
                         </h3>
                         <h3>
-                            <strong>
-                                <%= arrayEstudiantes[0].id_curso %>--
-                                    <%= arrayEstudiantes[0].nombre_curso %>
-                            </strong>
+                            <strong> <strong id="id_curso">
+                                    <%= arrayEstudiantes[0].id_curso %>
+                                </strong> --
+                            <%= arrayEstudiantes[0].nombre_curso %>
+                                </strong>
                         </h3>
                         <% }else { %>
                             No hay inscripciones
@@ -105,8 +105,7 @@
                                 <tr>
 
                                     <td>
-                                        <a
-                                            href="/admin/inscripciones-adm/editar-inscripcion-adm/<%= estudiante.id_inscripcion %>">
+                                        <a href="/admin/inscripciones-adm/editar-inscripcion-adm/<%= estudiante.id_inscripcion %>">
                                             <%= estudiante.id_inscripcion %>
                                         </a>
 
@@ -156,7 +155,7 @@
     <script src="/js/conteo_regresivo_notif_inicio.js"></script>
 
 
-    <script src="/js/envioProgramacion.js"></script>
+    <script src="/js/envioNotificacionesInicio.js"></script>
 
 
     <%- include('template/footer'); %>
