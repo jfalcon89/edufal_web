@@ -3,10 +3,12 @@
 
 
     <!-- content inicio -->
-
+    <!-- generador pdfmake -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.2/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.2/vfs_fonts.js"></script>
 
     <div class="container-fluid mt-2">
-        <h2 class=" text-secondary">Envio notificaciones inicios de clases - mes de
+        <h2 class=" text-secondary">Reporte estudiantes nuevos - mes de
             <%= mesEnCurso %>
         </h2>
         <hr>
@@ -29,6 +31,7 @@
                 </h1>
                 <button type="button" class="btn btn-sm " data-toggle="modal" data-target=".bd-example-modal-lg">Ver
                     listado</button>
+                <button id="generate-pdf" type="button" class="btn btn-sm ">Generar Reporte</button>
 
                 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
@@ -147,7 +150,106 @@
     </div>
 
 
+    <script>
+        // Obtener el botón
+        var btn = document.getElementById('generate-pdf');
+        // var htmlContent = document.getElementById('html-content').innerHTML;
 
+        // Agregar un evento de clic al botón
+        btn.addEventListener('click', function() {
+            console.log('generar pdf click')
+
+            let fecha = new Date();
+            let fechaReporte = fecha.toLocaleString('es-US', {
+                timeZone: "America/Santo_Domingo"
+            }, );
+
+            // Definir el contenido del documento
+            var docDefinition = {
+                content: [{
+                        text: 'EDUFAL ONLINE - REPORTE ESTUDIANTES NUEVOS',
+                        fontSize: 20,
+                        margin: [135, 20, 0, 5],
+                    }, {
+                        text: `Fecha del reporte: `,
+                        margin: [620, 20, 0, 5],
+                        bold: true
+                    }, {
+                        text: `${fechaReporte}`,
+                        margin: [620, 0, 0, 5]
+                    },
+                    <% if(arrayEstudiantes.length > 0) { %> {
+                        text: '<%= arrayEstudiantes[0].nombre_curso %>',
+                        fontSize: 15,
+                        margin: [0, 10, 0, 5]
+                    }
+                    <% } %>,
+                    <% if (arrayEstudiantes.length > 0) { %> {
+                        text: 'Inicio de clase: <%= arrayEstudiantes[0].fecha_inicio_inscripcion %>',
+                        margin: [0, 10, 0, 5]
+                    }
+                    <% } %>, {
+                        text: 'Estudiantes Nuevos: <%= arrayEstudiantes.length %>'
+                    },
+
+                    {
+                        text: 'Listado de estudiantes',
+                        margin: [0, 20, 0, 5]
+                    }, {
+
+
+                        layout: 'lightHorizontalLines',
+                        orientation: 'landscape',
+                        table: {
+                            // headers are automatically repeated if the table spans over multiple pages
+                            // you can declare how many rows should be treated as headers
+                            // headerRows: 1,
+                            widths: [40, 100, 100, 100, 200, 150],
+
+                            body: [
+
+                                [{
+                                    text: 'ID',
+                                    bold: true,
+                                    fontSize: 10
+                                }, {
+                                    text: 'Nombre',
+                                    bold: true
+                                }, {
+                                    text: 'Apellido',
+                                    bold: true
+                                }, {
+                                    text: 'Cedula',
+                                    bold: true
+                                }, {
+                                    text: 'Correo',
+                                    bold: true
+                                }, {
+                                    text: 'Fecha Insc',
+                                    bold: true
+                                }],
+
+                                <% if(arrayEstudiantes.length > 0) { %>
+                                <% arrayEstudiantes.forEach(estudiante => { %>
+
+                                ['<%= estudiante.id_inscripcion %>', '<%= estudiante.nombre %>', '<%= estudiante.apellido %>', '<%= estudiante.cedula %>', '<%= estudiante.correo_electronico%>', '<%= estudiante.fecha_inscripcion.toLocaleString() %>'],
+
+                                <% }) %>
+                                <% } %>
+
+                            ]
+                        }
+
+                    }
+
+                ],
+                pageOrientation: 'landscape', // Orientación horizontal
+            };
+
+            // Generar el documento PDF
+            pdfMake.createPdf(docDefinition).download('Reporte estudiantes nuevos.pdf');
+        });
+    </script>
 
 
 
