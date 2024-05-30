@@ -31,6 +31,7 @@
                 </h1>
                 <button type="button" class="btn btn-sm " data-toggle="modal" data-target=".bd-example-modal-lg">Ver
                     listado</button>
+                <button id="generate-pdf" type="button" class="btn btn-sm ">Generar Reporte</button>
 
                 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
                     aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -144,7 +145,10 @@
                                                     <tr>
 
                                                         <td>
-                                                            <%= curso.titulo_curso %>
+                                                            <a
+                                                                href="/admin/cursos-adm/editar-curso-adm/<%= curso.id_curso %>">
+                                                                <%= curso.titulo_curso %>
+                                                            </a>
                                                         </td>
 
 
@@ -188,7 +192,10 @@
                                                             <tr>
 
                                                                 <td>
-                                                                    <%= curso.titulo_curso %>
+                                                                    <a
+                                                                        href="/admin/cursos-adm/editar-curso-adm/<%= curso.id_curso %>">
+                                                                        <%= curso.titulo_curso %>
+                                                                    </a>
                                                                 </td>
 
 
@@ -234,7 +241,10 @@
                                                                     <tr>
 
                                                                         <td>
-                                                                            <%= curso.titulo_curso %>
+                                                                            <a
+                                                                                href="/admin/cursos-adm/editar-curso-adm/<%= curso.id_curso %>">
+                                                                                <%= curso.titulo_curso %>
+                                                                            </a>
                                                                         </td>
 
 
@@ -282,7 +292,10 @@
                                                                             <tr>
 
                                                                                 <td>
-                                                                                    <%= curso.titulo_curso %>
+                                                                                    <a
+                                                                                        href="/admin/cursos-adm/editar-curso-adm/<%= curso.id_curso %>">
+                                                                                        <%= curso.titulo_curso %>
+                                                                                    </a>
                                                                                 </td>
 
 
@@ -336,7 +349,11 @@
                                                                                     <tr>
 
                                                                                         <td>
-                                                                                            <%= curso.titulo_curso %>
+                                                                                            <a
+                                                                                                href="/admin/cursos-adm/editar-curso-adm/<%= curso.id_curso %>">
+                                                                                                <%= curso.titulo_curso
+                                                                                                    %>
+                                                                                            </a>
                                                                                         </td>
 
 
@@ -395,8 +412,11 @@
                                                                                             <tr>
 
                                                                                                 <td>
-                                                                                                    <%= curso.titulo_curso
-                                                                                                        %>
+                                                                                                    <a
+                                                                                                        href="/admin/cursos-adm/editar-curso-adm/<%= curso.id_curso %>">
+                                                                                                        <%= curso.titulo_curso
+                                                                                                            %>
+                                                                                                    </a>
                                                                                                 </td>
 
 
@@ -461,8 +481,11 @@
                                                                                                     <tr>
 
                                                                                                         <td>
-                                                                                                            <%= curso.titulo_curso
-                                                                                                                %>
+                                                                                                            <a
+                                                                                                                href="/admin/cursos-adm/editar-curso-adm/<%= curso.id_curso %>">
+                                                                                                                <%= curso.titulo_curso
+                                                                                                                    %>
+                                                                                                            </a>
                                                                                                         </td>
 
 
@@ -566,6 +589,398 @@
     </div>
 
 
+    <script>
+        // Obtener el botón
+        var btn = document.getElementById('generate-pdf');
+        // var htmlContent = document.getElementById('html-content').innerHTML;
+
+        // Agregar un evento de clic al botón
+        btn.addEventListener('click', function () {
+            console.log('generar pdf click')
+
+            let fecha = new Date();
+            let fechaReporte = fecha.toLocaleString('es-US', {
+                timeZone: "America/Santo_Domingo"
+            },);
+
+            // Definir el contenido del documento
+            var docDefinition = {
+
+                content: [{
+                    text: 'EDUFAL ONLINE',
+                    fontSize: 25,
+                    margin: [270, 0, 0, 0],
+                    color: '#005d6a'
+                }, {
+                    text: 'Capacitaciones del mes de <%= mesEnCurso %>',
+                    fontSize: 20,
+                    margin: [220, 20, 0, 5],
+                },
+                    <% if(arrayCursosCategoria1.length > 0) { %> {
+            text: '<%= arrayCursosCategoria1[0].nombre_categoria %>\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t',
+            bold: true,
+            fontSize: 15,
+            margin: [0, 20, 0, 5],
+            background: '#005d6a',
+            color: 'white',
+
+
+
+        }, {
+            layout: 'lightHorizontalLines',
+            orientation: 'landscape',
+            table: {
+
+                // headers are automatically repeated if the table spans over multiple pages
+                // you can declare how many rows should be treated as headers
+                // headerRows: 1,
+                widths: [350, 100, 280],
+
+                body: [
+
+                    [{
+                        text: 'Titulo Curso',
+                        bold: true,
+                        fontSize: 10
+                    }, {
+                        text: 'Fecha Inicio',
+                        bold: true
+                    }, {
+                        text: 'Horarios',
+                        bold: true
+                    },],
+
+                                <% if(arrayCursosCategoria1.length > 0) { %>
+                                <% arrayCursosCategoria1.forEach(curso => { %>
+
+                        ['<%= curso.titulo_curso %>', '<%= curso.fecha_inicio %>', '<%= curso.horasClases %>'],
+
+                                <% }) %>
+                                <% } %>
+
+                            ]
+        }
+
+                    },
+                    <% } %>
+                    <% if (arrayCursosCategoria2.length > 0) { %> {
+            text: '<%= arrayCursosCategoria2[0].nombre_categoria %>\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t',
+            bold: true,
+            fontSize: 15,
+            margin: [0, 20, 0, 5],
+            background: '#005d6a',
+            color: 'white'
+        }, {
+            layout: 'lightHorizontalLines',
+            orientation: 'landscape',
+            table: {
+
+                // headers are automatically repeated if the table spans over multiple pages
+                // you can declare how many rows should be treated as headers
+                // headerRows: 1,
+                widths: [350, 100, 280],
+
+                body: [
+
+                    [{
+                        text: 'Titulo Curso',
+                        bold: true,
+                        fontSize: 10
+                    }, {
+                        text: 'Fecha Inicio',
+                        bold: true
+                    }, {
+                        text: 'Horarios',
+                        bold: true
+                    },],
+
+                                <% if(arrayCursosCategoria2.length > 0) { %>
+                                <% arrayCursosCategoria2.forEach(curso => { %>
+
+                        ['<%= curso.titulo_curso %>', '<%= curso.fecha_inicio %>', '<%= curso.horasClases %>'],
+
+                                <% }) %>
+                                <% } %>
+
+                            ]
+        }
+
+                    },
+                    <% } %>
+                    <% if (arrayCursosCategoria3.length > 0) { %> {
+            text: '<%= arrayCursosCategoria3[0].nombre_categoria %>\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t',
+            bold: true,
+            fontSize: 15,
+            margin: [0, 20, 0, 5],
+            background: '#005d6a',
+            color: 'white'
+        }, {
+            layout: 'lightHorizontalLines',
+            orientation: 'landscape',
+            table: {
+
+                // headers are automatically repeated if the table spans over multiple pages
+                // you can declare how many rows should be treated as headers
+                // headerRows: 1,
+                widths: [350, 100, 280],
+
+                body: [
+
+                    [{
+                        text: 'Titulo Curso',
+                        bold: true,
+                        fontSize: 10
+                    }, {
+                        text: 'Fecha Inicio',
+                        bold: true
+                    }, {
+                        text: 'Horarios',
+                        bold: true
+                    },],
+
+                                <% if(arrayCursosCategoria3.length > 0) { %>
+                                <% arrayCursosCategoria3.forEach(curso => { %>
+
+                        ['<%= curso.titulo_curso %>', '<%= curso.fecha_inicio %>', '<%= curso.horasClases %>'],
+
+                                <% }) %>
+                                <% } %>
+
+                            ]
+        }
+
+                    },
+                    <% } %>
+                    <% if (arrayCursosCategoria4.length > 0) { %> {
+            text: '<%= arrayCursosCategoria4[0].nombre_categoria %>\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t',
+            bold: true,
+            fontSize: 15,
+            margin: [0, 20, 0, 5],
+            background: '#005d6a',
+            color: 'white'
+        }, {
+            layout: 'lightHorizontalLines',
+            orientation: 'landscape',
+            table: {
+
+                // headers are automatically repeated if the table spans over multiple pages
+                // you can declare how many rows should be treated as headers
+                // headerRows: 1,
+                widths: [350, 100, 280],
+
+                body: [
+
+                    [{
+                        text: 'Titulo Curso',
+                        bold: true,
+                        fontSize: 10
+                    }, {
+                        text: 'Fecha Inicio',
+                        bold: true
+                    }, {
+                        text: 'Horarios',
+                        bold: true
+                    },],
+
+                                <% if(arrayCursosCategoria4.length > 0) { %>
+                                <% arrayCursosCategoria4.forEach(curso => { %>
+
+                        ['<%= curso.titulo_curso %>', '<%= curso.fecha_inicio %>', '<%= curso.horasClases %>'],
+
+                                <% }) %>
+                                <% } %>
+
+                            ]
+        }
+
+                    },
+                    <% } %>
+                    <% if (arrayCursosCategoria5.length > 0) { %> {
+            text: '<%= arrayCursosCategoria5[0].nombre_categoria %>\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t',
+            bold: true,
+            fontSize: 15,
+            margin: [0, 20, 0, 5],
+            background: '#005d6a',
+            color: 'white'
+        }, {
+            layout: 'lightHorizontalLines',
+            orientation: 'landscape',
+            table: {
+
+                // headers are automatically repeated if the table spans over multiple pages
+                // you can declare how many rows should be treated as headers
+                // headerRows: 1,
+                widths: [350, 100, 280],
+
+                body: [
+
+                    [{
+                        text: 'Titulo Curso',
+                        bold: true,
+                        fontSize: 10
+                    }, {
+                        text: 'Fecha Inicio',
+                        bold: true
+                    }, {
+                        text: 'Horarios',
+                        bold: true
+                    },],
+
+                                <% if(arrayCursosCategoria5.length > 0) { %>
+                                <% arrayCursosCategoria5.forEach(curso => { %>
+
+                        ['<%= curso.titulo_curso %>', '<%= curso.fecha_inicio %>', '<%= curso.horasClases %>'],
+
+                                <% }) %>
+                                <% } %>
+
+                            ]
+        }
+
+                    },
+                    <% } %>
+                    <% if (arrayCursosCategoria6.length > 0) { %> {
+            text: '<%= arrayCursosCategoria6[0].nombre_categoria %>\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t',
+            bold: true,
+            fontSize: 15,
+            margin: [0, 20, 0, 5],
+            background: '#005d6a',
+            color: 'white'
+        }, {
+            layout: 'lightHorizontalLines',
+            orientation: 'landscape',
+            table: {
+
+                // headers are automatically repeated if the table spans over multiple pages
+                // you can declare how many rows should be treated as headers
+                // headerRows: 1,
+                widths: [350, 100, 280],
+
+                body: [
+
+                    [{
+                        text: 'Titulo Curso',
+                        bold: true,
+                        fontSize: 10
+                    }, {
+                        text: 'Fecha Inicio',
+                        bold: true
+                    }, {
+                        text: 'Horarios',
+                        bold: true
+                    },],
+
+                                <% if(arrayCursosCategoria6.length > 0) { %>
+                                <% arrayCursosCategoria6.forEach(curso => { %>
+
+                        ['<%= curso.titulo_curso %>', '<%= curso.fecha_inicio %>', '<%= curso.horasClases %>'],
+
+                                <% }) %>
+                                <% } %>
+
+                            ]
+        }
+
+                    },
+                    <% } %>
+                    <% if (arrayCursosCategoria7.length > 0) { %> {
+            text: '<%= arrayCursosCategoria7[0].nombre_categoria %>\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t',
+            bold: true,
+            fontSize: 15,
+            margin: [0, 20, 0, 5],
+            background: '#005d6a',
+            color: 'white'
+        }, {
+            layout: 'lightHorizontalLines',
+            orientation: 'landscape',
+            table: {
+
+                // headers are automatically repeated if the table spans over multiple pages
+                // you can declare how many rows should be treated as headers
+                // headerRows: 1,
+                widths: [350, 100, 280],
+
+                body: [
+
+                    [{
+                        text: 'Titulo Curso',
+                        bold: true,
+                        fontSize: 10
+                    }, {
+                        text: 'Fecha Inicio',
+                        bold: true
+                    }, {
+                        text: 'Horarios',
+                        bold: true
+                    },],
+
+                                <% if(arrayCursosCategoria7.length > 0) { %>
+                                <% arrayCursosCategoria7.forEach(curso => { %>
+
+                        ['<%= curso.titulo_curso %>', '<%= curso.fecha_inicio %>', '<%= curso.horasClases %>'],
+
+                                <% }) %>
+                                <% } %>
+
+                            ]
+        }
+
+                    },
+                    <% } %>
+                    <% if (arrayCursosCategoria8.length > 0) { %> {
+            text: '<%= arrayCursosCategoria8[0].nombre_categoria %>\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t',
+            bold: true,
+            fontSize: 15,
+            margin: [0, 20, 0, 5],
+            background: '#005d6a',
+            color: 'white'
+
+        }, {
+            layout: 'lightHorizontalLines',
+            orientation: 'landscape',
+            table: {
+
+                // headers are automatically repeated if the table spans over multiple pages
+                // you can declare how many rows should be treated as headers
+                // headerRows: 1,
+                widths: [350, 100, 280],
+
+                body: [
+
+                    [{
+                        text: 'Titulo Curso',
+                        bold: true,
+                        fontSize: 10
+                    }, {
+                        text: 'Fecha Inicio',
+                        bold: true
+                    }, {
+                        text: 'Horarios',
+                        bold: true
+                    },],
+
+                                <% if(arrayCursosCategoria8.length > 0) { %>
+                                <% arrayCursosCategoria8.forEach(curso => { %>
+
+                        ['<%= curso.titulo_curso %>', '<%= curso.fecha_inicio %>', '<%= curso.horasClases %>'],
+
+                                <% }) %>
+                                <% } %>
+
+                            ]
+        }
+
+                    }
+                    <% } %>
+
+                ],
+        pageOrientation: 'landscape', // Orientación horizontal
+            };
+
+        // Generar el documento PDF
+        pdfMake.createPdf(docDefinition).download('Capacitaciones del mes de <%= mesEnCurso %>.pdf');
+        });
+    </script>
 
 
     <script src="/js/conteo_regresivo_notif_inicio.js"></script>

@@ -578,6 +578,10 @@ router.get('/envioProgramacionRuta', async(req, res) => {
                         from: `${from} EDUFAL ONLINE`,
                         to: estudiante.correo_electronico,
                         subject: `¿Vas a dejar pasar otro mes sin capacitarte? 😳😱`,
+                        attachments: [{
+                            filename: 'Capacitaciones del mes.pdf',
+                            path: 'https://1drv.ms/b/s!AsmqvOhmnB_DjVeCf6TLKzoLqmBI?e=A7PYB3'
+                        }],
                         html: `
                         <table align="center" cellpadding="0" cellspacing="0" width="720">
                          <tr>
@@ -600,7 +604,7 @@ router.get('/envioProgramacionRuta', async(req, res) => {
                         </div>
                          </div>
                         <div style="text-align: center;">
-                            <img src="https://onedrive.live.com/embed?resid=C31F9C66E8BCAAC9%211716&authkey=%21AAYtZOsaKnSnOho&width=720&height=681"/>
+                            <img src="https://onedrive.live.com/embed?resid=C31F9C66E8BCAAC9%211752&authkey=%21AEgVnhF9nO-IBYc&width=1024"/>
                             <h4><a href="https://bit.ly/3xzs0RV" style="background-color: #005d6a; border-radius: 10px; padding: 10px; text-decoration: none; color: white; margin-top: 30px;">ESCRIBEMOS PARA MAS INFORMACION</a></h4><br>
                             <p style="margin: 0 auto; width: 50%;">Te esperamos en el AULA!</p><br>
                             <img src="https://onedrive.live.com/embed?resid=C31F9C66E8BCAAC9%211711&authkey=%21AJoA5g9yVo7CavY&width=396&height=122" width="396" height="122" />   
